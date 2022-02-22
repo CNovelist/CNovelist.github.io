@@ -671,15 +671,15 @@ id选择器         0,1,0,0
 <li>浏览器对网页进行解析时，会自动对网页中不符合规范的内容进行修正</li>
 </ul>
 <h2 id="网页结构"><a href="#网页结构" class="headerlink" title="网页结构"></a>网页结构</h2><h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><ul>
-<li>头部：<header></li>
-<li>主体：<main></li>
-<li>底部：<footer></li>
+<li>头部：<header></header></li>
+<li>主体：<main></main></li>
+<li>底部：<footer></footer></li>
 </ul>
 <h3 id="内容区"><a href="#内容区" class="headerlink" title="内容区"></a>内容区</h3><ul>
-<li>导航：<nav></li>
-<li>侧边栏：<aside></li>
-<li>文章区：<artical></li>
-<li>读取区块：<section></li>
+<li>导航：<nav></nav></li>
+<li>侧边栏：<aside></aside></li>
+<li>文章区：<artical></artical></li>
+<li>读取区块：<section></section></li>
 </ul>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
 <li>以上标签是h5新增的标签，使用的不多，一般使用div和span</li>
