@@ -807,7 +807,7 @@ this关键字可以在函数体中使用
 <li>执行函数中的代码</li>
 <li>将新建的对象作为返回值返回</li>
 </ol>
-<h2 id="5、原型对象"><a href="#5、原型对象" class="headerlink" title="5、原型对象"></a>5、原型对象</h2><p><img src="gyhexo.oss-cn-beijing.aliyuncs.com/%E5%89%8D%E7%AB%AF/JavaScript/prototype.png" alt="image"></p>
+<h2 id="5、原型对象"><a href="#5、原型对象" class="headerlink" title="5、原型对象"></a>5、原型对象</h2><img src="/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/prototype.png" class="" title="image">
 <ul>
 <li>JS中万物皆对象</li>
 <li>每个对象都具有__proto__，用于指向其构造函数的原型，这也保证了实例能够访问在构造函数原型中定义的属性和方法</li>
