@@ -883,4 +883,17 @@ this关键字可以在函数体中使用
         <tag>后端框架</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Vue2基础大全一</title>
+    <url>/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/</url>
+    <content><![CDATA[<h1 id="一、Vue-cli脚手架"><a href="#一、Vue-cli脚手架" class="headerlink" title="一、Vue-cli脚手架"></a>一、Vue-cli脚手架</h1><h2 id="1、Vue项目结构"><a href="#1、Vue项目结构" class="headerlink" title="1、Vue项目结构"></a>1、Vue项目结构</h2><h1 id="二、Vue组件结构"><a href="#二、Vue组件结构" class="headerlink" title="二、Vue组件结构"></a>二、Vue组件结构</h1>]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue2</tag>
+        <tag>前后端分离</tag>
+      </tags>
+  </entry>
 </search>
