@@ -908,12 +908,17 @@ this关键字可以在函数体中使用
 <li>$R = \{ r_1,r_2,…,r_{|E|} \}$是知识库中的关系集合，$|R|$表示关系数</li>
 </ul>
 </li>
-<li>三元组的基本形式<ul>
+<li>三元组的基本形式（知识图谱的逻辑结构）<ul>
 <li>（实体1，关系，实体2）</li>
 <li>（实体，属性，属性值）</li>
 </ul>
 </li>
 </ul>
+<h2 id="2、知识图谱体系架构"><a href="#2、知识图谱体系架构" class="headerlink" title="2、知识图谱体系架构"></a>2、知识图谱体系架构</h2><h3 id="（1）构建方式"><a href="#（1）构建方式" class="headerlink" title="（1）构建方式"></a>（1）构建方式</h3><ul>
+<li>自顶向下（top-down）：先构建本体和数据模式，再加入实体到知识库</li>
+<li>自底向下（bottom-top）：先提取实体，将置信度较高的加入到知识库，再构建顶层的本体（大多数知识图谱采用）</li>
+</ul>
+<img src="/2022/02/24/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B01-%E5%BE%90%E5%A2%9E%E6%9E%97-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" class="" title="image">
 ]]></content>
       <categories>
         <category>文献阅读</category>
