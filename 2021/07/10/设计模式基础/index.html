@@ -107,6 +107,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -141,11 +142,35 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+      
+    </div>
+  </div>
 
 </div>
     </header>
@@ -216,6 +241,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -395,7 +427,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">设计模式基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81GoF%E7%9A%8423%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">一、GoF的23种设计模式及其功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">1.2.</span> <span class="nav-text">二、面向对象的设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 开闭原则OCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 里氏替换原则LSP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99DIP"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 依赖倒置原则DIP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">实现方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 单一职责原则SRP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 接口隔离原则ISP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99LKP"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 迪米特法则LKP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99CRP"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7 合成复用原则CRP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%A4%8D%E7%94%A8"><span class="nav-number">1.2.7.1.</span> <span class="nav-text">继承复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8"><span class="nav-number">1.2.7.2.</span> <span class="nav-text">合成复用</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80"><span class="nav-text">设计模式基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81GoF%E7%9A%8423%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E5%8A%9F%E8%83%BD"><span class="nav-text">一、GoF的23种设计模式及其功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-text">二、面向对象的设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99OCP"><span class="nav-text">2.1 开闭原则OCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99LSP"><span class="nav-text">2.2 里氏替换原则LSP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99DIP"><span class="nav-text">2.3 依赖倒置原则DIP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-text">实现方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99SRP"><span class="nav-text">2.4 单一职责原则SRP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99ISP"><span class="nav-text">2.5 接口隔离原则ISP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99LKP"><span class="nav-text">2.6 迪米特法则LKP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99CRP"><span class="nav-text">2.7 合成复用原则CRP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E5%A4%8D%E7%94%A8"><span class="nav-text">继承复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8"><span class="nav-text">合成复用</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -471,6 +503,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -503,6 +555,13 @@
 
   
 
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
 
 
 
