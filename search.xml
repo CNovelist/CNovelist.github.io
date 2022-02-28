@@ -899,10 +899,15 @@ this关键字可以在函数体中使用
   <entry>
     <title>论文笔记1-徐增林-知识图谱技术综述</title>
     <url>/2022/02/24/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B01-%E5%BE%90%E5%A2%9E%E6%9E%97-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="一、知识图谱的定义与架构"><a href="#一、知识图谱的定义与架构" class="headerlink" title="一、知识图谱的定义与架构"></a>一、知识图谱的定义与架构</h1><h2 id="1、知识图谱的定义"><a href="#1、知识图谱的定义" class="headerlink" title="1、知识图谱的定义"></a>1、知识图谱的定义</h2><h3 id="（1）定义"><a href="#（1）定义" class="headerlink" title="（1）定义"></a>（1）定义</h3><ul>
+    <content><![CDATA[<blockquote>
+<p>作者:    徐增林 盛泳潘 贺丽荣 王雅芳</p>
+<p>发表时间:    2016-7</p>
+<p>期刊:    电子科技大学学报</p>
+</blockquote>
+<h1 id="一、知识图谱的定义与架构"><a href="#一、知识图谱的定义与架构" class="headerlink" title="一、知识图谱的定义与架构"></a>一、知识图谱的定义与架构</h1><h2 id="1-1-知识图谱的定义"><a href="#1-1-知识图谱的定义" class="headerlink" title="1.1 知识图谱的定义"></a>1.1 知识图谱的定义</h2><h3 id="1-1-1-定义"><a href="#1-1-1-定义" class="headerlink" title="1.1.1 定义"></a>1.1.1 定义</h3><ul>
 <li>知识图谱是Google用于增强其搜索功能的知识库，本质上，知识图谱是一种揭示实体之间关系的语义网络，可以对显示世界的事物及其相互关系进行形式化地描述</li>
 </ul>
-<h3 id="（2）表示"><a href="#（2）表示" class="headerlink" title="（2）表示"></a>（2）表示</h3><ul>
+<h3 id="1-1-2-表示"><a href="#1-1-2-表示" class="headerlink" title="1.1.2 表示"></a>1.1.2 表示</h3><ul>
 <li>三元组表示方式：$G=\{E,R,S\}$，<ul>
 <li>其中$E = \{ e_1,e_2,…,e_{|E|} \}$是知识库的实体集合，$|E|$表示实体数</li>
 <li>$R = \{ r_1,r_2,…,r_{|E|} \}$是知识库中的关系集合，$|R|$表示关系数</li>
@@ -914,12 +919,71 @@ this关键字可以在函数体中使用
 </ul>
 </li>
 </ul>
-<h2 id="2、知识图谱体系架构"><a href="#2、知识图谱体系架构" class="headerlink" title="2、知识图谱体系架构"></a>2、知识图谱体系架构</h2><h3 id="（1）构建方式"><a href="#（1）构建方式" class="headerlink" title="（1）构建方式"></a>（1）构建方式</h3><ul>
+<h2 id="1-2-知识图谱体系架构"><a href="#1-2-知识图谱体系架构" class="headerlink" title="1.2 知识图谱体系架构"></a>1.2 知识图谱体系架构</h2><h3 id="1-2-1-构建方式"><a href="#1-2-1-构建方式" class="headerlink" title="1.2.1 构建方式"></a>1.2.1 构建方式</h3><ul>
 <li>自顶向下（top-down）：先构建本体和数据模式，再加入实体到知识库</li>
 <li>自底向下（bottom-top）：先提取实体，将置信度较高的加入到知识库，再构建顶层的本体（大多数知识图谱采用）</li>
 </ul>
 <img src="/2022/02/24/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B01-%E5%BE%90%E5%A2%9E%E6%9E%97-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" class="" title="image">
-]]></content>
+<h1 id="二、大规模知识图谱"><a href="#二、大规模知识图谱" class="headerlink" title="二、大规模知识图谱"></a>二、大规模知识图谱</h1><h2 id="2-1-开放链接知识库"><a href="#2-1-开放链接知识库" class="headerlink" title="2.1 开放链接知识库"></a>2.1 开放链接知识库</h2><ul>
+<li>Freebase：由人工构建，另外一部分数据则主要来源于维基百科、IMDB、Flickr等网站或语料库</li>
+<li>Wikidata：自由的协作式多语言辅助知识库</li>
+<li>DBpedia：由德国莱比锡大学和曼海姆大学的科研人员创建的多语言综合型知识库</li>
+<li>YAGO：由德国马普所(max planck institute，MPI)的科研人员构建的综合型知识库</li>
+</ul>
+<h2 id="2-2-垂直行业知识库"><a href="#2-2-垂直行业知识库" class="headerlink" title="2.2 垂直行业知识库"></a>2.2 垂直行业知识库</h2><blockquote>
+<p>行业知识库也可称为垂直型知识库，这类知识库的描述目标是特定的行业领域，</p>
+<p>通常需要依靠特定行业的数据才能构建，因此其描述范围极为有限</p>
+</blockquote>
+<ul>
+<li>IMDB：关于电影演员、电影、电视节目、电视明星以及电影制作的资料库</li>
+<li>MusicBrainz：一个结构化的音乐维基百科，致力于收藏所有的音乐元数据，并向大众用户开放</li>
+<li>ConceptNet：一个语义知识网络，主要由一系列的代表概念的结点构成，这些概念将主要采用自然语言单词或短语的表达形式，通过相互连接建立语义联系</li>
+</ul>
+<h1 id="三、知识图谱关键技术"><a href="#三、知识图谱关键技术" class="headerlink" title="三、知识图谱关键技术"></a>三、知识图谱关键技术</h1><h2 id="3-1-知识抽取"><a href="#3-1-知识抽取" class="headerlink" title="3.1 知识抽取"></a>3.1 知识抽取</h2><h3 id="3-1-1-实体抽取"><a href="#3-1-1-实体抽取" class="headerlink" title="3.1.1 实体抽取"></a>3.1.1 实体抽取</h3><ul>
+<li>基于规则与词典</li>
+<li>基于统计机器学习</li>
+<li>面向开放域的抽取方法</li>
+</ul>
+<h3 id="3-1-2-关系抽取"><a href="#3-1-2-关系抽取" class="headerlink" title="3.1.2 关系抽取"></a>3.1.2 关系抽取</h3><ul>
+<li>开放式实体关系抽取</li>
+<li>基于联合推理的实体关系抽取</li>
+</ul>
+<h3 id="3-1-3-属性抽取"><a href="#3-1-3-属性抽取" class="headerlink" title="3.1.3 属性抽取"></a>3.1.3 属性抽取</h3><h2 id="3-2-知识表示"><a href="#3-2-知识表示" class="headerlink" title="3.2 知识表示"></a>3.2 知识表示</h2><h3 id="3-2-1-代表模型"><a href="#3-2-1-代表模型" class="headerlink" title="3.2.1 代表模型"></a>3.2.1 代表模型</h3><ul>
+<li><p>距离模型</p>
+</li>
+<li><p>单层神经网络模型</p>
+</li>
+<li><p>双线性模型</p>
+</li>
+<li><p>神经张量模型</p>
+</li>
+<li><p>矩阵分解模型</p>
+</li>
+<li><p>翻译模型</p>
+</li>
+</ul>
+<h3 id="3-2-2-复杂关系模型"><a href="#3-2-2-复杂关系模型" class="headerlink" title="3.2.2 复杂关系模型"></a>3.2.2 复杂关系模型</h3><ul>
+<li><p>TransH模型</p>
+</li>
+<li><p>TransR模型 </p>
+</li>
+<li><p>TransD模型 </p>
+</li>
+<li><p>TransG模型</p>
+</li>
+<li><p>KG2E模型</p>
+</li>
+</ul>
+<h2 id="3-3-知识融合"><a href="#3-3-知识融合" class="headerlink" title="3.3 知识融合"></a>3.3 知识融合</h2><h3 id="3-3-1-实体对齐"><a href="#3-3-1-实体对齐" class="headerlink" title="3.3.1 实体对齐"></a>3.3.1 实体对齐</h3><ul>
+<li>成对实体对齐方法</li>
+<li>局部集体实体对齐方法</li>
+<li>全局集体实体对齐方法</li>
+</ul>
+<h3 id="3-3-2-知识加工"><a href="#3-3-2-知识加工" class="headerlink" title="3.3.2 知识加工"></a>3.3.2 知识加工</h3><h4 id="（1）本体构建"><a href="#（1）本体构建" class="headerlink" title="（1）本体构建"></a>（1）本体构建</h4><ul>
+<li>手动构建</li>
+<li>数据驱动自动构建</li>
+</ul>
+<h4 id="（2）质量评估"><a href="#（2）质量评估" class="headerlink" title="（2）质量评估"></a>（2）质量评估</h4><h3 id="3-3-3-知识更新"><a href="#3-3-3-知识更新" class="headerlink" title="3.3.3 知识更新"></a>3.3.3 知识更新</h3><h2 id="3-4-知识推理"><a href="#3-4-知识推理" class="headerlink" title="3.4 知识推理"></a>3.4 知识推理</h2><h3 id="3-4-1-基于逻辑的推理"><a href="#3-4-1-基于逻辑的推理" class="headerlink" title="3.4.1 基于逻辑的推理"></a>3.4.1 基于逻辑的推理</h3><h3 id="3-4-2-基于图的推理"><a href="#3-4-2-基于图的推理" class="headerlink" title="3.4.2 基于图的推理"></a>3.4.2 基于图的推理</h3><h1 id="四、知识图谱的应用"><a href="#四、知识图谱的应用" class="headerlink" title="四、知识图谱的应用"></a>四、知识图谱的应用</h1><h2 id="4-1-智能搜索"><a href="#4-1-智能搜索" class="headerlink" title="4.1 智能搜索"></a>4.1 智能搜索</h2><h2 id="4-2-深度问答"><a href="#4-2-深度问答" class="headerlink" title="4.2 深度问答"></a>4.2 深度问答</h2><h2 id="4-3-社交网络"><a href="#4-3-社交网络" class="headerlink" title="4.3 社交网络"></a>4.3 社交网络</h2><h2 id="4-4-垂直行业应用"><a href="#4-4-垂直行业应用" class="headerlink" title="4.4 垂直行业应用"></a>4.4 垂直行业应用</h2><h1 id="五、知识图谱的挑战"><a href="#五、知识图谱的挑战" class="headerlink" title="五、知识图谱的挑战"></a>五、知识图谱的挑战</h1>]]></content>
       <categories>
         <category>文献阅读</category>
         <category>综述</category>
