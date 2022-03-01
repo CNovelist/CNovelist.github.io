@@ -352,7 +352,7 @@
       </tags>
   </entry>
   <entry>
-    <title>js基础大全</title>
+    <title>JS基础大全</title>
     <url>/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、JS基本操作"><a href="#一、JS基本操作" class="headerlink" title="一、JS基本操作"></a>一、JS基本操作</h1><h2 id="1、JS引入方式"><a href="#1、JS引入方式" class="headerlink" title="1、JS引入方式"></a>1、JS引入方式</h2><ul>
 <li>第一种：内部标签<script></script></li>
