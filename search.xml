@@ -1594,4 +1594,88 @@ this关键字可以在函数体中使用
         <tag>CSS3</tag>
       </tags>
   </entry>
+  <entry>
+    <title>诗词韵律解析</title>
+    <url>/2022/03/02/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<h1 id="一、诗体简介"><a href="#一、诗体简介" class="headerlink" title="一、诗体简介"></a>一、诗体简介</h1><h2 id="1-1-近体诗格律"><a href="#1-1-近体诗格律" class="headerlink" title="1.1 近体诗格律"></a>1.1 近体诗格律</h2><ol>
+<li>诗句数固定</li>
+<li>字数为五言或七言</li>
+<li>一般押平声韵，不允许换韵，韵脚位置固定</li>
+<li>平仄有规定</li>
+<li>五七言律诗中间两联原则上必须对仗</li>
+</ol>
+<h2 id="1-2-绝句和律诗"><a href="#1-2-绝句和律诗" class="headerlink" title="1.2 绝句和律诗"></a>1.2 绝句和律诗</h2><h1 id="二、声律"><a href="#二、声律" class="headerlink" title="二、声律"></a>二、声律</h1><h2 id="2-1-声调"><a href="#2-1-声调" class="headerlink" title="2.1 声调"></a>2.1 声调</h2><ul>
+<li>古汉语四声调：平、上、去、入</li>
+<li>相间律：平仄交替使用</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>古声调</th>
+<th>普通话声调</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平</td>
+<td>阴平、阳平</td>
+</tr>
+<tr>
+<td>上</td>
+<td>去（第三声）</td>
+</tr>
+<tr>
+<td>去</td>
+<td>去（第四声）</td>
+</tr>
+<tr>
+<td>入</td>
+<td>融合到了平/上/去</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-2-五言律诗的平仄"><a href="#2-2-五言律诗的平仄" class="headerlink" title="2.2 五言律诗的平仄"></a>2.2 五言律诗的平仄</h2><h3 id="2-2-1-起声-收声"><a href="#2-2-1-起声-收声" class="headerlink" title="2.2.1 起声/收声"></a>2.2.1 起声/收声</h3><ul>
+<li>仄起：第一句的第二个字为仄声</li>
+<li>平起：第一句的第二个字为平声</li>
+<li>仄收：第一句的第五字为仄声</li>
+<li>平收：第一句的第五字为平声</li>
+</ul>
+<h3 id="2-2-2-平仄格式"><a href="#2-2-2-平仄格式" class="headerlink" title="2.2.2 平仄格式"></a>2.2.2 平仄格式</h3><h4 id="（1）仄起仄收"><a href="#（1）仄起仄收" class="headerlink" title="（1）仄起仄收"></a>（1）仄起仄收</h4><blockquote>
+<p>加下划线表示可平可仄</p>
+</blockquote>
+<p>$\underline{仄}仄平平仄，平平仄仄平$</p>
+<p>$\underline{平}平仄仄平，\underline{仄}仄仄平平$</p>
+<p>$\underline{仄}仄平平仄，平平仄仄平$</p>
+<p>$\underline{平}平仄仄平，\underline{仄}仄仄平平$</p>
+<h4 id="（2）仄起平收"><a href="#（2）仄起平收" class="headerlink" title="（2）仄起平收"></a>（2）仄起平收</h4><p>$\underline{仄}仄仄平平，平平仄仄平$</p>
+<p>$\underline{平}平平仄仄，\underline{仄}仄仄平平$</p>
+<p>$\underline{仄}仄平平仄，平平仄仄平$</p>
+<p>$\underline{平}平平仄仄，\underline{仄}仄仄平平$</p>
+<h4 id="（3）平起仄收"><a href="#（3）平起仄收" class="headerlink" title="（3）平起仄收"></a>（3）平起仄收</h4><p>$\underline{平}平平仄仄，仄仄仄平平$</p>
+<p>$\underline{仄}仄平平仄，\underline{平}平仄仄平$</p>
+<p>$\underline{平}平平仄仄，\underline{仄}仄仄平平$</p>
+<p>$\underline{仄}仄平平仄，\underline{平}平仄仄平$</p>
+<h4 id="（4）平起平收"><a href="#（4）平起平收" class="headerlink" title="（4）平起平收"></a>（4）平起平收</h4><p>$\underline{平}平仄仄平，仄仄仄平平$</p>
+<p>$\underline{仄}仄平平仄，\underline{平}平仄仄平$</p>
+<p>$\underline{平}平平仄仄，\underline{仄}仄仄平平$</p>
+<p>$\underline{仄}仄平平仄，\underline{平}平仄仄平$</p>
+<h2 id="2-3-相对律、相粘律"><a href="#2-3-相对律、相粘律" class="headerlink" title="2.3 相对律、相粘律"></a>2.3 相对律、相粘律</h2><h3 id="2-3-1-相对律"><a href="#2-3-1-相对律" class="headerlink" title="2.3.1 相对律"></a>2.3.1 相对律</h3><ul>
+<li>一联中，出句和对句的平仄是相对的</li>
+</ul>
+<h3 id="2-3-2-相粘律"><a href="#2-3-2-相粘律" class="headerlink" title="2.3.2 相粘律"></a>2.3.2 相粘律</h3><ul>
+<li>后一联出句第二字的平仄要跟前一联对句第二字的平仄一致</li>
+<li>即：第三句第二字的平仄与第二句第二字的平仄相同，第五局第二字的平仄和第四句第二字的平仄相同，第七句第二字的平仄与第六句第二字的平仄相同</li>
+</ul>
+]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>中国诗词</category>
+      </categories>
+      <tags>
+        <tag>中国传统</tag>
+        <tag>诗词</tag>
+      </tags>
+  </entry>
 </search>
