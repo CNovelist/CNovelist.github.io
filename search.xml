@@ -508,7 +508,49 @@
   <entry>
     <title>Spring基础大全一</title>
     <url>/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><ul>
+<li>轻量级的开源JavaEE框架</li>
+<li>IOC：控制反转，把创建对象过程交给Spring进行管理</li>
+<li>Aop：面向切面，不修改源代码进行功能增强</li>
+</ul>
+<h1 id="二、IOC容器"><a href="#二、IOC容器" class="headerlink" title="二、IOC容器"></a>二、IOC容器</h1><h2 id="2-1-IOC底层原理"><a href="#2-1-IOC底层原理" class="headerlink" title="2.1 IOC底层原理"></a>2.1 IOC底层原理</h2><ul>
+<li>XML解析、工厂模式、反射</li>
+</ul>
+<h2 id="2-2-IOC容器实现方式"><a href="#2-2-IOC容器实现方式" class="headerlink" title="2.2 IOC容器实现方式"></a>2.2 IOC容器实现方式</h2><h3 id="2-2-1-两个接口"><a href="#2-2-1-两个接口" class="headerlink" title="2.2.1 两个接口"></a>2.2.1 两个接口</h3><ul>
+<li>BeanFactory：IOC容器基本实现，是Spring内部的使用接口，不提供开发人员使用</li>
+<li>ApplicationContext：BeanFactory的子接口，提供更多更强大的功能，一般由开发人员进行使用<ul>
+<li>ApplicationContext实现类：FileSystemApplicationContext/ClassPathXmlApplicationContext</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-Bean管理"><a href="#2-3-Bean管理" class="headerlink" title="2.3 Bean管理"></a>2.3 Bean管理</h2><h3 id="2-3-1-两个操作"><a href="#2-3-1-两个操作" class="headerlink" title="2.3.1 两个操作"></a>2.3.1 两个操作</h3><ul>
+<li>Spring创建对象</li>
+<li>Spring注入属性</li>
+</ul>
+<h3 id="2-3-2-操作Bean管理（基于XML）"><a href="#2-3-2-操作Bean管理（基于XML）" class="headerlink" title="2.3.2 操作Bean管理（基于XML）"></a>2.3.2 操作Bean管理（基于XML）</h3><h4 id="（1）创建-获取对象"><a href="#（1）创建-获取对象" class="headerlink" title="（1）创建/获取对象"></a>（1）创建/获取对象</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;user&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.company.spring5.User&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在Spring配置文件中，使用bean标签，标签里面加对应属性，就可以实现对象创建</li>
+<li>bean标签属性<ul>
+<li>id：唯一标识，不可以加特殊符号</li>
+<li>class：类全路径（包类路径）</li>
+</ul>
+</li>
+<li>创建对象时候，默认也是执行无参数构造方法完成对象创建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取XML文件名获取应用上下文</span></span><br><span class="line">ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;bean.xml&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据bean的name属性获取到对象</span></span><br><span class="line">User user = context.getBean(<span class="string">&quot;user&quot;</span>, User.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用对象方法</span></span><br><span class="line">user.add();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="（2）注入属性"><a href="#（2）注入属性" class="headerlink" title="（2）注入属性"></a>（2）注入属性</h4><ul>
+<li>DI：依赖注入，就是注入对象属性值</li>
+</ul>
+<h4 id="（3）注入方式"><a href="#（3）注入方式" class="headerlink" title="（3）注入方式"></a>（3）注入方式</h4><ul>
+<li>第一种：使用set方法进行注入</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Class Book&#123;</span><br><span class="line">    <span class="keyword">private</span> String bname;</span><br><span class="line">    <span class="keyword">private</span> String bauthor;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBname</span><span class="params">(String bname)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.bname=bname;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBauthor</span><span class="params">(String bauthor)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.bauthor=bauthor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	使用property完成属性注入</span></span><br><span class="line"><span class="comment">		name：类里面属性名称</span></span><br><span class="line"><span class="comment">		value：向属性注入的值</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;book&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.company.spring5.User&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;bname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;活着&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二种：使用有参数构造进行注入</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="三、Aop"><a href="#三、Aop" class="headerlink" title="三、Aop"></a>三、Aop</h1><h1 id="四、JdbcTemplate"><a href="#四、JdbcTemplate" class="headerlink" title="四、JdbcTemplate"></a>四、JdbcTemplate</h1><h1 id="五、事物管理"><a href="#五、事物管理" class="headerlink" title="五、事物管理"></a>五、事物管理</h1><h1 id="六、Spring5新特性"><a href="#六、Spring5新特性" class="headerlink" title="六、Spring5新特性"></a>六、Spring5新特性</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>Spring</category>
@@ -1835,5 +1877,53 @@
         <tag>知识图谱</tag>
         <tag>知识图谱构建</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Java算法大全一</title>
+    <url>/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/</url>
+    <content><![CDATA[<h1 id="一、两数之和"><a href="#一、两数之和" class="headerlink" title="一、两数之和"></a>一、两数之和</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1 题目"></a>1.1 题目</h2><ul>
+<li>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em>target</em>  的那 <strong>两个</strong> 整数，并返回它们的数组下标。</li>
+<li>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</li>
+<li>你可以按任意顺序返回答案。</li>
+</ul>
+<h2 id="1-2-示例"><a href="#1-2-示例" class="headerlink" title="1.2 示例"></a>1.2 示例</h2><h3 id="1-2-1-示例1"><a href="#1-2-1-示例1" class="headerlink" title="1.2.1 示例1"></a>1.2.1 示例1</h3><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：nums = <span class="comment">[2,7,11,15]</span>, target = 9</span><br><span class="line">输出：<span class="comment">[0,1]</span></span><br><span class="line">解释：因为 nums<span class="comment">[0]</span> + nums<span class="comment">[1]</span> == 9 ，返回 <span class="comment">[0, 1]</span> 。</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-示例2"><a href="#1-2-2-示例2" class="headerlink" title="1.2.2 示例2"></a>1.2.2 示例2</h3><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：nums = <span class="comment">[3,2,4]</span>, target = 6</span><br><span class="line">输出：<span class="comment">[1,2]</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-3-示例3"><a href="#1-2-3-示例3" class="headerlink" title="1.2.3 示例3"></a>1.2.3 示例3</h3><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：nums = <span class="comment">[3,3]</span>, target = 6</span><br><span class="line">输出：<span class="comment">[0,1]</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-3-提示"><a href="#1-3-提示" class="headerlink" title="1.3 提示"></a>1.3 提示</h2><ul>
+<li>$2&lt;=nums.length&lt;=10^4$</li>
+<li>$-10^9&lt;=nums[i]&lt;=10^9$</li>
+<li>$-10^9&lt;=target&lt;=10^9$</li>
+<li><strong>只会存在一个有效答案</strong></li>
+<li><strong>进阶</strong>：你可以想出一个时间复杂度小于 $O(n^2)$ 的算法吗？</li>
+</ul>
+<h2 id="1-4-解法"><a href="#1-4-解法" class="headerlink" title="1.4 解法"></a>1.4 解法</h2><h3 id="1-4-1-哈希表"><a href="#1-4-1-哈希表" class="headerlink" title="1.4.1 哈希表"></a>1.4.1 哈希表</h3><ul>
+<li>设定从值到数组坐标的Map映射，根据键来查找坐标</li>
+<li>顺序遍历数组，对于当前坐标i<ul>
+<li>如果map中包含了键值：target - nums[i]对应的坐标，表明已经查找到了最终结果，将{target - nums[i], i}返回作为结果即可</li>
+<li>如果map中没有包含键值：target - nums[i]对应的坐标，则将{num[i], i}添加到map中</li>
+</ul>
+</li>
+</ul>
+<h4 id="（1）关键步骤1"><a href="#（1）关键步骤1" class="headerlink" title="（1）关键步骤1"></a>（1）关键步骤1</h4><img src="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/5.png" class="" title="image5">
+<h4 id="（2）关键步骤2"><a href="#（2）关键步骤2" class="headerlink" title="（2）关键步骤2"></a>（2）关键步骤2</h4><img src="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/6.png" class="" title="image6">
+<h4 id="（3）实现"><a href="#（3）实现" class="headerlink" title="（3）实现"></a>（3）实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; hashtable = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hashtable.containsKey(target - nums[i])) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;hashtable.get(target - nums[i]), i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度$O(n)$</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乐理基础大全</title>
+    <url>/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

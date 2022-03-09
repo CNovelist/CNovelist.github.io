@@ -165,6 +165,179 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/25/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/25/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">individual项目开发1-前后端数据请求实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-25 16:17:03 / 修改时间：17:27:57" itemprop="dateCreated datePublished" datetime="2022-02-25T16:17:03+08:00">2022-02-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">项目开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">individual项目开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、前端工作"><a href="#一、前端工作" class="headerlink" title="一、前端工作"></a>一、前端工作</h1><h2 id="1-1-项目结构"><a href="#1-1-项目结构" class="headerlink" title="1.1 项目结构"></a>1.1 项目结构</h2><ul>
+<li>在初始的项目结构的src目录下新建以下目录<ul>
+<li>views：组合组件的页面</li>
+<li>store/modules：供view层使用，封装数据以供view层显示</li>
+<li>api：封装请求地址以及端口</li>
+<li>utils：js工具包，提供常用的操作，比如创建axios请求</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-1-utils层"><a href="#1-1-1-utils层" class="headerlink" title="1.1.1 utils层"></a>1.1.1 utils层</h3><ul>
+<li>创建axios请求，命名为request.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span> <span class="comment">//引入 axios</span></span><br><span class="line"><span class="keyword">import</span> baseUrl <span class="keyword">from</span> <span class="string">&#x27;../api/baseUrl&#x27;</span> <span class="comment">//使用环境变量 + 模式的方式定义基础URL</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建 axios 实例</span></span><br><span class="line"><span class="keyword">const</span> service = axios.create(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: baseUrl, <span class="comment">// api 的 base_url</span></span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">15000</span>, <span class="comment">// 请求超时时间</span></span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> service</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-2-api层"><a href="#1-1-2-api层" class="headerlink" title="1.1.2 api层"></a>1.1.2 api层</h3><ul>
+<li>创建baseUrl.js，设置请求地址和端口</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> baseUrl = <span class="string">&quot;http://localhost:8080/&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> baseUrl;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建login.js，调用util层，设置请求方法和请求参数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/utils/request&#x27;</span> <span class="comment">//引入封装好的 axios 请求</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">userName, password</span>) </span>&#123; <span class="comment">//登录接口</span></span><br><span class="line">  <span class="keyword">return</span> request(&#123; <span class="comment">//使用封装好的 axios 进行网络请求</span></span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/user/login&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="comment">//提交的数据</span></span><br><span class="line">      userName,</span><br><span class="line">      password</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-3-store层"><a href="#1-1-3-store层" class="headerlink" title="1.1.3 store层"></a>1.1.3 store层</h3><ul>
+<li>在store/modules下创建user.js，调用api层请求方法，返回请求数据</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;login&#125; <span class="keyword">from</span> <span class="string">&#x27;@/api/login&#x27;</span><span class="comment">//引入登录 api 接口</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    <span class="comment">// 登录</span></span><br><span class="line">    <span class="function"><span class="title">Login</span>(<span class="params">&#123; commit &#125;, userInfo</span>)</span> &#123; <span class="comment">//定义 Login 方法，在组件中使用 this.$store.dispatch(&quot;Login&quot;) 调用</span></span><br><span class="line">      <span class="keyword">const</span> userName = userInfo.userName.trim()</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123; <span class="comment">//封装一个 Promise</span></span><br><span class="line">        login(userName, userInfo.password).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123; <span class="comment">//使用 login 接口进行网络请求</span></span><br><span class="line">          commit(<span class="string">&#x27;increment&#x27;</span>) <span class="comment">//提交一个 mutation，通知状态改变</span></span><br><span class="line">          resolve(response) <span class="comment">//将结果封装进 Promise</span></span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">          reject(error)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> user</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在store下创建index.js，使用store封装modules模块下的数据</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span> <span class="comment">//引入 Vue</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span> <span class="comment">//引入 Vuex</span></span><br><span class="line"><span class="keyword">import</span> user <span class="keyword">from</span> <span class="string">&#x27;./modules/user&#x27;</span> <span class="comment">//引入 user module</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    user <span class="comment">//使用 user.js 中的 action</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123;</span><br><span class="line">    increment (state) &#123; </span><br><span class="line">      <span class="comment">// 变更状态</span></span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-4-views层"><a href="#1-1-4-views层" class="headerlink" title="1.1.4 views层"></a>1.1.4 views层</h3><ul>
+<li>创建登录页Login.vue，调用store验证登录用户</li>
+<li>可以创建Success.vue和Error.vue来进行页面跳转</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;login-container&quot;&gt;</span><br><span class="line">        &lt;el-form :model=&quot;ruleForm2&quot; :rules=&quot;rules2&quot;</span><br><span class="line">         status-icon</span><br><span class="line">         ref=&quot;ruleForm2&quot; </span><br><span class="line">         label-position=&quot;left&quot; </span><br><span class="line">         label-width=&quot;0px&quot; </span><br><span class="line">         class=&quot;demo-ruleForm login-page&quot;&gt;</span><br><span class="line">            &lt;h3 class=&quot;title&quot;&gt;系统登录&lt;/h3&gt;</span><br><span class="line">            &lt;el-form-item prop=&quot;userName&quot;&gt;</span><br><span class="line">                &lt;el-input type=&quot;text&quot; </span><br><span class="line">                    v-model=&quot;ruleForm2.userName&quot; </span><br><span class="line">                    auto-complete=&quot;off&quot; </span><br><span class="line">                    placeholder=&quot;用户名&quot;</span><br><span class="line">                &gt;&lt;/el-input&gt;</span><br><span class="line">            &lt;/el-form-item&gt;</span><br><span class="line">                &lt;el-form-item prop=&quot;password&quot;&gt;</span><br><span class="line">                    &lt;el-input type=&quot;password&quot; </span><br><span class="line">                        v-model=&quot;ruleForm2.password&quot; </span><br><span class="line">                        auto-complete=&quot;off&quot; </span><br><span class="line">                        placeholder=&quot;密码&quot;</span><br><span class="line">                    &gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;/el-form-item&gt;</span><br><span class="line">            &lt;el-checkbox </span><br><span class="line">                v-model=&quot;checked&quot;</span><br><span class="line">                class=&quot;rememberme&quot;</span><br><span class="line">            &gt;记住密码&lt;/el-checkbox&gt;</span><br><span class="line">            &lt;el-form-item style=&quot;width:100%;&quot;&gt;</span><br><span class="line">                &lt;el-button type=&quot;primary&quot; style=&quot;width:100%;&quot; @click=&quot;handleSubmit&quot; :loading=&quot;logining&quot;&gt;登录&lt;/el-button&gt;</span><br><span class="line">            &lt;/el-form-item&gt;</span><br><span class="line">        &lt;/el-form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            logining: false,</span><br><span class="line">            ruleForm2: &#123;</span><br><span class="line">                userName: &#x27;&#x27;,</span><br><span class="line">                password: &#x27;&#x27;</span><br><span class="line">            &#125;,</span><br><span class="line">            rules2: &#123;</span><br><span class="line">                userName: [&#123;required: true, message: &#x27;please enter your account&#x27;, trigger: &#x27;blur&#x27;&#125;],</span><br><span class="line">                password: [&#123;required: true, message: &#x27;enter your password&#x27;, trigger: &#x27;blur&#x27;&#125;]</span><br><span class="line">            &#125;,</span><br><span class="line">            checked: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        handleSubmit(event)&#123;</span><br><span class="line">            this.$refs.ruleForm2.validate((valid) =&gt; &#123;</span><br><span class="line">                if(valid)&#123;</span><br><span class="line">                    this.logining = true;</span><br><span class="line">                    this.$store</span><br><span class="line">                        .dispatch(&quot;Login&quot;, this.ruleForm2)</span><br><span class="line">                        .then(response =&gt; &#123;</span><br><span class="line">                            this.loading = false;</span><br><span class="line">                            let code = response.data.code;</span><br><span class="line">                            if (code == 200) &#123;</span><br><span class="line">                                this.$router.push(&#123;</span><br><span class="line">                                path: &quot;/success&quot;,</span><br><span class="line">                                query: &#123; data: response.data.data &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                            &#125; else &#123;</span><br><span class="line">                                this.$router.push(&#123;</span><br><span class="line">                                path: &quot;/error&quot;,</span><br><span class="line">                                query: &#123; message: response.data.msg &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.login-container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.login-page &#123;</span><br><span class="line">    -webkit-border-radius: 5px;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">    margin: 180px auto;</span><br><span class="line">    width: 350px;</span><br><span class="line">    padding: 35px 35px 15px;</span><br><span class="line">    background: #fff;</span><br><span class="line">    border: 1px solid #eaeaea;</span><br><span class="line">    box-shadow: 0 0 25px #cac6c6;</span><br><span class="line">&#125;</span><br><span class="line">label.el-checkbox.rememberme &#123;</span><br><span class="line">    margin: 0px 0px 15px;</span><br><span class="line">    text-align: left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="二、后端工作"><a href="#二、后端工作" class="headerlink" title="二、后端工作"></a>二、后端工作</h1><h2 id="2-1-跨域问题"><a href="#2-1-跨域问题" class="headerlink" title="2.1 跨域问题"></a>2.1 跨域问题</h2><ul>
+<li>浏览器的跨域问题</li>
+</ul>
+<h2 id="2-2-Springboot解决跨域问题"><a href="#2-2-Springboot解决跨域问题" class="headerlink" title="2.2 Springboot解决跨域问题"></a>2.2 Springboot解决跨域问题</h2><ul>
+<li>创建在config层下配置类CorsConfig，使用以下代码即可解决跨问问题</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorsConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//设置允许跨域的路径</span></span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                <span class="comment">//设置允许跨域请求的域名</span></span><br><span class="line">                .allowedOriginPatterns(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">//这里：是否允许证书 不再默认开启</span></span><br><span class="line">                .allowCredentials(<span class="keyword">true</span>)</span><br><span class="line">                <span class="comment">//设置允许的方法</span></span><br><span class="line">                .allowedMethods(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">//跨域允许时间</span></span><br><span class="line">                .maxAge(<span class="number">3600</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、项目启动"><a href="#三、项目启动" class="headerlink" title="三、项目启动"></a>三、项目启动</h1><ul>
+<li>先启动Springboot</li>
+<li>再启动Vue，在config/index.js中可以修改vue访问端口号，要避免和Springboot项目端口冲突的情况</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-axios%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-axios%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">individual项目开发1-axios请求数据</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-24 21:54:17" itemprop="dateCreated datePublished" datetime="2022-02-24T21:54:17+08:00">2022-02-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -505,10 +678,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-23 15:51:10 / 修改时间：15:53:08" itemprop="dateCreated datePublished" datetime="2022-02-23T15:51:10+08:00">2022-02-23</time>
+              <time title="创建时间：2022-02-23 15:51:10" itemprop="dateCreated datePublished" datetime="2022-02-23T15:51:10+08:00">2022-02-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-09 11:05:42" itemprop="dateModified" datetime="2022-03-09T11:05:42+08:00">2022-03-09</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -534,7 +713,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h1><ul>
+<li>轻量级的开源JavaEE框架</li>
+<li>IOC：控制反转，把创建对象过程交给Spring进行管理</li>
+<li>Aop：面向切面，不修改源代码进行功能增强</li>
+</ul>
+<h1 id="二、IOC容器"><a href="#二、IOC容器" class="headerlink" title="二、IOC容器"></a>二、IOC容器</h1><h2 id="2-1-IOC底层原理"><a href="#2-1-IOC底层原理" class="headerlink" title="2.1 IOC底层原理"></a>2.1 IOC底层原理</h2><ul>
+<li>XML解析、工厂模式、反射</li>
+</ul>
+<h2 id="2-2-IOC容器实现方式"><a href="#2-2-IOC容器实现方式" class="headerlink" title="2.2 IOC容器实现方式"></a>2.2 IOC容器实现方式</h2><h3 id="2-2-1-两个接口"><a href="#2-2-1-两个接口" class="headerlink" title="2.2.1 两个接口"></a>2.2.1 两个接口</h3><ul>
+<li>BeanFactory：IOC容器基本实现，是Spring内部的使用接口，不提供开发人员使用</li>
+<li>ApplicationContext：BeanFactory的子接口，提供更多更强大的功能，一般由开发人员进行使用<ul>
+<li>ApplicationContext实现类：FileSystemApplicationContext/ClassPathXmlApplicationContext</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-Bean管理"><a href="#2-3-Bean管理" class="headerlink" title="2.3 Bean管理"></a>2.3 Bean管理</h2><h3 id="2-3-1-两个操作"><a href="#2-3-1-两个操作" class="headerlink" title="2.3.1 两个操作"></a>2.3.1 两个操作</h3><ul>
+<li>Spring创建对象</li>
+<li>Spring注入属性</li>
+</ul>
+<h3 id="2-3-2-操作Bean管理（基于XML）"><a href="#2-3-2-操作Bean管理（基于XML）" class="headerlink" title="2.3.2 操作Bean管理（基于XML）"></a>2.3.2 操作Bean管理（基于XML）</h3><h4 id="（1）创建-获取对象"><a href="#（1）创建-获取对象" class="headerlink" title="（1）创建/获取对象"></a>（1）创建/获取对象</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;user&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.company.spring5.User&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在Spring配置文件中，使用bean标签，标签里面加对应属性，就可以实现对象创建</li>
+<li>bean标签属性<ul>
+<li>id：唯一标识，不可以加特殊符号</li>
+<li>class：类全路径（包类路径）</li>
+</ul>
+</li>
+<li>创建对象时候，默认也是执行无参数构造方法完成对象创建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取XML文件名获取应用上下文</span></span><br><span class="line">ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;bean.xml&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据bean的name属性获取到对象</span></span><br><span class="line">User user = context.getBean(<span class="string">&quot;user&quot;</span>, User.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用对象方法</span></span><br><span class="line">user.add();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="（2）注入属性"><a href="#（2）注入属性" class="headerlink" title="（2）注入属性"></a>（2）注入属性</h4><ul>
+<li>DI：依赖注入，就是注入对象属性值</li>
+</ul>
+<h4 id="（3）注入方式"><a href="#（3）注入方式" class="headerlink" title="（3）注入方式"></a>（3）注入方式</h4><ul>
+<li>第一种：使用set方法进行注入</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Class Book&#123;</span><br><span class="line">    <span class="keyword">private</span> String bname;</span><br><span class="line">    <span class="keyword">private</span> String bauthor;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBname</span><span class="params">(String bname)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.bname=bname;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBauthor</span><span class="params">(String bauthor)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.bauthor=bauthor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	使用property完成属性注入</span></span><br><span class="line"><span class="comment">		name：类里面属性名称</span></span><br><span class="line"><span class="comment">		value：向属性注入的值</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;book&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.company.spring5.User&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;bname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;活着&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二种：使用有参数构造进行注入</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="三、Aop"><a href="#三、Aop" class="headerlink" title="三、Aop"></a>三、Aop</h1><h1 id="四、JdbcTemplate"><a href="#四、JdbcTemplate" class="headerlink" title="四、JdbcTemplate"></a>四、JdbcTemplate</h1><h1 id="五、事物管理"><a href="#五、事物管理" class="headerlink" title="五、事物管理"></a>五、事物管理</h1><h1 id="六、Spring5新特性"><a href="#六、Spring5新特性" class="headerlink" title="六、Spring5新特性"></a>六、Spring5新特性</h1>
       
     </div>
 
@@ -1026,203 +1247,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2021/07/09/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/09/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">4、工厂方法模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-09 21:23:36" itemprop="dateCreated datePublished" datetime="2021-07-09T21:23:36+08:00">2021-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-22 22:52:02" itemprop="dateModified" datetime="2022-02-22T22:52:02+08:00">2022-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">Java设计模式</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><h2 id="定义与特点"><a href="#定义与特点" class="headerlink" title="定义与特点"></a>定义与特点</h2><ul>
-<li>定义：定义一个创建产品对象 工厂接口，将产品对象的实际创建工作推迟到具体子工厂类当中</li>
-<li>简单工厂模式：如果要创建的产品不多，只要一个工厂类就可以完成，这种模式叫“简单工厂模式”， 它不属于 GoF 23 经典设计模式，它的缺点是增加新产品时会违背“开闭原则”</li>
-</ul>
-<h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ul>
-<li>满足创建型模式中所要求<br>的“创建与使用相分离”的特点。我们把被创建的对象称为“产品”，把创建产品的对象称为“工厂”</li>
-<li>用户只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程</li>
-<li>在系统增加新的产品时只需要<br>添加具体产品类和对应的具体工厂类，无须对原工厂进行任何修改 ，满足开闭<br>原则。</li>
-<li>缺点 每增加一个产品就要增加一个具体产品类和一个对应的具体工厂类 ，这增加了系统<br>的复杂度</li>
-</ul>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
-<li>抽象工厂（Abstract Factory）：提供了创建产品的接口 ，调用者通过它访问具体工厂的工厂方法 newProduct（）来创建产品。</li>
-<li>具体工厂（Concrete Factory）：主要是实现抽象工厂中的抽象方法 完成具体产品的创建。</li>
-<li>抽象产品（Product）：定义了产品的规范 描述了产品的主要特性和功能。</li>
-<li>具体产品（Concrete Product）：：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。</li>
-</ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> FactoryMethod;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(string args[])</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Product a;</span><br><span class="line">            AbstractFactory af;</span><br><span class="line">            af=(AbstractFactory) ReadXML1.getObject();</span><br><span class="line">            a=af.newProduct();</span><br><span class="line">            a.show();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象产品，提供了产品的接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品1：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品1显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品2：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品2显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象工厂1：提供了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂1：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品1&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂2：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory2</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂2生成-&gt;具体产品2&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="xml配置文件"><a href="#xml配置文件" class="headerlink" title="xml配置文件"></a>xml配置文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">className</span>&gt;</span>ConcreteFactory1<span class="tag">&lt;/<span class="name">className</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="对象生成器"><a href="#对象生成器" class="headerlink" title="对象生成器"></a>对象生成器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象生成器：从XML配置文件中提取具体工厂类的类名，并返回一个具体对象</span></span><br><span class="line"><span class="keyword">package</span> FactoryMethod</span><br><span class="line"><span class="keyword">import</span> javax.xml.parsers.*;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReadXML1</span></span>&#123;</span><br><span class="line">    <span class="comment">//该方法用于从xml配置文件中提取具体类类名，并返回一个实例对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getObject</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//创建文档对象</span></span><br><span class="line">            DocumentBuilderFactory dFactory = DocumentBuilderFactory.newInstance();</span><br><span class="line">            DocumentBuilder builder = dFactory.newDocumentBuilder();</span><br><span class="line">            Document doc = builder.parse(<span class="keyword">new</span> File(<span class="string">&quot;src/FactoryMethod/config1.xml&quot;</span>));</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//获取包含类名的文本节点</span></span><br><span class="line">            NodeList n1 = doc.getElementByTagName(<span class="string">&quot;className&quot;</span>);</span><br><span class="line">            Node classNode=n1.item(<span class="number">0</span>).getFirstChild();</span><br><span class="line">            String cName = <span class="string">&quot;FactoryMethod.&quot;</span>+classNode.getNodeValue();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//通过类名生成实例对象并将其返回</span></span><br><span class="line">            Class&lt;?&gt; c = Class.forName(cName);</span><br><span class="line">            Object obj = c.newInstance;</span><br><span class="line">            <span class="keyword">return</span> obj;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
-<li>客户只知道创建产品的工厂名，而不知道具体的产品名。如TCL电视工厂、海信电视工厂等。</li>
-<li>创建对象的任务由多个具体子工厂中的某一个完成，而抽象工厂只提供创建产品的接口</li>
-<li>客户不关心创建产品的细节，只关心产品的品牌</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2021/07/09/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/09/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">3、原型模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-07-09 21:23:15" itemprop="dateCreated datePublished" datetime="2021-07-09T21:23:15+08:00">2021-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-22 22:52:17" itemprop="dateModified" datetime="2022-02-22T22:52:17+08:00">2022-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">Java设计模式</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>通过传统的构造函数来创建对象，会比较复杂且耗时耗资源</li>
-<li>用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象</li>
-<li>如：系统的复制</li>
-</ul>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
-<li>抽象原型类：规定了具体原型对象必须实现的接口</li>
-<li>具体原型类：实现抽象原型类的clone()方法，它是可被复制的对象</li>
-<li>访问类：使用具体原型类中的clone()方法来复制新的对象</li>
-</ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体原型类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Realizetype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    Realizetype()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型创建成功&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型复制成功&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> (Realizetype) <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//原型模式的测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrototypeTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        Realizetype obj1=<span class="keyword">new</span> Realizetype();</span><br><span class="line">        Realizetype obj2=(Realizetype) obj1.clone();</span><br><span class="line">        System.out.println(<span class="string">&quot;obj1==obj2?&quot;</span>+(obj1==obj2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    运行结果：</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    obj1==obj2?false</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
-<li>对象之间相同或相似，即只是个别的几个属性不同的时候</li>
-<li>对象的创建过程比较麻烦，但复制比较简单的时候</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1294,20 +1318,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
