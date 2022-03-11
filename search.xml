@@ -664,6 +664,20 @@
 <li>配置bean</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;myOrder&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.company.Order&quot;</span> <span class="attr">init-method</span>=<span class="string">&quot;initMethod&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;destory&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;oname&quot;</span> <span class="attr">value</span>=<span class="string">&quot;123&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-4-xml自动装配"><a href="#2-4-xml自动装配" class="headerlink" title="2.4 xml自动装配"></a>2.4 xml自动装配</h2><ul>
+<li>根据指定装配规则（属性名称或者属性类型），Spring自动将匹配的属性值进行注入</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        bean标签属性autowire可以实现自动装配</span></span><br><span class="line"><span class="comment">            autowire属性值有byName和byType</span></span><br><span class="line"><span class="comment">                byName要求bean中的id要和对应类的属性名一致，才能自动装配该对象</span></span><br><span class="line"><span class="comment">                byType要求类型一致，才能自动装配该对象，注意要有两个相同类型的bean就会报错</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;emp&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.company.Emp&quot;</span> <span class="attr">autowire</span>=<span class="string">&quot;byType&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dept&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.company.Dept&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-5-IOC操作bean管理（外部属性文件）"><a href="#2-5-IOC操作bean管理（外部属性文件）" class="headerlink" title="2.5 IOC操作bean管理（外部属性文件）"></a>2.5 IOC操作bean管理（外部属性文件）</h2><ul>
+<li>使用情况：一般在spring项目要配置properties配置文件，填写数据库信息，这里就需要使用xml以引入外部文件的方式，配置连接数据库的bean</li>
+<li><p>直接配置数据库信息</p>
+<ul>
+<li>配置德鲁伊druid连接池</li>
+</ul>
+</li>
+<li><p>引入外部属性文件配置数据库连接池</p>
+</li>
+</ul>
 <h1 id="三、Aop"><a href="#三、Aop" class="headerlink" title="三、Aop"></a>三、Aop</h1><h1 id="四、JdbcTemplate"><a href="#四、JdbcTemplate" class="headerlink" title="四、JdbcTemplate"></a>四、JdbcTemplate</h1><h1 id="五、事物管理"><a href="#五、事物管理" class="headerlink" title="五、事物管理"></a>五、事物管理</h1><h1 id="六、Spring5新特性"><a href="#六、Spring5新特性" class="headerlink" title="六、Spring5新特性"></a>六、Spring5新特性</h1>]]></content>
       <categories>
         <category>后端</category>
