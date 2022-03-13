@@ -165,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/yue.jpeg">
@@ -179,7 +179,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">JS基础大全</a>
+            <a href="/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/" class="post-title-link" itemprop="url">前端组件实现-基于vis.js的节点展开</a>
         </h2>
 
         <div class="post-meta">
@@ -189,14 +189,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-22 22:46:36" itemprop="dateCreated datePublished" datetime="2022-02-22T22:46:36+08:00">2022-02-22</time>
+              <time title="创建时间：2022-03-12 22:41:46" itemprop="dateCreated datePublished" datetime="2022-03-12T22:41:46+08:00">2022-03-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-05 14:59:59" itemprop="dateModified" datetime="2022-03-05T14:59:59+08:00">2022-03-05</time>
+                <time title="修改时间：2022-03-13 12:54:26" itemprop="dateModified" datetime="2022-03-13T12:54:26+08:00">2022-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,149 +223,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="一、JS基本操作"><a href="#一、JS基本操作" class="headerlink" title="一、JS基本操作"></a>一、JS基本操作</h1><h2 id="1-1-JS引入方式"><a href="#1-1-JS引入方式" class="headerlink" title="1.1 JS引入方式"></a>1.1 JS引入方式</h2><ul>
-<li>第一种：内部标签<code>&lt;script&gt;&lt;/script&gt;</code></li>
-<li>第二种：外部引入<code>&lt;script type=&quot;text/javascript&quot; src=&quot;./xxx.js&quot;&gt;&lt;/script&gt;</code></li>
+          <h1 id="一、数据准备"><a href="#一、数据准备" class="headerlink" title="一、数据准备"></a>一、数据准备</h1><ul>
+<li>id最好设置为数值型，方便后面的查找工作，需要通过id值查找其在staticNodes中的下标值</li>
 </ul>
-<h2 id="1-2-JS的6种数据类型"><a href="#1-2-JS的6种数据类型" class="headerlink" title="1.2 JS的6种数据类型"></a>1.2 JS的6种数据类型</h2><ul>
-<li>number</li>
-<li>string</li>
-<li>boolean</li>
-<li>object</li>
-<li>function  函数</li>
-</ul>
-<h2 id="1-3-JS特殊值"><a href="#1-3-JS特殊值" class="headerlink" title="1.3 JS特殊值"></a>1.3 JS特殊值</h2><ul>
-<li>Null      空值</li>
-<li>Undefine  未定义</li>
-<li>NAN       非数值</li>
-</ul>
-<h2 id="1-4-JS数组"><a href="#1-4-JS数组" class="headerlink" title="1.4 JS数组"></a>1.4 JS数组</h2><ul>
-<li>var 数组名 = [1,’abc’]</li>
-</ul>
-<h2 id="1-5-JS循环"><a href="#1-5-JS循环" class="headerlink" title="1.5 JS循环"></a>1.5 JS循环</h2><h3 id="1-5-1-for"><a href="#1-5-1-for" class="headerlink" title="1.5.1 for"></a>1.5.1 for</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(语句<span class="number">1</span>;语句<span class="number">2</span>;语句<span class="number">3</span>)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">for</span>(变量 <span class="keyword">in</span> 对象名/数组名)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-5-2-while"><a href="#1-5-2-while" class="headerlink" title="1.5.2 while"></a>1.5.2 while</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;<span class="keyword">while</span>(条件);</span><br></pre></td></tr></table></figure>
-<h2 id="1-6-JS函数定义方式"><a href="#1-6-JS函数定义方式" class="headerlink" title="1.6 JS函数定义方式"></a>1.6 JS函数定义方式</h2><ul>
-<li>第一种：function 函数名(形参列表){函数体}</li>
-<li>第二种：var 函数名 = function(形参列表){函数体}</li>
-<li>函数不允许重载</li>
-<li>arguments：存放形参的数组，可以在函数体中直接调用，形参列表可以不写</li>
-</ul>
-<h2 id="1-7-JS对象的定义"><a href="#1-7-JS对象的定义" class="headerlink" title="1.7 JS对象的定义"></a>1.7 JS对象的定义</h2><h3 id="1-7-1-第一种"><a href="#1-7-1-第一种" class="headerlink" title="1.7.1 第一种"></a>1.7.1 第一种</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">变量名.属性名 = 值</span><br><span class="line">变量名.函数名 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">this</span>关键字可以在函数体中使用</span><br></pre></td></tr></table></figure>
-<h3 id="1-7-2-第二种"><a href="#1-7-2-第二种" class="headerlink" title="1.7.2 第二种"></a>1.7.2 第二种</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 对象名 = &#123;</span><br><span class="line">    属性名:值,</span><br><span class="line">    属性名:值,</span><br><span class="line">    函数名:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="1-7-3-对象的访问"><a href="#1-7-3-对象的访问" class="headerlink" title="1.7.3 对象的访问"></a>1.7.3 对象的访问</h3><ul>
-<li>对象名.属性名/函数名()</li>
-</ul>
-<h2 id="1-8-JS入口函数"><a href="#1-8-JS入口函数" class="headerlink" title="1.8 JS入口函数"></a>1.8 JS入口函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 开始编写JS代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="1-9-JS数组"><a href="#1-9-JS数组" class="headerlink" title="1.9 JS数组"></a>1.9 JS数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数组对象</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//读取不存在的索引，不会报错而会返回undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印数组长度，length表示最大的索引</span></span><br><span class="line"><span class="comment">//length可以修改，长了填充空值，短了截断</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.length)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="二、JS函数"><a href="#二、JS函数" class="headerlink" title="二、JS函数"></a>二、JS函数</h1><h2 id="2-1-函数的声明"><a href="#2-1-函数的声明" class="headerlink" title="2.1 函数的声明"></a>2.1 函数的声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params">形参列表</span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-函数对象"><a href="#2-2-函数对象" class="headerlink" title="2.2 函数对象"></a>2.2 函数对象</h2><ul>
-<li>在JS中，函数名就代表了函数对象</li>
-</ul>
-<h2 id="2-3-匿名函数"><a href="#2-3-匿名函数" class="headerlink" title="2.3 匿名函数"></a>2.3 匿名函数</h2><h3 id="2-3-1-语法"><a href="#2-3-1-语法" class="headerlink" title="2.3.1 语法"></a>2.3.1 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-4-立即执行函数"><a href="#2-4-立即执行函数" class="headerlink" title="2.4 立即执行函数"></a>2.4 立即执行函数</h2><h3 id="2-4-1-语法"><a href="#2-4-1-语法" class="headerlink" title="2.4.1 语法"></a>2.4.1 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">形参列表</span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;)(实参列表)</span><br></pre></td></tr></table></figure>
-<h3 id="2-4-2-特性"><a href="#2-4-2-特性" class="headerlink" title="2.4.2 特性"></a>2.4.2 特性</h3><ul>
-<li>立即执行函数只执行一次</li>
-</ul>
-<h2 id="2-5-回调函数"><a href="#2-5-回调函数" class="headerlink" title="2.5 回调函数"></a>2.5 回调函数</h2><h3 id="2-5-1-概念"><a href="#2-5-1-概念" class="headerlink" title="2.5.1 概念"></a>2.5.1 概念</h3><ul>
-<li>并非自己调用，而是由浏览器自动调用的函数</li>
-<li>一般是作为函数的参数进行使用，可以通过匿名函数的写法进行传递，也可以直接传递函数名</li>
-</ul>
-<h3 id="2-5-2-语法"><a href="#2-5-2-语法" class="headerlink" title="2.5.2 语法"></a>2.5.2 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">注意到click方法中是一个函数而不是一个变量</span><br><span class="line"><span class="comment">//它就是回调函数</span></span><br><span class="line">$(<span class="string">&quot;#btn_1&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">&quot;Btn 1 Clicked&quot;</span>);</span><br><span class="line">&#125;);  </span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">click</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 它就是回调函数</span></span><br><span class="line">    alert(<span class="string">&quot;Btn 1 Clicked&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="string">&quot;#btn_1&quot;</span>).click(click);  </span><br></pre></td></tr></table></figure>
-<h1 id="三、JS对象"><a href="#三、JS对象" class="headerlink" title="三、JS对象"></a>三、JS对象</h1><h2 id="3-1-对象的分类"><a href="#3-1-对象的分类" class="headerlink" title="3.1 对象的分类"></a>3.1 对象的分类</h2><ul>
-<li>内建对象</li>
-<li>宿主对象</li>
-<li>自定义对象</li>
-</ul>
-<h2 id="3-2-对象的定义"><a href="#3-2-对象的定义" class="headerlink" title="3.2 对象的定义"></a>3.2 对象的定义</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">变量名.属性名 = 值</span><br><span class="line">变量名.函数名 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">this</span>关键字可以在函数体中使用</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">var</span> 对象名 = &#123;</span><br><span class="line">        属性名:值,</span><br><span class="line">        属性名:值,</span><br><span class="line">        函数名:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="3-3-this关键字"><a href="#3-3-this关键字" class="headerlink" title="3.3 this关键字"></a>3.3 this关键字</h2><ol>
-<li>当以函数的形式调用时，this是window</li>
-<li>当以方法的形式调用时，谁调用方法，this就是谁</li>
-<li>当以构造函数的形式调用时，this就是新创建的那个对象</li>
-</ol>
-<h2 id="3-4-构造函数"><a href="#3-4-构造函数" class="headerlink" title="3.4 构造函数"></a>3.4 构造函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,gender</span>)</span>&#123;</span><br><span class="line">    alert(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.name = name;    <span class="comment">//添加属性name</span></span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">    <span class="built_in">this</span>.gender = gender;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
-<h3 id="3-4-1-执行流程"><a href="#3-4-1-执行流程" class="headerlink" title="3.4.1 执行流程"></a>3.4.1 执行流程</h3><ol>
-<li>立刻创建一个新的对象</li>
-<li>将新建的对象设置为函数中的this，在构造函数中可以使用this来引用新建的对象</li>
-<li>执行函数中的代码</li>
-<li>将新建的对象作为返回值返回</li>
-</ol>
-<h2 id="3-5-原型对象"><a href="#3-5-原型对象" class="headerlink" title="3.5 原型对象"></a>3.5 原型对象</h2><img src="/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/prototype.png" class="" title="image">
-<ul>
-<li>JS中万物皆对象</li>
-<li>每个对象都具有<strong>proto</strong>，用于指向其构造函数的原型，这也保证了实例能够访问在构造函数原型中定义的属性和方法</li>
-<li>方法是一个特殊的对象（可以把方法的声明当作构造函数），它同时具有<strong>proto</strong>指针，以及属性prototype</li>
-</ul>
-<h1 id="四、Dom操作"><a href="#四、Dom操作" class="headerlink" title="四、Dom操作"></a>四、Dom操作</h1><h2 id="4-1-操作元素节点"><a href="#4-1-操作元素节点" class="headerlink" title="4.1 操作元素节点"></a>4.1 操作元素节点</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">函数</th>
-<th style="text-align:center">解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">getElementById()</td>
-<td style="text-align:center">通过id属性获取一个元素节点对象</td>
-</tr>
-<tr>
-<td style="text-align:center">getElementsByTagName()</td>
-<td style="text-align:center">通过标签名获取一组元素节点对象</td>
-</tr>
-<tr>
-<td style="text-align:center">getElementsByName()</td>
-<td style="text-align:center">通过name属性获取一组元素节点对象</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>获取到元素对象/对象数组后，这些对象包含以下属性<ul>
-<li>对象名.innerHtml</li>
-<li>对象名.id</li>
-<li>对象名.name</li>
-<li>对象名.value</li>
-<li>对象名.className</li>
-<li>对象名.时间名=function(){}</li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置点和边的数据</span></span><br><span class="line"><span class="keyword">var</span> staticNodes = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">label</span>:<span class="string">&quot;高玥&quot;</span>, <span class="attr">group</span>:<span class="number">1</span>, <span class="attr">pid</span>:<span class="number">0</span>, <span class="attr">subids</span>:[<span class="number">2</span>,<span class="number">3</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>, <span class="attr">label</span>:<span class="string">&quot;篮球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>, <span class="attr">subids</span>:[<span class="number">4</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>, <span class="attr">label</span>:<span class="string">&quot;羽毛球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">4</span>, <span class="attr">label</span>:<span class="string">&quot;技巧&quot;</span>, <span class="attr">group</span>:<span class="number">3</span>,<span class="attr">pid</span>:<span class="number">2</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> staticEdges = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">2</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>,<span class="attr">label</span>:<span class="string">&quot;有&quot;</span>, <span class="attr">from</span>: <span class="number">2</span>,<span class="attr">to</span>: <span class="number">4</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="二、vis-js绘制network"><a href="#二、vis-js绘制network" class="headerlink" title="二、vis.js绘制network"></a>二、vis.js绘制network</h1><h2 id="2-1-将数据注入到vis中"><a href="#2-1-将数据注入到vis中" class="headerlink" title="2.1 将数据注入到vis中"></a>2.1 将数据注入到vis中</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nodes = <span class="keyword">new</span> vis.DataSet(staticNodes);</span><br><span class="line"><span class="keyword">var</span> edges = <span class="keyword">new</span> vis.DataSet(staticEdges);</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-配置network"><a href="#2-2-配置network" class="headerlink" title="2.2 配置network"></a>2.2 配置network</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个图的容器</span></span><br><span class="line"><span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;mynetwork&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">nodes</span>: nodes,</span><br><span class="line">    <span class="attr">edges</span>: edges</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    <span class="attr">nodes</span>:&#123;</span><br><span class="line">        <span class="attr">shape</span>: <span class="string">&quot;dot&quot;</span>,</span><br><span class="line">        <span class="comment">// scaling: &#123;</span></span><br><span class="line">        <span class="comment">//     customScalingFunction: function(min, max, total, value)&#123;</span></span><br><span class="line">        <span class="comment">//         return value / total;</span></span><br><span class="line">        <span class="comment">//     &#125;,</span></span><br><span class="line">        <span class="comment">//     min:5,</span></span><br><span class="line">        <span class="comment">//     max:150,</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">edges</span>: &#123;</span><br><span class="line">        <span class="attr">width</span>: <span class="number">0.15</span>,</span><br><span class="line">        <span class="comment">//physics: false,</span></span><br><span class="line">        <span class="attr">smooth</span>: &#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;continuous&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">interaction</span>: &#123;</span><br><span class="line">        <span class="attr">hover</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//hoverConnectedEdges: true</span></span><br><span class="line">        <span class="comment">//hideEdgesOnDrag: true,</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">physics</span>: &#123;</span><br><span class="line">        <span class="comment">//enabled: false,</span></span><br><span class="line">        <span class="attr">repulsion</span>:&#123;</span><br><span class="line">            <span class="attr">nodeDistance</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springLength</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springConstant</span>: <span class="number">0.5</span>,</span><br><span class="line">            <span class="attr">centralGravity</span>: <span class="number">0.9</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">layout</span>:&#123;</span><br><span class="line">        <span class="comment">//hierarchical: &#123;direction: &#x27;UD&#x27;, sortMethod: &#x27;hubsize&#x27;&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图可视化</span></span><br><span class="line"><span class="comment">// initialize your network!</span></span><br><span class="line"><span class="keyword">var</span> network = <span class="keyword">new</span> vis.Network(container, data, options);</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-为节点创建点击事件"><a href="#2-3-为节点创建点击事件" class="headerlink" title="2.3 为节点创建点击事件"></a>2.3 为节点创建点击事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击事件获取的是节点的列表，一般列表中只有一个节点id</span></span><br><span class="line">network.on(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">params</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 点击的是节点的情况（不考虑点击边的情况）</span></span><br><span class="line">    <span class="keyword">if</span> (params.nodes.length != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> clickNodeId = params.nodes[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//console.log(findArrayIndexById(staticNodes,clickNodeId));</span></span><br><span class="line">        <span class="comment">//removeSubNodes(clickNodeId);</span></span><br><span class="line">        removeByRecur(clickNodeId)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="三、展开收缩逻辑"><a href="#三、展开收缩逻辑" class="headerlink" title="三、展开收缩逻辑"></a>三、展开收缩逻辑</h1><ul>
+<li>具体的逻辑实现如下：<ul>
+<li>第一步：<strong>getSubNodes</strong>函数获取到点击节点的<strong>下级节点id列表</strong>subNodes</li>
+<li>第二步：判断<strong>subNodes</strong>是否为空，如果<strong>不为空</strong>执行<strong>第三步</strong>，否则执行第四步</li>
+<li>第三步：如果不为空：遍历subNodes中的id值，在<strong>staticNodes</strong>中找到其对应的节点并在nodes/edges中进行remove<strong>（收缩操作）</strong></li>
+<li>第四步：如果为空：判断点击的节点是否存在<strong>下级节点列表subids</strong>，如果存在，执行第五步<strong>（展开操作）</strong></li>
+<li>第五步：遍历<strong>subids下级id列表</strong>，在staticNodes中查找到对应的节点，添加到nodes和edges中，实现节点的展开操作</li>
 </ul>
 </li>
+<li>收缩时，如果点击节点的下一级节点中包含下下一级节点，则进行递归查找并收缩，实现方法为<strong>removeByRecur</strong></li>
 </ul>
-<h1 id="五、JS事件"><a href="#五、JS事件" class="headerlink" title="五、JS事件"></a>五、JS事件</h1><h2 id="5-1-事件的概念"><a href="#5-1-事件的概念" class="headerlink" title="5.1 事件的概念"></a>5.1 事件的概念</h2><ul>
-<li>电脑输入设备与页面进行交互的响应</li>
-</ul>
-<h2 id="5-2-常用的事件"><a href="#5-2-常用的事件" class="headerlink" title="5.2 常用的事件"></a>5.2 常用的事件</h2><ul>
-<li>onload：加载完成事件，页面加载完成之后，常用于做页面js代码初始化操作</li>
-<li>onclick：单击事件，常用于按钮点击的响应操作</li>
-<li>onblur：失去焦点事件，常用于输入框失去焦点后验证其输入内容是否合法</li>
-<li>onchange：内容发生改变事件，常用于下拉列表和输入框内容发生改变后操作</li>
-<li>onsubmit：表单提交事件，常用于表单提交前，验证所有表单是否合法</li>
-</ul>
-<h2 id="5-3-事件的注册"><a href="#5-3-事件的注册" class="headerlink" title="5.3 事件的注册"></a>5.3 事件的注册</h2><h3 id="5-3-1-静态注册"><a href="#5-3-1-静态注册" class="headerlink" title="5.3.1 静态注册"></a>5.3.1 静态注册</h3><ul>
-<li>通过html标签的事件属性直接赋予事件响应后的代码</li>
-</ul>
-<h3 id="5-3-2-动态注册"><a href="#5-3-2-动态注册" class="headerlink" title="5.3.2 动态注册"></a>5.3.2 动态注册</h3><ul>
-<li>是指先通过js代码得到标签的dom对象，然后再通过：dom对象.事件名=function(){}这种形式赋予事件响应后的代码</li>
-</ul>
-<h3 id="5-3-3-步骤"><a href="#5-3-3-步骤" class="headerlink" title="5.3.3 步骤"></a>5.3.3 步骤</h3><ol>
-<li>获取标签对象</li>
-<li>标签对象.事件名=function(){}</li>
-</ol>
-<h2 id="5-4-事件对象event"><a href="#5-4-事件对象event" class="headerlink" title="5.4 事件对象event"></a>5.4 事件对象event</h2><ul>
-<li>在给元素绑定事件时，写上函数参数event</li>
-<li>使用此event可以在触发事件时达到某些效果</li>
-<li>为兼容IE8，函数体中可以写上此语句：event = event||window.event;</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">box1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;     <span class="comment">//参数名一般写做event或e</span></span><br><span class="line">    <span class="keyword">if</span>(event.target.className == <span class="string">&quot;link&quot;</span>)&#123;   <span class="comment">//判断子元素中是否有a链接元素</span></span><br><span class="line">        alert(<span class="string">&quot;我是box1的单击事件&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-5-事件的冒泡"><a href="#5-5-事件的冒泡" class="headerlink" title="5.5 事件的冒泡"></a>5.5 事件的冒泡</h2><ul>
-<li>给覆盖在父元素上的子元素都绑定上事件，点击子元素时，会先触发子元素的事件，然后再触发父元素的事件</li>
-<li>event.cancelBubble = true;可以用来取消父元素的冒泡</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">box1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//回调函数，无需自己调用</span></span><br><span class="line">    alert(<span class="string">&quot;我是div的单击响应函数&quot;</span>);</span><br><span class="line">    event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-6-事件的委派"><a href="#5-6-事件的委派" class="headerlink" title="5.6 事件的委派"></a>5.6 事件的委派</h2><ul>
-<li>给各子元素共同的祖先元素绑定事件，这样后代元素上的事件触发时，则会统一触发祖先绑定的事件</li>
-<li>这样做无需一个个给子元素单独绑定事件，比较方便</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsById(<span class="string">&quot;ul&quot;</span>);</span></span><br><span class="line"><span class="javascript">    ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(<span class="string">&quot;我是ul的单击事件&quot;</span>)</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">    </span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;ul&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据id值查找其对应的下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findArrayIndexById</span>(<span class="params">arr, id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res;</span><br><span class="line">    $.each(arr, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(item[<span class="string">&#x27;id&#x27;</span>] == id)&#123;</span><br><span class="line">            res = index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归的收缩下级节点</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeByRecur</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取到的是下级节点列表</span></span><br><span class="line">    <span class="keyword">var</span> subNodes = getSubNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果获取的下级节点列表长度 不为 0，表示节点没有收缩，则点击后进行收缩</span></span><br><span class="line">    <span class="keyword">if</span>(subNodes.length != <span class="number">0</span>)&#123;</span><br><span class="line">        $.each(subNodes,<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//消除的是注入到vis中的数据，而不是staticNodes/Edges</span></span><br><span class="line">            removeByRecur(item);</span><br><span class="line">            nodes.remove(&#123;<span class="attr">id</span>:item&#125;);</span><br><span class="line">            edges.remove(&#123;<span class="attr">from</span>:clickNodeId,<span class="attr">to</span>:item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取的下级节点列表长度 为 0，表示节点没有展开，则点击后进行展开</span></span><br><span class="line">    <span class="comment">// 由于下级节点收缩后，vis的nodes就没有下级节点的数据了，因此就需要从staticNodes/Edges中提取</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 遍历staticNodes的subids列表</span></span><br><span class="line">        $.each(staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;subids&#x27;</span>],<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            nodes.add(staticNodes[findArrayIndexById(staticNodes,item)]);</span><br><span class="line">            edges.add(&#123;<span class="attr">from</span>: clickNodeId,<span class="attr">to</span>: item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeSubNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取到的是下级节点列表</span></span><br><span class="line">    <span class="keyword">var</span> subNodes = getSubNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果获取的下级节点列表长度 不为 0，表示节点没有收缩，则点击后进行收缩</span></span><br><span class="line">    <span class="keyword">if</span>(subNodes.length != <span class="number">0</span>)&#123;</span><br><span class="line">        $.each(subNodes,<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//消除的是注入到vis中的数据，而不是staticNodes/Edges</span></span><br><span class="line">            nodes.remove(&#123;<span class="attr">id</span>:item&#125;);</span><br><span class="line">            edges.remove(&#123;<span class="attr">from</span>:clickNodeId,<span class="attr">to</span>:item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取的下级节点列表长度 为 0，表示节点没有展开，则点击后进行展开</span></span><br><span class="line">    <span class="comment">// 由于下级节点收缩后，vis的nodes就没有下级节点的数据了，因此就需要从staticNodes/Edges中提取</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 遍历staticNodes的subids列表</span></span><br><span class="line">        $.each(staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;subids&#x27;</span>],<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            nodes.add(staticNodes[findArrayIndexById(staticNodes,item)]);</span><br><span class="line">            edges.add(&#123;<span class="attr">from</span>: clickNodeId,<span class="attr">to</span>: item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取点击节点的下级节点列表，不包含与其相连的父节点id</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSubNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取与该节点所连接的所有节点的id（只要是相连的都会被算进来）</span></span><br><span class="line">    <span class="keyword">var</span> returnNodes = [];</span><br><span class="line">    <span class="keyword">var</span> connectedNodes = network.getConnectedNodes(clickNodeId);<span class="comment">//获取所有连接节点</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对节点id列表进行遍历，index表示列表下标，item表示对应的id值</span></span><br><span class="line">    $.each(connectedNodes, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//这里的clickNodeId和staticNodes数组中的下标只是简单的-1操作</span></span><br><span class="line">        <span class="comment">//因为staticNodes中id都是顺序的，如果不是顺序的就需要遍历才能找到其下标值</span></span><br><span class="line">        <span class="comment">//clickNodeId是点击的那个节点的id，item是连接节点的id</span></span><br><span class="line">        <span class="comment">//如果这个连接的节点是点击的节点父节点，则不考虑进去！！！</span></span><br><span class="line">        <span class="keyword">if</span>(item != staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;pid&#x27;</span>])&#123;</span><br><span class="line">            returnNodes.push(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> returnNodes;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="四、实现效果"><a href="#四、实现效果" class="headerlink" title="四、实现效果"></a>四、实现效果</h1><img src="/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/node.gif" class="" title="image1">
+
       
     </div>
 
@@ -409,7 +287,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-12 14:03:00 / 修改时间：14:18:46" itemprop="dateCreated datePublished" datetime="2022-03-12T14:03:00+08:00">2022-03-12</time>
+              <time title="创建时间：2022-03-12 14:03:00 / 修改时间：22:13:30" itemprop="dateCreated datePublished" datetime="2022-03-12T14:03:00+08:00">2022-03-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -441,7 +319,54 @@
 <p>发表时间: 2016-1</p>
 <p>期刊: 计算机研究与发展</p>
 </blockquote>
-
+<h1 id="一、知识表示学习简介"><a href="#一、知识表示学习简介" class="headerlink" title="一、知识表示学习简介"></a>一、知识表示学习简介</h1><h2 id="1-1-表示学习基本概念"><a href="#1-1-表示学习基本概念" class="headerlink" title="1.1 表示学习基本概念"></a>1.1 表示学习基本概念</h2><ul>
+<li>表示学习：机器学习将语义信息表示为稠密低维实值向量</li>
+<li>实体$e$，关系$r$，向量表示$I_e$和$I_r$<ul>
+<li>可以通过欧式距离和余弦距离等方式，计算任意2个对象之间的语义相似度</li>
+</ul>
+</li>
+<li>独热表示（one-hot representation）：简单的数据表示方式，只有<strong>某一维值非零</strong>，其他均为0。<ul>
+<li>数据有多少对象，独热向量就有多少维</li>
+<li>词袋模型（bag-of-words model）以此为基础，独热表示的每一维表示对应的词在该文档中的重要性</li>
+<li>优点：简单/高效</li>
+<li>缺点：对象表示之间相互独立，不同对象的向量都是<strong>相互正交</strong>的，无法计算其语义相似度，大量信息丢失</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-表示学习的理论基础"><a href="#1-2-表示学习的理论基础" class="headerlink" title="1.2 表示学习的理论基础"></a>1.2 表示学习的理论基础</h2><ul>
+<li>表示学习：得到的低维向量是一种分布式表示（distributed representation）<ul>
+<li>分布式表示：对人脑处理信息过程的模拟</li>
+<li>层级结构：对象之间的组成关系</li>
+<li>以上两点是人类智能的基础，也是表示学习和深度学习的本质特点</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/03/12/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B02-%E5%88%98%E7%9F%A5%E8%BF%9C-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/realinternal.png" class="" title="image1">
+<h2 id="1-3-知识表示学习的典型应用"><a href="#1-3-知识表示学习的典型应用" class="headerlink" title="1.3 知识表示学习的典型应用"></a>1.3 知识表示学习的典型应用</h2><ul>
+<li>相似度计算</li>
+<li>知识图谱补全</li>
+<li>其他应用：关系抽取、自动问答、实体链接/实体链指</li>
+</ul>
+<h2 id="1-4-知识表示学习的优点"><a href="#1-4-知识表示学习的优点" class="headerlink" title="1.4 知识表示学习的优点"></a>1.4 知识表示学习的优点</h2><ul>
+<li>提升计算效率</li>
+<li>缓解数据稀疏</li>
+<li>实现异构信息融合</li>
+</ul>
+<h1 id="二、知识表示学习的主要方法"><a href="#二、知识表示学习的主要方法" class="headerlink" title="二、知识表示学习的主要方法"></a>二、知识表示学习的主要方法</h1><h2 id="2-1-符号表示"><a href="#2-1-符号表示" class="headerlink" title="2.1 符号表示"></a>2.1 符号表示</h2><ul>
+<li>知识库表示：$G=\{E,R,S\}$<ul>
+<li>$E = \{ e_1,e_2,…,e_{|E|} \}$是知识库的实体集合，$|E|$表示实体数</li>
+<li>$R = \{ r_1,r_2,…,r_{|E|} \}$是知识库中的关系集合，$|R|$表示关系数</li>
+<li>$S\subseteq E\times R\times E$代表三元组集合</li>
+</ul>
+</li>
+<li>三元组表示：$(h,r,t)$<ul>
+<li>其中$h$和$t$分别表示实体和尾实体</li>
+<li>$r$表示$h$和$t$之间的关系</li>
+<li>如(史蒂夫-乔布斯，创始人，苹果公司)</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-距离模型"><a href="#2-2-距离模型" class="headerlink" title="2.2 距离模型"></a>2.2 距离模型</h2><h2 id="2-3-单层神经网络模型"><a href="#2-3-单层神经网络模型" class="headerlink" title="2.3 单层神经网络模型"></a>2.3 单层神经网络模型</h2><h2 id="2-4-能量模型"><a href="#2-4-能量模型" class="headerlink" title="2.4 能量模型"></a>2.4 能量模型</h2><h2 id="2-5-双线性模型"><a href="#2-5-双线性模型" class="headerlink" title="2.5 双线性模型"></a>2.5 双线性模型</h2><h2 id="2-6-张量神经网络模型"><a href="#2-6-张量神经网络模型" class="headerlink" title="2.6 张量神经网络模型"></a>2.6 张量神经网络模型</h2><h2 id="2-7-矩阵分解模型"><a href="#2-7-矩阵分解模型" class="headerlink" title="2.7 矩阵分解模型"></a>2.7 矩阵分解模型</h2><h2 id="2-8-翻译模型"><a href="#2-8-翻译模型" class="headerlink" title="2.8 翻译模型"></a>2.8 翻译模型</h2>
       
     </div>
 
@@ -2237,7 +2162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2250,7 +2175,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

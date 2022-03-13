@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cnovelist.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、数据准备 id最好设置为数值型，方便后面的查找工作，需要通过id值查找其在staticNodes中的下标值  12345678910111213&#x2F;&#x2F; 设置点和边的数据var staticNodes &#x3D; [    &amp;#123;id:1, label:&quot;高玥&quot;, group:1, pid:0, subids:[2,3]&amp;#125;,    &amp;#123;id:2, label:&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端组件实现-基于vis.js的节点展开">
+<meta property="og:url" content="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/index.html">
+<meta property="og:site_name" content="江小月不上頭">
+<meta property="og:description" content="一、数据准备 id最好设置为数值型，方便后面的查找工作，需要通过id值查找其在staticNodes中的下标值  12345678910111213&#x2F;&#x2F; 设置点和边的数据var staticNodes &#x3D; [    &amp;#123;id:1, label:&quot;高玥&quot;, group:1, pid:0, subids:[2,3]&amp;#125;,    &amp;#123;id:2, label:&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/node.gif">
+<meta property="article:published_time" content="2022-03-12T14:41:46.000Z">
+<meta property="article:modified_time" content="2022-03-13T04:54:26.143Z">
+<meta property="article:author" content="故事开头">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="vis.js">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/node.gif">
+
+<link rel="canonical" href="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>前端组件实现-基于vis.js的节点展开 | 江小月不上頭</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband">
+    <a target="_blank" rel="noopener" href="https://github.com/CNovelist" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">江小月不上頭</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">有容乃大，无欲则刚</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端组件实现-基于vis.js的节点展开
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-12 22:41:46" itemprop="dateCreated datePublished" datetime="2022-03-12T22:41:46+08:00">2022-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-13 12:54:26" itemprop="dateModified" datetime="2022-03-13T12:54:26+08:00">2022-03-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、数据准备"><a href="#一、数据准备" class="headerlink" title="一、数据准备"></a>一、数据准备</h1><ul>
+<li>id最好设置为数值型，方便后面的查找工作，需要通过id值查找其在staticNodes中的下标值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置点和边的数据</span></span><br><span class="line"><span class="keyword">var</span> staticNodes = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">label</span>:<span class="string">&quot;高玥&quot;</span>, <span class="attr">group</span>:<span class="number">1</span>, <span class="attr">pid</span>:<span class="number">0</span>, <span class="attr">subids</span>:[<span class="number">2</span>,<span class="number">3</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>, <span class="attr">label</span>:<span class="string">&quot;篮球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>, <span class="attr">subids</span>:[<span class="number">4</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>, <span class="attr">label</span>:<span class="string">&quot;羽毛球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">4</span>, <span class="attr">label</span>:<span class="string">&quot;技巧&quot;</span>, <span class="attr">group</span>:<span class="number">3</span>,<span class="attr">pid</span>:<span class="number">2</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> staticEdges = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">2</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>,<span class="attr">label</span>:<span class="string">&quot;有&quot;</span>, <span class="attr">from</span>: <span class="number">2</span>,<span class="attr">to</span>: <span class="number">4</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="二、vis-js绘制network"><a href="#二、vis-js绘制network" class="headerlink" title="二、vis.js绘制network"></a>二、vis.js绘制network</h1><h2 id="2-1-将数据注入到vis中"><a href="#2-1-将数据注入到vis中" class="headerlink" title="2.1 将数据注入到vis中"></a>2.1 将数据注入到vis中</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nodes = <span class="keyword">new</span> vis.DataSet(staticNodes);</span><br><span class="line"><span class="keyword">var</span> edges = <span class="keyword">new</span> vis.DataSet(staticEdges);</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-配置network"><a href="#2-2-配置network" class="headerlink" title="2.2 配置network"></a>2.2 配置network</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个图的容器</span></span><br><span class="line"><span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;mynetwork&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">nodes</span>: nodes,</span><br><span class="line">    <span class="attr">edges</span>: edges</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    <span class="attr">nodes</span>:&#123;</span><br><span class="line">        <span class="attr">shape</span>: <span class="string">&quot;dot&quot;</span>,</span><br><span class="line">        <span class="comment">// scaling: &#123;</span></span><br><span class="line">        <span class="comment">//     customScalingFunction: function(min, max, total, value)&#123;</span></span><br><span class="line">        <span class="comment">//         return value / total;</span></span><br><span class="line">        <span class="comment">//     &#125;,</span></span><br><span class="line">        <span class="comment">//     min:5,</span></span><br><span class="line">        <span class="comment">//     max:150,</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">edges</span>: &#123;</span><br><span class="line">        <span class="attr">width</span>: <span class="number">0.15</span>,</span><br><span class="line">        <span class="comment">//physics: false,</span></span><br><span class="line">        <span class="attr">smooth</span>: &#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;continuous&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">interaction</span>: &#123;</span><br><span class="line">        <span class="attr">hover</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//hoverConnectedEdges: true</span></span><br><span class="line">        <span class="comment">//hideEdgesOnDrag: true,</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">physics</span>: &#123;</span><br><span class="line">        <span class="comment">//enabled: false,</span></span><br><span class="line">        <span class="attr">repulsion</span>:&#123;</span><br><span class="line">            <span class="attr">nodeDistance</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springLength</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springConstant</span>: <span class="number">0.5</span>,</span><br><span class="line">            <span class="attr">centralGravity</span>: <span class="number">0.9</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">layout</span>:&#123;</span><br><span class="line">        <span class="comment">//hierarchical: &#123;direction: &#x27;UD&#x27;, sortMethod: &#x27;hubsize&#x27;&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图可视化</span></span><br><span class="line"><span class="comment">// initialize your network!</span></span><br><span class="line"><span class="keyword">var</span> network = <span class="keyword">new</span> vis.Network(container, data, options);</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-为节点创建点击事件"><a href="#2-3-为节点创建点击事件" class="headerlink" title="2.3 为节点创建点击事件"></a>2.3 为节点创建点击事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击事件获取的是节点的列表，一般列表中只有一个节点id</span></span><br><span class="line">network.on(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">params</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 点击的是节点的情况（不考虑点击边的情况）</span></span><br><span class="line">    <span class="keyword">if</span> (params.nodes.length != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> clickNodeId = params.nodes[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//console.log(findArrayIndexById(staticNodes,clickNodeId));</span></span><br><span class="line">        <span class="comment">//removeSubNodes(clickNodeId);</span></span><br><span class="line">        removeByRecur(clickNodeId)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="三、展开收缩逻辑"><a href="#三、展开收缩逻辑" class="headerlink" title="三、展开收缩逻辑"></a>三、展开收缩逻辑</h1><ul>
+<li>具体的逻辑实现如下：<ul>
+<li>第一步：<strong>getSubNodes</strong>函数获取到点击节点的<strong>下级节点id列表</strong>subNodes</li>
+<li>第二步：判断<strong>subNodes</strong>是否为空，如果<strong>不为空</strong>执行<strong>第三步</strong>，否则执行第四步</li>
+<li>第三步：如果不为空：遍历subNodes中的id值，在<strong>staticNodes</strong>中找到其对应的节点并在nodes/edges中进行remove<strong>（收缩操作）</strong></li>
+<li>第四步：如果为空：判断点击的节点是否存在<strong>下级节点列表subids</strong>，如果存在，执行第五步<strong>（展开操作）</strong></li>
+<li>第五步：遍历<strong>subids下级id列表</strong>，在staticNodes中查找到对应的节点，添加到nodes和edges中，实现节点的展开操作</li>
+</ul>
+</li>
+<li>收缩时，如果点击节点的下一级节点中包含下下一级节点，则进行递归查找并收缩，实现方法为<strong>removeByRecur</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据id值查找其对应的下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findArrayIndexById</span>(<span class="params">arr, id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res;</span><br><span class="line">    $.each(arr, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(item[<span class="string">&#x27;id&#x27;</span>] == id)&#123;</span><br><span class="line">            res = index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归的收缩下级节点</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeByRecur</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取到的是下级节点列表</span></span><br><span class="line">    <span class="keyword">var</span> subNodes = getSubNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果获取的下级节点列表长度 不为 0，表示节点没有收缩，则点击后进行收缩</span></span><br><span class="line">    <span class="keyword">if</span>(subNodes.length != <span class="number">0</span>)&#123;</span><br><span class="line">        $.each(subNodes,<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//消除的是注入到vis中的数据，而不是staticNodes/Edges</span></span><br><span class="line">            removeByRecur(item);</span><br><span class="line">            nodes.remove(&#123;<span class="attr">id</span>:item&#125;);</span><br><span class="line">            edges.remove(&#123;<span class="attr">from</span>:clickNodeId,<span class="attr">to</span>:item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取的下级节点列表长度 为 0，表示节点没有展开，则点击后进行展开</span></span><br><span class="line">    <span class="comment">// 由于下级节点收缩后，vis的nodes就没有下级节点的数据了，因此就需要从staticNodes/Edges中提取</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 遍历staticNodes的subids列表</span></span><br><span class="line">        $.each(staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;subids&#x27;</span>],<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            nodes.add(staticNodes[findArrayIndexById(staticNodes,item)]);</span><br><span class="line">            edges.add(&#123;<span class="attr">from</span>: clickNodeId,<span class="attr">to</span>: item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeSubNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取到的是下级节点列表</span></span><br><span class="line">    <span class="keyword">var</span> subNodes = getSubNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果获取的下级节点列表长度 不为 0，表示节点没有收缩，则点击后进行收缩</span></span><br><span class="line">    <span class="keyword">if</span>(subNodes.length != <span class="number">0</span>)&#123;</span><br><span class="line">        $.each(subNodes,<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//消除的是注入到vis中的数据，而不是staticNodes/Edges</span></span><br><span class="line">            nodes.remove(&#123;<span class="attr">id</span>:item&#125;);</span><br><span class="line">            edges.remove(&#123;<span class="attr">from</span>:clickNodeId,<span class="attr">to</span>:item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取的下级节点列表长度 为 0，表示节点没有展开，则点击后进行展开</span></span><br><span class="line">    <span class="comment">// 由于下级节点收缩后，vis的nodes就没有下级节点的数据了，因此就需要从staticNodes/Edges中提取</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// 遍历staticNodes的subids列表</span></span><br><span class="line">        $.each(staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;subids&#x27;</span>],<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            nodes.add(staticNodes[findArrayIndexById(staticNodes,item)]);</span><br><span class="line">            edges.add(&#123;<span class="attr">from</span>: clickNodeId,<span class="attr">to</span>: item&#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取点击节点的下级节点列表，不包含与其相连的父节点id</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSubNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取与该节点所连接的所有节点的id（只要是相连的都会被算进来）</span></span><br><span class="line">    <span class="keyword">var</span> returnNodes = [];</span><br><span class="line">    <span class="keyword">var</span> connectedNodes = network.getConnectedNodes(clickNodeId);<span class="comment">//获取所有连接节点</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对节点id列表进行遍历，index表示列表下标，item表示对应的id值</span></span><br><span class="line">    $.each(connectedNodes, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//这里的clickNodeId和staticNodes数组中的下标只是简单的-1操作</span></span><br><span class="line">        <span class="comment">//因为staticNodes中id都是顺序的，如果不是顺序的就需要遍历才能找到其下标值</span></span><br><span class="line">        <span class="comment">//clickNodeId是点击的那个节点的id，item是连接节点的id</span></span><br><span class="line">        <span class="comment">//如果这个连接的节点是点击的节点父节点，则不考虑进去！！！</span></span><br><span class="line">        <span class="keyword">if</span>(item != staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;pid&#x27;</span>])&#123;</span><br><span class="line">            returnNodes.push(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> returnNodes;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="四、实现效果"><a href="#四、实现效果" class="headerlink" title="四、实现效果"></a>四、实现效果</h1><img src="/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/node.gif" class="" title="image1">
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故事开头
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/" title="前端组件实现-基于vis.js的节点展开">https://cnovelist.github.io/2022/03/12/前端组件实现-基于vis-js的节点展开/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/vis-js/" rel="tag"># vis.js</a>
+              <a href="/tags/js/" rel="tag"># js</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/12/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B02-%E5%88%98%E7%9F%A5%E8%BF%9C-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/" rel="prev" title="论文笔记2-刘知远-知识表示学习研究进展">
+      <i class="fa fa-chevron-left"></i> 论文笔记2-刘知远-知识表示学习研究进展
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="nav-text">一、数据准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81vis-js%E7%BB%98%E5%88%B6network"><span class="nav-text">二、vis.js绘制network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%B0%86%E6%95%B0%E6%8D%AE%E6%B3%A8%E5%85%A5%E5%88%B0vis%E4%B8%AD"><span class="nav-text">2.1 将数据注入到vis中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E9%85%8D%E7%BD%AEnetwork"><span class="nav-text">2.2 配置network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E4%B8%BA%E8%8A%82%E7%82%B9%E5%88%9B%E5%BB%BA%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6"><span class="nav-text">2.3 为节点创建点击事件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B1%95%E5%BC%80%E6%94%B6%E7%BC%A9%E9%80%BB%E8%BE%91"><span class="nav-text">三、展开收缩逻辑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C"><span class="nav-text">四、实现效果</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="故事开头"
+      src="/images/yue.jpeg">
+  <p class="site-author-name" itemprop="name">故事开头</p>
+  <div class="site-description" itemprop="description">一个穷鬼</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">故事开头</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span >总访问量: <span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span >总访问量: <span id="busuanzi_value_site_uv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
