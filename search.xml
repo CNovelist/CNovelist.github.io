@@ -513,6 +513,7 @@
 <li>IOC：控制反转，把创建对象过程交给Spring进行管理</li>
 <li>Aop：面向切面，不修改源代码进行功能增强</li>
 </ul>
+
 <h1 id="二、IOC容器"><a href="#二、IOC容器" class="headerlink" title="二、IOC容器"></a>二、IOC容器</h1><h2 id="2-1-IOC底层原理"><a href="#2-1-IOC底层原理" class="headerlink" title="2.1 IOC底层原理"></a>2.1 IOC底层原理</h2><ul>
 <li>XML解析、工厂模式、反射</li>
 </ul>
@@ -678,7 +679,108 @@
 <li><p>引入外部属性文件配置数据库连接池</p>
 </li>
 </ul>
-<h1 id="三、Aop"><a href="#三、Aop" class="headerlink" title="三、Aop"></a>三、Aop</h1><h1 id="四、JdbcTemplate"><a href="#四、JdbcTemplate" class="headerlink" title="四、JdbcTemplate"></a>四、JdbcTemplate</h1><h1 id="五、事物管理"><a href="#五、事物管理" class="headerlink" title="五、事物管理"></a>五、事物管理</h1><h1 id="六、Spring5新特性"><a href="#六、Spring5新特性" class="headerlink" title="六、Spring5新特性"></a>六、Spring5新特性</h1>]]></content>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        先引入druid.jar包，在xml中引入命名context空间</span></span><br><span class="line"><span class="comment">            xmlns:util=&quot;http://www.springframework.org/schema/util&quot;</span></span><br><span class="line"><span class="comment">            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd</span></span><br><span class="line"><span class="comment">        通过context引入properties配置文件</span></span><br><span class="line"><span class="comment">        在druid中通过$&#123;&#125;引入配置文件中的信息，注入数据库连接池信息</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">&quot;classpath:application.properties&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;prop.driverClass&#125;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;prop.url&#125;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;prop.userName&#125;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;prop.password&#125;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-6-IOC操作Bean管理（基于注解方式）"><a href="#2-6-IOC操作Bean管理（基于注解方式）" class="headerlink" title="2.6 IOC操作Bean管理（基于注解方式）"></a>2.6 IOC操作Bean管理（基于注解方式）</h2><h3 id="2-6-1-Spring提供的注解"><a href="#2-6-1-Spring提供的注解" class="headerlink" title="2.6.1 Spring提供的注解"></a>2.6.1 Spring提供的注解</h3><ul>
+<li>@Component</li>
+<li>@Service</li>
+<li>@Controller</li>
+<li>@Repository</li>
+<li>以上的注解功能都是一样的，都可以用来创建bean实例，主要是方面理解</li>
+</ul>
+<h3 id="2-6-2-注解方式创建对象"><a href="#2-6-2-注解方式创建对象" class="headerlink" title="2.6.2 注解方式创建对象"></a>2.6.2 注解方式创建对象</h3><ul>
+<li>第一步：引入spring-aop包</li>
+<li>第二步：在bean配置文件中，开启组件扫描</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;包地址 包地址 ...&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第三步：在类上添加注解，spring即可扫描到该类并完成对象的注入</p>
+</li>
+<li><p>默认注入bean的id为类名称首字母小写：如UserService=&gt;userService</p>
+</li>
+<li>注解<strong>Repository(value=”userSerivice”)</strong>中的value值等同于bean的id值</li>
+</ul>
+<h3 id="2-6-3-注解方式注入属性"><a href="#2-6-3-注解方式注入属性" class="headerlink" title="2.6.3 注解方式注入属性"></a>2.6.3 注解方式注入属性</h3><ul>
+<li>提供的注解<ul>
+<li>@Autowired：根据<strong>属性类型</strong>进行自动装配</li>
+<li>@Qualifier：根据<strong>属性名称</strong>进行注入，@Qualifier(value=”注入类的value/id值”)，<strong>需要和@Autowired一起使用</strong>，就是叠加在一起作用在属性上</li>
+<li>@Resource：可以根据类型/名称注入，@Resource默认按照属性类型进行自动装配，@Resource(name=””)即可以按照属性名称进行注入</li>
+<li>@Value：完成普通属性的注入，如@Value(value=”123”)，可以为String类型属性注入属性值</li>
+</ul>
+</li>
+<li>以上操作都需要在bean配置文件中开启扫描才能运行，意思是在获取注入的对象时，仍然要用ApplicationContext获取到bean配置文件</li>
+</ul>
+<h3 id="2-6-4-完全注解开发"><a href="#2-6-4-完全注解开发" class="headerlink" title="2.6.4 完全注解开发"></a>2.6.4 完全注解开发</h3><ul>
+<li>第一步：创建配置类config/，这一步完成后就可以删除bean配置文件，因为这一步的作用和bean配置文件是一样的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(basePackages=&#123;&quot;com.company&quot;&#125;)</span>	<span class="comment">//配置需要扫描的包名</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringConfig</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二步：获取对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ApplicationContext context = <span class="keyword">new</span> AnnotationConfigApplicationContext(SpringConfig.class)</span><br><span class="line">UserService userService = context.getBean(<span class="string">&quot;userService&quot;</span>,UserService.class)</span><br></pre></td></tr></table></figure>
+<h1 id="三、AOP"><a href="#三、AOP" class="headerlink" title="三、AOP"></a>三、AOP</h1><h2 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h2><ul>
+<li>面向切面编程：在不修改源代码的情况下在主干功能里添加新的功能模块</li>
+</ul>
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/aop.png" class="" title="image3">
+<h2 id="3-2-AOP底层原理"><a href="#3-2-AOP底层原理" class="headerlink" title="3.2 AOP底层原理"></a>3.2 AOP底层原理</h2><h3 id="3-2-1-动态代理"><a href="#3-2-1-动态代理" class="headerlink" title="3.2.1 动态代理"></a>3.2.1 动态代理</h3><ul>
+<li><p>Spring5已经对动态代理做了封装，可以直接调用，需要的知识点：反射</p>
+</li>
+<li><p>第一种：有接口情况，使用JDK动态代理</p>
+<ul>
+<li>创建接口实现类代理对象，增强类的方法</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/interaop.png" class="" title="image4">
+<ul>
+<li>第二种：没有接口情况，使用CGLIB动态代理</li>
+</ul>
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/CGLIB.png" class="" title="image5">
+<h3 id="3-2-2-AOP（JDK动态代理）"><a href="#3-2-2-AOP（JDK动态代理）" class="headerlink" title="3.2.2 AOP（JDK动态代理）"></a>3.2.2 AOP（JDK动态代理）</h3><ul>
+<li>JDK动态代理，使用Proxy类里面的方法创建代理对象<ul>
+<li>调用newProxyInstance方法</li>
+</ul>
+</li>
+<li>newProxyInstance方法包含的三个参数<ul>
+<li>第一个参数：类加载器</li>
+<li>第二个参数：增强方法所在的类，这个类实现的接口，支持多个接口</li>
+<li>第三个参数：实现接口InvocationHandler，创建代理对象，写增强的方法</li>
+</ul>
+</li>
+<li>实现步骤：<ul>
+<li>创建接口，定义方法，如UserDao</li>
+<li>创建接口实现类，实现方法，如UserDaoImpl</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDKProxy</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Class[] interfaces = &#123;UserDao.class&#125;;</span><br><span class="line">       <span class="comment">// 写法一：匿名内部类 </span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        Proxy.newProxyInstance(JDKProxy.class.getClassLoader(),interfaces,new InvocationHandler()&#123;</span></span><br><span class="line"><span class="comment">            @Override</span></span><br><span class="line"><span class="comment">            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable&#123;</span></span><br><span class="line"><span class="comment">                return null;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">        &#125;);</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        UserDaoImpl userDao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 写法二：创建代理对象</span></span><br><span class="line">        UserDao dao = (UserDao)Proxy.newProxyInstance(JDKProxy.class.getClassLoader(),interfaces,<span class="keyword">new</span> UserDaoProxy(userDao));</span><br><span class="line">        dao.add(<span class="number">1</span>,<span class="number">2</span>);	<span class="comment">// 相加的方法</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserDaoProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">    <span class="comment">// 写Onject是为了代码更通用</span></span><br><span class="line">    <span class="keyword">private</span> Object obj;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取到代理对象所代理的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoProxy</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.obj = obj;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;方法执行前...&quot;</span>+method.getName+</span><br><span class="line">                           <span class="string">&quot;\n传递的参数...&quot;</span>+Arrays.toString(args));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 执行增强方法</span></span><br><span class="line">        Object res = method.invoke(obj,args);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;方法执行后...&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-AOP专业术语"><a href="#3-3-AOP专业术语" class="headerlink" title="3.3 AOP专业术语"></a>3.3 AOP专业术语</h2><ul>
+<li>连接点：类中可以被增强的方法，这些方法称为连接点</li>
+<li>切入点：真正被增强的方法，称为切入点</li>
+<li>通知（增强）：实际增强的逻辑部分<ul>
+<li>前置通知</li>
+<li>后置通知</li>
+<li>环绕通知</li>
+<li>异常通知</li>
+<li>最终通知 finally</li>
+</ul>
+</li>
+<li>切面：动作，如权限判断<ul>
+<li>把通知应用到切入点的过程</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-4-AOP操作准备"><a href="#3-4-AOP操作准备" class="headerlink" title="3.4 AOP操作准备"></a>3.4 AOP操作准备</h2><h3 id="3-4-1-概述"><a href="#3-4-1-概述" class="headerlink" title="3.4.1 概述"></a>3.4.1 概述</h3><ul>
+<li>Spring框架一般都是基于AspectJ实现AOP操作</li>
+<li>AspectJ不是Spring组成部分，独立的AOP框架，一般把AspectJ和Spring框架一起使用，进行AOP操作</li>
+<li>基于AspectJ实现AOP操作<ul>
+<li>基于xml配置文件实现</li>
+<li>基于注解方式实现（使用）</li>
+</ul>
+</li>
+<li>需要引入依赖包</li>
+</ul>
+<h3 id="3-4-2-切入点表达式"><a href="#3-4-2-切入点表达式" class="headerlink" title="3.4.2 切入点表达式"></a>3.4.2 切入点表达式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// execution([权限修饰符][返回类型][类全路径][方法名称]([参数列表]))</span></span><br><span class="line"><span class="comment">// 例1：对BookDao类里的add进行增强</span></span><br><span class="line">execution(* com.company.dao.BookDao.add(...));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例2：对BookDao类里的所有方法进行增强</span></span><br><span class="line">execution(* com.company.dao.BookDao.*(...));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例2：对包dao中所有类所有方法进行增强</span></span><br><span class="line">execution(* com.company.dao.*.*(...));</span><br></pre></td></tr></table></figure>
+<h1 id="四、JdbcTemplate"><a href="#四、JdbcTemplate" class="headerlink" title="四、JdbcTemplate"></a>四、JdbcTemplate</h1><h1 id="五、事务管理"><a href="#五、事务管理" class="headerlink" title="五、事务管理"></a>五、事务管理</h1><h1 id="六、Spring5新特性"><a href="#六、Spring5新特性" class="headerlink" title="六、Spring5新特性"></a>六、Spring5新特性</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>Spring</category>
