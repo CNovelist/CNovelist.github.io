@@ -165,6 +165,388 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">JS基础大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-22 22:46:36" itemprop="dateCreated datePublished" datetime="2022-02-22T22:46:36+08:00">2022-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-12 20:16:13" itemprop="dateModified" datetime="2022-03-12T20:16:13+08:00">2022-03-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、JS基本操作"><a href="#一、JS基本操作" class="headerlink" title="一、JS基本操作"></a>一、JS基本操作</h1><h2 id="1-1-JS引入方式"><a href="#1-1-JS引入方式" class="headerlink" title="1.1 JS引入方式"></a>1.1 JS引入方式</h2><ul>
+<li>第一种：内部标签<code>&lt;script&gt;&lt;/script&gt;</code></li>
+<li>第二种：外部引入<code>&lt;script type=&quot;text/javascript&quot; src=&quot;./xxx.js&quot;&gt;&lt;/script&gt;</code></li>
+</ul>
+<h2 id="1-2-JS的6种数据类型"><a href="#1-2-JS的6种数据类型" class="headerlink" title="1.2 JS的6种数据类型"></a>1.2 JS的6种数据类型</h2><ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>object</li>
+<li>function  函数</li>
+</ul>
+<h2 id="1-3-JS特殊值"><a href="#1-3-JS特殊值" class="headerlink" title="1.3 JS特殊值"></a>1.3 JS特殊值</h2><ul>
+<li>Null      空值</li>
+<li>Undefine  未定义</li>
+<li>NAN       非数值</li>
+</ul>
+<h2 id="1-4-JS数组"><a href="#1-4-JS数组" class="headerlink" title="1.4 JS数组"></a>1.4 JS数组</h2><ul>
+<li>var 数组名 = [1,’abc’]</li>
+</ul>
+<h2 id="1-5-JS循环"><a href="#1-5-JS循环" class="headerlink" title="1.5 JS循环"></a>1.5 JS循环</h2><h3 id="1-5-1-for"><a href="#1-5-1-for" class="headerlink" title="1.5.1 for"></a>1.5.1 for</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(语句<span class="number">1</span>;语句<span class="number">2</span>;语句<span class="number">3</span>)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">for</span>(变量 <span class="keyword">in</span> 对象名/数组名)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-2-while"><a href="#1-5-2-while" class="headerlink" title="1.5.2 while"></a>1.5.2 while</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;<span class="keyword">while</span>(条件);</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-JS函数定义方式"><a href="#1-6-JS函数定义方式" class="headerlink" title="1.6 JS函数定义方式"></a>1.6 JS函数定义方式</h2><ul>
+<li>第一种：function 函数名(形参列表){函数体}</li>
+<li>第二种：var 函数名 = function(形参列表){函数体}</li>
+<li>函数不允许重载</li>
+<li>arguments：存放形参的数组，可以在函数体中直接调用，形参列表可以不写</li>
+</ul>
+<h2 id="1-7-JS对象的定义"><a href="#1-7-JS对象的定义" class="headerlink" title="1.7 JS对象的定义"></a>1.7 JS对象的定义</h2><h3 id="1-7-1-第一种"><a href="#1-7-1-第一种" class="headerlink" title="1.7.1 第一种"></a>1.7.1 第一种</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">变量名.属性名 = 值</span><br><span class="line">变量名.函数名 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">this</span>关键字可以在函数体中使用</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-2-第二种"><a href="#1-7-2-第二种" class="headerlink" title="1.7.2 第二种"></a>1.7.2 第二种</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 对象名 = &#123;</span><br><span class="line">    属性名:值,</span><br><span class="line">    属性名:值,</span><br><span class="line">    函数名:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-3-对象的访问"><a href="#1-7-3-对象的访问" class="headerlink" title="1.7.3 对象的访问"></a>1.7.3 对象的访问</h3><ul>
+<li>对象名.属性名/函数名()</li>
+</ul>
+<h2 id="1-8-JS入口函数"><a href="#1-8-JS入口函数" class="headerlink" title="1.8 JS入口函数"></a>1.8 JS入口函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 开始编写JS代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-9-JS数组"><a href="#1-9-JS数组" class="headerlink" title="1.9 JS数组"></a>1.9 JS数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数组对象</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//读取不存在的索引，不会报错而会返回undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印数组长度，length表示最大的索引</span></span><br><span class="line"><span class="comment">//length可以修改，长了填充空值，短了截断</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.length)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="二、JS函数"><a href="#二、JS函数" class="headerlink" title="二、JS函数"></a>二、JS函数</h1><h2 id="2-1-函数的声明"><a href="#2-1-函数的声明" class="headerlink" title="2.1 函数的声明"></a>2.1 函数的声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params">形参列表</span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-函数对象"><a href="#2-2-函数对象" class="headerlink" title="2.2 函数对象"></a>2.2 函数对象</h2><ul>
+<li>在JS中，函数名就代表了函数对象</li>
+</ul>
+<h2 id="2-3-匿名函数"><a href="#2-3-匿名函数" class="headerlink" title="2.3 匿名函数"></a>2.3 匿名函数</h2><h3 id="2-3-1-语法"><a href="#2-3-1-语法" class="headerlink" title="2.3.1 语法"></a>2.3.1 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-立即执行函数"><a href="#2-4-立即执行函数" class="headerlink" title="2.4 立即执行函数"></a>2.4 立即执行函数</h2><h3 id="2-4-1-语法"><a href="#2-4-1-语法" class="headerlink" title="2.4.1 语法"></a>2.4.1 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">形参列表</span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;)(实参列表)</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-2-特性"><a href="#2-4-2-特性" class="headerlink" title="2.4.2 特性"></a>2.4.2 特性</h3><ul>
+<li>立即执行函数只执行一次</li>
+</ul>
+<h2 id="2-5-回调函数"><a href="#2-5-回调函数" class="headerlink" title="2.5 回调函数"></a>2.5 回调函数</h2><h3 id="2-5-1-概念"><a href="#2-5-1-概念" class="headerlink" title="2.5.1 概念"></a>2.5.1 概念</h3><ul>
+<li>并非自己调用，而是由浏览器自动调用的函数</li>
+<li>一般是作为函数的参数进行使用，可以通过匿名函数的写法进行传递，也可以直接传递函数名</li>
+</ul>
+<h3 id="2-5-2-语法"><a href="#2-5-2-语法" class="headerlink" title="2.5.2 语法"></a>2.5.2 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">注意到click方法中是一个函数而不是一个变量</span><br><span class="line"><span class="comment">//它就是回调函数</span></span><br><span class="line">$(<span class="string">&quot;#btn_1&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">&quot;Btn 1 Clicked&quot;</span>);</span><br><span class="line">&#125;);  </span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">click</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 它就是回调函数</span></span><br><span class="line">    alert(<span class="string">&quot;Btn 1 Clicked&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="string">&quot;#btn_1&quot;</span>).click(click);  </span><br></pre></td></tr></table></figure>
+<h1 id="三、JS对象"><a href="#三、JS对象" class="headerlink" title="三、JS对象"></a>三、JS对象</h1><h2 id="3-1-对象的分类"><a href="#3-1-对象的分类" class="headerlink" title="3.1 对象的分类"></a>3.1 对象的分类</h2><ul>
+<li>内建对象</li>
+<li>宿主对象</li>
+<li>自定义对象</li>
+</ul>
+<h2 id="3-2-对象的定义"><a href="#3-2-对象的定义" class="headerlink" title="3.2 对象的定义"></a>3.2 对象的定义</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">变量名.属性名 = 值</span><br><span class="line">变量名.函数名 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">this</span>关键字可以在函数体中使用</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">var</span> 对象名 = &#123;</span><br><span class="line">        属性名:值,</span><br><span class="line">        属性名:值,</span><br><span class="line">        函数名:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-this关键字"><a href="#3-3-this关键字" class="headerlink" title="3.3 this关键字"></a>3.3 this关键字</h2><ol>
+<li>当以函数的形式调用时，this是window</li>
+<li>当以方法的形式调用时，谁调用方法，this就是谁</li>
+<li>当以构造函数的形式调用时，this就是新创建的那个对象</li>
+</ol>
+<h2 id="3-4-构造函数"><a href="#3-4-构造函数" class="headerlink" title="3.4 构造函数"></a>3.4 构造函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,gender</span>)</span>&#123;</span><br><span class="line">    alert(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.name = name;    <span class="comment">//添加属性name</span></span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">    <span class="built_in">this</span>.gender = gender;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-1-执行流程"><a href="#3-4-1-执行流程" class="headerlink" title="3.4.1 执行流程"></a>3.4.1 执行流程</h3><ol>
+<li>立刻创建一个新的对象</li>
+<li>将新建的对象设置为函数中的this，在构造函数中可以使用this来引用新建的对象</li>
+<li>执行函数中的代码</li>
+<li>将新建的对象作为返回值返回</li>
+</ol>
+<h2 id="3-5-原型对象"><a href="#3-5-原型对象" class="headerlink" title="3.5 原型对象"></a>3.5 原型对象</h2><img src="/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/prototype.png" class="" title="image">
+<ul>
+<li>JS中万物皆对象</li>
+<li>每个对象都具有<strong>proto</strong>，用于指向其构造函数的原型，这也保证了实例能够访问在构造函数原型中定义的属性和方法</li>
+<li>方法是一个特殊的对象（可以把方法的声明当作构造函数），它同时具有<strong>proto</strong>指针，以及属性prototype</li>
+</ul>
+<h1 id="四、Dom操作"><a href="#四、Dom操作" class="headerlink" title="四、Dom操作"></a>四、Dom操作</h1><h2 id="4-1-操作元素节点"><a href="#4-1-操作元素节点" class="headerlink" title="4.1 操作元素节点"></a>4.1 操作元素节点</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">getElementById()</td>
+<td style="text-align:center">通过id属性获取一个元素节点对象</td>
+</tr>
+<tr>
+<td style="text-align:center">getElementsByTagName()</td>
+<td style="text-align:center">通过标签名获取一组元素节点对象</td>
+</tr>
+<tr>
+<td style="text-align:center">getElementsByName()</td>
+<td style="text-align:center">通过name属性获取一组元素节点对象</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>获取到元素对象/对象数组后，这些对象包含以下属性<ul>
+<li>对象名.innerHtml</li>
+<li>对象名.id</li>
+<li>对象名.name</li>
+<li>对象名.value</li>
+<li>对象名.className</li>
+<li>对象名.时间名=function(){}</li>
+</ul>
+</li>
+</ul>
+<h1 id="五、JS事件"><a href="#五、JS事件" class="headerlink" title="五、JS事件"></a>五、JS事件</h1><h2 id="5-1-事件的概念"><a href="#5-1-事件的概念" class="headerlink" title="5.1 事件的概念"></a>5.1 事件的概念</h2><ul>
+<li>电脑输入设备与页面进行交互的响应</li>
+</ul>
+<h2 id="5-2-常用的事件"><a href="#5-2-常用的事件" class="headerlink" title="5.2 常用的事件"></a>5.2 常用的事件</h2><ul>
+<li>onload：加载完成事件，页面加载完成之后，常用于做页面js代码初始化操作</li>
+<li>onclick：单击事件，常用于按钮点击的响应操作</li>
+<li>onblur：失去焦点事件，常用于输入框失去焦点后验证其输入内容是否合法</li>
+<li>onchange：内容发生改变事件，常用于下拉列表和输入框内容发生改变后操作</li>
+<li>onsubmit：表单提交事件，常用于表单提交前，验证所有表单是否合法</li>
+</ul>
+<h2 id="5-3-事件的注册"><a href="#5-3-事件的注册" class="headerlink" title="5.3 事件的注册"></a>5.3 事件的注册</h2><h3 id="5-3-1-静态注册"><a href="#5-3-1-静态注册" class="headerlink" title="5.3.1 静态注册"></a>5.3.1 静态注册</h3><ul>
+<li>通过html标签的事件属性直接赋予事件响应后的代码</li>
+</ul>
+<h3 id="5-3-2-动态注册"><a href="#5-3-2-动态注册" class="headerlink" title="5.3.2 动态注册"></a>5.3.2 动态注册</h3><ul>
+<li>是指先通过js代码得到标签的dom对象，然后再通过：dom对象.事件名=function(){}这种形式赋予事件响应后的代码</li>
+</ul>
+<h3 id="5-3-3-步骤"><a href="#5-3-3-步骤" class="headerlink" title="5.3.3 步骤"></a>5.3.3 步骤</h3><ol>
+<li>获取标签对象</li>
+<li>标签对象.事件名=function(){}</li>
+</ol>
+<h2 id="5-4-事件对象event"><a href="#5-4-事件对象event" class="headerlink" title="5.4 事件对象event"></a>5.4 事件对象event</h2><ul>
+<li>在给元素绑定事件时，写上函数参数event</li>
+<li>使用此event可以在触发事件时达到某些效果</li>
+<li>为兼容IE8，函数体中可以写上此语句：event = event||window.event;</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">box1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;     <span class="comment">//参数名一般写做event或e</span></span><br><span class="line">    <span class="keyword">if</span>(event.target.className == <span class="string">&quot;link&quot;</span>)&#123;   <span class="comment">//判断子元素中是否有a链接元素</span></span><br><span class="line">        alert(<span class="string">&quot;我是box1的单击事件&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-5-事件的冒泡"><a href="#5-5-事件的冒泡" class="headerlink" title="5.5 事件的冒泡"></a>5.5 事件的冒泡</h2><ul>
+<li>给覆盖在父元素上的子元素都绑定上事件，点击子元素时，会先触发子元素的事件，然后再触发父元素的事件</li>
+<li>event.cancelBubble = true;可以用来取消父元素的冒泡</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">box1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//回调函数，无需自己调用</span></span><br><span class="line">    alert(<span class="string">&quot;我是div的单击响应函数&quot;</span>);</span><br><span class="line">    event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-6-事件的委派"><a href="#5-6-事件的委派" class="headerlink" title="5.6 事件的委派"></a>5.6 事件的委派</h2><ul>
+<li>给各子元素共同的祖先元素绑定事件，这样后代元素上的事件触发时，则会统一触发祖先绑定的事件</li>
+<li>这样做无需一个个给子元素单独绑定事件，比较方便</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsById(<span class="string">&quot;ul&quot;</span>);</span></span><br><span class="line"><span class="javascript">    ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(<span class="string">&quot;我是ul的单击事件&quot;</span>)</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">    </span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;ul&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2021/07/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">0、设计模式基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-10 15:11:35" itemprop="dateCreated datePublished" datetime="2021-07-10T15:11:35+08:00">2021-07-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-22 22:52:13" itemprop="dateModified" datetime="2022-02-22T22:52:13+08:00">2022-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">Java设计模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="设计模式基础"><a href="#设计模式基础" class="headerlink" title="设计模式基础"></a>设计模式基础</h1><h2 id="一、GoF的23种设计模式及其功能"><a href="#一、GoF的23种设计模式及其功能" class="headerlink" title="一、GoF的23种设计模式及其功能"></a>一、GoF的23种设计模式及其功能</h2><ol>
+<li>单例（ Singleton ）模式 某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。</li>
+<li>原型（Prototype）模式：将一个对象作为原型，通过对其进行复制而克隆出多个和原型类似的新实例</li>
+<li>工厂方法（Factory Method）模式：定义一个用于创建产品的接口，由子类决定生存什么产品</li>
+<li>抽象工厂（Abstract Factory）模式：提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品</li>
+<li>建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们</li>
+<li>代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性</li>
+<li>适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能在一起工作的那些类能一起工作</li>
+<li>桥街（Bridge）模式：将抽象与实现分离，使它们可以独立变化，它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
+<li>装饰（Decorator）模式：：动态的给对象增加一些职责，即增加其额外的功能</li>
+<li>外观（ Facade ）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问</li>
+<li>享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用</li>
+<li>组合（ Composite ）模式：将对象组合成树状层次结构，使用户对单个对象和组合对象具有一致的访问性</li>
+<li>模板方法（ Templat Method ）模式：定义一个操作中的算法骨架 ，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤</li>
+<li>策略（ Strategy ）模式：定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的改变不会影响使用算法的客户</li>
+<li>命令（ Command ）模式：将一个请求封装为一个对象 ，使发出请求的责任和执行请求的责任分割开</li>
+<li>职责链 （Chain of Responsibility ）模式：把请求从链中的一个对象传到下一个对象 ，直到请求被响应为止。通过这种方式去除对象之间的耦合</li>
+<li>状态（ State ）模式：允许一个对象在其内部状态发生改变时改变其行为能力</li>
+<li>观察者（ Observer 模式：多个对象间存在－对多关系，当一个对象发生改变时，把这种改变通知给其他多个对象，从而影响其他对象的行为</li>
+<li>中介者（ Mediator ）模式：定义一个中介对象来简化原有对象之间的交互关系，降低系统中对象间的耦合度，使原有对象之间不必相互了解</li>
+<li>迭代器 Iterator ）模式 提供一种方法来顺序访问聚合对象中的一系列数据 ，而不暴露聚合对象的内部表示</li>
+<li>访问者（Visitor）模式：在不改变集合元素的前提下，为一个集合种的每个元素提供多种访问方式，即每个元素有多个访问者对象访问</li>
+<li>备忘录（Memento）模式：在不破坏封装性的前提下，获取并保存一个对象的内部状态以便以后恢复它</li>
+<li>解释器（Interpreter）模式：提供如何定义语言的文法，以及对语言句子的解释方法，即解释器</li>
+</ol>
+<h2 id="二、面向对象的设计原则"><a href="#二、面向对象的设计原则" class="headerlink" title="二、面向对象的设计原则"></a>二、面向对象的设计原则</h2><h3 id="2-1-开闭原则OCP"><a href="#2-1-开闭原则OCP" class="headerlink" title="2.1 开闭原则OCP"></a>2.1 开闭原则OCP</h3><ul>
+<li>对扩展开放、对修改关闭</li>
+<li>通过“抽象约束、封装变化”来实现开闭原则</li>
+<li>抽象层设计的合理，可以基本保持软件架构的稳定</li>
+<li>当软件需求发生变化时，只需要根据需求派生一个实现类来扩展就可以了</li>
+</ul>
+<h3 id="2-2-里氏替换原则LSP"><a href="#2-2-里氏替换原则LSP" class="headerlink" title="2.2 里氏替换原则LSP"></a>2.2 里氏替换原则LSP</h3><ul>
+<li>子类可以扩展父类的功能，但不能改变父类原有的功能</li>
+<li>简单来说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法</li>
+<li>作用：实现开闭原则的重要方式之一、提高父类可复用性、降低类的扩展出错的可能性</li>
+<li>如果出现因重写父类方法而导致出错的情况，应该设计个更一般的类，重新组织类的继承关系</li>
+</ul>
+<h3 id="2-3-依赖倒置原则DIP"><a href="#2-3-依赖倒置原则DIP" class="headerlink" title="2.3 依赖倒置原则DIP"></a>2.3 依赖倒置原则DIP</h3><ul>
+<li>要面向接口编程，不要面向实现编程</li>
+<li>抽象层相对稳定，实现类较为多变</li>
+<li>接口/抽象类的目的是制定好规范和契约，不去涉及任何具体的操作</li>
+<li>具体细节的任务交给实现类完成</li>
+<li>作用：降低了类间的耦合性、提高系统的稳定性、提高代码可读性和可维护性</li>
+</ul>
+<h4 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h4><ol>
+<li>每个类尽量提供接口或抽象类，或者两者都具备</li>
+<li>变量的声明类型尽量是接口或者是抽象类</li>
+<li>任何类都不应该从具体类派生</li>
+<li>使用继承时尽量遵循里氏替换原则</li>
+</ol>
+<h3 id="2-4-单一职责原则SRP"><a href="#2-4-单一职责原则SRP" class="headerlink" title="2.4 单一职责原则SRP"></a>2.4 单一职责原则SRP</h3><ul>
+<li>一个类应该有且仅有一个引起它变化的原因，否则应该被拆分</li>
+<li>承担太多职责的缺点：削弱类实现其他职责的能力、冗余代码</li>
+<li>作用：降低类的复杂度、提高类的可读性、提高系统可维护性、变更引起的风险降低</li>
+<li>实现方法：分析、设计、重构</li>
+<li>同样适用于方法，方法应尽可能做好一件事情</li>
+</ul>
+<h3 id="2-5-接口隔离原则ISP"><a href="#2-5-接口隔离原则ISP" class="headerlink" title="2.5 接口隔离原则ISP"></a>2.5 接口隔离原则ISP</h3><ul>
+<li>程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法</li>
+<li>要为类建立它们需要的专用接口，而不要视图去建立一个很庞大的接口供所有依赖它的类去调用</li>
+<li>作用：提高系统灵活性和可维护性、降低系统耦合性、提高系统内聚性、接口粒度大小要定义合理（太大太小都不好）、减少代码冗余、能够体现对象的层次<br>实现方法：一个接口只服务于一个子模块或业务逻辑、为依赖接口的类定制服务、深入了解环境/业务逻辑、使接口用最少的方法实现最多的事情</li>
+</ul>
+<h3 id="2-6-迪米特法则LKP"><a href="#2-6-迪米特法则LKP" class="headerlink" title="2.6 迪米特法则LKP"></a>2.6 迪米特法则LKP</h3><ul>
+<li>如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用</li>
+<li>作用：降低类间耦合度、提高模块相对独立性、提高类的可复用性和系统的扩展性</li>
+<li>过渡使用LKP会使系统产生大量的中介类，从而增加系统的复杂性，所以使用时要权衡好</li>
+<li>实现方法：依赖者应该依赖应该依赖的对象、被依赖者只暴露应该暴露的方法</li>
+<li>注意：应创建弱耦合的类、降低类成员的访问权限、优先考虑设计不变类、降低引用次数、不暴露属性成员（提供get和set）、进行使用序列化</li>
+</ul>
+<h3 id="2-7-合成复用原则CRP"><a href="#2-7-合成复用原则CRP" class="headerlink" title="2.7 合成复用原则CRP"></a>2.7 合成复用原则CRP</h3><ul>
+<li>又称组合/聚合复用原则（CARP）</li>
+<li>它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现</li>
+<li>如果要使用继承关系，则必须严格遵循里氏代换原则</li>
+<li>合成复用原则和里氏代换原则都是开闭原则的具体实现规范</li>
+<li>类的复用包括：继承复用、合成复用</li>
+</ul>
+<h4 id="继承复用"><a href="#继承复用" class="headerlink" title="继承复用"></a>继承复用</h4><ul>
+<li>破坏了类的封装性，父类暴露给子类</li>
+<li>子类与父类耦合度高</li>
+<li>限制了复用的灵活性，父类继承而来的实现是静态的，在编译时已经定义、所以在运行时不可能发生变化</li>
+</ul>
+<h4 id="合成复用"><a href="#合成复用" class="headerlink" title="合成复用"></a>合成复用</h4><ul>
+<li>维持了类的封装性</li>
+<li>新旧类之间的耦合度低</li>
+<li>复用的灵活性高，可以在运行时动态进行，新对象可以动态地引用与成分对象类型相同的对象</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2021/07/09/%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -862,20 +1244,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
