@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cnovelist.github.io/2022/03/12/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B02-%E5%88%98%E7%9F%A5%E8%BF%9C-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/realinternal.png">
 <meta property="article:published_time" content="2022-03-12T06:03:00.000Z">
-<meta property="article:modified_time" content="2022-03-12T14:13:30.963Z">
+<meta property="article:modified_time" content="2022-03-15T15:11:49.367Z">
 <meta property="article:author" content="故事开头">
 <meta property="article:tag" content="论文阅读">
 <meta property="article:tag" content="知识表示学习">
@@ -194,21 +194,27 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-12 14:03:00 / 修改时间：22:13:30" itemprop="dateCreated datePublished" datetime="2022-03-12T14:03:00+08:00">2022-03-12</time>
+              <time title="创建时间：2022-03-12 14:03:00" itemprop="dateCreated datePublished" datetime="2022-03-12T14:03:00+08:00">2022-03-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-15 23:11:49" itemprop="dateModified" datetime="2022-03-15T23:11:49+08:00">2022-03-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/%E7%BB%BC%E8%BF%B0/" itemprop="url" rel="index"><span itemprop="name">综述</span></a>
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
                 </span>
             </span>
 
@@ -275,7 +281,37 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-2-距离模型"><a href="#2-2-距离模型" class="headerlink" title="2.2 距离模型"></a>2.2 距离模型</h2><h2 id="2-3-单层神经网络模型"><a href="#2-3-单层神经网络模型" class="headerlink" title="2.3 单层神经网络模型"></a>2.3 单层神经网络模型</h2><h2 id="2-4-能量模型"><a href="#2-4-能量模型" class="headerlink" title="2.4 能量模型"></a>2.4 能量模型</h2><h2 id="2-5-双线性模型"><a href="#2-5-双线性模型" class="headerlink" title="2.5 双线性模型"></a>2.5 双线性模型</h2><h2 id="2-6-张量神经网络模型"><a href="#2-6-张量神经网络模型" class="headerlink" title="2.6 张量神经网络模型"></a>2.6 张量神经网络模型</h2><h2 id="2-7-矩阵分解模型"><a href="#2-7-矩阵分解模型" class="headerlink" title="2.7 矩阵分解模型"></a>2.7 矩阵分解模型</h2><h2 id="2-8-翻译模型"><a href="#2-8-翻译模型" class="headerlink" title="2.8 翻译模型"></a>2.8 翻译模型</h2>
+<h2 id="2-2-距离模型"><a href="#2-2-距离模型" class="headerlink" title="2.2 距离模型"></a>2.2 距离模型</h2><ul>
+<li>结构表示（structured embedding，SE）</li>
+<li>每个实体用$d$维向量表示</li>
+<li>SE为每个关系设定投影矩阵$M_{r,1},M_{r,2}\in R^{d \times d}$，</li>
+<li>SE为三元组$(h,r,t)$定义了损失函数：<ul>
+<li>$f_r(h,t)=|M_{r,1}l_h-M_{r,2}l_t|_{L_1}$</li>
+<li>其中头实体向量$l_h$和尾实体向量$l_t$通过关系$r$的两个矩阵投影到$r$对应的空间中</li>
+<li>这个距离反应了两个实体的在关系$r$下的语义相似度，距离越小说明两个实体存在这种关系</li>
+</ul>
+</li>
+<li>SE学习计算<ul>
+<li>$argmin_r|M_{r,1}l_h-M_{r,2}l_t|_{L_1}$</li>
+<li>找到两个实体距离最近的关系矩阵，就是它们之间的关系</li>
+</ul>
+</li>
+<li>缺点：需要两个不同的投影矩阵，协同性差，不精准</li>
+</ul>
+<h2 id="2-3-单层神经网络模型"><a href="#2-3-单层神经网络模型" class="headerlink" title="2.3 单层神经网络模型"></a>2.3 单层神经网络模型</h2><ul>
+<li>单层神经网络模型（single layer model，SLM）,引入非线性性，解决SE的缺陷</li>
+<li>SLM为三元组$(h,r,t)$定义的评分函数<ul>
+<li>$f_r(h,t)=u_r^Tg(M_{r,1}l_h-M_{r,2}l_t)$</li>
+<li>$M_{r,1},M_{r,2}\in R^{d \times k}$为投影矩阵</li>
+<li>$u_r^T\in R^{k}$为关系$r$的表示向量，$g()$是tanh函数</li>
+</ul>
+</li>
+<li>缺点：对SE的缺陷改善效果一般，计算复杂度高</li>
+</ul>
+<h2 id="2-4-能量模型"><a href="#2-4-能量模型" class="headerlink" title="2.4 能量模型"></a>2.4 能量模型</h2><ul>
+<li>语义匹配能量模型（semantic matching energy，SME）</li>
+</ul>
+<h2 id="2-5-双线性模型"><a href="#2-5-双线性模型" class="headerlink" title="2.5 双线性模型"></a>2.5 双线性模型</h2><h2 id="2-6-张量神经网络模型"><a href="#2-6-张量神经网络模型" class="headerlink" title="2.6 张量神经网络模型"></a>2.6 张量神经网络模型</h2><h2 id="2-7-矩阵分解模型"><a href="#2-7-矩阵分解模型" class="headerlink" title="2.7 矩阵分解模型"></a>2.7 矩阵分解模型</h2><h2 id="2-8-翻译模型"><a href="#2-8-翻译模型" class="headerlink" title="2.8 翻译模型"></a>2.8 翻译模型</h2><h1 id="三、现有挑战与解决方案"><a href="#三、现有挑战与解决方案" class="headerlink" title="三、现有挑战与解决方案"></a>三、现有挑战与解决方案</h1><h2 id="3-1-复杂关系建模"><a href="#3-1-复杂关系建模" class="headerlink" title="3.1 复杂关系建模"></a>3.1 复杂关系建模</h2><h3 id="3-1-1-TransH模型"><a href="#3-1-1-TransH模型" class="headerlink" title="3.1.1 TransH模型"></a>3.1.1 TransH模型</h3><h3 id="3-1-2-TransR-CTransR模型"><a href="#3-1-2-TransR-CTransR模型" class="headerlink" title="3.1.2 TransR/CTransR模型"></a>3.1.2 TransR/CTransR模型</h3><h3 id="3-1-3-TransD模型"><a href="#3-1-3-TransD模型" class="headerlink" title="3.1.3 TransD模型"></a>3.1.3 TransD模型</h3><h3 id="3-1-4-TranSparse模型"><a href="#3-1-4-TranSparse模型" class="headerlink" title="3.1.4 TranSparse模型"></a>3.1.4 TranSparse模型</h3><h3 id="3-1-5-TransA模型"><a href="#3-1-5-TransA模型" class="headerlink" title="3.1.5 TransA模型"></a>3.1.5 TransA模型</h3><h3 id="3-1-6-TransG模型"><a href="#3-1-6-TransG模型" class="headerlink" title="3.1.6 TransG模型"></a>3.1.6 TransG模型</h3><h2 id="3-2-多源信息融合"><a href="#3-2-多源信息融合" class="headerlink" title="3.2 多源信息融合"></a>3.2 多源信息融合</h2><h3 id="3-2-1-DKRL模型"><a href="#3-2-1-DKRL模型" class="headerlink" title="3.2.1 DKRL模型"></a>3.2.1 DKRL模型</h3><h3 id="3-2-2-关系路径建模"><a href="#3-2-2-关系路径建模" class="headerlink" title="3.2.2 关系路径建模"></a>3.2.2 关系路径建模</h3><h1 id="四、研究方向"><a href="#四、研究方向" class="headerlink" title="四、研究方向"></a>四、研究方向</h1><h2 id="4-1-面向不同知识类型的知识表示学习"><a href="#4-1-面向不同知识类型的知识表示学习" class="headerlink" title="4.1 面向不同知识类型的知识表示学习"></a>4.1 面向不同知识类型的知识表示学习</h2><h2 id="4-2-多源信息融合的知识表示学习"><a href="#4-2-多源信息融合的知识表示学习" class="headerlink" title="4.2 多源信息融合的知识表示学习"></a>4.2 多源信息融合的知识表示学习</h2><h2 id="4-3-考虑复杂推理模式的知识表示学习"><a href="#4-3-考虑复杂推理模式的知识表示学习" class="headerlink" title="4.3 考虑复杂推理模式的知识表示学习"></a>4.3 考虑复杂推理模式的知识表示学习</h2><h2 id="4-4-其他"><a href="#4-4-其他" class="headerlink" title="4.4 其他"></a>4.4 其他</h2><h3 id="4-4-1-面向大规模知识库的在线学习和快速学习"><a href="#4-4-1-面向大规模知识库的在线学习和快速学习" class="headerlink" title="4.4.1 面向大规模知识库的在线学习和快速学习"></a>4.4.1 面向大规模知识库的在线学习和快速学习</h3><h3 id="4-4-2-基于知识分布式表示的应用"><a href="#4-4-2-基于知识分布式表示的应用" class="headerlink" title="4.4.2 基于知识分布式表示的应用"></a>4.4.2 基于知识分布式表示的应用</h3>
     </div>
 
     
@@ -376,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B"><span class="nav-text">一、知识表示学习简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1.1 表示学习基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-text">1.2 表示学习的理论基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="nav-text">1.3 知识表示学习的典型应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-text">1.4 知识表示学习的优点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95"><span class="nav-text">二、知识表示学习的主要方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA"><span class="nav-text">2.1 符号表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E8%B7%9D%E7%A6%BB%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.2 距离模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%8D%95%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.3 单层神经网络模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E8%83%BD%E9%87%8F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.4 能量模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%8F%8C%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.5 双线性模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E5%BC%A0%E9%87%8F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.6 张量神经网络模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.7 矩阵分解模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-%E7%BF%BB%E8%AF%91%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.8 翻译模型</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%AE%80%E4%BB%8B"><span class="nav-text">一、知识表示学习简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1.1 表示学习基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="nav-text">1.2 表示学习的理论基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="nav-text">1.3 知识表示学习的典型应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-text">1.4 知识表示学习的优点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95"><span class="nav-text">二、知识表示学习的主要方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA"><span class="nav-text">2.1 符号表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E8%B7%9D%E7%A6%BB%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.2 距离模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%8D%95%E5%B1%82%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.3 单层神经网络模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E8%83%BD%E9%87%8F%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.4 能量模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%8F%8C%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.5 双线性模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E5%BC%A0%E9%87%8F%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.6 张量神经网络模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.7 矩阵分解模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-%E7%BF%BB%E8%AF%91%E6%A8%A1%E5%9E%8B"><span class="nav-text">2.8 翻译模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%8E%B0%E6%9C%89%E6%8C%91%E6%88%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">三、现有挑战与解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%A4%8D%E6%9D%82%E5%85%B3%E7%B3%BB%E5%BB%BA%E6%A8%A1"><span class="nav-text">3.1 复杂关系建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-TransH%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.1.1 TransH模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-TransR-CTransR%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.1.2 TransR&#x2F;CTransR模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-3-TransD%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.1.3 TransD模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-4-TranSparse%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.1.4 TranSparse模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-5-TransA%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.1.5 TransA模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-6-TransG%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.1.6 TransG模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%A4%9A%E6%BA%90%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88"><span class="nav-text">3.2 多源信息融合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-DKRL%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.2.1 DKRL模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-%E5%85%B3%E7%B3%BB%E8%B7%AF%E5%BE%84%E5%BB%BA%E6%A8%A1"><span class="nav-text">3.2.2 关系路径建模</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="nav-text">四、研究方向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E9%9D%A2%E5%90%91%E4%B8%8D%E5%90%8C%E7%9F%A5%E8%AF%86%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0"><span class="nav-text">4.1 面向不同知识类型的知识表示学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E5%A4%9A%E6%BA%90%E4%BF%A1%E6%81%AF%E8%9E%8D%E5%90%88%E7%9A%84%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0"><span class="nav-text">4.2 多源信息融合的知识表示学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E8%80%83%E8%99%91%E5%A4%8D%E6%9D%82%E6%8E%A8%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0"><span class="nav-text">4.3 考虑复杂推理模式的知识表示学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E5%85%B6%E4%BB%96"><span class="nav-text">4.4 其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-1-%E9%9D%A2%E5%90%91%E5%A4%A7%E8%A7%84%E6%A8%A1%E7%9F%A5%E8%AF%86%E5%BA%93%E7%9A%84%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%B9%A0"><span class="nav-text">4.4.1 面向大规模知识库的在线学习和快速学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-2-%E5%9F%BA%E4%BA%8E%E7%9F%A5%E8%AF%86%E5%88%86%E5%B8%83%E5%BC%8F%E8%A1%A8%E7%A4%BA%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">4.4.2 基于知识分布式表示的应用</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -392,7 +428,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -405,7 +441,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

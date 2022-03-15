@@ -1082,8 +1082,8 @@
 </ul>
 ]]></content>
       <categories>
+        <category>知识图谱</category>
         <category>文献阅读</category>
-        <category>综述</category>
       </categories>
       <tags>
         <tag>论文阅读</tag>
@@ -2707,10 +2707,40 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-2-距离模型"><a href="#2-2-距离模型" class="headerlink" title="2.2 距离模型"></a>2.2 距离模型</h2><h2 id="2-3-单层神经网络模型"><a href="#2-3-单层神经网络模型" class="headerlink" title="2.3 单层神经网络模型"></a>2.3 单层神经网络模型</h2><h2 id="2-4-能量模型"><a href="#2-4-能量模型" class="headerlink" title="2.4 能量模型"></a>2.4 能量模型</h2><h2 id="2-5-双线性模型"><a href="#2-5-双线性模型" class="headerlink" title="2.5 双线性模型"></a>2.5 双线性模型</h2><h2 id="2-6-张量神经网络模型"><a href="#2-6-张量神经网络模型" class="headerlink" title="2.6 张量神经网络模型"></a>2.6 张量神经网络模型</h2><h2 id="2-7-矩阵分解模型"><a href="#2-7-矩阵分解模型" class="headerlink" title="2.7 矩阵分解模型"></a>2.7 矩阵分解模型</h2><h2 id="2-8-翻译模型"><a href="#2-8-翻译模型" class="headerlink" title="2.8 翻译模型"></a>2.8 翻译模型</h2>]]></content>
+<h2 id="2-2-距离模型"><a href="#2-2-距离模型" class="headerlink" title="2.2 距离模型"></a>2.2 距离模型</h2><ul>
+<li>结构表示（structured embedding，SE）</li>
+<li>每个实体用$d$维向量表示</li>
+<li>SE为每个关系设定投影矩阵$M_{r,1},M_{r,2}\in R^{d \times d}$，</li>
+<li>SE为三元组$(h,r,t)$定义了损失函数：<ul>
+<li>$f_r(h,t)=|M_{r,1}l_h-M_{r,2}l_t|_{L_1}$</li>
+<li>其中头实体向量$l_h$和尾实体向量$l_t$通过关系$r$的两个矩阵投影到$r$对应的空间中</li>
+<li>这个距离反应了两个实体的在关系$r$下的语义相似度，距离越小说明两个实体存在这种关系</li>
+</ul>
+</li>
+<li>SE学习计算<ul>
+<li>$argmin_r|M_{r,1}l_h-M_{r,2}l_t|_{L_1}$</li>
+<li>找到两个实体距离最近的关系矩阵，就是它们之间的关系</li>
+</ul>
+</li>
+<li>缺点：需要两个不同的投影矩阵，协同性差，不精准</li>
+</ul>
+<h2 id="2-3-单层神经网络模型"><a href="#2-3-单层神经网络模型" class="headerlink" title="2.3 单层神经网络模型"></a>2.3 单层神经网络模型</h2><ul>
+<li>单层神经网络模型（single layer model，SLM）,引入非线性性，解决SE的缺陷</li>
+<li>SLM为三元组$(h,r,t)$定义的评分函数<ul>
+<li>$f_r(h,t)=u_r^Tg(M_{r,1}l_h-M_{r,2}l_t)$</li>
+<li>$M_{r,1},M_{r,2}\in R^{d \times k}$为投影矩阵</li>
+<li>$u_r^T\in R^{k}$为关系$r$的表示向量，$g()$是tanh函数</li>
+</ul>
+</li>
+<li>缺点：对SE的缺陷改善效果一般，计算复杂度高</li>
+</ul>
+<h2 id="2-4-能量模型"><a href="#2-4-能量模型" class="headerlink" title="2.4 能量模型"></a>2.4 能量模型</h2><ul>
+<li>语义匹配能量模型（semantic matching energy，SME）</li>
+</ul>
+<h2 id="2-5-双线性模型"><a href="#2-5-双线性模型" class="headerlink" title="2.5 双线性模型"></a>2.5 双线性模型</h2><h2 id="2-6-张量神经网络模型"><a href="#2-6-张量神经网络模型" class="headerlink" title="2.6 张量神经网络模型"></a>2.6 张量神经网络模型</h2><h2 id="2-7-矩阵分解模型"><a href="#2-7-矩阵分解模型" class="headerlink" title="2.7 矩阵分解模型"></a>2.7 矩阵分解模型</h2><h2 id="2-8-翻译模型"><a href="#2-8-翻译模型" class="headerlink" title="2.8 翻译模型"></a>2.8 翻译模型</h2><h1 id="三、现有挑战与解决方案"><a href="#三、现有挑战与解决方案" class="headerlink" title="三、现有挑战与解决方案"></a>三、现有挑战与解决方案</h1><h2 id="3-1-复杂关系建模"><a href="#3-1-复杂关系建模" class="headerlink" title="3.1 复杂关系建模"></a>3.1 复杂关系建模</h2><h3 id="3-1-1-TransH模型"><a href="#3-1-1-TransH模型" class="headerlink" title="3.1.1 TransH模型"></a>3.1.1 TransH模型</h3><h3 id="3-1-2-TransR-CTransR模型"><a href="#3-1-2-TransR-CTransR模型" class="headerlink" title="3.1.2 TransR/CTransR模型"></a>3.1.2 TransR/CTransR模型</h3><h3 id="3-1-3-TransD模型"><a href="#3-1-3-TransD模型" class="headerlink" title="3.1.3 TransD模型"></a>3.1.3 TransD模型</h3><h3 id="3-1-4-TranSparse模型"><a href="#3-1-4-TranSparse模型" class="headerlink" title="3.1.4 TranSparse模型"></a>3.1.4 TranSparse模型</h3><h3 id="3-1-5-TransA模型"><a href="#3-1-5-TransA模型" class="headerlink" title="3.1.5 TransA模型"></a>3.1.5 TransA模型</h3><h3 id="3-1-6-TransG模型"><a href="#3-1-6-TransG模型" class="headerlink" title="3.1.6 TransG模型"></a>3.1.6 TransG模型</h3><h2 id="3-2-多源信息融合"><a href="#3-2-多源信息融合" class="headerlink" title="3.2 多源信息融合"></a>3.2 多源信息融合</h2><h3 id="3-2-1-DKRL模型"><a href="#3-2-1-DKRL模型" class="headerlink" title="3.2.1 DKRL模型"></a>3.2.1 DKRL模型</h3><h3 id="3-2-2-关系路径建模"><a href="#3-2-2-关系路径建模" class="headerlink" title="3.2.2 关系路径建模"></a>3.2.2 关系路径建模</h3><h1 id="四、研究方向"><a href="#四、研究方向" class="headerlink" title="四、研究方向"></a>四、研究方向</h1><h2 id="4-1-面向不同知识类型的知识表示学习"><a href="#4-1-面向不同知识类型的知识表示学习" class="headerlink" title="4.1 面向不同知识类型的知识表示学习"></a>4.1 面向不同知识类型的知识表示学习</h2><h2 id="4-2-多源信息融合的知识表示学习"><a href="#4-2-多源信息融合的知识表示学习" class="headerlink" title="4.2 多源信息融合的知识表示学习"></a>4.2 多源信息融合的知识表示学习</h2><h2 id="4-3-考虑复杂推理模式的知识表示学习"><a href="#4-3-考虑复杂推理模式的知识表示学习" class="headerlink" title="4.3 考虑复杂推理模式的知识表示学习"></a>4.3 考虑复杂推理模式的知识表示学习</h2><h2 id="4-4-其他"><a href="#4-4-其他" class="headerlink" title="4.4 其他"></a>4.4 其他</h2><h3 id="4-4-1-面向大规模知识库的在线学习和快速学习"><a href="#4-4-1-面向大规模知识库的在线学习和快速学习" class="headerlink" title="4.4.1 面向大规模知识库的在线学习和快速学习"></a>4.4.1 面向大规模知识库的在线学习和快速学习</h3><h3 id="4-4-2-基于知识分布式表示的应用"><a href="#4-4-2-基于知识分布式表示的应用" class="headerlink" title="4.4.2 基于知识分布式表示的应用"></a>4.4.2 基于知识分布式表示的应用</h3>]]></content>
       <categories>
+        <category>知识图谱</category>
         <category>文献阅读</category>
-        <category>综述</category>
       </categories>
       <tags>
         <tag>论文阅读</tag>
@@ -2791,7 +2821,7 @@
 <li>持久化：将程序的数据在持久状态和瞬时状态转化的过程</li>
 <li>内存：断电即失</li>
 </ul>
-<h2 id="二、第一个案例"><a href="#二、第一个案例" class="headerlink" title="二、第一个案例"></a>二、第一个案例</h2><h2 id="2-1-导入依赖包与资源路径"><a href="#2-1-导入依赖包与资源路径" class="headerlink" title="2.1 导入依赖包与资源路径"></a>2.1 导入依赖包与资源路径</h2><h3 id="2-1-1-导入依赖包"><a href="#2-1-1-导入依赖包" class="headerlink" title="2.1.1 导入依赖包"></a>2.1.1 导入依赖包</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    mysql驱动    --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.27<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--    mybatis    --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--    junit    --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.13.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="二、第一个案例"><a href="#二、第一个案例" class="headerlink" title="二、第一个案例"></a>二、第一个案例</h1><h2 id="2-1-导入依赖包与资源路径"><a href="#2-1-导入依赖包与资源路径" class="headerlink" title="2.1 导入依赖包与资源路径"></a>2.1 导入依赖包与资源路径</h2><h3 id="2-1-1-导入依赖包"><a href="#2-1-1-导入依赖包" class="headerlink" title="2.1.1 导入依赖包"></a>2.1.1 导入依赖包</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--    mysql驱动    --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.27<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--    mybatis    --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--    junit    --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.13.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-1-2-配置maven资源路径"><a href="#2-1-2-配置maven资源路径" class="headerlink" title="2.1.2 配置maven资源路径"></a>2.1.2 配置maven资源路径</h3><ul>
 <li>在pom文件中添加以下内容，防止项目运行时，代码层的xml文件由于不在默认的resource资源目录中，导致访问失败而报错，父/子模块的pom都可以添加进去</li>
 </ul>
@@ -2821,6 +2851,32 @@
       <tags>
         <tag>后端</tag>
         <tag>SSM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文笔记3-杜泽宇-基于中文知识图谱的电商领域问答系统</title>
+    <url>/2022/03/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B03-%E6%9D%9C%E6%B3%BD%E5%AE%87-%E5%9F%BA%E4%BA%8E%E4%B8%AD%E6%96%87%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E7%94%B5%E5%95%86%E9%A2%86%E5%9F%9F%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<blockquote>
+<p>作者：杜泽宇 杨 燕 贺 樑</p>
+<p>期刊：计算机应用与软件</p>
+<p>发表实践：2017.5</p>
+</blockquote>
+<h1 id="一、引言"><a href="#一、引言" class="headerlink" title="一、引言"></a>一、引言</h1><ul>
+<li>基于知识图谱的问答系统的两个核心问题<ul>
+<li>前端语义理解</li>
+<li>后端知识图谱构建</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>知识图谱</category>
+        <category>文献阅读</category>
+      </categories>
+      <tags>
+        <tag>知识图谱应用</tag>
+        <tag>自动问答</tag>
+        <tag>领域知识图谱</tag>
       </tags>
   </entry>
 </search>
