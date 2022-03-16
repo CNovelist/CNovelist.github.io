@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-15 16:30:33" itemprop="dateModified" datetime="2022-03-15T16:30:33+08:00">2022-03-15</time>
+                <time title="修改时间：2022-03-16 22:02:50" itemprop="dateModified" datetime="2022-03-16T22:02:50+08:00">2022-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -549,7 +549,168 @@
 <h3 id="4-3-2-修改-删除操作"><a href="#4-3-2-修改-删除操作" class="headerlink" title="4.3.2 修改/删除操作"></a>4.3.2 修改/删除操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">&quot;update user set user_name=?,password=? where user_id=?&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        Object[] args = &#123;user.getUserName(),user.getPassword(),user.getUserId()&#125;</span><br><span class="line">        jdbcTemplate.update(sql,args);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">&quot;delete from user where user_id=?&quot;</span>;</span><br><span class="line"></span><br><span class="line">        jdbcTemplate.update(sql,id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="4-3-3-查询操作"><a href="#4-3-3-查询操作" class="headerlink" title="4.3.3 查询操作"></a>4.3.3 查询操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 查询用户数</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">selctCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">&quot;select count(*) from user&quot;</span>;</span><br><span class="line"></span><br><span class="line">        Integer count = jdbcTemplate.queryForObject(sql,Integer.class);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据id查询用户</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findUserInfo</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">&quot;select * from user where user_id=?&quot;</span>;</span><br><span class="line">		<span class="comment">// BeanPropertyRowMapper用于封装查询到的数据</span></span><br><span class="line">        User user = jdbcTemplate.queryForObject(sql,<span class="keyword">new</span> BeanPropertyRowMapper&lt;User&gt;(User.class),id);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 查询返回集合</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String sql = <span class="string">&quot;select * from user&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        List&lt;User&gt; users = jdbcTemplate.query(sql,<span class="keyword">new</span> BeanPropertyRowMapper&lt;User&gt;(User.class));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> users;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="4-3-4-批量操作"><a href="#4-3-4-批量操作" class="headerlink" title="4.3.4 批量操作"></a>4.3.4 批量操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 批量添加,List&lt;Object[]&gt;中的Object[]表示参数的集合</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] batchAdd(List&lt;Object[]&gt; barchArgs)&#123;</span><br><span class="line">        String sql = <span class="string">&quot;insert into user values(?,?,?)&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 返回的是影响的行数数组</span></span><br><span class="line">        <span class="keyword">int</span>[] res = jdbcTemplate.batchUpdate(sql,batchArgs);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 批量修改</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] batchUpdate(List&lt;Object[]&gt; barchArgs)&#123;</span><br><span class="line">        String sql = <span class="string">&quot;update user set user_name=?,password=? where user_id=?&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 返回的是影响的行数数组</span></span><br><span class="line">        <span class="keyword">int</span>[] res = jdbcTemplate.batchUpdate(sql,batchArgs);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 批量删除</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] batchDelete(List&lt;Object[]&gt; barchArgs)&#123;</span><br><span class="line">        String sql = <span class="string">&quot;delete from user where user_id=?&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 返回的是影响的行数数组</span></span><br><span class="line">        <span class="keyword">int</span>[] res = jdbcTemplate.batchUpdate(sql,batchArgs);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="五、事务管理"><a href="#五、事务管理" class="headerlink" title="五、事务管理"></a>五、事务管理</h1><h1 id="六、Spring5新特性"><a href="#六、Spring5新特性" class="headerlink" title="六、Spring5新特性"></a>六、Spring5新特性</h1>
+<h1 id="五、事务管理"><a href="#五、事务管理" class="headerlink" title="五、事务管理"></a>五、事务管理</h1><h2 id="5-1-概念"><a href="#5-1-概念" class="headerlink" title="5.1 概念"></a>5.1 概念</h2><ul>
+<li>一组操作的组合</li>
+<li>事务的一些问题请转到数据库笔记中进行学习</li>
+</ul>
+<h2 id="5-2-事务特性ACID"><a href="#5-2-事务特性ACID" class="headerlink" title="5.2 事务特性ACID"></a>5.2 事务特性ACID</h2><ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>隔离性</li>
+<li>持久性</li>
+</ul>
+<h2 id="5-3-准备工作"><a href="#5-3-准备工作" class="headerlink" title="5.3 准备工作"></a>5.3 准备工作</h2><ul>
+<li>以银行转账操作为例<ul>
+<li>创建数据库表，记录用户资金</li>
+<li>创建service、dao完成对象创建和注入</li>
+<li>创建jdbcTemplate对象</li>
+<li>dao创建两个方法，某用户资金增加，另外用户资金减少</li>
+<li>service创建转账方法，实现转账操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-4-事务操作"><a href="#5-4-事务操作" class="headerlink" title="5.4 事务操作"></a>5.4 事务操作</h2><h3 id="5-4-1-声明式事务管理"><a href="#5-4-1-声明式事务管理" class="headerlink" title="5.4 1 声明式事务管理"></a>5.4 1 声明式事务管理</h3><ul>
+<li>基于注解方式</li>
+<li>基于xml方式</li>
+</ul>
+<h3 id="5-4-2-Spring事务管理API"><a href="#5-4-2-Spring事务管理API" class="headerlink" title="5.4.2 Spring事务管理API"></a>5.4.2 Spring事务管理API</h3><ul>
+<li>Spring提供一个接口，代表事务管理器，这个接口针对不同框架提供不同的实现类</li>
+</ul>
+<h3 id="5-4-2-注解方式"><a href="#5-4-2-注解方式" class="headerlink" title="5.4.2 注解方式"></a>5.4.2 注解方式</h3><ul>
+<li>注入事务管理对象</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--由于使用的式jdbc框架，所以注入DataSourceTransactionManager对象--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;transactionManager&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.DataSourceTransactionManager&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--注入数据源--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>开启扫描</li>
+<li>xml引入名称空间tx，同前面的引入操作</li>
+<li>开启事务注解</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transacntion-manager</span>=<span class="string">&quot;transactionManager&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">tx:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在Service层添加事务注解@Transactional<ul>
+<li>@Transactional可以加到类上，也可以加到方法上</li>
+<li>加到类上，表示作用到类中的所有方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-4-3-注解的参数"><a href="#5-4-3-注解的参数" class="headerlink" title="5.4.3 注解的参数"></a>5.4.3 注解的参数</h3><h4 id="（1）propagation：事务传播行为"><a href="#（1）propagation：事务传播行为" class="headerlink" title="（1）propagation：事务传播行为"></a>（1）propagation：事务传播行为</h4><ul>
+<li>多事务方法直接进行调用，这个过程中事务是如何进行管理的，必须是对数据库中的数据产生变化的操作</li>
+<li>简单来说就是，就是添加了@Transaction事务管理的方法去调用未添加事务管理的方法，事务的操作过程是怎样的</li>
+</ul>
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/transactional.png" class="" title="image54">
+<ul>
+<li>下表均已上图为例，在事务管理方法中调用非事务管理方法，非事务管理方法运行的情况</li>
+<li>配置方法：@Transactional(propagation = Propagation.REQUIRED)</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>传播属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REQUIRED（default）</td>
+<td>有事务就在当前事务运行，没有事务就创建事务运行</td>
+</tr>
+<tr>
+<td>REQUIRED_NEW</td>
+<td>无论有没有事务，都会创建一个事务在里面运行</td>
+</tr>
+<tr>
+<td>SUPPORTS</td>
+<td>如果有事务在运行，当前的方法就在这个事务内运行，否则它可以不运行在事务中</td>
+</tr>
+<tr>
+<td>NOT_SUPPORT</td>
+<td>当前的方法不应该运行在事务中，如果有运行的事务，将它挂起</td>
+</tr>
+<tr>
+<td>MANDATORY</td>
+<td>当前的方法必须运行在事务内部，如果没有正在运行的事务，就抛出异常</td>
+</tr>
+<tr>
+<td>NEVER</td>
+<td>当前的方法不应该运行在事务中，如果有运行的事务，就抛出异常</td>
+</tr>
+<tr>
+<td>NESTED</td>
+<td>如果有事务在运行，当前的方法就应该在这个事务的嵌套事务内运行，否则，就启动一个新的事务，并在它自己的事务内运行</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="（2）ioslation：事务隔离级别"><a href="#（2）ioslation：事务隔离级别" class="headerlink" title="（2）ioslation：事务隔离级别"></a>（2）ioslation：事务隔离级别</h4><ul>
+<li>隔离性：多事务操作之间不会产生影响</li>
+<li>多事务带来的问题：<strong>脏读、不可重复读、虚读</strong><ul>
+<li>脏读：未提交的事务读取另一个未提交事务的数据</li>
+<li>不可重复读：两个事务同时读到一条数据，一个事务读到了另一个事务<strong>提交之前</strong>的数据（数据不一致了）</li>
+<li>虚读：一个未提交的事务读取到另一个提交事务的添加数据</li>
+</ul>
+</li>
+<li>配置方式：@Transactional(ioslation= Ioslation.READ_UNCOMMITTED)</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>虚读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>READ UNCOMMITTED（读未提交）</td>
+<td>有</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>READ COMMITTED（读已提交）</td>
+<td>无</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>REPEATABLE READ（可重复读/default）</td>
+<td>无</td>
+<td>无</td>
+<td>有</td>
+</tr>
+<tr>
+<td>SERIALIZABLE（串行化）</td>
+<td>无</td>
+<td>无</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="（3）timeout：超时时间"><a href="#（3）timeout：超时时间" class="headerlink" title="（3）timeout：超时时间"></a>（3）timeout：超时时间</h4><ul>
+<li>事务需要在一定时间内进行提交，如果不提交就进行回滚，默认是-1，单位是秒</li>
+</ul>
+<h4 id="（4）readOnly：是否只读"><a href="#（4）readOnly：是否只读" class="headerlink" title="（4）readOnly：是否只读"></a>（4）readOnly：是否只读</h4><ul>
+<li><p>读：查询操作，写：增删改</p>
+</li>
+<li><p>默认为false</p>
+</li>
+</ul>
+<h4 id="（5）rollbackFor：回滚"><a href="#（5）rollbackFor：回滚" class="headerlink" title="（5）rollbackFor：回滚"></a>（5）rollbackFor：回滚</h4><ul>
+<li>设置出现哪些异常进行事务回滚</li>
+<li>设置该属性值为异常的class即可</li>
+</ul>
+<h4 id="（6）noRollbackFor：不回滚"><a href="#（6）noRollbackFor：不回滚" class="headerlink" title="（6）noRollbackFor：不回滚"></a>（6）noRollbackFor：不回滚</h4><ul>
+<li>设置出现哪些异常不进行事务回滚</li>
+</ul>
+<h2 id="5-5-事务完全注解开发"><a href="#5-5-事务完全注解开发" class="headerlink" title="5.5 事务完全注解开发"></a>5.5 事务完全注解开发</h2><ul>
+<li>创建配置类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(basePackages = &quot;com.kuang&quot;)</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span>	<span class="comment">// 开启事务</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TxConfig</span></span>&#123;</span><br><span class="line">    <span class="comment">// 创建数据库连接池</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DruidDataSource <span class="title">getDruidDataSource</span><span class="params">()</span></span>&#123;</span><br><span class="line">        DruidDataSource dataSource = <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">        dataSource.setDriverClassName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">        dataSource.setUrl(<span class="string">&quot;jdbc:mysql://user_db&quot;</span>);</span><br><span class="line">        dataSource.setUsername(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">        dataSource.setPassword(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建JdbcTemplate</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JdbcTemplate <span class="title">getJdbcTemplate</span><span class="params">(DataSource dataSource)</span></span>&#123;</span><br><span class="line">        JdbcTemplate jdbcTemplate = <span class="keyword">new</span> JdbcTemplate();</span><br><span class="line">        jdbcTemplate.setDataSource(dataSource);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> jdbcTemplate;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建事务管理器</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSourceTransactionManager <span class="title">getDataSourceTransactionManager</span><span class="params">(DataSource dataSource)</span></span>&#123;</span><br><span class="line">        DataSourceTransactionManager transactionManager = <span class="keyword">new</span> DataSourceTransactionManager();</span><br><span class="line">        transactionManager.setDataSource(dataSource);</span><br><span class="line">        <span class="keyword">return</span> transactionManager;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="六、Spring5新特性"><a href="#六、Spring5新特性" class="headerlink" title="六、Spring5新特性"></a>六、Spring5新特性</h1>
       
     </div>
 
