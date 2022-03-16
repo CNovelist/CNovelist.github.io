@@ -2695,7 +2695,95 @@
 </tbody>
 </table>
 </div>
-<h1 id="三、和弦"><a href="#三、和弦" class="headerlink" title="三、和弦"></a>三、和弦</h1><h1 id="四、节奏"><a href="#四、节奏" class="headerlink" title="四、节奏"></a>四、节奏</h1><h2 id="4-1-音符"><a href="#4-1-音符" class="headerlink" title="4.1 音符"></a>4.1 音符</h2>]]></content>
+<h1 id="三、和弦"><a href="#三、和弦" class="headerlink" title="三、和弦"></a>三、和弦</h1><h2 id="3-1-和弦分类"><a href="#3-1-和弦分类" class="headerlink" title="3.1 和弦分类"></a>3.1 和弦分类</h2><h3 id="3-1-1-三度和弦"><a href="#3-1-1-三度和弦" class="headerlink" title="3.1.1 三度和弦"></a>3.1.1 三度和弦</h3><ul>
+<li>三和弦（三个音）</li>
+<li>五和弦（四个音）</li>
+<li>九和弦（五个音）</li>
+<li>十一和弦（六个音）</li>
+<li>十三和弦（七个音）</li>
+</ul>
+<h3 id="3-1-2-非三度和弦"><a href="#3-1-2-非三度和弦" class="headerlink" title="3.1.2 非三度和弦"></a>3.1.2 非三度和弦</h3><ul>
+<li>挂留和弦</li>
+<li>强力和弦</li>
+</ul>
+<h2 id="3-2-三和弦"><a href="#3-2-三和弦" class="headerlink" title="3.2 三和弦"></a>3.2 三和弦</h2><h3 id="3-2-1-大三和弦"><a href="#3-2-1-大三和弦" class="headerlink" title="3.2.1 大三和弦"></a>3.2.1 大三和弦</h3><ul>
+<li>大三度+小三度</li>
+<li>如C调的C：1-3-5、F：4-6-1、G：5-7-2</li>
+</ul>
+<h3 id="3-2-2-小三和弦"><a href="#3-2-2-小三和弦" class="headerlink" title="3.2.2 小三和弦"></a>3.2.2 小三和弦</h3><ul>
+<li>小三度+大三度</li>
+<li>如C调的Dm：2-4-6、Em：3-5-7、Am：6-1-3</li>
+</ul>
+<h3 id="3-2-3-增三和弦"><a href="#3-2-3-增三和弦" class="headerlink" title="3.2.3 增三和弦"></a>3.2.3 增三和弦</h3><ul>
+<li>大三度+大三度</li>
+<li>Caug：1-3-#5</li>
+</ul>
+<h3 id="3-2-4-减三和弦"><a href="#3-2-4-减三和弦" class="headerlink" title="3.2.4 减三和弦"></a>3.2.4 减三和弦</h3><ul>
+<li>小三度+小三度</li>
+<li>Cdim：1-b3-b5</li>
+</ul>
+<h2 id="3-3-七和弦"><a href="#3-3-七和弦" class="headerlink" title="3.3 七和弦"></a>3.3 七和弦</h2><h3 id="3-3-1-大七和弦"><a href="#3-3-1-大七和弦" class="headerlink" title="3.3.1 大七和弦"></a>3.3.1 大七和弦</h3><ul>
+<li>大三和弦+根音的大7度音</li>
+<li>Cmaj7：1-3-5-7</li>
+<li>Fmaj7：4-6-1-3</li>
+</ul>
+<h3 id="3-3-2-大小七和弦（属七和弦）"><a href="#3-3-2-大小七和弦（属七和弦）" class="headerlink" title="3.3.2 大小七和弦（属七和弦）"></a>3.3.2 大小七和弦（属七和弦）</h3><ul>
+<li>大三和弦+根音的小7度音</li>
+<li>C7：1-3-5-b7</li>
+<li>G7：5-7-2-4</li>
+</ul>
+<h3 id="3-3-3-小小七和弦"><a href="#3-3-3-小小七和弦" class="headerlink" title="3.3.3 小小七和弦"></a>3.3.3 小小七和弦</h3><ul>
+<li>小三和弦+根音的小7度音</li>
+<li>Dm7：2-4-6-1</li>
+<li>Em7：3-5-7-2</li>
+<li>Am7：6-1-3-5</li>
+</ul>
+<h3 id="3-3-4-减小七和弦"><a href="#3-3-4-减小七和弦" class="headerlink" title="3.3.4 减小七和弦"></a>3.3.4 减小七和弦</h3><ul>
+<li>减三+根音7度音</li>
+<li>Bdim7：7-2-4-6</li>
+</ul>
+<h3 id="3-3-5-减减七和弦"><a href="#3-3-5-减减七和弦" class="headerlink" title="3.3.5 减减七和弦"></a>3.3.5 减减七和弦</h3><ul>
+<li>减三+根音减7度音</li>
+<li>Bm-5：7-2-4-b6</li>
+</ul>
+<h2 id="3-4-九和弦"><a href="#3-4-九和弦" class="headerlink" title="3.4 九和弦"></a>3.4 九和弦</h2><h3 id="3-4-1-属九和弦"><a href="#3-4-1-属九和弦" class="headerlink" title="3.4.1 属九和弦"></a>3.4.1 属九和弦</h3><ul>
+<li>在属七和弦上加上根音的九度音</li>
+<li>C9：1-3-5-b7-2</li>
+</ul>
+<h3 id="3-4-2-Add和弦"><a href="#3-4-2-Add和弦" class="headerlink" title="3.4.2 Add和弦"></a>3.4.2 Add和弦</h3><ul>
+<li><p>三和弦基础上再添加的音符，后面的数字代表距离根音的度数</p>
+</li>
+<li><p>Cadd9：1-3-5-2（根音的9度音）</p>
+</li>
+</ul>
+<h2 id="3-5-挂留和弦"><a href="#3-5-挂留和弦" class="headerlink" title="3.5 挂留和弦"></a>3.5 挂留和弦</h2><ul>
+<li>Csus2：1-2-5（三度音转为二度音）</li>
+<li>Csus4：1-4-5（三度音转为四度音）</li>
+</ul>
+<h1 id="四、节奏"><a href="#四、节奏" class="headerlink" title="四、节奏"></a>四、节奏</h1><h2 id="4-1-音符"><a href="#4-1-音符" class="headerlink" title="4.1 音符"></a>4.1 音符</h2><h3 id="4-1-1-音符分类"><a href="#4-1-1-音符分类" class="headerlink" title="4.1.1 音符分类"></a>4.1.1 音符分类</h3><ul>
+<li>全音符</li>
+<li>二分音符</li>
+<li>四分音符</li>
+<li>八分音符</li>
+<li>十六分音符</li>
+<li>三十二分音符</li>
+<li>休止符</li>
+<li>浮点音符：延长当前音符时值的一半</li>
+</ul>
+<img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/yinfu.jpeg" class="" title="yinfu">
+<h3 id="4-1-2-音符关系"><a href="#4-1-2-音符关系" class="headerlink" title="4.1.2 音符关系"></a>4.1.2 音符关系</h3><ul>
+<li>$全音符=2<em>二分音符=4</em>四分音符=8<em>八分音符=16</em>十六分音符$</li>
+</ul>
+<h2 id="4-2-节拍"><a href="#4-2-节拍" class="headerlink" title="4.2 节拍"></a>4.2 节拍</h2><ul>
+<li><strong>bpm</strong>：每分钟节拍数</li>
+<li>常见的节拍（从后往前读）：<ul>
+<li>4/4：表示以四分音符为一拍，每小节四拍；强弱规律：<strong>强、弱、次强、弱</strong></li>
+<li>3/8：表示以八分音符为一拍，每小节三拍；强弱规律：<strong>强、弱、弱</strong></li>
+<li>6/8：强弱规律：<strong>强、弱、弱、次强、弱、弱</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="4-3-常见节奏"><a href="#4-3-常见节奏" class="headerlink" title="4.3 常见节奏"></a>4.3 常见节奏</h2><h3 id="4-3-1-弹奏节奏型"><a href="#4-3-1-弹奏节奏型" class="headerlink" title="4.3.1 弹奏节奏型"></a>4.3.1 弹奏节奏型</h3><h3 id="4-3-2-扫弦节奏型"><a href="#4-3-2-扫弦节奏型" class="headerlink" title="4.3.2 扫弦节奏型"></a>4.3.2 扫弦节奏型</h3><h2 id="五、吉他谱"><a href="#五、吉他谱" class="headerlink" title="五、吉他谱"></a>五、吉他谱</h2><h3 id="5-1-常见符号"><a href="#5-1-常见符号" class="headerlink" title="5.1 常见符号"></a>5.1 常见符号</h3>]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
