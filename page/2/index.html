@@ -165,6 +165,194 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/" class="post-title-link" itemprop="url">Java算法大全一</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-08 23:14:13" itemprop="dateCreated datePublished" datetime="2022-03-08T23:14:13+08:00">2022-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-10 12:51:21" itemprop="dateModified" datetime="2022-03-10T12:51:21+08:00">2022-03-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、两数之和"><a href="#一、两数之和" class="headerlink" title="一、两数之和"></a>一、两数之和</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1 题目"></a>1.1 题目</h2><ul>
+<li>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em>target</em>  的那 <strong>两个</strong> 整数，并返回它们的数组下标。</li>
+<li>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</li>
+<li>你可以按任意顺序返回答案。</li>
+</ul>
+<h2 id="1-2-示例"><a href="#1-2-示例" class="headerlink" title="1.2 示例"></a>1.2 示例</h2><h3 id="1-2-1-示例1"><a href="#1-2-1-示例1" class="headerlink" title="1.2.1 示例1"></a>1.2.1 示例1</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = <span class="comment">[2,7,11,15]</span>, target = 9</span><br><span class="line">输出：<span class="comment">[0,1]</span></span><br><span class="line">解释：因为 nums<span class="comment">[0]</span> + nums<span class="comment">[1]</span> == 9 ，返回 <span class="comment">[0, 1]</span> 。</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-示例2"><a href="#1-2-2-示例2" class="headerlink" title="1.2.2 示例2"></a>1.2.2 示例2</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = <span class="comment">[3,2,4]</span>, target = 6</span><br><span class="line">输出：<span class="comment">[1,2]</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-3-示例3"><a href="#1-2-3-示例3" class="headerlink" title="1.2.3 示例3"></a>1.2.3 示例3</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = <span class="comment">[3,3]</span>, target = 6</span><br><span class="line">输出：<span class="comment">[0,1]</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-3-提示"><a href="#1-3-提示" class="headerlink" title="1.3 提示"></a>1.3 提示</h2><ul>
+<li>$2&lt;=nums.length&lt;=10^4$</li>
+<li>$-10^9&lt;=nums[i]&lt;=10^9$</li>
+<li>$-10^9&lt;=target&lt;=10^9$</li>
+<li><strong>只会存在一个有效答案</strong></li>
+<li><strong>进阶</strong>：你可以想出一个时间复杂度小于 $O(n^2)$ 的算法吗？</li>
+</ul>
+<h2 id="1-4-解法"><a href="#1-4-解法" class="headerlink" title="1.4 解法"></a>1.4 解法</h2><h3 id="1-4-1-哈希表"><a href="#1-4-1-哈希表" class="headerlink" title="1.4.1 哈希表"></a>1.4.1 哈希表</h3><ul>
+<li>设定从值到数组坐标的Map映射，根据键来查找坐标</li>
+<li>顺序遍历数组，对于当前坐标i<ul>
+<li>如果map中包含了键值：target - nums[i]对应的坐标，表明已经查找到了最终结果，将{target - nums[i], i}返回作为结果即可</li>
+<li>如果map中没有包含键值：target - nums[i]对应的坐标，则将{num[i], i}添加到map中</li>
+</ul>
+</li>
+</ul>
+<h4 id="（1）关键步骤1"><a href="#（1）关键步骤1" class="headerlink" title="（1）关键步骤1"></a>（1）关键步骤1</h4><img src="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/5.png" class="" title="image5">
+<h4 id="（2）关键步骤2"><a href="#（2）关键步骤2" class="headerlink" title="（2）关键步骤2"></a>（2）关键步骤2</h4><img src="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/6.png" class="" title="image6">
+<h4 id="（3）实现"><a href="#（3）实现" class="headerlink" title="（3）实现"></a>（3）实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; hashtable = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hashtable.containsKey(target - nums[i])) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;hashtable.get(target - nums[i]), i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度$O(n)$</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/07/H5C3%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%BA%8C%EF%BC%88%E5%AE%9E%E6%88%98%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/07/H5C3%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%BA%8C%EF%BC%88%E5%AE%9E%E6%88%98%EF%BC%89/" class="post-title-link" itemprop="url">H5C3基础大全二（实战）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-07 11:10:59 / 修改时间：20:42:09" itemprop="dateCreated datePublished" datetime="2022-03-07T11:10:59+08:00">2022-03-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/H5C3/" itemprop="url" rel="index"><span itemprop="name">H5C3</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、双栏信息"><a href="#一、双栏信息" class="headerlink" title="一、双栏信息"></a>一、双栏信息</h1><h1 id="二、元素阴影效果"><a href="#二、元素阴影效果" class="headerlink" title="二、元素阴影效果"></a>二、元素阴影效果</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-shadow</span>: offset-x offset-y blur spread color inset;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>offset-x：必需，取值正负都可。offset-x水平阴影的位置。</li>
+<li>offset-y：必需，取值正负都可。offset-y垂直阴影的位置。</li>
+<li>blur:可选，只能取正值。blur-radius阴影模糊半径，0即无模糊效果，值越大阴影边缘越模糊。</li>
+<li>spread：可选，取值正负都可。spread代表阴影的周长向四周扩展的尺寸，正值，阴影扩大，负值阴影缩小。</li>
+<li>color:可选。阴影的颜色。如果不设置，浏览器会取默认颜色，通常是黑色，但各浏览器默认颜色有差异，建议不要省略。可以是rgb(250,0,0)，也可以是有透明值的rgba(250,0,0,0.5)。</li>
+<li>inset:可选。关键字，将外部投影(默认outset)改为内部投影。inset 阴影在背景之上，内容之下。</li>
+</ul>
+<h1 id="三、元素访问效果"><a href="#三、元素访问效果" class="headerlink" title="三、元素访问效果"></a>三、元素访问效果</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	ele.hover：鼠标在元素上方时，要显示的效果</span></span><br><span class="line"><span class="comment">	ele.link：未被访问的元素，要显示的效果</span></span><br><span class="line"><span class="comment">	ele.active：鼠标按住不动时，要显示的效果</span></span><br><span class="line"><span class="comment">	ele.visited：元素访问过后，要显示的效果</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/02/Java%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1796,378 +1984,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/24/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B01-%E5%BE%90%E5%A2%9E%E6%9E%97-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/24/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B01-%E5%BE%90%E5%A2%9E%E6%9E%97-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/" class="post-title-link" itemprop="url">论文笔记1-徐增林-知识图谱技术综述</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-24 14:54:55" itemprop="dateCreated datePublished" datetime="2022-02-24T14:54:55+08:00">2022-02-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-15 23:12:03" itemprop="dateModified" datetime="2022-03-15T23:12:03+08:00">2022-03-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>作者:    徐增林 盛泳潘 贺丽荣 王雅芳</p>
-<p>发表时间:    2016-7</p>
-<p>期刊:    电子科技大学学报</p>
-</blockquote>
-<h1 id="一、知识图谱的定义与架构"><a href="#一、知识图谱的定义与架构" class="headerlink" title="一、知识图谱的定义与架构"></a>一、知识图谱的定义与架构</h1><h2 id="1-1-知识图谱的定义"><a href="#1-1-知识图谱的定义" class="headerlink" title="1.1 知识图谱的定义"></a>1.1 知识图谱的定义</h2><h3 id="1-1-1-定义"><a href="#1-1-1-定义" class="headerlink" title="1.1.1 定义"></a>1.1.1 定义</h3><ul>
-<li>知识图谱是Google用于增强其搜索功能的知识库，本质上，知识图谱是一种揭示实体之间关系的语义网络，可以对显示世界的事物及其相互关系进行形式化地描述</li>
-</ul>
-<h3 id="1-1-2-表示"><a href="#1-1-2-表示" class="headerlink" title="1.1.2 表示"></a>1.1.2 表示</h3><ul>
-<li>三元组表示方式：$G=\{E,R,S\}$，<ul>
-<li>其中$E = \{ e_1,e_2,…,e_{|E|} \}$是知识库的实体集合，$|E|$表示实体数</li>
-<li>$R = \{ r_1,r_2,…,r_{|E|} \}$是知识库中的关系集合，$|R|$表示关系数</li>
-</ul>
-</li>
-<li>三元组的基本形式（知识图谱的逻辑结构）<ul>
-<li>（实体1，关系，实体2）</li>
-<li>（实体，属性，属性值）</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-2-知识图谱体系架构"><a href="#1-2-知识图谱体系架构" class="headerlink" title="1.2 知识图谱体系架构"></a>1.2 知识图谱体系架构</h2><h3 id="1-2-1-构建方式"><a href="#1-2-1-构建方式" class="headerlink" title="1.2.1 构建方式"></a>1.2.1 构建方式</h3><ul>
-<li>自顶向下（top-down）：先构建本体和数据模式，再加入实体到知识库</li>
-<li>自底向下（bottom-top）：先提取实体，将置信度较高的加入到知识库，再构建顶层的本体（大多数知识图谱采用）</li>
-</ul>
-<img src="/2022/02/24/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B01-%E5%BE%90%E5%A2%9E%E6%9E%97-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84.png" class="" title="image">
-<h1 id="二、大规模知识图谱"><a href="#二、大规模知识图谱" class="headerlink" title="二、大规模知识图谱"></a>二、大规模知识图谱</h1><h2 id="2-1-开放链接知识库"><a href="#2-1-开放链接知识库" class="headerlink" title="2.1 开放链接知识库"></a>2.1 开放链接知识库</h2><ul>
-<li>Freebase：由人工构建，另外一部分数据则主要来源于维基百科、IMDB、Flickr等网站或语料库</li>
-<li>Wikidata：自由的协作式多语言辅助知识库</li>
-<li>DBpedia：由德国莱比锡大学和曼海姆大学的科研人员创建的多语言综合型知识库</li>
-<li>YAGO：由德国马普所(max planck institute，MPI)的科研人员构建的综合型知识库</li>
-</ul>
-<h2 id="2-2-垂直行业知识库"><a href="#2-2-垂直行业知识库" class="headerlink" title="2.2 垂直行业知识库"></a>2.2 垂直行业知识库</h2><blockquote>
-<p>行业知识库也可称为垂直型知识库，这类知识库的描述目标是特定的行业领域，</p>
-<p>通常需要依靠特定行业的数据才能构建，因此其描述范围极为有限</p>
-</blockquote>
-<ul>
-<li>IMDB：关于电影演员、电影、电视节目、电视明星以及电影制作的资料库</li>
-<li>MusicBrainz：一个结构化的音乐维基百科，致力于收藏所有的音乐元数据，并向大众用户开放</li>
-<li>ConceptNet：一个语义知识网络，主要由一系列的代表概念的结点构成，这些概念将主要采用自然语言单词或短语的表达形式，通过相互连接建立语义联系</li>
-</ul>
-<h1 id="三、知识图谱关键技术"><a href="#三、知识图谱关键技术" class="headerlink" title="三、知识图谱关键技术"></a>三、知识图谱关键技术</h1><h2 id="3-1-知识抽取"><a href="#3-1-知识抽取" class="headerlink" title="3.1 知识抽取"></a>3.1 知识抽取</h2><h3 id="3-1-1-实体抽取"><a href="#3-1-1-实体抽取" class="headerlink" title="3.1.1 实体抽取"></a>3.1.1 实体抽取</h3><ul>
-<li>基于规则与词典</li>
-<li>基于统计机器学习</li>
-<li>面向开放域的抽取方法</li>
-</ul>
-<h3 id="3-1-2-关系抽取"><a href="#3-1-2-关系抽取" class="headerlink" title="3.1.2 关系抽取"></a>3.1.2 关系抽取</h3><ul>
-<li>开放式实体关系抽取</li>
-<li>基于联合推理的实体关系抽取</li>
-</ul>
-<h3 id="3-1-3-属性抽取"><a href="#3-1-3-属性抽取" class="headerlink" title="3.1.3 属性抽取"></a>3.1.3 属性抽取</h3><ul>
-<li>属性可以用来刻画实体，实体的属性可以堪称是实体与属性值之间的一种<strong>名称性关系</strong>，所以属性抽取可以转换为关系抽取</li>
-<li>大量的属性数据主要存在于<strong>半结构化、非结构化</strong>的大规模开放域数据集中<ul>
-<li>抽取方法：<ul>
-<li>第一种：结构化数据作为<strong>训练集</strong>训练模型，再将该模型应用于<strong>开放域</strong>中的实体属性抽取</li>
-<li>第二种：根据<strong>实体属性</strong>与<strong>属性值</strong>之间的<strong>关系模式</strong>，直接从开放域数据集上抽取属性，但这种方式准确率不高</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-2-知识表示"><a href="#3-2-知识表示" class="headerlink" title="3.2 知识表示"></a>3.2 知识表示</h2><h3 id="3-2-1-知识表示的作用"><a href="#3-2-1-知识表示的作用" class="headerlink" title="3.2.1 知识表示的作用"></a>3.2.1 知识表示的作用</h3><ul>
-<li>语义相似度计算：熵权系数法、余弦相似性</li>
-<li>链接预测（知识补全）：预测实体间的关系、关系的正确性</li>
-</ul>
-<h3 id="3-2-1-代表模型"><a href="#3-2-1-代表模型" class="headerlink" title="3.2.1 代表模型"></a>3.2.1 代表模型</h3><ul>
-<li><p>距离模型</p>
-</li>
-<li><p>单层神经网络模型</p>
-</li>
-<li><p>双线性模型</p>
-</li>
-<li><p>神经张量模型</p>
-</li>
-<li><p>矩阵分解模型</p>
-</li>
-<li><p>翻译模型</p>
-</li>
-</ul>
-<h3 id="3-2-2-复杂关系模型"><a href="#3-2-2-复杂关系模型" class="headerlink" title="3.2.2 复杂关系模型"></a>3.2.2 复杂关系模型</h3><ul>
-<li><p>TransH模型</p>
-</li>
-<li><p>TransR模型 </p>
-</li>
-<li><p>TransD模型 </p>
-</li>
-<li><p>TransG模型</p>
-</li>
-<li><p>KG2E模型</p>
-</li>
-</ul>
-<h2 id="3-3-知识融合"><a href="#3-3-知识融合" class="headerlink" title="3.3 知识融合"></a>3.3 知识融合</h2><h3 id="3-3-1-实体对齐-实体匹配-实体解析"><a href="#3-3-1-实体对齐-实体匹配-实体解析" class="headerlink" title="3.3.1 实体对齐/实体匹配/实体解析"></a>3.3.1 实体对齐/实体匹配/实体解析</h3><ul>
-<li>目的：消除实体冲突、歧义</li>
-<li>实体对齐挑战：<ul>
-<li>计算度复杂</li>
-<li>数据质量</li>
-<li>先验训练数据：研究者训练模型需要的数据集</li>
-</ul>
-</li>
-<li>实体对齐流程：<ul>
-<li>对待对齐数据进行<strong>分区索引</strong>，降低复杂度</li>
-<li>计算实体语义相似度，查找匹配实体</li>
-<li>使用实体对齐算法进行实体融合</li>
-<li>结合上两步，形成最后结果</li>
-</ul>
-</li>
-<li>实体对齐方法：<ul>
-<li>成对实体对齐方法</li>
-<li>局部集体实体对齐方法</li>
-<li>全局集体实体对齐方法</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-3-2-知识加工"><a href="#3-3-2-知识加工" class="headerlink" title="3.3.2 知识加工"></a>3.3.2 知识加工</h3><h4 id="（1）本体构建"><a href="#（1）本体构建" class="headerlink" title="（1）本体构建"></a>（1）本体构建</h4><ul>
-<li>手动构建</li>
-<li>数据驱动自动构建：<ul>
-<li>纵向概念间的并列关系计算</li>
-<li>实体上下位关系抽取</li>
-<li>本体生成</li>
-</ul>
-</li>
-</ul>
-<h4 id="（2）质量评估"><a href="#（2）质量评估" class="headerlink" title="（2）质量评估"></a>（2）质量评估</h4><ul>
-<li>质量评估是对知识可信度的一种量化</li>
-</ul>
-<h3 id="3-3-3-知识更新"><a href="#3-3-3-知识更新" class="headerlink" title="3.3.3 知识更新"></a>3.3.3 知识更新</h3><ul>
-<li>知识更新的内容：<ul>
-<li>本体中元素的更新：概念的增加、修改、删除</li>
-<li>概念属性的更新、概念之间上下位关系的更新等</li>
-<li>实体元素的更新：实体的增加、修改、删除、</li>
-<li>实体的基本信息和属性值</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-4-知识推理"><a href="#3-4-知识推理" class="headerlink" title="3.4 知识推理"></a>3.4 知识推理</h2><h3 id="3-4-1-基于逻辑的推理"><a href="#3-4-1-基于逻辑的推理" class="headerlink" title="3.4.1 基于逻辑的推理"></a>3.4.1 基于逻辑的推理</h3><ul>
-<li>一阶谓词逻辑：以<strong>命题为基础</strong>进行推理</li>
-<li>描述逻辑：是在命题逻辑与一阶谓词逻辑上发展而来，目的是在表示能力与推理复杂度之间追求一种平衡</li>
-<li>规则：通过OWL和RDF蕴含的规则，设计算法进行推理</li>
-</ul>
-<h3 id="3-4-2-基于图的推理"><a href="#3-4-2-基于图的推理" class="headerlink" title="3.4.2 基于图的推理"></a>3.4.2 基于图的推理</h3><ul>
-<li>主要是利用了关系路径中的蕴涵信息，通过图中两个实体间的多步路径来预测它们之间的语义关系</li>
-</ul>
-<h1 id="四、知识图谱的应用"><a href="#四、知识图谱的应用" class="headerlink" title="四、知识图谱的应用"></a>四、知识图谱的应用</h1><h2 id="4-1-智能搜索"><a href="#4-1-智能搜索" class="headerlink" title="4.1 智能搜索"></a>4.1 智能搜索</h2><h3 id="4-1-2-用户查询的两个阶段"><a href="#4-1-2-用户查询的两个阶段" class="headerlink" title="4.1.2 用户查询的两个阶段"></a>4.1.2 用户查询的两个阶段</h3><ul>
-<li>查询式语义理解<ul>
-<li>查询请求文本进行分词、词性标注以及纠错</li>
-<li>描述归一化，使其与知识库中的相关知识进行匹配</li>
-<li>语境分析：情感分析</li>
-<li>查询扩展：查询知识的扩展</li>
-</ul>
-</li>
-<li>知识检索<ul>
-<li>经过知识库检索引擎得到的完整的知识体系</li>
-</ul>
-</li>
-<li>智能搜索的展示形式：<ul>
-<li>知识卡片：图片/信息</li>
-<li>直接提供答案</li>
-<li>推荐列表</li>
-<li>等等</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-2-深度问答"><a href="#4-2-深度问答" class="headerlink" title="4.2 深度问答"></a>4.2 深度问答</h2><ul>
-<li>问答系统：信息检索的一种，能够以准确简洁的自然语言为用户提供问题的解答</li>
-</ul>
-<h2 id="4-3-社交网络"><a href="#4-3-社交网络" class="headerlink" title="4.3 社交网络"></a>4.3 社交网络</h2><ul>
-<li>好友推荐/与我相关的好友</li>
-</ul>
-<h2 id="4-4-垂直行业应用"><a href="#4-4-垂直行业应用" class="headerlink" title="4.4 垂直行业应用"></a>4.4 垂直行业应用</h2><ul>
-<li>领域内的知识图谱<ul>
-<li>金融</li>
-<li>医疗</li>
-<li>电商</li>
-</ul>
-</li>
-</ul>
-<h1 id="五、知识图谱的挑战"><a href="#五、知识图谱的挑战" class="headerlink" title="五、知识图谱的挑战"></a>五、知识图谱的挑战</h1><h2 id="5-1-知识获取"><a href="#5-1-知识获取" class="headerlink" title="5.1 知识获取"></a>5.1 知识获取</h2><ul>
-<li>从领域内的数据集进行抽取效果好，但扩展性不强，未能很好地适应大规模、领域独立、高效的开放式信息抽取要求</li>
-<li>大规模开放域的知识抽取研究仍处于起步阶段</li>
-<li>隐含关系抽取：主流的方法性能低下or无法实现<ul>
-<li>以马尔可夫逻辑网、本体推理的联合推理方法将成为学术界的研究热点</li>
-</ul>
-</li>
-<li>跨语言的知识抽取方法也成为了当前的研究热点</li>
-</ul>
-<h2 id="5-2-知识表示"><a href="#5-2-知识表示" class="headerlink" title="5.2 知识表示"></a>5.2 知识表示</h2><ul>
-<li>三元组形式面对复杂的知识类型、多源融合的信息，表达能力有限</li>
-<li>复杂关系的知识表示<ul>
-<li>实体关系类型：1-1、1-N，N-1，N-N，这种形式无法直观表示知识的本质以及复杂知识</li>
-<li>对<strong>认知科学领域</strong>人类知识类型的探索将有助于<strong>知识类型</strong>的划分、表示以及处理是未来知识表示研究的重要发展方向</li>
-</ul>
-</li>
-<li>多元信息融合中的知识表示<ul>
-<li>这里的研究处于起步阶段，信息来源有限</li>
-<li>基于实体的、关系的、Web文本的、多知识库的融合均具有较为广阔的研究前景</li>
-</ul>
-</li>
-</ul>
-<h2 id="5-3-知识融合"><a href="#5-3-知识融合" class="headerlink" title="5.3 知识融合"></a>5.3 知识融合</h2><ul>
-<li><strong>实体对齐</strong>是知识融合的关键步骤</li>
-<li>研究方向：<ul>
-<li>并行与分布式算法</li>
-<li>众包算法 </li>
-<li>跨语言知识库对齐 </li>
-</ul>
-</li>
-</ul>
-<h2 id="5-4-其他"><a href="#5-4-其他" class="headerlink" title="5.4 其他"></a>5.4 其他</h2><ul>
-<li><strong>本体自动构建、本体抽取、本体聚类</strong>等问题仍是目前的研究热点</li>
-<li><strong>知识质量评估</strong>方面，构建完善的质量评估技术标准或指标体系是该领域未来的研究目标</li>
-<li>知识更新：<strong>增量更新</strong>技术将是知识图谱未来实现自动化更新的重要研究方向</li>
-</ul>
-<h2 id="5-5-知识应用"><a href="#5-5-知识应用" class="headerlink" title="5.5 知识应用"></a>5.5 知识应用</h2><ul>
-<li>大规模知识图谱的应用场景和方式还比较有限，其在智能搜索、深度问答、社交网络以及其他行业中的使用也只是处于初级阶段，仍具有广阔的可扩展空间</li>
-<li>知识图谱的优势<ul>
-<li>对数据的有效组织和表达</li>
-<li>强大的知识库和推理能力</li>
-<li>与深度学习等领域相结合，可扩展的认知能力</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/" class="post-title-link" itemprop="url">Vue2基础大全一</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-23 23:33:33 / 修改时间：23:38:31" itemprop="dateCreated datePublished" datetime="2022-02-23T23:33:33+08:00">2022-02-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、Vue-cli脚手架"><a href="#一、Vue-cli脚手架" class="headerlink" title="一、Vue-cli脚手架"></a>一、Vue-cli脚手架</h1><h2 id="1、Vue项目结构"><a href="#1、Vue项目结构" class="headerlink" title="1、Vue项目结构"></a>1、Vue项目结构</h2><h1 id="二、Vue组件结构"><a href="#二、Vue组件结构" class="headerlink" title="二、Vue组件结构"></a>二、Vue组件结构</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2235,20 +2055,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
