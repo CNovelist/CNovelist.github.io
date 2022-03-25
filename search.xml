@@ -481,23 +481,62 @@
 <li>基本类型前加下划线：如int别名：_int</li>
 <li>包装类型首字母小写：如Integer别名：int</li>
 </ul>
-<h2 id="5-4-setting（设置）"><a href="#5-4-setting（设置）" class="headerlink" title="5.4 setting（设置）"></a>5.4 setting（设置）</h2><h1 id="六、生命周期和作用域"><a href="#六、生命周期和作用域" class="headerlink" title="六、生命周期和作用域"></a>六、生命周期和作用域</h1><h2 id="SqlSessionFactoryBuilder"><a href="#SqlSessionFactoryBuilder" class="headerlink" title="SqlSessionFactoryBuilder"></a>SqlSessionFactoryBuilder</h2><ul>
+<h2 id="5-4-setting（设置）"><a href="#5-4-setting（设置）" class="headerlink" title="5.4 setting（设置）"></a>5.4 setting（设置）</h2><h2 id="5-5-其他配置"><a href="#5-5-其他配置" class="headerlink" title="5.5 其他配置"></a>5.5 其他配置</h2><h2 id="5-6-mappers（映射器）"><a href="#5-6-mappers（映射器）" class="headerlink" title="5.6 mappers（映射器）"></a>5.6 mappers（映射器）</h2><ul>
+<li>在核心配置文件中配置mapper配置文件所在路径</li>
+<li>方式一：使用mapper文件绑定【推荐】</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用相对于类路径的资源引用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/builder/AuthorMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/builder/BlogMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/mybatis/builder/PostMapper.xml&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>方式二：使用class绑定</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用映射器接口实现类的完全限定类名 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.builder.AuthorMapper&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.builder.BlogMapper&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.builder.PostMapper&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用除方式一外的其他方式时的注意点：<ul>
+<li>接口和他的Mapper配置文件必须同名</li>
+<li>接口和他的Mapper配置文件必须在同一包下</li>
+</ul>
+</li>
+</ul>
+<h1 id="六、生命周期和作用域"><a href="#六、生命周期和作用域" class="headerlink" title="六、生命周期和作用域"></a>六、生命周期和作用域</h1><h2 id="6-1-SqlSessionFactoryBuilder"><a href="#6-1-SqlSessionFactoryBuilder" class="headerlink" title="6.1 SqlSessionFactoryBuilder"></a>6.1 SqlSessionFactoryBuilder</h2><ul>
 <li>这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了</li>
 </ul>
-<h2 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h2><ul>
+<h2 id="6-2-SqlSessionFactory"><a href="#6-2-SqlSessionFactory" class="headerlink" title="6.2 SqlSessionFactory"></a>6.2 SqlSessionFactory</h2><ul>
 <li>SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例</li>
 <li>类似数据库连接池</li>
 </ul>
-<h2 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h2><ul>
+<h2 id="6-3-SqlSession"><a href="#6-3-SqlSession" class="headerlink" title="6.3 SqlSession"></a>6.3 SqlSession</h2><ul>
 <li>每个线程都应该有它自己的 SqlSession 实例。SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域</li>
 <li>连接到连接池的一个请求</li>
 <li>绝对不能将 SqlSession 实例的引用放在一个类的静态域，甚至一个类的实例变量也不行。 也绝不能将 SqlSession 实例的引用放在任何类型的托管作用域中</li>
 <li>每次收到 HTTP 请求，就可以打开一个 SqlSession，返回一个响应后，就关闭它</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (SqlSession session = sqlSessionFactory.openSession()) &#123;</span><br><span class="line">  <span class="comment">// 你的应用逻辑代码</span></span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    session.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="获取映射实例"><a href="#获取映射实例" class="headerlink" title="获取映射实例"></a>获取映射实例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (SqlSession session = sqlSessionFactory.openSession()) &#123;</span><br><span class="line">  BlogMapper mapper = session.getMapper(BlogMapper.class);</span><br><span class="line">  <span class="comment">// 你的应用逻辑代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-4-获取映射实例"><a href="#6-4-获取映射实例" class="headerlink" title="6.4 获取映射实例"></a>6.4 获取映射实例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> (SqlSession session = sqlSessionFactory.openSession()) &#123;</span><br><span class="line">  BlogMapper mapper = session.getMapper(BlogMapper.class);</span><br><span class="line">  <span class="comment">// 你的应用逻辑代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <img src="/2022/03/14/Mybatis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/life.png" class="" title="life">
-<h1 id="注解开发"><a href="#注解开发" class="headerlink" title="注解开发"></a>注解开发</h1><h1 id="复杂关系处理"><a href="#复杂关系处理" class="headerlink" title="复杂关系处理"></a>复杂关系处理</h1>]]></content>
+<h1 id="七、ResultMap结果集映射"><a href="#七、ResultMap结果集映射" class="headerlink" title="七、ResultMap结果集映射"></a>七、ResultMap结果集映射</h1><h2 id="7-1-简介"><a href="#7-1-简介" class="headerlink" title="7.1 简介"></a>7.1 简介</h2><ul>
+<li>解决实体类属性名和数据库表字段名不一致的问题</li>
+</ul>
+<h2 id="7-2-结果映射"><a href="#7-2-结果映射" class="headerlink" title="7.2 结果映射"></a>7.2 结果映射</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	结果映射标签</span></span><br><span class="line"><span class="comment">	property对应了实体类属性，column对应表字段</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;userResultMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> <span class="attr">column</span>=<span class="string">&quot;user_id&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;username&quot;</span> <span class="attr">column</span>=<span class="string">&quot;user_name&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;password&quot;</span> <span class="attr">column</span>=<span class="string">&quot;hashed_password&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--这里的返回类型使用resultMap标注，值为resultMap标签的id--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectUsers&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;userResultMap&quot;</span>&gt;</span></span><br><span class="line">  select user_id, user_name, hashed_password</span><br><span class="line">  from some_table</span><br><span class="line">  where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="八、日志"><a href="#八、日志" class="headerlink" title="八、日志"></a>八、日志</h1><h2 id="8-1-日志工厂"><a href="#8-1-日志工厂" class="headerlink" title="8.1 日志工厂"></a>8.1 日志工厂</h2><ul>
+<li>如果一个数据库操作出现了异常，我们最好是能看到操作的sql语句是啥，方便我们排错</li>
+<li>因此针对以上问题，我们可以使用日志的形式输出我们数据库操作的sql语句</li>
+<li>Mybatis 通过使用内置的日志工厂提供日志功能。内置日志工厂将会把日志工作委托给下面的实现之一：<ul>
+<li>SLF4J</li>
+<li>LOG4J【掌握】</li>
+<li>LOG4J2</li>
+<li>JDK_LOGGING</li>
+<li>COMMONS_LOGGING</li>
+<li>STDOUT_LOGGING【掌握】</li>
+<li>NO_LOGGING</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-2-日志配置"><a href="#8-2-日志配置" class="headerlink" title="8.2 日志配置"></a>8.2 日志配置</h2><ul>
+<li>需要在核心配置文件中进行配置</li>
+<li>配置完后直接运行即可，就可以在控制台输出日志信息</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;STDOUT_LOGGING&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="8-3-Log4j"><a href="#8-3-Log4j" class="headerlink" title="8.3 Log4j"></a>8.3 Log4j</h2><h1 id="分页实现"><a href="#分页实现" class="headerlink" title="分页实现"></a>分页实现</h1><h1 id="注解开发"><a href="#注解开发" class="headerlink" title="注解开发"></a>注解开发</h1><h1 id="复杂查询处理"><a href="#复杂查询处理" class="headerlink" title="复杂查询处理"></a>复杂查询处理</h1><h1 id="动态Sql"><a href="#动态Sql" class="headerlink" title="动态Sql"></a>动态Sql</h1><h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>数据库</category>
@@ -1928,8 +1967,31 @@
 <li>后端知识图谱构建</li>
 </ul>
 </li>
+<li>知识图谱的标准数据：<ul>
+<li>RDF三元组&lt;主，谓，宾&gt;</li>
+<li>包含文本信息结构的OWL数据：类、属性、实例</li>
 </ul>
-]]></content>
+</li>
+<li>实现了中文知识图谱自动问答系统CEQA</li>
+<li>提出了：<ul>
+<li>混合词典的CRF方法，用于实体识别</li>
+<li>三元组类别识别/SDP依赖缩减/语义槽提取等一套算法框架，提高语义三元组提取的准确率</li>
+<li>利用Word2Vec进行词语词直接的语义相似性计算，无需标注大量数据，解决自然语言=&gt;SPARQL的表达问题</li>
+</ul>
+</li>
+</ul>
+<h1 id="二、相关工作"><a href="#二、相关工作" class="headerlink" title="二、相关工作"></a>二、相关工作</h1><h2 id="2-1-问答系统核心问题"><a href="#2-1-问答系统核心问题" class="headerlink" title="2.1 问答系统核心问题"></a>2.1 问答系统核心问题</h2><ul>
+<li>基于模式的问答系统：模式匹配构建查询</li>
+<li>基于统计学习的语义提取技术：学习算法生成语义提取模型</li>
+<li>基于依赖树的语义提取技术：语法树</li>
+</ul>
+<h1 id="三、系统架构"><a href="#三、系统架构" class="headerlink" title="三、系统架构"></a>三、系统架构</h1><h2 id="2-1-系统结构"><a href="#2-1-系统结构" class="headerlink" title="2.1 系统结构"></a>2.1 系统结构</h2><ul>
+<li>CE-QA方法：针对特定领域的算法框架</li>
+<li>重点：解决将中文自然语言转换为SPARQL查询的问题</li>
+<li>算法框架如下：</li>
+</ul>
+<img src="/2022/03/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B03-%E6%9D%9C%E6%B3%BD%E5%AE%87-%E5%9F%BA%E4%BA%8E%E4%B8%AD%E6%96%87%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E7%9A%84%E7%94%B5%E5%95%86%E9%A2%86%E5%9F%9F%E9%97%AE%E7%AD%94%E7%B3%BB%E7%BB%9F/system.png" class="" title="system">
+<h2 id="2-2-步骤"><a href="#2-2-步骤" class="headerlink" title="2.2 步骤"></a>2.2 步骤</h2><h3 id="2-2-1-自然语言问题输入"><a href="#2-2-1-自然语言问题输入" class="headerlink" title="2.2.1 自然语言问题输入"></a>2.2.1 自然语言问题输入</h3><h3 id="2-2-2-问题分类"><a href="#2-2-2-问题分类" class="headerlink" title="2.2.2 问题分类"></a>2.2.2 问题分类</h3><h3 id="2-2-3-问题分析"><a href="#2-2-3-问题分析" class="headerlink" title="2.2.3 问题分析"></a>2.2.3 问题分析</h3><h3 id="2-2-4-语义槽提取"><a href="#2-2-4-语义槽提取" class="headerlink" title="2.2.4 语义槽提取"></a>2.2.4 语义槽提取</h3><h3 id="2-2-5-SPARQL抽取"><a href="#2-2-5-SPARQL抽取" class="headerlink" title="2.2.5 SPARQL抽取"></a>2.2.5 SPARQL抽取</h3><h3 id="2-2-6-语义链接"><a href="#2-2-6-语义链接" class="headerlink" title="2.2.6 语义链接"></a>2.2.6 语义链接</h3><h3 id="2-2-7-SPARQL查询生成"><a href="#2-2-7-SPARQL查询生成" class="headerlink" title="2.2.7 SPARQL查询生成"></a>2.2.7 SPARQL查询生成</h3><h2 id="2-3-问题分类"><a href="#2-3-问题分类" class="headerlink" title="2.3 问题分类"></a>2.3 问题分类</h2>]]></content>
       <categories>
         <category>知识图谱</category>
         <category>文献阅读</category>
