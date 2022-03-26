@@ -165,6 +165,353 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/12/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B02-%E5%88%98%E7%9F%A5%E8%BF%9C-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/12/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B02-%E5%88%98%E7%9F%A5%E8%BF%9C-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/" class="post-title-link" itemprop="url">论文笔记2-刘知远-知识表示学习研究进展</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-12 14:03:00" itemprop="dateCreated datePublished" datetime="2022-03-12T14:03:00+08:00">2022-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-17 21:10:37" itemprop="dateModified" datetime="2022-03-17T21:10:37+08:00">2022-03-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">文献阅读</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>作者: 刘知远　孙茂松　林衍凯　谢若冰</p>
+<p>发表时间: 2016-1</p>
+<p>期刊: 计算机研究与发展</p>
+</blockquote>
+<h1 id="一、知识表示学习简介"><a href="#一、知识表示学习简介" class="headerlink" title="一、知识表示学习简介"></a>一、知识表示学习简介</h1><h2 id="1-1-表示学习基本概念"><a href="#1-1-表示学习基本概念" class="headerlink" title="1.1 表示学习基本概念"></a>1.1 表示学习基本概念</h2><ul>
+<li>表示学习：机器学习将语义信息表示为稠密低维实值向量</li>
+<li>实体$e$，关系$r$，向量表示$I_e$和$I_r$<ul>
+<li>可以通过欧式距离和余弦距离等方式，计算任意2个对象之间的语义相似度</li>
+</ul>
+</li>
+<li>独热表示（one-hot representation）：简单的数据表示方式，只有<strong>某一维值非零</strong>，其他均为0。<ul>
+<li>数据有多少对象，独热向量就有多少维</li>
+<li>词袋模型（bag-of-words model）以此为基础，独热表示的每一维表示对应的词在该文档中的重要性</li>
+<li>优点：简单/高效</li>
+<li>缺点：对象表示之间相互独立，不同对象的向量都是<strong>相互正交</strong>的，无法计算其语义相似度，大量信息丢失</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-表示学习的理论基础"><a href="#1-2-表示学习的理论基础" class="headerlink" title="1.2 表示学习的理论基础"></a>1.2 表示学习的理论基础</h2><ul>
+<li>表示学习：得到的低维向量是一种分布式表示（distributed representation）<ul>
+<li>分布式表示：对人脑处理信息过程的模拟</li>
+<li>层级结构：对象之间的组成关系</li>
+<li>以上两点是人类智能的基础，也是表示学习和深度学习的本质特点</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/03/12/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B02-%E5%88%98%E7%9F%A5%E8%BF%9C-%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/realinternal.png" class="" title="image1">
+<h2 id="1-3-知识表示学习的典型应用"><a href="#1-3-知识表示学习的典型应用" class="headerlink" title="1.3 知识表示学习的典型应用"></a>1.3 知识表示学习的典型应用</h2><ul>
+<li>相似度计算</li>
+<li>知识图谱补全</li>
+<li>其他应用：关系抽取、自动问答、实体链接/实体链指</li>
+</ul>
+<h2 id="1-4-知识表示学习的优点"><a href="#1-4-知识表示学习的优点" class="headerlink" title="1.4 知识表示学习的优点"></a>1.4 知识表示学习的优点</h2><ul>
+<li>提升计算效率</li>
+<li>缓解数据稀疏</li>
+<li>实现异构信息融合</li>
+</ul>
+<h1 id="二、知识表示学习的主要方法"><a href="#二、知识表示学习的主要方法" class="headerlink" title="二、知识表示学习的主要方法"></a>二、知识表示学习的主要方法</h1><h2 id="2-1-符号表示"><a href="#2-1-符号表示" class="headerlink" title="2.1 符号表示"></a>2.1 符号表示</h2><ul>
+<li>知识库表示：$G=\{E,R,S\}$<ul>
+<li>$E = \{ e_1,e_2,…,e_{|E|} \}$是知识库的实体集合，$|E|$表示实体数</li>
+<li>$R = \{ r_1,r_2,…,r_{|E|} \}$是知识库中的关系集合，$|R|$表示关系数</li>
+<li>$S\subseteq E\times R\times E$代表三元组集合</li>
+</ul>
+</li>
+<li>三元组表示：$(h,r,t)$<ul>
+<li>其中$h$和$t$分别表示实体和尾实体</li>
+<li>$r$表示$h$和$t$之间的关系</li>
+<li>如(史蒂夫-乔布斯，创始人，苹果公司)</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-距离模型"><a href="#2-2-距离模型" class="headerlink" title="2.2 距离模型"></a>2.2 距离模型</h2><ul>
+<li>结构表示（structured embedding，SE）</li>
+<li>每个实体用$d$维向量表示</li>
+<li>SE为每个关系设定投影矩阵$M_{r,1},M_{r,2}\in R^{d \times d}$，</li>
+<li>SE为三元组$(h,r,t)$定义了损失函数：<ul>
+<li>$f_r(h,t)=|M_{r,1}l_h-M_{r,2}l_t|_{L_1}$</li>
+<li>其中头实体向量$l_h$和尾实体向量$l_t$通过关系$r$的两个矩阵投影到$r$对应的空间中</li>
+<li>这个距离反应了两个实体的在关系$r$下的语义相似度，距离越小说明两个实体存在这种关系</li>
+</ul>
+</li>
+<li>SE学习计算<ul>
+<li>$argmin_r|M_{r,1}l_h-M_{r,2}l_t|_{L_1}$</li>
+<li>找到两个实体距离最近的关系矩阵，就是它们之间的关系</li>
+</ul>
+</li>
+<li>缺点：需要两个不同的投影矩阵，协同性差，不精准</li>
+</ul>
+<h2 id="2-3-单层神经网络模型"><a href="#2-3-单层神经网络模型" class="headerlink" title="2.3 单层神经网络模型"></a>2.3 单层神经网络模型</h2><ul>
+<li>单层神经网络模型（single layer model，SLM）,引入非线性性，解决SE的缺陷</li>
+<li>SLM为三元组$(h,r,t)$定义的评分函数<ul>
+<li>$f_r(h,t)=u_r^Tg(M_{r,1}l_h-M_{r,2}l_t)$</li>
+<li>$M_{r,1},M_{r,2}\in R^{d \times k}$为投影矩阵</li>
+<li>$u_r^T\in R^{k}$为关系$r$的表示向量，$g()$是tanh函数</li>
+</ul>
+</li>
+<li>缺点：对SE的缺陷改善效果一般，计算复杂度高</li>
+</ul>
+<h2 id="2-4-能量模型"><a href="#2-4-能量模型" class="headerlink" title="2.4 能量模型"></a>2.4 能量模型</h2><ul>
+<li>语义匹配能量模型（semantic matching energy，SME）</li>
+<li>定义多个投影矩阵，刻画实体与关系的内在联系</li>
+<li>模型为每个三元组设计了两个评分函数<ul>
+<li>线性形式：$f_r(h,t)=(M_1l_h+M_2l_r+b_1)^T(M_3l_t+M_4l_r+b_2)$</li>
+<li>双线性形式：$f_r(h,t)=(M_1l_h\otimes M_2l_r+b_1)^T(M_3l_t \otimes M_4l_r+b_2)$</li>
+<li>其中$M_1,M_2,M_3,M_4\in R^{d\times k}$为投影矩阵，$\otimes$表示按位相乘（即Hadamard）积，$b_1,b_2$为偏执向量</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-5-双线性模型"><a href="#2-5-双线性模型" class="headerlink" title="2.5 双线性模型"></a>2.5 双线性模型</h2><ul>
+<li>隐变量模型（latent factor model，LFM）：利用基于关系的双线性变换，刻画实体和关系之间的二阶联系</li>
+<li>LFM为每个三元组定义如下双线性评分函数<ul>
+<li>$f_r(h,t)=l_h^TM_rl_t$</li>
+<li>其中，$M_r \in R^{d\times d}$是关系$r$对应的双线性变换矩阵</li>
+</ul>
+</li>
+<li>优点：通过简单有效的方法刻画了实体和关系的语义联系，协同性较好，复杂度低</li>
+</ul>
+<h2 id="2-6-张量神经网络模型"><a href="#2-6-张量神经网络模型" class="headerlink" title="2.6 张量神经网络模型"></a>2.6 张量神经网络模型</h2><h2 id="2-7-矩阵分解模型"><a href="#2-7-矩阵分解模型" class="headerlink" title="2.7 矩阵分解模型"></a>2.7 矩阵分解模型</h2><h2 id="2-8-翻译模型"><a href="#2-8-翻译模型" class="headerlink" title="2.8 翻译模型"></a>2.8 翻译模型</h2><h1 id="三、现有挑战与解决方案"><a href="#三、现有挑战与解决方案" class="headerlink" title="三、现有挑战与解决方案"></a>三、现有挑战与解决方案</h1><h2 id="3-1-复杂关系建模"><a href="#3-1-复杂关系建模" class="headerlink" title="3.1 复杂关系建模"></a>3.1 复杂关系建模</h2><h3 id="3-1-1-TransH模型"><a href="#3-1-1-TransH模型" class="headerlink" title="3.1.1 TransH模型"></a>3.1.1 TransH模型</h3><h3 id="3-1-2-TransR-CTransR模型"><a href="#3-1-2-TransR-CTransR模型" class="headerlink" title="3.1.2 TransR/CTransR模型"></a>3.1.2 TransR/CTransR模型</h3><h3 id="3-1-3-TransD模型"><a href="#3-1-3-TransD模型" class="headerlink" title="3.1.3 TransD模型"></a>3.1.3 TransD模型</h3><h3 id="3-1-4-TranSparse模型"><a href="#3-1-4-TranSparse模型" class="headerlink" title="3.1.4 TranSparse模型"></a>3.1.4 TranSparse模型</h3><h3 id="3-1-5-TransA模型"><a href="#3-1-5-TransA模型" class="headerlink" title="3.1.5 TransA模型"></a>3.1.5 TransA模型</h3><h3 id="3-1-6-TransG模型"><a href="#3-1-6-TransG模型" class="headerlink" title="3.1.6 TransG模型"></a>3.1.6 TransG模型</h3><h2 id="3-2-多源信息融合"><a href="#3-2-多源信息融合" class="headerlink" title="3.2 多源信息融合"></a>3.2 多源信息融合</h2><h3 id="3-2-1-DKRL模型"><a href="#3-2-1-DKRL模型" class="headerlink" title="3.2.1 DKRL模型"></a>3.2.1 DKRL模型</h3><h3 id="3-2-2-关系路径建模"><a href="#3-2-2-关系路径建模" class="headerlink" title="3.2.2 关系路径建模"></a>3.2.2 关系路径建模</h3><h1 id="四、研究方向"><a href="#四、研究方向" class="headerlink" title="四、研究方向"></a>四、研究方向</h1><h2 id="4-1-面向不同知识类型的知识表示学习"><a href="#4-1-面向不同知识类型的知识表示学习" class="headerlink" title="4.1 面向不同知识类型的知识表示学习"></a>4.1 面向不同知识类型的知识表示学习</h2><h2 id="4-2-多源信息融合的知识表示学习"><a href="#4-2-多源信息融合的知识表示学习" class="headerlink" title="4.2 多源信息融合的知识表示学习"></a>4.2 多源信息融合的知识表示学习</h2><h2 id="4-3-考虑复杂推理模式的知识表示学习"><a href="#4-3-考虑复杂推理模式的知识表示学习" class="headerlink" title="4.3 考虑复杂推理模式的知识表示学习"></a>4.3 考虑复杂推理模式的知识表示学习</h2><h2 id="4-4-其他"><a href="#4-4-其他" class="headerlink" title="4.4 其他"></a>4.4 其他</h2><h3 id="4-4-1-面向大规模知识库的在线学习和快速学习"><a href="#4-4-1-面向大规模知识库的在线学习和快速学习" class="headerlink" title="4.4.1 面向大规模知识库的在线学习和快速学习"></a>4.4.1 面向大规模知识库的在线学习和快速学习</h3><h3 id="4-4-2-基于知识分布式表示的应用"><a href="#4-4-2-基于知识分布式表示的应用" class="headerlink" title="4.4.2 基于知识分布式表示的应用"></a>4.4.2 基于知识分布式表示的应用</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/10/Mysql%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/Mysql%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Mysql基础大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-10 12:28:22" itemprop="dateCreated datePublished" datetime="2022-03-10T12:28:22+08:00">2022-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-11 19:51:41" itemprop="dateModified" datetime="2022-03-11T19:51:41+08:00">2022-03-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/MySql/" itemprop="url" rel="index"><span itemprop="name">MySql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、MySql的语法规范"><a href="#一、MySql的语法规范" class="headerlink" title="一、MySql的语法规范"></a>一、MySql的语法规范</h1><ul>
+<li>不区分大小写，但建议关键字大写，表名、列名小写</li>
+<li>每条命令最好用分号结尾</li>
+</ul>
+<h1 id="二、注释"><a href="#二、注释" class="headerlink" title="二、注释"></a>二、注释</h1><ul>
+<li>#注释文字（单行注释）</li>
+<li>— 注释文字（单行注释）</li>
+<li>/* 注释文字 */（多行注释）</li>
+</ul>
+<h1 id="三、查询"><a href="#三、查询" class="headerlink" title="三、查询"></a>三、查询</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 分组查询推荐尽可能使用分组前筛选，即在<span class="keyword">group</span> <span class="keyword">by</span>前使用<span class="keyword">where</span></span><br><span class="line"><span class="keyword">SELECT</span> [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> [表名,...]</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-1-连接查询"><a href="#3-1-连接查询" class="headerlink" title="3.1 连接查询"></a>3.1 连接查询</h2><h3 id="3-1-1-内连接"><a href="#3-1-1-内连接" class="headerlink" title="3.1.1 内连接"></a>3.1.1 内连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    这属于sql99语法，作用等同于不加inner join时的查询</span></span><br><span class="line"><span class="comment">    不加inner join属于隐式连接，用inner join时，inner可以省略</span></span><br><span class="line"><span class="comment">    等值连接在WHERE子句中判断中写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">     <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-1-2-外连接"><a href="#3-1-2-外连接" class="headerlink" title="3.1.2 外连接"></a>3.1.2 外连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">left</span><span class="operator">/</span><span class="keyword">right</span><span class="operator">/</span><span class="keyword">full</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-1-3-交叉连接（笛卡尔积）"><a href="#3-1-3-交叉连接（笛卡尔积）" class="headerlink" title="3.1.3 交叉连接（笛卡尔积）"></a>3.1.3 交叉连接（笛卡尔积）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-1-4-子查询"><a href="#3-1-4-子查询" class="headerlink" title="3.1.4 子查询"></a>3.1.4 子查询</h3><h3 id="3-1-5-分页查询"><a href="#3-1-5-分页查询" class="headerlink" title="3.1.5 分页查询"></a>3.1.5 分页查询</h3><ul>
+<li>offset要显示条目的起始索引（起始索引从0开始）</li>
+<li>size要显示的条目个数</li>
+<li>网页的分页显示数据需要对数据库进行分页查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="keyword">offset</span>,size;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-6-联合查询"><a href="#3-1-6-联合查询" class="headerlink" title="3.1.6 联合查询"></a>3.1.6 联合查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    适用于要查询的结果来自多个表，且多个表没有直接的连接关系，但查询的信息一致时可以使用联合查询，类似于数学的并集</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">查询语句<span class="number">1</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line">查询语句<span class="number">2</span></span><br><span class="line"></span><br><span class="line"># 示例</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 加<span class="keyword">ALL</span>表示会包含重复的内容</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h2><h3 id="3-2-1-查询前五条员工信息"><a href="#3-2-1-查询前五条员工信息" class="headerlink" title="3.2.1 查询前五条员工信息"></a>3.2.1 查询前五条员工信息</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">0</span>,<span class="number">5</span>;  </span><br><span class="line">#或者</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-2-分页查询规律"><a href="#3-2-2-分页查询规律" class="headerlink" title="3.2.2 分页查询规律"></a>3.2.2 分页查询规律</h3><ul>
+<li>page表示第几页，(page-1)*size表示每一页的起始查询位置</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 查询列表</span><br><span class="line"><span class="keyword">FROM</span> 表</span><br><span class="line">LIMIT (page<span class="number">-1</span>)<span class="operator">*</span>size,size;</span><br></pre></td></tr></table></figure>
+<h1 id="四、增删改"><a href="#四、增删改" class="headerlink" title="四、增删改"></a>四、增删改</h1><h2 id="4-1-插入数据"><a href="#4-1-插入数据" class="headerlink" title="4.1 插入数据"></a>4.1 插入数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">VALUES</span>(元组值);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">VALUES</span>(元组值);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">VALUES</span>(元组值),(元组值),...;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">SET</span> 列名<span class="operator">=</span>值,列名<span class="operator">=</span>值,...    #用的少</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">SELECT</span> 查询语句;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">TABLE</span> 表名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-删除数据"><a href="#4-2-删除数据" class="headerlink" title="4.2 删除数据"></a>4.2 删除数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件表达式</span><br></pre></td></tr></table></figure>
+<h2 id="4-3-修改数据"><a href="#4-3-修改数据" class="headerlink" title="4.3 修改数据"></a>4.3 修改数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名 <span class="keyword">SET</span> 列名<span class="operator">=</span>值表达式,列名<span class="operator">=</span>值表达式,... <span class="keyword">WHERE</span> 条件表达式</span><br><span class="line">UPDATE 表名 <span class="keyword">SET</span> <span class="type">ROW</span><span class="operator">=</span>元组 <span class="keyword">WHERE</span> 条件表达式</span><br></pre></td></tr></table></figure>
+<h1 id="五、视图"><a href="#五、视图" class="headerlink" title="五、视图"></a>五、视图</h1><h2 id="5-1-视图的创建"><a href="#5-1-视图的创建" class="headerlink" title="5.1 视图的创建"></a>5.1 视图的创建</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> 视图名(列名序列) <span class="keyword">AS</span> <span class="keyword">SELECT</span>查询语句</span><br></pre></td></tr></table></figure>
+<h2 id="5-2-视图的撤销"><a href="#5-2-视图的撤销" class="headerlink" title="5.2 视图的撤销"></a>5.2 视图的撤销</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> 视图名</span><br></pre></td></tr></table></figure>
+<h1 id="六、Mysql数据类型"><a href="#六、Mysql数据类型" class="headerlink" title="六、Mysql数据类型"></a>六、Mysql数据类型</h1><h2 id="6-1-数值型"><a href="#6-1-数值型" class="headerlink" title="6.1 数值型"></a>6.1 数值型</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>范围（有符号）</th>
+<th>范围（无符号）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1 byte</td>
+<td>(-128，127)</td>
+<td>(0，255)</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2 bytes</td>
+<td>(-32 768，32 767)</td>
+<td>(0，65 535)</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3 bytes</td>
+<td>(-8 388 608，8 388 607)</td>
+<td>(0，16 777 215)</td>
+</tr>
+<tr>
+<td>INT或INTEGER</td>
+<td>4 bytes</td>
+<td>(-2 147 483 648，2 147 483 647)</td>
+<td>(0，4 294 967 295)</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8 bytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>4 bytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>8 bytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td>对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="6-2-日期型"><a href="#6-2-日期型" class="headerlink" title="6.2 日期型"></a>6.2 日期型</h2><h2 id="6-3-字符型"><a href="#6-3-字符型" class="headerlink" title="6.3 字符型"></a>6.3 字符型</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2094,179 +2441,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/25/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%AE%9E%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/25/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">individual项目开发1-前后端数据请求实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-25 16:17:03 / 修改时间：17:27:57" itemprop="dateCreated datePublished" datetime="2022-02-25T16:17:03+08:00">2022-02-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">项目开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">individual项目开发</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、前端工作"><a href="#一、前端工作" class="headerlink" title="一、前端工作"></a>一、前端工作</h1><h2 id="1-1-项目结构"><a href="#1-1-项目结构" class="headerlink" title="1.1 项目结构"></a>1.1 项目结构</h2><ul>
-<li>在初始的项目结构的src目录下新建以下目录<ul>
-<li>views：组合组件的页面</li>
-<li>store/modules：供view层使用，封装数据以供view层显示</li>
-<li>api：封装请求地址以及端口</li>
-<li>utils：js工具包，提供常用的操作，比如创建axios请求</li>
-</ul>
-</li>
-</ul>
-<h3 id="1-1-1-utils层"><a href="#1-1-1-utils层" class="headerlink" title="1.1.1 utils层"></a>1.1.1 utils层</h3><ul>
-<li>创建axios请求，命名为request.js</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span> <span class="comment">//引入 axios</span></span><br><span class="line"><span class="keyword">import</span> baseUrl <span class="keyword">from</span> <span class="string">&#x27;../api/baseUrl&#x27;</span> <span class="comment">//使用环境变量 + 模式的方式定义基础URL</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建 axios 实例</span></span><br><span class="line"><span class="keyword">const</span> service = axios.create(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: baseUrl, <span class="comment">// api 的 base_url</span></span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">15000</span>, <span class="comment">// 请求超时时间</span></span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> service</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-2-api层"><a href="#1-1-2-api层" class="headerlink" title="1.1.2 api层"></a>1.1.2 api层</h3><ul>
-<li>创建baseUrl.js，设置请求地址和端口</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> baseUrl = <span class="string">&quot;http://localhost:8080/&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> baseUrl;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建login.js，调用util层，设置请求方法和请求参数</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/utils/request&#x27;</span> <span class="comment">//引入封装好的 axios 请求</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">userName, password</span>) </span>&#123; <span class="comment">//登录接口</span></span><br><span class="line">  <span class="keyword">return</span> request(&#123; <span class="comment">//使用封装好的 axios 进行网络请求</span></span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/user/login&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="comment">//提交的数据</span></span><br><span class="line">      userName,</span><br><span class="line">      password</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-3-store层"><a href="#1-1-3-store层" class="headerlink" title="1.1.3 store层"></a>1.1.3 store层</h3><ul>
-<li>在store/modules下创建user.js，调用api层请求方法，返回请求数据</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;login&#125; <span class="keyword">from</span> <span class="string">&#x27;@/api/login&#x27;</span><span class="comment">//引入登录 api 接口</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    <span class="comment">// 登录</span></span><br><span class="line">    <span class="function"><span class="title">Login</span>(<span class="params">&#123; commit &#125;, userInfo</span>)</span> &#123; <span class="comment">//定义 Login 方法，在组件中使用 this.$store.dispatch(&quot;Login&quot;) 调用</span></span><br><span class="line">      <span class="keyword">const</span> userName = userInfo.userName.trim()</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123; <span class="comment">//封装一个 Promise</span></span><br><span class="line">        login(userName, userInfo.password).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123; <span class="comment">//使用 login 接口进行网络请求</span></span><br><span class="line">          commit(<span class="string">&#x27;increment&#x27;</span>) <span class="comment">//提交一个 mutation，通知状态改变</span></span><br><span class="line">          resolve(response) <span class="comment">//将结果封装进 Promise</span></span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">          reject(error)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在store下创建index.js，使用store封装modules模块下的数据</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span> <span class="comment">//引入 Vue</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span> <span class="comment">//引入 Vuex</span></span><br><span class="line"><span class="keyword">import</span> user <span class="keyword">from</span> <span class="string">&#x27;./modules/user&#x27;</span> <span class="comment">//引入 user module</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    user <span class="comment">//使用 user.js 中的 action</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123;</span><br><span class="line">    increment (state) &#123; </span><br><span class="line">      <span class="comment">// 变更状态</span></span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-4-views层"><a href="#1-1-4-views层" class="headerlink" title="1.1.4 views层"></a>1.1.4 views层</h3><ul>
-<li>创建登录页Login.vue，调用store验证登录用户</li>
-<li>可以创建Success.vue和Error.vue来进行页面跳转</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;login-container&quot;&gt;</span><br><span class="line">        &lt;el-form :model=&quot;ruleForm2&quot; :rules=&quot;rules2&quot;</span><br><span class="line">         status-icon</span><br><span class="line">         ref=&quot;ruleForm2&quot; </span><br><span class="line">         label-position=&quot;left&quot; </span><br><span class="line">         label-width=&quot;0px&quot; </span><br><span class="line">         class=&quot;demo-ruleForm login-page&quot;&gt;</span><br><span class="line">            &lt;h3 class=&quot;title&quot;&gt;系统登录&lt;/h3&gt;</span><br><span class="line">            &lt;el-form-item prop=&quot;userName&quot;&gt;</span><br><span class="line">                &lt;el-input type=&quot;text&quot; </span><br><span class="line">                    v-model=&quot;ruleForm2.userName&quot; </span><br><span class="line">                    auto-complete=&quot;off&quot; </span><br><span class="line">                    placeholder=&quot;用户名&quot;</span><br><span class="line">                &gt;&lt;/el-input&gt;</span><br><span class="line">            &lt;/el-form-item&gt;</span><br><span class="line">                &lt;el-form-item prop=&quot;password&quot;&gt;</span><br><span class="line">                    &lt;el-input type=&quot;password&quot; </span><br><span class="line">                        v-model=&quot;ruleForm2.password&quot; </span><br><span class="line">                        auto-complete=&quot;off&quot; </span><br><span class="line">                        placeholder=&quot;密码&quot;</span><br><span class="line">                    &gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;/el-form-item&gt;</span><br><span class="line">            &lt;el-checkbox </span><br><span class="line">                v-model=&quot;checked&quot;</span><br><span class="line">                class=&quot;rememberme&quot;</span><br><span class="line">            &gt;记住密码&lt;/el-checkbox&gt;</span><br><span class="line">            &lt;el-form-item style=&quot;width:100%;&quot;&gt;</span><br><span class="line">                &lt;el-button type=&quot;primary&quot; style=&quot;width:100%;&quot; @click=&quot;handleSubmit&quot; :loading=&quot;logining&quot;&gt;登录&lt;/el-button&gt;</span><br><span class="line">            &lt;/el-form-item&gt;</span><br><span class="line">        &lt;/el-form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            logining: false,</span><br><span class="line">            ruleForm2: &#123;</span><br><span class="line">                userName: &#x27;&#x27;,</span><br><span class="line">                password: &#x27;&#x27;</span><br><span class="line">            &#125;,</span><br><span class="line">            rules2: &#123;</span><br><span class="line">                userName: [&#123;required: true, message: &#x27;please enter your account&#x27;, trigger: &#x27;blur&#x27;&#125;],</span><br><span class="line">                password: [&#123;required: true, message: &#x27;enter your password&#x27;, trigger: &#x27;blur&#x27;&#125;]</span><br><span class="line">            &#125;,</span><br><span class="line">            checked: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        handleSubmit(event)&#123;</span><br><span class="line">            this.$refs.ruleForm2.validate((valid) =&gt; &#123;</span><br><span class="line">                if(valid)&#123;</span><br><span class="line">                    this.logining = true;</span><br><span class="line">                    this.$store</span><br><span class="line">                        .dispatch(&quot;Login&quot;, this.ruleForm2)</span><br><span class="line">                        .then(response =&gt; &#123;</span><br><span class="line">                            this.loading = false;</span><br><span class="line">                            let code = response.data.code;</span><br><span class="line">                            if (code == 200) &#123;</span><br><span class="line">                                this.$router.push(&#123;</span><br><span class="line">                                path: &quot;/success&quot;,</span><br><span class="line">                                query: &#123; data: response.data.data &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                            &#125; else &#123;</span><br><span class="line">                                this.$router.push(&#123;</span><br><span class="line">                                path: &quot;/error&quot;,</span><br><span class="line">                                query: &#123; message: response.data.msg &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.login-container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.login-page &#123;</span><br><span class="line">    -webkit-border-radius: 5px;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">    margin: 180px auto;</span><br><span class="line">    width: 350px;</span><br><span class="line">    padding: 35px 35px 15px;</span><br><span class="line">    background: #fff;</span><br><span class="line">    border: 1px solid #eaeaea;</span><br><span class="line">    box-shadow: 0 0 25px #cac6c6;</span><br><span class="line">&#125;</span><br><span class="line">label.el-checkbox.rememberme &#123;</span><br><span class="line">    margin: 0px 0px 15px;</span><br><span class="line">    text-align: left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="二、后端工作"><a href="#二、后端工作" class="headerlink" title="二、后端工作"></a>二、后端工作</h1><h2 id="2-1-跨域问题"><a href="#2-1-跨域问题" class="headerlink" title="2.1 跨域问题"></a>2.1 跨域问题</h2><ul>
-<li>浏览器的跨域问题</li>
-</ul>
-<h2 id="2-2-Springboot解决跨域问题"><a href="#2-2-Springboot解决跨域问题" class="headerlink" title="2.2 Springboot解决跨域问题"></a>2.2 Springboot解决跨域问题</h2><ul>
-<li>创建在config层下配置类CorsConfig，使用以下代码即可解决跨问问题</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorsConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//设置允许跨域的路径</span></span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                <span class="comment">//设置允许跨域请求的域名</span></span><br><span class="line">                .allowedOriginPatterns(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">//这里：是否允许证书 不再默认开启</span></span><br><span class="line">                .allowCredentials(<span class="keyword">true</span>)</span><br><span class="line">                <span class="comment">//设置允许的方法</span></span><br><span class="line">                .allowedMethods(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">//跨域允许时间</span></span><br><span class="line">                .maxAge(<span class="number">3600</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="三、项目启动"><a href="#三、项目启动" class="headerlink" title="三、项目启动"></a>三、项目启动</h1><ul>
-<li>先启动Springboot</li>
-<li>再启动Vue，在config/index.js中可以修改vue访问端口号，要避免和Springboot项目端口冲突的情况</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-axios%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-axios%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">individual项目开发1-axios请求数据</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-24 21:54:17" itemprop="dateCreated datePublished" datetime="2022-02-24T21:54:17+08:00">2022-02-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2338,20 +2512,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2368,7 +2542,7 @@
 			<h3 class="widget-title">Tag Cloud</h3>
 			<div id="myCanvasContainer" class="widget tagcloud">
 				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0/" rel="tag">知识表示学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E9%97%AE%E7%AD%94/" rel="tag">自动问答</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8E%9F%E5%88%99/" rel="tag">设计模式原则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%86%E5%9F%9F%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">领域知识图谱</a><span class="tag-list-count">1</span></li></ul>
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E8%A1%A8%E7%A4%BA%E5%AD%A6%E4%B9%A0/" rel="tag">知识表示学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8A%A8%E9%97%AE%E7%AD%94/" rel="tag">自动问答</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%8E%9F%E5%88%99/" rel="tag">设计模式原则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%86%E5%9F%9F%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">领域知识图谱</a><span class="tag-list-count">1</span></li></ul>
 				</canvas>
 			</div>
 		</div>

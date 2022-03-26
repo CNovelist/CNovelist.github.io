@@ -1628,10 +1628,8 @@
     <url>/2022/03/17/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%8A%80%E6%9C%AF/</url>
     <content><![CDATA[<h1 id="SPARQL语言"><a href="#SPARQL语言" class="headerlink" title="SPARQL语言"></a>SPARQL语言</h1><h1 id="一、OWL本体库语言"><a href="#一、OWL本体库语言" class="headerlink" title="一、OWL本体库语言"></a>一、OWL本体库语言</h1><h1 id="二、RDF"><a href="#二、RDF" class="headerlink" title="二、RDF"></a>二、RDF</h1><h2 id="2-1-RDF介绍"><a href="#2-1-RDF介绍" class="headerlink" title="2.1 RDF介绍"></a>2.1 RDF介绍</h2><ul>
 <li>RDF全称为资源描述框架</li>
-<li><p>该数据模型由三个部分组成事实，被称为三元组triples：(主，谓，宾)</p>
-</li>
-<li><p>如下表所示，下表为一条邮箱的事实</p>
-</li>
+<li>该数据模型由三个部分组成事实，被称为三元组triples：(主，谓，宾)</li>
+<li>如下表所示，下表为一条邮箱的事实</li>
 </ul>
 <div class="table-container">
 <table>
@@ -1651,16 +1649,72 @@
 </tbody>
 </table>
 </div>
-<h2 id="2-2-RDF文件格式"><a href="#2-2-RDF文件格式" class="headerlink" title="2.2 RDF文件格式"></a>2.2 RDF文件格式</h2><ul>
+<h2 id="2-2-RDF资源"><a href="#2-2-RDF资源" class="headerlink" title="2.2 RDF资源"></a>2.2 RDF资源</h2><ul>
+<li>RDF图中有三种节点：IRIs（国际资源标识符），literals（文字）和空节点<ul>
+<li>IRIs是一个Unicode字符串</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/03/17/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%8A%80%E6%9C%AF/rdfgraph.png" class="" title="rdfgraph">
+<ul>
+<li>谓语本身也是一个IRIs，表示一个属性，可以认为是二元关系的<strong>资源</strong></li>
+</ul>
+<h2 id="2-3-RDF图"><a href="#2-3-RDF图" class="headerlink" title="2.3 RDF图"></a>2.3 RDF图</h2><h3 id="2-3-1-三元组"><a href="#2-3-1-三元组" class="headerlink" title="2.3.1 三元组"></a>2.3.1 三元组</h3><ul>
+<li>一个RDF三元组由三个部分组成<ul>
+<li>主语：它是一个IRI或者一个空节点</li>
+<li>谓语：它是一个IRI</li>
+<li>宾语：它是一个IRI或者文字或者空节点</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-2-URL，URI和IRI"><a href="#2-3-2-URL，URI和IRI" class="headerlink" title="2.3.2 URL，URI和IRI"></a>2.3.2 URL，URI和IRI</h2><ul>
+<li>URL：统一资源定位符，表示互联网资源的位置访问地址</li>
+<li>URI：统一资源标识符，在三元组中可以标识主语、谓语的<strong>命名空间</strong>，以免命名混淆</li>
+<li>IRI：国际资源标识符</li>
+</ul>
+<h1 id="三、ttl数据格式"><a href="#三、ttl数据格式" class="headerlink" title="三、ttl数据格式"></a>三、ttl数据格式</h1><h2 id="3-1-简单的三元组"><a href="#3-1-简单的三元组" class="headerlink" title="3.1 简单的三元组"></a>3.1 简单的三元组</h2><ul>
+<li>每个三元组满足&lt;主 谓 宾&gt;，且每个三元组以”.”结尾</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#spiderman&gt; &lt;http:/</span><span class="regexp">/www.perceive.net/</span>schemas<span class="regexp">/relationship/</span>enemyOf&gt; &lt;http:<span class="regexp">//</span>example.org/<span class="comment">#green-goblin&gt; .</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-2-简单格式"><a href="#3-2-简单格式" class="headerlink" title="3.2 简单格式"></a>3.2 简单格式</h2><ul>
 <li>RDF有许多文件格式，以下以Turtle RDF格式为例，文件名为data.ttl</li>
 <li>对于以下文件格式，后面会做详细介绍</li>
 </ul>
 <figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># filename: ex002.ttl</span><br><span class="line"></span><br><span class="line"># 前缀行，<span class="keyword">ab</span>表示的是后面URI的别名，方便后面表示</span><br><span class="line">@prefix <span class="keyword">a</span><span class="variable">b:</span> &lt;http://learningsparql.<span class="keyword">com</span>/ns/addressbook#&gt; .</span><br><span class="line"></span><br><span class="line"># 以下每行都表示一个三元组，其中<span class="keyword">ab</span>为前缀</span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(229) 276-5135&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;richard49@hotmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(245) 646-5488&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;cindym@gmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(194) 966-1505&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;craigellis@yahoo.com&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;c.ellis@usairwaysgroup.com&quot;</span> .</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="2-3-URL和URI"><a href="#2-3-URL和URI" class="headerlink" title="2.3 URL和URI"></a>2.3 URL和URI</h2><ul>
-<li>URL：统一资源定位符，表示互联网资源的位置访问地址</li>
-<li>URI：统一资源标识符，在三元组中可以标识主语、谓语的<strong>命名空间</strong>，以免命名混淆</li>
+<h2 id="3-3-谓词表"><a href="#3-3-谓词表" class="headerlink" title="3.3 谓词表"></a>3.3 谓词表</h2><ul>
+<li>以下数据标注了蜘蛛侠的敌人和名字</li>
+<li><p>也就是说相同的主语有多个的谓词关系时需要用”;”分隔，形式如下：</p>
+</li>
+<li><p>主语 谓词1 宾语1;</p>
+<ul>
+<li>谓词2 宾语2.</li>
 </ul>
-<h1 id="三、SPARQL语言"><a href="#三、SPARQL语言" class="headerlink" title="三、SPARQL语言"></a>三、SPARQL语言</h1><h2 id="3-1-一个简单的查询语句"><a href="#3-1-一个简单的查询语句" class="headerlink" title="3.1 一个简单的查询语句"></a>3.1 一个简单的查询语句</h2><ul>
+</li>
+<li>当然也可以分开写成两个三元组也是可以的</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#spiderman&gt; &lt;http:/</span><span class="regexp">/www.perceive.net/</span>schemas<span class="regexp">/relationship/</span>enemyOf&gt; &lt;http:<span class="regexp">//</span>example.org/<span class="comment">#green-goblin&gt; ;</span></span><br><span class="line">				&lt;http:<span class="regexp">//</span>xmlns.com<span class="regexp">/foaf/</span><span class="number">0.1</span>/name&gt; <span class="string">&quot;Spiderman&quot;</span> .</span><br></pre></td></tr></table></figure>
+<h2 id="3-4-宾语表"><a href="#3-4-宾语表" class="headerlink" title="3.4 宾语表"></a>3.4 宾语表</h2><ul>
+<li>主语对于相同谓词拥有多个宾语的情况</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#spiderman&gt; &lt;http:/</span><span class="regexp">/xmlns.com/</span>foaf<span class="regexp">/0.1/</span>name&gt; <span class="string">&quot;Spiderman&quot;</span>, <span class="string">&quot;Человек-паук&quot;</span>@ru .</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当然也可以分开写成两个三元组也是可以的</li>
+</ul>
+<h2 id="3-5-RDF概念支持"><a href="#3-5-RDF概念支持" class="headerlink" title="3.5 RDF概念支持"></a>3.5 RDF概念支持</h2><h3 id="3-5-1-IRI"><a href="#3-5-1-IRI" class="headerlink" title="3.5.1 IRI"></a>3.5.1 IRI</h3><ul>
+<li>使用@prefix/PREFIX或者@base/BASE来表示IRI，简化三元组的编写，可以理解为为IRI起别名</li>
+<li>以下为@prefix使用例子</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用PREFIX也是同样效果</span></span><br><span class="line">@prefix somePrefix: &lt;http:<span class="regexp">//</span>www.perceive.net<span class="regexp">/schemas/</span>relationship/&gt; .</span><br><span class="line"></span><br><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#green-goblin&gt; somePrefix:enemyOf &lt;http:/</span><span class="regexp">/example.org/</span><span class="comment">#spiderman&gt; .</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>以下为@base使用例子</li>
+<li>可以理解为相对地址的写法</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># A triple with all absolute IRIs</span></span><br><span class="line">&lt;http:<span class="regexp">//</span>one.example<span class="regexp">/subject1&gt; &lt;http:/</span><span class="regexp">/one.example/</span>predicate1&gt; &lt;http:<span class="regexp">//</span>one.example/object1&gt; .</span><br><span class="line"></span><br><span class="line">@base &lt;http:<span class="regexp">//</span>one.example/&gt; .	<span class="comment"># 标记主地址</span></span><br><span class="line">&lt;subject2&gt; &lt;predicate2&gt; &lt;object2&gt; .     <span class="comment"># 相对 IRIs, e.g. http://one.example/subject2</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>也可以使用空前缀</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@prefix :</span> &lt;<span class="attribute">http</span>:<span class="comment">//another.example/&gt; .    # empty prefix</span></span><br><span class="line">:<span class="attribute">subject5 </span>:<span class="attribute">predicate5 </span>:object5 .        # prefixed name, e.g. <span class="attribute">http</span>:<span class="comment">//another.example/subject5</span></span><br></pre></td></tr></table></figure>
+<h1 id="四、SPARQL语言"><a href="#四、SPARQL语言" class="headerlink" title="四、SPARQL语言"></a>四、SPARQL语言</h1><h2 id="4-1-一个简单的查询语句"><a href="#4-1-一个简单的查询语句" class="headerlink" title="4.1 一个简单的查询语句"></a>4.1 一个简单的查询语句</h2><ul>
 <li><p>SPARQL是专门针对RDF的的查询语句</p>
 </li>
 <li><p>SELECT后面的?xxx表示要查询的变量</p>
@@ -1669,6 +1723,18 @@
 <li>这条语言的作用就是查询craig的emal</li>
 </ul>
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义好命名空间的别名</span></span><br><span class="line">PREFIX ab: &lt;http:<span class="regexp">//</span>learningsparql.com<span class="regexp">/ns/</span>addressbook<span class="comment">#&gt; </span></span><br><span class="line"></span><br><span class="line">SELECT ?craig_email</span><br><span class="line">WHERE</span><br><span class="line">&#123; ab:craig ab:email ?craig_email . &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-多重匹配"><a href="#3-2-多重匹配" class="headerlink" title="3.2 多重匹配"></a>3.2 多重匹配</h2><ul>
+<li>多重匹配返回的结果是多个属性的结果集</li>
+<li>以下由三个对象的三元组，a和b都有姓名和邮箱，c只有一个邮箱</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@prefix</span> foaf： &lt;<span class="attribute">http</span>:<span class="comment">//xmlns.com/foaf/0.1/&gt; 。</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">_</span>:a <span class="attribute">foaf</span>:name <span class="string">&quot;Johnny Lee Outlaw&quot;</span> 。</span><br><span class="line"><span class="attribute">_</span>:a <span class="attribute">foaf</span>:mbox &lt;<span class="attribute">mailto</span>:jlow<span class="variable">@example</span>.com&gt; 。</span><br><span class="line"><span class="attribute">_</span>:b <span class="attribute">foaf</span>:name <span class="string">&quot;Peter Goodguy&quot;</span> 。</span><br><span class="line"><span class="attribute">_</span>:b <span class="attribute">foaf</span>:mbox &lt;<span class="attribute">mailto</span>:peter<span class="variable">@example</span>.org&gt; 。</span><br><span class="line"><span class="attribute">_</span>:c <span class="attribute">foaf</span>:mbox &lt;<span class="attribute">mailto</span>:carol<span class="variable">@example</span>.org&gt; 。</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查询姓名和邮箱<ul>
+<li>如果要查询相同主语所对应的宾语信息列表，可以使用以下方式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">PREFIX <span class="symbol">foaf:</span>   &lt;<span class="symbol">http:</span>/<span class="regexp">/xmlns.com/foaf</span><span class="regexp">/0.1/</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询语句要提取的是姓名和邮箱</span></span><br><span class="line"><span class="comment"># where匹配的意思是，相同的x对应的姓名和邮箱信息</span></span><br><span class="line"><span class="comment"># 这里就可以查到a/b所对应的姓名和邮箱信息</span></span><br><span class="line">SELECT <span class="string">?n</span>ame <span class="string">?m</span>box</span><br><span class="line">WHERE</span><br><span class="line">  &#123; <span class="string">?x</span> <span class="symbol">foaf:</span>name <span class="string">?n</span>ame .</span><br><span class="line">    <span class="string">?x</span> <span class="symbol">foaf:</span>mbox <span class="string">?m</span>box &#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>知识图谱</category>
@@ -3450,5 +3516,22 @@
     <title>知识图谱学习笔记3-论文写作指导</title>
     <url>/2022/03/25/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03-%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E6%8C%87%E5%AF%BC/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>redis基础大全</title>
+    <url>/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>nginx基础大全</title>
+    <url>/2022/03/26/nginx%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="一、Nginx简介"><a href="#一、Nginx简介" class="headerlink" title="一、Nginx简介"></a>一、Nginx简介</h1>]]></content>
+      <categories>
+        <category>后端</category>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>服务器</tag>
+      </tags>
   </entry>
 </search>
