@@ -3272,4 +3272,278 @@
         <tag>ARQ</tag>
       </tags>
   </entry>
+  <entry>
+    <title>设计模式基础大全</title>
+    <url>/2022/03/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="一、设计模式基础"><a href="#一、设计模式基础" class="headerlink" title="一、设计模式基础"></a>一、设计模式基础</h1><h2 id="1-1-GoF的23种设计模式及其功能"><a href="#1-1-GoF的23种设计模式及其功能" class="headerlink" title="1.1 GoF的23种设计模式及其功能"></a>1.1 GoF的23种设计模式及其功能</h2><ol>
+<li>单例（ Singleton ）模式 某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。</li>
+<li>原型（Prototype）模式：将一个对象作为原型，通过对其进行复制而克隆出多个和原型类似的新实例</li>
+<li>工厂方法（Factory Method）模式：定义一个用于创建产品的接口，由子类决定生存什么产品</li>
+<li>抽象工厂（Abstract Factory）模式：提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品</li>
+<li>建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们</li>
+<li>代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性</li>
+<li>适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能在一起工作的那些类能一起工作</li>
+<li>桥街（Bridge）模式：将抽象与实现分离，使它们可以独立变化，它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
+<li>装饰（Decorator）模式：：动态的给对象增加一些职责，即增加其额外的功能</li>
+<li>外观（ Facade ）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问</li>
+<li>享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用</li>
+<li>组合（ Composite ）模式：将对象组合成树状层次结构，使用户对单个对象和组合对象具有一致的访问性</li>
+<li>模板方法（ Templat Method ）模式：定义一个操作中的算法骨架 ，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤</li>
+<li>策略（ Strategy ）模式：定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的改变不会影响使用算法的客户</li>
+<li>命令（ Command ）模式：将一个请求封装为一个对象 ，使发出请求的责任和执行请求的责任分割开</li>
+<li>职责链 （Chain of Responsibility ）模式：把请求从链中的一个对象传到下一个对象 ，直到请求被响应为止。通过这种方式去除对象之间的耦合</li>
+<li>状态（ State ）模式：允许一个对象在其内部状态发生改变时改变其行为能力</li>
+<li>观察者（ Observer 模式：多个对象间存在－对多关系，当一个对象发生改变时，把这种改变通知给其他多个对象，从而影响其他对象的行为</li>
+<li>中介者（ Mediator ）模式：定义一个中介对象来简化原有对象之间的交互关系，降低系统中对象间的耦合度，使原有对象之间不必相互了解</li>
+<li>迭代器 Iterator ）模式 提供一种方法来顺序访问聚合对象中的一系列数据 ，而不暴露聚合对象的内部表示</li>
+<li>访问者（Visitor）模式：在不改变集合元素的前提下，为一个集合种的每个元素提供多种访问方式，即每个元素有多个访问者对象访问</li>
+<li>备忘录（Memento）模式：在不破坏封装性的前提下，获取并保存一个对象的内部状态以便以后恢复它</li>
+<li>解释器（Interpreter）模式：提供如何定义语言的文法，以及对语言句子的解释方法，即解释器</li>
+</ol>
+<h1 id="二、面向对象的设计原则"><a href="#二、面向对象的设计原则" class="headerlink" title="二、面向对象的设计原则"></a>二、面向对象的设计原则</h1><h2 id="2-1-开闭原则OCP"><a href="#2-1-开闭原则OCP" class="headerlink" title="2.1 开闭原则OCP"></a>2.1 开闭原则OCP</h2><ul>
+<li>对扩展开放、对修改关闭</li>
+<li>通过“抽象约束、封装变化”来实现开闭原则</li>
+<li>抽象层设计的合理，可以基本保持软件架构的稳定</li>
+<li>当软件需求发生变化时，只需要根据需求派生一个实现类来扩展就可以了</li>
+</ul>
+<h2 id="2-2-里氏替换原则LSP"><a href="#2-2-里氏替换原则LSP" class="headerlink" title="2.2 里氏替换原则LSP"></a>2.2 里氏替换原则LSP</h2><ul>
+<li>子类可以扩展父类的功能，但不能改变父类原有的功能</li>
+<li>简单来说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法</li>
+<li>作用：实现开闭原则的重要方式之一、提高父类可复用性、降低类的扩展出错的可能性</li>
+<li>如果出现因重写父类方法而导致出错的情况，应该设计个更一般的类，重新组织类的继承关系</li>
+</ul>
+<h2 id="2-3-依赖倒置原则DIP"><a href="#2-3-依赖倒置原则DIP" class="headerlink" title="2.3 依赖倒置原则DIP"></a>2.3 依赖倒置原则DIP</h2><ul>
+<li>要面向接口编程，不要面向实现编程</li>
+<li>抽象层相对稳定，实现类较为多变</li>
+<li>接口/抽象类的目的是制定好规范和契约，不去涉及任何具体的操作</li>
+<li>具体细节的任务交给实现类完成</li>
+<li>作用：降低了类间的耦合性、提高系统的稳定性、提高代码可读性和可维护性</li>
+</ul>
+<h3 id="2-3-1-实现方法"><a href="#2-3-1-实现方法" class="headerlink" title="2.3.1 实现方法"></a>2.3.1 实现方法</h3><ol>
+<li>每个类尽量提供接口或抽象类，或者两者都具备</li>
+<li>变量的声明类型尽量是接口或者是抽象类</li>
+<li>任何类都不应该从具体类派生</li>
+<li>使用继承时尽量遵循里氏替换原则</li>
+</ol>
+<h2 id="2-4-单一职责原则SRP"><a href="#2-4-单一职责原则SRP" class="headerlink" title="2.4 单一职责原则SRP"></a>2.4 单一职责原则SRP</h2><ul>
+<li>一个类应该有且仅有一个引起它变化的原因，否则应该被拆分</li>
+<li>承担太多职责的缺点：削弱类实现其他职责的能力、冗余代码</li>
+<li>作用：降低类的复杂度、提高类的可读性、提高系统可维护性、变更引起的风险降低</li>
+<li>实现方法：分析、设计、重构</li>
+<li>同样适用于方法，方法应尽可能做好一件事情</li>
+</ul>
+<h2 id="2-5-接口隔离原则ISP"><a href="#2-5-接口隔离原则ISP" class="headerlink" title="2.5 接口隔离原则ISP"></a>2.5 接口隔离原则ISP</h2><ul>
+<li>程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法</li>
+<li>要为类建立它们需要的专用接口，而不要视图去建立一个很庞大的接口供所有依赖它的类去调用</li>
+<li>作用：提高系统灵活性和可维护性、降低系统耦合性、提高系统内聚性、接口粒度大小要定义合理（太大太小都不好）、减少代码冗余、能够体现对象的层次<br>实现方法：一个接口只服务于一个子模块或业务逻辑、为依赖接口的类定制服务、深入了解环境/业务逻辑、使接口用最少的方法实现最多的事情</li>
+</ul>
+<h2 id="2-6-迪米特法则LKP"><a href="#2-6-迪米特法则LKP" class="headerlink" title="2.6 迪米特法则LKP"></a>2.6 迪米特法则LKP</h2><ul>
+<li>如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用</li>
+<li>作用：降低类间耦合度、提高模块相对独立性、提高类的可复用性和系统的扩展性</li>
+<li>过渡使用LKP会使系统产生大量的中介类，从而增加系统的复杂性，所以使用时要权衡好</li>
+<li>实现方法：依赖者应该依赖应该依赖的对象、被依赖者只暴露应该暴露的方法</li>
+<li>注意：应创建弱耦合的类、降低类成员的访问权限、优先考虑设计不变类、降低引用次数、不暴露属性成员（提供get和set）、进行使用序列化</li>
+</ul>
+<h2 id="2-7-合成复用原则CRP"><a href="#2-7-合成复用原则CRP" class="headerlink" title="2.7 合成复用原则CRP"></a>2.7 合成复用原则CRP</h2><ul>
+<li>又称组合/聚合复用原则（CARP）</li>
+<li>它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现</li>
+<li>如果要使用继承关系，则必须严格遵循里氏代换原则</li>
+<li>合成复用原则和里氏代换原则都是开闭原则的具体实现规范</li>
+<li>类的复用包括：继承复用、合成复用</li>
+</ul>
+<h3 id="2-7-1-继承复用"><a href="#2-7-1-继承复用" class="headerlink" title="2.7.1 继承复用"></a>2.7.1 继承复用</h3><ul>
+<li>破坏了类的封装性，父类暴露给子类</li>
+<li>子类与父类耦合度高</li>
+<li>限制了复用的灵活性，父类继承而来的实现是静态的，在编译时已经定义、所以在运行时不可能发生变化</li>
+</ul>
+<h3 id="2-7-2-合成复用"><a href="#2-7-2-合成复用" class="headerlink" title="2.7.2 合成复用"></a>2.7.2 合成复用</h3><ul>
+<li>维持了类的封装性</li>
+<li>新旧类之间的耦合度低</li>
+<li>复用的灵活性高，可以在运行时动态进行，新对象可以动态地引用与成分对象类型相同的对象</li>
+</ul>
+<h1 id="三、创建型模式"><a href="#三、创建型模式" class="headerlink" title="三、创建型模式"></a>三、创建型模式</h1><h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="3.1 特点"></a>3.1 特点</h2><ul>
+<li>创建型模式的主要关注点是“怎样创建对象”</li>
+<li>将对象的创建与使用分离，这样可以降低系统耦合度，使用者不需要关注对象的创建细节</li>
+<li>对象的创建由工厂来完成</li>
+</ul>
+<h2 id="3-2-模式"><a href="#3-2-模式" class="headerlink" title="3.2 模式"></a>3.2 模式</h2><ul>
+<li>单例模式Singleton</li>
+<li>原型模式Prototype</li>
+<li>工厂模式Factory Method</li>
+<li>抽象工厂模式Abstract Factory</li>
+<li>建造者模式Builder</li>
+</ul>
+<h1 id="四、单例模式"><a href="#四、单例模式" class="headerlink" title="四、单例模式"></a>四、单例模式</h1><h2 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1 定义"></a>4.1 定义</h2><ul>
+<li>一个类只有一个实例，且该类能自行创建这个实例的一种模式</li>
+<li>比如windows的任务管理器、回收站、应用程序的日志对象、网站的计数器等等，一般都设计为单例</li>
+</ul>
+<h2 id="4-2-特点"><a href="#4-2-特点" class="headerlink" title="4.2 特点"></a>4.2 特点</h2><ul>
+<li>单例类只有一个实例对象</li>
+<li>该单例对象必须由单例类自行创建</li>
+<li>单例类对外提供一个访问该单例的全局访问点</li>
+</ul>
+<h2 id="4-3-结构"><a href="#4-3-结构" class="headerlink" title="4.3 结构"></a>4.3 结构</h2><ul>
+<li>单例类：包含一个实例且能自行创建这个实例的类</li>
+<li>访问类：使用单例的类</li>
+</ul>
+<h2 id="4-4-实现"><a href="#4-4-实现" class="headerlink" title="4.4 实现"></a>4.4 实现</h2><h3 id="4-4-1-懒汉式"><a href="#4-4-1-懒汉式" class="headerlink" title="4.4.1 懒汉式"></a>4.4.1 懒汉式</h3><ul>
+<li>特点：类加载时没有生成实例，只有第一次调用getInstance方法时才去创建这个单例</li>
+<li>编写多线程程序时，关键字volatile和synchronized不能删除，否则存在线程不安全的问题，但缺点是影响性能，会消耗更多的资源</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> LazySingleton instance=<span class="keyword">null</span>;  <span class="comment">//保证instance在所有线程中同步</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;   <span class="comment">// private避免类在外部被实例化</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;  <span class="comment">//getInstance方法前加同步</span></span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)</span><br><span class="line">            instance=<span class="keyword">new</span> LazySingleton();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-2-饿汉式"><a href="#4-4-2-饿汉式" class="headerlink" title="4.4.2 饿汉式"></a>4.4.2 饿汉式</h3><ul>
+<li>特点：类一旦加载就创建一个单例，保证在调用getInstance方法之前单例就已经存在了</li>
+<li>饿汉式由于其特点，所以是线程安全的，可以直接用于多线程而不会出现问题</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingleton instance=<span class="keyword">new</span> HungrySingleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-5-应用场景"><a href="#4-5-应用场景" class="headerlink" title="4.5 应用场景"></a>4.5 应用场景</h2><ul>
+<li>某类只要求生成一个对象的时候</li>
+<li>当对象需要被共享的场合</li>
+<li>当某类需要频繁实例化，而创建的对象又频繁被消耗的时候</li>
+</ul>
+<h1 id="五、原型模式"><a href="#五、原型模式" class="headerlink" title="五、原型模式"></a>五、原型模式</h1><h2 id="5-1-定义"><a href="#5-1-定义" class="headerlink" title="5.1 定义"></a>5.1 定义</h2><ul>
+<li>通过传统的构造函数来创建对象，会比较复杂且耗时耗资源</li>
+<li>用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象</li>
+<li>如：系统的复制</li>
+</ul>
+<h2 id="5-2-结构"><a href="#5-2-结构" class="headerlink" title="5.2 结构"></a>5.2 结构</h2><ul>
+<li>抽象原型类：规定了具体原型对象必须实现的接口</li>
+<li>具体原型类：实现抽象原型类的clone()方法，它是可被复制的对象</li>
+<li>访问类：使用具体原型类中的clone()方法来复制新的对象</li>
+</ul>
+<h2 id="5-3-实现"><a href="#5-3-实现" class="headerlink" title="5.3 实现"></a>5.3 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//具体原型类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Realizetype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    Realizetype()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型创建成功&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型复制成功&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> (Realizetype) <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//原型模式的测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrototypeTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        Realizetype obj1=<span class="keyword">new</span> Realizetype();</span><br><span class="line">        Realizetype obj2=(Realizetype) obj1.clone();</span><br><span class="line">        System.out.println(<span class="string">&quot;obj1==obj2?&quot;</span>+(obj1==obj2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    运行结果：</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    obj1==obj2?false</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-4-应用场景"><a href="#5-4-应用场景" class="headerlink" title="5.4 应用场景"></a>5.4 应用场景</h2><ul>
+<li>对象之间相同或相似，即只是个别的几个属性不同的时候</li>
+<li>对象的创建过程比较麻烦，但复制比较简单的时候</li>
+</ul>
+<h1 id="六、工厂方法模式"><a href="#六、工厂方法模式" class="headerlink" title="六、工厂方法模式"></a>六、工厂方法模式</h1><h2 id="6-1-定义"><a href="#6-1-定义" class="headerlink" title="6.1 定义"></a>6.1 定义</h2><ul>
+<li>定义：定义一个创建产品对象 工厂接口，将产品对象的实际创建工作推迟到具体子工厂类当中</li>
+<li>简单工厂模式：如果要创建的产品不多，只要一个工厂类就可以完成，这种模式叫“简单工厂模式”， 它不属于 GoF 23 经典设计模式，它的缺点是增加新产品时会违背“开闭原则”</li>
+</ul>
+<h2 id="6-2-特点"><a href="#6-2-特点" class="headerlink" title="6.2 特点"></a>6.2 特点</h2><ul>
+<li>满足创建型模式中所要求的“创建与使用相分离”的特点。我们把被创建的对象称为“产品”，把创建产品的对象称为“工厂”</li>
+<li>用户只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程</li>
+<li>在系统增加新的产品时只需要添加具体产品类和对应的具体工厂类，无须对原工厂进行任何修改 ，满足开闭原则。</li>
+<li>缺点 每增加一个产品就要增加一个具体产品类和一个对应的具体工厂类 ，这增加了系统的复杂度</li>
+</ul>
+<h2 id="6-3-结构"><a href="#6-3-结构" class="headerlink" title="6.3 结构"></a>6.3 结构</h2><ul>
+<li>抽象工厂（Abstract Factory）：提供了创建产品的接口 ，调用者通过它访问具体工厂的工厂方法 newProduct（）来创建产品。</li>
+<li>具体工厂（Concrete Factory）：主要是实现抽象工厂中的抽象方法 完成具体产品的创建。</li>
+<li>抽象产品（Product）：定义了产品的规范 描述了产品的主要特性和功能。</li>
+<li>具体产品（Concrete Product）：：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。</li>
+</ul>
+<h2 id="6-4-实现"><a href="#6-4-实现" class="headerlink" title="6.4 实现"></a>6.4 实现</h2><h3 id="6-4-1-xml配置"><a href="#6-4-1-xml配置" class="headerlink" title="6.4.1 xml配置"></a>6.4.1 xml配置</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">className</span>&gt;</span>ConcreteFactory1<span class="tag">&lt;/<span class="name">className</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-4-2-对象生成器"><a href="#6-4-2-对象生成器" class="headerlink" title="6.4.2 对象生成器"></a>6.4.2 对象生成器</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> FactoryMethod;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(string args[])</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Product a;</span><br><span class="line">            AbstractFactory af;</span><br><span class="line">            af=(AbstractFactory) ReadXML1.getObject();</span><br><span class="line">            a=af.newProduct();</span><br><span class="line">            a.show();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象产品，提供了产品的接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品1：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品1显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品2：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品2显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象工厂1：提供了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂1：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品1&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂2：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory2</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂2生成-&gt;具体产品2&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-5-应用场景"><a href="#6-5-应用场景" class="headerlink" title="6.5 应用场景"></a>6.5 应用场景</h2><ol>
+<li>客户只知道创建产品的工厂名，而不知道具体的产品名。如TCL电视工厂、海信电视工厂等。</li>
+<li>创建对象的任务由多个具体子工厂中的某一个完成，而抽象工厂只提供创建产品的接口</li>
+<li>客户不关心创建产品的细节，只关心产品的品牌</li>
+</ol>
+<h1 id="七、抽象工厂模式"><a href="#七、抽象工厂模式" class="headerlink" title="七、抽象工厂模式"></a>七、抽象工厂模式</h1><h2 id="7-1-定义"><a href="#7-1-定义" class="headerlink" title="7.1 定义"></a>7.1 定义</h2><ul>
+<li>抽象工厂模式将考虑多等级产品的生产 将同一个具体工厂所生产的位于不同等级的一组产品称为一个产品族</li>
+<li>同等级：同种类称为同等级，也就是说 工厂方法模式只考虑生产同等级的产品</li>
+<li>抽象工厂（Abstract Factory）模式：是一种为访问类提供一个创建一组相关或相互依赖对<br>象的接口，且访问类无须指定所要产品的具体类就能得到同族的不同等级的产品的模式结构</li>
+</ul>
+<h2 id="7-2-特点"><a href="#7-2-特点" class="headerlink" title="7.2 特点"></a>7.2 特点</h2><ul>
+<li>前面介绍的工厂方法模式中考虑的是一类产品的生产，如畜牧场只养动物、电视机厂只生产电视机、计算机软件学院只培养计算机软件专业的学生等</li>
+<li>在现实生活中许多工厂是综合型的工厂能生产多等级（种类）的产品，如农场里既养动物又种植物，电器厂既生产电视机又生产洗衣机或空调，大学既有软件专业又有生物专业等</li>
+<li>工厂方法模式只生产一个等级的产品，而抽象工厂模式可生<br>产多个等级的产品。</li>
+</ul>
+<h2 id="7-3-条件"><a href="#7-3-条件" class="headerlink" title="7.3 条件"></a>7.3 条件</h2><ol>
+<li>系统中有多个产品族，每个具体工厂 建同一族但属于不同等级结构的产品。</li>
+<li>系统一次只可能消费其中某一族产品，即同族的产品一起使用。</li>
+</ol>
+<h2 id="7-4-优缺点"><a href="#7-4-优缺点" class="headerlink" title="7.4 优缺点"></a>7.4 优缺点</h2><ul>
+<li>优点：<ul>
+<li>可以在类的内部对产品族中相关联的多等级产品共同管理，而不必专门引入多个新的类来进<br>行管理。</li>
+<li>当增加一个新的产品族时不需要修改原代码， 满足开闭原则。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>当产品族 需要增加一个新的产品时，所有的工厂类都需要进行修改。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-5-结构"><a href="#7-5-结构" class="headerlink" title="7.5 结构"></a>7.5 结构</h2><ul>
+<li>抽象工厂Abstract Factory：提供了创建产品的接口，它包含多个创建产品的方法<br>new Product（）， 以创建多个不同等级 产品。</li>
+<li>具体工厂Concrete Factory：主要是实现抽象工厂中的多个抽象方法，完成具体产品的创建</li>
+<li>抽象产品Product：：定义了产品的规范，描述了产品的主要特性和功能，抽象工厂模式有多个抽象产品。</li>
+<li>具体产品Concrete Product：）：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间是多对一的关系。</li>
+</ul>
+<h2 id="7-6-实现"><a href="#7-6-实现" class="headerlink" title="7.6 实现"></a>7.6 实现</h2><h3 id="7-6-1-抽象工厂"><a href="#7-6-1-抽象工厂" class="headerlink" title="7.6.1 抽象工厂"></a>7.6.1 抽象工厂</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product1 <span class="title">newProduct1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product2 <span class="title">newProduct2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-6-2-具体工厂"><a href="#7-6-2-具体工厂" class="headerlink" title="7.6.2 具体工厂"></a>7.6.2 具体工厂</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory1</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product1 <span class="title">newProduct1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品11...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteProduct11();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product2 <span class="title">newProduct2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品21...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteProduct21();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-7-应用场景"><a href="#7-7-应用场景" class="headerlink" title="7.7 应用场景"></a>7.7 应用场景</h2><ol>
+<li>当需要创建的对象是一系列相互关联或相互依赖的产品族时，如电器 厂中的电视机衣机、空调等。</li>
+<li>系统中有多个产品族 但每次只使用其中的某一族产品。如有人只喜欢穿某一个品牌的衣<br>服和鞋</li>
+<li>系统中提供了产品的类库，且所有产品的接口相同，客户端不依赖产品实例的创建细节和内部结构</li>
+</ol>
+<h2 id="7-8-小结"><a href="#7-8-小结" class="headerlink" title="7.8 小结"></a>7.8 小结</h2><ol>
+<li>当增加一 新的产品族 只需增 一个<br>新的具体工厂，不需要修改原代码，满足开闭原则</li>
+<li>当产品族中需要增加一 新种类的产品时，则所有的工厂类都需要进行修改，不满足开闭原则</li>
+<li>当系统中只存在 个等级结构的产品时，抽象工厂模式将退化到工厂方法模式。</li>
+</ol>
+<h1 id="八、建造者模式"><a href="#八、建造者模式" class="headerlink" title="八、建造者模式"></a>八、建造者模式</h1><h2 id="8-1-定义"><a href="#8-1-定义" class="headerlink" title="8.1 定义"></a>8.1 定义</h2><ul>
+<li>指将一个复杂对象的构造与它的表示分离，使同样的构建过程可以创建不同的表示，这样的设计模式被称为建造者模式</li>
+</ul>
+<h2 id="8-2-特点"><a href="#8-2-特点" class="headerlink" title="8.2 特点"></a>8.2 特点</h2><ul>
+<li>它是将一个复杂的对象分解为多个简单的对 ，然后一步一步建而成。它将变与不变相分，即产品的组成部分是不变的，但每一部分是可以灵活选择的</li>
+<li>计算机是由CPU、主板、内存、硬盘、显卡、机箱、显示器、键盘、鼠标等部件组装而成的，采购员不可能自己去组装计算机，而是将计算机的配置要求告诉计算书销售公司，计算机销售公司安排技术人员去组装计算机， 然后再交给要买计算机的采购员</li>
+</ul>
+<h2 id="8-3-优缺点"><a href="#8-3-优缺点" class="headerlink" title="8.3 优缺点"></a>8.3 优缺点</h2><ul>
+<li>优点：<ul>
+<li>具体的建造者相互独立，有利于系统的扩展。</li>
+<li>客户端不必知道产品内部组成的细节，便于控制细节风险。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>产品的组成部分必须相同，这限制了其使用范围。</li>
+<li>如果产品的内部变化复杂，该模式会增加很多的建造者类。</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-4-工厂模式的区别"><a href="#8-4-工厂模式的区别" class="headerlink" title="8.4 工厂模式的区别"></a>8.4 工厂模式的区别</h2><ul>
+<li>建造者模式和工厂模式的关注点不同，建造者模式注重零部件的组装过程，而工厂方法模式更注重零部件的创建过程，但两者可以结合使用。</li>
+</ul>
+<h2 id="8-5-结构"><a href="#8-5-结构" class="headerlink" title="8.5 结构"></a>8.5 结构</h2><ul>
+<li>产品角色Product：它是包含多个组成部件的复杂对象，由具体建造者来创建其各个组成部件。</li>
+<li>抽象建造者Builder：：它是 包含创建产品各个子部件的抽象方法的接口，通常还包个返回复杂产品的方法 getResult（）</li>
+<li>具体建造者Concrete Builder：实现Builder接口，完成复杂产品的各个部件的具体创建方法</li>
+<li>指挥者Director：它调用建造者对象中的部件构造与装配方法完成复杂对象的创建，在指挥者中不涉及具体产品的信息。</li>
+</ul>
+<h2 id="8-6-实现"><a href="#8-6-实现" class="headerlink" title="8.6 实现"></a>8.6 实现</h2><h3 id="8-6-1-产品角色"><a href="#8-6-1-产品角色" class="headerlink" title="8.6.1 产品角色"></a>8.6.1 产品角色</h3><ul>
+<li>包含多个组成部件的复杂对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String partA;</span><br><span class="line">    <span class="keyword">private</span> String partB;</span><br><span class="line">    <span class="keyword">private</span> String partC;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartA</span><span class="params">(String partA)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partA = partA;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartB</span><span class="params">(String partB)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partB = partB;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartC</span><span class="params">(String partC)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partC = partC;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//显示产品的特性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-2-抽象建造者"><a href="#8-6-2-抽象建造者" class="headerlink" title="8.6.2 抽象建造者"></a>8.6.2 抽象建造者</h3><ul>
+<li>包含创建产品各个子部件的抽象方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span></span>&#123;</span><br><span class="line">    <span class="comment">// 创建产品对象</span></span><br><span class="line">    <span class="keyword">protected</span> Product product = <span class="keyword">new</span> Product();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartA</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartB</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartC</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回产品对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-3-具体建造者"><a href="#8-6-3-具体建造者" class="headerlink" title="8.6.3 具体建造者"></a>8.6.3 具体建造者</h3><ul>
+<li>实现了抽象建造者接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteBuilder</span> <span class="keyword">extends</span> <span class="title">Builder</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartA(<span class="string">&quot;建造PartA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartB(<span class="string">&quot;建造PartB&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartC(<span class="string">&quot;建造PartC&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-4-指挥者"><a href="#8-6-4-指挥者" class="headerlink" title="8.6.4 指挥者"></a>8.6.4 指挥者</h3><ul>
+<li>调用建造者中的方法完成复杂对象的创建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Director</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Builder builder;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Director</span><span class="params">(Builder builder)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder=builder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//产品构建与组装方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        builder.buildPartA();</span><br><span class="line">        builder.buildPartB();</span><br><span class="line">        builder.buildPartC();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> builder.getResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-5-客户"><a href="#8-6-5-客户" class="headerlink" title="8.6.5 客户"></a>8.6.5 客户</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Builder builder = <span class="keyword">new</span> ConcreteBuilder();</span><br><span class="line">        Director director = <span class="keyword">new</span> Director(builder);</span><br><span class="line">        Product product = director.construct();</span><br><span class="line">        product.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-7-应用场景"><a href="#8-7-应用场景" class="headerlink" title="8.7 应用场景"></a>8.7 应用场景</h2><ol>
+<li>创建的对象较复杂，由多个部件构成，各部件面临着复杂的变化，但构件间的建造顺序是<br>稳定的。</li>
+<li>创建复杂对象的算法独立于该对象的组成部分以及它们的装配方式，即产品的构建过程和<br>最终的表示是独立</li>
+</ol>
+<h2 id="8-8-小结"><a href="#8-8-小结" class="headerlink" title="8.8 小结"></a>8.8 小结</h2><ul>
+<li>建造者模式在应用过程中可以根据需要改变，如果创建的产品种类只有一种，只需要一个具体</li>
+<li>建造者时，可省略略掉抽象建造者，甚至可以省略掉指挥者角色。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>后端</tag>
+        <tag>设计模式</tag>
+        <tag>编程艺术</tag>
+      </tags>
+  </entry>
 </search>
