@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-28 17:08:13" itemprop="dateModified" datetime="2022-03-28T17:08:13+08:00">2022-03-28</time>
+                <time title="修改时间：2022-03-29 20:34:29" itemprop="dateModified" datetime="2022-03-29T20:34:29+08:00">2022-03-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -513,7 +513,54 @@
 <li>查询不同的Mapper.xml</li>
 <li>手动清理缓存</li>
 </ul>
-<h2 id="15-3-二级缓存"><a href="#15-3-二级缓存" class="headerlink" title="15.3 二级缓存"></a>15.3 二级缓存</h2>
+<h2 id="15-3-二级缓存"><a href="#15-3-二级缓存" class="headerlink" title="15.3 二级缓存"></a>15.3 二级缓存</h2><h3 id="15-3-1-简介"><a href="#15-3-1-简介" class="headerlink" title="15.3.1 简介"></a>15.3.1 简介</h3><ul>
+<li>二级缓存也叫全局缓存，这是由于一级缓存的作用域太低，所以诞生了二级缓存</li>
+<li>基于namespace级别的缓存，一个名称空间对应一个二级缓存</li>
+<li>工作机制<ul>
+<li>一个会话查询一条数据，这个数据就会被放在当前会话的一级缓存中</li>
+<li>如果当前会话关闭了，这个会话对应的一级缓存就没有了，现在需要的是，会话关闭时，一级缓存的数据可以保存到二级缓存中</li>
+<li>新的会话查询，就可以从二级缓存中获取内容</li>
+<li>不同的mapper查出的数据会放在自己对应的缓存（map）中</li>
+</ul>
+</li>
+</ul>
+<h3 id="15-3-2-开启二级缓存"><a href="#15-3-2-开启二级缓存" class="headerlink" title="15.3.2 开启二级缓存"></a>15.3.2 开启二级缓存</h3><ul>
+<li>在核心配置文件添加以下标签，开启全局缓存</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--显示开启全局缓存，默认是开启的--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;cacheEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置完后还需要再需要使用二级缓存的Mapper配置文件下添加cache标签<ul>
+<li>eviction为缓存策略</li>
+<li>flushInterval为缓存刷新时间</li>
+<li>size为最大数引用数</li>
+<li>readOnly为是否只读</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--在当前mapper下开启二级缓存--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cache</span></span></span><br><span class="line"><span class="tag">      <span class="attr">eviction</span>=<span class="string">&quot;FIFO&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">flushInterval</span>=<span class="string">&quot;60000&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">size</span>=<span class="string">&quot;512&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">readOnly</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--也可以直接使用cache标签--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cache</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">useCache</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    	...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用cache标签，不添加缓存策略时，需要将实体类实现序列化，如下</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="15-3-3-小结"><a href="#15-3-3-小结" class="headerlink" title="15.3.3 小结"></a>15.3.3 小结</h3><ul>
+<li>只要开启了二级缓存，在同一个Mapper下就有效</li>
+<li>所有的数据都会先放在一级缓存中<ul>
+<li>只有当会话提交，或者关闭的时候，才会提交到二级缓存中</li>
+</ul>
+</li>
+</ul>
+<h2 id="15-4-缓存原理"><a href="#15-4-缓存原理" class="headerlink" title="15.4 缓存原理"></a>15.4 缓存原理</h2><ul>
+<li>每个SqlSession从开启到关闭都会启动一个一级缓存</li>
+<li>SqlSession关闭后一级缓存会升级为二级缓存</li>
+<li>用户进行查询时会先看二级缓存是否存在查询的内容，再去一级缓存，缓存中没有要查找的对象时，就执行查询数据库的操作</li>
+</ul>
+<img src="/2022/03/14/Mybatis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/cache.png" class="" title="cache">
+<h2 id="15-5-自定义缓存"><a href="#15-5-自定义缓存" class="headerlink" title="15.5 自定义缓存"></a>15.5 自定义缓存</h2><h3 id="15-5-1-ehcache"><a href="#15-5-1-ehcache" class="headerlink" title="15.5.1 ehcache"></a>15.5.1 ehcache</h3><ul>
+<li>EhCache 是一个纯Java的进程内缓存框架，具有快速、精干等特点，是Hibernate中默认的CacheProvider。</li>
+</ul>
+<h3 id="15-5-2-引入依赖"><a href="#15-5-2-引入依赖" class="headerlink" title="15.5.2 引入依赖"></a>15.5.2 引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.mybatis.caches/mybatis-ehcache --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.caches<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-ehcache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="15-5-3-cache配置"><a href="#15-5-3-cache配置" class="headerlink" title="15.5.3 cache配置"></a>15.5.3 cache配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cache</span> <span class="attr">type</span>=<span class="string">&quot;org.mybatis.caches.ehcache.EhcacheCache&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="15-5-4-ehcache配置文件"><a href="#15-5-4-ehcache配置文件" class="headerlink" title="15.5.4 ehcache配置文件"></a>15.5.4 ehcache配置文件</h3>
       
     </div>
 

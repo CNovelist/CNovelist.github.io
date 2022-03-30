@@ -1729,7 +1729,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-18 22:53:07" itemprop="dateModified" datetime="2022-03-18T22:53:07+08:00">2022-03-18</time>
+                <time title="修改时间：2022-03-30 14:49:19" itemprop="dateModified" datetime="2022-03-30T14:49:19+08:00">2022-03-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1756,7 +1756,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="一、SpringMVC简介"><a href="#一、SpringMVC简介" class="headerlink" title="一、SpringMVC简介"></a>一、SpringMVC简介</h1><h2 id="1-1-什么是MVC"><a href="#1-1-什么是MVC" class="headerlink" title="1.1 什么是MVC"></a>1.1 什么是MVC</h2><ul>
+          <p>[TOC]</p>
+<h1 id="一、SpringMVC简介"><a href="#一、SpringMVC简介" class="headerlink" title="一、SpringMVC简介"></a>一、SpringMVC简介</h1><h2 id="1-1-什么是MVC"><a href="#1-1-什么是MVC" class="headerlink" title="1.1 什么是MVC"></a>1.1 什么是MVC</h2><ul>
 <li>MVC：软件架构思想</li>
 <li>M：模型层，指工程中的bean</li>
 <li>V：视图层，指工程中的html或jsp等页面，作用是与用户进行交互，展示数据</li>
@@ -1810,9 +1811,44 @@
 <img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/action.png" class="" title="action">
 <h1 id="三、RequestMapping注解"><a href="#三、RequestMapping注解" class="headerlink" title="三、RequestMapping注解"></a>三、RequestMapping注解</h1><h2 id="3-1-简介"><a href="#3-1-简介" class="headerlink" title="3.1 简介"></a>3.1 简介</h2><ul>
 <li>将请求和控制器方法联系起来</li>
-<li></li>
 </ul>
-
+<h2 id="3-2-注解位置"><a href="#3-2-注解位置" class="headerlink" title="3.2 注解位置"></a>3.2 注解位置</h2><ul>
+<li><p>@RequestMapping标识一个类：设置映射请求的请求路径的初始信息</p>
+</li>
+<li><p>@RequestMapping标识一个方法：设置映射请求请求路径的具体信息</p>
+</li>
+</ul>
+<h2 id="3-3-注解属性"><a href="#3-3-注解属性" class="headerlink" title="3.3 注解属性"></a>3.3 注解属性</h2><h3 id="3-3-1-value"><a href="#3-3-1-value" class="headerlink" title="3.3.1 value"></a>3.3.1 value</h3><ul>
+<li>@RequestMapping注解的value属性是一个字符串类型的数组，表示该请求映射能够匹配多个请求地址所对应的请求<ul>
+<li>一个方法可以对应多个请求</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/testRequestMapping&#125;&quot;</span>&gt;</span>测试@RequestMapping的value属性--&gt;/testRequestMapping<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/test&#125;&quot;</span>&gt;</span>测试@RequestMapping的value属性--&gt;/test<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(</span></span><br><span class="line"><span class="meta">        value = &#123;&quot;/testRequestMapping&quot;, &quot;/test&quot;&#125;</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testRequestMapping</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-2-method"><a href="#3-3-2-method" class="headerlink" title="3.3.2 method"></a>3.3.2 method</h3><ul>
+<li>配置请求方式，如果浏览器请求方式与method方式不匹配，则会报错405</li>
+<li>@RequestMapping注解的method属性是一个RequestMethod类型的数组，表示该请求映射能够匹配多种请求方式的请求</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/test&#125;&quot;</span>&gt;</span>测试@RequestMapping的value属性--&gt;/test<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/test&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(</span></span><br><span class="line"><span class="meta">        value = &#123;&quot;/testRequestMapping&quot;, &quot;/test&quot;&#125;,</span></span><br><span class="line"><span class="meta">        method = &#123;RequestMethod.GET, RequestMethod.POST&#125;</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testRequestMapping</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>@RequestMapping的派生注解<ul>
+<li>@GetMapping</li>
+<li>@PostMapping</li>
+<li>@PutMapping</li>
+<li>@DeleteMapping</li>
+</ul>
+</li>
+<li><p>常用的请求方式：get、post、put、delete</p>
+</li>
+<li><p>但是目前<strong>浏览器只支持get和post</strong>，若在form表单提交时，为method设置了其他请求方式的字符串（put或delete），则按照默认的请求方式get处理</p>
+</li>
+<li><p>若要发送put和delete请求，则需要通过spring提供的过滤器HiddenHttpMethodFilter，在RESTful部分会讲到</p>
+</li>
+</ul>
+<h2 id="3-4-ant风格路径"><a href="#3-4-ant风格路径" class="headerlink" title="3.4 ant风格路径"></a>3.4 ant风格路径</h2><h2 id="3-5-占位符"><a href="#3-5-占位符" class="headerlink" title="3.5 占位符"></a>3.5 占位符</h2><h1 id="四、获取请求参数"><a href="#四、获取请求参数" class="headerlink" title="四、获取请求参数"></a>四、获取请求参数</h1><h1 id="五、域对象共享数据"><a href="#五、域对象共享数据" class="headerlink" title="五、域对象共享数据"></a>五、域对象共享数据</h1><h1 id="六、SpringMVC视图"><a href="#六、SpringMVC视图" class="headerlink" title="六、SpringMVC视图"></a>六、SpringMVC视图</h1><h1 id="七、RESTful"><a href="#七、RESTful" class="headerlink" title="七、RESTful"></a>七、RESTful</h1><h1 id="八、HttpMessageConverter"><a href="#八、HttpMessageConverter" class="headerlink" title="八、HttpMessageConverter"></a>八、HttpMessageConverter</h1><h1 id="九、文件上传和下载"><a href="#九、文件上传和下载" class="headerlink" title="九、文件上传和下载"></a>九、文件上传和下载</h1><h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><h1 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h1><h2 id="过滤器与拦截器"><a href="#过滤器与拦截器" class="headerlink" title="过滤器与拦截器"></a>过滤器与拦截器</h2><img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/Interceptor.png" class="" title="interceptor">
+<h2 id="拦截器配置"><a href="#拦截器配置" class="headerlink" title="拦截器配置"></a>拦截器配置</h2><h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h1 id="注解配置"><a href="#注解配置" class="headerlink" title="注解配置"></a>注解配置</h1><h1 id="SpringMVC执行流程"><a href="#SpringMVC执行流程" class="headerlink" title="SpringMVC执行流程"></a>SpringMVC执行流程</h1>
       
     </div>
 
