@@ -831,62 +831,7 @@
   <entry>
     <title>SpringMVC基础大全</title>
     <url>/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<!-- toc -->
-<ul>
-<li><a href="#一-springmvc简介">一、SpringMVC简介</a><ul>
-<li><a href="#11-什么是mvc">1.1 什么是MVC</a></li>
-</ul>
-</li>
-<li><a href="#二-一个案例">二、一个案例</a><ul>
-<li><a href="#21-创建maven工程">2.1 创建MAVEN工程</a></li>
-<li><a href="#22-引入依赖">2.2 引入依赖</a></li>
-<li><a href="#23-创建webapp">2.3 创建webapp</a></li>
-<li><a href="#24-配置webxml">2.4 配置web.xml</a><ul>
-<li><a href="#241-默认配置方式">2.4.1 默认配置方式</a></li>
-<li><a href="#242-扩展配置方式推荐">2.4.2 扩展配置方式（推荐）</a></li>
-<li><a href="#243-开启自动扫描">2.4.3 开启自动扫描</a></li>
-<li><a href="#244-添加thymeleaf视图解析器">2.4.4 添加Thymeleaf视图解析器</a></li>
-<li><a href="#245-静态资源处理配置">2.4.5 静态资源处理配置</a></li>
-</ul>
-</li>
-<li><a href="#25-控制层实现">2.5 控制层实现</a></li>
-<li><a href="#26-编写页面">2.6 编写页面</a><ul>
-<li><a href="#251-添加thymeleaf命名空间">2.5.1 添加thymeleaf命名空间</a></li>
-</ul>
-</li>
-<li><a href="#27-配置服务器">2.7 配置服务器</a></li>
-</ul>
-</li>
-<li><a href="#三-requestmapping注解">三、RequestMapping注解</a><ul>
-<li><a href="#31-简介">3.1 简介</a></li>
-<li><a href="#32-注解位置">3.2 注解位置</a></li>
-<li><a href="#33-注解属性">3.3 注解属性</a><ul>
-<li><a href="#331-value">3.3.1 value</a></li>
-<li><a href="#332-method">3.3.2 method</a></li>
-</ul>
-</li>
-<li><a href="#34-ant风格路径">3.4 ant风格路径</a></li>
-<li><a href="#35-占位符">3.5 占位符</a></li>
-</ul>
-</li>
-<li><a href="#四-获取请求参数">四、获取请求参数</a></li>
-<li><a href="#五-域对象共享数据">五、域对象共享数据</a></li>
-<li><a href="#六-springmvc视图">六、SpringMVC视图</a></li>
-<li><a href="#七-restful">七、RESTful</a></li>
-<li><a href="#八-httpmessageconverter">八、HttpMessageConverter</a></li>
-<li><a href="#九-文件上传和下载">九、文件上传和下载</a></li>
-<li><a href="#过滤器">过滤器</a></li>
-<li><a href="#拦截器">拦截器</a><ul>
-<li><a href="#过滤器与拦截器">过滤器与拦截器</a></li>
-<li><a href="#拦截器配置">拦截器配置</a></li>
-</ul>
-</li>
-<li><a href="#异常处理">异常处理</a></li>
-<li><a href="#注解配置">注解配置</a></li>
-<li><a href="#springmvc执行流程">SpringMVC执行流程</a></li>
-</ul>
-<!-- tocstop -->
-<h1><span id="一-springmvc简介">一、SpringMVC简介</span></h1><h2><span id="11-什么是mvc">1.1 什么是MVC</span></h2><ul>
+    <content><![CDATA[<h1><span id="一-springmvc简介">一、SpringMVC简介</span></h1><h2><span id="11-什么是mvc">1.1 什么是MVC</span></h2><ul>
 <li>MVC：软件架构思想</li>
 <li>M：模型层，指工程中的bean</li>
 <li>V：视图层，指工程中的html或jsp等页面，作用是与用户进行交互，展示数据</li>
