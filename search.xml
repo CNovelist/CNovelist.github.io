@@ -831,74 +831,74 @@
   <entry>
     <title>SpringMVC基础大全</title>
     <url>/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<h1 id="一、SpringMVC简介"><a href="#一、SpringMVC简介" class="headerlink" title="一、SpringMVC简介"></a>一、SpringMVC简介</h1><h2 id="1-1-什么是MVC"><a href="#1-1-什么是MVC" class="headerlink" title="1.1 什么是MVC"></a>1.1 什么是MVC</h2><ul>
+    <content><![CDATA[<h1><span id="一-springmvc简介">一、SpringMVC简介</span></h1><h2><span id="11-什么是mvc">1.1 什么是MVC</span></h2><ul>
 <li>MVC：软件架构思想</li>
 <li>M：模型层，指工程中的bean</li>
 <li>V：视图层，指工程中的html或jsp等页面，作用是与用户进行交互，展示数据</li>
 <li>C：控制层，指工程中的servlet，用于接收请求和响应数据</li>
 <li>MVC工作流程：视图层发送请求到服务器，服务器请求被控制层接收，控制层调用响应的模型层处理请求，处理完之后将结果返回控制层，控制层，再根据请求处理的结果找到相应的视图层，渲染数据后最终相应给浏览器</li>
 </ul>
-<h1 id="二、一个案例"><a href="#二、一个案例" class="headerlink" title="二、一个案例"></a>二、一个案例</h1><h2 id="2-1-创建MAVEN工程"><a href="#2-1-创建MAVEN工程" class="headerlink" title="2.1 创建MAVEN工程"></a>2.1 创建MAVEN工程</h2><ul>
+<h1><span id="二-一个案例">二、一个案例</span></h1><h2><span id="21-创建maven工程">2.1 创建MAVEN工程</span></h2><ul>
 <li>在pom文件中设置打包方式为war包</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-2-引入依赖"><a href="#2-2-引入依赖" class="headerlink" title="2.2 引入依赖"></a>2.2 引入依赖</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.3.15<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring5 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-spring5<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.12.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-3-创建webapp"><a href="#2-3-创建webapp" class="headerlink" title="2.3 创建webapp"></a>2.3 创建webapp</h2><ul>
+<h2><span id="22-引入依赖">2.2 引入依赖</span></h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.3.15<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring5 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-spring5<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.12.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2><span id="23-创建webapp">2.3 创建webapp</span></h2><ul>
 <li>在mian目录下创建webapp文件夹</li>
 <li>在webapp下创建文件夹WEB-INF</li>
 <li>在项目结构窗口的modules窗口中添加web.xml配置，注意路径要在WEB-INF前添加上src/main/webapp</li>
 </ul>
-<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/webxml.png" class="" title="imageweb">
+<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/webxml.png" class title="imageweb">
 <ul>
 <li>在WEB-INF中创建templates/index.html</li>
 </ul>
-<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/project.png" class="" title="imagepro">
-<h2 id="2-4-配置web-xml"><a href="#2-4-配置web-xml" class="headerlink" title="2.4 配置web.xml"></a>2.4 配置web.xml</h2><h3 id="2-4-1-默认配置方式"><a href="#2-4-1-默认配置方式" class="headerlink" title="2.4.1 默认配置方式"></a>2.4.1 默认配置方式</h3><ul>
+<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/project.png" class title="imagepro">
+<h2><span id="24-配置webxml">2.4 配置web.xml</span></h2><h3><span id="241-默认配置方式">2.4.1 默认配置方式</span></h3><ul>
 <li>此配置作用下，SpringMVC的配置文件默认位于WEB-INF下，默认名称为<code>&lt;servlet-name&gt;</code>-servlet.xml，例如以下配置所对应的SpringMVC的配置文件位于WEB-INF下，文件名为SpringMVC-servlet.xml</li>
 <li>不推荐，因为spring配置资源一般都是放在resources下的</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--  配置SpringMVC前端控制器，对浏览器发送的请求进行统一处理  --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SpringMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        设置SpringMVC核心控制器所能处理的请求路径</span></span><br><span class="line"><span class="comment">        / 所匹配的请求可以是/login或.html/.css/.js等方式的请求路径</span></span><br><span class="line"><span class="comment">        但不匹配.jsp请求路径的请求</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SpringMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-4-2-扩展配置方式（推荐）"><a href="#2-4-2-扩展配置方式（推荐）" class="headerlink" title="2.4.2 扩展配置方式（推荐）"></a>2.4.2 扩展配置方式（推荐）</h3><ul>
+<h3><span id="242-扩展配置方式推荐">2.4.2 扩展配置方式（推荐）</span></h3><ul>
 <li>加入init-param，设置配置资源路径</li>
 <li>配置好init-param后，需要在resources中创建springMVC.xml配置文件</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--  配置SpringMVC前端控制器，对浏览器发送的请求进行统一处理  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--    配置SpringMVC配置文件的位置和名称，然后在reources中创建xml配置文件    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springMVC.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">            <span class="comment">&lt;!--    将前端控制器DispatcherServlet启动时间提前到服务器启动的时候    --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--    提升第一次访问的速度    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    设置SpringMVC核心控制器所能处理的请求路径</span></span><br><span class="line"><span class="comment">    / 所匹配的请求可以是/login或.html/.css/.js等方式的请求路径</span></span><br><span class="line"><span class="comment">    但不匹配.jsp请求路径的请求</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-5-配置springMVC-xml"><a href="#2-5-配置springMVC-xml" class="headerlink" title="2.5 配置springMVC.xml"></a>2.5 配置springMVC.xml</h2><h3 id="2-5-1-开启自动扫描"><a href="#2-5-1-开启自动扫描" class="headerlink" title="2.5.1 开启自动扫描"></a>2.5.1 开启自动扫描</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 自动扫描包 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.kuang.mvc.controller&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-5-2-添加Thymeleaf视图解析器"><a href="#2-5-2-添加Thymeleaf视图解析器" class="headerlink" title="2.5.2 添加Thymeleaf视图解析器"></a>2.5.2 添加Thymeleaf视图解析器</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置Thymeleaf视图解析器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;viewResolver&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.thymeleaf.spring5.view.ThymeleafViewResolver&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;order&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;characterEncoding&quot;</span> <span class="attr">value</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;templateEngine&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.thymeleaf.spring5.SpringTemplateEngine&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;templateResolver&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- 视图前缀 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/templates/&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- 视图后缀 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.html&quot;</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;templateMode&quot;</span> <span class="attr">value</span>=<span class="string">&quot;HTML5&quot;</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;characterEncoding&quot;</span> <span class="attr">value</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-5-3-静态资源处理配置"><a href="#2-5-3-静态资源处理配置" class="headerlink" title="2.5.3 静态资源处理配置"></a>2.5.3 静态资源处理配置</h3><ul>
+<h2><span id="25-配置springmvcxml">2.5 配置springMVC.xml</span></h2><h3><span id="251-开启自动扫描">2.5.1 开启自动扫描</span></h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 自动扫描包 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.kuang.mvc.controller&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3><span id="252-添加thymeleaf视图解析器">2.5.2 添加Thymeleaf视图解析器</span></h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置Thymeleaf视图解析器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;viewResolver&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.thymeleaf.spring5.view.ThymeleafViewResolver&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;order&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;characterEncoding&quot;</span> <span class="attr">value</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;templateEngine&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.thymeleaf.spring5.SpringTemplateEngine&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;templateResolver&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- 视图前缀 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/templates/&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">&lt;!-- 视图后缀 --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.html&quot;</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;templateMode&quot;</span> <span class="attr">value</span>=<span class="string">&quot;HTML5&quot;</span>/&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;characterEncoding&quot;</span> <span class="attr">value</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3><span id="253-静态资源处理配置">2.5.3 静态资源处理配置</span></h3><ul>
 <li>暂时不需要配置</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">   处理静态资源，例如html、js、css、jpg</span></span><br><span class="line"><span class="comment">  若只设置该标签，则只能访问静态资源，其他请求则无法访问</span></span><br><span class="line"><span class="comment">  此时必须设置&lt;mvc:annotation-driven/&gt;解决问题</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 开启mvc注解驱动 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:message-converters</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 处理响应中文内容乱码 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;defaultCharset&quot;</span> <span class="attr">value</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;supportedMediaTypes&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">value</span>&gt;</span>text/html<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">value</span>&gt;</span>application/json<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-6-控制层实现"><a href="#2-6-控制层实现" class="headerlink" title="2.6 控制层实现"></a>2.6 控制层实现</h2><ul>
+<h2><span id="26-控制层实现">2.6 控制层实现</span></h2><ul>
 <li>创建controller层实现类</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 请求地址映射，实现页面跳转</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="2-7-编写页面"><a href="#2-7-编写页面" class="headerlink" title="2.7 编写页面"></a>2.7 编写页面</h2><h3 id="2-7-1-添加thymeleaf命名空间"><a href="#2-7-1-添加thymeleaf命名空间" class="headerlink" title="2.7.1 添加thymeleaf命名空间"></a>2.7.1 添加thymeleaf命名空间</h3><ul>
+<h2><span id="27-编写页面">2.7 编写页面</span></h2><h3><span id="271-添加thymeleaf命名空间">2.7.1 添加thymeleaf命名空间</span></h3><ul>
 <li>在html标签内写入<code>xmlns:th=&quot;http://www.thymeleaf.org&quot;</code></li>
 </ul>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-8-配置服务器"><a href="#2-8-配置服务器" class="headerlink" title="2.8 配置服务器"></a>2.8 配置服务器</h2><ul>
+<h2><span id="28-配置服务器">2.8 配置服务器</span></h2><ul>
 <li>使用tomcat服务器部署项目并运行</li>
 </ul>
-<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/tomcat.png" class="" title="tomcat">
+<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/tomcat.png" class title="tomcat">
 <ul>
 <li>注意这些选项的配置<ul>
 <li>简化访问路径和调试方式</li>
 </ul>
 </li>
 </ul>
-<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/path.png" class="" title="path">
-<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/action.png" class="" title="action">
-<h1 id="三、RequestMapping注解"><a href="#三、RequestMapping注解" class="headerlink" title="三、RequestMapping注解"></a>三、RequestMapping注解</h1><h2 id="3-1-简介"><a href="#3-1-简介" class="headerlink" title="3.1 简介"></a>3.1 简介</h2><ul>
+<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/path.png" class title="path">
+<img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/action.png" class title="action">
+<h1><span id="三-requestmapping注解">三、RequestMapping注解</span></h1><h2><span id="31-简介">3.1 简介</span></h2><ul>
 <li>将请求和控制器方法联系起来</li>
 </ul>
-<h2 id="3-2-注解位置"><a href="#3-2-注解位置" class="headerlink" title="3.2 注解位置"></a>3.2 注解位置</h2><ul>
+<h2><span id="32-注解位置">3.2 注解位置</span></h2><ul>
 <li><p>@RequestMapping标识一个类：设置映射请求的请求路径的初始信息</p>
 </li>
 <li><p>@RequestMapping标识一个方法：设置映射请求请求路径的具体信息</p>
 </li>
 </ul>
-<h2 id="3-3-注解属性"><a href="#3-3-注解属性" class="headerlink" title="3.3 注解属性"></a>3.3 注解属性</h2><h3 id="3-3-1-value"><a href="#3-3-1-value" class="headerlink" title="3.3.1 value"></a>3.3.1 value</h3><ul>
+<h2><span id="33-注解属性">3.3 注解属性</span></h2><h3><span id="331-value">3.3.1 value</span></h3><ul>
 <li>@RequestMapping注解的value属性是一个字符串类型的数组，表示该请求映射能够匹配多个请求地址所对应的请求<ul>
 <li>一个方法可以对应多个请求</li>
 </ul>
@@ -906,7 +906,7 @@
 </ul>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/testRequestMapping&#125;&quot;</span>&gt;</span>测试@RequestMapping的value属性--&gt;/testRequestMapping<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/test&#125;&quot;</span>&gt;</span>测试@RequestMapping的value属性--&gt;/test<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(</span></span><br><span class="line"><span class="meta">        value = &#123;&quot;/testRequestMapping&quot;, &quot;/test&quot;&#125;</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testRequestMapping</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-3-2-method"><a href="#3-3-2-method" class="headerlink" title="3.3.2 method"></a>3.3.2 method</h3><ul>
+<h3><span id="332-method">3.3.2 method</span></h3><ul>
 <li>配置请求方式，如果浏览器请求方式与method方式不匹配，则会报错405</li>
 <li>@RequestMapping注解的method属性是一个RequestMethod类型的数组，表示该请求映射能够匹配多种请求方式的请求</li>
 </ul>
@@ -927,7 +927,7 @@
 <li><p>若要发送put和delete请求，则需要通过spring提供的过滤器HiddenHttpMethodFilter，在RESTful部分会讲到</p>
 </li>
 </ul>
-<h2 id="3-4-ant风格路径"><a href="#3-4-ant风格路径" class="headerlink" title="3.4 ant风格路径"></a>3.4 ant风格路径</h2><ul>
+<h2><span id="34-ant风格路径">3.4 ant风格路径</span></h2><ul>
 <li>RequestMapping设置的请求地址时会使用到以下匹配字符<ul>
 <li>?：表示任意的单个字符</li>
 <li>*：表示任意的0个或多个字符</li>
@@ -935,7 +935,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-5-占位符（RESTful）"><a href="#3-5-占位符（RESTful）" class="headerlink" title="3.5 占位符（RESTful）"></a>3.5 占位符（RESTful）</h2><ul>
+<h2><span id="35-占位符restful">3.5 占位符（RESTful）</span></h2><ul>
 <li>原始请求路径：/deleteUser?id=1</li>
 <li><p>RESTful风格请求地址：/deleteUser/{id}</p>
 <ul>
@@ -951,8 +951,39 @@
 <li>配置了<strong>RESTful风格请求路径</strong>，就无法使用原始请求路径进行访问了</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testRequestMapping/&#123;id&#125;&quot;,)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testRequestMapping</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span>Integer id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="四、获取请求参数"><a href="#四、获取请求参数" class="headerlink" title="四、获取请求参数"></a>四、获取请求参数</h1><h2 id="4-1-RequestParam注解"><a href="#4-1-RequestParam注解" class="headerlink" title="4.1 RequestParam注解"></a>4.1 RequestParam注解</h2><h2 id="4-2-RequestHeader注解"><a href="#4-2-RequestHeader注解" class="headerlink" title="4.2 RequestHeader注解"></a>4.2 RequestHeader注解</h2><h2 id="4-3-CookieValue注解"><a href="#4-3-CookieValue注解" class="headerlink" title="4.3 CookieValue注解"></a>4.3 CookieValue注解</h2><h1 id="五、域对象共享数据"><a href="#五、域对象共享数据" class="headerlink" title="五、域对象共享数据"></a>五、域对象共享数据</h1><h1 id="六、SpringMVC视图"><a href="#六、SpringMVC视图" class="headerlink" title="六、SpringMVC视图"></a>六、SpringMVC视图</h1><h1 id="七、RESTful"><a href="#七、RESTful" class="headerlink" title="七、RESTful"></a>七、RESTful</h1><h1 id="八、HttpMessageConverter"><a href="#八、HttpMessageConverter" class="headerlink" title="八、HttpMessageConverter"></a>八、HttpMessageConverter</h1><h1 id="九、文件上传和下载"><a href="#九、文件上传和下载" class="headerlink" title="九、文件上传和下载"></a>九、文件上传和下载</h1><h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><h1 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h1><h2 id="过滤器与拦截器"><a href="#过滤器与拦截器" class="headerlink" title="过滤器与拦截器"></a>过滤器与拦截器</h2><img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/Interceptor.png" class="" title="interceptor">
-<h2 id="拦截器配置"><a href="#拦截器配置" class="headerlink" title="拦截器配置"></a>拦截器配置</h2><h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h1 id="注解配置"><a href="#注解配置" class="headerlink" title="注解配置"></a>注解配置</h1><h1 id="SpringMVC执行流程"><a href="#SpringMVC执行流程" class="headerlink" title="SpringMVC执行流程"></a>SpringMVC执行流程</h1>]]></content>
+<h1><span id="四-获取请求参数">四、获取请求参数</span></h1><h2><span id="41-requestparam注解">4.1 RequestParam注解</span></h2><ul>
+<li>配置需要的请求参数名</li>
+<li>value可以配置参数名</li>
+<li>required可以设置请求参数是否必须要传递，默认为true<ul>
+<li>设置为false之后，没有传这个参数，方法形参得到的值就是null</li>
+</ul>
+</li>
+<li>defaultValue表示为形参设置默认值<ul>
+<li>前端需要传递参数但没有传递值，如/user?id=&amp;username=</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testRequestMapping&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testRequestMapping</span><span class="params">(<span class="meta">@RequestParam(value=&quot;id&quot;,required = false，defaultValue = 1)</span>Integer id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="42-requestheader注解">4.2 RequestHeader注解</span></h2><ul>
+<li>同RequestParam，拥有value/required/defaultValue属性</li>
+<li>用于获取请求头信息</li>
+</ul>
+<h2><span id="43-cookievalue注解">4.3 CookieValue注解</span></h2><ul>
+<li>同RequestParam，拥有value/required/defaultValue属性</li>
+<li>用于获取cookie信息</li>
+</ul>
+<h2><span id="44-实体类获取请求参数">4.4 实体类获取请求参数</span></h2><ul>
+<li>当表单的name属性和实体类的属性一一对应时，使用实体类形参即可获取到请求信息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testRequestMapping&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testRequestMapping</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>以上方式可以接收表单请求数据，但是user数据在控制台打印时会出现乱码的问题</li>
+<li>get请求数据乱码可以修改tomcat配置文件server.xml的URIEncoding属性</li>
+<li>post请求乱码需要在web.xml中配置过滤器进行处理</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--  配置过滤器  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>forceResponseEncoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1><span id="五-域对象共享数据">五、域对象共享数据</span></h1><h1><span id="六-springmvc视图">六、SpringMVC视图</span></h1><h1><span id="七-restful">七、RESTful</span></h1><h1><span id="八-httpmessageconverter">八、HttpMessageConverter</span></h1><h1><span id="九-文件上传和下载">九、文件上传和下载</span></h1><h1><span id="过滤器">过滤器</span></h1><h1><span id="拦截器">拦截器</span></h1><h2><span id="过滤器与拦截器">过滤器与拦截器</span></h2><img src="/2022/03/14/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/Interceptor.png" class title="interceptor">
+<h2><span id="拦截器配置">拦截器配置</span></h2><h1><span id="异常处理">异常处理</span></h1><h1><span id="注解配置">注解配置</span></h1><h1><span id="springmvc执行流程">SpringMVC执行流程</span></h1>]]></content>
       <categories>
         <category>后端</category>
         <category>SSM框架</category>
@@ -3722,6 +3753,842 @@
         <tag>后端</tag>
         <tag>设计模式</tag>
         <tag>编程艺术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux基础大全</title>
+    <url>/2022/04/02/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1><span id="一-系统分区">一、系统分区</span></h1><h2><span id="11-分区类型">1.1 分区类型</span></h2><h3><span id="111-主分区">1.1.1 主分区</span></h3><ul>
+<li>最多只能有4个</li>
+</ul>
+<h3><span id="112-扩展分区">1.1.2 扩展分区</span></h3><ul>
+<li>最多只能有1个</li>
+<li>主分区加扩展分区最多有4个</li>
+<li>不能写入数据，只能包含逻辑分区</li>
+</ul>
+<h3><span id="113-逻辑分区">1.1.3 逻辑分区</span></h3><ul>
+<li>可以写入数据</li>
+</ul>
+<h2><span id="12-格式化">1.2 格式化</span></h2><ul>
+<li>又称逻辑格式化</li>
+<li>目的是在硬盘中写入文件系统</li>
+<li>文件系统有：FAT16、FAT32、NTFS、EXT2、EXT3、EXT4（默认）等</li>
+</ul>
+<h2><span id="13-硬件设备名">1.3 硬件设备名</span></h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>设备文件名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IDE硬盘</td>
+<td>/dev/hd[a-d]</td>
+</tr>
+<tr>
+<td>SCSI/SATA/USB硬盘</td>
+<td>/dev/sd[a-p]</td>
+</tr>
+<tr>
+<td>光驱</td>
+<td>/dev/cdrom或/dev/sr0</td>
+</tr>
+<tr>
+<td>软盘</td>
+<td>/dev/fd[0-1]</td>
+</tr>
+<tr>
+<td>打印机（25针）</td>
+<td>/dev/lp[0-2]</td>
+</tr>
+<tr>
+<td>打印机（USB）</td>
+<td>/dev/usb/lp[0-15]</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>/dev/mouse</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="14-分区表示">1.4 分区表示</span></h2><img src="/2022/04/02/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/fenqu.png" class title="fenqu">
+<ul>
+<li>不管如何分区，1、2、3、4都用于主分区，第一个逻辑分区都是从5开始</li>
+</ul>
+<h2><span id="15-挂载">1.5 挂载</span></h2><h3><span id="151-必备分区">1.5.1 必备分区</span></h3><ul>
+<li>/ （根分区）</li>
+<li>swap分区（交换分区，内存2倍，不超过2GB）</li>
+</ul>
+<h3><span id="152-推荐分区">1.5.2 推荐分区</span></h3><ul>
+<li>/boot（启动分区，200MB，默认是sda1）</li>
+</ul>
+<h2><span id="16-文件系统结构">1.6 文件系统结构</span></h2><img src="/2022/04/02/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/file.png" class title="file">
+<ul>
+<li>Linux目录可以放在不同的系统分区中</li>
+</ul>
+<h2><span id="17-小结">1.7 小结</span></h2><ul>
+<li>分区：把大硬盘分为小的逻辑分区</li>
+<li>格式化：写入文件系统</li>
+<li>分区设备文件名：给每个分区定义设备文件名</li>
+<li>挂载：给每个分区分配挂载点（挂载点必须是空目录，挂载后分区才能正常使用）</li>
+</ul>
+<h1><span id="二-linux命令">二、Linux命令</span></h1><h2><span id="21-文件目录">2.1 文件目录</span></h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>目录名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>代表当前目录</td>
+</tr>
+<tr>
+<td>..</td>
+<td>代表上一级目录</td>
+</tr>
+<tr>
+<td>-</td>
+<td>代表前一个工作目录</td>
+</tr>
+<tr>
+<td>~</td>
+<td>代表[目前用户身份]所在的家目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="22-文件处理命令">2.2 文件处理命令</span></h2><h3><span id="221-命令列表">2.2.1 命令列表</span></h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ls</td>
+<td>-ald [文件/目录]</td>
+<td style="text-align:left">a：显示目录中全部文件（包括隐藏文件）<br>-l：详细信息显示<br>-d：查看目录属性<br>-i：查看i节点<br>显示目录文件信息<br>所在位置/bin/mkdir</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>-p</td>
+<td style="text-align:left">-p：递归创建<br>创建新目录</td>
+</tr>
+<tr>
+<td>cd</td>
+<td></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>pwd</td>
+<td></td>
+<td style="text-align:left">显示当前目录<br>所在位置/bin/pwd</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td></td>
+<td style="text-align:left">删除空目录</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>-rp [原文件/目录] [目标目录]</td>
+<td style="text-align:left">-r：表示复制目录<br>-p：表示保留文件属性<br>复制文件或目录<br>所在位置/bin/cp</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>[原文件或目录] [目标目录]</td>
+<td style="text-align:left">剪切文件、改名<br>所在位置/bin/mv</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>-rf</td>
+<td style="text-align:left">-r：表示删除目录<br>-f：表示强制执行</td>
+</tr>
+<tr>
+<td>touch</td>
+<td>[文件名]</td>
+<td style="text-align:left">创建空文件<br>所在位置/bin/touch，文件名不推荐加空格</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>-n [文件名]</td>
+<td style="text-align:left">-n：表示显示行号<br>显示文件内容</td>
+</tr>
+<tr>
+<td>tac</td>
+<td></td>
+<td style="text-align:left">反向显示文件内容</td>
+</tr>
+<tr>
+<td>more</td>
+<td></td>
+<td style="text-align:left">按f/空格翻页<br>按Enter换行<br>按q退出<br>分页显示文件内容<br>所在位置/bin/more</td>
+</tr>
+<tr>
+<td>less</td>
+<td></td>
+<td style="text-align:left">按PgUp向上翻页<br>/+搜索名称进行内容搜索（继续按n可以向下查找）<br>分页显示文件内容（可以向上翻页）<br>所在位置/usr/bin/less</td>
+</tr>
+<tr>
+<td>head</td>
+<td>-n [文件名]</td>
+<td style="text-align:left">-n：指定行数<br>显示文件前几行，默认显示前世行<br>所在位置/uer/bin/head</td>
+</tr>
+<tr>
+<td>tail</td>
+<td>-nf</td>
+<td style="text-align:left">-n：指定行数<br>-f：表示动态显示文件末尾内容<br>显示文件后几行，默认显示后10行<br>所在位置/usr/bin/tail</td>
+</tr>
+<tr>
+<td>ln</td>
+<td></td>
+<td style="text-align:left">-s [原文件] [目标文件]<br>生成链接文件<br>所在位置/bin/ln</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="222-示例">2.2.2 示例</span></h3><ul>
+<li>ls -ld</li>
+<li>mkdir -p /tmp/a/b</li>
+<li>cd ..（返回上一目录）/cd [绝对路径/相对路径]</li>
+<li>pwd</li>
+<li>rmdir /tmp/a/b</li>
+<li>cp -r /tmp/a/b /root（将b目录复制到root目录下）</li>
+<li>mv /tmp/a/b /root/c（将b剪切到root目录并改名为c）</li>
+<li>touch a.list</li>
+<li>cat /etc/issue</li>
+<li>more /etc/services</li>
+<li>less /etc/services</li>
+<li>head -n 20 /etc/services</li>
+<li>tail -n 18 /etc/services</li>
+<li>ln -s /etc/issue /tmp/issue.soft</li>
+</ul>
+<h2><span id="23-权限管理命令">2.3 权限管理命令</span></h2><h3><span id="231-命令列表">2.3.1 命令列表</span></h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod</td>
+<td>[{ugoa}{+-=}{rwx}] [文件或目录]或[mode=421] [文件或目录]/-R</td>
+<td>-R：表示递归修改某一目录下全部文件的权限<br>改变文件或目录权限<br>u表示所有者，r=4，w=2，x=1<br>所在位置/bin/chmod</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>[用户] [文件或目录]</td>
+<td>改变文件或目录的所有者<br>所在位置/bin/chown</td>
+</tr>
+<tr>
+<td>chgrp</td>
+<td>[用户组] [文件或目录]</td>
+<td>改变文件或目录的所属组<br>所在位置/bin/chgrp</td>
+</tr>
+<tr>
+<td>umask</td>
+<td>[-S]</td>
+<td>-S：表示以rwx形式显示新建文件缺省权限<br>显示、设置文件的缺省权限<br>所在位置Shell内置命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="232-示例">2.3.2 示例</span></h3><ul>
+<li>chmod u+x,o-r,g=rwx a.list</li>
+<li>chmod 640 a.list</li>
+<li>chown gaoy a (改变文件a的所有者为gaoy)</li>
+<li>chown root:tsgroup /project/（改变project目录的所有者和所属组）</li>
+<li>chgrp a b.list</li>
+<li>umask -S</li>
+</ul>
+<h2><span id="24-文件搜索命令">2.4 文件搜索命令</span></h2><h3><span id="241-命令列表">2.4.1 命令列表</span></h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find</td>
+<td>[搜索范围] [匹配条件]</td>
+<td>-name：根据文件名查找<br>-iname：不区分大小写查找<br>- size：根据文件大小查找<br>-user：根据所有者查找<br>文件搜索<br>所在位置/bin/find</td>
+</tr>
+<tr>
+<td>locate</td>
+<td>[文件名]</td>
+<td>-i：不区分大小写查找<br>在文件资料库中查找文件，速度比find快<br>所在位置/usr/bin/locate</td>
+</tr>
+<tr>
+<td>which</td>
+<td>[命令名称]</td>
+<td>搜索命令所在目录及别名信息<br>所在位置/usr/bin/which</td>
+</tr>
+<tr>
+<td>whereis</td>
+<td>[命令名称]</td>
+<td>搜索命令所在目录及帮助文档路径</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>-inv [关键字] [文件名]</td>
+<td>在文件中搜寻字串匹配的行并输出<br>所在位置/bin/grep</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="242-示例">2.4.2 示例</span></h3><ul>
+<li>find /etc -name init(在目录/etc中查找文件init)</li>
+<li>locate inittab</li>
+<li>which ls</li>
+<li>whereis ls</li>
+<li>grep mysql /root/install.log</li>
+</ul>
+<h2><span id="25-帮助命令">2.5 帮助命令</span></h2><h3><span id="251-命令列表">2.5.1 命令列表</span></h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>man</td>
+<td>[命令或配置文件]</td>
+<td>获取帮助信息<br>按q退出<br>按空格翻页<br>按Enter换行<br>按/-[查找内容]进行查找<br>按n向下查找<br>所在位置/usr/bin/man</td>
+</tr>
+<tr>
+<td>whatis</td>
+<td>[命令]</td>
+<td>简单显示命令帮助信息</td>
+</tr>
+<tr>
+<td>apropos</td>
+<td>[配置文件]</td>
+<td>查看配置文件的信息</td>
+</tr>
+<tr>
+<td>—help</td>
+<td>[命令] —help</td>
+<td>查看命令常见选项</td>
+</tr>
+<tr>
+<td>help</td>
+<td>[命令]</td>
+<td>获取Shell内置命令的版帮助信息<br>所在位置Shell内置命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="252-示例">2.5.2 示例</span></h3><ul>
+<li>man ls</li>
+<li>man services：查看配置文件services的帮助信息</li>
+<li>whatis ls</li>
+<li>apropos inittab</li>
+<li>ls —help</li>
+<li>help umask</li>
+</ul>
+<h2><span id="26-用户管理命令">2.6 用户管理命令</span></h2><h3><span id="261-命令列表">2.6.1 命令列表</span></h3><ul>
+<li>useradd/userdel执行权限为root</li>
+<li>其他命令执行权限为所有用户</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>useradd</td>
+<td>-udcgGs</td>
+<td>-u [UID]：手工指定用户的UID<br>-d [家目录]：手工指定用户的家目录<br>-c [用户说明]：手工指定用户的说明<br>-g [组名]：手工指定用户的初始组<br>-G [组名]：手工指定用户的附加组<br>-s shell：手工指定用户的登录shell，默认是/bin/bash<br>所在位置：/usr/sbin/useradd；<br>添加用户，不推荐手工指定用户的家目录</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>-Slu [用户名]—stdin</td>
+<td>-S：查询用户密码的密码状态<br>-l：暂时锁定用户<br>-u：解锁用户<br>—stdin：可以通过管道符输出的数据作为用户的密码<br>-Slu：这些选项只能由root执行<br>设置用户密码，root可以更改任何人的密码，普通用户可以更改自己的密码<br>所在位置：/usr/bin/passwd；<br>只用root可以改其他用户的密码，其他用户只能直接输入passwd（不用接用户名）改自己的密码（必须符合密码复杂性原则）</td>
+</tr>
+<tr>
+<td>usermod</td>
+<td>-ucGLU</td>
+<td>-u [UID]：修改用户的UID号<br>-c [用户说明]：修改用户的说明信息<br>-G [组名]：修改用户的附加组-L-U；<br>-L：临时锁定用户<br>-U：解锁用户锁定</td>
+</tr>
+<tr>
+<td>chage</td>
+<td></td>
+<td>-l：列出用户的详细密码<br>-d [日期]：修改密码最后一次更改日期<br>-m [天数]：两次密码修改间隔<br>-M [天数]：密码有效期<br>-W [天数]：密码过期前警告天数<br>-I [天数]：密码过后宽限天数<br>-E [日期]：账号失效时间</td>
+</tr>
+<tr>
+<td>userdel</td>
+<td>-r [用户名]</td>
+<td>-r：删除用户的同时删除用户家目录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>[用户名]</td>
+<td>查看用户ID（UID、GID等）</td>
+</tr>
+<tr>
+<td>su [选项] [用户名]</td>
+<td>-<br>-c</td>
+<td>-：选项只是用“-”代表连带用户的环境变量一起切换<br>-c：仅执行一次命令，而不切换用户身份</td>
+</tr>
+<tr>
+<td>groupadd</td>
+<td>-g [GID] [组名]</td>
+<td>-g [GID]：指定组ID</td>
+</tr>
+<tr>
+<td>groupmod [选项] [组名]</td>
+<td>-g [GID]-n [新组名]</td>
+<td>-g：修改GID<br>-n：修改组名</td>
+</tr>
+<tr>
+<td>groupdel [组名]</td>
+<td></td>
+<td>没有初始组，此用户不能存在</td>
+</tr>
+<tr>
+<td>gpasswd</td>
+<td>-ad [用户名] [组名]</td>
+<td>-a：把用户加入组<br>-d：把用户从组中删除；<br>把用户添加入组或从组中删除</td>
+</tr>
+<tr>
+<td>who</td>
+<td></td>
+<td>查看登录用户信息<br>所在位置：/usr/bin/who</td>
+</tr>
+<tr>
+<td>w</td>
+<td></td>
+<td>查看登录用户详细信息<br>所在位置：/usr/bin/w</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="262-示例">2.6.2 示例</span></h3><ul>
+<li>useradd yangmi</li>
+<li>echo “123” | passwd —stdin lamp：给用户lamp添加密码123</li>
+<li>passwd -l sc：锁定用户（该用户无法登录）</li>
+<li>usermod -c “test user” lamp</li>
+<li>chage -d 0 lamp：用户一登录就要修改密码</li>
+<li>su root：这样切换不会改变此用户的环境变量</li>
+<li>su - root：把用户的操作环境也改为root环境（推荐）</li>
+<li>su - root -c “useradd user3”：不切换成root，但执行useradd命令添加user3用户</li>
+<li>groupmod -n testgrp group1：把组名group1修改为testgrp</li>
+<li>gpasswd -a user1 root：把user1用户加入到root组中</li>
+<li>who</li>
+<li>w</li>
+</ul>
+<h2><span id="27-压缩解压命令">2.7 压缩解压命令</span></h2><h3><span id="271-命令列表">2.7.1 命令列表</span></h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gzip</td>
+<td>[文件]</td>
+<td>压缩文件(目录不可以)，压缩后文件格式为.gz，压缩后只保留压缩后的文件，不保留原文件所在位置/bin/gzip</td>
+</tr>
+<tr>
+<td>gunzip</td>
+<td>[压缩文件]</td>
+<td>解压缩.gz的压缩文件</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>-zcfvx [压缩后的文件名] [目录]</td>
+<td>-c：打包<br>-v：显示详细信息<br>-f：指定文件名<br>-z：打包同时压缩<br>-x：解包<br>打包目录，即把目录打包成一个.tar的文件，压缩后的文件格式为.tar.gz所在位置：/bin/tar</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>-r [压缩后文件名] [文件或目录]</td>
+<td>-r：压缩目录<br>压缩文件或目录，压缩后文件格式为.zip<br>所在位置/usr/bin/zip</td>
+</tr>
+<tr>
+<td>unzip</td>
+<td>[压缩文件]</td>
+<td>解压.zip的压缩文件<br>所在位置/usr/bin/unzip</td>
+</tr>
+<tr>
+<td>bzip2</td>
+<td>-k [文件]</td>
+<td>压缩文件，压缩后文件格式.bz2</td>
+</tr>
+<tr>
+<td>bunzip2</td>
+<td>-k [压缩文件]</td>
+<td>解压缩</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="272-示例">2.7.2 示例</span></h3><ul>
+<li>gunzip a.gz</li>
+<li>tar -zcf Japan.tar.gz Japan</li>
+<li>tar -axvf Japan.tar.gz（解包）</li>
+<li>zip -r Japan.zip Japan</li>
+<li>unzip test.zip</li>
+<li>bzip2 -k boduo</li>
+<li>tar -cjf Japan.tar.bz2 Japan（针对目录）</li>
+<li>bunzip2 -k boduo.bz2</li>
+<li>tar -xjf Japan.tar.bz2（针对目录）</li>
+</ul>
+<h2><span id="28-网络命令">2.8 网络命令</span></h2><h3><span id="281-命令列表">2.8.1 命令列表</span></h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+<li>ifconfig执行权限为root，其他均为所有用户</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>write</td>
+<td>&lt;用户名&gt;</td>
+<td>给登录用户发信息<br>以Ctrl+D保存结束<br>所在位置：/usr/bin/write</td>
+</tr>
+<tr>
+<td>wall</td>
+<td>[message]</td>
+<td>发广播信息<br>所在位置：/usr/bin/wall</td>
+</tr>
+<tr>
+<td>ping</td>
+<td>-c [IP地址]</td>
+<td>测试网络连通性<br>所在位置：/bin/ping</td>
+</tr>
+<tr>
+<td>ifconfig</td>
+<td>[网卡名称] [IP地址]</td>
+<td>查看和设置网卡信息<br>所在位置：/sbin/ifconfig</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>[用户名]</td>
+<td>查看发送电子邮件<br>所在位置/bin/mail</td>
+</tr>
+<tr>
+<td>last</td>
+<td></td>
+<td>列出目前与过去登入系统的用户信息<br>所在位置：/usr/bin/last</td>
+</tr>
+<tr>
+<td>lastlog</td>
+<td>-u [uid]</td>
+<td>检查某特定用户上次登录的时间<br>所在位置/usr/bin/lastlog</td>
+</tr>
+<tr>
+<td>traceroute</td>
+<td></td>
+<td>显示数据包到主机间的路径<br>所在位置：/bin/traceroute</td>
+</tr>
+<tr>
+<td>netstat</td>
+<td>-tulrn</td>
+<td>显示网络相关信息<br>所在位置：/bin/netstat</td>
+</tr>
+<tr>
+<td>setup</td>
+<td></td>
+<td>配置网络<br>所在位置/usr/bin/setup</td>
+</tr>
+<tr>
+<td>mount</td>
+<td>[-t 文件系统] [设备文件名] [挂载点]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="282-示例">2.8.2 示例</span></h3><ul>
+<li>write linzhiling</li>
+<li>wall abcdefgh</li>
+<li>ping -c 3 192.168.1.156</li>
+<li>ifconfig eth0 192.168.8.250</li>
+<li>mail root</li>
+<li>mail</li>
+<li>last</li>
+<li>lastlog</li>
+<li>lastlog -u 502</li>
+<li>traceroute www.baidu.com</li>
+<li>netstat -tlun（查看本机监听的端口）</li>
+<li>netstat -an（查看本机所有的网络连接）</li>
+<li>netstat -rn（查看本机路由表）</li>
+<li>setup</li>
+<li>mount -t iso9660 /dev/sr0 /mnt/cdrom</li>
+<li>umount /dev/sr0（卸载）</li>
+</ul>
+<h2><span id="29-关机重启命令">2.9 关机重启命令</span></h2><h3><span id="291-命令列表">2.9.1 命令列表</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shutdown</td>
+<td>-chr [时间]</td>
+<td>-c：取消前一个关机命令<br>-h：关机<br>-r：重启</td>
+</tr>
+<tr>
+<td>reboot</td>
+<td></td>
+<td>重启</td>
+</tr>
+<tr>
+<td>init 0</td>
+<td></td>
+<td>关机</td>
+</tr>
+<tr>
+<td>init 6</td>
+<td></td>
+<td>重启</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="292-系统运行级别">2.9.2 系统运行级别</span></h3><h4><span id="1级别">（1）级别</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>关机</td>
+</tr>
+<tr>
+<td>1</td>
+<td>单用户</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不完全多用户、不含NFS服务</td>
+</tr>
+<tr>
+<td>3</td>
+<td>完全多用户（默认）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>未分配</td>
+</tr>
+<tr>
+<td>5</td>
+<td>图形界面</td>
+</tr>
+<tr>
+<td></td>
+<td>重启</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4><span id="2相关命令">（2）相关命令</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>runlevel</td>
+<td>查看系统运行级别</td>
+</tr>
+<tr>
+<td>logout</td>
+<td>退出登录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><span id="210-shell命令">2.10 Shell命令</span></h2><h3><span id="2101-命令列表">2.10.1 命令列表</span></h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>echo</td>
+<td>-e [输出内容]</td>
+<td>-e：支持反斜线控制的字符转换；基本输出命令</td>
+</tr>
+<tr>
+<td>history</td>
+<td>-cw [历史命令保存文件]</td>
+<td>-c：清空历史命令（不推荐清空）<br>-w：把缓存中的历史命令写入历史命令保护文件<br>~/.bash_history<br>查看之前输入的命令，不加w选项，刚输入的命令还在缓存中，还未写入历史命令保存文件中，默认保存1000条历史命令（可以在环境变量配置文件/etc/profile中进行修改）</td>
+</tr>
+<tr>
+<td>alias</td>
+<td>[别名]=[‘原命令’]</td>
+<td>alias [别名]=[‘原命令’]：设定命令别名<br>alias：查询命令别名<br>临时生效，重启后无效</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3><span id="2102-示例">2.10.2 示例</span></h3><ul>
+<li>history</li>
+<li>history -w</li>
+<li>alias vi=’vim’</li>
+<li>alias</li>
+</ul>
+<h2><span id="211-字符提取命令">2.11 字符提取命令</span></h2><h3><span id="2111-cut命令">2.11.1 cut命令</span></h3><ul>
+<li>选项：-df [文件名]</li>
+<li>解释：<ul>
+<li>-d 分隔符：按照指定分隔符分割列</li>
+<li>-f 列号：提取第几列</li>
+</ul>
+</li>
+<li>说明：默认提取以制表符分割的列</li>
+</ul>
+<h3><span id="2112-printf命令">2.11.2 printf命令</span></h3><ul>
+<li>‘输出类型/输出格式’ 输出内容</li>
+<li>输出类型：<ul>
+<li>%ns：输出字符串。n是数字指代输出几个字符</li>
+<li>%ni：输出整数。n是数字指代输出几个数字</li>
+<li>%m.nf：输出浮点数。m和n是数字，指代输出的整数位数和小数位数。如%8.2f代表共输出8位数，其中2位是小数，6位是整数</li>
+</ul>
+</li>
+<li><p>输出格式：</p>
+<ul>
+<li>\a：输出警告音</li>
+<li>\b：输出退格键</li>
+<li>\f：清除屏幕</li>
+<li>\n：换行</li>
+<li>\r：回车</li>
+<li>\t：水平输出退格键，即Tab键</li>
+<li>\v：垂直输出退格键，即Tab键</li>
+</ul>
+</li>
+<li><p>说明：利用管道符或者直接接文件名都无法利用此命令输出文件内容，print和printf一般在awk命令中使用</p>
+</li>
+<li>示例<ul>
+<li>printf ‘%s %s %s \n’ 1 2 3 4 5 6</li>
+<li>printf ‘%s’ $(cat s.txt)：输出文件内容</li>
+</ul>
+</li>
+</ul>
+<h3><span id="2113-awk命令">2.11.3 awk命令</span></h3><ul>
+<li>选项：<ul>
+<li>‘条件1 {动作1}</li>
+<li>条件2 {动作2}…’ 文件名</li>
+</ul>
+</li>
+<li>条件：<ul>
+<li>一般使用关系表达式作为条件</li>
+<li>x&gt;10</li>
+<li>x&gt;=10</li>
+<li>x&lt;=10</li>
+</ul>
+</li>
+<li>动作：格式化输出流程控制语句</li>
+<li>说明：print只能在awk中使用，会自动换行</li>
+<li>示例：<ul>
+<li>awk ‘{printf $2 “\t” $6 “\n”}’ s.txt：输出文件第2列和第六列</li>
+<li>df -h | awk ‘{print $1 “\t” $3}’</li>
+<li>df -h | grep sda5 | awk ‘{print $5}’ | cut -d “%” -f 1：截取某一行的第5列数据</li>
+<li>awk ‘BEGIN{printf “This is a txt \n”} {print $2 “\t” $5}’ s.txt：在输出文件内容前，先输出This is a txt</li>
+<li>awk ‘BEGIN{FS=”:”} {print $1 “\t” $3}’ /etc/passwd：FS指定分隔符为冒号，不加BEGIN，文件的第一行就不会处理</li>
+<li>awk ‘END{printf “The End \n”} {printf $2 “\t” $6 “\n”}’ s.txtEND：表示输出完成之后，再输出The End</li>
+</ul>
+</li>
+</ul>
+<h3><span id="2114-sed命令">2.11.4 sed命令</span></h3><ul>
+<li>选项：[-nei] ‘[动作]’ [文件名]</li>
+<li>解释：<ul>
+<li>-n：一般sed命令会把所有数据都输出到屏幕，如果加入此选项，则只会把经过sed命令处理的行输出到屏幕</li>
+<li>-e：允许对输入数据应用多条sed命令编辑</li>
+<li>-i：用sed的修改结果直接修改读取数据的文件，而不是由屏幕输出</li>
+</ul>
+</li>
+<li><p>动作：</p>
+<ul>
+<li>a \：追加，在当前行后添加一行或多行。添加多行时，除最后一行外，每行末尾需要用“\”代表数据未完结</li>
+<li>c \：行替换，用c后面的字符串替换原数据行，替换多行时，除最后一行外，每行末尾需用“\”代表数据未完结</li>
+<li>i \：插入，在当前行前插入一行或多行。插入多行时，除最后一行外，每行末尾需要用“\”代表数据未完结</li>
+<li>d：删除，删除指定的行</li>
+<li>p：打印，输出指定的行</li>
+<li>s：字串替换，用一个字符串替换另外一个字符串。</li>
+<li>格式为“行范围s/旧字串/新字串/g”（和vim中的替换格式类似）</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<ul>
+<li>sed -n ‘2p’ s.txt：输出第二行，不加-n会把所有内容都输出</li>
+<li>df -h | sed -n ‘2p’ s.txt：输出df命令内容第2行</li>
+<li>sed ‘2,4d’ s.txt：将文件输出的内容的第2到4行删除，但不改变文件本身</li>
+<li>sed ‘2i hello \world’ s.txt：在文件输出内容第2行插入hello world内容，并不改变文件本身</li>
+<li>sed ‘4s/99/55/g’ s.txt：将文件输出内容的第4行的99改为55</li>
+<li>sed -e ‘s/LiMing//g ; s/Gao//g/‘ s.txt：同时把LiMing和Gao修改为空白</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>服务器</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Linux命令</tag>
       </tags>
   </entry>
 </search>
