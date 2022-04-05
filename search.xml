@@ -4826,6 +4826,12 @@
 <h3 id="6-2-3-小结"><a href="#6-2-3-小结" class="headerlink" title="6.2.3 小结"></a>6.2.3 小结</h3><ul>
 <li>如果当前请求依赖其他请求，就需要用到请求转发和重定向的方式</li>
 <li>如果只是普通的页面跳转则不需要这些操作</li>
+<li>SpringMVC有三个视图解析器：ThymeleafView、InternalResourceView（请求转发解析器）、RedirectView（重定向解析器）<ul>
+<li>return返回值中不加任何前缀的字段会交给ThymeleafView解析</li>
+<li>return返回值中加前缀forward:的字段会交给ThymeleafView解析</li>
+<li>return返回值中加前缀redirect:的字段会交给ThymeleafView解析</li>
+</ul>
+</li>
 </ul>
 <h2 id="6-3-ThymeleafView"><a href="#6-3-ThymeleafView" class="headerlink" title="6.3 ThymeleafView"></a>6.3 ThymeleafView</h2><ul>
 <li>当控制器方法中所设置的视图名称没有任何前缀时，此时的视图名称会被SpringMVC配置文件中所配置的视图解析器解析，视图名称拼接视图前缀和视图后缀所得到的最终路径，会通过转发的方式实现跳转</li>
@@ -4852,13 +4858,74 @@
 </blockquote>
 <h2 id="6-6-视图控制器view-controller"><a href="#6-6-视图控制器view-controller" class="headerlink" title="6.6 视图控制器view-controller"></a>6.6 视图控制器view-controller</h2><ul>
 <li>当控制器方法中，仅仅用来实现页面跳转，即只需要设置视图名称时，可以将处理器方法使用view-controller标签进行表示</li>
+<li>需要在springMVC.xml中添加</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	path：设置处理的请求地址</span></span><br><span class="line"><span class="comment">	view-name：设置请求地址所对应的视图名称</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:view-controller</span> <span class="attr">path</span>=<span class="string">&quot;/testView&quot;</span> <span class="attr">view-name</span>=<span class="string">&quot;success&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">mvc:view-controller</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>当SpringMVC中设置任何一个view-controller时，其他控制器中的请求映射将全部失效，此时需要在SpringMVC的核心配置文件中设置开启mvc注解驱动的标签：</p>
+<p>当SpringMVC中设置任何一个view-controller时，其他控制器中的请求映射将全部失效，此时需要在SpringMVC的核心配置文件（springMVC.xml）中设置开启mvc注解驱动的标签：</p>
 <p>​    <mvc:annotation-driven /></p>
 </blockquote>
-<h1 id="七、RESTful"><a href="#七、RESTful" class="headerlink" title="七、RESTful"></a>七、RESTful</h1><h1 id="八、HttpMessageConverter"><a href="#八、HttpMessageConverter" class="headerlink" title="八、HttpMessageConverter"></a>八、HttpMessageConverter</h1><h1 id="九、文件上传和下载"><a href="#九、文件上传和下载" class="headerlink" title="九、文件上传和下载"></a>九、文件上传和下载</h1><h1 id="十、过滤器"><a href="#十、过滤器" class="headerlink" title="十、过滤器"></a>十、过滤器</h1><h1 id="十一、拦截器"><a href="#十一、拦截器" class="headerlink" title="十一、拦截器"></a>十一、拦截器</h1><h2 id="过滤器与拦截器"><a href="#过滤器与拦截器" class="headerlink" title="过滤器与拦截器"></a>过滤器与拦截器</h2><img src="/2022/04/03/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/Interceptor.png" class="" title="interceptor">
+<h1 id="七、RESTful"><a href="#七、RESTful" class="headerlink" title="七、RESTful"></a>七、RESTful</h1><h2 id="7-1-RESTFul简介"><a href="#7-1-RESTFul简介" class="headerlink" title="7.1 RESTFul简介"></a>7.1 RESTFul简介</h2><ul>
+<li>全称：Representational State Transfer，表现层状态转移</li>
+</ul>
+<h2 id="7-2-RESTFul的实现"><a href="#7-2-RESTFul的实现" class="headerlink" title="7.2 RESTFul的实现"></a>7.2 RESTFul的实现</h2><ul>
+<li>RESTFul风格的URL请求地址</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>传统方式</th>
+<th>REST风格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查询</td>
+<td>getUserById?id=1</td>
+<td>user/1</td>
+</tr>
+<tr>
+<td>保存</td>
+<td>saveUser</td>
+<td>user</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>deleteUser?id=1</td>
+<td>user/1</td>
+</tr>
+<tr>
+<td>更新</td>
+<td>updateUser</td>
+<td>user</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="7-3-PUT和DELETE请求处理"><a href="#7-3-PUT和DELETE请求处理" class="headerlink" title="7.3 PUT和DELETE请求处理"></a>7.3 PUT和DELETE请求处理</h2><h3 id="7-3-1-简介"><a href="#7-3-1-简介" class="headerlink" title="7.3.1 简介"></a>7.3.1 简介</h3><ul>
+<li>由于浏览器只支持发送get和post方式的请求，那么该如何发送put和delete请求呢？</li>
+<li>SpringMVC 提供了 <strong>HiddenHttpMethodFilter</strong> 帮助我们<strong>将 POST 请求转换为 DELETE 或 PUT 请求</strong></li>
+</ul>
+<h3 id="7-3-2-HiddenHttpMethodFilter配置"><a href="#7-3-2-HiddenHttpMethodFilter配置" class="headerlink" title="7.3.2 HiddenHttpMethodFilter配置"></a>7.3.2 HiddenHttpMethodFilter配置</h3><ul>
+<li>在web.xml中过滤器中注册HiddenHttpMethodFilter</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>HiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>HiddenHttpMethodFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置完HiddenHttpMethodFilter之后，如果是用表单进行修改，需要如下设置</li>
+<li><strong>HiddenHttpMethodFilter</strong> 处理put和delete请求的条件：<ul>
+<li>当前请求的请求方式必须为post</li>
+<li>当前请求必须传输请求参数_method</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--修改用户信息表单，method必须指定为post--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/user&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	配置完过滤器后一定要在表单下添加_method字段，交给后端过滤器进行处理</span></span><br><span class="line"><span class="comment">	在value中指定修改操作所确定的PUT请求</span></span><br><span class="line"><span class="comment">	--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;_method&quot;</span> <span class="attr">value</span>=<span class="string">&quot;PUT&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;修改&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-3-3-小结"><a href="#7-3-3-小结" class="headerlink" title="7.3.3 小结"></a>7.3.3 小结</h3><ul>
+<li>过滤器的执行顺序：当配置有多个过滤器时，SpringMVC会按照filter-mapping的编写顺序进行配置</li>
+<li>对于之前写的CharacterEncodingFilter，如果前面写了处理请求的其他过滤器，那么处理编码的过滤器就会<strong>失效</strong>，所以我们要先配置编码过滤器，再编写请求过滤器</li>
+</ul>
+<h1 id="八、HttpMessageConverter"><a href="#八、HttpMessageConverter" class="headerlink" title="八、HttpMessageConverter"></a>八、HttpMessageConverter</h1><h1 id="九、文件上传和下载"><a href="#九、文件上传和下载" class="headerlink" title="九、文件上传和下载"></a>九、文件上传和下载</h1><h1 id="十、过滤器"><a href="#十、过滤器" class="headerlink" title="十、过滤器"></a>十、过滤器</h1><h1 id="十一、拦截器"><a href="#十一、拦截器" class="headerlink" title="十一、拦截器"></a>十一、拦截器</h1><h2 id="过滤器与拦截器"><a href="#过滤器与拦截器" class="headerlink" title="过滤器与拦截器"></a>过滤器与拦截器</h2><img src="/2022/04/03/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/Interceptor.png" class="" title="interceptor">
 <h2 id="拦截器配置"><a href="#拦截器配置" class="headerlink" title="拦截器配置"></a>拦截器配置</h2><h1 id="十二、异常处理"><a href="#十二、异常处理" class="headerlink" title="十二、异常处理"></a>十二、异常处理</h1><h1 id="十三、注解配置"><a href="#十三、注解配置" class="headerlink" title="十三、注解配置"></a>十三、注解配置</h1><h1 id="十四、SpringMVC执行流程"><a href="#十四、SpringMVC执行流程" class="headerlink" title="十四、SpringMVC执行流程"></a>十四、SpringMVC执行流程</h1>]]></content>
       <categories>
         <category>后端</category>
