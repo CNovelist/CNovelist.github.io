@@ -729,6 +729,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/07/SSM%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/07/SSM%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" class="post-title-link" itemprop="url">SSM项目搭建</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-07 23:51:51" itemprop="dateCreated datePublished" datetime="2022-04-07T23:51:51+08:00">2022-04-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -902,7 +959,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-07 16:13:22" itemprop="dateModified" datetime="2022-04-07T16:13:22+08:00">2022-04-07</time>
+                <time title="修改时间：2022-04-08 14:07:36" itemprop="dateModified" datetime="2022-04-08T14:07:36+08:00">2022-04-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1370,8 +1427,60 @@
 <li>如果不处理重名情况，当重新上传时会覆盖掉原来上传的重名的文件，这不是我们想要的情况，所以要通过UUID处理重名的情况，为文件重命名</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testUp&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">testUp</span><span class="params">(MultipartFile photo, HttpSession session)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">//获取上传的文件的文件名</span></span><br><span class="line">    String fileName = photo.getOriginalFilename();</span><br><span class="line">    <span class="comment">//处理文件重名问题，获取文件扩展名，包括&quot;.&quot;</span></span><br><span class="line">    String hzName = fileName.substring(fileName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">    fileName = UUID.randomUUID().toString() + hzName;</span><br><span class="line">    <span class="comment">//获取服务器中photo目录的路径</span></span><br><span class="line">    ServletContext servletContext = session.getServletContext();</span><br><span class="line">    String photoPath = servletContext.getRealPath(<span class="string">&quot;photo&quot;</span>);</span><br><span class="line">    File file = <span class="keyword">new</span> File(photoPath);</span><br><span class="line">    <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">        file.mkdir();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// File.separator为文件分隔符</span></span><br><span class="line">    String finalPath = photoPath + File.separator + fileName;</span><br><span class="line">    <span class="comment">//实现上传功能</span></span><br><span class="line">    photo.transferTo(<span class="keyword">new</span> File(finalPath));</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="十、过滤器"><a href="#十、过滤器" class="headerlink" title="十、过滤器"></a>十、过滤器</h1><h1 id="十一、拦截器"><a href="#十一、拦截器" class="headerlink" title="十一、拦截器"></a>十一、拦截器</h1><h2 id="过滤器与拦截器"><a href="#过滤器与拦截器" class="headerlink" title="过滤器与拦截器"></a>过滤器与拦截器</h2><img src="/2022/04/03/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/Interceptor.png" class="" title="interceptor">
-<h2 id="拦截器配置"><a href="#拦截器配置" class="headerlink" title="拦截器配置"></a>拦截器配置</h2><h1 id="十二、异常处理"><a href="#十二、异常处理" class="headerlink" title="十二、异常处理"></a>十二、异常处理</h1><h1 id="十三、注解配置"><a href="#十三、注解配置" class="headerlink" title="十三、注解配置"></a>十三、注解配置</h1><h1 id="十四、SpringMVC执行流程"><a href="#十四、SpringMVC执行流程" class="headerlink" title="十四、SpringMVC执行流程"></a>十四、SpringMVC执行流程</h1>
+<h1 id="十、拦截器"><a href="#十、拦截器" class="headerlink" title="十、拦截器"></a>十、拦截器</h1><h2 id="11-1-过滤器与拦截器"><a href="#11-1-过滤器与拦截器" class="headerlink" title="11.1 过滤器与拦截器"></a>11.1 过滤器与拦截器</h2><img src="/2022/04/03/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/Interceptor.png" class="" title="interceptor">
+<h2 id="11-2-拦截器配置"><a href="#11-2-拦截器配置" class="headerlink" title="11.2 拦截器配置"></a>11.2 拦截器配置</h2><ul>
+<li>创建拦截器类FirstInterceptor，并重写三个方法<ul>
+<li>preHandle()</li>
+<li>postHandle()</li>
+<li>afterCompletion()</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在springMVC配置文件中注入我们创建的拦截器类<ul>
+<li>方式一和方式二都可实现拦截器的注入</li>
+<li>/**：表示拦截所有请求，包括/user/add、/user</li>
+<li>/*：表示拦截所有根请求下的请求，如/user、/add，不包括/user/add</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--方式一，这里的bean名称就是我们配置的拦截器类--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;firstInterceptor&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ref</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--方式二--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;com.atguigu.interceptor.FirstInterceptor&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>或者直接在springMVC配置文件中配置<strong>拦截和放行的请求</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--拦截的请求--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">&quot;/**&quot;</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--放行的请求--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">&quot;/testRequestEntity&quot;</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--拦截器类还是要配置的--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;firstInterceptor&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ref</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="11-3-拦截器方法"><a href="#11-3-拦截器方法" class="headerlink" title="11.3 拦截器方法"></a>11.3 拦截器方法</h2><ul>
+<li><p>preHandle：控制器方法执行之前执行preHandle()，其boolean类型的返回值表示是否拦截或放行，返回true为放行，即调用控制器方法；返回false表示拦截，即不调用控制器方法</p>
+</li>
+<li><p>postHandle：控制器方法执行之后执行postHandle()</p>
+</li>
+<li><p>afterComplation：处理完视图和模型数据，渲染视图完毕之后执行afterComplation()</p>
+</li>
+</ul>
+<h2 id="11-4-拦截器执行顺序"><a href="#11-4-拦截器执行顺序" class="headerlink" title="11.4 拦截器执行顺序"></a>11.4 拦截器执行顺序</h2><ul>
+<li>当我们创建了多个拦截器类，它们拦截了相同的请求，那么处理的顺序是怎么样的，需要我们了解下</li>
+</ul>
+<h3 id="11-4-1-每个拦截器的preHandle-都返回true"><a href="#11-4-1-每个拦截器的preHandle-都返回true" class="headerlink" title="11.4.1 每个拦截器的preHandle()都返回true"></a>11.4.1 每个拦截器的preHandle()都返回true</h3><ul>
+<li>我们在<strong>springMVC</strong>中配置拦截器的顺序就是多个拦截器执行的顺序</li>
+<li>拦截器中的preHandle()会按照配置的顺序执行，而postHandle()和afterComplation()会按照配置的反序执行，如下：</li>
+</ul>
+<img src="/2022/04/03/SpringMVC%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/ic.png" class="" title="ic">
+<ul>
+<li>原理：在源码中，SpringMVC为每个拦截器提供了一个索引InterceptorIndex<ul>
+<li>当拦截器拦截请求时，是顺序遍历拦截器并执行preHandle()方法，InterceptorIndex遍历一遍始终保存上一个拦截器的索引值，本质上是顺序遍历的自增的i值</li>
+<li>当执行postHandle()和AfterCompletion()时，则根据InterceptorIndex的值进行反向遍历（从大到小），因此postHandle()和AfterCompletion的执行顺序是反向的</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-4-2-某个拦截器的preHandle-返回了false"><a href="#11-4-2-某个拦截器的preHandle-返回了false" class="headerlink" title="11.4.2 某个拦截器的preHandle()返回了false"></a>11.4.2 某个拦截器的preHandle()返回了false</h3><ul>
+<li>preHandle()返回false的拦截器<strong>之前的拦截器</strong>的preHandle()和afterComplation()都会执行，但postHandle()不会执行</li>
+<li>原理：假设有5个拦截器，第3个拦截器prehandle()返回false对请求进行拦截<ul>
+<li>顺序执行到第3个拦截器的preHandle()时返回false，SpringMVC经过判断后，则直接根据InterceptorIndex去处理第3个拦截器<strong>之前的拦截器</strong>的AfterCompletion()方法，而不去执行postHandle()方法，并直接return，并不执行视图渲染</li>
+</ul>
+</li>
+</ul>
+<h1 id="十一、异常处理"><a href="#十一、异常处理" class="headerlink" title="十一、异常处理"></a>十一、异常处理</h1><h1 id="十二、注解配置"><a href="#十二、注解配置" class="headerlink" title="十二、注解配置"></a>十二、注解配置</h1><h1 id="十三、SpringMVC执行流程"><a href="#十三、SpringMVC执行流程" class="headerlink" title="十三、SpringMVC执行流程"></a>十三、SpringMVC执行流程</h1>
       
     </div>
 
@@ -2880,196 +2989,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/17/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%8A%80%E6%9C%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/17/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%8A%80%E6%9C%AF/" class="post-title-link" itemprop="url">知识图谱学习笔记2-知识图谱构建技术</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-17 21:15:01" itemprop="dateCreated datePublished" datetime="2022-03-17T21:15:01+08:00">2022-03-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 21:30:25" itemprop="dateModified" datetime="2022-03-26T21:30:25+08:00">2022-03-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SPARQL语言"><a href="#SPARQL语言" class="headerlink" title="SPARQL语言"></a>SPARQL语言</h1><h1 id="一、OWL本体库语言"><a href="#一、OWL本体库语言" class="headerlink" title="一、OWL本体库语言"></a>一、OWL本体库语言</h1><h1 id="二、RDF"><a href="#二、RDF" class="headerlink" title="二、RDF"></a>二、RDF</h1><h2 id="2-1-RDF介绍"><a href="#2-1-RDF介绍" class="headerlink" title="2.1 RDF介绍"></a>2.1 RDF介绍</h2><ul>
-<li>RDF全称为资源描述框架</li>
-<li>该数据模型由三个部分组成事实，被称为三元组triples：(主，谓，宾)</li>
-<li>如下表所示，下表为一条邮箱的事实</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>subject</th>
-<th>predicate</th>
-<th>object</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gy</td>
-<td>email</td>
-<td>7777777@qq.com</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-2-RDF资源"><a href="#2-2-RDF资源" class="headerlink" title="2.2 RDF资源"></a>2.2 RDF资源</h2><ul>
-<li>RDF图中有三种节点：IRIs（国际资源标识符），literals（文字）和空节点<ul>
-<li>IRIs是一个Unicode字符串</li>
-</ul>
-</li>
-</ul>
-<img src="/2022/03/17/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02-%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%8A%80%E6%9C%AF/rdfgraph.png" class="" title="rdfgraph">
-<ul>
-<li>谓语本身也是一个IRIs，表示一个属性，可以认为是二元关系的<strong>资源</strong></li>
-</ul>
-<h2 id="2-3-RDF图"><a href="#2-3-RDF图" class="headerlink" title="2.3 RDF图"></a>2.3 RDF图</h2><h3 id="2-3-1-三元组"><a href="#2-3-1-三元组" class="headerlink" title="2.3.1 三元组"></a>2.3.1 三元组</h3><ul>
-<li>一个RDF三元组由三个部分组成<ul>
-<li>主语：它是一个IRI或者一个空节点</li>
-<li>谓语：它是一个IRI</li>
-<li>宾语：它是一个IRI或者文字或者空节点</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-3-2-URL，URI和IRI"><a href="#2-3-2-URL，URI和IRI" class="headerlink" title="2.3.2 URL，URI和IRI"></a>2.3.2 URL，URI和IRI</h2><ul>
-<li>URL：统一资源定位符，表示互联网资源的位置访问地址</li>
-<li>URI：统一资源标识符，在三元组中可以标识主语、谓语的<strong>命名空间</strong>，以免命名混淆</li>
-<li>IRI：国际资源标识符</li>
-</ul>
-<h1 id="三、ttl数据格式"><a href="#三、ttl数据格式" class="headerlink" title="三、ttl数据格式"></a>三、ttl数据格式</h1><h2 id="3-1-简单的三元组"><a href="#3-1-简单的三元组" class="headerlink" title="3.1 简单的三元组"></a>3.1 简单的三元组</h2><ul>
-<li>每个三元组满足&lt;主 谓 宾&gt;，且每个三元组以”.”结尾</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#spiderman&gt; &lt;http:/</span><span class="regexp">/www.perceive.net/</span>schemas<span class="regexp">/relationship/</span>enemyOf&gt; &lt;http:<span class="regexp">//</span>example.org/<span class="comment">#green-goblin&gt; .</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-2-简单格式"><a href="#3-2-简单格式" class="headerlink" title="3.2 简单格式"></a>3.2 简单格式</h2><ul>
-<li>RDF有许多文件格式，以下以Turtle RDF格式为例，文件名为data.ttl</li>
-<li>对于以下文件格式，后面会做详细介绍</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># filename: ex002.ttl</span><br><span class="line"></span><br><span class="line"># 前缀行，<span class="keyword">ab</span>表示的是后面URI的别名，方便后面表示</span><br><span class="line">@prefix <span class="keyword">a</span><span class="variable">b:</span> &lt;http://learningsparql.<span class="keyword">com</span>/ns/addressbook#&gt; .</span><br><span class="line"></span><br><span class="line"># 以下每行都表示一个三元组，其中<span class="keyword">ab</span>为前缀</span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(229) 276-5135&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;richard49@hotmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(245) 646-5488&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;cindym@gmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(194) 966-1505&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;craigellis@yahoo.com&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;c.ellis@usairwaysgroup.com&quot;</span> .</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="3-3-谓词表"><a href="#3-3-谓词表" class="headerlink" title="3.3 谓词表"></a>3.3 谓词表</h2><ul>
-<li>以下数据标注了蜘蛛侠的敌人和名字</li>
-<li><p>也就是说相同的主语有多个的谓词关系时需要用”;”分隔，形式如下：</p>
-</li>
-<li><p>主语 谓词1 宾语1;</p>
-<ul>
-<li>谓词2 宾语2.</li>
-</ul>
-</li>
-<li>当然也可以分开写成两个三元组也是可以的</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#spiderman&gt; &lt;http:/</span><span class="regexp">/www.perceive.net/</span>schemas<span class="regexp">/relationship/</span>enemyOf&gt; &lt;http:<span class="regexp">//</span>example.org/<span class="comment">#green-goblin&gt; ;</span></span><br><span class="line">				&lt;http:<span class="regexp">//</span>xmlns.com<span class="regexp">/foaf/</span><span class="number">0.1</span>/name&gt; <span class="string">&quot;Spiderman&quot;</span> .</span><br></pre></td></tr></table></figure>
-<h2 id="3-4-宾语表"><a href="#3-4-宾语表" class="headerlink" title="3.4 宾语表"></a>3.4 宾语表</h2><ul>
-<li>主语对于相同谓词拥有多个宾语的情况</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#spiderman&gt; &lt;http:/</span><span class="regexp">/xmlns.com/</span>foaf<span class="regexp">/0.1/</span>name&gt; <span class="string">&quot;Spiderman&quot;</span>, <span class="string">&quot;Человек-паук&quot;</span>@ru .</span><br></pre></td></tr></table></figure>
-<ul>
-<li>当然也可以分开写成两个三元组也是可以的</li>
-</ul>
-<h2 id="3-5-RDF概念支持"><a href="#3-5-RDF概念支持" class="headerlink" title="3.5 RDF概念支持"></a>3.5 RDF概念支持</h2><h3 id="3-5-1-IRI"><a href="#3-5-1-IRI" class="headerlink" title="3.5.1 IRI"></a>3.5.1 IRI</h3><ul>
-<li>使用@prefix/PREFIX或者@base/BASE来表示IRI，简化三元组的编写，可以理解为为IRI起别名</li>
-<li>以下为@prefix使用例子</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用PREFIX也是同样效果</span></span><br><span class="line">@prefix somePrefix: &lt;http:<span class="regexp">//</span>www.perceive.net<span class="regexp">/schemas/</span>relationship/&gt; .</span><br><span class="line"></span><br><span class="line">&lt;http:<span class="regexp">//</span>example.org<span class="regexp">/#green-goblin&gt; somePrefix:enemyOf &lt;http:/</span><span class="regexp">/example.org/</span><span class="comment">#spiderman&gt; .</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>以下为@base使用例子</li>
-<li>可以理解为相对地址的写法</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># A triple with all absolute IRIs</span></span><br><span class="line">&lt;http:<span class="regexp">//</span>one.example<span class="regexp">/subject1&gt; &lt;http:/</span><span class="regexp">/one.example/</span>predicate1&gt; &lt;http:<span class="regexp">//</span>one.example/object1&gt; .</span><br><span class="line"></span><br><span class="line">@base &lt;http:<span class="regexp">//</span>one.example/&gt; .	<span class="comment"># 标记主地址</span></span><br><span class="line">&lt;subject2&gt; &lt;predicate2&gt; &lt;object2&gt; .     <span class="comment"># 相对 IRIs, e.g. http://one.example/subject2</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>也可以使用空前缀</li>
-</ul>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@prefix :</span> &lt;<span class="attribute">http</span>:<span class="comment">//another.example/&gt; .    # empty prefix</span></span><br><span class="line">:<span class="attribute">subject5 </span>:<span class="attribute">predicate5 </span>:object5 .        # prefixed name, e.g. <span class="attribute">http</span>:<span class="comment">//another.example/subject5</span></span><br></pre></td></tr></table></figure>
-<h1 id="四、SPARQL语言"><a href="#四、SPARQL语言" class="headerlink" title="四、SPARQL语言"></a>四、SPARQL语言</h1><h2 id="4-1-一个简单的查询语句"><a href="#4-1-一个简单的查询语句" class="headerlink" title="4.1 一个简单的查询语句"></a>4.1 一个简单的查询语句</h2><ul>
-<li><p>SPARQL是专门针对RDF的的查询语句</p>
-</li>
-<li><p>SELECT后面的?xxx表示要查询的变量</p>
-</li>
-<li>WHERE后是对应的三元组{ ab:craig ab:email ?craig_email . }，它们满足主/谓/宾的关系</li>
-<li>这条语言的作用就是查询craig的emal</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义好命名空间的别名</span></span><br><span class="line">PREFIX ab: &lt;http:<span class="regexp">//</span>learningsparql.com<span class="regexp">/ns/</span>addressbook<span class="comment">#&gt; </span></span><br><span class="line"></span><br><span class="line">SELECT ?craig_email</span><br><span class="line">WHERE</span><br><span class="line">&#123; ab:craig ab:email ?craig_email . &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3-2-多重匹配"><a href="#3-2-多重匹配" class="headerlink" title="3.2 多重匹配"></a>3.2 多重匹配</h2><ul>
-<li>多重匹配返回的结果是多个属性的结果集</li>
-<li>以下由三个对象的三元组，a和b都有姓名和邮箱，c只有一个邮箱</li>
-</ul>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@prefix</span> foaf： &lt;<span class="attribute">http</span>:<span class="comment">//xmlns.com/foaf/0.1/&gt; 。</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">_</span>:a <span class="attribute">foaf</span>:name <span class="string">&quot;Johnny Lee Outlaw&quot;</span> 。</span><br><span class="line"><span class="attribute">_</span>:a <span class="attribute">foaf</span>:mbox &lt;<span class="attribute">mailto</span>:jlow<span class="variable">@example</span>.com&gt; 。</span><br><span class="line"><span class="attribute">_</span>:b <span class="attribute">foaf</span>:name <span class="string">&quot;Peter Goodguy&quot;</span> 。</span><br><span class="line"><span class="attribute">_</span>:b <span class="attribute">foaf</span>:mbox &lt;<span class="attribute">mailto</span>:peter<span class="variable">@example</span>.org&gt; 。</span><br><span class="line"><span class="attribute">_</span>:c <span class="attribute">foaf</span>:mbox &lt;<span class="attribute">mailto</span>:carol<span class="variable">@example</span>.org&gt; 。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查询姓名和邮箱<ul>
-<li>如果要查询相同主语所对应的宾语信息列表，可以使用以下方式</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PREFIX <span class="symbol">foaf:</span>   &lt;<span class="symbol">http:</span>/<span class="regexp">/xmlns.com/foaf</span><span class="regexp">/0.1/</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询语句要提取的是姓名和邮箱</span></span><br><span class="line"><span class="comment"># where匹配的意思是，相同的x对应的姓名和邮箱信息</span></span><br><span class="line"><span class="comment"># 这里就可以查到a/b所对应的姓名和邮箱信息</span></span><br><span class="line">SELECT <span class="string">?n</span>ame <span class="string">?m</span>box</span><br><span class="line">WHERE</span><br><span class="line">  &#123; <span class="string">?x</span> <span class="symbol">foaf:</span>name <span class="string">?n</span>ame .</span><br><span class="line">    <span class="string">?x</span> <span class="symbol">foaf:</span>mbox <span class="string">?m</span>box &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -3137,7 +3060,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
