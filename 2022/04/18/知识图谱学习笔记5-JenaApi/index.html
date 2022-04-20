@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"cnovelist.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、基本使用1.1 创建OWL模型12345678910111213141516171819202122String personURI    &#x3D; &quot;http:&#x2F;&#x2F;somewhere&#x2F;JohnSmith&quot;;String fullName     &#x3D; &quot;John Smith&quot;;&#x2F;&#x2F; create an empty ModelModel model &#x3D; Mode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识图谱学习笔记5-JenaApi">
+<meta property="og:url" content="https://cnovelist.github.io/2022/04/18/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05-JenaApi/index.html">
+<meta property="og:site_name" content="江小月不上頭">
+<meta property="og:description" content="一、基本使用1.1 创建OWL模型12345678910111213141516171819202122String personURI    &#x3D; &quot;http:&#x2F;&#x2F;somewhere&#x2F;JohnSmith&quot;;String fullName     &#x3D; &quot;John Smith&quot;;&#x2F;&#x2F; create an empty ModelModel model &#x3D; Mode">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-18T15:09:31.000Z">
+<meta property="article:modified_time" content="2022-04-19T13:02:46.091Z">
+<meta property="article:author" content="故事开头">
+<meta property="article:tag" content="知识图谱">
+<meta property="article:tag" content="Jena">
+<meta property="article:tag" content="OWL">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://cnovelist.github.io/2022/04/18/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05-JenaApi/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>知识图谱学习笔记5-JenaApi | 江小月不上頭</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband">
+    <a target="_blank" rel="noopener" href="https://github.com/CNovelist" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">江小月不上頭</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">有容乃大，无欲则刚</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/18/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05-JenaApi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          知识图谱学习笔记5-JenaApi
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-18 23:09:31" itemprop="dateCreated datePublished" datetime="2022-04-18T23:09:31+08:00">2022-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-19 21:02:46" itemprop="dateModified" datetime="2022-04-19T21:02:46+08:00">2022-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、基本使用"><a href="#一、基本使用" class="headerlink" title="一、基本使用"></a>一、基本使用</h1><h2 id="1-1-创建OWL模型"><a href="#1-1-创建OWL模型" class="headerlink" title="1.1 创建OWL模型"></a>1.1 创建OWL模型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">String personURI    = <span class="string">&quot;http://somewhere/JohnSmith&quot;</span>;</span><br><span class="line">String fullName     = <span class="string">&quot;John Smith&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// create an empty Model</span></span><br><span class="line">Model model = ModelFactory.createDefaultModel();</span><br><span class="line"></span><br><span class="line"><span class="comment">// create the resource，创建数据源</span></span><br><span class="line">Resource johnSmith = model.createResource(personURI);</span><br><span class="line"></span><br><span class="line"><span class="comment">// add the property,为数据源添加属性，第一个参数为属性名，第二个参数为属性值</span></span><br><span class="line">johnSmith.addProperty(VCARD.FN, fullName);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取数据源中的属性迭代器</span></span><br><span class="line">StmtIterator stmtIterator = johnSmith.listProperties();</span><br><span class="line"><span class="keyword">while</span> (stmtIterator.hasNext())&#123;</span><br><span class="line">    Statement statement = stmtIterator.next();</span><br><span class="line">    System.out.println(statement);	<span class="comment">// 打印三元组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">结果：</span></span><br><span class="line"><span class="comment">[http://somewhere/JohnSmith, http://www.w3.org/2001/vcard-rdf/3.0#FN, &quot;John Smith&quot;]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>OWL中所有的类都是自身的子类</li>
+</ul>
+<h2 id="1-2-Statement"><a href="#1-2-Statement" class="headerlink" title="1.2 Statement"></a>1.2 Statement</h2><ul>
+<li>从1.1我们可以看到我们已经使用到了Statements来输出我们的属性三元组</li>
+<li>具体的Statement有以下方法：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nextStatement():Statement</td>
+<td>从迭代器中获取一组三元组</td>
+</tr>
+<tr>
+<td>getSubject():Resource</td>
+<td>获取三元组的主语</td>
+</tr>
+<tr>
+<td>getPredicate():Property</td>
+<td>获取三元组的谓语</td>
+</tr>
+<tr>
+<td>getObject():RDFNode</td>
+<td>获取三元组的宾语</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从模型中获取到三元组迭代器（包含文档中所有的三元组信息）</span></span><br><span class="line">StmtIterator iter = model.listStatements();</span><br><span class="line"></span><br><span class="line"><span class="comment">// print out the predicate, subject and object of each statement</span></span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    Statement stmt      = iter.nextStatement();  <span class="comment">// get next statement</span></span><br><span class="line">    Resource  subject   = stmt.getSubject();     <span class="comment">// get the subject</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Property可以用作之后获取属性值用（重要）</span></span><br><span class="line">    Property  predicate = stmt.getPredicate();   <span class="comment">// get the predicate</span></span><br><span class="line">    RDFNode   object    = stmt.getObject();      <span class="comment">// get the object</span></span><br><span class="line"></span><br><span class="line">    System.out.print(subject.toString());</span><br><span class="line">    System.out.print(<span class="string">&quot; &quot;</span> + predicate.toString() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断object是不是一个Resource对象</span></span><br><span class="line">    <span class="keyword">if</span> (object <span class="keyword">instanceof</span> Resource) &#123;</span><br><span class="line">       System.out.print(object.toString());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// object is a Literal对象</span></span><br><span class="line">        System.out.print(<span class="string">&quot; \&quot;&quot;</span> + object.toString() + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot; .&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-写入RDF"><a href="#1-3-写入RDF" class="headerlink" title="1.3 写入RDF"></a>1.3 写入RDF</h2><ul>
+<li>生成的模型可以直接写入输出流中java.io.OutputStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">model.write(System.out);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">写入结果：</span></span><br><span class="line"><span class="comment">subject: http://somewhere/JohnSmith</span></span><br><span class="line"><span class="comment">predicate: http://www.w3.org/2001/vcard-rdf/3.0#FN</span></span><br><span class="line"><span class="comment"> &quot;John Smith&quot; .</span></span><br><span class="line"><span class="comment">&lt;rdf:RDF</span></span><br><span class="line"><span class="comment">    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span><br><span class="line"><span class="comment">    xmlns:vcard=&quot;http://www.w3.org/2001/vcard-rdf/3.0#&quot;&gt;</span></span><br><span class="line"><span class="comment">  &lt;rdf:Description rdf:about=&quot;http://somewhere/JohnSmith&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;vcard:FN&gt;John Smith&lt;/vcard:FN&gt;</span></span><br><span class="line"><span class="comment">  &lt;/rdf:Description&gt;</span></span><br><span class="line"><span class="comment">&lt;/rdf:RDF&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其他的写入方式如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// now write the model in a pretty form，以传统的XML方式写入输出流</span></span><br><span class="line">RDFDataMgr.write(System.out, model, Lang.RDFXML);</span><br><span class="line"></span><br><span class="line"><span class="comment">// now write the model in N-TRIPLES form，以N-TRIPLES三元组格式写入输出流</span></span><br><span class="line">RDFDataMgr.write(System.out, model, Lang.NTRIPLES);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Lang.NTRIPLES三元组输出形式如下：</span></span><br><span class="line"><span class="comment">&lt;http://somewhere/JohnSmith&gt; &lt;http://www.w3.org/2001/vcard-rdf/3.0#FN&gt; &quot;John Smith&quot; .</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-4-读取RDF文件"><a href="#1-4-读取RDF文件" class="headerlink" title="1.4 读取RDF文件"></a>1.4 读取RDF文件</h2><ul>
+<li>创建文件输入流进行读取，使用model.read(in, null)让模型解析文件输入流</li>
+<li>model.read(in, null)的第二个参数用于解析相对 URI</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// create an empty model</span></span><br><span class="line"> Model model = ModelFactory.createDefaultModel();</span><br><span class="line"></span><br><span class="line"> <span class="comment">// use the RDFDataMgr to find the input file</span></span><br><span class="line"> InputStream in = RDFDataMgr.open( inputFileName );</span><br><span class="line"><span class="keyword">if</span> (in == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                                 <span class="string">&quot;File: &quot;</span> + inputFileName + <span class="string">&quot; not found&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// read the RDF/XML file</span></span><br><span class="line">model.read(in, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// write it to standard out</span></span><br><span class="line">model.write(System.out);</span><br></pre></td></tr></table></figure>
+<h2 id="1-5-控制前缀"><a href="#1-5-控制前缀" class="headerlink" title="1.5 控制前缀"></a>1.5 控制前缀</h2><ul>
+<li>每个RDF都会有自己的命名空间，这个命名空间用前缀来区分开来</li>
+<li>我们可以显示的定义好前缀形式，这样就可以方便后面对<strong>数据对象和属性</strong>的前缀定义</li>
+<li>使用到的方法如下：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model.createResource(String)</td>
+<td>创建主体或客体对象</td>
+</tr>
+<tr>
+<td>model.createProperty(String)</td>
+<td>创建谓词属性</td>
+</tr>
+<tr>
+<td>model.setNsPrefix(String prefix, String namespace)</td>
+<td>为命名空间绑定前缀</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> Model m = ModelFactory.createDefaultModel();</span><br><span class="line"> String nsA = <span class="string">&quot;http://somewhere/else#&quot;</span>;</span><br><span class="line"> String nsB = <span class="string">&quot;http://nowhere/else#&quot;</span>;</span><br><span class="line"></span><br><span class="line"> Resource root = m.createResource( nsA + <span class="string">&quot;root&quot;</span> );</span><br><span class="line"> Property P = m.createProperty( nsA + <span class="string">&quot;P&quot;</span> );</span><br><span class="line"> Property Q = m.createProperty( nsB + <span class="string">&quot;Q&quot;</span> );</span><br><span class="line"> Resource x = m.createResource( nsA + <span class="string">&quot;x&quot;</span> );</span><br><span class="line"> Resource y = m.createResource( nsA + <span class="string">&quot;y&quot;</span> );</span><br><span class="line"> Resource z = m.createResource( nsA + <span class="string">&quot;z&quot;</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在model中添加三元组</span></span><br><span class="line"> m.add( root, P, x ).add( root, P, y ).add( y, Q, z );</span><br><span class="line"> System.out.println( <span class="string">&quot;# -- no special prefixes defined&quot;</span> );</span><br><span class="line"> m.write( System.out );</span><br><span class="line"> System.out.println( <span class="string">&quot;# -- nsA defined&quot;</span> );</span><br><span class="line"><span class="comment">// 为&quot;http://somewhere/else#&quot;定义前缀为nsA</span></span><br><span class="line"> m.setNsPrefix( <span class="string">&quot;nsA&quot;</span>, nsA );</span><br><span class="line"> m.write( System.out );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为&quot;http://nowhere/else#&quot;定义前缀为cat</span></span><br><span class="line"> System.out.println( <span class="string">&quot;# -- nsA and cat defined&quot;</span> );</span><br><span class="line"> m.setNsPrefix( <span class="string">&quot;cat&quot;</span>, nsB );</span><br><span class="line"> m.write( System.out );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述运行结果如下：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--只要是xml文件就一定有命名空间和前缀，命名空间可以描述标签内的具体信息，而前缀可以简化属性标签的命名--&gt;</span></span><br><span class="line"># -- no special prefixes defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.0</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.1</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--j.0是命名空间&quot;http://somewhere/else#&quot;的简称，可以在标签中使用--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--j.1是命名空间&quot;http://nowhere/else#&quot;的简称，可以在标签中使用--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里j.0:P的前缀j.0使用的就是默认的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">j.0:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">j.1:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">j.0:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">j.0:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># -- nsA defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:nsA</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.0</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里nsA:P的前缀nsA，是我们自己定义的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">j.0:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br><span class="line"># -- nsA and cat defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:nsA</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:cat</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里nsA:P的前缀nsA，是我们自己定义的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--这里cat:Q的前缀这里cat，是我们自己定义的前缀--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cat:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="二、操作RDF数据"><a href="#二、操作RDF数据" class="headerlink" title="二、操作RDF数据"></a>二、操作RDF数据</h1><h2 id="2-1-Resource方法"><a href="#2-1-Resource方法" class="headerlink" title="2.1 Resource方法"></a>2.1 Resource方法</h2><ul>
+<li>以下都是Resource对象下使用的获取和添加数据的方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model.getResource(String uri):Resource</td>
+<td>根据uri获取资源对象</td>
+</tr>
+<tr>
+<td>Resource.getProperty(Property property):Statement</td>
+<td>根据resource对象的property获取对应的三元组对象</td>
+</tr>
+<tr>
+<td>Resource.getProperty(Property property).getString()</td>
+<td>获取属性property对应的属性值</td>
+</tr>
+<tr>
+<td>Resource.addProperty(Property property，String s)</td>
+<td>为resource添加property属性以及对应的属性值s</td>
+</tr>
+<tr>
+<td>Resource.listProperties(Property property):StmtIterator</td>
+<td>如果同一的属性对应多个属性值，那么getProperty方法就不起作用了，必须使用此方法，返回包含所有对应Statement三元组的迭代器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从模型中检索 John Smith vcard 资源</span></span><br><span class="line">Resource vcard = model.getResource(johnSmithURI);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 N 属性的值</span></span><br><span class="line">Resource name = (Resource) vcard.getProperty(VCARD.N) </span><br><span class="line">                                .getObject();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 N 属性的值</span></span><br><span class="line">Resource name = vcard.getProperty(VCARD.N) </span><br><span class="line">                     .getResource();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检索给定的名称属性</span></span><br><span class="line">String fullName = vcard.getProperty(VCARD.FN) </span><br><span class="line">                        .getString();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同一属性对应多个属性值</span></span><br><span class="line"><span class="comment">// 向 vcard 添加两个昵称属性</span></span><br><span class="line">vcard.addProperty(VCARD.NICKNAME, <span class="string">&quot;Smithy&quot;</span>) </span><br><span class="line">     .addProperty(VCARD.NICKNAME, <span class="string">&quot;Adman&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置输出</span></span><br><span class="line">System.out.println(<span class="string">&quot;\&quot;&quot;</span> </span><br><span class="line">                      + fullName + <span class="string">&quot;\&quot; 的昵称是：&quot;</span>); </span><br><span class="line"><span class="comment">// 列出昵称</span></span><br><span class="line">StmtIterator iter = vcard.listProperties(VCARD.NICKNAME); </span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot; &quot;</span> + iter.nextStatement() </span><br><span class="line">                                    .getObject() </span><br><span class="line">                                    .toString()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-Model查询方法"><a href="#2-2-Model查询方法" class="headerlink" title="2.2 Model查询方法"></a>2.2 Model查询方法</h2><ul>
+<li>以下是Model使用到的查询数据的方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model.listStatements():StmtIterator</td>
+<td>返回模型中所有三元组Statement的迭代器对象，不建议在大模型中使用它</td>
+</tr>
+<tr>
+<td>Model.listSubjectsWithProperty(Property p, RDFNode o):ResIterator</td>
+<td>返回一个包含所有属性为p且属性值为o的资源主语（Subjects）resource迭代器，该方法有多种重载方法，参数表可以只使用包含Property</td>
+</tr>
+<tr>
+<td>Model.listStatements(Selector s):StmtIterator</td>
+<td>查询语法糖，可以使用Selector选择器对象在模型的所有的三元组中进行自定义查询</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>创建选择器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择器可以选择给定的主语、谓词、宾语</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(subject, predicate, object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三个参数为null，则匹配所有三元组</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 给定其中一个参数值，表示匹配给定的值，如下所示表示匹配谓词为VCARD.FN的所有三元组的选择器</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面两个选择器匹配功能相同</span></span><br><span class="line">model.listStatements( S, P, O );</span><br><span class="line">model.listStatements( <span class="keyword">new</span> SimpleSelector( S, P, O ) );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重载selects方法，selects方法可以更自由的定义我们的匹配方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">    <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span></span></span><br><span class="line"><span class="function">            </span>&#123;<span class="keyword">return</span> s.getString().endsWith(<span class="string">&quot;Smith&quot;</span>);&#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两种语句的作用相同，但第一种的语句方法在面对大模型时性能不高，因为需要对模型中的所有三元组都要测试匹配语句</span></span><br><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">  <span class="keyword">new</span></span><br><span class="line">      SimpleSelector(<span class="keyword">null</span>, <span class="keyword">null</span>, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span> </span>&#123;</span><br><span class="line">              <span class="keyword">return</span> (subject == <span class="keyword">null</span>   || s.getSubject().equals(subject))</span><br><span class="line">                  &amp;&amp; (predicate == <span class="keyword">null</span> || s.getPredicate().equals(predicate))</span><br><span class="line">                  &amp;&amp; (object == <span class="keyword">null</span>    || s.getObject().equals(object)) ;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">StmtIterator iter =</span><br><span class="line">  model.listStatements(<span class="keyword">new</span> SimpleSelector(subject, predicate, object));</span><br></pre></td></tr></table></figure>
+<h1 id="三、模型操作"><a href="#三、模型操作" class="headerlink" title="三、模型操作"></a>三、模型操作</h1><ul>
+<li>模型的操作包含了多个模型之间的交集、并集、差集</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model1.union(model2);</td>
+<td>将model1和model2模型进行合并，重复的三元组会被删除</td>
+</tr>
+<tr>
+<td>model1.intersection(model2)</td>
+<td>交集</td>
+</tr>
+<tr>
+<td>model1.difference(model2)</td>
+<td>差集</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="四、资源容器"><a href="#四、资源容器" class="headerlink" title="四、资源容器"></a>四、资源容器</h1><ul>
+<li><p>Jena有三种资源容器</p>
+<ul>
+<li>BAG：无序集合</li>
+<li>ALT：同上</li>
+<li>SEQ：有序集合</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create a bag</span></span><br><span class="line">Bag smiths = model.createBag();</span><br><span class="line"></span><br><span class="line"><span class="comment">// select all the resources with a VCARD.FN property</span></span><br><span class="line"><span class="comment">// whose value ends with &quot;Smith&quot;</span></span><br><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">    <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> s.getString().endsWith(<span class="string">&quot;Smith&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="comment">// add the Smith&#x27;s to the bag</span></span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    smiths.add(iter.nextStatement().getSubject());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">结果：</span></span><br><span class="line"><span class="comment">&lt;rdf:RDF</span></span><br><span class="line"><span class="comment">  xmlns:rdf=&#x27;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#x27;</span></span><br><span class="line"><span class="comment">  xmlns:vcard=&#x27;http://www.w3.org/2001/vcard-rdf/3.0#&#x27;</span></span><br><span class="line"><span class="comment"> &gt;</span></span><br><span class="line"><span class="comment">...</span></span><br><span class="line"><span class="comment">  &lt;rdf:Description rdf:nodeID=&quot;A3&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:type rdf:resource=&#x27;http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag&#x27;/&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:_1 rdf:resource=&#x27;http://somewhere/JohnSmith/&#x27;/&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:_2 rdf:resource=&#x27;http://somewhere/RebeccaSmith/&#x27;/&gt;</span></span><br><span class="line"><span class="comment">  &lt;/rdf:Description&gt;</span></span><br><span class="line"><span class="comment">&lt;/rdf:RDF&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>迭代容器内容</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打印BAG的成员</span></span><br><span class="line">NodeIterator iter2 = smiths.iterator(); </span><br><span class="line"><span class="keyword">if</span> (iter2.hasNext()) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;包里有：&quot;</span>); </span><br><span class="line">    <span class="keyword">while</span> (iter2.hasNext()) &#123; </span><br><span class="line">        System.out.println(<span class="string">&quot; &quot;</span> + </span><br><span class="line">            ((Resource) iter2.next()) </span><br><span class="line">                            .getProperty(VCARD.FN) </span><br><span class="line">                            .getString()); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;包里是空的&quot;</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>故事开头
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://cnovelist.github.io/2022/04/18/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05-JenaApi/" title="知识图谱学习笔记5-JenaApi">https://cnovelist.github.io/2022/04/18/知识图谱学习笔记5-JenaApi/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag"># 知识图谱</a>
+              <a href="/tags/Jena/" rel="tag"># Jena</a>
+              <a href="/tags/OWL/" rel="tag"># OWL</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/17/Springboot%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" rel="prev" title="Springboot基础大全">
+      <i class="fa fa-chevron-left"></i> Springboot基础大全
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-text">一、基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%88%9B%E5%BB%BAOWL%E6%A8%A1%E5%9E%8B"><span class="nav-text">1.1 创建OWL模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Statement"><span class="nav-text">1.2 Statement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%86%99%E5%85%A5RDF"><span class="nav-text">1.3 写入RDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E8%AF%BB%E5%8F%96RDF%E6%96%87%E4%BB%B6"><span class="nav-text">1.4 读取RDF文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E6%8E%A7%E5%88%B6%E5%89%8D%E7%BC%80"><span class="nav-text">1.5 控制前缀</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%93%8D%E4%BD%9CRDF%E6%95%B0%E6%8D%AE"><span class="nav-text">二、操作RDF数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Resource%E6%96%B9%E6%B3%95"><span class="nav-text">2.1 Resource方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Model%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95"><span class="nav-text">2.2 Model查询方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%A8%A1%E5%9E%8B%E6%93%8D%E4%BD%9C"><span class="nav-text">三、模型操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%B5%84%E6%BA%90%E5%AE%B9%E5%99%A8"><span class="nav-text">四、资源容器</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="故事开头"
+      src="/images/yue.jpeg">
+  <p class="site-author-name" itemprop="name">故事开头</p>
+  <div class="site-description" itemprop="description">一个穷鬼</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+	  
+	  
+		<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+		<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+		<div class="widget-wrap">
+			<h3 class="widget-title">Tag Cloud</h3>
+			<div id="myCanvasContainer" class="widget tagcloud">
+				<canvas width="250" height="250" id="resCanvas" style="width=100%">
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+				</canvas>
+			</div>
+		</div>
+	  
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">故事开头</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span >总访问量: <span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span >总访问量: <span id="busuanzi_value_site_uv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

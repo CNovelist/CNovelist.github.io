@@ -2920,7 +2920,19 @@
 <figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># filename: ex002.ttl</span><br><span class="line"></span><br><span class="line">@prefix <span class="keyword">a</span><span class="variable">b:</span> &lt;http://learningsparql.<span class="keyword">com</span>/ns/addressbook#&gt; .</span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(229) 276-5135&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;richard49@hotmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(245) 646-5488&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;cindym@gmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(194) 966-1505&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;craigellis@yahoo.com&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;c.ellis@usairwaysgroup.com&quot;</span> .</span><br></pre></td></tr></table></figure>
 <h2 id="1-3-查询测试"><a href="#1-3-查询测试" class="headerlink" title="1.3 查询测试"></a>1.3 查询测试</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Model model = ModelFactory.createDefaultModel();</span><br><span class="line">    <span class="comment">//ttl文件路径</span></span><br><span class="line">    model.read(<span class="string">&quot;E:/ttl/data.ttl&quot;</span>);</span><br><span class="line">    <span class="comment">//查询语句, 查询craig的电子邮件地址</span></span><br><span class="line">    String queryString = <span class="string">&quot;PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; \n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;SELECT ?craig_email\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;WHERE\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;&#123; ab:craig ab:email ?craig_email . &#125;&quot;</span>;</span><br><span class="line">    Query query = QueryFactory.create(queryString);</span><br><span class="line">    QueryExecution qe = QueryExecutionFactory.create(query, model);</span><br><span class="line">    ResultSet results = qe.execSelect();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 查询到的results是一个迭代器对象，需要while遍历输出查询到的值</span></span><br><span class="line">    <span class="keyword">while</span> (results.hasNext())&#123;</span><br><span class="line">            QuerySolution next = results.next();</span><br><span class="line">            System.out.println(next.get(<span class="string">&quot;?craig_email&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出结果</span></span><br><span class="line">    ResultSetFormatter.out(System.out, results, query);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="1-4-结果"><a href="#1-4-结果" class="headerlink" title="1.4 结果"></a>1.4 结果</h2><img src="/2022/03/26/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-Jena%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jena.png" class="" title="res">
-<h1 id="二、Jena实现CRUD"><a href="#二、Jena实现CRUD" class="headerlink" title="二、Jena实现CRUD"></a>二、Jena实现CRUD</h1>]]></content>
+<h1 id="二、Jena读取OWL"><a href="#二、Jena读取OWL" class="headerlink" title="二、Jena读取OWL"></a>二、Jena读取OWL</h1><h2 id="2-1-读取owl文件"><a href="#2-1-读取owl文件" class="headerlink" title="2.1 读取owl文件"></a>2.1 读取owl文件</h2><ul>
+<li>从本地读取</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">OntModel ontModel = ModelFactory.createOntologyModel();</span><br><span class="line">File myFile = <span class="keyword">new</span> File(<span class="string">&quot;E:/rdfData/owldemo1.owl&quot;</span>);</span><br><span class="line">ontModel.read(<span class="keyword">new</span> FileInputStream(myFile), <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-获取类信息"><a href="#2-2-获取类信息" class="headerlink" title="2.2 获取类信息"></a>2.2 获取类信息</h2><ul>
+<li>遍历owl中定义的类，并打印类名</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (Iterator&lt;?&gt; i = ontModel.listClasses(); i.hasNext();) &#123;</span><br><span class="line">    OntClass c = (OntClass) i.next(); <span class="comment">// 返回类型强制转换</span></span><br><span class="line">    StmtIterator iterator = c.listProperties();	<span class="comment">// 获取该类的所有属性</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">        Statement statement = iterator.next();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取关系信息</span></span><br><span class="line">        String predict = statement.getPredicate().toString().substring(statement.getPredicate().toString().indexOf(<span class="string">&quot;#&quot;</span>)+<span class="number">1</span>);</span><br><span class="line">        System.out.println(predict);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    System.out.println(c.getLocalName());	<span class="comment">//打印类名</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-获取类的实例"><a href="#2-3-获取类的实例" class="headerlink" title="2.3 获取类的实例"></a>2.3 获取类的实例</h2><ul>
+<li>以下c表示所遍历的类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取该类下的所有实例迭代器</span></span><br><span class="line">ExtendedIterator&lt;? extends OntResource&gt; extendedIterator = c.listInstances();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代器遍历</span></span><br><span class="line"><span class="keyword">while</span> (extendedIterator.hasNext())&#123;</span><br><span class="line">    OntResource resource = extendedIterator.next();	<span class="comment">// 获取类的实例</span></span><br><span class="line">    StmtIterator stmtIterator = resource.listProperties();	<span class="comment">// 获取实例中的所有属性列表，包括对象属性和数据属性</span></span><br><span class="line">    <span class="keyword">while</span>(stmtIterator.hasNext())&#123;</span><br><span class="line">        Statement statement = stmtIterator.next();</span><br><span class="line">        String object = statement.getObject().toString();</span><br><span class="line">        System.out.println(object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、创建工具包"><a href="#三、创建工具包" class="headerlink" title="三、创建工具包"></a>三、创建工具包</h1>]]></content>
       <categories>
         <category>知识图谱</category>
         <category>学习笔记</category>
@@ -4740,6 +4752,224 @@
       <tags>
         <tag>后端框架</tag>
         <tag>Springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>知识图谱学习笔记5-JenaApi</title>
+    <url>/2022/04/18/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05-JenaApi/</url>
+    <content><![CDATA[<h1 id="一、基本使用"><a href="#一、基本使用" class="headerlink" title="一、基本使用"></a>一、基本使用</h1><h2 id="1-1-创建OWL模型"><a href="#1-1-创建OWL模型" class="headerlink" title="1.1 创建OWL模型"></a>1.1 创建OWL模型</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String personURI    = <span class="string">&quot;http://somewhere/JohnSmith&quot;</span>;</span><br><span class="line">String fullName     = <span class="string">&quot;John Smith&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// create an empty Model</span></span><br><span class="line">Model model = ModelFactory.createDefaultModel();</span><br><span class="line"></span><br><span class="line"><span class="comment">// create the resource，创建数据源</span></span><br><span class="line">Resource johnSmith = model.createResource(personURI);</span><br><span class="line"></span><br><span class="line"><span class="comment">// add the property,为数据源添加属性，第一个参数为属性名，第二个参数为属性值</span></span><br><span class="line">johnSmith.addProperty(VCARD.FN, fullName);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取数据源中的属性迭代器</span></span><br><span class="line">StmtIterator stmtIterator = johnSmith.listProperties();</span><br><span class="line"><span class="keyword">while</span> (stmtIterator.hasNext())&#123;</span><br><span class="line">    Statement statement = stmtIterator.next();</span><br><span class="line">    System.out.println(statement);	<span class="comment">// 打印三元组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">结果：</span></span><br><span class="line"><span class="comment">[http://somewhere/JohnSmith, http://www.w3.org/2001/vcard-rdf/3.0#FN, &quot;John Smith&quot;]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>OWL中所有的类都是自身的子类</li>
+</ul>
+<h2 id="1-2-Statement"><a href="#1-2-Statement" class="headerlink" title="1.2 Statement"></a>1.2 Statement</h2><ul>
+<li>从1.1我们可以看到我们已经使用到了Statements来输出我们的属性三元组</li>
+<li>具体的Statement有以下方法：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nextStatement():Statement</td>
+<td>从迭代器中获取一组三元组</td>
+</tr>
+<tr>
+<td>getSubject():Resource</td>
+<td>获取三元组的主语</td>
+</tr>
+<tr>
+<td>getPredicate():Property</td>
+<td>获取三元组的谓语</td>
+</tr>
+<tr>
+<td>getObject():RDFNode</td>
+<td>获取三元组的宾语</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从模型中获取到三元组迭代器（包含文档中所有的三元组信息）</span></span><br><span class="line">StmtIterator iter = model.listStatements();</span><br><span class="line"></span><br><span class="line"><span class="comment">// print out the predicate, subject and object of each statement</span></span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    Statement stmt      = iter.nextStatement();  <span class="comment">// get next statement</span></span><br><span class="line">    Resource  subject   = stmt.getSubject();     <span class="comment">// get the subject</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Property可以用作之后获取属性值用（重要）</span></span><br><span class="line">    Property  predicate = stmt.getPredicate();   <span class="comment">// get the predicate</span></span><br><span class="line">    RDFNode   object    = stmt.getObject();      <span class="comment">// get the object</span></span><br><span class="line"></span><br><span class="line">    System.out.print(subject.toString());</span><br><span class="line">    System.out.print(<span class="string">&quot; &quot;</span> + predicate.toString() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断object是不是一个Resource对象</span></span><br><span class="line">    <span class="keyword">if</span> (object <span class="keyword">instanceof</span> Resource) &#123;</span><br><span class="line">       System.out.print(object.toString());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// object is a Literal对象</span></span><br><span class="line">        System.out.print(<span class="string">&quot; \&quot;&quot;</span> + object.toString() + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot; .&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-写入RDF"><a href="#1-3-写入RDF" class="headerlink" title="1.3 写入RDF"></a>1.3 写入RDF</h2><ul>
+<li>生成的模型可以直接写入输出流中java.io.OutputStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">model.write(System.out);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">写入结果：</span></span><br><span class="line"><span class="comment">subject: http://somewhere/JohnSmith</span></span><br><span class="line"><span class="comment">predicate: http://www.w3.org/2001/vcard-rdf/3.0#FN</span></span><br><span class="line"><span class="comment"> &quot;John Smith&quot; .</span></span><br><span class="line"><span class="comment">&lt;rdf:RDF</span></span><br><span class="line"><span class="comment">    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span><br><span class="line"><span class="comment">    xmlns:vcard=&quot;http://www.w3.org/2001/vcard-rdf/3.0#&quot;&gt;</span></span><br><span class="line"><span class="comment">  &lt;rdf:Description rdf:about=&quot;http://somewhere/JohnSmith&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;vcard:FN&gt;John Smith&lt;/vcard:FN&gt;</span></span><br><span class="line"><span class="comment">  &lt;/rdf:Description&gt;</span></span><br><span class="line"><span class="comment">&lt;/rdf:RDF&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其他的写入方式如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// now write the model in a pretty form，以传统的XML方式写入输出流</span></span><br><span class="line">RDFDataMgr.write(System.out, model, Lang.RDFXML);</span><br><span class="line"></span><br><span class="line"><span class="comment">// now write the model in N-TRIPLES form，以N-TRIPLES三元组格式写入输出流</span></span><br><span class="line">RDFDataMgr.write(System.out, model, Lang.NTRIPLES);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Lang.NTRIPLES三元组输出形式如下：</span></span><br><span class="line"><span class="comment">&lt;http://somewhere/JohnSmith&gt; &lt;http://www.w3.org/2001/vcard-rdf/3.0#FN&gt; &quot;John Smith&quot; .</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-4-读取RDF文件"><a href="#1-4-读取RDF文件" class="headerlink" title="1.4 读取RDF文件"></a>1.4 读取RDF文件</h2><ul>
+<li>创建文件输入流进行读取，使用model.read(in, null)让模型解析文件输入流</li>
+<li>model.read(in, null)的第二个参数用于解析相对 URI</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="comment">// create an empty model</span></span><br><span class="line"> Model model = ModelFactory.createDefaultModel();</span><br><span class="line"></span><br><span class="line"> <span class="comment">// use the RDFDataMgr to find the input file</span></span><br><span class="line"> InputStream in = RDFDataMgr.open( inputFileName );</span><br><span class="line"><span class="keyword">if</span> (in == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                                 <span class="string">&quot;File: &quot;</span> + inputFileName + <span class="string">&quot; not found&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// read the RDF/XML file</span></span><br><span class="line">model.read(in, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// write it to standard out</span></span><br><span class="line">model.write(System.out);</span><br></pre></td></tr></table></figure>
+<h2 id="1-5-控制前缀"><a href="#1-5-控制前缀" class="headerlink" title="1.5 控制前缀"></a>1.5 控制前缀</h2><ul>
+<li>每个RDF都会有自己的命名空间，这个命名空间用前缀来区分开来</li>
+<li>我们可以显示的定义好前缀形式，这样就可以方便后面对<strong>数据对象和属性</strong>的前缀定义</li>
+<li>使用到的方法如下：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model.createResource(String)</td>
+<td>创建主体或客体对象</td>
+</tr>
+<tr>
+<td>model.createProperty(String)</td>
+<td>创建谓词属性</td>
+</tr>
+<tr>
+<td>model.setNsPrefix(String prefix, String namespace)</td>
+<td>为命名空间绑定前缀</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> Model m = ModelFactory.createDefaultModel();</span><br><span class="line"> String nsA = <span class="string">&quot;http://somewhere/else#&quot;</span>;</span><br><span class="line"> String nsB = <span class="string">&quot;http://nowhere/else#&quot;</span>;</span><br><span class="line"></span><br><span class="line"> Resource root = m.createResource( nsA + <span class="string">&quot;root&quot;</span> );</span><br><span class="line"> Property P = m.createProperty( nsA + <span class="string">&quot;P&quot;</span> );</span><br><span class="line"> Property Q = m.createProperty( nsB + <span class="string">&quot;Q&quot;</span> );</span><br><span class="line"> Resource x = m.createResource( nsA + <span class="string">&quot;x&quot;</span> );</span><br><span class="line"> Resource y = m.createResource( nsA + <span class="string">&quot;y&quot;</span> );</span><br><span class="line"> Resource z = m.createResource( nsA + <span class="string">&quot;z&quot;</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在model中添加三元组</span></span><br><span class="line"> m.add( root, P, x ).add( root, P, y ).add( y, Q, z );</span><br><span class="line"> System.out.println( <span class="string">&quot;# -- no special prefixes defined&quot;</span> );</span><br><span class="line"> m.write( System.out );</span><br><span class="line"> System.out.println( <span class="string">&quot;# -- nsA defined&quot;</span> );</span><br><span class="line"><span class="comment">// 为&quot;http://somewhere/else#&quot;定义前缀为nsA</span></span><br><span class="line"> m.setNsPrefix( <span class="string">&quot;nsA&quot;</span>, nsA );</span><br><span class="line"> m.write( System.out );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为&quot;http://nowhere/else#&quot;定义前缀为cat</span></span><br><span class="line"> System.out.println( <span class="string">&quot;# -- nsA and cat defined&quot;</span> );</span><br><span class="line"> m.setNsPrefix( <span class="string">&quot;cat&quot;</span>, nsB );</span><br><span class="line"> m.write( System.out );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述运行结果如下：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--只要是xml文件就一定有命名空间和前缀，命名空间可以描述标签内的具体信息，而前缀可以简化属性标签的命名--&gt;</span></span><br><span class="line"># -- no special prefixes defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.0</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.1</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--j.0是命名空间&quot;http://somewhere/else#&quot;的简称，可以在标签中使用--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--j.1是命名空间&quot;http://nowhere/else#&quot;的简称，可以在标签中使用--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里j.0:P的前缀j.0使用的就是默认的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">j.0:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">j.1:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">j.0:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">j.0:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># -- nsA defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:nsA</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.0</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里nsA:P的前缀nsA，是我们自己定义的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">j.0:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br><span class="line"># -- nsA and cat defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:nsA</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:cat</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里nsA:P的前缀nsA，是我们自己定义的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--这里cat:Q的前缀这里cat，是我们自己定义的前缀--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cat:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="二、操作RDF数据"><a href="#二、操作RDF数据" class="headerlink" title="二、操作RDF数据"></a>二、操作RDF数据</h1><h2 id="2-1-Resource方法"><a href="#2-1-Resource方法" class="headerlink" title="2.1 Resource方法"></a>2.1 Resource方法</h2><ul>
+<li>以下都是Resource对象下使用的获取和添加数据的方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model.getResource(String uri):Resource</td>
+<td>根据uri获取资源对象</td>
+</tr>
+<tr>
+<td>Resource.getProperty(Property property):Statement</td>
+<td>根据resource对象的property获取对应的三元组对象</td>
+</tr>
+<tr>
+<td>Resource.getProperty(Property property).getString()</td>
+<td>获取属性property对应的属性值</td>
+</tr>
+<tr>
+<td>Resource.addProperty(Property property，String s)</td>
+<td>为resource添加property属性以及对应的属性值s</td>
+</tr>
+<tr>
+<td>Resource.listProperties(Property property):StmtIterator</td>
+<td>如果同一的属性对应多个属性值，那么getProperty方法就不起作用了，必须使用此方法，返回包含所有对应Statement三元组的迭代器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从模型中检索 John Smith vcard 资源</span></span><br><span class="line">Resource vcard = model.getResource(johnSmithURI);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 N 属性的值</span></span><br><span class="line">Resource name = (Resource) vcard.getProperty(VCARD.N) </span><br><span class="line">                                .getObject();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 N 属性的值</span></span><br><span class="line">Resource name = vcard.getProperty(VCARD.N) </span><br><span class="line">                     .getResource();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检索给定的名称属性</span></span><br><span class="line">String fullName = vcard.getProperty(VCARD.FN) </span><br><span class="line">                        .getString();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同一属性对应多个属性值</span></span><br><span class="line"><span class="comment">// 向 vcard 添加两个昵称属性</span></span><br><span class="line">vcard.addProperty(VCARD.NICKNAME, <span class="string">&quot;Smithy&quot;</span>) </span><br><span class="line">     .addProperty(VCARD.NICKNAME, <span class="string">&quot;Adman&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置输出</span></span><br><span class="line">System.out.println(<span class="string">&quot;\&quot;&quot;</span> </span><br><span class="line">                      + fullName + <span class="string">&quot;\&quot; 的昵称是：&quot;</span>); </span><br><span class="line"><span class="comment">// 列出昵称</span></span><br><span class="line">StmtIterator iter = vcard.listProperties(VCARD.NICKNAME); </span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot; &quot;</span> + iter.nextStatement() </span><br><span class="line">                                    .getObject() </span><br><span class="line">                                    .toString()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-Model查询方法"><a href="#2-2-Model查询方法" class="headerlink" title="2.2 Model查询方法"></a>2.2 Model查询方法</h2><ul>
+<li>以下是Model使用到的查询数据的方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model.listStatements():StmtIterator</td>
+<td>返回模型中所有三元组Statement的迭代器对象，不建议在大模型中使用它</td>
+</tr>
+<tr>
+<td>Model.listSubjectsWithProperty(Property p, RDFNode o):ResIterator</td>
+<td>返回一个包含所有属性为p且属性值为o的资源主语（Subjects）resource迭代器，该方法有多种重载方法，参数表可以只使用包含Property</td>
+</tr>
+<tr>
+<td>Model.listStatements(Selector s):StmtIterator</td>
+<td>查询语法糖，可以使用Selector选择器对象在模型的所有的三元组中进行自定义查询</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>创建选择器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 选择器可以选择给定的主语、谓词、宾语</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(subject, predicate, object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三个参数为null，则匹配所有三元组</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 给定其中一个参数值，表示匹配给定的值，如下所示表示匹配谓词为VCARD.FN的所有三元组的选择器</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面两个选择器匹配功能相同</span></span><br><span class="line">model.listStatements( S, P, O );</span><br><span class="line">model.listStatements( <span class="keyword">new</span> SimpleSelector( S, P, O ) );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重载selects方法，selects方法可以更自由的定义我们的匹配方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">    <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span></span></span><br><span class="line"><span class="function">            </span>&#123;<span class="keyword">return</span> s.getString().endsWith(<span class="string">&quot;Smith&quot;</span>);&#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两种语句的作用相同，但第一种的语句方法在面对大模型时性能不高，因为需要对模型中的所有三元组都要测试匹配语句</span></span><br><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">  <span class="keyword">new</span></span><br><span class="line">      SimpleSelector(<span class="keyword">null</span>, <span class="keyword">null</span>, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span> </span>&#123;</span><br><span class="line">              <span class="keyword">return</span> (subject == <span class="keyword">null</span>   || s.getSubject().equals(subject))</span><br><span class="line">                  &amp;&amp; (predicate == <span class="keyword">null</span> || s.getPredicate().equals(predicate))</span><br><span class="line">                  &amp;&amp; (object == <span class="keyword">null</span>    || s.getObject().equals(object)) ;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">StmtIterator iter =</span><br><span class="line">  model.listStatements(<span class="keyword">new</span> SimpleSelector(subject, predicate, object));</span><br></pre></td></tr></table></figure>
+<h1 id="三、模型操作"><a href="#三、模型操作" class="headerlink" title="三、模型操作"></a>三、模型操作</h1><ul>
+<li>模型的操作包含了多个模型之间的交集、并集、差集</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model1.union(model2);</td>
+<td>将model1和model2模型进行合并，重复的三元组会被删除</td>
+</tr>
+<tr>
+<td>model1.intersection(model2)</td>
+<td>交集</td>
+</tr>
+<tr>
+<td>model1.difference(model2)</td>
+<td>差集</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="四、资源容器"><a href="#四、资源容器" class="headerlink" title="四、资源容器"></a>四、资源容器</h1><ul>
+<li><p>Jena有三种资源容器</p>
+<ul>
+<li>BAG：无序集合</li>
+<li>ALT：同上</li>
+<li>SEQ：有序集合</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// create a bag</span></span><br><span class="line">Bag smiths = model.createBag();</span><br><span class="line"></span><br><span class="line"><span class="comment">// select all the resources with a VCARD.FN property</span></span><br><span class="line"><span class="comment">// whose value ends with &quot;Smith&quot;</span></span><br><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">    <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> s.getString().endsWith(<span class="string">&quot;Smith&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="comment">// add the Smith&#x27;s to the bag</span></span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    smiths.add(iter.nextStatement().getSubject());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">结果：</span></span><br><span class="line"><span class="comment">&lt;rdf:RDF</span></span><br><span class="line"><span class="comment">  xmlns:rdf=&#x27;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#x27;</span></span><br><span class="line"><span class="comment">  xmlns:vcard=&#x27;http://www.w3.org/2001/vcard-rdf/3.0#&#x27;</span></span><br><span class="line"><span class="comment"> &gt;</span></span><br><span class="line"><span class="comment">...</span></span><br><span class="line"><span class="comment">  &lt;rdf:Description rdf:nodeID=&quot;A3&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:type rdf:resource=&#x27;http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag&#x27;/&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:_1 rdf:resource=&#x27;http://somewhere/JohnSmith/&#x27;/&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:_2 rdf:resource=&#x27;http://somewhere/RebeccaSmith/&#x27;/&gt;</span></span><br><span class="line"><span class="comment">  &lt;/rdf:Description&gt;</span></span><br><span class="line"><span class="comment">&lt;/rdf:RDF&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>迭代容器内容</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打印BAG的成员</span></span><br><span class="line">NodeIterator iter2 = smiths.iterator(); </span><br><span class="line"><span class="keyword">if</span> (iter2.hasNext()) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;包里有：&quot;</span>); </span><br><span class="line">    <span class="keyword">while</span> (iter2.hasNext()) &#123; </span><br><span class="line">        System.out.println(<span class="string">&quot; &quot;</span> + </span><br><span class="line">            ((Resource) iter2.next()) </span><br><span class="line">                            .getProperty(VCARD.FN) </span><br><span class="line">                            .getString()); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;包里是空的&quot;</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>知识图谱</category>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>知识图谱</tag>
+        <tag>Jena</tag>
+        <tag>OWL</tag>
       </tags>
   </entry>
 </search>
