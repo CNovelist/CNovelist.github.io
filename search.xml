@@ -475,7 +475,8 @@
 </li>
 </ul>
 <h2 id="5-3-字符流"><a href="#5-3-字符流" class="headerlink" title="5.3 字符流"></a>5.3 字符流</h2><h3 id="5-3-1-文件字符输入流FileReader"><a href="#5-3-1-文件字符输入流FileReader" class="headerlink" title="5.3.1 文件字符输入流FileReader"></a>5.3.1 文件字符输入流FileReader</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Reader input=<span class="keyword">null</span>;</span><br><span class="line">input=<span class="keyword">new</span> FileReader(file);</span><br><span class="line"><span class="comment">//读取操作，分段读取</span></span><br><span class="line"><span class="keyword">char</span>[] flush = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1024</span>] <span class="comment">//缓冲容器</span></span><br><span class="line"><span class="keyword">int</span> len=-<span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span>((temp=input.read(flush))!=-<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">//字符数组--&gt;字符串 无解码过程</span></span><br><span class="line">    String str=<span class="keyword">new</span> String(flush,<span class="number">0</span>,len);</span><br><span class="line">	System.out.print(str);</span><br><span class="line">&#125;</span><br><span class="line">input.close();</span><br></pre></td></tr></table></figure>
-<h2 id="5-3-2-文件字符输出流FileWriter"><a href="#5-3-2-文件字符输出流FileWriter" class="headerlink" title="5.3.2 文件字符输出流FileWriter"></a>5.3.2 文件字符输出流FileWriter</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Writer output=<span class="keyword">null</span>;</span><br><span class="line">input=<span class="keyword">new</span> FileWriter(file);</span><br><span class="line">String msg=<span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">char</span>[] datas=msg.toCharArray(); <span class="comment">//字符串--&gt;字符数组</span></span><br><span class="line"></span><br><span class="line">output.write(datas,<span class="number">0</span>,datas.length);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">或者：</span></span><br><span class="line"><span class="comment">output.write(msg); 可以直接传入字符串</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">或者</span></span><br><span class="line"><span class="comment">output.append(msg);	可以进行多次追加</span></span><br><span class="line"><span class="comment">output.append(msg).append(msg);</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">output.flush();</span><br><span class="line"></span><br><span class="line">input.close();</span><br></pre></td></tr></table></figure>]]></content>
+<h2 id="5-3-2-文件字符输出流FileWriter"><a href="#5-3-2-文件字符输出流FileWriter" class="headerlink" title="5.3.2 文件字符输出流FileWriter"></a>5.3.2 文件字符输出流FileWriter</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Writer output=<span class="keyword">null</span>;</span><br><span class="line">input=<span class="keyword">new</span> FileWriter(file);</span><br><span class="line">String msg=<span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">char</span>[] datas=msg.toCharArray(); <span class="comment">//字符串--&gt;字符数组</span></span><br><span class="line"></span><br><span class="line">output.write(datas,<span class="number">0</span>,datas.length);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">或者：</span></span><br><span class="line"><span class="comment">output.write(msg); 可以直接传入字符串</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">或者</span></span><br><span class="line"><span class="comment">output.append(msg);	可以进行多次追加</span></span><br><span class="line"><span class="comment">output.append(msg).append(msg);</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">output.flush();</span><br><span class="line"></span><br><span class="line">input.close();</span><br></pre></td></tr></table></figure>
+<h1 id="五、多线程"><a href="#五、多线程" class="headerlink" title="五、多线程"></a>五、多线程</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -3035,7 +3036,142 @@
   <entry>
     <title>redis基础大全</title>
     <url>/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="一、安装与配置"><a href="#一、安装与配置" class="headerlink" title="一、安装与配置"></a>一、安装与配置</h1><ol>
+<li>安装gcc：<strong>yum install gcc -y</strong></li>
+<li>下载redis-x.x.x.tar.gz，并解压：<strong>tar -zxvf redis-x.x.x.tar.gz</strong></li>
+<li>进入redis解压目录，执行命令<strong>make和make install</strong>，不报错就表示安装成功，默认安装位置在<strong>/usr/local/bin</strong>目录下</li>
+<li>开启redis后台启动，将<strong>redis解压目录</strong>下的<strong>redis.conf</strong>文件复制到其他位置，比如/etc目录下</li>
+<li>修改<strong>redis.conf</strong>文件，找到<strong>daemonize</strong>字段，将其后的值no改为<strong>yes</strong>后，保存退出</li>
+<li>执行命令<strong>redis-server /etc/redis.conf</strong>，即可后台开启redis</li>
+<li>使用redis客户端访问redis服务，执行命令<strong>redis-cli</strong>进入redis客户端</li>
+</ol>
+<h1 id="二、Redis语法"><a href="#二、Redis语法" class="headerlink" title="二、Redis语法"></a>二、Redis语法</h1><h2 id="2-1-数据类型"><a href="#2-1-数据类型" class="headerlink" title="2.1 数据类型"></a>2.1 数据类型</h2><ul>
+<li>字符串String</li>
+<li>列表List</li>
+<li>集合Set</li>
+<li>哈希Hash</li>
+<li>有序集合Zset</li>
+</ul>
+<h2 id="2-2-常用命令"><a href="#2-2-常用命令" class="headerlink" title="2.2 常用命令"></a>2.2 常用命令</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ping</td>
+<td>查看服务是否正常运行</td>
+</tr>
+<tr>
+<td>dbsize</td>
+<td>查看当前数据库中key的数目（返回值为integer）</td>
+</tr>
+<tr>
+<td>select 0</td>
+<td>切换数据库，默认使用的是db0<br/>Redis默认操作16个数据库，序号为0~15</td>
+</tr>
+<tr>
+<td>flushdb</td>
+<td>删除当前操作的数据库中的内容</td>
+</tr>
+<tr>
+<td>flushall</td>
+<td>删除所有的库中的数据</td>
+</tr>
+<tr>
+<td>keys pattern</td>
+<td>查找所有符合pattern的key，pattern可以使用统配符</td>
+</tr>
+<tr>
+<td>exists [key…]</td>
+<td>判断key是否存在，存在key返回1，不存在返回0；<br/>使用多个key，则执行后返回key的数量</td>
+</tr>
+<tr>
+<td>expire [key] [seconds]</td>
+<td>设置key的生存时间，超过时间key自动删除；单位是秒；<br/>设置成功返回1，其他情况是0</td>
+</tr>
+<tr>
+<td>ttl [key]</td>
+<td>以秒为单位，返回key的剩余生存时间；<br/>-1：表示没有设置 key 的生存时间， key 永不过期；<br/>-2 ：表示key 不存在；其他表示剩余时间</td>
+</tr>
+<tr>
+<td>type [key]</td>
+<td>查看key所存储的数据类型</td>
+</tr>
+<tr>
+<td>del [key…]</td>
+<td>删除指定的key，不存在的key进行忽略；<br/>返回值：数字，删除的key的数量</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-3-字符串String"><a href="#2-3-字符串String" class="headerlink" title="2.3 字符串String"></a>2.3 字符串String</h2><ul>
+<li>虽然给某个key设置的值是数字，但key的类型仍然是字符串，数字是以字符串的形式存储的，增加和减小操作也是基于字符串的操作</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set [key] [value]</td>
+<td>将字符串值设置到key中；设置成功返回OK</td>
+</tr>
+<tr>
+<td>get [key]</td>
+<td>获取数据库中key的值；<br/>返回值：key对应的value值</td>
+</tr>
+<tr>
+<td>incr [key]</td>
+<td>将 key 中储存的数字值加 1<br/>如果 key 不存在，则创建 key 并初始化其值为 0 再执行incr 操作（只能对数字类型的数据操作）</td>
+</tr>
+<tr>
+<td>decr [key]</td>
+<td>与incr作用相反，是减1操作</td>
+</tr>
+<tr>
+<td>append [key] [value]</td>
+<td>字符串追加；<br/>如果 key 存在， 则将 value 追加到 key 原来旧值的末尾<br/>如果 key 不存在， 则将 key 设置值为 value；<br/>返回值：追加后的字符串总长度</td>
+</tr>
+<tr>
+<td>strlen [key]</td>
+<td>返回 key 所储存的字符串值的长度</td>
+</tr>
+<tr>
+<td>getrange [key] [start] [end]</td>
+<td>获取 key 中字符串值从 start 开始 到 end 结束 的子字符串,包括 start 和 end<br/>负数表示从字符串的末尾开始， -1 表示最后一个字符</td>
+</tr>
+<tr>
+<td>setrange [key] [offset] [value]</td>
+<td>用 value 覆盖（替换）key 的从offset位置开始存储的值<br/>不存在的 key ，在offset前填充空白字符<br/>返回值：修改后的字符串的长度</td>
+</tr>
+<tr>
+<td>mset [key value…]</td>
+<td>同时设置一个或多个 key-value<br/>返回值： OK</td>
+</tr>
+<tr>
+<td>mget [key …]</td>
+<td>获取所有(一个或多个)给定 key 的值<br/>包含所有 key 的列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-4-列表List"><a href="#2-4-列表List" class="headerlink" title="2.4 列表List"></a>2.4 列表List</h2><h3 id="2-4-1-原理"><a href="#2-4-1-原理" class="headerlink" title="2.4.1 原理"></a>2.4.1 原理</h3><h3 id="2-4-2-命令"><a href="#2-4-2-命令" class="headerlink" title="2.4.2 命令"></a>2.4.2 命令</h3><h2 id="2-5-集合Set"><a href="#2-5-集合Set" class="headerlink" title="2.5 集合Set"></a>2.5 集合Set</h2>]]></content>
+      <categories>
+        <category>后端</category>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
+        <tag>微服务</tag>
+      </tags>
   </entry>
   <entry>
     <title>nginx基础大全</title>
@@ -4187,6 +4323,25 @@
 <li>sed -e ‘s/LiMing//g ; s/Gao//g/‘ s.txt：同时把LiMing和Gao修改为空白</li>
 </ul>
 </li>
+</ul>
+<h1 id="三、网络配置"><a href="#三、网络配置" class="headerlink" title="三、网络配置"></a>三、网络配置</h1><h2 id="3-1-准备工作"><a href="#3-1-准备工作" class="headerlink" title="3.1 准备工作"></a>3.1 准备工作</h2><ul>
+<li>将虚拟机网络配置改为桥接模式，才能保证主机和虚拟机ping通</li>
+</ul>
+<h2 id="3-2-第一步"><a href="#3-2-第一步" class="headerlink" title="3.2 第一步"></a>3.2 第一步</h2><h3 id="3-2-1-修改配置文件参数"><a href="#3-2-1-修改配置文件参数" class="headerlink" title="3.2.1 修改配置文件参数"></a>3.2.1 修改配置文件参数</h3><ol>
+<li>dhclient：动态分配IP地址</li>
+<li>vim /etc/sysconfig/network-scripts/ifcfg-ens33</li>
+<li>修改静态IP：BOOTPROTO=static</li>
+<li>修改自启动：ONBOOT=yes</li>
+</ol>
+<h2 id="3-3-第二步"><a href="#3-3-第二步" class="headerlink" title="3.3 第二步"></a>3.3 第二步</h2><h3 id="3-3-1-向配置文件添加IP地址、子网掩码、网关、DNS"><a href="#3-3-1-向配置文件添加IP地址、子网掩码、网关、DNS" class="headerlink" title="3.3.1 向配置文件添加IP地址、子网掩码、网关、DNS"></a>3.3.1 向配置文件添加IP地址、子网掩码、网关、DNS</h3><ul>
+<li>IPADDR=192.168.1.102</li>
+<li>NETMASK=255.255.255.0</li>
+<li>GATEWAY=192.168.1.1</li>
+<li>DNS1=119.29.29.29</li>
+<li>GATEWAY和IPADDR需要在同一网段下，否则无法上网</li>
+</ul>
+<h2 id="3-4-第三步"><a href="#3-4-第三步" class="headerlink" title="3.4 第三步"></a>3.4 第三步</h2><ul>
+<li>重启网络服务：systemctl restart network.service</li>
 </ul>
 ]]></content>
       <categories>
