@@ -3034,7 +3034,7 @@
       </tags>
   </entry>
   <entry>
-    <title>redis基础大全</title>
+    <title>Redis基础大全</title>
     <url>/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、安装与配置"><a href="#一、安装与配置" class="headerlink" title="一、安装与配置"></a>一、安装与配置</h1><ol>
 <li>安装gcc：<strong>yum install gcc -y</strong></li>
@@ -3163,7 +3163,118 @@
 </tbody>
 </table>
 </div>
-<h2 id="2-4-列表List"><a href="#2-4-列表List" class="headerlink" title="2.4 列表List"></a>2.4 列表List</h2><h3 id="2-4-1-原理"><a href="#2-4-1-原理" class="headerlink" title="2.4.1 原理"></a>2.4.1 原理</h3><h3 id="2-4-2-命令"><a href="#2-4-2-命令" class="headerlink" title="2.4.2 命令"></a>2.4.2 命令</h3><h2 id="2-5-集合Set"><a href="#2-5-集合Set" class="headerlink" title="2.5 集合Set"></a>2.5 集合Set</h2>]]></content>
+<h2 id="2-4-列表List"><a href="#2-4-列表List" class="headerlink" title="2.4 列表List"></a>2.4 列表List</h2><h3 id="2-4-1-原理"><a href="#2-4-1-原理" class="headerlink" title="2.4.1 原理"></a>2.4.1 原理</h3><ul>
+<li>单键多值</li>
+<li>底层：双向链表</li>
+</ul>
+<h3 id="2-4-2-命令"><a href="#2-4-2-命令" class="headerlink" title="2.4.2 命令"></a>2.4.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lpush/rpush key [value…]</td>
+<td>从左/右侧将一个或多个值 value 插入到列表 key 的表头<br/>从左侧插入属于头插法，列表顺序为倒序<br/>返回值：数字，新列表的长度</td>
+</tr>
+<tr>
+<td>lpop/rpop</td>
+<td></td>
+</tr>
+<tr>
+<td>rpoplpush</td>
+<td></td>
+</tr>
+<tr>
+<td>lrange [key] [start] [stop]</td>
+<td>获取列表 key 中指定区间内的元素，0表示第一个元素，-1为最后一个元素<br/>返回值：指定区间的列表</td>
+</tr>
+<tr>
+<td>lindex [key] [index]</td>
+<td>获取列表 key 中下标为指定 index 的元素<br/>返回值：指定下标的元素；index 不在列表范围，返回 nil</td>
+</tr>
+<tr>
+<td>llen [key]</td>
+<td>获取列表 key 的长度<br/>返回值：数值，列表的长度； key 不存在返回 0</td>
+</tr>
+<tr>
+<td>lrem [key] [count] [value]</td>
+<td>移除列表中count个与value相等的元素<br/>count&gt;0从列表左侧开始移除；<br/>count<0从列表右侧开始移除；<br/>count=0移除表中所有与 value 相等的值</td>
+</tr>
+<tr>
+<td>lset [key] [index] [value]</td>
+<td>将列表 key 下标为 index 的元素的值设置为 value<br/>返回值：设置成功返回 ok ; key 不存在或者 index 超出范围返回错误信息</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-5-集合Set"><a href="#2-5-集合Set" class="headerlink" title="2.5 集合Set"></a>2.5 集合Set</h2><h3 id="2-5-1-原理"><a href="#2-5-1-原理" class="headerlink" title="2.5.1 原理"></a>2.5.1 原理</h3><ul>
+<li>底层：hash表</li>
+</ul>
+<h3 id="2-5-2-命令"><a href="#2-5-2-命令" class="headerlink" title="2.5.2 命令"></a>2.5.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sadd [key] [member…]</td>
+<td>将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略，不会再加入。<br/>返回值：加入到集合的新元素的个数。不包括被忽略的元素</td>
+</tr>
+<tr>
+<td>smembers [key]</td>
+<td>获取集合 key 中的所有成员元素，不存在的 key 视为空集合</td>
+</tr>
+<tr>
+<td>sismember [key] [member]</td>
+<td>判断 member 元素是否是集合 key 的成员返回值：member 是集合成员返回 1，其他返回 0</td>
+</tr>
+<tr>
+<td>scard [key]</td>
+<td>获取集合里面的元素个数<br/>返回值：数字，key 的元素个数。 其他情况返回 0</td>
+</tr>
+<tr>
+<td>srem [key] [member…]</td>
+<td>删除集合 key 中的一个或多个 member 元素，不存在的元素被忽略<br/>返回值：数字，成功删除的元素个数，不包括被忽略的元素。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-6-有序集合Zset"><a href="#2-6-有序集合Zset" class="headerlink" title="2.6 有序集合Zset"></a>2.6 有序集合Zset</h2><h3 id="2-6-1-原理"><a href="#2-6-1-原理" class="headerlink" title="2.6.1 原理"></a>2.6.1 原理</h3><h3 id="2-6-2-命令"><a href="#2-6-2-命令" class="headerlink" title="2.6.2 命令"></a>2.6.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zadd [key] [[score] member…]</td>
+<td>将一个或多个 member 元素及其 score 值加入到有序集合 key 中，如果 member存在集合中，则更新值；score 可以是整数或浮点数<br/>返回值：数字，新添加的元素个数</td>
+</tr>
+<tr>
+<td>zrange [key] [start] [stop] [WITHSCORES]</td>
+<td>查询有序集合，指定区间的内的元素。集合成员按 score 值从小到大来排序<br/>WITHSCORES 选项让 score 和 value 一同返回</td>
+</tr>
+<tr>
+<td>zrem [key] [member…]</td>
+<td>删除有序集合 key 中的一个或多个成员，不存在的成员被忽略<br/>返回值：被成功删除的成员数量，不包括被忽略的成员。</td>
+</tr>
+<tr>
+<td>zcard [key]</td>
+<td>获取有序集 key 的元素成员的个数<br/>返回值：key 存在返回集合元素的个数， key 不存在，返回 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="三、Redis配置文件"><a href="#三、Redis配置文件" class="headerlink" title="三、Redis配置文件"></a>三、Redis配置文件</h1><h1 id="四、Redis发布和订阅"><a href="#四、Redis发布和订阅" class="headerlink" title="四、Redis发布和订阅"></a>四、Redis发布和订阅</h1><h1 id="五、其他数据类型"><a href="#五、其他数据类型" class="headerlink" title="五、其他数据类型"></a>五、其他数据类型</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>数据库</category>
@@ -4343,6 +4454,20 @@
 <h2 id="3-4-第三步"><a href="#3-4-第三步" class="headerlink" title="3.4 第三步"></a>3.4 第三步</h2><ul>
 <li>重启网络服务：systemctl restart network.service</li>
 </ul>
+<h1 id="四、开启web服务"><a href="#四、开启web服务" class="headerlink" title="四、开启web服务"></a>四、开启web服务</h1><h2 id="4-1-安装tomcat"><a href="#4-1-安装tomcat" class="headerlink" title="4.1 安装tomcat"></a>4.1 安装tomcat</h2><h2 id="4-2-安装nginx"><a href="#4-2-安装nginx" class="headerlink" title="4.2 安装nginx"></a>4.2 安装nginx</h2><h2 id="4-3-开放端口"><a href="#4-3-开放端口" class="headerlink" title="4.3 开放端口"></a>4.3 开放端口</h2><ul>
+<li>在不关闭防火墙的前提下，开放浏览器访问端口<ul>
+<li>开启tomcat：systemctl start tomcat.service</li>
+<li>永久开放8080端口：firewall-cmd —zone=public —add-port=8080/tcp —permanent</li>
+<li>重启防火墙：systemctl restart firewalld.service</li>
+<li>查看是否开放成功：firewall-cmd —list-ports</li>
+</ul>
+</li>
+<li>也可以关闭防火墙对服务器进行访问：<ul>
+<li>暂时关闭防火墙：systemctl stop firewalld</li>
+<li>永久关闭防火墙：systemctl disable firewalld</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>后端</category>
@@ -5394,6 +5519,30 @@
         <tag>知识图谱</tag>
         <tag>Jena</tag>
         <tag>OWL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LOL天赋介绍</title>
+    <url>/2022/04/29/LOL%E5%A4%A9%E8%B5%8B%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Unity3d脚本大全</title>
+    <url>/2022/04/29/Unity3d%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="一、常用对象和方法"><a href="#一、常用对象和方法" class="headerlink" title="一、常用对象和方法"></a>一、常用对象和方法</h1><h1 id="判断键盘按键"><a href="#判断键盘按键" class="headerlink" title="判断键盘按键"></a>判断键盘按键</h1><ul>
+<li>为GameObject绑定一个脚本组件</li>
+<li>脚本代码如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class cubetest : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;测试键盘控制&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (Input.GetKeyDown(KeyCode.D))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.right * 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (Input.GetKeyDown(KeyCode.A))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.left * 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (Input.GetKeyDown(KeyCode.S))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.down * 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (Input.GetKeyDown(KeyCode.W))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.up * 1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>游戏开发</category>
+        <category>unity</category>
+      </categories>
+      <tags>
+        <tag>游戏开发</tag>
+        <tag>unity3d</tag>
+        <tag>C#脚本</tag>
       </tags>
   </entry>
 </search>

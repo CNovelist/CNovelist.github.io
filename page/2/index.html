@@ -165,6 +165,439 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">设计模式基础大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-27 21:37:18 / 修改时间：22:01:55" itemprop="dateCreated datePublished" datetime="2022-03-27T21:37:18+08:00">2022-03-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、设计模式基础"><a href="#一、设计模式基础" class="headerlink" title="一、设计模式基础"></a>一、设计模式基础</h1><h2 id="1-1-GoF的23种设计模式及其功能"><a href="#1-1-GoF的23种设计模式及其功能" class="headerlink" title="1.1 GoF的23种设计模式及其功能"></a>1.1 GoF的23种设计模式及其功能</h2><ol>
+<li>单例（ Singleton ）模式 某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。</li>
+<li>原型（Prototype）模式：将一个对象作为原型，通过对其进行复制而克隆出多个和原型类似的新实例</li>
+<li>工厂方法（Factory Method）模式：定义一个用于创建产品的接口，由子类决定生存什么产品</li>
+<li>抽象工厂（Abstract Factory）模式：提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品</li>
+<li>建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们</li>
+<li>代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性</li>
+<li>适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能在一起工作的那些类能一起工作</li>
+<li>桥街（Bridge）模式：将抽象与实现分离，使它们可以独立变化，它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
+<li>装饰（Decorator）模式：：动态的给对象增加一些职责，即增加其额外的功能</li>
+<li>外观（ Facade ）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问</li>
+<li>享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用</li>
+<li>组合（ Composite ）模式：将对象组合成树状层次结构，使用户对单个对象和组合对象具有一致的访问性</li>
+<li>模板方法（ Templat Method ）模式：定义一个操作中的算法骨架 ，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤</li>
+<li>策略（ Strategy ）模式：定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的改变不会影响使用算法的客户</li>
+<li>命令（ Command ）模式：将一个请求封装为一个对象 ，使发出请求的责任和执行请求的责任分割开</li>
+<li>职责链 （Chain of Responsibility ）模式：把请求从链中的一个对象传到下一个对象 ，直到请求被响应为止。通过这种方式去除对象之间的耦合</li>
+<li>状态（ State ）模式：允许一个对象在其内部状态发生改变时改变其行为能力</li>
+<li>观察者（ Observer 模式：多个对象间存在－对多关系，当一个对象发生改变时，把这种改变通知给其他多个对象，从而影响其他对象的行为</li>
+<li>中介者（ Mediator ）模式：定义一个中介对象来简化原有对象之间的交互关系，降低系统中对象间的耦合度，使原有对象之间不必相互了解</li>
+<li>迭代器 Iterator ）模式 提供一种方法来顺序访问聚合对象中的一系列数据 ，而不暴露聚合对象的内部表示</li>
+<li>访问者（Visitor）模式：在不改变集合元素的前提下，为一个集合种的每个元素提供多种访问方式，即每个元素有多个访问者对象访问</li>
+<li>备忘录（Memento）模式：在不破坏封装性的前提下，获取并保存一个对象的内部状态以便以后恢复它</li>
+<li>解释器（Interpreter）模式：提供如何定义语言的文法，以及对语言句子的解释方法，即解释器</li>
+</ol>
+<h1 id="二、面向对象的设计原则"><a href="#二、面向对象的设计原则" class="headerlink" title="二、面向对象的设计原则"></a>二、面向对象的设计原则</h1><h2 id="2-1-开闭原则OCP"><a href="#2-1-开闭原则OCP" class="headerlink" title="2.1 开闭原则OCP"></a>2.1 开闭原则OCP</h2><ul>
+<li>对扩展开放、对修改关闭</li>
+<li>通过“抽象约束、封装变化”来实现开闭原则</li>
+<li>抽象层设计的合理，可以基本保持软件架构的稳定</li>
+<li>当软件需求发生变化时，只需要根据需求派生一个实现类来扩展就可以了</li>
+</ul>
+<h2 id="2-2-里氏替换原则LSP"><a href="#2-2-里氏替换原则LSP" class="headerlink" title="2.2 里氏替换原则LSP"></a>2.2 里氏替换原则LSP</h2><ul>
+<li>子类可以扩展父类的功能，但不能改变父类原有的功能</li>
+<li>简单来说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法</li>
+<li>作用：实现开闭原则的重要方式之一、提高父类可复用性、降低类的扩展出错的可能性</li>
+<li>如果出现因重写父类方法而导致出错的情况，应该设计个更一般的类，重新组织类的继承关系</li>
+</ul>
+<h2 id="2-3-依赖倒置原则DIP"><a href="#2-3-依赖倒置原则DIP" class="headerlink" title="2.3 依赖倒置原则DIP"></a>2.3 依赖倒置原则DIP</h2><ul>
+<li>要面向接口编程，不要面向实现编程</li>
+<li>抽象层相对稳定，实现类较为多变</li>
+<li>接口/抽象类的目的是制定好规范和契约，不去涉及任何具体的操作</li>
+<li>具体细节的任务交给实现类完成</li>
+<li>作用：降低了类间的耦合性、提高系统的稳定性、提高代码可读性和可维护性</li>
+</ul>
+<h3 id="2-3-1-实现方法"><a href="#2-3-1-实现方法" class="headerlink" title="2.3.1 实现方法"></a>2.3.1 实现方法</h3><ol>
+<li>每个类尽量提供接口或抽象类，或者两者都具备</li>
+<li>变量的声明类型尽量是接口或者是抽象类</li>
+<li>任何类都不应该从具体类派生</li>
+<li>使用继承时尽量遵循里氏替换原则</li>
+</ol>
+<h2 id="2-4-单一职责原则SRP"><a href="#2-4-单一职责原则SRP" class="headerlink" title="2.4 单一职责原则SRP"></a>2.4 单一职责原则SRP</h2><ul>
+<li>一个类应该有且仅有一个引起它变化的原因，否则应该被拆分</li>
+<li>承担太多职责的缺点：削弱类实现其他职责的能力、冗余代码</li>
+<li>作用：降低类的复杂度、提高类的可读性、提高系统可维护性、变更引起的风险降低</li>
+<li>实现方法：分析、设计、重构</li>
+<li>同样适用于方法，方法应尽可能做好一件事情</li>
+</ul>
+<h2 id="2-5-接口隔离原则ISP"><a href="#2-5-接口隔离原则ISP" class="headerlink" title="2.5 接口隔离原则ISP"></a>2.5 接口隔离原则ISP</h2><ul>
+<li>程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法</li>
+<li>要为类建立它们需要的专用接口，而不要视图去建立一个很庞大的接口供所有依赖它的类去调用</li>
+<li>作用：提高系统灵活性和可维护性、降低系统耦合性、提高系统内聚性、接口粒度大小要定义合理（太大太小都不好）、减少代码冗余、能够体现对象的层次<br>实现方法：一个接口只服务于一个子模块或业务逻辑、为依赖接口的类定制服务、深入了解环境/业务逻辑、使接口用最少的方法实现最多的事情</li>
+</ul>
+<h2 id="2-6-迪米特法则LKP"><a href="#2-6-迪米特法则LKP" class="headerlink" title="2.6 迪米特法则LKP"></a>2.6 迪米特法则LKP</h2><ul>
+<li>如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用</li>
+<li>作用：降低类间耦合度、提高模块相对独立性、提高类的可复用性和系统的扩展性</li>
+<li>过渡使用LKP会使系统产生大量的中介类，从而增加系统的复杂性，所以使用时要权衡好</li>
+<li>实现方法：依赖者应该依赖应该依赖的对象、被依赖者只暴露应该暴露的方法</li>
+<li>注意：应创建弱耦合的类、降低类成员的访问权限、优先考虑设计不变类、降低引用次数、不暴露属性成员（提供get和set）、进行使用序列化</li>
+</ul>
+<h2 id="2-7-合成复用原则CRP"><a href="#2-7-合成复用原则CRP" class="headerlink" title="2.7 合成复用原则CRP"></a>2.7 合成复用原则CRP</h2><ul>
+<li>又称组合/聚合复用原则（CARP）</li>
+<li>它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现</li>
+<li>如果要使用继承关系，则必须严格遵循里氏代换原则</li>
+<li>合成复用原则和里氏代换原则都是开闭原则的具体实现规范</li>
+<li>类的复用包括：继承复用、合成复用</li>
+</ul>
+<h3 id="2-7-1-继承复用"><a href="#2-7-1-继承复用" class="headerlink" title="2.7.1 继承复用"></a>2.7.1 继承复用</h3><ul>
+<li>破坏了类的封装性，父类暴露给子类</li>
+<li>子类与父类耦合度高</li>
+<li>限制了复用的灵活性，父类继承而来的实现是静态的，在编译时已经定义、所以在运行时不可能发生变化</li>
+</ul>
+<h3 id="2-7-2-合成复用"><a href="#2-7-2-合成复用" class="headerlink" title="2.7.2 合成复用"></a>2.7.2 合成复用</h3><ul>
+<li>维持了类的封装性</li>
+<li>新旧类之间的耦合度低</li>
+<li>复用的灵活性高，可以在运行时动态进行，新对象可以动态地引用与成分对象类型相同的对象</li>
+</ul>
+<h1 id="三、创建型模式"><a href="#三、创建型模式" class="headerlink" title="三、创建型模式"></a>三、创建型模式</h1><h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="3.1 特点"></a>3.1 特点</h2><ul>
+<li>创建型模式的主要关注点是“怎样创建对象”</li>
+<li>将对象的创建与使用分离，这样可以降低系统耦合度，使用者不需要关注对象的创建细节</li>
+<li>对象的创建由工厂来完成</li>
+</ul>
+<h2 id="3-2-模式"><a href="#3-2-模式" class="headerlink" title="3.2 模式"></a>3.2 模式</h2><ul>
+<li>单例模式Singleton</li>
+<li>原型模式Prototype</li>
+<li>工厂模式Factory Method</li>
+<li>抽象工厂模式Abstract Factory</li>
+<li>建造者模式Builder</li>
+</ul>
+<h1 id="四、单例模式"><a href="#四、单例模式" class="headerlink" title="四、单例模式"></a>四、单例模式</h1><h2 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1 定义"></a>4.1 定义</h2><ul>
+<li>一个类只有一个实例，且该类能自行创建这个实例的一种模式</li>
+<li>比如windows的任务管理器、回收站、应用程序的日志对象、网站的计数器等等，一般都设计为单例</li>
+</ul>
+<h2 id="4-2-特点"><a href="#4-2-特点" class="headerlink" title="4.2 特点"></a>4.2 特点</h2><ul>
+<li>单例类只有一个实例对象</li>
+<li>该单例对象必须由单例类自行创建</li>
+<li>单例类对外提供一个访问该单例的全局访问点</li>
+</ul>
+<h2 id="4-3-结构"><a href="#4-3-结构" class="headerlink" title="4.3 结构"></a>4.3 结构</h2><ul>
+<li>单例类：包含一个实例且能自行创建这个实例的类</li>
+<li>访问类：使用单例的类</li>
+</ul>
+<h2 id="4-4-实现"><a href="#4-4-实现" class="headerlink" title="4.4 实现"></a>4.4 实现</h2><h3 id="4-4-1-懒汉式"><a href="#4-4-1-懒汉式" class="headerlink" title="4.4.1 懒汉式"></a>4.4.1 懒汉式</h3><ul>
+<li>特点：类加载时没有生成实例，只有第一次调用getInstance方法时才去创建这个单例</li>
+<li>编写多线程程序时，关键字volatile和synchronized不能删除，否则存在线程不安全的问题，但缺点是影响性能，会消耗更多的资源</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> LazySingleton instance=<span class="keyword">null</span>;  <span class="comment">//保证instance在所有线程中同步</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;   <span class="comment">// private避免类在外部被实例化</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;  <span class="comment">//getInstance方法前加同步</span></span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)</span><br><span class="line">            instance=<span class="keyword">new</span> LazySingleton();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-2-饿汉式"><a href="#4-4-2-饿汉式" class="headerlink" title="4.4.2 饿汉式"></a>4.4.2 饿汉式</h3><ul>
+<li>特点：类一旦加载就创建一个单例，保证在调用getInstance方法之前单例就已经存在了</li>
+<li>饿汉式由于其特点，所以是线程安全的，可以直接用于多线程而不会出现问题</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingleton instance=<span class="keyword">new</span> HungrySingleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-5-应用场景"><a href="#4-5-应用场景" class="headerlink" title="4.5 应用场景"></a>4.5 应用场景</h2><ul>
+<li>某类只要求生成一个对象的时候</li>
+<li>当对象需要被共享的场合</li>
+<li>当某类需要频繁实例化，而创建的对象又频繁被消耗的时候</li>
+</ul>
+<h1 id="五、原型模式"><a href="#五、原型模式" class="headerlink" title="五、原型模式"></a>五、原型模式</h1><h2 id="5-1-定义"><a href="#5-1-定义" class="headerlink" title="5.1 定义"></a>5.1 定义</h2><ul>
+<li>通过传统的构造函数来创建对象，会比较复杂且耗时耗资源</li>
+<li>用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象</li>
+<li>如：系统的复制</li>
+</ul>
+<h2 id="5-2-结构"><a href="#5-2-结构" class="headerlink" title="5.2 结构"></a>5.2 结构</h2><ul>
+<li>抽象原型类：规定了具体原型对象必须实现的接口</li>
+<li>具体原型类：实现抽象原型类的clone()方法，它是可被复制的对象</li>
+<li>访问类：使用具体原型类中的clone()方法来复制新的对象</li>
+</ul>
+<h2 id="5-3-实现"><a href="#5-3-实现" class="headerlink" title="5.3 实现"></a>5.3 实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//具体原型类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Realizetype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    Realizetype()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型创建成功&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型复制成功&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> (Realizetype) <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//原型模式的测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrototypeTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        Realizetype obj1=<span class="keyword">new</span> Realizetype();</span><br><span class="line">        Realizetype obj2=(Realizetype) obj1.clone();</span><br><span class="line">        System.out.println(<span class="string">&quot;obj1==obj2?&quot;</span>+(obj1==obj2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    运行结果：</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    obj1==obj2?false</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-4-应用场景"><a href="#5-4-应用场景" class="headerlink" title="5.4 应用场景"></a>5.4 应用场景</h2><ul>
+<li>对象之间相同或相似，即只是个别的几个属性不同的时候</li>
+<li>对象的创建过程比较麻烦，但复制比较简单的时候</li>
+</ul>
+<h1 id="六、工厂方法模式"><a href="#六、工厂方法模式" class="headerlink" title="六、工厂方法模式"></a>六、工厂方法模式</h1><h2 id="6-1-定义"><a href="#6-1-定义" class="headerlink" title="6.1 定义"></a>6.1 定义</h2><ul>
+<li>定义：定义一个创建产品对象 工厂接口，将产品对象的实际创建工作推迟到具体子工厂类当中</li>
+<li>简单工厂模式：如果要创建的产品不多，只要一个工厂类就可以完成，这种模式叫“简单工厂模式”， 它不属于 GoF 23 经典设计模式，它的缺点是增加新产品时会违背“开闭原则”</li>
+</ul>
+<h2 id="6-2-特点"><a href="#6-2-特点" class="headerlink" title="6.2 特点"></a>6.2 特点</h2><ul>
+<li>满足创建型模式中所要求的“创建与使用相分离”的特点。我们把被创建的对象称为“产品”，把创建产品的对象称为“工厂”</li>
+<li>用户只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程</li>
+<li>在系统增加新的产品时只需要添加具体产品类和对应的具体工厂类，无须对原工厂进行任何修改 ，满足开闭原则。</li>
+<li>缺点 每增加一个产品就要增加一个具体产品类和一个对应的具体工厂类 ，这增加了系统的复杂度</li>
+</ul>
+<h2 id="6-3-结构"><a href="#6-3-结构" class="headerlink" title="6.3 结构"></a>6.3 结构</h2><ul>
+<li>抽象工厂（Abstract Factory）：提供了创建产品的接口 ，调用者通过它访问具体工厂的工厂方法 newProduct（）来创建产品。</li>
+<li>具体工厂（Concrete Factory）：主要是实现抽象工厂中的抽象方法 完成具体产品的创建。</li>
+<li>抽象产品（Product）：定义了产品的规范 描述了产品的主要特性和功能。</li>
+<li>具体产品（Concrete Product）：：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。</li>
+</ul>
+<h2 id="6-4-实现"><a href="#6-4-实现" class="headerlink" title="6.4 实现"></a>6.4 实现</h2><h3 id="6-4-1-xml配置"><a href="#6-4-1-xml配置" class="headerlink" title="6.4.1 xml配置"></a>6.4.1 xml配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">className</span>&gt;</span>ConcreteFactory1<span class="tag">&lt;/<span class="name">className</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-4-2-对象生成器"><a href="#6-4-2-对象生成器" class="headerlink" title="6.4.2 对象生成器"></a>6.4.2 对象生成器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> FactoryMethod;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(string args[])</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Product a;</span><br><span class="line">            AbstractFactory af;</span><br><span class="line">            af=(AbstractFactory) ReadXML1.getObject();</span><br><span class="line">            a=af.newProduct();</span><br><span class="line">            a.show();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象产品，提供了产品的接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品1：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品1显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品2：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品2显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象工厂1：提供了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂1：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品1&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂2：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory2</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂2生成-&gt;具体产品2&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-5-应用场景"><a href="#6-5-应用场景" class="headerlink" title="6.5 应用场景"></a>6.5 应用场景</h2><ol>
+<li>客户只知道创建产品的工厂名，而不知道具体的产品名。如TCL电视工厂、海信电视工厂等。</li>
+<li>创建对象的任务由多个具体子工厂中的某一个完成，而抽象工厂只提供创建产品的接口</li>
+<li>客户不关心创建产品的细节，只关心产品的品牌</li>
+</ol>
+<h1 id="七、抽象工厂模式"><a href="#七、抽象工厂模式" class="headerlink" title="七、抽象工厂模式"></a>七、抽象工厂模式</h1><h2 id="7-1-定义"><a href="#7-1-定义" class="headerlink" title="7.1 定义"></a>7.1 定义</h2><ul>
+<li>抽象工厂模式将考虑多等级产品的生产 将同一个具体工厂所生产的位于不同等级的一组产品称为一个产品族</li>
+<li>同等级：同种类称为同等级，也就是说 工厂方法模式只考虑生产同等级的产品</li>
+<li>抽象工厂（Abstract Factory）模式：是一种为访问类提供一个创建一组相关或相互依赖对<br>象的接口，且访问类无须指定所要产品的具体类就能得到同族的不同等级的产品的模式结构</li>
+</ul>
+<h2 id="7-2-特点"><a href="#7-2-特点" class="headerlink" title="7.2 特点"></a>7.2 特点</h2><ul>
+<li>前面介绍的工厂方法模式中考虑的是一类产品的生产，如畜牧场只养动物、电视机厂只生产电视机、计算机软件学院只培养计算机软件专业的学生等</li>
+<li>在现实生活中许多工厂是综合型的工厂能生产多等级（种类）的产品，如农场里既养动物又种植物，电器厂既生产电视机又生产洗衣机或空调，大学既有软件专业又有生物专业等</li>
+<li>工厂方法模式只生产一个等级的产品，而抽象工厂模式可生<br>产多个等级的产品。</li>
+</ul>
+<h2 id="7-3-条件"><a href="#7-3-条件" class="headerlink" title="7.3 条件"></a>7.3 条件</h2><ol>
+<li>系统中有多个产品族，每个具体工厂 建同一族但属于不同等级结构的产品。</li>
+<li>系统一次只可能消费其中某一族产品，即同族的产品一起使用。</li>
+</ol>
+<h2 id="7-4-优缺点"><a href="#7-4-优缺点" class="headerlink" title="7.4 优缺点"></a>7.4 优缺点</h2><ul>
+<li>优点：<ul>
+<li>可以在类的内部对产品族中相关联的多等级产品共同管理，而不必专门引入多个新的类来进<br>行管理。</li>
+<li>当增加一个新的产品族时不需要修改原代码， 满足开闭原则。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>当产品族 需要增加一个新的产品时，所有的工厂类都需要进行修改。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-5-结构"><a href="#7-5-结构" class="headerlink" title="7.5 结构"></a>7.5 结构</h2><ul>
+<li>抽象工厂Abstract Factory：提供了创建产品的接口，它包含多个创建产品的方法<br>new Product（）， 以创建多个不同等级 产品。</li>
+<li>具体工厂Concrete Factory：主要是实现抽象工厂中的多个抽象方法，完成具体产品的创建</li>
+<li>抽象产品Product：：定义了产品的规范，描述了产品的主要特性和功能，抽象工厂模式有多个抽象产品。</li>
+<li>具体产品Concrete Product：）：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间是多对一的关系。</li>
+</ul>
+<h2 id="7-6-实现"><a href="#7-6-实现" class="headerlink" title="7.6 实现"></a>7.6 实现</h2><h3 id="7-6-1-抽象工厂"><a href="#7-6-1-抽象工厂" class="headerlink" title="7.6.1 抽象工厂"></a>7.6.1 抽象工厂</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product1 <span class="title">newProduct1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product2 <span class="title">newProduct2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-6-2-具体工厂"><a href="#7-6-2-具体工厂" class="headerlink" title="7.6.2 具体工厂"></a>7.6.2 具体工厂</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory1</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product1 <span class="title">newProduct1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品11...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteProduct11();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product2 <span class="title">newProduct2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品21...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteProduct21();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-7-应用场景"><a href="#7-7-应用场景" class="headerlink" title="7.7 应用场景"></a>7.7 应用场景</h2><ol>
+<li>当需要创建的对象是一系列相互关联或相互依赖的产品族时，如电器 厂中的电视机衣机、空调等。</li>
+<li>系统中有多个产品族 但每次只使用其中的某一族产品。如有人只喜欢穿某一个品牌的衣<br>服和鞋</li>
+<li>系统中提供了产品的类库，且所有产品的接口相同，客户端不依赖产品实例的创建细节和内部结构</li>
+</ol>
+<h2 id="7-8-小结"><a href="#7-8-小结" class="headerlink" title="7.8 小结"></a>7.8 小结</h2><ol>
+<li>当增加一 新的产品族 只需增 一个<br>新的具体工厂，不需要修改原代码，满足开闭原则</li>
+<li>当产品族中需要增加一 新种类的产品时，则所有的工厂类都需要进行修改，不满足开闭原则</li>
+<li>当系统中只存在 个等级结构的产品时，抽象工厂模式将退化到工厂方法模式。</li>
+</ol>
+<h1 id="八、建造者模式"><a href="#八、建造者模式" class="headerlink" title="八、建造者模式"></a>八、建造者模式</h1><h2 id="8-1-定义"><a href="#8-1-定义" class="headerlink" title="8.1 定义"></a>8.1 定义</h2><ul>
+<li>指将一个复杂对象的构造与它的表示分离，使同样的构建过程可以创建不同的表示，这样的设计模式被称为建造者模式</li>
+</ul>
+<h2 id="8-2-特点"><a href="#8-2-特点" class="headerlink" title="8.2 特点"></a>8.2 特点</h2><ul>
+<li>它是将一个复杂的对象分解为多个简单的对 ，然后一步一步建而成。它将变与不变相分，即产品的组成部分是不变的，但每一部分是可以灵活选择的</li>
+<li>计算机是由CPU、主板、内存、硬盘、显卡、机箱、显示器、键盘、鼠标等部件组装而成的，采购员不可能自己去组装计算机，而是将计算机的配置要求告诉计算书销售公司，计算机销售公司安排技术人员去组装计算机， 然后再交给要买计算机的采购员</li>
+</ul>
+<h2 id="8-3-优缺点"><a href="#8-3-优缺点" class="headerlink" title="8.3 优缺点"></a>8.3 优缺点</h2><ul>
+<li>优点：<ul>
+<li>具体的建造者相互独立，有利于系统的扩展。</li>
+<li>客户端不必知道产品内部组成的细节，便于控制细节风险。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>产品的组成部分必须相同，这限制了其使用范围。</li>
+<li>如果产品的内部变化复杂，该模式会增加很多的建造者类。</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-4-工厂模式的区别"><a href="#8-4-工厂模式的区别" class="headerlink" title="8.4 工厂模式的区别"></a>8.4 工厂模式的区别</h2><ul>
+<li>建造者模式和工厂模式的关注点不同，建造者模式注重零部件的组装过程，而工厂方法模式更注重零部件的创建过程，但两者可以结合使用。</li>
+</ul>
+<h2 id="8-5-结构"><a href="#8-5-结构" class="headerlink" title="8.5 结构"></a>8.5 结构</h2><ul>
+<li>产品角色Product：它是包含多个组成部件的复杂对象，由具体建造者来创建其各个组成部件。</li>
+<li>抽象建造者Builder：：它是 包含创建产品各个子部件的抽象方法的接口，通常还包个返回复杂产品的方法 getResult（）</li>
+<li>具体建造者Concrete Builder：实现Builder接口，完成复杂产品的各个部件的具体创建方法</li>
+<li>指挥者Director：它调用建造者对象中的部件构造与装配方法完成复杂对象的创建，在指挥者中不涉及具体产品的信息。</li>
+</ul>
+<h2 id="8-6-实现"><a href="#8-6-实现" class="headerlink" title="8.6 实现"></a>8.6 实现</h2><h3 id="8-6-1-产品角色"><a href="#8-6-1-产品角色" class="headerlink" title="8.6.1 产品角色"></a>8.6.1 产品角色</h3><ul>
+<li>包含多个组成部件的复杂对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String partA;</span><br><span class="line">    <span class="keyword">private</span> String partB;</span><br><span class="line">    <span class="keyword">private</span> String partC;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartA</span><span class="params">(String partA)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partA = partA;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartB</span><span class="params">(String partB)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partB = partB;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartC</span><span class="params">(String partC)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partC = partC;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//显示产品的特性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-2-抽象建造者"><a href="#8-6-2-抽象建造者" class="headerlink" title="8.6.2 抽象建造者"></a>8.6.2 抽象建造者</h3><ul>
+<li>包含创建产品各个子部件的抽象方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span></span>&#123;</span><br><span class="line">    <span class="comment">// 创建产品对象</span></span><br><span class="line">    <span class="keyword">protected</span> Product product = <span class="keyword">new</span> Product();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartA</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartB</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartC</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回产品对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-3-具体建造者"><a href="#8-6-3-具体建造者" class="headerlink" title="8.6.3 具体建造者"></a>8.6.3 具体建造者</h3><ul>
+<li>实现了抽象建造者接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteBuilder</span> <span class="keyword">extends</span> <span class="title">Builder</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartA(<span class="string">&quot;建造PartA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartB(<span class="string">&quot;建造PartB&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartC(<span class="string">&quot;建造PartC&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-4-指挥者"><a href="#8-6-4-指挥者" class="headerlink" title="8.6.4 指挥者"></a>8.6.4 指挥者</h3><ul>
+<li>调用建造者中的方法完成复杂对象的创建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Director</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Builder builder;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Director</span><span class="params">(Builder builder)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder=builder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//产品构建与组装方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        builder.buildPartA();</span><br><span class="line">        builder.buildPartB();</span><br><span class="line">        builder.buildPartC();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> builder.getResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8-6-5-客户"><a href="#8-6-5-客户" class="headerlink" title="8.6.5 客户"></a>8.6.5 客户</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Builder builder = <span class="keyword">new</span> ConcreteBuilder();</span><br><span class="line">        Director director = <span class="keyword">new</span> Director(builder);</span><br><span class="line">        Product product = director.construct();</span><br><span class="line">        product.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-7-应用场景"><a href="#8-7-应用场景" class="headerlink" title="8.7 应用场景"></a>8.7 应用场景</h2><ol>
+<li>创建的对象较复杂，由多个部件构成，各部件面临着复杂的变化，但构件间的建造顺序是<br>稳定的。</li>
+<li>创建复杂对象的算法独立于该对象的组成部分以及它们的装配方式，即产品的构建过程和<br>最终的表示是独立</li>
+</ol>
+<h2 id="8-8-小结"><a href="#8-8-小结" class="headerlink" title="8.8 小结"></a>8.8 小结</h2><ul>
+<li>建造者模式在应用过程中可以根据需要改变，如果创建的产品种类只有一种，只需要一个具体</li>
+<li>建造者时，可省略略掉抽象建造者，甚至可以省略掉指挥者角色。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/26/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-Jena%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/26/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-Jena%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">知识图谱学习笔记4-Jena使用教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-26 22:29:25" itemprop="dateCreated datePublished" datetime="2022-03-26T22:29:25+08:00">2022-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-19 21:04:06" itemprop="dateModified" datetime="2022-04-19T21:04:06+08:00">2022-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、SPARQL读取RDF数据"><a href="#一、SPARQL读取RDF数据" class="headerlink" title="一、SPARQL读取RDF数据"></a>一、SPARQL读取RDF数据</h1><h2 id="1-1-导入包"><a href="#1-1-导入包" class="headerlink" title="1.1 导入包"></a>1.1 导入包</h2><ul>
+<li>先创建一个maven项目</li>
+<li>引入以下包</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--解析SPARQL语句的引擎--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.jena<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jena-arq<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.17.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.13.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 日志包，防止报些奇怪的错误，程序能运行，但还是处理下 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-simple<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.25<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-2-创建数据"><a href="#1-2-创建数据" class="headerlink" title="1.2 创建数据"></a>1.2 创建数据</h2><ul>
+<li>使用ttl存储三元组数据</li>
+<li>在本地任意位置创建文件data.ttl，保存以下内容</li>
+<li>也可以创建在项目里，以文本文件格式创建</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># filename: ex002.ttl</span><br><span class="line"></span><br><span class="line">@prefix <span class="keyword">a</span><span class="variable">b:</span> &lt;http://learningsparql.<span class="keyword">com</span>/ns/addressbook#&gt; .</span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(229) 276-5135&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;richard49@hotmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(245) 646-5488&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;cindym@gmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(194) 966-1505&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;craigellis@yahoo.com&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;c.ellis@usairwaysgroup.com&quot;</span> .</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-查询测试"><a href="#1-3-查询测试" class="headerlink" title="1.3 查询测试"></a>1.3 查询测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Model model = ModelFactory.createDefaultModel();</span><br><span class="line">    <span class="comment">//ttl文件路径</span></span><br><span class="line">    model.read(<span class="string">&quot;E:/ttl/data.ttl&quot;</span>);</span><br><span class="line">    <span class="comment">//查询语句, 查询craig的电子邮件地址</span></span><br><span class="line">    String queryString = <span class="string">&quot;PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; \n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;SELECT ?craig_email\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;WHERE\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;&#123; ab:craig ab:email ?craig_email . &#125;&quot;</span>;</span><br><span class="line">    Query query = QueryFactory.create(queryString);</span><br><span class="line">    QueryExecution qe = QueryExecutionFactory.create(query, model);</span><br><span class="line">    ResultSet results = qe.execSelect();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 查询到的results是一个迭代器对象，需要while遍历输出查询到的值</span></span><br><span class="line">    <span class="keyword">while</span> (results.hasNext())&#123;</span><br><span class="line">            QuerySolution next = results.next();</span><br><span class="line">            System.out.println(next.get(<span class="string">&quot;?craig_email&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出结果</span></span><br><span class="line">    ResultSetFormatter.out(System.out, results, query);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-结果"><a href="#1-4-结果" class="headerlink" title="1.4 结果"></a>1.4 结果</h2><img src="/2022/03/26/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-Jena%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jena.png" class="" title="res">
+<h1 id="二、Jena读取OWL"><a href="#二、Jena读取OWL" class="headerlink" title="二、Jena读取OWL"></a>二、Jena读取OWL</h1><h2 id="2-1-读取owl文件"><a href="#2-1-读取owl文件" class="headerlink" title="2.1 读取owl文件"></a>2.1 读取owl文件</h2><ul>
+<li>从本地读取</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OntModel ontModel = ModelFactory.createOntologyModel();</span><br><span class="line">File myFile = <span class="keyword">new</span> File(<span class="string">&quot;E:/rdfData/owldemo1.owl&quot;</span>);</span><br><span class="line">ontModel.read(<span class="keyword">new</span> FileInputStream(myFile), <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-获取类信息"><a href="#2-2-获取类信息" class="headerlink" title="2.2 获取类信息"></a>2.2 获取类信息</h2><ul>
+<li>遍历owl中定义的类，并打印类名</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Iterator&lt;?&gt; i = ontModel.listClasses(); i.hasNext();) &#123;</span><br><span class="line">    OntClass c = (OntClass) i.next(); <span class="comment">// 返回类型强制转换</span></span><br><span class="line">    StmtIterator iterator = c.listProperties();	<span class="comment">// 获取该类的所有属性</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">        Statement statement = iterator.next();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取关系信息</span></span><br><span class="line">        String predict = statement.getPredicate().toString().substring(statement.getPredicate().toString().indexOf(<span class="string">&quot;#&quot;</span>)+<span class="number">1</span>);</span><br><span class="line">        System.out.println(predict);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    System.out.println(c.getLocalName());	<span class="comment">//打印类名</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-获取类的实例"><a href="#2-3-获取类的实例" class="headerlink" title="2.3 获取类的实例"></a>2.3 获取类的实例</h2><ul>
+<li>以下c表示所遍历的类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取该类下的所有实例迭代器</span></span><br><span class="line">ExtendedIterator&lt;? extends OntResource&gt; extendedIterator = c.listInstances();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代器遍历</span></span><br><span class="line"><span class="keyword">while</span> (extendedIterator.hasNext())&#123;</span><br><span class="line">    OntResource resource = extendedIterator.next();	<span class="comment">// 获取类的实例</span></span><br><span class="line">    StmtIterator stmtIterator = resource.listProperties();	<span class="comment">// 获取实例中的所有属性列表，包括对象属性和数据属性</span></span><br><span class="line">    <span class="keyword">while</span>(stmtIterator.hasNext())&#123;</span><br><span class="line">        Statement statement = stmtIterator.next();</span><br><span class="line">        String object = statement.getObject().toString();</span><br><span class="line">        System.out.println(object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、创建工具包"><a href="#三、创建工具包" class="headerlink" title="三、创建工具包"></a>三、创建工具包</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -179,7 +612,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">redis基础大全</a>
+            <a href="/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Redis基础大全</a>
         </h2>
 
         <div class="post-meta">
@@ -196,7 +629,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-28 23:03:34" itemprop="dateModified" datetime="2022-04-28T23:03:34+08:00">2022-04-28</time>
+                <time title="修改时间：2022-04-29 18:59:14" itemprop="dateModified" datetime="2022-04-29T18:59:14+08:00">2022-04-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -350,7 +783,118 @@
 </tbody>
 </table>
 </div>
-<h2 id="2-4-列表List"><a href="#2-4-列表List" class="headerlink" title="2.4 列表List"></a>2.4 列表List</h2><h3 id="2-4-1-原理"><a href="#2-4-1-原理" class="headerlink" title="2.4.1 原理"></a>2.4.1 原理</h3><h3 id="2-4-2-命令"><a href="#2-4-2-命令" class="headerlink" title="2.4.2 命令"></a>2.4.2 命令</h3><h2 id="2-5-集合Set"><a href="#2-5-集合Set" class="headerlink" title="2.5 集合Set"></a>2.5 集合Set</h2>
+<h2 id="2-4-列表List"><a href="#2-4-列表List" class="headerlink" title="2.4 列表List"></a>2.4 列表List</h2><h3 id="2-4-1-原理"><a href="#2-4-1-原理" class="headerlink" title="2.4.1 原理"></a>2.4.1 原理</h3><ul>
+<li>单键多值</li>
+<li>底层：双向链表</li>
+</ul>
+<h3 id="2-4-2-命令"><a href="#2-4-2-命令" class="headerlink" title="2.4.2 命令"></a>2.4.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lpush/rpush key [value…]</td>
+<td>从左/右侧将一个或多个值 value 插入到列表 key 的表头<br/>从左侧插入属于头插法，列表顺序为倒序<br/>返回值：数字，新列表的长度</td>
+</tr>
+<tr>
+<td>lpop/rpop</td>
+<td></td>
+</tr>
+<tr>
+<td>rpoplpush</td>
+<td></td>
+</tr>
+<tr>
+<td>lrange [key] [start] [stop]</td>
+<td>获取列表 key 中指定区间内的元素，0表示第一个元素，-1为最后一个元素<br/>返回值：指定区间的列表</td>
+</tr>
+<tr>
+<td>lindex [key] [index]</td>
+<td>获取列表 key 中下标为指定 index 的元素<br/>返回值：指定下标的元素；index 不在列表范围，返回 nil</td>
+</tr>
+<tr>
+<td>llen [key]</td>
+<td>获取列表 key 的长度<br/>返回值：数值，列表的长度； key 不存在返回 0</td>
+</tr>
+<tr>
+<td>lrem [key] [count] [value]</td>
+<td>移除列表中count个与value相等的元素<br/>count&gt;0从列表左侧开始移除；<br/>count<0从列表右侧开始移除；<br/>count=0移除表中所有与 value 相等的值</td>
+</tr>
+<tr>
+<td>lset [key] [index] [value]</td>
+<td>将列表 key 下标为 index 的元素的值设置为 value<br/>返回值：设置成功返回 ok ; key 不存在或者 index 超出范围返回错误信息</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-5-集合Set"><a href="#2-5-集合Set" class="headerlink" title="2.5 集合Set"></a>2.5 集合Set</h2><h3 id="2-5-1-原理"><a href="#2-5-1-原理" class="headerlink" title="2.5.1 原理"></a>2.5.1 原理</h3><ul>
+<li>底层：hash表</li>
+</ul>
+<h3 id="2-5-2-命令"><a href="#2-5-2-命令" class="headerlink" title="2.5.2 命令"></a>2.5.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sadd [key] [member…]</td>
+<td>将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略，不会再加入。<br/>返回值：加入到集合的新元素的个数。不包括被忽略的元素</td>
+</tr>
+<tr>
+<td>smembers [key]</td>
+<td>获取集合 key 中的所有成员元素，不存在的 key 视为空集合</td>
+</tr>
+<tr>
+<td>sismember [key] [member]</td>
+<td>判断 member 元素是否是集合 key 的成员返回值：member 是集合成员返回 1，其他返回 0</td>
+</tr>
+<tr>
+<td>scard [key]</td>
+<td>获取集合里面的元素个数<br/>返回值：数字，key 的元素个数。 其他情况返回 0</td>
+</tr>
+<tr>
+<td>srem [key] [member…]</td>
+<td>删除集合 key 中的一个或多个 member 元素，不存在的元素被忽略<br/>返回值：数字，成功删除的元素个数，不包括被忽略的元素。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-6-有序集合Zset"><a href="#2-6-有序集合Zset" class="headerlink" title="2.6 有序集合Zset"></a>2.6 有序集合Zset</h2><h3 id="2-6-1-原理"><a href="#2-6-1-原理" class="headerlink" title="2.6.1 原理"></a>2.6.1 原理</h3><h3 id="2-6-2-命令"><a href="#2-6-2-命令" class="headerlink" title="2.6.2 命令"></a>2.6.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zadd [key] [[score] member…]</td>
+<td>将一个或多个 member 元素及其 score 值加入到有序集合 key 中，如果 member存在集合中，则更新值；score 可以是整数或浮点数<br/>返回值：数字，新添加的元素个数</td>
+</tr>
+<tr>
+<td>zrange [key] [start] [stop] [WITHSCORES]</td>
+<td>查询有序集合，指定区间的内的元素。集合成员按 score 值从小到大来排序<br/>WITHSCORES 选项让 score 和 value 一同返回</td>
+</tr>
+<tr>
+<td>zrem [key] [member…]</td>
+<td>删除有序集合 key 中的一个或多个成员，不存在的成员被忽略<br/>返回值：被成功删除的成员数量，不包括被忽略的成员。</td>
+</tr>
+<tr>
+<td>zcard [key]</td>
+<td>获取有序集 key 的元素成员的个数<br/>返回值：key 存在返回集合元素的个数， key 不存在，返回 0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="三、Redis配置文件"><a href="#三、Redis配置文件" class="headerlink" title="三、Redis配置文件"></a>三、Redis配置文件</h1><h1 id="四、Redis发布和订阅"><a href="#四、Redis发布和订阅" class="headerlink" title="四、Redis发布和订阅"></a>四、Redis发布和订阅</h1><h1 id="五、其他数据类型"><a href="#五、其他数据类型" class="headerlink" title="五、其他数据类型"></a>五、其他数据类型</h1>
       
     </div>
 
@@ -1486,481 +2030,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">乐理基础大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-09 12:50:22" itemprop="dateCreated datePublished" datetime="2022-03-09T12:50:22+08:00">2022-03-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 23:54:37" itemprop="dateModified" datetime="2022-03-16T23:54:37+08:00">2022-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%8C%96%E8%89%BA%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">文化艺术</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%8C%96%E8%89%BA%E6%9C%AF/%E4%B9%90%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">乐理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、音的概念"><a href="#一、音的概念" class="headerlink" title="一、音的概念"></a>一、音的概念</h1><h2 id="1-1-音名-唱名"><a href="#1-1-音名-唱名" class="headerlink" title="1.1 音名/唱名"></a>1.1 音名/唱名</h2><ul>
-<li>音名是对音的一种标记，而唱名则是我们平时哼出来的do/re/mi/fa/sol/la/ti</li>
-<li>音名像是对音的一种抽象，而唱名则是具体的对音的表现，也就是说任何一个音名都可以表示为1，然后一次推导出其他音名，当然我这里说的是自然大调的情况，后面在做详细解释</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>音名</th>
-<th>C</th>
-<th>D</th>
-<th>E</th>
-<th>F</th>
-<th>G</th>
-<th>A</th>
-<th>B</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>唱名</td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="1-2-十二平均律"><a href="#1-2-十二平均律" class="headerlink" title="1.2 十二平均律"></a>1.2 十二平均律</h2><ul>
-<li>按照乐理从古至今的发展，人们发现了<strong>十二平均律</strong>这样一套声音的规律</li>
-<li>在物理学中，声音是由振动产生的，而物体不同震动的频率会给人不同的听觉效果，国际上规定440HZ作为<strong>标准音</strong>，即钢琴上的第49号键（A键）的震动频率</li>
-<li>根据振动给人听感上的不同，人们以<strong>每隔半音</strong>（规定的频率大小）的形式来规定音与音的距离关系（音程），因此就有了十二平均律的概念</li>
-<li>比如对于1、2、3、4、5、6、7、1来说，它们就满足<strong>“全全半全全全半”</strong>的音程关系</li>
-</ul>
-<h2 id="1-3-音程-音数"><a href="#1-3-音程-音数" class="headerlink" title="1.3 音程/音数"></a>1.3 音程/音数</h2><ul>
-<li>音程：表示音与音之间的距离，主要说的还是<strong>振动频率</strong>的关系</li>
-<li>音数：衡量音程的一种<strong>单位</strong>，记录音与音之间的半音数</li>
-<li>具体的音程与音数关系有以下几种：</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">音程</th>
-<th style="text-align:center">音数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">纯一度</td>
-<td style="text-align:center">$0$</td>
-</tr>
-<tr>
-<td style="text-align:center">小二度</td>
-<td style="text-align:center">$\tfrac{1}{2}$</td>
-</tr>
-<tr>
-<td style="text-align:center">大二度</td>
-<td style="text-align:center">$1$</td>
-</tr>
-<tr>
-<td style="text-align:center">小三度</td>
-<td style="text-align:center">$1\tfrac{1}{2}$</td>
-</tr>
-<tr>
-<td style="text-align:center">大三度</td>
-<td style="text-align:center">$2$</td>
-</tr>
-<tr>
-<td style="text-align:center">纯四度</td>
-<td style="text-align:center">$2\tfrac{1}{2}$</td>
-</tr>
-<tr>
-<td style="text-align:center">增四度</td>
-<td style="text-align:center">$3$</td>
-</tr>
-<tr>
-<td style="text-align:center">纯五度</td>
-<td style="text-align:center">$3\tfrac{1}{2}$</td>
-</tr>
-<tr>
-<td style="text-align:center">减五度</td>
-<td style="text-align:center">$3$</td>
-</tr>
-<tr>
-<td style="text-align:center">小六度</td>
-<td style="text-align:center">$4$</td>
-</tr>
-<tr>
-<td style="text-align:center">大六度</td>
-<td style="text-align:center">$4 \tfrac{1}{2}$</td>
-</tr>
-<tr>
-<td style="text-align:center">小七度</td>
-<td style="text-align:center">$5$</td>
-</tr>
-<tr>
-<td style="text-align:center">大七度</td>
-<td style="text-align:center">$5\tfrac{1}{2}$</td>
-</tr>
-<tr>
-<td style="text-align:center">纯八度</td>
-<td style="text-align:center">$6$</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="二、调式"><a href="#二、调式" class="headerlink" title="二、调式"></a>二、调式</h1><h2 id="2-1-大调式"><a href="#2-1-大调式" class="headerlink" title="2.1 大调式"></a>2.1 大调式</h2><h3 id="2-1-1-自然大调"><a href="#2-1-1-自然大调" class="headerlink" title="2.1.1 自然大调"></a>2.1.1 自然大调</h3><ul>
-<li>满足<strong>“全全半全全全半”</strong>的关系</li>
-<li>$1、2、3、4、5、6、7、\overline{1}$</li>
-</ul>
-<h3 id="2-1-2-和声大调"><a href="#2-1-2-和声大调" class="headerlink" title="2.1.2 和声大调"></a>2.1.2 和声大调</h3><ul>
-<li>$1、2、3、4、5、{}^b6、7、\overline{1}$</li>
-</ul>
-<h3 id="2-1-3-旋律大调"><a href="#2-1-3-旋律大调" class="headerlink" title="2.1.3 旋律大调"></a>2.1.3 旋律大调</h3><ul>
-<li>$1、2、3、4、5、{}^b6、{}^b7、1$</li>
-</ul>
-<h2 id="2-2-小调式"><a href="#2-2-小调式" class="headerlink" title="2.2 小调式"></a>2.2 小调式</h2><h3 id="2-2-1-自然小调"><a href="#2-2-1-自然小调" class="headerlink" title="2.2.1 自然小调"></a>2.2.1 自然小调</h3><ul>
-<li>$6、7、\overline{1}、\overline{2}、\overline{3}、\overline{4}、\overline{5}、\overline{6}$</li>
-</ul>
-<h3 id="2-2-2-和声小调"><a href="#2-2-2-和声小调" class="headerlink" title="2.2.2 和声小调"></a>2.2.2 和声小调</h3><ul>
-<li>$6、7、\overline{1}、\overline{2}、\overline{3}、\overline{4}、{}^井\overline{5}、\overline{6}$</li>
-</ul>
-<h3 id="2-2-3-旋律小调"><a href="#2-2-3-旋律小调" class="headerlink" title="2.2.3 旋律小调"></a>2.2.3 旋律小调</h3><ul>
-<li>$6、7、\overline{1}、\overline{2}、\overline{3}、{}^井\overline{4}、{}^井\overline{5}、\overline{6}$</li>
-</ul>
-<h2 id="2-3-自然大调"><a href="#2-3-自然大调" class="headerlink" title="2.3 自然大调"></a>2.3 自然大调</h2><ul>
-<li>以下对自然大调进行着重讲解，因为自然大调在流行音乐中较为常见</li>
-<li>在吉他谱中，会在琴谱左上角标注C=1，这就规定了这首歌的<strong>调式为C调</strong><ul>
-<li>同理，如果标注G=1，则这首歌的<strong>调式为G调</strong></li>
-<li>根据半音的规律，我们就可以在自然大调中推导出<strong>十二种调式</strong>（十二平均律）</li>
-<li>不同调式的给人的感觉是不同的，音名的构成也是不同的，下表就列出了不同调式的音的构成</li>
-</ul>
-</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">调</th>
-<th style="text-align:center">音名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">唱名</td>
-<td style="text-align:center">1、2、3、4、5、6、7、1</td>
-</tr>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">C、D、E、F、G、A、B、C</td>
-</tr>
-<tr>
-<td style="text-align:center">bD</td>
-<td style="text-align:center">#C、#D、#E、#F、#G、#A、#B、#C</td>
-</tr>
-<tr>
-<td style="text-align:center">D</td>
-<td style="text-align:center">D、E、#F、G、A、B、#C、D</td>
-</tr>
-<tr>
-<td style="text-align:center">bE</td>
-<td style="text-align:center">bE、F、G、bA、bB、C、D、bE</td>
-</tr>
-<tr>
-<td style="text-align:center">E</td>
-<td style="text-align:center">E、#F、#G、A、B、#C、#D、E</td>
-</tr>
-<tr>
-<td style="text-align:center">F</td>
-<td style="text-align:center">F、G、A、bB、C、D、E、F</td>
-</tr>
-<tr>
-<td style="text-align:center">bG</td>
-<td style="text-align:center">bG、bA、bB、bC、bD、bE、F、bG</td>
-</tr>
-<tr>
-<td style="text-align:center">G</td>
-<td style="text-align:center">G、A、B、C、D、E、#F、G</td>
-</tr>
-<tr>
-<td style="text-align:center">bA</td>
-<td style="text-align:center">bA、bB、C、bD、bE、F、G、bA</td>
-</tr>
-<tr>
-<td style="text-align:center">A</td>
-<td style="text-align:center">A、B、#C、D、E、#F、#G、A</td>
-</tr>
-<tr>
-<td style="text-align:center">bB</td>
-<td style="text-align:center">bB、C、D、bE、F、G、A、bB</td>
-</tr>
-<tr>
-<td style="text-align:center">B</td>
-<td style="text-align:center">B、#C、#D、E、#F、#G、#A、B</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="三、和弦"><a href="#三、和弦" class="headerlink" title="三、和弦"></a>三、和弦</h1><h2 id="3-1-和弦分类"><a href="#3-1-和弦分类" class="headerlink" title="3.1 和弦分类"></a>3.1 和弦分类</h2><h3 id="3-1-1-三度和弦"><a href="#3-1-1-三度和弦" class="headerlink" title="3.1.1 三度和弦"></a>3.1.1 三度和弦</h3><ul>
-<li>三和弦（三个音）</li>
-<li>五和弦（四个音）</li>
-<li>九和弦（五个音）</li>
-<li>十一和弦（六个音）</li>
-<li>十三和弦（七个音）</li>
-</ul>
-<h3 id="3-1-2-非三度和弦"><a href="#3-1-2-非三度和弦" class="headerlink" title="3.1.2 非三度和弦"></a>3.1.2 非三度和弦</h3><ul>
-<li>挂留和弦</li>
-<li>强力和弦</li>
-</ul>
-<h2 id="3-2-三和弦"><a href="#3-2-三和弦" class="headerlink" title="3.2 三和弦"></a>3.2 三和弦</h2><h3 id="3-2-1-大三和弦"><a href="#3-2-1-大三和弦" class="headerlink" title="3.2.1 大三和弦"></a>3.2.1 大三和弦</h3><ul>
-<li>大三度+小三度</li>
-<li>如C调的C：1-3-5、F：4-6-1、G：5-7-2</li>
-</ul>
-<h3 id="3-2-2-小三和弦"><a href="#3-2-2-小三和弦" class="headerlink" title="3.2.2 小三和弦"></a>3.2.2 小三和弦</h3><ul>
-<li>小三度+大三度</li>
-<li>如C调的Dm：2-4-6、Em：3-5-7、Am：6-1-3</li>
-</ul>
-<h3 id="3-2-3-增三和弦"><a href="#3-2-3-增三和弦" class="headerlink" title="3.2.3 增三和弦"></a>3.2.3 增三和弦</h3><ul>
-<li>大三度+大三度</li>
-<li>Caug：1-3-#5</li>
-</ul>
-<h3 id="3-2-4-减三和弦"><a href="#3-2-4-减三和弦" class="headerlink" title="3.2.4 减三和弦"></a>3.2.4 减三和弦</h3><ul>
-<li>小三度+小三度</li>
-<li>Cdim：1-b3-b5</li>
-</ul>
-<h2 id="3-3-七和弦"><a href="#3-3-七和弦" class="headerlink" title="3.3 七和弦"></a>3.3 七和弦</h2><h3 id="3-3-1-大七和弦"><a href="#3-3-1-大七和弦" class="headerlink" title="3.3.1 大七和弦"></a>3.3.1 大七和弦</h3><ul>
-<li>大三和弦+根音的大7度音</li>
-<li>Cmaj7：1-3-5-7</li>
-<li>Fmaj7：4-6-1-3</li>
-</ul>
-<h3 id="3-3-2-大小七和弦（属七和弦）"><a href="#3-3-2-大小七和弦（属七和弦）" class="headerlink" title="3.3.2 大小七和弦（属七和弦）"></a>3.3.2 大小七和弦（属七和弦）</h3><ul>
-<li>大三和弦+根音的小7度音</li>
-<li>C7：1-3-5-b7</li>
-<li>G7：5-7-2-4</li>
-</ul>
-<h3 id="3-3-3-小小七和弦"><a href="#3-3-3-小小七和弦" class="headerlink" title="3.3.3 小小七和弦"></a>3.3.3 小小七和弦</h3><ul>
-<li>小三和弦+根音的小7度音</li>
-<li>Dm7：2-4-6-1</li>
-<li>Em7：3-5-7-2</li>
-<li>Am7：6-1-3-5</li>
-</ul>
-<h3 id="3-3-4-减小七和弦"><a href="#3-3-4-减小七和弦" class="headerlink" title="3.3.4 减小七和弦"></a>3.3.4 减小七和弦</h3><ul>
-<li>减三+根音7度音</li>
-<li>Bdim7：7-2-4-6</li>
-</ul>
-<h3 id="3-3-5-减减七和弦"><a href="#3-3-5-减减七和弦" class="headerlink" title="3.3.5 减减七和弦"></a>3.3.5 减减七和弦</h3><ul>
-<li>减三+根音减7度音</li>
-<li>Bm-5：7-2-4-b6</li>
-</ul>
-<h2 id="3-4-九和弦"><a href="#3-4-九和弦" class="headerlink" title="3.4 九和弦"></a>3.4 九和弦</h2><h3 id="3-4-1-属九和弦"><a href="#3-4-1-属九和弦" class="headerlink" title="3.4.1 属九和弦"></a>3.4.1 属九和弦</h3><ul>
-<li>在属七和弦上加上根音的九度音</li>
-<li>C9：1-3-5-b7-2</li>
-</ul>
-<h3 id="3-4-2-Add和弦"><a href="#3-4-2-Add和弦" class="headerlink" title="3.4.2 Add和弦"></a>3.4.2 Add和弦</h3><ul>
-<li><p>三和弦基础上再添加的音符，后面的数字代表距离根音的度数</p>
-</li>
-<li><p>Cadd9：1-3-5-2（根音的9度音）</p>
-</li>
-</ul>
-<h2 id="3-5-挂留和弦"><a href="#3-5-挂留和弦" class="headerlink" title="3.5 挂留和弦"></a>3.5 挂留和弦</h2><ul>
-<li>Csus2：1-2-5（三度音转为二度音）</li>
-<li>Csus4：1-4-5（三度音转为四度音）</li>
-</ul>
-<h1 id="四、节奏"><a href="#四、节奏" class="headerlink" title="四、节奏"></a>四、节奏</h1><h2 id="4-1-音符"><a href="#4-1-音符" class="headerlink" title="4.1 音符"></a>4.1 音符</h2><h3 id="4-1-1-音符分类"><a href="#4-1-1-音符分类" class="headerlink" title="4.1.1 音符分类"></a>4.1.1 音符分类</h3><ul>
-<li>全音符</li>
-<li>二分音符</li>
-<li>四分音符</li>
-<li>八分音符</li>
-<li>十六分音符</li>
-<li>三十二分音符</li>
-<li>休止符</li>
-<li>浮点音符：延长当前音符时值的一半</li>
-</ul>
-<img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/yinfu.jpeg" class="" title="yinfu">
-<h3 id="4-1-2-音符关系"><a href="#4-1-2-音符关系" class="headerlink" title="4.1.2 音符关系"></a>4.1.2 音符关系</h3><ul>
-<li>$全音符=2<em>二分音符=4</em>四分音符=8<em>八分音符=16</em>十六分音符$</li>
-</ul>
-<h2 id="4-2-节拍"><a href="#4-2-节拍" class="headerlink" title="4.2 节拍"></a>4.2 节拍</h2><ul>
-<li><strong>bpm</strong>：每分钟节拍数</li>
-<li>常见的节拍（从后往前读）：<ul>
-<li>4/4：表示以四分音符为一拍，每小节四拍；强弱规律：<strong>强、弱、次强、弱</strong></li>
-<li>3/8：表示以八分音符为一拍，每小节三拍；强弱规律：<strong>强、弱、弱</strong></li>
-<li>6/8：强弱规律：<strong>强、弱、弱、次强、弱、弱</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="4-3-常见节奏"><a href="#4-3-常见节奏" class="headerlink" title="4.3 常见节奏"></a>4.3 常见节奏</h2><h3 id="4-3-1-弹奏节奏型"><a href="#4-3-1-弹奏节奏型" class="headerlink" title="4.3.1 弹奏节奏型"></a>4.3.1 弹奏节奏型</h3><h3 id="4-3-2-扫弦节奏型"><a href="#4-3-2-扫弦节奏型" class="headerlink" title="4.3.2 扫弦节奏型"></a>4.3.2 扫弦节奏型</h3><h2 id="五、吉他谱"><a href="#五、吉他谱" class="headerlink" title="五、吉他谱"></a>五、吉他谱</h2><h3 id="5-1-常见符号"><a href="#5-1-常见符号" class="headerlink" title="5.1 常见符号"></a>5.1 常见符号</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/" class="post-title-link" itemprop="url">Java算法大全一</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-08 23:14:13" itemprop="dateCreated datePublished" datetime="2022-03-08T23:14:13+08:00">2022-03-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 22:06:16" itemprop="dateModified" datetime="2022-03-27T22:06:16+08:00">2022-03-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、两数之和"><a href="#一、两数之和" class="headerlink" title="一、两数之和"></a>一、两数之和</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1 题目"></a>1.1 题目</h2><ul>
-<li>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em>target</em>  的那 <strong>两个</strong> 整数，并返回它们的数组下标。</li>
-<li>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</li>
-<li>你可以按任意顺序返回答案。</li>
-</ul>
-<h2 id="1-2-示例"><a href="#1-2-示例" class="headerlink" title="1.2 示例"></a>1.2 示例</h2><h3 id="1-2-1-示例1"><a href="#1-2-1-示例1" class="headerlink" title="1.2.1 示例1"></a>1.2.1 示例1</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = <span class="comment">[2,7,11,15]</span>, target = 9</span><br><span class="line">输出：<span class="comment">[0,1]</span></span><br><span class="line">解释：因为 nums<span class="comment">[0]</span> + nums<span class="comment">[1]</span> == 9 ，返回 <span class="comment">[0, 1]</span> 。</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-2-示例2"><a href="#1-2-2-示例2" class="headerlink" title="1.2.2 示例2"></a>1.2.2 示例2</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = <span class="comment">[3,2,4]</span>, target = 6</span><br><span class="line">输出：<span class="comment">[1,2]</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-2-3-示例3"><a href="#1-2-3-示例3" class="headerlink" title="1.2.3 示例3"></a>1.2.3 示例3</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = <span class="comment">[3,3]</span>, target = 6</span><br><span class="line">输出：<span class="comment">[0,1]</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-3-提示"><a href="#1-3-提示" class="headerlink" title="1.3 提示"></a>1.3 提示</h2><ul>
-<li>$2&lt;=nums.length&lt;=10^4$</li>
-<li>$-10^9&lt;=nums[i]&lt;=10^9$</li>
-<li>$-10^9&lt;=target&lt;=10^9$</li>
-<li><strong>只会存在一个有效答案</strong></li>
-<li><strong>进阶</strong>：你可以想出一个时间复杂度小于 $O(n^2)$ 的算法吗？</li>
-</ul>
-<h2 id="1-4-解法"><a href="#1-4-解法" class="headerlink" title="1.4 解法"></a>1.4 解法</h2><h3 id="1-4-1-哈希表"><a href="#1-4-1-哈希表" class="headerlink" title="1.4.1 哈希表"></a>1.4.1 哈希表</h3><ul>
-<li>设定从值到数组坐标的Map映射，根据键来查找坐标</li>
-<li>顺序遍历数组，对于当前坐标i<ul>
-<li>如果map中包含了键值：target - nums[i]对应的坐标，表明已经查找到了最终结果，将{target - nums[i], i}返回作为结果即可</li>
-<li>如果map中没有包含键值：target - nums[i]对应的坐标，则将{num[i], i}添加到map中</li>
-</ul>
-</li>
-</ul>
-<h4 id="（1）关键步骤1"><a href="#（1）关键步骤1" class="headerlink" title="（1）关键步骤1"></a>（1）关键步骤1</h4><img src="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/5.png" class="" title="image5">
-<h4 id="（2）关键步骤2"><a href="#（2）关键步骤2" class="headerlink" title="（2）关键步骤2"></a>（2）关键步骤2</h4><img src="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/6.png" class="" title="image6">
-<h4 id="（3）实现"><a href="#（3）实现" class="headerlink" title="（3）实现"></a>（3）实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; hashtable = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hashtable.containsKey(target - nums[i])) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;hashtable.get(target - nums[i]), i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashtable.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>时间复杂度$O(n)$</li>
-<li>空间复杂度$O(n)$</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2032,20 +2101,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2062,7 +2131,7 @@
 			<h3 class="widget-title">Tag Cloud</h3>
 			<div id="myCanvasContainer" class="widget tagcloud">
 				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
 				</canvas>
 			</div>
 		</div>
@@ -2154,59 +2223,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
