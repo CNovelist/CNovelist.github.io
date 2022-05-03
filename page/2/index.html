@@ -165,6 +165,939 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/03/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/03/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Linux基础大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-03 11:36:08" itemprop="dateCreated datePublished" datetime="2022-04-03T11:36:08+08:00">2022-04-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-29 18:12:17" itemprop="dateModified" datetime="2022-04-29T18:12:17+08:00">2022-04-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">服务器</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、系统分区"><a href="#一、系统分区" class="headerlink" title="一、系统分区"></a>一、系统分区</h1><h2 id="1-1-分区类型"><a href="#1-1-分区类型" class="headerlink" title="1.1 分区类型"></a>1.1 分区类型</h2><h3 id="1-1-1-主分区"><a href="#1-1-1-主分区" class="headerlink" title="1.1.1 主分区"></a>1.1.1 主分区</h3><ul>
+<li>最多只能有4个</li>
+</ul>
+<h3 id="1-1-2-扩展分区"><a href="#1-1-2-扩展分区" class="headerlink" title="1.1.2 扩展分区"></a>1.1.2 扩展分区</h3><ul>
+<li>最多只能有1个</li>
+<li>主分区加扩展分区最多有4个</li>
+<li>不能写入数据，只能包含逻辑分区</li>
+</ul>
+<h3 id="1-1-3-逻辑分区"><a href="#1-1-3-逻辑分区" class="headerlink" title="1.1.3 逻辑分区"></a>1.1.3 逻辑分区</h3><ul>
+<li>可以写入数据</li>
+</ul>
+<h2 id="1-2-格式化"><a href="#1-2-格式化" class="headerlink" title="1.2 格式化"></a>1.2 格式化</h2><ul>
+<li>又称逻辑格式化</li>
+<li>目的是在硬盘中写入文件系统</li>
+<li>文件系统有：FAT16、FAT32、NTFS、EXT2、EXT3、EXT4（默认）等</li>
+</ul>
+<h2 id="1-3-硬件设备名"><a href="#1-3-硬件设备名" class="headerlink" title="1.3 硬件设备名"></a>1.3 硬件设备名</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>设备文件名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IDE硬盘</td>
+<td>/dev/hd[a-d]</td>
+</tr>
+<tr>
+<td>SCSI/SATA/USB硬盘</td>
+<td>/dev/sd[a-p]</td>
+</tr>
+<tr>
+<td>光驱</td>
+<td>/dev/cdrom或/dev/sr0</td>
+</tr>
+<tr>
+<td>软盘</td>
+<td>/dev/fd[0-1]</td>
+</tr>
+<tr>
+<td>打印机（25针）</td>
+<td>/dev/lp[0-2]</td>
+</tr>
+<tr>
+<td>打印机（USB）</td>
+<td>/dev/usb/lp[0-15]</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>/dev/mouse</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-4-分区表示"><a href="#1-4-分区表示" class="headerlink" title="1.4 分区表示"></a>1.4 分区表示</h2><ul>
+<li>不管如何分区，1、2、3、4都用于主分区，第一个逻辑分区都是从5开始</li>
+</ul>
+<img src="/2022/04/03/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/fenqu.png" class="" title="fenqu">
+<h2 id="1-5-挂载"><a href="#1-5-挂载" class="headerlink" title="1.5 挂载"></a>1.5 挂载</h2><h3 id="1-5-1-必备分区"><a href="#1-5-1-必备分区" class="headerlink" title="1.5.1 必备分区"></a>1.5.1 必备分区</h3><ul>
+<li>/ （根分区）</li>
+<li>swap分区（交换分区，内存2倍，不超过2GB）</li>
+</ul>
+<h3 id="1-5-2-推荐分区"><a href="#1-5-2-推荐分区" class="headerlink" title="1.5.2 推荐分区"></a>1.5.2 推荐分区</h3><ul>
+<li>/boot（启动分区，200MB，默认是sda1）</li>
+</ul>
+<h2 id="1-6-文件系统结构"><a href="#1-6-文件系统结构" class="headerlink" title="1.6 文件系统结构"></a>1.6 文件系统结构</h2><img src="/2022/04/03/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/file.png" class="" title="file">
+<ul>
+<li>Linux目录可以放在不同的系统分区中</li>
+</ul>
+<h2 id="1-7-小结"><a href="#1-7-小结" class="headerlink" title="1.7 小结"></a>1.7 小结</h2><ul>
+<li>分区：把大硬盘分为小的逻辑分区</li>
+<li>格式化：写入文件系统</li>
+<li>分区设备文件名：给每个分区定义设备文件名</li>
+<li>挂载：给每个分区分配挂载点（挂载点必须是空目录，挂载后分区才能正常使用）</li>
+</ul>
+<h1 id="二、Linux命令"><a href="#二、Linux命令" class="headerlink" title="二、Linux命令"></a>二、Linux命令</h1><h2 id="2-1-文件目录"><a href="#2-1-文件目录" class="headerlink" title="2.1 文件目录"></a>2.1 文件目录</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>目录名称</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>代表当前目录</td>
+</tr>
+<tr>
+<td>..</td>
+<td>代表上一级目录</td>
+</tr>
+<tr>
+<td>-</td>
+<td>代表前一个工作目录</td>
+</tr>
+<tr>
+<td>~</td>
+<td>代表[目前用户身份]所在的家目录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-2-文件处理命令"><a href="#2-2-文件处理命令" class="headerlink" title="2.2 文件处理命令"></a>2.2 文件处理命令</h2><h3 id="2-2-1-命令列表"><a href="#2-2-1-命令列表" class="headerlink" title="2.2.1 命令列表"></a>2.2.1 命令列表</h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ls</td>
+<td>-ald [文件/目录]</td>
+<td style="text-align:left">a：显示目录中全部文件（包括隐藏文件）<br/>-l：详细信息显示<br/>-d：查看目录属性<br/>-i：查看i节点<br/>显示目录文件信息<br/>所在位置/bin/mkdir</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>-p</td>
+<td style="text-align:left">-p：递归创建<br/>创建新目录</td>
+</tr>
+<tr>
+<td>cd</td>
+<td></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>pwd</td>
+<td></td>
+<td style="text-align:left">显示当前目录<br/>所在位置/bin/pwd</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td></td>
+<td style="text-align:left">删除空目录</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>-rp [原文件/目录] [目标目录]</td>
+<td style="text-align:left">-r：表示复制目录<br/>-p：表示保留文件属性<br/>复制文件或目录<br/>所在位置/bin/cp</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>[原文件或目录] [目标目录]</td>
+<td style="text-align:left">剪切文件、改名<br/>所在位置/bin/mv</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>-rf</td>
+<td style="text-align:left">-r：表示删除目录<br/>-f：表示强制执行</td>
+</tr>
+<tr>
+<td>touch</td>
+<td>[文件名]</td>
+<td style="text-align:left">创建空文件<br/>所在位置/bin/touch，文件名不推荐加空格</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>-n [文件名]</td>
+<td style="text-align:left">-n：表示显示行号<br/>显示文件内容</td>
+</tr>
+<tr>
+<td>tac</td>
+<td></td>
+<td style="text-align:left">反向显示文件内容</td>
+</tr>
+<tr>
+<td>more</td>
+<td></td>
+<td style="text-align:left">按f/空格翻页<br/>按Enter换行<br/>按q退出<br/>分页显示文件内容<br/>所在位置/bin/more</td>
+</tr>
+<tr>
+<td>less</td>
+<td></td>
+<td style="text-align:left">按PgUp向上翻页<br/>/+搜索名称进行内容搜索（继续按n可以向下查找）<br/>分页显示文件内容（可以向上翻页）<br/>所在位置/usr/bin/less</td>
+</tr>
+<tr>
+<td>head</td>
+<td>-n [文件名]</td>
+<td style="text-align:left">-n：指定行数<br/>显示文件前几行，默认显示前世行<br/>所在位置/uer/bin/head</td>
+</tr>
+<tr>
+<td>tail</td>
+<td>-nf</td>
+<td style="text-align:left">-n：指定行数<br/>-f：表示动态显示文件末尾内容<br/>显示文件后几行，默认显示后10行<br/>所在位置/usr/bin/tail</td>
+</tr>
+<tr>
+<td>ln</td>
+<td></td>
+<td style="text-align:left">-s [原文件] [目标文件]<br/>生成链接文件<br/>所在位置/bin/ln</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-2-2-示例"><a href="#2-2-2-示例" class="headerlink" title="2.2.2 示例"></a>2.2.2 示例</h3><ul>
+<li>ls -ld</li>
+<li>mkdir -p /tmp/a/b</li>
+<li>cd ..（返回上一目录）/cd [绝对路径/相对路径]</li>
+<li>pwd</li>
+<li>rmdir /tmp/a/b</li>
+<li>cp -r /tmp/a/b /root（将b目录复制到root目录下）</li>
+<li>mv /tmp/a/b /root/c（将b剪切到root目录并改名为c）</li>
+<li>touch a.list</li>
+<li>cat /etc/issue</li>
+<li>more /etc/services</li>
+<li>less /etc/services</li>
+<li>head -n 20 /etc/services</li>
+<li>tail -n 18 /etc/services</li>
+<li>ln -s /etc/issue /tmp/issue.soft</li>
+</ul>
+<h2 id="2-3-权限管理命令"><a href="#2-3-权限管理命令" class="headerlink" title="2.3 权限管理命令"></a>2.3 权限管理命令</h2><h3 id="2-3-1-命令列表"><a href="#2-3-1-命令列表" class="headerlink" title="2.3.1 命令列表"></a>2.3.1 命令列表</h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod</td>
+<td>[{ugoa}{+-=}{rwx}] [文件或目录]或[mode=421] [文件或目录]/-R</td>
+<td>-R：表示递归修改某一目录下全部文件的权限<br/>改变文件或目录权限<br/>u表示所有者，r=4，w=2，x=1<br/>所在位置/bin/chmod</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>[用户] [文件或目录]</td>
+<td>改变文件或目录的所有者<br/>所在位置/bin/chown</td>
+</tr>
+<tr>
+<td>chgrp</td>
+<td>[用户组] [文件或目录]</td>
+<td>改变文件或目录的所属组<br/>所在位置/bin/chgrp</td>
+</tr>
+<tr>
+<td>umask</td>
+<td>[-S]</td>
+<td>-S：表示以rwx形式显示新建文件缺省权限<br/>显示、设置文件的缺省权限<br/>所在位置Shell内置命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-3-2-示例"><a href="#2-3-2-示例" class="headerlink" title="2.3.2 示例"></a>2.3.2 示例</h3><ul>
+<li>chmod u+x,o-r,g=rwx a.list</li>
+<li>chmod 640 a.list</li>
+<li>chown gaoy a (改变文件a的所有者为gaoy)</li>
+<li>chown root:tsgroup /project/（改变project目录的所有者和所属组）</li>
+<li>chgrp a b.list</li>
+<li>umask -S</li>
+</ul>
+<h2 id="2-4-文件搜索命令"><a href="#2-4-文件搜索命令" class="headerlink" title="2.4 文件搜索命令"></a>2.4 文件搜索命令</h2><h3 id="2-4-1-命令列表"><a href="#2-4-1-命令列表" class="headerlink" title="2.4.1 命令列表"></a>2.4.1 命令列表</h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find</td>
+<td>[搜索范围] [匹配条件]</td>
+<td>-name：根据文件名查找<br/>-iname：不区分大小写查找<br/>- size：根据文件大小查找<br/>-user：根据所有者查找<br/>文件搜索<br/>所在位置/bin/find</td>
+</tr>
+<tr>
+<td>locate</td>
+<td>[文件名]</td>
+<td>-i：不区分大小写查找<br/>在文件资料库中查找文件，速度比find快<br/>所在位置/usr/bin/locate</td>
+</tr>
+<tr>
+<td>which</td>
+<td>[命令名称]</td>
+<td>搜索命令所在目录及别名信息<br/>所在位置/usr/bin/which</td>
+</tr>
+<tr>
+<td>whereis</td>
+<td>[命令名称]</td>
+<td>搜索命令所在目录及帮助文档路径</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>-inv [关键字] [文件名]</td>
+<td>在文件中搜寻字串匹配的行并输出<br/>所在位置/bin/grep</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-4-2-示例"><a href="#2-4-2-示例" class="headerlink" title="2.4.2 示例"></a>2.4.2 示例</h3><ul>
+<li>find /etc -name init(在目录/etc中查找文件init)</li>
+<li>locate inittab</li>
+<li>which ls</li>
+<li>whereis ls</li>
+<li>grep mysql /root/install.log</li>
+</ul>
+<h2 id="2-5-帮助命令"><a href="#2-5-帮助命令" class="headerlink" title="2.5 帮助命令"></a>2.5 帮助命令</h2><h3 id="2-5-1-命令列表"><a href="#2-5-1-命令列表" class="headerlink" title="2.5.1 命令列表"></a>2.5.1 命令列表</h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>man</td>
+<td>[命令或配置文件]</td>
+<td>获取帮助信息<br/>按q退出<br/>按空格翻页<br/>按Enter换行<br/>按/-[查找内容]进行查找<br/>按n向下查找<br/>所在位置/usr/bin/man</td>
+</tr>
+<tr>
+<td>whatis</td>
+<td>[命令]</td>
+<td>简单显示命令帮助信息</td>
+</tr>
+<tr>
+<td>apropos</td>
+<td>[配置文件]</td>
+<td>查看配置文件的信息</td>
+</tr>
+<tr>
+<td>—help</td>
+<td>[命令] —help</td>
+<td>查看命令常见选项</td>
+</tr>
+<tr>
+<td>help</td>
+<td>[命令]</td>
+<td>获取Shell内置命令的版帮助信息<br/>所在位置Shell内置命令</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-5-2-示例"><a href="#2-5-2-示例" class="headerlink" title="2.5.2 示例"></a>2.5.2 示例</h3><ul>
+<li>man ls</li>
+<li>man services：查看配置文件services的帮助信息</li>
+<li>whatis ls</li>
+<li>apropos inittab</li>
+<li>ls —help</li>
+<li>help umask</li>
+</ul>
+<h2 id="2-6-用户管理命令"><a href="#2-6-用户管理命令" class="headerlink" title="2.6 用户管理命令"></a>2.6 用户管理命令</h2><h3 id="2-6-1-命令列表"><a href="#2-6-1-命令列表" class="headerlink" title="2.6.1 命令列表"></a>2.6.1 命令列表</h3><ul>
+<li>useradd/userdel执行权限为root</li>
+<li>其他命令执行权限为所有用户</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>useradd</td>
+<td>-udcgGs</td>
+<td>-u [UID]：手工指定用户的UID<br/>-d [家目录]：手工指定用户的家目录<br/>-c [用户说明]：手工指定用户的说明<br/>-g [组名]：手工指定用户的初始组<br/>-G [组名]：手工指定用户的附加组<br/>-s shell：手工指定用户的登录shell，默认是/bin/bash<br/>所在位置：/usr/sbin/useradd；<br/>添加用户，不推荐手工指定用户的家目录</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>-Slu [用户名]—stdin</td>
+<td>-S：查询用户密码的密码状态<br/>-l：暂时锁定用户<br/>-u：解锁用户<br/>—stdin：可以通过管道符输出的数据作为用户的密码<br/>-Slu：这些选项只能由root执行<br/>设置用户密码，root可以更改任何人的密码，普通用户可以更改自己的密码<br/>所在位置：/usr/bin/passwd；<br/>只用root可以改其他用户的密码，其他用户只能直接输入passwd（不用接用户名）改自己的密码（必须符合密码复杂性原则）</td>
+</tr>
+<tr>
+<td>usermod</td>
+<td>-ucGLU</td>
+<td>-u [UID]：修改用户的UID号<br/>-c [用户说明]：修改用户的说明信息<br/>-G [组名]：修改用户的附加组-L-U；<br/>-L：临时锁定用户<br/>-U：解锁用户锁定</td>
+</tr>
+<tr>
+<td>chage</td>
+<td></td>
+<td>-l：列出用户的详细密码<br/>-d [日期]：修改密码最后一次更改日期<br/>-m [天数]：两次密码修改间隔<br/>-M [天数]：密码有效期<br/>-W [天数]：密码过期前警告天数<br/>-I [天数]：密码过后宽限天数<br/>-E [日期]：账号失效时间</td>
+</tr>
+<tr>
+<td>userdel</td>
+<td>-r [用户名]</td>
+<td>-r：删除用户的同时删除用户家目录</td>
+</tr>
+<tr>
+<td>id</td>
+<td>[用户名]</td>
+<td>查看用户ID（UID、GID等）</td>
+</tr>
+<tr>
+<td>su [选项] [用户名]</td>
+<td>-<br/>-c</td>
+<td>-：选项只是用“-”代表连带用户的环境变量一起切换<br/>-c：仅执行一次命令，而不切换用户身份</td>
+</tr>
+<tr>
+<td>groupadd</td>
+<td>-g [GID] [组名]</td>
+<td>-g [GID]：指定组ID</td>
+</tr>
+<tr>
+<td>groupmod [选项] [组名]</td>
+<td>-g [GID]-n [新组名]</td>
+<td>-g：修改GID<br/>-n：修改组名</td>
+</tr>
+<tr>
+<td>groupdel [组名]</td>
+<td></td>
+<td>没有初始组，此用户不能存在</td>
+</tr>
+<tr>
+<td>gpasswd</td>
+<td>-ad [用户名] [组名]</td>
+<td>-a：把用户加入组<br/>-d：把用户从组中删除；<br/>把用户添加入组或从组中删除</td>
+</tr>
+<tr>
+<td>who</td>
+<td></td>
+<td>查看登录用户信息<br/>所在位置：/usr/bin/who</td>
+</tr>
+<tr>
+<td>w</td>
+<td></td>
+<td>查看登录用户详细信息<br/>所在位置：/usr/bin/w</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-6-2-示例"><a href="#2-6-2-示例" class="headerlink" title="2.6.2 示例"></a>2.6.2 示例</h3><ul>
+<li>useradd yangmi</li>
+<li>echo “123” | passwd —stdin lamp：给用户lamp添加密码123</li>
+<li>passwd -l sc：锁定用户（该用户无法登录）</li>
+<li>usermod -c “test user” lamp</li>
+<li>chage -d 0 lamp：用户一登录就要修改密码</li>
+<li>su root：这样切换不会改变此用户的环境变量</li>
+<li>su - root：把用户的操作环境也改为root环境（推荐）</li>
+<li>su - root -c “useradd user3”：不切换成root，但执行useradd命令添加user3用户</li>
+<li>groupmod -n testgrp group1：把组名group1修改为testgrp</li>
+<li>gpasswd -a user1 root：把user1用户加入到root组中</li>
+<li>who</li>
+<li>w</li>
+</ul>
+<h2 id="2-7-压缩解压命令"><a href="#2-7-压缩解压命令" class="headerlink" title="2.7 压缩解压命令"></a>2.7 压缩解压命令</h2><h3 id="2-7-1-命令列表"><a href="#2-7-1-命令列表" class="headerlink" title="2.7.1 命令列表"></a>2.7.1 命令列表</h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gzip</td>
+<td>[文件]</td>
+<td>压缩文件(目录不可以)，压缩后文件格式为.gz，压缩后只保留压缩后的文件，不保留原文件所在位置/bin/gzip</td>
+</tr>
+<tr>
+<td>gunzip</td>
+<td>[压缩文件]</td>
+<td>解压缩.gz的压缩文件</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>-zcfvx [压缩后的文件名] [目录]</td>
+<td>-c：打包<br/>-v：显示详细信息<br/>-f：指定文件名<br/>-z：打包同时压缩<br/>-x：解包<br/>打包目录，即把目录打包成一个.tar的文件，压缩后的文件格式为.tar.gz所在位置：/bin/tar</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>-r [压缩后文件名] [文件或目录]</td>
+<td>-r：压缩目录<br/>压缩文件或目录，压缩后文件格式为.zip<br/>所在位置/usr/bin/zip</td>
+</tr>
+<tr>
+<td>unzip</td>
+<td>[压缩文件]</td>
+<td>解压.zip的压缩文件<br/>所在位置/usr/bin/unzip</td>
+</tr>
+<tr>
+<td>bzip2</td>
+<td>-k [文件]</td>
+<td>压缩文件，压缩后文件格式.bz2</td>
+</tr>
+<tr>
+<td>bunzip2</td>
+<td>-k [压缩文件]</td>
+<td>解压缩</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-7-2-示例"><a href="#2-7-2-示例" class="headerlink" title="2.7.2 示例"></a>2.7.2 示例</h3><ul>
+<li>gunzip a.gz</li>
+<li>tar -zcf Japan.tar.gz Japan</li>
+<li>tar -axvf Japan.tar.gz（解包）</li>
+<li>zip -r Japan.zip Japan</li>
+<li>unzip test.zip</li>
+<li>bzip2 -k boduo</li>
+<li>tar -cjf Japan.tar.bz2 Japan（针对目录）</li>
+<li>bunzip2 -k boduo.bz2</li>
+<li>tar -xjf Japan.tar.bz2（针对目录）</li>
+</ul>
+<h2 id="2-8-网络命令"><a href="#2-8-网络命令" class="headerlink" title="2.8 网络命令"></a>2.8 网络命令</h2><h3 id="2-8-1-命令列表"><a href="#2-8-1-命令列表" class="headerlink" title="2.8.1 命令列表"></a>2.8.1 命令列表</h3><ul>
+<li>以下命令执行权限为<strong>所有用户</strong></li>
+<li>ifconfig执行权限为root，其他均为所有用户</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>write</td>
+<td>&lt;用户名&gt;</td>
+<td>给登录用户发信息<br/>以Ctrl+D保存结束<br/>所在位置：/usr/bin/write</td>
+</tr>
+<tr>
+<td>wall</td>
+<td>[message]</td>
+<td>发广播信息<br/>所在位置：/usr/bin/wall</td>
+</tr>
+<tr>
+<td>ping</td>
+<td>-c [IP地址]</td>
+<td>测试网络连通性<br/>所在位置：/bin/ping</td>
+</tr>
+<tr>
+<td>ifconfig</td>
+<td>[网卡名称] [IP地址]</td>
+<td>查看和设置网卡信息<br/>所在位置：/sbin/ifconfig</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>[用户名]</td>
+<td>查看发送电子邮件<br/>所在位置/bin/mail</td>
+</tr>
+<tr>
+<td>last</td>
+<td></td>
+<td>列出目前与过去登入系统的用户信息<br/>所在位置：/usr/bin/last</td>
+</tr>
+<tr>
+<td>lastlog</td>
+<td>-u [uid]</td>
+<td>检查某特定用户上次登录的时间<br/>所在位置/usr/bin/lastlog</td>
+</tr>
+<tr>
+<td>traceroute</td>
+<td></td>
+<td>显示数据包到主机间的路径<br/>所在位置：/bin/traceroute</td>
+</tr>
+<tr>
+<td>netstat</td>
+<td>-tulrn</td>
+<td>显示网络相关信息<br/>所在位置：/bin/netstat</td>
+</tr>
+<tr>
+<td>setup</td>
+<td></td>
+<td>配置网络<br/>所在位置/usr/bin/setup</td>
+</tr>
+<tr>
+<td>mount</td>
+<td>[-t 文件系统] [设备文件名] [挂载点]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-8-2-示例"><a href="#2-8-2-示例" class="headerlink" title="2.8.2 示例"></a>2.8.2 示例</h3><ul>
+<li>write linzhiling</li>
+<li>wall abcdefgh</li>
+<li>ping -c 3 192.168.1.156</li>
+<li>ifconfig eth0 192.168.8.250</li>
+<li>mail root</li>
+<li>mail</li>
+<li>last</li>
+<li>lastlog</li>
+<li>lastlog -u 502</li>
+<li>traceroute www.baidu.com</li>
+<li>netstat -tlun（查看本机监听的端口）</li>
+<li>netstat -an（查看本机所有的网络连接）</li>
+<li>netstat -rn（查看本机路由表）</li>
+<li>setup</li>
+<li>mount -t iso9660 /dev/sr0 /mnt/cdrom</li>
+<li>umount /dev/sr0（卸载）</li>
+</ul>
+<h2 id="2-9-关机重启命令"><a href="#2-9-关机重启命令" class="headerlink" title="2.9 关机重启命令"></a>2.9 关机重启命令</h2><h3 id="2-9-1-命令列表"><a href="#2-9-1-命令列表" class="headerlink" title="2.9.1 命令列表"></a>2.9.1 命令列表</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shutdown</td>
+<td>-chr [时间]</td>
+<td>-c：取消前一个关机命令<br/>-h：关机<br/>-r：重启</td>
+</tr>
+<tr>
+<td>reboot</td>
+<td></td>
+<td>重启</td>
+</tr>
+<tr>
+<td>init 0</td>
+<td></td>
+<td>关机</td>
+</tr>
+<tr>
+<td>init 6</td>
+<td></td>
+<td>重启</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-9-2-系统运行级别"><a href="#2-9-2-系统运行级别" class="headerlink" title="2.9.2 系统运行级别"></a>2.9.2 系统运行级别</h3><h4 id="（1）级别"><a href="#（1）级别" class="headerlink" title="（1）级别"></a>（1）级别</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>关机</td>
+</tr>
+<tr>
+<td>1</td>
+<td>单用户</td>
+</tr>
+<tr>
+<td>2</td>
+<td>不完全多用户、不含NFS服务</td>
+</tr>
+<tr>
+<td>3</td>
+<td>完全多用户（默认）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>未分配</td>
+</tr>
+<tr>
+<td>5</td>
+<td>图形界面</td>
+</tr>
+<tr>
+<td></td>
+<td>重启</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="（2）相关命令"><a href="#（2）相关命令" class="headerlink" title="（2）相关命令"></a>（2）相关命令</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>runlevel</td>
+<td>查看系统运行级别</td>
+</tr>
+<tr>
+<td>logout</td>
+<td>退出登录</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-10-Shell命令"><a href="#2-10-Shell命令" class="headerlink" title="2.10 Shell命令"></a>2.10 Shell命令</h2><h3 id="2-10-1-命令列表"><a href="#2-10-1-命令列表" class="headerlink" title="2.10.1 命令列表"></a>2.10.1 命令列表</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>选项</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>echo</td>
+<td>-e [输出内容]</td>
+<td>-e：支持反斜线控制的字符转换；基本输出命令</td>
+</tr>
+<tr>
+<td>history</td>
+<td>-cw [历史命令保存文件]</td>
+<td>-c：清空历史命令（不推荐清空）<br/>-w：把缓存中的历史命令写入历史命令保护文件<br/>~/.bash_history<br/>查看之前输入的命令，不加w选项，刚输入的命令还在缓存中，还未写入历史命令保存文件中，默认保存1000条历史命令（可以在环境变量配置文件/etc/profile中进行修改）</td>
+</tr>
+<tr>
+<td>alias</td>
+<td>[别名]=[‘原命令’]</td>
+<td>alias [别名]=[‘原命令’]：设定命令别名<br/>alias：查询命令别名<br/>临时生效，重启后无效</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="2-10-2-示例"><a href="#2-10-2-示例" class="headerlink" title="2.10.2 示例"></a>2.10.2 示例</h3><ul>
+<li>history</li>
+<li>history -w</li>
+<li>alias vi=’vim’</li>
+<li>alias</li>
+</ul>
+<h2 id="2-11-字符提取命令"><a href="#2-11-字符提取命令" class="headerlink" title="2.11 字符提取命令"></a>2.11 字符提取命令</h2><h3 id="2-11-1-cut命令"><a href="#2-11-1-cut命令" class="headerlink" title="2.11.1 cut命令"></a>2.11.1 cut命令</h3><ul>
+<li>选项：-df [文件名]</li>
+<li>解释：<ul>
+<li>-d 分隔符：按照指定分隔符分割列</li>
+<li>-f 列号：提取第几列</li>
+</ul>
+</li>
+<li>说明：默认提取以制表符分割的列</li>
+</ul>
+<h3 id="2-11-2-printf命令"><a href="#2-11-2-printf命令" class="headerlink" title="2.11.2 printf命令"></a>2.11.2 printf命令</h3><ul>
+<li>‘输出类型/输出格式’ 输出内容</li>
+<li>输出类型：<ul>
+<li>%ns：输出字符串。n是数字指代输出几个字符</li>
+<li>%ni：输出整数。n是数字指代输出几个数字</li>
+<li>%m.nf：输出浮点数。m和n是数字，指代输出的整数位数和小数位数。如%8.2f代表共输出8位数，其中2位是小数，6位是整数</li>
+</ul>
+</li>
+<li><p>输出格式：</p>
+<ul>
+<li>\a：输出警告音</li>
+<li>\b：输出退格键</li>
+<li>\f：清除屏幕</li>
+<li>\n：换行</li>
+<li>\r：回车</li>
+<li>\t：水平输出退格键，即Tab键</li>
+<li>\v：垂直输出退格键，即Tab键</li>
+</ul>
+</li>
+<li><p>说明：利用管道符或者直接接文件名都无法利用此命令输出文件内容，print和printf一般在awk命令中使用</p>
+</li>
+<li>示例<ul>
+<li>printf ‘%s %s %s \n’ 1 2 3 4 5 6</li>
+<li>printf ‘%s’ $(cat s.txt)：输出文件内容</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-11-3-awk命令"><a href="#2-11-3-awk命令" class="headerlink" title="2.11.3 awk命令"></a>2.11.3 awk命令</h3><ul>
+<li>选项：<ul>
+<li>‘条件1 {动作1}</li>
+<li>条件2 {动作2}…’ 文件名</li>
+</ul>
+</li>
+<li>条件：<ul>
+<li>一般使用关系表达式作为条件</li>
+<li>x&gt;10</li>
+<li>x&gt;=10</li>
+<li>x&lt;=10</li>
+</ul>
+</li>
+<li>动作：格式化输出流程控制语句</li>
+<li>说明：print只能在awk中使用，会自动换行</li>
+<li>示例：<ul>
+<li>awk ‘{printf $2 “\t” $6 “\n”}’ s.txt：输出文件第2列和第六列</li>
+<li>df -h | awk ‘{print $1 “\t” $3}’</li>
+<li>df -h | grep sda5 | awk ‘{print $5}’ | cut -d “%” -f 1：截取某一行的第5列数据</li>
+<li>awk ‘BEGIN{printf “This is a txt \n”} {print $2 “\t” $5}’ s.txt：在输出文件内容前，先输出This is a txt</li>
+<li>awk ‘BEGIN{FS=”:”} {print $1 “\t” $3}’ /etc/passwd：FS指定分隔符为冒号，不加BEGIN，文件的第一行就不会处理</li>
+<li>awk ‘END{printf “The End \n”} {printf $2 “\t” $6 “\n”}’ s.txtEND：表示输出完成之后，再输出The End</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-11-4-sed命令"><a href="#2-11-4-sed命令" class="headerlink" title="2.11.4 sed命令"></a>2.11.4 sed命令</h3><ul>
+<li>选项：[-nei] ‘[动作]’ [文件名]</li>
+<li>解释：<ul>
+<li>-n：一般sed命令会把所有数据都输出到屏幕，如果加入此选项，则只会把经过sed命令处理的行输出到屏幕</li>
+<li>-e：允许对输入数据应用多条sed命令编辑</li>
+<li>-i：用sed的修改结果直接修改读取数据的文件，而不是由屏幕输出</li>
+</ul>
+</li>
+<li><p>动作：</p>
+<ul>
+<li>a \：追加，在当前行后添加一行或多行。添加多行时，除最后一行外，每行末尾需要用“\”代表数据未完结</li>
+<li>c \：行替换，用c后面的字符串替换原数据行，替换多行时，除最后一行外，每行末尾需用“\”代表数据未完结</li>
+<li>i \：插入，在当前行前插入一行或多行。插入多行时，除最后一行外，每行末尾需要用“\”代表数据未完结</li>
+<li>d：删除，删除指定的行</li>
+<li>p：打印，输出指定的行</li>
+<li>s：字串替换，用一个字符串替换另外一个字符串。</li>
+<li>格式为“行范围s/旧字串/新字串/g”（和vim中的替换格式类似）</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<ul>
+<li>sed -n ‘2p’ s.txt：输出第二行，不加-n会把所有内容都输出</li>
+<li>df -h | sed -n ‘2p’ s.txt：输出df命令内容第2行</li>
+<li>sed ‘2,4d’ s.txt：将文件输出的内容的第2到4行删除，但不改变文件本身</li>
+<li>sed ‘2i hello \world’ s.txt：在文件输出内容第2行插入hello world内容，并不改变文件本身</li>
+<li>sed ‘4s/99/55/g’ s.txt：将文件输出内容的第4行的99改为55</li>
+<li>sed -e ‘s/LiMing//g ; s/Gao//g/‘ s.txt：同时把LiMing和Gao修改为空白</li>
+</ul>
+</li>
+</ul>
+<h1 id="三、网络配置"><a href="#三、网络配置" class="headerlink" title="三、网络配置"></a>三、网络配置</h1><h2 id="3-1-准备工作"><a href="#3-1-准备工作" class="headerlink" title="3.1 准备工作"></a>3.1 准备工作</h2><ul>
+<li>将虚拟机网络配置改为桥接模式，才能保证主机和虚拟机ping通</li>
+</ul>
+<h2 id="3-2-第一步"><a href="#3-2-第一步" class="headerlink" title="3.2 第一步"></a>3.2 第一步</h2><h3 id="3-2-1-修改配置文件参数"><a href="#3-2-1-修改配置文件参数" class="headerlink" title="3.2.1 修改配置文件参数"></a>3.2.1 修改配置文件参数</h3><ol>
+<li>dhclient：动态分配IP地址</li>
+<li>vim /etc/sysconfig/network-scripts/ifcfg-ens33</li>
+<li>修改静态IP：BOOTPROTO=static</li>
+<li>修改自启动：ONBOOT=yes</li>
+</ol>
+<h2 id="3-3-第二步"><a href="#3-3-第二步" class="headerlink" title="3.3 第二步"></a>3.3 第二步</h2><h3 id="3-3-1-向配置文件添加IP地址、子网掩码、网关、DNS"><a href="#3-3-1-向配置文件添加IP地址、子网掩码、网关、DNS" class="headerlink" title="3.3.1 向配置文件添加IP地址、子网掩码、网关、DNS"></a>3.3.1 向配置文件添加IP地址、子网掩码、网关、DNS</h3><ul>
+<li>IPADDR=192.168.1.102</li>
+<li>NETMASK=255.255.255.0</li>
+<li>GATEWAY=192.168.1.1</li>
+<li>DNS1=119.29.29.29</li>
+<li>GATEWAY和IPADDR需要在同一网段下，否则无法上网</li>
+</ul>
+<h2 id="3-4-第三步"><a href="#3-4-第三步" class="headerlink" title="3.4 第三步"></a>3.4 第三步</h2><ul>
+<li>重启网络服务：systemctl restart network.service</li>
+</ul>
+<h1 id="四、开启web服务"><a href="#四、开启web服务" class="headerlink" title="四、开启web服务"></a>四、开启web服务</h1><h2 id="4-1-安装tomcat"><a href="#4-1-安装tomcat" class="headerlink" title="4.1 安装tomcat"></a>4.1 安装tomcat</h2><h2 id="4-2-安装nginx"><a href="#4-2-安装nginx" class="headerlink" title="4.2 安装nginx"></a>4.2 安装nginx</h2><h2 id="4-3-开放端口"><a href="#4-3-开放端口" class="headerlink" title="4.3 开放端口"></a>4.3 开放端口</h2><ul>
+<li>在不关闭防火墙的前提下，开放浏览器访问端口<ul>
+<li>开启tomcat：systemctl start tomcat.service</li>
+<li>永久开放8080端口：firewall-cmd —zone=public —add-port=8080/tcp —permanent</li>
+<li>重启防火墙：systemctl restart firewalld.service</li>
+<li>查看是否开放成功：firewall-cmd —list-ports</li>
+</ul>
+</li>
+<li>也可以关闭防火墙对服务器进行访问：<ul>
+<li>暂时关闭防火墙：systemctl stop firewalld</li>
+<li>永久关闭防火墙：systemctl disable firewalld</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1862,174 +2795,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/10/Mysql%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/10/Mysql%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Mysql基础大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-10 12:28:22" itemprop="dateCreated datePublished" datetime="2022-03-10T12:28:22+08:00">2022-03-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 22:04:28" itemprop="dateModified" datetime="2022-03-27T22:04:28+08:00">2022-03-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、MySql的语法规范"><a href="#一、MySql的语法规范" class="headerlink" title="一、MySql的语法规范"></a>一、MySql的语法规范</h1><ul>
-<li>不区分大小写，但建议关键字大写，表名、列名小写</li>
-<li>每条命令最好用分号结尾</li>
-</ul>
-<h1 id="二、注释"><a href="#二、注释" class="headerlink" title="二、注释"></a>二、注释</h1><ul>
-<li>#注释文字（单行注释）</li>
-<li>— 注释文字（单行注释）</li>
-<li>/* 注释文字 */（多行注释）</li>
-</ul>
-<h1 id="三、查询"><a href="#三、查询" class="headerlink" title="三、查询"></a>三、查询</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 分组查询推荐尽可能使用分组前筛选，即在<span class="keyword">group</span> <span class="keyword">by</span>前使用<span class="keyword">where</span></span><br><span class="line"><span class="keyword">SELECT</span> [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> [表名,...]</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-1-连接查询"><a href="#3-1-连接查询" class="headerlink" title="3.1 连接查询"></a>3.1 连接查询</h2><h3 id="3-1-1-内连接"><a href="#3-1-1-内连接" class="headerlink" title="3.1.1 内连接"></a>3.1.1 内连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    这属于sql99语法，作用等同于不加inner join时的查询</span></span><br><span class="line"><span class="comment">    不加inner join属于隐式连接，用inner join时，inner可以省略</span></span><br><span class="line"><span class="comment">    等值连接在WHERE子句中判断中写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">     <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-1-2-外连接"><a href="#3-1-2-外连接" class="headerlink" title="3.1.2 外连接"></a>3.1.2 外连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">left</span><span class="operator">/</span><span class="keyword">right</span><span class="operator">/</span><span class="keyword">full</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-1-3-交叉连接（笛卡尔积）"><a href="#3-1-3-交叉连接（笛卡尔积）" class="headerlink" title="3.1.3 交叉连接（笛卡尔积）"></a>3.1.3 交叉连接（笛卡尔积）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-1-4-子查询"><a href="#3-1-4-子查询" class="headerlink" title="3.1.4 子查询"></a>3.1.4 子查询</h3><h3 id="3-1-5-分页查询"><a href="#3-1-5-分页查询" class="headerlink" title="3.1.5 分页查询"></a>3.1.5 分页查询</h3><ul>
-<li>offset要显示条目的起始索引（起始索引从0开始）</li>
-<li>size要显示的条目个数</li>
-<li>网页的分页显示数据需要对数据库进行分页查询</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="keyword">offset</span>,size;</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-6-联合查询"><a href="#3-1-6-联合查询" class="headerlink" title="3.1.6 联合查询"></a>3.1.6 联合查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    适用于要查询的结果来自多个表，且多个表没有直接的连接关系，但查询的信息一致时可以使用联合查询，类似于数学的并集</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">查询语句<span class="number">1</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line">查询语句<span class="number">2</span></span><br><span class="line"></span><br><span class="line"># 示例</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 加<span class="keyword">ALL</span>表示会包含重复的内容</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h2><h3 id="3-2-1-查询前五条员工信息"><a href="#3-2-1-查询前五条员工信息" class="headerlink" title="3.2.1 查询前五条员工信息"></a>3.2.1 查询前五条员工信息</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">0</span>,<span class="number">5</span>;  </span><br><span class="line">#或者</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-2-分页查询规律"><a href="#3-2-2-分页查询规律" class="headerlink" title="3.2.2 分页查询规律"></a>3.2.2 分页查询规律</h3><ul>
-<li>page表示第几页，(page-1)*size表示每一页的起始查询位置</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 查询列表</span><br><span class="line"><span class="keyword">FROM</span> 表</span><br><span class="line">LIMIT (page<span class="number">-1</span>)<span class="operator">*</span>size,size;</span><br></pre></td></tr></table></figure>
-<h1 id="四、增删改"><a href="#四、增删改" class="headerlink" title="四、增删改"></a>四、增删改</h1><h2 id="4-1-插入数据"><a href="#4-1-插入数据" class="headerlink" title="4.1 插入数据"></a>4.1 插入数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">VALUES</span>(元组值);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">VALUES</span>(元组值);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">VALUES</span>(元组值),(元组值),...;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">SET</span> 列名<span class="operator">=</span>值,列名<span class="operator">=</span>值,...    #用的少</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">SELECT</span> 查询语句;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">TABLE</span> 表名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="4-2-删除数据"><a href="#4-2-删除数据" class="headerlink" title="4.2 删除数据"></a>4.2 删除数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件表达式</span><br></pre></td></tr></table></figure>
-<h2 id="4-3-修改数据"><a href="#4-3-修改数据" class="headerlink" title="4.3 修改数据"></a>4.3 修改数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名 <span class="keyword">SET</span> 列名<span class="operator">=</span>值表达式,列名<span class="operator">=</span>值表达式,... <span class="keyword">WHERE</span> 条件表达式</span><br><span class="line">UPDATE 表名 <span class="keyword">SET</span> <span class="type">ROW</span><span class="operator">=</span>元组 <span class="keyword">WHERE</span> 条件表达式</span><br></pre></td></tr></table></figure>
-<h1 id="五、视图"><a href="#五、视图" class="headerlink" title="五、视图"></a>五、视图</h1><h2 id="5-1-视图的创建"><a href="#5-1-视图的创建" class="headerlink" title="5.1 视图的创建"></a>5.1 视图的创建</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> 视图名(列名序列) <span class="keyword">AS</span> <span class="keyword">SELECT</span>查询语句</span><br></pre></td></tr></table></figure>
-<h2 id="5-2-视图的撤销"><a href="#5-2-视图的撤销" class="headerlink" title="5.2 视图的撤销"></a>5.2 视图的撤销</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> 视图名</span><br></pre></td></tr></table></figure>
-<h1 id="六、Mysql数据类型"><a href="#六、Mysql数据类型" class="headerlink" title="六、Mysql数据类型"></a>六、Mysql数据类型</h1><h2 id="6-1-数值型"><a href="#6-1-数值型" class="headerlink" title="6.1 数值型"></a>6.1 数值型</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>大小</th>
-<th>范围（有符号）</th>
-<th>范围（无符号）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TINYINT</td>
-<td>1 byte</td>
-<td>(-128，127)</td>
-<td>(0，255)</td>
-</tr>
-<tr>
-<td>SMALLINT</td>
-<td>2 bytes</td>
-<td>(-32 768，32 767)</td>
-<td>(0，65 535)</td>
-</tr>
-<tr>
-<td>MEDIUMINT</td>
-<td>3 bytes</td>
-<td>(-8 388 608，8 388 607)</td>
-<td>(0，16 777 215)</td>
-</tr>
-<tr>
-<td>INT或INTEGER</td>
-<td>4 bytes</td>
-<td>(-2 147 483 648，2 147 483 647)</td>
-<td>(0，4 294 967 295)</td>
-</tr>
-<tr>
-<td>BIGINT</td>
-<td>8 bytes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>FLOAT</td>
-<td>4 bytes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>DOUBLE</td>
-<td>8 bytes</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>DECIMAL</td>
-<td>对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="6-2-日期型"><a href="#6-2-日期型" class="headerlink" title="6.2 日期型"></a>6.2 日期型</h2><h2 id="6-3-字符型"><a href="#6-3-字符型" class="headerlink" title="6.3 字符型"></a>6.3 字符型</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2101,7 +2866,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2114,7 +2879,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">59</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2131,7 +2896,7 @@
 			<h3 class="widget-title">Tag Cloud</h3>
 			<div id="myCanvasContainer" class="widget tagcloud">
 				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KEPServer/" rel="tag">KEPServer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPC-UA/" rel="tag">OPC UA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milo/" rel="tag">milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
 				</canvas>
 			</div>
 		</div>
