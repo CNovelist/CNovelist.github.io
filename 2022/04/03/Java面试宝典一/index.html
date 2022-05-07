@@ -20,18 +20,18 @@
     var CONFIG = {"hostname":"cnovelist.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、变量自增1.1 示例 这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果 Java也需要维护一个操作数栈，来计算我们的最终结果  1234567int i &#x3D; 1;i &#x3D; i++;int j &#x3D; i++;int k &#x3D; i + ++i * i++;System.out.println(&amp;quot">
+  <meta name="description" content="一、Java基础1.1、变量自增1.1.1 示例 这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果 Java也需要维护一个操作数栈，来计算我们的最终结果  1234567int i &#x3D; 1;i &#x3D; i++;int j &#x3D; i++;int k &#x3D; i + ++i * i++;System.out.p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java面试宝典一">
 <meta property="og:url" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/index.html">
 <meta property="og:site_name" content="江小月不上頭">
-<meta property="og:description" content="一、变量自增1.1 示例 这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果 Java也需要维护一个操作数栈，来计算我们的最终结果  1234567int i &#x3D; 1;i &#x3D; i++;int j &#x3D; i++;int k &#x3D; i + ++i * i++;System.out.println(&amp;quot">
+<meta property="og:description" content="一、Java基础1.1、变量自增1.1.1 示例 这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果 Java也需要维护一个操作数栈，来计算我们的最终结果  1234567int i &#x3D; 1;i &#x3D; i++;int j &#x3D; i++;int k &#x3D; i + ++i * i++;System.out.p">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij.png">
 <meta property="og:image" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij2.png">
 <meta property="og:image" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij3.png">
 <meta property="article:published_time" content="2022-04-03T10:41:32.000Z">
-<meta property="article:modified_time" content="2022-04-03T10:43:29.082Z">
+<meta property="article:modified_time" content="2022-05-07T13:50:56.331Z">
 <meta property="article:author" content="故事开头">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="面试">
@@ -196,10 +196,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-04-03 18:41:32 / 修改时间：18:43:29" itemprop="dateCreated datePublished" datetime="2022-04-03T18:41:32+08:00">2022-04-03</time>
+              <time title="创建时间：2022-04-03 18:41:32" itemprop="dateCreated datePublished" datetime="2022-04-03T18:41:32+08:00">2022-04-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-07 21:50:56" itemprop="dateModified" datetime="2022-05-07T21:50:56+08:00">2022-05-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -225,29 +231,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="一、变量自增"><a href="#一、变量自增" class="headerlink" title="一、变量自增"></a>一、变量自增</h1><h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><ul>
+        <h1 id="一、Java基础"><a href="#一、Java基础" class="headerlink" title="一、Java基础"></a>一、Java基础</h1><h2 id="1-1、变量自增"><a href="#1-1、变量自增" class="headerlink" title="1.1、变量自增"></a>1.1、变量自增</h2><h3 id="1-1-1-示例"><a href="#1-1-1-示例" class="headerlink" title="1.1.1 示例"></a>1.1.1 示例</h3><ul>
 <li>这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果</li>
 <li>Java也需要维护一个操作数栈，来计算我们的最终结果</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">i = i++;</span><br><span class="line"><span class="keyword">int</span> j = i++;</span><br><span class="line"><span class="keyword">int</span> k = i + ++i * i++;</span><br><span class="line">System.out.println(<span class="string">&quot;i=&quot;</span>+i);<span class="number">5</span></span><br><span class="line">System.out.println(<span class="string">&quot;j=&quot;</span>+j);<span class="number">2</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+k);<span class="number">12</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-2-分析"><a href="#1-2-分析" class="headerlink" title="1.2 分析"></a>1.2 分析</h2><h3 id="1-2-1-前两步"><a href="#1-2-1-前两步" class="headerlink" title="1.2.1 前两步"></a>1.2.1 前两步</h3><ol>
+<h3 id="1-1-2-分析"><a href="#1-1-2-分析" class="headerlink" title="1.1.2 分析"></a>1.1.2 分析</h3><h4 id="（1）前两步"><a href="#（1）前两步" class="headerlink" title="（1）前两步"></a>（1）前两步</h4><ol>
 <li>赋值操作更新局部变量表，变量操作会先将变量值压入操作数栈</li>
 <li>自增操作会更新变量的局部变量表，但不会影响操作数栈的值，存在操作数就会把变量的值压入操作数栈中</li>
 <li>赋值操作是把操作数栈的最终结果赋值给变量，也就是说i经过前两步后值为1</li>
 </ol>
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij.png" class="" title="ij">
-<h3 id="1-2-2-第三步"><a href="#1-2-2-第三步" class="headerlink" title="1.2.2 第三步"></a>1.2.2 第三步</h3><ul>
+<h4 id="（2）第三步"><a href="#（2）第三步" class="headerlink" title="（2）第三步"></a>（2）第三步</h4><ul>
 <li>后增操作：先赋值j，再自增i</li>
 </ul>
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij2.png" class="" title="ij2">
-<h3 id="1-2-3-第四步"><a href="#1-2-3-第四步" class="headerlink" title="1.2.3 第四步"></a>1.2.3 第四步</h3><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij3.png" class="" title="ij3">
-<h2 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h2><ul>
+<h4 id="（3）第四步"><a href="#（3）第四步" class="headerlink" title="（3）第四步"></a>（3）第四步</h4><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij3.png" class="" title="ij3">
+<h3 id="1-1-3-小结"><a href="#1-1-3-小结" class="headerlink" title="1.1.3 小结"></a>1.1.3 小结</h3><ul>
 <li><p>总的来说在运算的时候维护一个<strong>局部变量表</strong>和一个<strong>操作数栈</strong>，来<strong>保存</strong>和<strong>更新</strong>我们的数据</p>
 </li>
 <li><p>++i会<strong>先修改i保存到局部变量表中的值</strong>，再将<strong>自增后</strong>的值放入到操作数栈中</p>
 </li>
 <li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
 <li>赋值操作是在操作数栈计算完之后才执行的</li>
+</ul>
+<h2 id="1-2-Java面向对象"><a href="#1-2-Java面向对象" class="headerlink" title="1.2 Java面向对象"></a>1.2 Java面向对象</h2><ul>
+<li>面向对象三大特征：封装、继承、多态</li>
 </ul>
 <h1 id="二、单例设计模式"><a href="#二、单例设计模式" class="headerlink" title="二、单例设计模式"></a>二、单例设计模式</h1><h2 id="2-1-介绍"><a href="#2-1-介绍" class="headerlink" title="2.1 介绍"></a>2.1 介绍</h2><ul>
 <li>Java的设计模式之一</li>
@@ -397,7 +406,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%98%E9%87%8F%E8%87%AA%E5%A2%9E"><span class="nav-text">一、变量自增</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E7%A4%BA%E4%BE%8B"><span class="nav-text">1.1 示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%88%86%E6%9E%90"><span class="nav-text">1.2 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E5%89%8D%E4%B8%A4%E6%AD%A5"><span class="nav-text">1.2.1 前两步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-text">1.2.2 第三步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="nav-text">1.2.3 第四步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%B0%8F%E7%BB%93"><span class="nav-text">1.3 小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-text">二、单例设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E4%BB%8B%E7%BB%8D"><span class="nav-text">2.1 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E8%A6%81%E7%82%B9"><span class="nav-text">2.2 要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-text">2.3 实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-%E9%A5%BF%E6%B1%89%E5%BC%8F"><span class="nav-text">2.3.1 饿汉式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%9B%B4%E6%8E%A5%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="nav-text">（1）直接实例化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E6%9E%9A%E4%B8%BE%E5%BC%8F"><span class="nav-text">（4）枚举式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97%E5%BC%8F"><span class="nav-text">（3）静态代码块式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-%E6%87%92%E6%B1%89%E5%BC%8F"><span class="nav-text">2.3.2 懒汉式</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81Java%E5%9F%BA%E7%A1%80"><span class="nav-text">一、Java基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E3%80%81%E5%8F%98%E9%87%8F%E8%87%AA%E5%A2%9E"><span class="nav-text">1.1、变量自增</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E7%A4%BA%E4%BE%8B"><span class="nav-text">1.1.1 示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E5%88%86%E6%9E%90"><span class="nav-text">1.1.2 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%89%8D%E4%B8%A4%E6%AD%A5"><span class="nav-text">（1）前两步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-text">（2）第三步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="nav-text">（3）第四步</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E5%B0%8F%E7%BB%93"><span class="nav-text">1.1.3 小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-text">1.2 Java面向对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-text">二、单例设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E4%BB%8B%E7%BB%8D"><span class="nav-text">2.1 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E8%A6%81%E7%82%B9"><span class="nav-text">2.2 要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-text">2.3 实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-%E9%A5%BF%E6%B1%89%E5%BC%8F"><span class="nav-text">2.3.1 饿汉式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%9B%B4%E6%8E%A5%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="nav-text">（1）直接实例化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E6%9E%9A%E4%B8%BE%E5%BC%8F"><span class="nav-text">（4）枚举式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97%E5%BC%8F"><span class="nav-text">（3）静态代码块式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-%E6%87%92%E6%B1%89%E5%BC%8F"><span class="nav-text">2.3.2 懒汉式</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
