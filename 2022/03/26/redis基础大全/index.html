@@ -28,7 +28,7 @@
 <meta property="og:description" content="一、安装与配置 安装gcc：yum install gcc -y 下载redis-x.x.x.tar.gz，并解压：tar -zxvf redis-x.x.x.tar.gz 进入redis解压目录，执行命令make和make install，不报错就表示安装成功，默认安装位置在&#x2F;usr&#x2F;local&#x2F;bin目录下 开启redis后台启动，将redis解压目录下的redis.conf文件复制到其他位置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-26T10:40:56.000Z">
-<meta property="article:modified_time" content="2022-04-29T10:59:14.169Z">
+<meta property="article:modified_time" content="2022-05-08T12:05:18.369Z">
 <meta property="article:author" content="故事开头">
 <meta property="article:tag" content="Redis">
 <meta property="article:tag" content="微服务">
@@ -200,7 +200,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-29 18:59:14" itemprop="dateModified" datetime="2022-04-29T18:59:14+08:00">2022-04-29</time>
+                <time title="修改时间：2022-05-08 20:05:18" itemprop="dateModified" datetime="2022-05-08T20:05:18+08:00">2022-05-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -465,7 +465,126 @@
 </tbody>
 </table>
 </div>
-<h1 id="三、Redis配置文件"><a href="#三、Redis配置文件" class="headerlink" title="三、Redis配置文件"></a>三、Redis配置文件</h1><h1 id="四、Redis发布和订阅"><a href="#四、Redis发布和订阅" class="headerlink" title="四、Redis发布和订阅"></a>四、Redis发布和订阅</h1><h1 id="五、其他数据类型"><a href="#五、其他数据类型" class="headerlink" title="五、其他数据类型"></a>五、其他数据类型</h1>
+<h1 id="三、Redis配置文件"><a href="#三、Redis配置文件" class="headerlink" title="三、Redis配置文件"></a>三、Redis配置文件</h1><h1 id="四、Redis发布和订阅"><a href="#四、Redis发布和订阅" class="headerlink" title="四、Redis发布和订阅"></a>四、Redis发布和订阅</h1><h2 id="4-1-简介"><a href="#4-1-简介" class="headerlink" title="4.1 简介"></a>4.1 简介</h2><ul>
+<li>发布和订阅是一种信息通信模式：发送者（pub）发送消息，订阅者（sub）接收信息</li>
+<li>Redis客户端可以订阅任意数量的频道</li>
+</ul>
+<h2 id="4-2-示例"><a href="#4-2-示例" class="headerlink" title="4.2 示例"></a>4.2 示例</h2><ul>
+<li>打开两个redis客户端，分别为A、B，A为发送者，B为订阅者</li>
+<li>A执行命令<strong>public channel1 hello</strong>，表示向channel1频道发布信息hello<ul>
+<li>命令执行后的返回值表示<strong>订阅者的数量</strong></li>
+</ul>
+</li>
+<li>B执行命令<strong>SUBSCRIBE channel1</strong>，表示接收channel1的频道<ul>
+<li>返回的是频道的信息列表</li>
+</ul>
+</li>
+</ul>
+<h1 id="五、其他数据类型"><a href="#五、其他数据类型" class="headerlink" title="五、其他数据类型"></a>五、其他数据类型</h1><h2 id="5-1-Bitmaps"><a href="#5-1-Bitmaps" class="headerlink" title="5.1 Bitmaps"></a>5.1 Bitmaps</h2><h3 id="5-1-1-原理"><a href="#5-1-1-原理" class="headerlink" title="5.1.1 原理"></a>5.1.1 原理</h3><ul>
+<li><p>存储二进制的字符串，比如user=00001</p>
+<ul>
+<li>其中value为00001在Redis中依旧是以字符串的形式存储的</li>
+<li>偏移量offset从0开始算起，这里value中1的偏移量就是4</li>
+<li>想要得到以上的KV对，需要执行命令setbit user 4 1</li>
+</ul>
+</li>
+<li><p>Bitmaps可以用来保存用户活跃度，Set集合也可以做，但两者有区别</p>
+<ul>
+<li>当用户活跃量特别大时，使用Bitmaps可以极大的减少存储空间</li>
+<li>当用户活跃量比较小时，使用Set集合则比较合适</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-1-2-命令"><a href="#5-1-2-命令" class="headerlink" title="5.1.2 命令"></a>5.1.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setbit [key] [offset] [value]</td>
+<td>将key的offset位置的值设置为value</td>
+</tr>
+<tr>
+<td>getbit [key] [offset]</td>
+<td>获取key中offset位置的值</td>
+</tr>
+<tr>
+<td>bitcount [key] [start,end]</td>
+<td>不指定[start,end]时，统计key中value所有被设置为1的bit个数<br/>指定[start,end]时，这里的start和end表示的是字节下标，[1,2]表示统计<strong>第一个字节（8位）</strong>到第二个字节中1的个数，[0,-2]则表示统计从0到倒数第二个字节中1个数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="5-2-HyperLogLog"><a href="#5-2-HyperLogLog" class="headerlink" title="5.2 HyperLogLog"></a>5.2 HyperLogLog</h2><h3 id="5-2-1-原理"><a href="#5-2-1-原理" class="headerlink" title="5.2.1 原理"></a>5.2.1 原理</h3><ul>
+<li>计算<strong>基数（集合中不重复元素个数）</strong>的一种算法</li>
+<li>对比Set，所占内存更小，统计的范围更大，重复的元素不会被添加进去</li>
+</ul>
+<h3 id="5-2-2-命令"><a href="#5-2-2-命令" class="headerlink" title="5.2.2 命令"></a>5.2.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pfadd [key] [element…]</td>
+<td>添加指定元素到HyperLogLog中<br/>返回值：添加<strong>重复元素</strong>返回0，添加<strong>不重复元素</strong>返回1</td>
+</tr>
+<tr>
+<td>pfcount [key…]</td>
+<td>统计某个key的基数个数</td>
+</tr>
+<tr>
+<td>pfmerge [destkey] [sourcekey…]</td>
+<td>合并多个sourcekey后，将结果存放到destkey中</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="5-3-Geospatial"><a href="#5-3-Geospatial" class="headerlink" title="5.3 Geospatial"></a>5.3 Geospatial</h2><h3 id="5-3-1-原理"><a href="#5-3-1-原理" class="headerlink" title="5.3.1 原理"></a>5.3.1 原理</h3><ul>
+<li>存放地理信息的数据结构，即表示经纬度的二维坐标</li>
+</ul>
+<h3 id="5-3-2-命令"><a href="#5-3-2-命令" class="headerlink" title="5.3.2 命令"></a>5.3.2 命令</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geoadd [key] [[longitude] [latitude] [menber]…]</td>
+<td>添加地理位置信息，（经度，纬度，名称）<br/>示例：geoadd china 100 100 shanghai 120 120 beijin</td>
+</tr>
+<tr>
+<td>geopos [key] [member…]</td>
+<td>获取key中名称位member的经纬度坐标</td>
+</tr>
+<tr>
+<td>geodist [key] [member1] [member2] [m\</td>
+<td>km\</td>
+<td>ft\</td>
+<td>mi]</td>
+<td>获取key中member1和member2的直线距离，后面可以设置单位，m为默认单位</td>
+</tr>
+<tr>
+<td>georadius [key] [longitude] [latitude] radius m\</td>
+<td>km\</td>
+<td>ft\</td>
+<td>mi</td>
+<td>以给定的经纬度坐标为中心，找出key中包含在半径为radius的圆中的member名称列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+
     </div>
 
     
@@ -566,7 +685,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-text">一、安装与配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Redis%E8%AF%AD%E6%B3%95"><span class="nav-text">二、Redis语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">2.1 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">2.2 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%AD%97%E7%AC%A6%E4%B8%B2String"><span class="nav-text">2.3 字符串String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E5%88%97%E8%A1%A8List"><span class="nav-text">2.4 列表List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-%E5%8E%9F%E7%90%86"><span class="nav-text">2.4.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.4.2 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E9%9B%86%E5%90%88Set"><span class="nav-text">2.5 集合Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-%E5%8E%9F%E7%90%86"><span class="nav-text">2.5.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.5.2 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88Zset"><span class="nav-text">2.6 有序集合Zset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1-%E5%8E%9F%E7%90%86"><span class="nav-text">2.6.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.6.2 命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81Redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">三、Redis配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Redis%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85"><span class="nav-text">四、Redis发布和订阅</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">五、其他数据类型</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-text">一、安装与配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Redis%E8%AF%AD%E6%B3%95"><span class="nav-text">二、Redis语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">2.1 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">2.2 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%AD%97%E7%AC%A6%E4%B8%B2String"><span class="nav-text">2.3 字符串String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E5%88%97%E8%A1%A8List"><span class="nav-text">2.4 列表List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1-%E5%8E%9F%E7%90%86"><span class="nav-text">2.4.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.4.2 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E9%9B%86%E5%90%88Set"><span class="nav-text">2.5 集合Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-%E5%8E%9F%E7%90%86"><span class="nav-text">2.5.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.5.2 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88Zset"><span class="nav-text">2.6 有序集合Zset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1-%E5%8E%9F%E7%90%86"><span class="nav-text">2.6.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">2.6.2 命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81Redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">三、Redis配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Redis%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85"><span class="nav-text">四、Redis发布和订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E7%AE%80%E4%BB%8B"><span class="nav-text">4.1 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E7%A4%BA%E4%BE%8B"><span class="nav-text">4.2 示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">五、其他数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-Bitmaps"><span class="nav-text">5.1 Bitmaps</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-1-%E5%8E%9F%E7%90%86"><span class="nav-text">5.1.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">5.1.2 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-HyperLogLog"><span class="nav-text">5.2 HyperLogLog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-1-%E5%8E%9F%E7%90%86"><span class="nav-text">5.2.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">5.2.2 命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-Geospatial"><span class="nav-text">5.3 Geospatial</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-1-%E5%8E%9F%E7%90%86"><span class="nav-text">5.3.1 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-2-%E5%91%BD%E4%BB%A4"><span class="nav-text">5.3.2 命令</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
