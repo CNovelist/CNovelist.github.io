@@ -3623,7 +3623,99 @@
 </tbody>
 </table>
 </div>
-]]></content>
+<h1 id="六、Jedis"><a href="#六、Jedis" class="headerlink" title="六、Jedis"></a>六、Jedis</h1><h1 id="七、Springboot整合Redis"><a href="#七、Springboot整合Redis" class="headerlink" title="七、Springboot整合Redis"></a>七、Springboot整合Redis</h1><h2 id="7-1-配置环境"><a href="#7-1-配置环境" class="headerlink" title="7.1 配置环境"></a>7.1 配置环境</h2><h3 id="7-1-1-引入依赖"><a href="#7-1-1-引入依赖" class="headerlink" title="7.1.1 引入依赖"></a>7.1.1 引入依赖</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 提供池化操作 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.11.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-1-2-配置文件"><a href="#7-1-2-配置文件" class="headerlink" title="7.1.2 配置文件"></a>7.1.2 配置文件</h3><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Redis服务器地址</span></span><br><span class="line"><span class="meta">spring.redis.host</span>=<span class="string">192.168.47.33</span></span><br><span class="line"><span class="comment">#Redis服务器连接端口</span></span><br><span class="line"><span class="meta">spring.redis.port</span>=<span class="string">6379</span></span><br><span class="line"><span class="comment">#Redis数据库索引（默认位0）</span></span><br><span class="line"><span class="meta">spring.redis.database</span>=<span class="string">0</span></span><br><span class="line"><span class="comment">#连接超时时间（毫秒）</span></span><br><span class="line"><span class="meta">spring.redis.timeout</span>=<span class="string">1800000</span></span><br><span class="line"><span class="comment">#连接池最大连接数（使用负值表示没有限制）</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.max-active</span>=<span class="string">20</span></span><br><span class="line"><span class="comment">#最大阻塞等待时间（复数表示没有限制）</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.max-wait</span>=<span class="string">-1</span></span><br><span class="line"><span class="comment">#连接池中的最大空闲连接</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.max-idle</span>=<span class="string">5</span></span><br><span class="line"><span class="comment">#连接池中的最小空闲连接</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.min-idle</span>=<span class="string">0</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-1-3-Redis配置类"><a href="#7-1-3-Redis配置类" class="headerlink" title="7.1.3 Redis配置类"></a>7.1.3 Redis配置类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableCaching</span> <span class="comment">// 开启缓存支持</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisConfig</span> <span class="keyword">extends</span> <span class="title">CachingConfigurerSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> LettuceConnectionFactory lettuceConnectionFactory;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@description</span> 自定义的缓存key的生成策略 若想使用这个key</span></span><br><span class="line"><span class="comment">	 *              只需要讲注解上keyGenerator的值设置为keyGenerator即可&lt;/br&gt;</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 自定义策略生成的key</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> KeyGenerator <span class="title">keyGenerator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> KeyGenerator() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Object <span class="title">generate</span><span class="params">(Object target, Method method, Object... params)</span> </span>&#123;</span><br><span class="line">				StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">				sb.append(target.getClass().getName());</span><br><span class="line">				sb.append(method.getDeclaringClass().getName());</span><br><span class="line">				Arrays.stream(params).map(Object::toString).forEach(sb::append);</span><br><span class="line">				<span class="keyword">return</span> sb.toString();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * RedisTemplate配置</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="title">redisTemplate</span><span class="params">(LettuceConnectionFactory lettuceConnectionFactory)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 设置序列化</span></span><br><span class="line">		Jackson2JsonRedisSerializer&lt;Object&gt; jackson2JsonRedisSerializer = <span class="keyword">new</span> Jackson2JsonRedisSerializer&lt;Object&gt;(Object.class);</span><br><span class="line">		ObjectMapper om = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">		om.setVisibility(PropertyAccessor.ALL, Visibility.ANY);</span><br><span class="line">		om.enableDefaultTyping(DefaultTyping.NON_FINAL);</span><br><span class="line">		jackson2JsonRedisSerializer.setObjectMapper(om);</span><br><span class="line">		<span class="comment">// 配置redisTemplate</span></span><br><span class="line">		RedisTemplate&lt;String, Object&gt; redisTemplate = <span class="keyword">new</span> RedisTemplate&lt;String, Object&gt;();</span><br><span class="line">		redisTemplate.setConnectionFactory(lettuceConnectionFactory);</span><br><span class="line">		RedisSerializer&lt;?&gt; stringSerializer = <span class="keyword">new</span> StringRedisSerializer();</span><br><span class="line">		redisTemplate.setKeySerializer(stringSerializer);<span class="comment">// key序列化</span></span><br><span class="line">		redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);<span class="comment">// value序列化</span></span><br><span class="line">		redisTemplate.setHashKeySerializer(stringSerializer);<span class="comment">// Hash key序列化</span></span><br><span class="line">		redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);<span class="comment">// Hash value序列化</span></span><br><span class="line">		redisTemplate.afterPropertiesSet();</span><br><span class="line">		<span class="keyword">return</span> redisTemplate;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 缓存配置管理器</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> CacheManager <span class="title">cacheManager</span><span class="params">(LettuceConnectionFactory factory)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 配置序列化</span></span><br><span class="line">        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(<span class="number">1</span>));</span><br><span class="line">        RedisCacheConfiguration redisCacheConfiguration = config.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(<span class="keyword">new</span> StringRedisSerializer()))</span><br><span class="line">                												.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(<span class="keyword">new</span> GenericJackson2JsonRedisSerializer()));</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 以锁写入的方式创建RedisCacheWriter对象</span></span><br><span class="line">		<span class="comment">//RedisCacheWriter writer = RedisCacheWriter.lockingRedisCacheWriter(factory);</span></span><br><span class="line">		<span class="comment">// 创建默认缓存配置对象</span></span><br><span class="line">		<span class="comment">/* 默认配置，设置缓存有效期 1小时*/</span></span><br><span class="line">		<span class="comment">//RedisCacheConfiguration defaultCacheConfig = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(1));</span></span><br><span class="line">		<span class="comment">/* 配置test的超时时间为120s*/</span></span><br><span class="line">		RedisCacheManager cacheManager = RedisCacheManager.builder(RedisCacheWriter.lockingRedisCacheWriter(factory)).cacheDefaults(redisCacheConfiguration)</span><br><span class="line">				.withInitialCacheConfigurations(singletonMap(<span class="string">&quot;test&quot;</span>, RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(<span class="number">120</span>)).disableCachingNullValues()))</span><br><span class="line">				.transactionAware().build();</span><br><span class="line">		<span class="keyword">return</span> cacheManager;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-2-RedisTemplate"><a href="#7-2-RedisTemplate" class="headerlink" title="7.2 RedisTemplate"></a>7.2 RedisTemplate</h2><h1 id="八、事务"><a href="#八、事务" class="headerlink" title="八、事务"></a>八、事务</h1><h2 id="8-1-概念"><a href="#8-1-概念" class="headerlink" title="8.1 概念"></a>8.1 概念</h2><ul>
+<li>Redis事务作用是串联多个命令并顺序执行</li>
+<li>一个redis客户端可以通过multi命令进入事务状态，并且事务在执行时不会被其他redis客户端打断</li>
+</ul>
+<h2 id="8-2-命令"><a href="#8-2-命令" class="headerlink" title="8.2 命令"></a>8.2 命令</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multi</td>
+<td>开启事务命令，之后的命令就进入队列，而不会马上被执行</td>
+<td>在事务生存期间，所有的 Redis 关于数据结构的命令都会入队</td>
+</tr>
+<tr>
+<td>watch [key…]</td>
+<td>监听某些键，当被监听的键在事务执行前被修改，则事务会被回滚</td>
+<td>使用乐观锁</td>
+</tr>
+<tr>
+<td>unwatch [key…]</td>
+<td>取消监听某些键</td>
+<td>–</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>执行事务，如果被监听的键没有被修改，则采用执行命令，否则就回滚命令</td>
+<td>在执行事务队列存储的命令前， Redis 会检测被监听的键值对有没有发生变化，如果没有则执行命令 ，否则就回滚事务</td>
+</tr>
+<tr>
+<td>discard</td>
+<td>回滚事务</td>
+<td>回滚进入队列的事务命令，之后就不能再用 exec命令提交了</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="8-3-悲观锁-乐观锁"><a href="#8-3-悲观锁-乐观锁" class="headerlink" title="8.3 悲观锁/乐观锁"></a>8.3 悲观锁/乐观锁</h2><h3 id="8-3-1-区别"><a href="#8-3-1-区别" class="headerlink" title="8.3.1 区别"></a>8.3.1 区别</h3><ul>
+<li>乐观锁和悲观锁的出现都是解决共享数据的操作问题</li>
+<li>悲观锁：每次操作共享数据时，都会给数据上锁，防止其他事务对其进行操作<ul>
+<li>“悲观”意思是在每次操作数据前都悲观的认为别人也会操作这个数据，所以必须加上锁，保证数据为自己所用。但这样做的缺点是效率不高</li>
+</ul>
+</li>
+<li>乐观锁：不会像悲观锁一样每次操作前都加锁，而是让每个事务都能对共享数据进行操作，<strong>哪个事务操作的快，则更新当前版本</strong>，这样过去版本的事务操作就会因为版本不匹配而无法执行</li>
+</ul>
+<h3 id="8-3-2-示例"><a href="#8-3-2-示例" class="headerlink" title="8.3.2 示例"></a>8.3.2 示例</h3><ul>
+<li>watch </li>
+<li>unwatch</li>
+</ul>
+<h3 id="8-3-3-事务特性"><a href="#8-3-3-事务特性" class="headerlink" title="8.3.3 事务特性"></a>8.3.3 事务特性</h3><ul>
+<li>隔离性：客户端事务在执行时不能被其他客户端命令打断，没有隔离级别概念</li>
+<li>原子性：不保证原子性，因为一条命令执行失败，其他命令仍然会执行，不会执行回滚</li>
+</ul>
+<h1 id="九、秒杀案例"><a href="#九、秒杀案例" class="headerlink" title="九、秒杀案例"></a>九、秒杀案例</h1><h2 id="9-1-并发模拟"><a href="#9-1-并发模拟" class="headerlink" title="9.1 并发模拟"></a>9.1 并发模拟</h2><h3 id="9-1-1-http-tools"><a href="#9-1-1-http-tools" class="headerlink" title="9.1.1 http-tools"></a>9.1.1 http-tools</h3><ul>
+<li>安装httpd-tools：yum install httpd-tools</li>
+<li>httpd-tools中包含有ab命令</li>
+</ul>
+<h3 id="9-1-2-ab命令"><a href="#9-1-2-ab命令" class="headerlink" title="9.1.2 ab命令"></a>9.1.2 ab命令</h3><ul>
+<li><p>ab -n 1000 -c 100 -p ~/postfile -T ‘application/x-www-form-urlencoded’ 请求地址</p>
+<ul>
+<li>-n：表示请求次数</li>
+<li>-c：表示并发数</li>
+<li>-T content-type：POST/PUT 数据所使用的Content-type头信息</li>
+<li>-p postfile：包含要 POST 的数据的文件，记得还要设置 -T 参数</li>
+</ul>
+</li>
+<li><p>命令返回结果</p>
+<ul>
+<li>Concurrency Level: 并发量</li>
+<li>Time taken for tests: 整个测试的时间</li>
+<li>Complete requests: 完成的总请求数</li>
+<li>Failed requests: 失败的请求数</li>
+<li>Total transferred: 响应数据的总长度（包括http头信息和消息体数据）</li>
+<li>HTML transferred: 响应数据中消息体数据的总和</li>
+<li>Requests per second:吞吐率（计算方式为：Complete requests / Time taken for tests，也就是 完成的总请求数 / 整个测试的时间）</li>
+<li>Time per request: 用户平均请求等待时间</li>
+<li>Time per request: 服务器平均请求等待时间</li>
+<li>Transfer rate: 单位时间内从服务器获取的数据长度（计算方式为：Total transferred / Time taken for tests， 也就是 响应数据的总长度（包括http头信息和消息体数据）/ 整个测试的时间）</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-1-案例源码"><a href="#9-1-案例源码" class="headerlink" title="9.1 案例源码"></a>9.1 案例源码</h2><h1 id="十、持久化操作"><a href="#十、持久化操作" class="headerlink" title="十、持久化操作"></a>十、持久化操作</h1><h2 id="10-1-RDB（默认方式）"><a href="#10-1-RDB（默认方式）" class="headerlink" title="10.1 RDB（默认方式）"></a>10.1 RDB（默认方式）</h2><ul>
+<li>读时共享，写时复制</li>
+</ul>
+<h2 id="10-2-AOF"><a href="#10-2-AOF" class="headerlink" title="10.2 AOF"></a>10.2 AOF</h2><h1 id="十一、主从复制"><a href="#十一、主从复制" class="headerlink" title="十一、主从复制"></a>十一、主从复制</h1><h1 id="十二、集群"><a href="#十二、集群" class="headerlink" title="十二、集群"></a>十二、集群</h1><h1 id="十三、换成"><a href="#十三、换成" class="headerlink" title="十三、换成"></a>十三、换成</h1><h1 id="十四、分布式锁"><a href="#十四、分布式锁" class="headerlink" title="十四、分布式锁"></a>十四、分布式锁</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>数据库</category>
@@ -5942,6 +6034,33 @@
         <tag>OPC UA</tag>
         <tag>milo</tag>
         <tag>KEPServer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java学习路线</title>
+    <url>/2022/05/14/Java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
+    <content><![CDATA[<img src="/2022/05/14/Java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/Java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE.jpg" class="" title="img">]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>成神之路</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>知识图谱学习笔记7-OpcUa客户端开发</title>
+    <url>/2022/05/12/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B07-OpcUa%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>知识图谱</category>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Jena</tag>
+        <tag>OpcUa Client</tag>
+        <tag>Milo</tag>
       </tags>
   </entry>
 </search>
