@@ -485,7 +485,23 @@
 <p>如果想减少时间复杂度，那么反转数字就应该计算到原数字的一半的位置即可。</p>
 <h4 id="（2）实现-3"><a href="#（2）实现-3" class="headerlink" title="（2）实现"></a>（2）实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> a = x;</span><br><span class="line">        <span class="keyword">int</span> inverse=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(a!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> digit = a%<span class="number">10</span>;</span><br><span class="line">            a=a/<span class="number">10</span>;</span><br><span class="line">            inverse = inverse * <span class="number">10</span> + digit;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> inverse == x ? <span class="keyword">true</span>:<span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="9-4-2-方法二：反转一半"><a href="#9-4-2-方法二：反转一半" class="headerlink" title="9.4.2 方法二：反转一半"></a>9.4.2 方法二：反转一半</h3><h4 id="（1）思路-8"><a href="#（1）思路-8" class="headerlink" title="（1）思路"></a>（1）思路</h4><h4 id="（2）实现-4"><a href="#（2）实现-4" class="headerlink" title="（2）实现"></a>（2）实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 特殊情况：</span></span><br><span class="line">        <span class="comment">// 如上所述，当 x &lt; 0 时，x 不是回文数。</span></span><br><span class="line">        <span class="comment">// 同样地，如果数字的最后一位是 0，为了使该数字为回文，</span></span><br><span class="line">        <span class="comment">// 则其第一位数字也应该是 0</span></span><br><span class="line">        <span class="comment">// 只有 0 满足这一属性</span></span><br><span class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span> || (x % <span class="number">10</span> == <span class="number">0</span> &amp;&amp; x != <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> revertedNumber = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x &gt; revertedNumber) &#123;</span><br><span class="line">            revertedNumber = revertedNumber * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当数字长度为奇数时，我们可以通过 revertedNumber/10 去除处于中位的数字。</span></span><br><span class="line">        <span class="comment">// 例如，当输入为 12321 时，在 while 循环的末尾我们可以得到 x = 12，revertedNumber = 123，</span></span><br><span class="line">        <span class="comment">// 由于处于中位的数字不影响回文（它总是与自己相等），所以我们可以简单地将其去除。</span></span><br><span class="line">        <span class="keyword">return</span> x == revertedNumber || x == revertedNumber / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
+<h1 id="十、正则表达式匹配"><a href="#十、正则表达式匹配" class="headerlink" title="十、正则表达式匹配"></a>十、正则表达式匹配</h1><h2 id="10-1-题目"><a href="#10-1-题目" class="headerlink" title="10.1 题目"></a>10.1 题目</h2><p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。</p>
+<ul>
+<li>‘.’ 匹配任意单个字符</li>
+<li>‘*’ 匹配零个或多个前面的那一个元素</li>
+</ul>
+<p>所谓匹配，是要涵盖<strong>整个</strong>字符串s的，而不是部分字符串。</p>
+<h2 id="10-2-示例"><a href="#10-2-示例" class="headerlink" title="10.2 示例"></a>10.2 示例</h2><h3 id="10-2-1-示例1"><a href="#10-2-1-示例1" class="headerlink" title="10.2.1 示例1"></a>10.2.1 示例1</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;aa&quot;</span>, <span class="attr">p</span> = <span class="string">&quot;a&quot;</span></span><br><span class="line">输出：<span class="literal">false</span></span><br><span class="line">解释：<span class="string">&quot;a&quot;</span> 无法匹配 <span class="string">&quot;aa&quot;</span> 整个字符串。</span><br></pre></td></tr></table></figure>
+<h3 id="10-2-2-示例2"><a href="#10-2-2-示例2" class="headerlink" title="10.2.2 示例2"></a>10.2.2 示例2</h3><figure class="highlight smalltalk"><table><tr><td class="code"><pre><span class="line">输入：s = <span class="comment">&quot;aa&quot;</span>, p = <span class="comment">&quot;a*&quot;</span></span><br><span class="line">输出：<span class="keyword">true</span></span><br><span class="line">解释：因为 <span class="string">&#x27;*&#x27;</span> 代表可以匹配零个或多个前面的那一个元素, 在这里前面的元素就是 <span class="string">&#x27;a&#x27;</span>。因此，字符串 <span class="comment">&quot;aa&quot;</span> 可被视为 <span class="string">&#x27;a&#x27;</span> 重复了一次。</span><br></pre></td></tr></table></figure>
+<h3 id="10-2-3-示例3"><a href="#10-2-3-示例3" class="headerlink" title="10.2.3 示例3"></a>10.2.3 示例3</h3><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">输入：s = <span class="string">&quot;ab&quot;</span>, p = <span class="string">&quot;.*&quot;</span></span><br><span class="line">输出：<span class="literal">true</span></span><br><span class="line">解释：<span class="string">&quot;.*&quot;</span> 表示可匹配零个或多个（<span class="string">&#x27;*&#x27;</span>）任意字符（<span class="string">&#x27;.&#x27;</span>）。</span><br></pre></td></tr></table></figure>
+<h2 id="10-3-提示"><a href="#10-3-提示" class="headerlink" title="10.3 提示"></a>10.3 提示</h2><ul>
+<li>1 &lt;= s.length &lt;= 20</li>
+<li>1 &lt;= p.length &lt;= 30</li>
+<li>s 只包含从 a-z 的小写字母。</li>
+<li>p 只包含从 a-z 的小写字母，以及字符 . 和 *。</li>
+<li>保证每次出现字符 * 时，前面都匹配到有效的字符</li>
+</ul>
+<h2 id="10-4-题解"><a href="#10-4-题解" class="headerlink" title="10.4 题解"></a>10.4 题解</h2><h3 id="10-4-1-方法一："><a href="#10-4-1-方法一：" class="headerlink" title="10.4.1 方法一："></a>10.4.1 方法一：</h3>]]></content>
       <categories>
         <category>计算机基础</category>
         <category>算法</category>
@@ -6294,10 +6310,20 @@
     <url>/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-1-JVM结构"><a href="#1-1-JVM结构" class="headerlink" title="1.1 JVM结构"></a>1.1 JVM结构</h2><ul>
 <li>方法区/堆是多线程共享的</li>
-<li>虚拟机栈/本地方法栈/程序计数器是每个线程独有一份的</li>
+<li>虚拟机栈/本地方法栈/程序计数器是每个线程独有一份的，即线程私有</li>
 </ul>
 <img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/jvm.png" class="" title="jvm">
-<h2 id="1-2-JVM生命周期"><a href="#1-2-JVM生命周期" class="headerlink" title="1.2 JVM生命周期"></a>1.2 JVM生命周期</h2>]]></content>
+<h2 id="1-2-虚拟机历史"><a href="#1-2-虚拟机历史" class="headerlink" title="1.2 虚拟机历史"></a>1.2 虚拟机历史</h2><h2 id="1-3-结构分析"><a href="#1-3-结构分析" class="headerlink" title="1.3 结构分析"></a>1.3 结构分析</h2><h3 id="1-3-1-类加载器"><a href="#1-3-1-类加载器" class="headerlink" title="1.3.1 类加载器"></a>1.3.1 类加载器</h3><p>类的生命周期</p>
+<p>加载、验证、准备、解析、初始化、使用、卸载</p>
+<h3 id="1-3-2-运行时数据区"><a href="#1-3-2-运行时数据区" class="headerlink" title="1.3.2 运行时数据区"></a>1.3.2 运行时数据区</h3><h4 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h4><p>一个程序的运行都要维护一个堆栈，这里的堆用于存放数据，而栈用于处理数据是如何执行的，JVM也包含这样的设计思想，这里所要介绍的虚拟机栈就是用来存放方法执行的线程内存模型。</p>
+<p>它有以下几个特点：</p>
+<ul>
+<li>每个线程创建时，都会创建一个虚拟机栈</li>
+<li>当线程中的方法被调用时，都会将其作为一个<strong>栈帧</strong>压入到虚拟机栈中</li>
+<li>虚拟机栈是<strong>线程私有</strong>的</li>
+</ul>
+<img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/vmstack.png" class="" title="vmstack">
+<h3 id="1-3-3-垃圾回收器"><a href="#1-3-3-垃圾回收器" class="headerlink" title="1.3.3 垃圾回收器"></a>1.3.3 垃圾回收器</h3><h3 id="1-3-4-执行引擎"><a href="#1-3-4-执行引擎" class="headerlink" title="1.3.4 执行引擎"></a>1.3.4 执行引擎</h3>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
