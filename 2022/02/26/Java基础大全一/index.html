@@ -22,15 +22,16 @@
 
   <meta name="description" content="一、 Java变量 局部变量：存储在方法的栈内存中 形参 方法内的局部变量 代码块的局部变量 无法用static修饰   类变量（静态变量）：用static修饰的变量，调用时使用类名.变量名（static可以修饰方法名） 成员变量（非静态变量）  1234public class RightDef &amp;#123;    int num1 &#x3D; num2 + 5;  &#x2F;&#x2F; 静态变量无需考虑声明的位置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础大全一">
+<meta property="og:title" content="Java基础大全">
 <meta property="og:url" content="https://cnovelist.github.io/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/index.html">
 <meta property="og:site_name" content="江小月不上頭">
 <meta property="og:description" content="一、 Java变量 局部变量：存储在方法的栈内存中 形参 方法内的局部变量 代码块的局部变量 无法用static修饰   类变量（静态变量）：用static修饰的变量，调用时使用类名.变量名（static可以修饰方法名） 成员变量（非静态变量）  1234public class RightDef &amp;#123;    int num1 &#x3D; num2 + 5;  &#x2F;&#x2F; 静态变量无需考虑声明的位置">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cnovelist.github.io/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/java%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B.png">
 <meta property="og:image" content="https://cnovelist.github.io/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/Java%E5%BC%82%E5%B8%B8.png">
+<meta property="og:image" content="https://cnovelist.github.io/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/Exception.png">
 <meta property="article:published_time" content="2022-02-26T15:16:03.000Z">
-<meta property="article:modified_time" content="2022-03-02T02:50:34.542Z">
+<meta property="article:modified_time" content="2022-05-19T07:45:58.906Z">
 <meta property="article:author" content="故事开头">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="后端">
@@ -50,7 +51,7 @@
   };
 </script>
 
-  <title>Java基础大全一 | 江小月不上頭</title>
+  <title>Java基础大全 | 江小月不上頭</title>
   
 
 
@@ -186,7 +187,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Java基础大全一
+          Java基础大全
         </h1>
 
         <div class="post-meta">
@@ -203,7 +204,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-02 10:50:34" itemprop="dateModified" datetime="2022-03-02T10:50:34+08:00">2022-03-02</time>
+                <time title="修改时间：2022-05-19 15:45:58" itemprop="dateModified" datetime="2022-05-19T15:45:58+08:00">2022-05-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -435,6 +436,7 @@
 <blockquote>
 <p>所有的异常类是从 java.lang.Exception 类继承的子类</p>
 </blockquote>
+<img src="/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/Exception.png" class="" title="exc">
 <h2 id="11-2-异常捕获"><a href="#11-2-异常捕获" class="headerlink" title="11.2 异常捕获"></a>11.2 异常捕获</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单捕获</span></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(ExceptionName e1)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//Catch 块</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多异常捕获</span></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">   <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">1</span> 异常的变量名<span class="number">1</span>)&#123;</span><br><span class="line">  <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">2</span> 异常的变量名<span class="number">2</span>)&#123;</span><br><span class="line">  <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">3</span> 异常的变量名<span class="number">3</span>)&#123;</span><br><span class="line">  <span class="comment">// 程序代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="11-3-异常抛出"><a href="#11-3-异常抛出" class="headerlink" title="11.3 异常抛出"></a>11.3 异常抛出</h2><h3 id="11-3-1-throws关键字"><a href="#11-3-1-throws关键字" class="headerlink" title="11.3.1 throws关键字"></a>11.3.1 throws关键字</h3><ul>
 <li>用来声明一个方法可能产生的所有异常，不做任何处理而是将异常往上传，需要由方法的调用者进行异常处理</li>
@@ -475,7 +477,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://cnovelist.github.io/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/" title="Java基础大全一">https://cnovelist.github.io/2022/02/26/Java基础大全一/</a>
+    <a href="https://cnovelist.github.io/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/" title="Java基础大全">https://cnovelist.github.io/2022/02/26/Java基础大全一/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！

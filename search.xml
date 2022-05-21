@@ -413,7 +413,79 @@
 <li><code>0 &lt;= s.length &lt;= 200</code></li>
 <li><code>s</code> 由英文字母（大写和小写）、数字（<code>0-9</code>）、<code>&#39; &#39;</code>、<code>&#39;+&#39;</code>、<code>&#39;-&#39;</code> 和 <code>&#39;.&#39;</code> 组成</li>
 </ul>
-<h2 id="8-4-题解"><a href="#8-4-题解" class="headerlink" title="8.4 题解"></a>8.4 题解</h2><h3 id="8-4-1-方法一："><a href="#8-4-1-方法一：" class="headerlink" title="8.4.1 方法一："></a>8.4.1 方法一：</h3>]]></content>
+<h2 id="8-4-题解"><a href="#8-4-题解" class="headerlink" title="8.4 题解"></a>8.4 题解</h2><h3 id="8-4-1-方法一：状态机"><a href="#8-4-1-方法一：状态机" class="headerlink" title="8.4.1 方法一：状态机"></a>8.4.1 方法一：状态机</h3><h4 id="（1）思路-6"><a href="#（1）思路-6" class="headerlink" title="（1）思路"></a>（1）思路</h4><p>这题使用的方法是有限状态机的思想，遍历每个字符，并根据字符调整状态机的状态，以下是状态调整的规则：</p>
+<img src="/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/12.png" class="" width="12">
+<p>表格形式如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center">‘’</th>
+<th style="text-align:center">+/-</th>
+<th style="text-align:center">number</th>
+<th style="text-align:center">other</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">start</td>
+<td style="text-align:center">start</td>
+<td style="text-align:center">signed</td>
+<td style="text-align:center">in_number</td>
+<td style="text-align:center">end</td>
+</tr>
+<tr>
+<td style="text-align:left">signed</td>
+<td style="text-align:center">end</td>
+<td style="text-align:center">end</td>
+<td style="text-align:center">in_number</td>
+<td style="text-align:center">end</td>
+</tr>
+<tr>
+<td style="text-align:left">in_number</td>
+<td style="text-align:center">end</td>
+<td style="text-align:center">end</td>
+<td style="text-align:center">in_number</td>
+<td style="text-align:center">end</td>
+</tr>
+<tr>
+<td style="text-align:left">end</td>
+<td style="text-align:center">end</td>
+<td style="text-align:center">end</td>
+<td style="text-align:center">end</td>
+<td style="text-align:center">end</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>总结起来就是，设定四个状态start，signed，in_number，end，每个状态的含义如下：</p>
+<p><strong>start：开始状态</strong></p>
+<p><strong>signed：符号判定状态</strong></p>
+<p><strong>in_number：数字整合状态</strong></p>
+<p><strong>end：结束操作状态</strong></p>
+<p>对于此题需要注意以下一些特殊情况：</p>
+<p>”      123   abc123“：返回值为123，也就是说如果判定后面有了其他字符，即便后面还有数字也不会添加到返回值中</p>
+<p>”      abc   123“：这里空格后的第一个字符是非数字的，那么这样就不必继续判断下去了</p>
+<p>理解了上述两种特殊情况，对有限状态机的转换就能更清晰一点了</p>
+<h4 id="（2）实现-2"><a href="#（2）实现-2" class="headerlink" title="（2）实现"></a>（2）实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        Automaton automaton = <span class="keyword">new</span> Automaton();</span><br><span class="line">        <span class="keyword">int</span> length = str.length();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">            automaton.get(str.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>) (automaton.sign * automaton.ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Automaton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> String state = <span class="string">&quot;start&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String, String[]&gt; table = <span class="keyword">new</span> HashMap&lt;String, String[]&gt;() &#123;&#123;</span><br><span class="line">        put(<span class="string">&quot;start&quot;</span>, <span class="keyword">new</span> String[]&#123;<span class="string">&quot;start&quot;</span>, <span class="string">&quot;signed&quot;</span>, <span class="string">&quot;in_number&quot;</span>, <span class="string">&quot;end&quot;</span>&#125;);</span><br><span class="line">        put(<span class="string">&quot;signed&quot;</span>, <span class="keyword">new</span> String[]&#123;<span class="string">&quot;end&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;in_number&quot;</span>, <span class="string">&quot;end&quot;</span>&#125;);</span><br><span class="line">        put(<span class="string">&quot;in_number&quot;</span>, <span class="keyword">new</span> String[]&#123;<span class="string">&quot;end&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;in_number&quot;</span>, <span class="string">&quot;end&quot;</span>&#125;);</span><br><span class="line">        put(<span class="string">&quot;end&quot;</span>, <span class="keyword">new</span> String[]&#123;<span class="string">&quot;end&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;end&quot;</span>, <span class="string">&quot;end&quot;</span>&#125;);</span><br><span class="line">    &#125;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        state = table.get(state)[get_col(c)];</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;in_number&quot;</span>.equals(state)) &#123;</span><br><span class="line">            ans = ans * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            ans = sign == <span class="number">1</span> ? Math.min(ans, (<span class="keyword">long</span>) Integer.MAX_VALUE) : Math.min(ans, -(<span class="keyword">long</span>) Integer.MIN_VALUE);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;signed&quot;</span>.equals(state)) &#123;</span><br><span class="line">            sign = c == <span class="string">&#x27;+&#x27;</span> ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">get_col</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">&#x27;+&#x27;</span> || c == <span class="string">&#x27;-&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (Character.isDigit(c)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="九、回文数"><a href="#九、回文数" class="headerlink" title="九、回文数"></a>九、回文数</h1><h2 id="9-1-题目"><a href="#9-1-题目" class="headerlink" title="9.1 题目"></a>9.1 题目</h2><p>给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。</p>
+<p>回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<ul>
+<li>例如，121 是回文，而 123 不是。</li>
+</ul>
+<h2 id="9-2-示例"><a href="#9-2-示例" class="headerlink" title="9.2 示例"></a>9.2 示例</h2><h3 id="9-2-1-示例1"><a href="#9-2-1-示例1" class="headerlink" title="9.2.1 示例1"></a>9.2.1 示例1</h3><figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">输入：<span class="keyword">x</span> <span class="operator">=</span> <span class="number">121</span></span><br><span class="line">输出：<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-2-2-示例2"><a href="#9-2-2-示例2" class="headerlink" title="9.2.2 示例2"></a>9.2.2 示例2</h3><figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">输入：<span class="keyword">x</span> <span class="operator">=</span> <span class="number">-121</span></span><br><span class="line">输出：<span class="keyword">false</span></span><br><span class="line">解释：从左向右读<span class="punctuation">,</span> 为 <span class="number">-121</span> 。 从右向左读<span class="punctuation">,</span> 为 <span class="number">121</span>- 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
+<h3 id="9-2-3-示例3"><a href="#9-2-3-示例3" class="headerlink" title="9.2.3 示例3"></a>9.2.3 示例3</h3><figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">输入：<span class="keyword">x</span> <span class="operator">=</span> <span class="number">10</span></span><br><span class="line">输出：<span class="keyword">false</span></span><br><span class="line">解释：从右向左读<span class="punctuation">,</span> 为 <span class="number">01</span> 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
+<h2 id="9-3-提示"><a href="#9-3-提示" class="headerlink" title="9.3 提示"></a>9.3 提示</h2><ul>
+<li>$-2^{31} &lt;= x &lt;= 2^{31} - 1$</li>
+</ul>
+<h2 id="9-4-题解"><a href="#9-4-题解" class="headerlink" title="9.4 题解"></a>9.4 题解</h2><h3 id="9-4-1-方法一：直接反转"><a href="#9-4-1-方法一：直接反转" class="headerlink" title="9.4.1 方法一：直接反转"></a>9.4.1 方法一：直接反转</h3><h4 id="（1）思路-7"><a href="#（1）思路-7" class="headerlink" title="（1）思路"></a>（1）思路</h4><p>这种思路的解法非常容易理解，就是将数字整个反转过来，再比较反转后的数字与原来的数字是否相同</p>
+<p>关于数字反转的操作也不复杂，就是不停的取输入数字的个位数，并将其作为反转数字的个位数即可，反转数字的计算类似于尾插法。</p>
+<p>如果想减少时间复杂度，那么反转数字就应该计算到原数字的一半的位置即可。</p>
+<h4 id="（2）实现-3"><a href="#（2）实现-3" class="headerlink" title="（2）实现"></a>（2）实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> a = x;</span><br><span class="line">        <span class="keyword">int</span> inverse=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(a!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> digit = a%<span class="number">10</span>;</span><br><span class="line">            a=a/<span class="number">10</span>;</span><br><span class="line">            inverse = inverse * <span class="number">10</span> + digit;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> inverse == x ? <span class="keyword">true</span>:<span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="9-4-2-方法二：反转一半"><a href="#9-4-2-方法二：反转一半" class="headerlink" title="9.4.2 方法二：反转一半"></a>9.4.2 方法二：反转一半</h3><h4 id="（1）思路-8"><a href="#（1）思路-8" class="headerlink" title="（1）思路"></a>（1）思路</h4><h4 id="（2）实现-4"><a href="#（2）实现-4" class="headerlink" title="（2）实现"></a>（2）实现</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 特殊情况：</span></span><br><span class="line">        <span class="comment">// 如上所述，当 x &lt; 0 时，x 不是回文数。</span></span><br><span class="line">        <span class="comment">// 同样地，如果数字的最后一位是 0，为了使该数字为回文，</span></span><br><span class="line">        <span class="comment">// 则其第一位数字也应该是 0</span></span><br><span class="line">        <span class="comment">// 只有 0 满足这一属性</span></span><br><span class="line">        <span class="keyword">if</span> (x &lt; <span class="number">0</span> || (x % <span class="number">10</span> == <span class="number">0</span> &amp;&amp; x != <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> revertedNumber = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x &gt; revertedNumber) &#123;</span><br><span class="line">            revertedNumber = revertedNumber * <span class="number">10</span> + x % <span class="number">10</span>;</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当数字长度为奇数时，我们可以通过 revertedNumber/10 去除处于中位的数字。</span></span><br><span class="line">        <span class="comment">// 例如，当输入为 12321 时，在 while 循环的末尾我们可以得到 x = 12，revertedNumber = 123，</span></span><br><span class="line">        <span class="comment">// 由于处于中位的数字不影响回文（它总是与自己相等），所以我们可以简单地将其去除。</span></span><br><span class="line">        <span class="keyword">return</span> x == revertedNumber || x == revertedNumber / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>计算机基础</category>
         <category>算法</category>
@@ -2648,7 +2720,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Java基础大全一</title>
+    <title>Java基础大全</title>
     <url>/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/</url>
     <content><![CDATA[<h1 id="一、-Java变量"><a href="#一、-Java变量" class="headerlink" title="一、 Java变量"></a>一、 Java变量</h1><ul>
 <li>局部变量：存储在方法的栈内存中<ul>
@@ -2855,6 +2927,7 @@
 <blockquote>
 <p>所有的异常类是从 java.lang.Exception 类继承的子类</p>
 </blockquote>
+<img src="/2022/02/26/Java%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/Exception.png" class="" title="exc">
 <h2 id="11-2-异常捕获"><a href="#11-2-异常捕获" class="headerlink" title="11.2 异常捕获"></a>11.2 异常捕获</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 单捕获</span></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(ExceptionName e1)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//Catch 块</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多异常捕获</span></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">   <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">1</span> 异常的变量名<span class="number">1</span>)&#123;</span><br><span class="line">  <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">2</span> 异常的变量名<span class="number">2</span>)&#123;</span><br><span class="line">  <span class="comment">// 程序代码</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">3</span> 异常的变量名<span class="number">3</span>)&#123;</span><br><span class="line">  <span class="comment">// 程序代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="11-3-异常抛出"><a href="#11-3-异常抛出" class="headerlink" title="11.3 异常抛出"></a>11.3 异常抛出</h2><h3 id="11-3-1-throws关键字"><a href="#11-3-1-throws关键字" class="headerlink" title="11.3.1 throws关键字"></a>11.3.1 throws关键字</h3><ul>
 <li>用来声明一个方法可能产生的所有异常，不做任何处理而是将异常往上传，需要由方法的调用者进行异常处理</li>
