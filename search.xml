@@ -4039,7 +4039,7 @@
 <li>建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们</li>
 <li>代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性</li>
 <li>适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能在一起工作的那些类能一起工作</li>
-<li>桥街（Bridge）模式：将抽象与实现分离，使它们可以独立变化，它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
+<li>桥接（Bridge）模式：将抽象与实现分离，使它们可以独立变化，它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
 <li>装饰（Decorator）模式：：动态的给对象增加一些职责，即增加其额外的功能</li>
 <li>外观（ Facade ）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问</li>
 <li>享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用</li>
@@ -6364,7 +6364,7 @@
 </ul>
 <h3 id="1-3-4-执行引擎"><a href="#1-3-4-执行引擎" class="headerlink" title="1.3.4 执行引擎"></a>1.3.4 执行引擎</h3><p>执行引擎包含三个部分：解释器、JIT即时编译器、垃圾回收器</p>
 <p>JVM执行引擎的主要任务就是将字节码指令解释为对应平台上的本地机器指令 </p>
-]]></content>
+<h1 id="二、类文件"><a href="#二、类文件" class="headerlink" title="二、类文件"></a>二、类文件</h1><h2 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h2>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -6372,6 +6372,94 @@
       <tags>
         <tag>面试</tag>
         <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java设计模式</title>
+    <url>/2022/05/28/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="一、单例模式"><a href="#一、单例模式" class="headerlink" title="一、单例模式"></a>一、单例模式</h1><h2 id="1-1-饿汉式"><a href="#1-1-饿汉式" class="headerlink" title="1.1 饿汉式"></a>1.1 饿汉式</h2><h3 id="1-1-1-静态变量"><a href="#1-1-1-静态变量" class="headerlink" title="1.1.1 静态变量"></a>1.1.1 静态变量</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingleton instance=<span class="keyword">new</span> HungrySingleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-2-静态代码块"><a href="#1-1-2-静态代码块" class="headerlink" title="1.1.2 静态代码块"></a>1.1.2 静态代码块</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingleton instance;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        instance=<span class="keyword">new</span> HungrySingleton();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-懒汉式"><a href="#1-2-懒汉式" class="headerlink" title="1.2 懒汉式"></a>1.2 懒汉式</h2><h3 id="1-2-1-线程不安全"><a href="#1-2-1-线程不安全" class="headerlink" title="1.2.1 线程不安全"></a>1.2.1 线程不安全</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> LazySingleton instance=<span class="keyword">null</span>;  <span class="comment">//保证instance在所有线程中同步</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;   <span class="comment">// private避免类在外部被实例化</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;  <span class="comment">//getInstance方法前加同步</span></span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)</span><br><span class="line">            instance=<span class="keyword">new</span> LazySingleton();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-1-双重校验"><a href="#1-2-1-双重校验" class="headerlink" title="1.2.1 双重校验"></a>1.2.1 双重校验</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> LazySingleton instance=<span class="keyword">null</span>;  <span class="comment">//保证instance在所有线程中同步</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;   <span class="comment">// private避免类在外部被实例化</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(LazySingleton.class)&#123;</span><br><span class="line">                <span class="keyword">if</span>(instance==<span class="keyword">null</span>)</span><br><span class="line">                    instance=<span class="keyword">new</span> LazySingleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UML类图</title>
+    <url>/2022/05/28/UML%E7%B1%BB%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="一、类的表示"><a href="#一、类的表示" class="headerlink" title="一、类的表示"></a>一、类的表示</h1><ol>
+<li>类名(上)、属性(中)、方法(下)<ul>
+<li>接口(上)需要在接口名上标注<code>&quot;&lt;&lt;interface&gt;&gt;&quot;</code></li>
+</ul>
+</li>
+<li>属性的表示语法：<code>[可见性]属性名[:类型][=初始值]</code></li>
+<li>类方法的表示语法：<code>[可见性]操作名[(参数表)][:返回类型]</code><ul>
+<li>参数表表示：”名称:类型”，多个参数用逗号隔开，可以有默认值</li>
+<li>可见性：”-“表示private；”+”表示public；”#”表示protected</li>
+</ul>
+</li>
+</ol>
+<h1 id="二、类间关系"><a href="#二、类间关系" class="headerlink" title="二、类间关系"></a>二、类间关系</h1><h2 id="2-1-泛化关系"><a href="#2-1-泛化关系" class="headerlink" title="2.1 泛化关系"></a>2.1 泛化关系</h2><ul>
+<li>表示“一般-具体”关系</li>
+<li>高层次的类被称为基类或者超类，具有一般的公共信息</li>
+<li>低层次的类被称为派生类或子类，公共信息继承自基类，具体信息可以自定义</li>
+<li><p>如：</p>
+<ul>
+<li>交通工具为基类，定义基本功能</li>
+<li>汽车等具体交通工具为派生类，自定义其特性</li>
+</ul>
+</li>
+<li><p>泛化关系的表示：带三角形的实线箭头，箭头指向父类</p>
+</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/jc.png" class="" title="jc">
+<h2 id="2-2-关联关系"><a href="#2-2-关联关系" class="headerlink" title="2.2 关联关系"></a>2.2 关联关系</h2><h3 id="2-2-1-组合关系"><a href="#2-2-1-组合关系" class="headerlink" title="2.2.1 组合关系"></a>2.2.1 组合关系</h3><ul>
+<li>表示“整体-部分”关系</li>
+<li>部分==不能==离开整体而单独存在</li>
+<li>如：教材 包含 封面、前言、目录等，他们之间是整体与部分的关系</li>
+<li>组合关系的表示：实心菱形的实线表示，菱形指向整体</li>
+</ul>
+<h3 id="2-2-2-聚合关系"><a href="#2-2-2-聚合关系" class="headerlink" title="2.2.2 聚合关系"></a>2.2.2 聚合关系</h3><ul>
+<li>表示“整体-部分”关系</li>
+<li>部分==可以==离开整体而存在</li>
+<li>如：车 包含 轮胎、引擎等<ul>
+<li>车胎、引擎等可以不依赖车子而单独存在</li>
+</ul>
+</li>
+<li>聚合关系的表示：空心菱形的实线表示，菱形指向整体</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/zhjh.png" class="" title="ZHJH">
+<h3 id="2-2-3-一般关联关系"><a href="#2-2-3-一般关联关系" class="headerlink" title="2.2.3 一般关联关系"></a>2.2.3 一般关联关系</h3><ul>
+<li>表示两个类的对象之间可以相互通讯，或者一个对象能够感知另一方</li>
+<li>如：朋友关系</li>
+<li>一般关联关系的表示：单向或双向，双向关联的箭头可加或不加，线段上的数字表示关联的数量和范围</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/yb.png" class="" title="yb">
+<h2 id="2-3-依赖关系"><a href="#2-3-依赖关系" class="headerlink" title="2.3 依赖关系"></a>2.3 依赖关系</h2><ul>
+<li>表示元素A的变化会影响到元素B，或一个类的实现需要另一个类的协助</li>
+<li>如：打电话需要手机</li>
+<li>代码上表现为一个类的使用需要另一个类的对象作为参数</li>
+<li>依赖关系的表示：带箭头的虚线，箭头指向被依赖方</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/yl.png" class="" title="yl">
+<h2 id="2-4-实现关系"><a href="#2-4-实现关系" class="headerlink" title="2.4 实现关系"></a>2.4 实现关系</h2><ul>
+<li>表示类实现接口的功能</li>
+<li>实现关系的表示：带空心箭头的虚线，箭头指向接口</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/shixian.png" class="" title="shixian">]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>UML</tag>
       </tags>
   </entry>
 </search>
