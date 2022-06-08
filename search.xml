@@ -216,7 +216,11 @@
   <entry>
     <title>Java算法大全一</title>
     <url>/2022/03/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%80/</url>
-    <content><![CDATA[<h1 id="一、两数之和"><a href="#一、两数之和" class="headerlink" title="一、两数之和"></a>一、两数之和</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1 题目"></a>1.1 题目</h2><ul>
+    <content><![CDATA[<blockquote>
+<p>此部分涉及到的算法类型有：</p>
+<p>动态规划、哈希表、滑动窗口、二分查找、有限状态机</p>
+</blockquote>
+<h1 id="一、两数之和"><a href="#一、两数之和" class="headerlink" title="一、两数之和"></a>一、两数之和</h1><h2 id="1-1-题目"><a href="#1-1-题目" class="headerlink" title="1.1 题目"></a>1.1 题目</h2><ul>
 <li>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em>target</em>  的那 <strong>两个</strong> 整数，并返回它们的数组下标。</li>
 <li>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</li>
 <li>你可以按任意顺序返回答案。</li>
@@ -1458,7 +1462,54 @@
 <li>methods中配置的函数，都是被Vue所管理的函数，this的指向是vm或组件实例对象</li>
 <li>@click=”demo”和@click=”demo($event)”效果一样，但后者可以自定义传参</li>
 </ul>
-<h3 id="1-5-2-事件修饰符"><a href="#1-5-2-事件修饰符" class="headerlink" title="1.5.2 事件修饰符"></a>1.5.2 事件修饰符</h3>]]></content>
+<h3 id="1-5-2-事件修饰符"><a href="#1-5-2-事件修饰符" class="headerlink" title="1.5.2 事件修饰符"></a>1.5.2 事件修饰符</h3><p>Vue事件修饰符包括：</p>
+<ol>
+<li>prevent：阻止默认事件（常用）</li>
+<li>stop：阻止事件冒泡</li>
+<li>once：事件只触发一次，即下一次触发就没有效果了</li>
+<li>capture：使用事件的捕获模式</li>
+<li>self：只有event.target是当前操作的元素时才触发事件</li>
+<li>passive：事件的默认行为立即执行，无需等待事件回调执行完毕</li>
+</ol>
+<p>Vue的事件修饰符使用方式为：<code>@click.prevent=&quot;&quot;</code></p>
+<p>示例如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.atguigu.com&quot;</span> @<span class="attr">click.prevent</span>=<span class="string">&quot;showInfo&quot;</span>&gt;</span>点我提示信息<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">name</span>:<span class="string">&#x27;尚硅谷&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="title">showInfo</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                alert(<span class="string">&#x27;同学你好！&#x27;</span>)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-5-3-键盘事件"><a href="#1-5-3-键盘事件" class="headerlink" title="1.5.3 键盘事件"></a>1.5.3 键盘事件</h3><p>Vue中常用的键盘别名</p>
+<ul>
+<li>回车：enter</li>
+<li>删除：delete（捕获“删除”和“退格”键）</li>
+<li>空格：space</li>
+<li>上：up</li>
+<li>下：down</li>
+<li>左：left</li>
+<li>右：right</li>
+</ul>
+<p>键盘事件的捕获方式如下：</p>
+<ul>
+<li><p><code>@keyup.xxx</code>：键盘按下后弹起</p>
+</li>
+<li><p><code>@keydown.xxx</code>：键盘按下</p>
+</li>
+</ul>
+<p>注意事项如下：</p>
+<ul>
+<li>Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要将双驼峰命名转为xxx-xxx（短横线命名）</li>
+<li>系统修饰键（用法特殊）：ctrl、alt、shift、meta<ul>
+<li>配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发，如<code>@keyup.ctrl.y</code></li>
+<li>配合keydown使用，正常触发事件</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-6-计算属性"><a href="#1-6-计算属性" class="headerlink" title="1.6 计算属性"></a>1.6 计算属性</h2><p>计算属性是对vue属性进行计算操作后设定的属性，它有以下特点：</p>
+<ul>
+<li>计算属性和data中的属性不是一个概念，使用vm._data无法访问到计算属性</li>
+<li>计算属性是对data属性计算后得到的属性</li>
+</ul>
+<p>原始的计算属性写法如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">    姓：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;firstName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;lastName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    全名：<span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">firstName</span>:<span class="string">&#x27;zhang&#x27;</span>,</span></span><br><span class="line"><span class="javascript">            <span class="attr">lastName</span>:<span class="string">&#x27;san&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">computed</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">fullName</span>:&#123;</span></span><br><span class="line"><span class="javascript">                <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.lastName</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>简化后的写法如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">    姓：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;firstName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;lastName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    全名：<span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">firstName</span>:<span class="string">&#x27;zhang&#x27;</span>,</span></span><br><span class="line"><span class="javascript">            <span class="attr">lastName</span>:<span class="string">&#x27;san&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">computed</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="title">fullName</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.lastName</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-7-监视"><a href="#1-7-监视" class="headerlink" title="1.7 监视"></a>1.7 监视</h2><h2 id="1-8-绑定样式"><a href="#1-8-绑定样式" class="headerlink" title="1.8 绑定样式"></a>1.8 绑定样式</h2>]]></content>
       <categories>
         <category>前端</category>
         <category>Vue</category>
@@ -6556,6 +6607,36 @@
         <tag>谋生</tag>
         <tag>视频剪辑</tag>
         <tag>Pr</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java算法大全二</title>
+    <url>/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/</url>
+    <content><![CDATA[<h1 id="一、有效的回旋镖"><a href="#一、有效的回旋镖" class="headerlink" title="一、有效的回旋镖"></a>一、有效的回旋镖</h1><p>给定一个数组 points ，其中 points[i] = [xi, yi] 表示 <strong>X-Y</strong> 平面上的一个点，如果这些点构成一个 回旋镖 则返回 true 。</p>
+<p>回旋镖 定义为一组三个点，这些点 各不相同 且 不在一条直线上 。</p>
+<h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><h3 id="1-1-1-示例1"><a href="#1-1-1-示例1" class="headerlink" title="1.1.1 示例1"></a>1.1.1 示例1</h3><figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">输入：points = <span class="string">[[1,1],[2,3],[3,2]]</span></span><br><span class="line">输出：<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-1-2-示例2"><a href="#1-1-2-示例2" class="headerlink" title="1.1.2 示例2"></a>1.1.2 示例2</h3><figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">输入：points = <span class="string">[[1,1],[2,2],[3,3]]</span></span><br><span class="line">输出：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-1-3-提示"><a href="#1-1-3-提示" class="headerlink" title="1.1.3 提示"></a>1.1.3 提示</h3><ul>
+<li><code>points.length == 3</code></li>
+<li><code>points[i].length == 2</code></li>
+<li><code>0 &lt;= xi, yi &lt;= 100</code></li>
+</ul>
+<h2 id="1-2-题解"><a href="#1-2-题解" class="headerlink" title="1.2 题解"></a>1.2 题解</h2><h3 id="1-2-1-方法一：数学"><a href="#1-2-1-方法一：数学" class="headerlink" title="1.2.1 方法一：数学"></a>1.2.1 方法一：数学</h3><p>这道题就是纯纯的初中数学，就是判断三点是否共线</p>
+<p>设三个点分别为$(x_1,y_1),(x_2,y_2),(x_3,y_3)$，我们分别叫这三个点为点A、点B、点C</p>
+<p>则B-A可以得到的坐标差值$(\Delta x_1,\Delta y_1)$，C-A可以得到的坐标差值$(\Delta x_2,\Delta y_2)$，那么三点共线的充要条件是其差值坐标的纵坐标之比和横坐标之比相等，即$\tfrac{\Delta x_1}{\Delta x_2}=\tfrac{\Delta y_1}{\Delta y_2}$，由于除法会有除0错误，所以可以转换为乘法$\Delta x_1 \cdot \Delta y_2=\Delta x_2 \cdot \Delta y_1$</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBoomerang</span><span class="params">(<span class="keyword">int</span>[][] points)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tX1 = points[<span class="number">1</span>][<span class="number">0</span>] - points[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> tX2 = points[<span class="number">2</span>][<span class="number">0</span>] - points[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> tY1 = points[<span class="number">1</span>][<span class="number">1</span>] - points[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> tY2 = points[<span class="number">2</span>][<span class="number">1</span>] - points[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> tX1 * tY2 != tX2 * tY1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(1)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>
