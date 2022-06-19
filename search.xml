@@ -5750,23 +5750,23 @@
   <entry>
     <title>Java面试宝典一</title>
     <url>/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/</url>
-    <content><![CDATA[<h1 id="一、Java基础"><a href="#一、Java基础" class="headerlink" title="一、Java基础"></a>一、Java基础</h1><h2 id="1-1、变量自增"><a href="#1-1、变量自增" class="headerlink" title="1.1、变量自增"></a>1.1、变量自增</h2><h3 id="1-1-1-示例"><a href="#1-1-1-示例" class="headerlink" title="1.1.1 示例"></a>1.1.1 示例</h3><ul>
+    <content><![CDATA[<h2 id="1-1、变量自增"><a href="#1-1、变量自增" class="headerlink" title="1.1、变量自增"></a>1.1、变量自增</h2><h1 id="一、变量自增"><a href="#一、变量自增" class="headerlink" title="一、变量自增"></a>一、变量自增</h1><h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><ul>
 <li>这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果</li>
 <li>Java也需要维护一个操作数栈，来计算我们的最终结果</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">i = i++;</span><br><span class="line"><span class="keyword">int</span> j = i++;</span><br><span class="line"><span class="keyword">int</span> k = i + ++i * i++;</span><br><span class="line">System.out.println(<span class="string">&quot;i=&quot;</span>+i);<span class="number">5</span></span><br><span class="line">System.out.println(<span class="string">&quot;j=&quot;</span>+j);<span class="number">2</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+k);<span class="number">12</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-1-2-分析"><a href="#1-1-2-分析" class="headerlink" title="1.1.2 分析"></a>1.1.2 分析</h3><h4 id="（1）前两步"><a href="#（1）前两步" class="headerlink" title="（1）前两步"></a>（1）前两步</h4><ol>
+<h2 id="1-2-分析"><a href="#1-2-分析" class="headerlink" title="1.2 分析"></a>1.2 分析</h2><h3 id="1-2-1-前两步"><a href="#1-2-1-前两步" class="headerlink" title="1.2.1 前两步"></a>1.2.1 前两步</h3><ol>
 <li>赋值操作更新局部变量表，变量操作会先将变量值压入操作数栈</li>
 <li>自增操作会更新变量的局部变量表，但不会影响操作数栈的值，存在操作数就会把变量的值压入操作数栈中</li>
 <li>赋值操作是把操作数栈的最终结果赋值给变量，也就是说i经过前两步后值为1</li>
 </ol>
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij.png" class="" title="ij">
-<h4 id="（2）第三步"><a href="#（2）第三步" class="headerlink" title="（2）第三步"></a>（2）第三步</h4><ul>
+<h3 id="1-2-2-第三步"><a href="#1-2-2-第三步" class="headerlink" title="1.2.2 第三步"></a>1.2.2 第三步</h3><ul>
 <li>后增操作：先赋值j，再自增i</li>
 </ul>
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij2.png" class="" title="ij2">
-<h4 id="（3）第四步"><a href="#（3）第四步" class="headerlink" title="（3）第四步"></a>（3）第四步</h4><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij3.png" class="" title="ij3">
-<h3 id="1-1-3-小结"><a href="#1-1-3-小结" class="headerlink" title="1.1.3 小结"></a>1.1.3 小结</h3><ul>
+<h3 id="1-2-3-第四步"><a href="#1-2-3-第四步" class="headerlink" title="1.2.3 第四步"></a>1.2.3 第四步</h3><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij3.png" class="" title="ij3">
+<h2 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h2><ul>
 <li><p>总的来说在运算的时候维护一个<strong>局部变量表</strong>和一个<strong>操作数栈</strong>，来<strong>保存</strong>和<strong>更新</strong>我们的数据</p>
 </li>
 <li><p>++i会<strong>先修改i保存到局部变量表中的值</strong>，再将<strong>自增后</strong>的值放入到操作数栈中</p>
@@ -5774,15 +5774,15 @@
 <li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
 <li>赋值操作是在操作数栈计算完之后才执行的</li>
 </ul>
-<h2 id="1-2-Java面向对象"><a href="#1-2-Java面向对象" class="headerlink" title="1.2 Java面向对象"></a>1.2 Java面向对象</h2><ul>
+<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><ul>
 <li>面向对象三大特征：封装、继承、多态</li>
 </ul>
-<h1 id="二、单例设计模式"><a href="#二、单例设计模式" class="headerlink" title="二、单例设计模式"></a>二、单例设计模式</h1><h2 id="2-1-介绍"><a href="#2-1-介绍" class="headerlink" title="2.1 介绍"></a>2.1 介绍</h2><ul>
+<h1 id="三、单例设计模式"><a href="#三、单例设计模式" class="headerlink" title="三、单例设计模式"></a>三、单例设计模式</h1><h2 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h2><ul>
 <li>Java的设计模式之一</li>
 <li>解释：某个类在整个系统中只能有一个实例对象可以被获取和使用的代码模式</li>
 <li>如：JVM运行环境的Runtime类</li>
 </ul>
-<h2 id="2-2-要点"><a href="#2-2-要点" class="headerlink" title="2.2 要点"></a>2.2 要点</h2><ul>
+<h2 id="3-2-要点"><a href="#3-2-要点" class="headerlink" title="3.2 要点"></a>3.2 要点</h2><ul>
 <li>单例类只能有一个实例<ul>
 <li>构造器私有</li>
 </ul>
@@ -5796,7 +5796,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-3-实现方式"><a href="#2-3-实现方式" class="headerlink" title="2.3 实现方式"></a>2.3 实现方式</h2><h3 id="2-3-1-饿汉式"><a href="#2-3-1-饿汉式" class="headerlink" title="2.3.1 饿汉式"></a>2.3.1 饿汉式</h3><ul>
+<h2 id="3-3-实现方式"><a href="#3-3-实现方式" class="headerlink" title="3.3 实现方式"></a>3.3 实现方式</h2><h3 id="3-3-1-饿汉式"><a href="#3-3-1-饿汉式" class="headerlink" title="3.3.1 饿汉式"></a>3.3.1 饿汉式</h3><ul>
 <li>直接创建对象，不管系统是否需要，先创建再说</li>
 <li>不存在线程安全</li>
 <li>方式：<ul>
@@ -5807,7 +5807,7 @@
 </li>
 </ul>
 <h4 id="（1）直接实例化"><a href="#（1）直接实例化" class="headerlink" title="（1）直接实例化"></a>（1）直接实例化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 饿汉式：直接创建对象，加载创建这个类时，就会创建对象</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* （1）构造器私有化</span></span><br><span class="line"><span class="comment">* （2）自行创建，并且用静态变量保存</span></span><br><span class="line"><span class="comment">* （3）向外提供实例</span></span><br><span class="line"><span class="comment">* （4）强调单例，使用final修饰，将其作为一个常量</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// final使变量无法修改</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonTest INSTANCE = <span class="keyword">new</span> SingletonTest();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有化构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonTest</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="（4）枚举式"><a href="#（4）枚举式" class="headerlink" title="（4）枚举式"></a>（4）枚举式</h4><ul>
+<h4 id="（2）枚举式"><a href="#（2）枚举式" class="headerlink" title="（2）枚举式"></a>（2）枚举式</h4><ul>
 <li>以枚举类的形式实现单例，并非对象</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 枚举类单例：表示该类型的对象是有限的几个</span></span><br><span class="line"><span class="comment">* 限定为一个就是单例</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonTest2</span> </span>&#123;</span><br><span class="line">    INSTANCE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//打印枚举实例</span></span><br><span class="line">        SingletonTest2 s = SingletonTest2.INSTANCE;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -6787,7 +6787,7 @@
     <content><![CDATA[<h1 id="一、指板音阶"><a href="#一、指板音阶" class="headerlink" title="一、指板音阶"></a>一、指板音阶</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/yinjie.png" class="" title="yinjie">
 <h1 id="二、吉他和弦汇总"><a href="#二、吉他和弦汇总" class="headerlink" title="二、吉他和弦汇总"></a>二、吉他和弦汇总</h1><h2 id="2-1-C调"><a href="#2-1-C调" class="headerlink" title="2.1 C调"></a>2.1 C调</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/chexian.png" class="" title="chexian">
 <h3 id="2-1-1-大七和弦"><a href="#2-1-1-大七和弦" class="headerlink" title="2.1.1 大七和弦"></a>2.1.1 大七和弦</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/Cmaj.png" class="" title="cmaj">
-]]></content>
+<h3 id="2-1-2-属七和弦（大小七和弦）"><a href="#2-1-2-属七和弦（大小七和弦）" class="headerlink" title="2.1.2 属七和弦（大小七和弦）"></a>2.1.2 属七和弦（大小七和弦）</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/c7.png" class="" title="c7">]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
