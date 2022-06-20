@@ -2032,6 +2032,11 @@
 <li>Csus2：1-2-5（三度音转为二度音）</li>
 <li>Csus4：1-4-5（三度音转为四度音）</li>
 </ul>
+<h2 id="3-6-和弦转位"><a href="#3-6-和弦转位" class="headerlink" title="3.6 和弦转位"></a>3.6 和弦转位</h2><p>以C和弦为例，$1-3-5$它的两个转位和弦分别为$3-5-\dot{1}$和$5-\dot{1}-\dot{3}$</p>
+<p>其中C和弦的do始终为根音，对于不同的转为其最低音是不同的，比如$3-5-\dot{1}$的最低音是mi，$5-\dot{1}-\dot{3}$最低音是sol</p>
+<p>$3-5-\dot{1}$转位和弦表示为：$C_6$或者$C/E$，其中由于<strong>最低音到最高音</strong>和<strong>最低音到根音</strong>的度数都是6，所以表示为$C_6$</p>
+<p>$5-\dot{1}-\dot{3}$转位和弦表示为：$C_6^4$或者$C/G$，其中$C_6^4$中的上标4表示<strong>最低音到根音的度数</strong>，下标6表示<strong>最低音到最高音的度数</strong></p>
+<p>对于<strong>七和弦</strong>，应该用<strong>最低音到7音</strong>的度数和<strong>最低音到根音</strong>的度数来表示转位和弦</p>
 <h1 id="四、节奏"><a href="#四、节奏" class="headerlink" title="四、节奏"></a>四、节奏</h1><h2 id="4-1-音符"><a href="#4-1-音符" class="headerlink" title="4.1 音符"></a>4.1 音符</h2><h3 id="4-1-1-音符分类"><a href="#4-1-1-音符分类" class="headerlink" title="4.1.1 音符分类"></a>4.1.1 音符分类</h3><ul>
 <li>全音符</li>
 <li>二分音符</li>
@@ -5750,7 +5755,7 @@
   <entry>
     <title>Java面试宝典一</title>
     <url>/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/</url>
-    <content><![CDATA[<h2 id="1-1、变量自增"><a href="#1-1、变量自增" class="headerlink" title="1.1、变量自增"></a>1.1、变量自增</h2><h1 id="一、变量自增"><a href="#一、变量自增" class="headerlink" title="一、变量自增"></a>一、变量自增</h1><h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><ul>
+    <content><![CDATA[<h1 id="一、变量自增"><a href="#一、变量自增" class="headerlink" title="一、变量自增"></a>一、变量自增</h1><h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><ul>
 <li>这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果</li>
 <li>Java也需要维护一个操作数栈，来计算我们的最终结果</li>
 </ul>
@@ -5774,57 +5779,13 @@
 <li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
 <li>赋值操作是在操作数栈计算完之后才执行的</li>
 </ul>
-<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><ul>
-<li>面向对象三大特征：封装、继承、多态</li>
+<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/KEM.png" class="" title="kem">
+<ul>
+<li>JDK：Java标准开发包，提供编译、运行Java程序所需的各种工具和资源，包括Java编译器、Java运行时环境，以及常用的Java类库等</li>
+<li>JRE，Java运行环境，用于运行Java的字节码文件，JRE中包括了JVM工作所需要的类库，普通用户只需要按照JRE来运行Java程序，而程序开发者必须安装JDK来编译、调试程序</li>
+<li>JVM：Java虚拟机，是JRE的一部分，它是整个Java实现跨平台的最核心的部分，负责运行字节码文件</li>
 </ul>
-<h1 id="三、单例设计模式"><a href="#三、单例设计模式" class="headerlink" title="三、单例设计模式"></a>三、单例设计模式</h1><h2 id="3-1-介绍"><a href="#3-1-介绍" class="headerlink" title="3.1 介绍"></a>3.1 介绍</h2><ul>
-<li>Java的设计模式之一</li>
-<li>解释：某个类在整个系统中只能有一个实例对象可以被获取和使用的代码模式</li>
-<li>如：JVM运行环境的Runtime类</li>
-</ul>
-<h2 id="3-2-要点"><a href="#3-2-要点" class="headerlink" title="3.2 要点"></a>3.2 要点</h2><ul>
-<li>单例类只能有一个实例<ul>
-<li>构造器私有</li>
-</ul>
-</li>
-<li>单例类必须自行创建这个实例<ul>
-<li>类中使用静态变量保存这个唯一实例</li>
-</ul>
-</li>
-<li>单例类必须向整个系统提供这个实例<ul>
-<li>对外提供获取该实例对象的方法</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-3-实现方式"><a href="#3-3-实现方式" class="headerlink" title="3.3 实现方式"></a>3.3 实现方式</h2><h3 id="3-3-1-饿汉式"><a href="#3-3-1-饿汉式" class="headerlink" title="3.3.1 饿汉式"></a>3.3.1 饿汉式</h3><ul>
-<li>直接创建对象，不管系统是否需要，先创建再说</li>
-<li>不存在线程安全</li>
-<li>方式：<ul>
-<li>直接实例化饿汉式</li>
-<li>枚举式</li>
-<li>静态代码饿汉式</li>
-</ul>
-</li>
-</ul>
-<h4 id="（1）直接实例化"><a href="#（1）直接实例化" class="headerlink" title="（1）直接实例化"></a>（1）直接实例化</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 饿汉式：直接创建对象，加载创建这个类时，就会创建对象</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* （1）构造器私有化</span></span><br><span class="line"><span class="comment">* （2）自行创建，并且用静态变量保存</span></span><br><span class="line"><span class="comment">* （3）向外提供实例</span></span><br><span class="line"><span class="comment">* （4）强调单例，使用final修饰，将其作为一个常量</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// final使变量无法修改</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SingletonTest INSTANCE = <span class="keyword">new</span> SingletonTest();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 私有化构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonTest</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="（2）枚举式"><a href="#（2）枚举式" class="headerlink" title="（2）枚举式"></a>（2）枚举式</h4><ul>
-<li>以枚举类的形式实现单例，并非对象</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 枚举类单例：表示该类型的对象是有限的几个</span></span><br><span class="line"><span class="comment">* 限定为一个就是单例</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonTest2</span> </span>&#123;</span><br><span class="line">    INSTANCE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//打印枚举实例</span></span><br><span class="line">        SingletonTest2 s = SingletonTest2.INSTANCE;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="（3）静态代码块式"><a href="#（3）静态代码块式" class="headerlink" title="（3）静态代码块式"></a>（3）静态代码块式</h4><ul>
-<li>可以在静态代码块中添加一些操作，比较灵活</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonTest3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingletonTest3 INSTANCE;</span><br><span class="line">    <span class="keyword">private</span> String info;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        INSTANCE = <span class="keyword">new</span> SingletonTest3(<span class="string">&quot;info&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingletonTest3</span><span class="params">(String info)</span></span>&#123;<span class="keyword">this</span>.info = info;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-2-懒汉式"><a href="#2-3-2-懒汉式" class="headerlink" title="2.3.2 懒汉式"></a>2.3.2 懒汉式</h3><ul>
-<li>延迟创建对象，需要的时候才去创建对象，不需要则不创建</li>
-<li>方式：<ul>
-<li>线程不安全（单线程）</li>
-<li>线程安全（多线程）</li>
-<li>静态内部类形式（多线程）</li>
-</ul>
-</li>
-</ul>
-]]></content>
+<h1 id="三、hashCode-与equals-之间的关系"><a href="#三、hashCode-与equals-之间的关系" class="headerlink" title="三、hashCode()与equals()之间的关系"></a>三、hashCode()与equals()之间的关系</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>面试</category>
@@ -6771,6 +6732,67 @@
 <li>时间复杂度：$O(N^2)$</li>
 <li>空间复杂度：$O(logN)$</li>
 </ul>
+<h1 id="八、电话号码的字母组合（17）"><a href="#八、电话号码的字母组合（17）" class="headerlink" title="八、电话号码的字母组合（17）"></a>八、电话号码的字母组合（17）</h1><p>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。</p>
+<p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p>
+<img src="/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/t1.png" class="" title="t1">
+<h2 id="8-1-示例"><a href="#8-1-示例" class="headerlink" title="8.1 示例"></a>8.1 示例</h2><h3 id="8-1-1-示例1"><a href="#8-1-1-示例1" class="headerlink" title="8.1.1 示例1"></a>8.1.1 示例1</h3><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">输入：<span class="keyword">digits</span> = <span class="string">&quot;23&quot;</span></span><br><span class="line">输出：[<span class="string">&quot;ad&quot;</span>,<span class="string">&quot;ae&quot;</span>,<span class="string">&quot;af&quot;</span>,<span class="string">&quot;bd&quot;</span>,<span class="string">&quot;be&quot;</span>,<span class="string">&quot;bf&quot;</span>,<span class="string">&quot;cd&quot;</span>,<span class="string">&quot;ce&quot;</span>,<span class="string">&quot;cf&quot;</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="8-1-2-示例2"><a href="#8-1-2-示例2" class="headerlink" title="8.1.2 示例2"></a>8.1.2 示例2</h3><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">输入：<span class="keyword">digits</span> = <span class="string">&quot;&quot;</span></span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
+<h3 id="8-1-3-示例3"><a href="#8-1-3-示例3" class="headerlink" title="8.1.3 示例3"></a>8.1.3 示例3</h3><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">输入：<span class="keyword">digits</span> = <span class="string">&quot;2&quot;</span></span><br><span class="line">输出：[<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="8-1-4-提示"><a href="#8-1-4-提示" class="headerlink" title="8.1.4 提示"></a>8.1.4 提示</h3><ul>
+<li><code>0 &lt;= digits.length &lt;= 4</code></li>
+<li><code>digits[i]</code> 是范围 <code>[&#39;2&#39;, &#39;9&#39;]</code> 的一个数字。</li>
+</ul>
+<h2 id="8-2-题解"><a href="#8-2-题解" class="headerlink" title="8.2 题解"></a>8.2 题解</h2><h3 id="8-2-1-方式一：回溯"><a href="#8-2-1-方式一：回溯" class="headerlink" title="8.2.1 方式一：回溯"></a>8.2.1 方式一：回溯</h3><p>按照一般的回溯流程即可，没有特别要说的，回溯流程见下图</p>
+<img src="/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/3.png" class="" title="dh">
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; combinations = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">if</span> (digits.length() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> combinations;</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;Character, String&gt; phoneMap = <span class="keyword">new</span> HashMap&lt;Character, String&gt;() &#123;&#123;</span><br><span class="line">            put(<span class="string">&#x27;2&#x27;</span>, <span class="string">&quot;abc&quot;</span>);</span><br><span class="line">            put(<span class="string">&#x27;3&#x27;</span>, <span class="string">&quot;def&quot;</span>);</span><br><span class="line">            put(<span class="string">&#x27;4&#x27;</span>, <span class="string">&quot;ghi&quot;</span>);</span><br><span class="line">            put(<span class="string">&#x27;5&#x27;</span>, <span class="string">&quot;jkl&quot;</span>);</span><br><span class="line">            put(<span class="string">&#x27;6&#x27;</span>, <span class="string">&quot;mno&quot;</span>);</span><br><span class="line">            put(<span class="string">&#x27;7&#x27;</span>, <span class="string">&quot;pqrs&quot;</span>);</span><br><span class="line">            put(<span class="string">&#x27;8&#x27;</span>, <span class="string">&quot;tuv&quot;</span>);</span><br><span class="line">            put(<span class="string">&#x27;9&#x27;</span>, <span class="string">&quot;wxyz&quot;</span>);</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">        backtrack(combinations, phoneMap, digits, <span class="number">0</span>, <span class="keyword">new</span> StringBuffer());</span><br><span class="line">        <span class="keyword">return</span> combinations;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;String&gt; combinations, Map&lt;Character, String&gt; phoneMap, String digits, <span class="keyword">int</span> index, StringBuffer combination)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index == digits.length()) &#123;</span><br><span class="line">            combinations.add(combination.toString());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">char</span> digit = digits.charAt(index);</span><br><span class="line">            String letters = phoneMap.get(digit);</span><br><span class="line">            <span class="keyword">int</span> lettersCount = letters.length();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lettersCount; i++) &#123;</span><br><span class="line">                combination.append(letters.charAt(i));</span><br><span class="line">                backtrack(combinations, phoneMap, digits, index + <span class="number">1</span>, combination);</span><br><span class="line">                combination.deleteCharAt(index);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：$O(3^m \times 4^n)$</li>
+<li>空间复杂度：$O(m+n)$</li>
+</ul>
+<h1 id="九、四数之和（18）"><a href="#九、四数之和（18）" class="headerlink" title="九、四数之和（18）"></a>九、四数之和（18）</h1><p>给你一个由 n 个整数组成的数组 nums ，和一个目标值 target 。请你找出并返回满足下述全部条件且不重复的四元组 [nums[a], nums[b], nums[c], nums[d]] （若两个四元组元素一一对应，则认为两个四元组重复）：</p>
+<ul>
+<li>0 &lt;= a, b, c, d &lt; n</li>
+<li>a、b、c 和 d <strong>互不相同</strong></li>
+<li>nums[a] + nums[b] + nums[c] + nums[d] == target</li>
+</ul>
+<p>你可以按 <strong>任意顺序</strong> 返回答案 。</p>
+<h2 id="9-1-示例"><a href="#9-1-示例" class="headerlink" title="9.1 示例"></a>9.1 示例</h2><h3 id="9-1-1-示例1"><a href="#9-1-1-示例1" class="headerlink" title="9.1.1 示例1"></a>9.1.1 示例1</h3><figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">输入：nums = [1,0,<span class="string">-1</span>,0,<span class="string">-2</span>,2], target = 0</span><br><span class="line">输出：[[<span class="string">-2</span>,<span class="string">-1</span>,1,2],[<span class="string">-2</span>,0,0,2],[<span class="string">-1</span>,0,0,1]]</span><br></pre></td></tr></table></figure>
+<h3 id="9-1-2-示例2"><a href="#9-1-2-示例2" class="headerlink" title="9.1.2 示例2"></a>9.1.2 示例2</h3><figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">输入：nums = [<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>], target = <span class="number">8</span></span><br><span class="line">输出：<span class="string">[[2,2,2,2]]</span></span><br></pre></td></tr></table></figure>
+<h3 id="9-1-3-提示"><a href="#9-1-3-提示" class="headerlink" title="9.1.3 提示"></a>9.1.3 提示</h3><ul>
+<li><code>1 &lt;= nums.length &lt;= 200</code></li>
+<li>$-10^9 &lt;= nums[i] &lt;= 10^9$</li>
+<li>$-10^9 &lt;= target &lt;= 10^9$</li>
+</ul>
+<h2 id="9-2-题解"><a href="#9-2-题解" class="headerlink" title="9.2 题解"></a>9.2 题解</h2><h3 id="9-2-1-方法一：排序-双指针"><a href="#9-2-1-方法一：排序-双指针" class="headerlink" title="9.2.1 方法一：排序+双指针"></a>9.2.1 方法一：排序+双指针</h3><p>如果使用暴力的四重循环，效率不高，参考<strong>三数之和</strong>，依旧先对数组排序，在<strong>三重循环中采用双指针</strong>来提高效率，但仍然需要进行一些剪枝操作来进行优化，剪纸操作如下：</p>
+<ul>
+<li>在确定第一个数之后，如果$nums[i]+nums[i+1]+nums[i+2]+nums[i+3]&gt;target$，说明此时剩下的三个数无论取什么值，四数之和一定大于target，因此退出第一重循环</li>
+<li>确定第一个数后，如果$nums[i]+nums[n-1]+nums[n-2]+nums[n-3]&lt;target$，说明此时剩下的三个数无论取什么值，四数之和一定小于target，因此第一重循环直接进入下一轮，枚举i+1</li>
+<li>在确定前两个数之后，如果$nums[i]+nums[j]+nums[j+1]+nums[j+2]&gt;target$，说明此时剩下的两个数无论取什么值，四数之和一定大于target，因此退出第二重循环</li>
+<li>确定前两个数后，如果$nums[i]+nums[j]+nums[n-1]+nums[n-2]&lt;target$，说明此时剩下的两个数无论取什么值，四数之和一定小于target，因此第二重循环直接进入下一轮，枚举j+1</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; fourSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; quadruplets = <span class="keyword">new</span> ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="keyword">null</span> || nums.length &lt; <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> quadruplets;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> length = nums.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> ((<span class="keyword">long</span>) nums[i] + nums[i + <span class="number">1</span>] + nums[i + <span class="number">2</span>] + nums[i + <span class="number">3</span>] &gt; target) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> ((<span class="keyword">long</span>) nums[i] + nums[length - <span class="number">3</span>] + nums[length - <span class="number">2</span>] + nums[length - <span class="number">1</span>] &lt; target) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; i + <span class="number">1</span> &amp;&amp; nums[j] == nums[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> ((<span class="keyword">long</span>) nums[i] + nums[j] + nums[j + <span class="number">1</span>] + nums[j + <span class="number">2</span>] &gt; target) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> ((<span class="keyword">long</span>) nums[i] + nums[j] + nums[length - <span class="number">2</span>] + nums[length - <span class="number">1</span>] &lt; target) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">int</span> left = j + <span class="number">1</span>, right = length - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                    <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[left] + nums[right];</span><br><span class="line">                    <span class="keyword">if</span> (sum == target) &#123;</span><br><span class="line">                        quadruplets.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));</span><br><span class="line">                        <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left + <span class="number">1</span>]) &#123;</span><br><span class="line">                            left++;</span><br><span class="line">                        &#125;</span><br><span class="line">                        left++;</span><br><span class="line">                        <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right - <span class="number">1</span>]) &#123;</span><br><span class="line">                            right--;</span><br><span class="line">                        &#125;</span><br><span class="line">                        right--;</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; target) &#123;</span><br><span class="line">                        left++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        right--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> quadruplets;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：$O(n^3)$</li>
+<li>空间复杂度：$O(logn)$</li>
+</ul>
+<h1 id="十、删除链表的倒数第N个结点（19）"><a href="#十、删除链表的倒数第N个结点（19）" class="headerlink" title="十、删除链表的倒数第N个结点（19）"></a>十、删除链表的倒数第N个结点（19）</h1><p>给你一个链表，删除链表的倒数第 <code>n</code> 个结点，并且返回链表的头结点。</p>
+<h1 id="10-1-示例"><a href="#10-1-示例" class="headerlink" title="10.1 示例"></a>10.1 示例</h1><h2 id="10-1-1-示例1"><a href="#10-1-1-示例1" class="headerlink" title="10.1.1 示例1"></a>10.1.1 示例1</h2><img src="/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/remove.jpg" class="" title="remove">
+<figure class="highlight dns"><table><tr><td class="code"><pre><span class="line">输入：head = [<span class="number">1,2,3,4</span>,<span class="number">5</span>], n = <span class="number">2</span></span><br><span class="line">输出：[<span class="number">1,2,3,5</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="10-1-2-示例2"><a href="#10-1-2-示例2" class="headerlink" title="10.1.2 示例2"></a>10.1.2 示例2</h2><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：head = <span class="comment">[1]</span>, n = 1</span><br><span class="line">输出：<span class="comment">[]</span></span><br></pre></td></tr></table></figure>
+<h2 id="10-1-3-示例3"><a href="#10-1-3-示例3" class="headerlink" title="10.1.3 示例3"></a>10.1.3 示例3</h2><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：head = <span class="comment">[1,2]</span>, n = 1</span><br><span class="line">输出：<span class="comment">[1]</span></span><br></pre></td></tr></table></figure>
+<h3 id="10-1-4-提示"><a href="#10-1-4-提示" class="headerlink" title="10.1.4 提示"></a>10.1.4 提示</h3><ul>
+<li>链表中结点的数目为 <code>sz</code></li>
+<li><code>1 &lt;= sz &lt;= 30</code></li>
+<li><code>0 &lt;= Node.val &lt;= 100</code></li>
+<li><code>1 &lt;= n &lt;= sz</code></li>
+</ul>
+<h2 id="10-2-题解"><a href="#10-2-题解" class="headerlink" title="10.2 题解"></a>10.2 题解</h2><h3 id="10-2-1-方法一：双指针"><a href="#10-2-1-方法一：双指针" class="headerlink" title="10.2.1 方法一：双指针"></a>10.2.1 方法一：双指针</h3><p>设立两个指针来对链表进行遍历，操作如下：</p>
+<img src="/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/4.png" class="" title="removeList">
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>, head);</span><br><span class="line">        ListNode first = head;</span><br><span class="line">        ListNode second = dummy;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (first != <span class="keyword">null</span>) &#123;</span><br><span class="line">            first = first.next;</span><br><span class="line">            second = second.next;</span><br><span class="line">        &#125;</span><br><span class="line">        second.next = second.next.next;</span><br><span class="line">        ListNode ans = dummy.next;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
 ]]></content>
       <categories>
         <category>后端</category>
@@ -6785,7 +6807,7 @@
     <title>吉他和弦大全</title>
     <url>/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、指板音阶"><a href="#一、指板音阶" class="headerlink" title="一、指板音阶"></a>一、指板音阶</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/yinjie.png" class="" title="yinjie">
-<h1 id="二、吉他和弦汇总"><a href="#二、吉他和弦汇总" class="headerlink" title="二、吉他和弦汇总"></a>二、吉他和弦汇总</h1><h2 id="2-1-C调"><a href="#2-1-C调" class="headerlink" title="2.1 C调"></a>2.1 C调</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/chexian.png" class="" title="chexian">
+<h1 id="二、吉他和弦汇总"><a href="#二、吉他和弦汇总" class="headerlink" title="二、吉他和弦汇总"></a>二、吉他和弦汇总</h1><h2 id="2-1-调式和弦"><a href="#2-1-调式和弦" class="headerlink" title="2.1 调式和弦"></a>2.1 调式和弦</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/hexian.png" class="" title="hexian">
 <h3 id="2-1-1-大七和弦"><a href="#2-1-1-大七和弦" class="headerlink" title="2.1.1 大七和弦"></a>2.1.1 大七和弦</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/Cmaj.png" class="" title="cmaj">
 <h3 id="2-1-2-属七和弦（大小七和弦）"><a href="#2-1-2-属七和弦（大小七和弦）" class="headerlink" title="2.1.2 属七和弦（大小七和弦）"></a>2.1.2 属七和弦（大小七和弦）</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/c7.png" class="" title="c7">]]></content>
       <categories>
@@ -6796,6 +6818,20 @@
         <tag>乐理</tag>
         <tag>和弦</tag>
         <tag>吉他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乐理进阶大全</title>
+    <url>/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>乐理</category>
+      </categories>
+      <tags>
+        <tag>乐理</tag>
+        <tag>和弦</tag>
+        <tag>编曲</tag>
       </tags>
   </entry>
 </search>
