@@ -1128,7 +1128,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-20 00:39:08" itemprop="dateModified" datetime="2022-06-20T00:39:08+08:00">2022-06-20</time>
+                <time title="修改时间：2022-06-20 23:23:49" itemprop="dateModified" datetime="2022-06-20T23:23:49+08:00">2022-06-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1185,7 +1185,38 @@
 <li>JRE，Java运行环境，用于运行Java的字节码文件，JRE中包括了JVM工作所需要的类库，普通用户只需要按照JRE来运行Java程序，而程序开发者必须安装JDK来编译、调试程序</li>
 <li>JVM：Java虚拟机，是JRE的一部分，它是整个Java实现跨平台的最核心的部分，负责运行字节码文件</li>
 </ul>
-<h1 id="三、hashCode-与equals-之间的关系"><a href="#三、hashCode-与equals-之间的关系" class="headerlink" title="三、hashCode()与equals()之间的关系"></a>三、hashCode()与equals()之间的关系</h1>
+<h1 id="三、hashCode-与equals-之间的关系"><a href="#三、hashCode-与equals-之间的关系" class="headerlink" title="三、hashCode()与equals()之间的关系"></a>三、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
+<p>但由于计算机的存储空间不是无限的，所以哈希地址的计算一般会出现重复的情况，这里可以采用<strong>链地址法</strong>，即如果两条数据计算到的哈希值相同，那么就在这个位置上创建一个<strong>链表</strong>来存放这两个相同哈希值的数据。</p>
+<p>有了哈希表的概念，那么这里Java对象中的hashCode就是经过某一哈希函数得到的哈希值，在应用时参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Key</span> </span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Key</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public int hashCode() &#123;</span></span><br><span class="line"><span class="comment">//        return id.hashCode();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public boolean equals(Object obj) &#123;</span></span><br><span class="line"><span class="comment">//        if(obj == null || !(obj instanceof Key))</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        else</span></span><br><span class="line"><span class="comment">//            return this.getId().equals(((Key) obj).getId());</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Key k1 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        Key k2 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        HashMap&lt;Key,String&gt; hm = <span class="keyword">new</span> HashMap&lt;Key, String&gt;();</span><br><span class="line"></span><br><span class="line">        hm.put(k1,<span class="string">&quot;Key with id is 1&quot;</span>);</span><br><span class="line">        System.out.println(hm.get(k2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码测试了使用<strong>相同id值的对象</strong>在HashMap中进行查找（工作会经常使用到的操作），测试结果如下：</p>
+<ul>
+<li>不重写hashCode()和equals()方法，结果输出”null“</li>
+<li>重写hashCode()但不重写equals()，结果仍输出“null”</li>
+<li>同时重写hashCode()和equals()方法，输出结果”Key with id is 1“，内容可以正常查询到</li>
+</ul>
+<p>对以上三种测试情况有以下说明：</p>
+<ul>
+<li>集合类HashMap在进行对象查找（get()方法）时，会先根据对象的hashCode进行查找，<ul>
+<li>如果两个对象的hashCode不同，则说明两个对象绝对是不同的；</li>
+<li>如果两个对象的hashCode相同，则调用对象的equals()方法继续进行比较，比较内容相同则两个对象一定是相同的</li>
+</ul>
+</li>
+<li>如果不重写hashCode()和equals()方法，那么对象会采用<strong>Object父类</strong>实现的默认的hashCode()和equals()方法，默认的hashCode是<strong>对象的内存地址</strong>，默认equals()的比较方式也是比较<strong>两个对象的内存地址</strong>是否相同</li>
+</ul>
+<p>在使用时一般会遵循以下原则：</p>
+<ul>
+<li>重写equals()方法必须重写hashCode()方法</li>
+<li>两对象equals()相等，则这两个对象的hashCode()应该相等</li>
+<li>hashCode()和equals()的返回值应该是稳定的，不应具有随机性</li>
+<li>如果要在HashMap的”键“部分存放自定义的对象，一定要在这个对象里重写equals和hashCode方法</li>
+</ul>
+<p>在面试时会经常问到比如：</p>
+<ul>
+<li>有没有重写过hashCode方法</li>
+<li>在使用HashMap时有没有重写hashCode和equals方法，怎么写的</li>
+</ul>
+<h1 id="四、-与equals的区别"><a href="#四、-与equals的区别" class="headerlink" title="四、==与equals的区别"></a>四、==与equals的区别</h1><h1 id="五、String-StringBuffer-StringBuilder的区别"><a href="#五、String-StringBuffer-StringBuilder的区别" class="headerlink" title="五、String/StringBuffer/StringBuilder的区别"></a>五、String/StringBuffer/StringBuilder的区别</h1>
       
     </div>
 
