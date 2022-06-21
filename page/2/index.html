@@ -1128,7 +1128,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-20 23:23:49" itemprop="dateModified" datetime="2022-06-20T23:23:49+08:00">2022-06-20</time>
+                <time title="修改时间：2022-06-21 17:25:46" itemprop="dateModified" datetime="2022-06-21T17:25:46+08:00">2022-06-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1179,13 +1179,28 @@
 <li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
 <li>赋值操作是在操作数栈计算完之后才执行的</li>
 </ul>
-<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/KEM.png" class="" title="kem">
+<h1 id="、JDK-JRE-JVM的区别"><a href="#、JDK-JRE-JVM的区别" class="headerlink" title="、JDK/JRE/JVM的区别"></a>、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/KEM.png" class="" title="kem">
 <ul>
 <li>JDK：Java标准开发包，提供编译、运行Java程序所需的各种工具和资源，包括Java编译器、Java运行时环境，以及常用的Java类库等</li>
 <li>JRE，Java运行环境，用于运行Java的字节码文件，JRE中包括了JVM工作所需要的类库，普通用户只需要按照JRE来运行Java程序，而程序开发者必须安装JDK来编译、调试程序</li>
 <li>JVM：Java虚拟机，是JRE的一部分，它是整个Java实现跨平台的最核心的部分，负责运行字节码文件</li>
 </ul>
-<h1 id="三、hashCode-与equals-之间的关系"><a href="#三、hashCode-与equals-之间的关系" class="headerlink" title="三、hashCode()与equals()之间的关系"></a>三、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
+<h1 id="、Java数据类型"><a href="#、Java数据类型" class="headerlink" title="、Java数据类型"></a>、Java数据类型</h1><p>基础数据类型</p>
+<ul>
+<li>整数类型（byte、short、int、long）</li>
+<li>浮点类型（float、double）</li>
+<li>数值型</li>
+<li>字符型（char）</li>
+<li>布尔型（boolean）</li>
+</ul>
+<p>引用数据类型</p>
+<ul>
+<li>类（class）</li>
+<li>接口（interface）</li>
+<li>数组（[]）</li>
+</ul>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/jichutype.png" class="" title="jichutype">
+<h1 id="、hashCode-与equals-之间的关系"><a href="#、hashCode-与equals-之间的关系" class="headerlink" title="、hashCode()与equals()之间的关系"></a>、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
 <p>但由于计算机的存储空间不是无限的，所以哈希地址的计算一般会出现重复的情况，这里可以采用<strong>链地址法</strong>，即如果两条数据计算到的哈希值相同，那么就在这个位置上创建一个<strong>链表</strong>来存放这两个相同哈希值的数据。</p>
 <p>有了哈希表的概念，那么这里Java对象中的hashCode就是经过某一哈希函数得到的哈希值，在应用时参考以下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Key</span> </span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Key</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public int hashCode() &#123;</span></span><br><span class="line"><span class="comment">//        return id.hashCode();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public boolean equals(Object obj) &#123;</span></span><br><span class="line"><span class="comment">//        if(obj == null || !(obj instanceof Key))</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        else</span></span><br><span class="line"><span class="comment">//            return this.getId().equals(((Key) obj).getId());</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Key k1 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        Key k2 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        HashMap&lt;Key,String&gt; hm = <span class="keyword">new</span> HashMap&lt;Key, String&gt;();</span><br><span class="line"></span><br><span class="line">        hm.put(k1,<span class="string">&quot;Key with id is 1&quot;</span>);</span><br><span class="line">        System.out.println(hm.get(k2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1216,7 +1231,23 @@
 <li>有没有重写过hashCode方法</li>
 <li>在使用HashMap时有没有重写hashCode和equals方法，怎么写的</li>
 </ul>
-<h1 id="四、-与equals的区别"><a href="#四、-与equals的区别" class="headerlink" title="四、==与equals的区别"></a>四、==与equals的区别</h1><h1 id="五、String-StringBuffer-StringBuilder的区别"><a href="#五、String-StringBuffer-StringBuilder的区别" class="headerlink" title="五、String/StringBuffer/StringBuilder的区别"></a>五、String/StringBuffer/StringBuilder的区别</h1>
+<h1 id="、-与equals的区别"><a href="#、-与equals的区别" class="headerlink" title="、==与equals的区别"></a>、==与equals的区别</h1><p>参考第三题，equals()方法在不重写的情况下，<strong>默认</strong>比较的是两个<strong>对象的内存地址</strong>，但我们往往会在类中重写equals()来<strong>比较对象之间的内容是否相等</strong>，<strong>equals()只能被对象调用</strong>。</p>
+<p>==是Java中的一种操作符，它有两种比较方式</p>
+<ul>
+<li>对于基础数据类型来说，==判断的是两边的值是否相等</li>
+<li>对于引用类型来说，==判断的是两边的引用是否相等，也就是判断两个对象是否指向了同一块内存区域</li>
+</ul>
+<p>equals()方法的特性</p>
+<ul>
+<li><strong>自反性</strong>：对于任何非空引用值x来说，x.equals(x)返回true</li>
+<li><strong>对称性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，则y.equals(x)为true</li>
+<li><strong>传递性</strong>：对于任何非空引用值x、y、z来说，如果x.equals(y)为true，y.equals(z)为true，那么x.equals(z)也为true</li>
+<li><strong>一致性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，那么它们要始终相等</li>
+<li><strong>非空性</strong>：对于任何非空引用值x来说，x.equals(null)必须返回false</li>
+</ul>
+<h1 id="、String-StringBuffer-StringBuilder的区别"><a href="#、String-StringBuffer-StringBuilder的区别" class="headerlink" title="、String/StringBuffer/StringBuilder的区别"></a>、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
+<p>StringBuffer和StringBuilder都是可修改的字符串对象，区别是StringBuffer是线程安全的，StringBuilder是线程不安全的</p>
+
       
     </div>
 
