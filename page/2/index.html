@@ -1128,7 +1128,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-21 17:25:46" itemprop="dateModified" datetime="2022-06-21T17:25:46+08:00">2022-06-21</time>
+                <time title="修改时间：2022-06-22 20:45:41" itemprop="dateModified" datetime="2022-06-22T20:45:41+08:00">2022-06-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1245,6 +1245,29 @@
 <li><strong>一致性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，那么它们要始终相等</li>
 <li><strong>非空性</strong>：对于任何非空引用值x来说，x.equals(null)必须返回false</li>
 </ul>
+<h1 id="、String中的equals是如何重写的"><a href="#、String中的equals是如何重写的" class="headerlink" title="、String中的equals是如何重写的"></a>、String中的equals是如何重写的</h1><p>String是Java中的字符串类，它整个类都是被final修饰的，这意味着String类是不能被任何类继承，任何修改String字符串的方法都是创建了一个新的字符串</p>
+<p>equals方法是Object类定义的方法，Object是所有类的父类，当然也包括String，String重写的equals方法如下</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals.png" class="" title="sequals">
+<ul>
+<li>首先是引用的判断，引用相等则直接返回true</li>
+<li>接着判断对象是否是String实例，不是则直接返回false，否则将对象强转后，比较字符串的长度，长度不等肯定返回false</li>
+<li>长度相等的情况下，再逐个字符进行比较，存在不同的字符则返回false</li>
+</ul>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals1.png" class="" title="sequals1">
+<p>注意JDK1.8以后，new String(“abc”)操作和普通的字符串赋值操作作用是一样的，以下的intern()方法是获取常量池中的字符串</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"></span><br><span class="line">        String s2 = <span class="string">&quot;a&quot;</span> + <span class="keyword">new</span> String(<span class="string">&quot;bc&quot;</span>);</span><br><span class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1.intern());	<span class="comment">//abc</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下输出均为true</span></span><br><span class="line">        System.out.println(s2.equals(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        System.out.println(s3.equals(s1));</span><br><span class="line">        System.out.println(s1.intern().equals(s2));</span><br><span class="line">        System.out.println(s3.intern().equals(s1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>观察String类构造器源码可以发现，new String(“aaa”)给字符串赋值操作的同时，还要同步字符串的哈希值。这就造成了单纯的”aaa”常量赋值操作和new操作并没有什么区别。</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/string1.png" class="" title="string1">
+<h1 id="、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"><a href="#、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计" class="headerlink" title="、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"></a>、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</h1><p>不可变对象：不可变对象就是一经创建后，其对象的内部状态不能被修改，即：</p>
+<ul>
+<li>不可变对象内部属性都是final的</li>
+<li>不可变对象的内部属性都是private的</li>
+<li>不可变对象不能提供任何可以修改内部状态的方法，setter方法也不行</li>
+<li>不可变对象不能被继承和扩展</li>
+</ul>
+<p>String类是一种对象，它独立于Java基本数据类型而存在的，可以理解为字符串的集合</p>
+<p>String被设计为final的，表示String对象一经创建后，它的值就不能再被修改了，任何对String值进行修改的方法就是重新创建一个字符串</p>
+<p>String对象创建后会存在于运行时常量池中，运行时常量池属于方法区的一部分，JDK1.7后把它移到了堆中</p>
 <h1 id="、String-StringBuffer-StringBuilder的区别"><a href="#、String-StringBuffer-StringBuilder的区别" class="headerlink" title="、String/StringBuffer/StringBuilder的区别"></a>、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
 <p>StringBuffer和StringBuilder都是可修改的字符串对象，区别是StringBuffer是线程安全的，StringBuilder是线程不安全的</p>
 
@@ -2977,6 +3000,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

@@ -5845,6 +5845,29 @@
 <li><strong>一致性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，那么它们要始终相等</li>
 <li><strong>非空性</strong>：对于任何非空引用值x来说，x.equals(null)必须返回false</li>
 </ul>
+<h1 id="、String中的equals是如何重写的"><a href="#、String中的equals是如何重写的" class="headerlink" title="、String中的equals是如何重写的"></a>、String中的equals是如何重写的</h1><p>String是Java中的字符串类，它整个类都是被final修饰的，这意味着String类是不能被任何类继承，任何修改String字符串的方法都是创建了一个新的字符串</p>
+<p>equals方法是Object类定义的方法，Object是所有类的父类，当然也包括String，String重写的equals方法如下</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals.png" class="" title="sequals">
+<ul>
+<li>首先是引用的判断，引用相等则直接返回true</li>
+<li>接着判断对象是否是String实例，不是则直接返回false，否则将对象强转后，比较字符串的长度，长度不等肯定返回false</li>
+<li>长度相等的情况下，再逐个字符进行比较，存在不同的字符则返回false</li>
+</ul>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals1.png" class="" title="sequals1">
+<p>注意JDK1.8以后，new String(“abc”)操作和普通的字符串赋值操作作用是一样的，以下的intern()方法是获取常量池中的字符串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"></span><br><span class="line">        String s2 = <span class="string">&quot;a&quot;</span> + <span class="keyword">new</span> String(<span class="string">&quot;bc&quot;</span>);</span><br><span class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1.intern());	<span class="comment">//abc</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下输出均为true</span></span><br><span class="line">        System.out.println(s2.equals(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        System.out.println(s3.equals(s1));</span><br><span class="line">        System.out.println(s1.intern().equals(s2));</span><br><span class="line">        System.out.println(s3.intern().equals(s1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>观察String类构造器源码可以发现，new String(“aaa”)给字符串赋值操作的同时，还要同步字符串的哈希值。这就造成了单纯的”aaa”常量赋值操作和new操作并没有什么区别。</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/string1.png" class="" title="string1">
+<h1 id="、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"><a href="#、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计" class="headerlink" title="、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"></a>、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</h1><p>不可变对象：不可变对象就是一经创建后，其对象的内部状态不能被修改，即：</p>
+<ul>
+<li>不可变对象内部属性都是final的</li>
+<li>不可变对象的内部属性都是private的</li>
+<li>不可变对象不能提供任何可以修改内部状态的方法，setter方法也不行</li>
+<li>不可变对象不能被继承和扩展</li>
+</ul>
+<p>String类是一种对象，它独立于Java基本数据类型而存在的，可以理解为字符串的集合</p>
+<p>String被设计为final的，表示String对象一经创建后，它的值就不能再被修改了，任何对String值进行修改的方法就是重新创建一个字符串</p>
+<p>String对象创建后会存在于运行时常量池中，运行时常量池属于方法区的一部分，JDK1.7后把它移到了堆中</p>
 <h1 id="、String-StringBuffer-StringBuilder的区别"><a href="#、String-StringBuffer-StringBuilder的区别" class="headerlink" title="、String/StringBuffer/StringBuilder的区别"></a>、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
 <p>StringBuffer和StringBuilder都是可修改的字符串对象，区别是StringBuffer是线程安全的，StringBuilder是线程不安全的</p>
 ]]></content>
@@ -6876,6 +6899,45 @@
 <li>时间复杂度：$O(\tfrac{4^n}{\sqrt{n}})$</li>
 <li>空间复杂度：$O(n)$</li>
 </ul>
+<h1 id="十三、有效的括号（20）"><a href="#十三、有效的括号（20）" class="headerlink" title="十三、有效的括号（20）"></a>十三、有效的括号（20）</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ul>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+</ul>
+<h2 id="13-1-示例"><a href="#13-1-示例" class="headerlink" title="13.1 示例"></a>13.1 示例</h2><h3 id="13-1-1-示例1"><a href="#13-1-1-示例1" class="headerlink" title="13.1.1 示例1"></a>13.1.1 示例1</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;()&quot;</span></span><br><span class="line">输出：<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-1-2-示例2"><a href="#13-1-2-示例2" class="headerlink" title="13.1.2 示例2"></a>13.1.2 示例2</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;()[]&#123;&#125;&quot;</span></span><br><span class="line">输出：<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-1-3-示例3"><a href="#13-1-3-示例3" class="headerlink" title="13.1.3 示例3"></a>13.1.3 示例3</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;(]&quot;</span></span><br><span class="line">输出：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-1-4-示例4"><a href="#13-1-4-示例4" class="headerlink" title="13.1.4 示例4"></a>13.1.4 示例4</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;([)]&quot;</span></span><br><span class="line">输出：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-1-5-示例5"><a href="#13-1-5-示例5" class="headerlink" title="13.1.5 示例5"></a>13.1.5 示例5</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;&#123;[]&#125;&quot;</span></span><br><span class="line">输出：<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="13-1-6-提示"><a href="#13-1-6-提示" class="headerlink" title="13.1.6 提示"></a>13.1.6 提示</h3><ul>
+<li>$1 &lt;= s.length &lt;= 10^4$</li>
+<li><code>s</code> 仅由括号 <code>&#39;()[]&#123;&#125;&#39;</code> 组成</li>
+</ul>
+<h2 id="13-2-题解"><a href="#13-2-题解" class="headerlink" title="13.2 题解"></a>13.2 题解</h2><h3 id="13-2-1-方式一：栈"><a href="#13-2-1-方式一：栈" class="headerlink" title="13.2.1 方式一：栈"></a>13.2.1 方式一：栈</h3><p>经典的栈方法，简单题没有特别要描述的</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="comment">// 因为括号要成对，所以s的长度一定为偶数，不是偶数肯定为false</span></span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 左右括号的映射关系</span></span><br><span class="line">        Map&lt;Character, Character&gt; pairs = <span class="keyword">new</span> HashMap&lt;Character, Character&gt;() &#123;&#123;</span><br><span class="line">            put(<span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">            put(<span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;[&#x27;</span>);</span><br><span class="line">            put(<span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>);</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 栈空间，存放左括号</span></span><br><span class="line">        Deque&lt;Character&gt; stack = <span class="keyword">new</span> LinkedList&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> ch = s.charAt(i);</span><br><span class="line">            <span class="comment">// 判断ch是否为右括号</span></span><br><span class="line">            <span class="keyword">if</span> (pairs.containsKey(ch)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (stack.isEmpty() || stack.peek() != pairs.get(ch)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stack.push(ch);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：$O(n+|\sum|)$</li>
+</ul>
+<h1 id="十四、找树左下角的值"><a href="#十四、找树左下角的值" class="headerlink" title="十四、找树左下角的值"></a>十四、找树左下角的值</h1><p>给定一个二叉树的 <strong>根节点</strong> <code>root</code>，请找出该二叉树的 <strong>最底层 最左边</strong> 节点的值。</p>
+<p>假设二叉树中至少有一个节点。</p>
+<h2 id="14-1-示例"><a href="#14-1-示例" class="headerlink" title="14.1 示例"></a>14.1 示例</h2><h3 id="14-1-1-示例1"><a href="#14-1-1-示例1" class="headerlink" title="14.1.1 示例1"></a>14.1.1 示例1</h3><img src="/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/tree1.jpg" class="" title="tree1">
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">输入: root = [2,1,3]</span></span><br><span class="line"><span class="section">输出: 1</span></span><br></pre></td></tr></table></figure>
+<h3 id="14-1-2-示例2"><a href="#14-1-2-示例2" class="headerlink" title="14.1.2 示例2"></a>14.1.2 示例2</h3><img src="/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/tree2.jpg" class="" title="tree2">
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">输入: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="literal">null</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="literal">null</span>,<span class="literal">null</span>,<span class="number">7</span>]</span><br><span class="line">输出: <span class="number">7</span></span><br></pre></td></tr></table></figure>
+<h3 id="14-1-3-提示"><a href="#14-1-3-提示" class="headerlink" title="14.1.3 提示"></a>14.1.3 提示</h3><ul>
+<li>二叉树的节点个数的范围是 $[1,10^4]$</li>
+<li>$-2^{31} &lt;= Node.val &lt;= 2^{31} - 1$</li>
+</ul>
+<h2 id="14-2-题解"><a href="#14-2-题解" class="headerlink" title="14.2 题解"></a>14.2 题解</h2><h3 id="14-2-1-方法一：深度优先搜索"><a href="#14-2-1-方法一：深度优先搜索" class="headerlink" title="14.2.1 方法一：深度优先搜索"></a>14.2.1 方法一：深度优先搜索</h3><p>问题是要找<strong>最左边</strong>且<strong>最底层</strong>的节点</p>
+<p>深度优先搜索先从左子树开始，之后再搜索右子树，这就保证了最左边的情况</p>
+<p>最底层就需要一层层的递归，定义一个成员变量curHeight来保存当前遍历的深度，如果还有下一层，那就再进入下一层后更新curHeight</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> curVal = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> curHeight = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findBottomLeftValue</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> curHeight = <span class="number">0</span>;</span><br><span class="line">        dfs(root, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> curVal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode root, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        height++;</span><br><span class="line">        dfs(root.left, height);</span><br><span class="line">        dfs(root.right, height);</span><br><span class="line">        <span class="keyword">if</span> (height &gt; curHeight) &#123;</span><br><span class="line">            curHeight = height;</span><br><span class="line">            curVal = root.val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(n)</li>
+</ul>
 ]]></content>
       <categories>
         <category>后端</category>
@@ -6924,8 +6986,22 @@
 <li>用什么和弦</li>
 <li>怎么用和弦</li>
 </ul>
-<h2 id="1-4-和弦功能属性"><a href="#1-4-和弦功能属性" class="headerlink" title="1.4 和弦功能属性"></a>1.4 和弦功能属性</h2><p>功能属性：T（主音）、 SII（上主音）、DTIII（中音）、S（下属音）、D（属音）、TSVI（下中音）、DVII（导音）；</p>
-<h1 id="二、大调和声"><a href="#二、大调和声" class="headerlink" title="二、大调和声"></a>二、大调和声</h1>]]></content>
+<h1 id="二、大调和声"><a href="#二、大调和声" class="headerlink" title="二、大调和声"></a>二、大调和声</h1><h2 id="2-1-大调的三和弦"><a href="#2-1-大调的三和弦" class="headerlink" title="2.1 大调的三和弦"></a>2.1 大调的三和弦</h2><h2 id="2-2-大调的正-副三和弦"><a href="#2-2-大调的正-副三和弦" class="headerlink" title="2.2 大调的正/副三和弦"></a>2.2 大调的正/副三和弦</h2><p>以自然大调为例，每个大调的$I$级和弦都是<strong>主和弦T（Tonic chord）</strong>，是和声的中心，其作用叫做<strong>主功能</strong>。</p>
+<p>在调性体系下，主和弦的组成音也是所有音中最稳定的，而其他和弦根据组成音的具体情况，产生各自不同的趋向性，这便是和声功能的根源所在。</p>
+<p>大调的V级和弦，称为<strong>属和弦D（Dominant chord）</strong>，代表属功能（Dominant chord），大调五级音又称<strong>属音</strong>，位于主音上方纯五度（下方纯四度），属和弦三个音都有朝向主音的倾向，地位仅次于主和弦。</p>
+<p>大调的IV级和弦，称为<strong>下属和弦S（Subdominant chord）</strong>，IV级音在主音下纯五度（上纯四度），所以叫下属音（Subdominant）。下属和弦具有下属功能。与属和弦相比，下属和弦的趋向性较弱，稳定性略高。</p>
+<p>主和弦T、属和弦D、下属和弦S合称为<strong>正三和弦</strong></p>
+<img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8/shuyin.png" class="" title="shuyin">
+<h2 id="2-3-和声进行的基本规律"><a href="#2-3-和声进行的基本规律" class="headerlink" title="2.3 和声进行的基本规律"></a>2.3 和声进行的基本规律</h2><p>大调进行一般会从I级开始，经过下属和弦、属和弦之后再回归到主和弦</p>
+<img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8/jinxing.png" class="" title="jinxing">
+<ul>
+<li>主和弦I所代表的主功能，关键词是“稳定”。它作为调的核心，产生一种基础的安稳、静止感。如果音乐没有结束在主和弦，通常会给人没有结束的感觉。</li>
+<li>下属和弦IV代表下属功能，关键词是“运动”。它的稳定性介于主、属之间，通常充当二者的中间环节，使音乐的张力逐渐积累。I—IV的进行常有一种启动、上升感</li>
+<li>以属和弦V为代表的属功能，关键词是“紧张”，在三个功能组中最不稳定，音乐的张力达到最大，制造迫切进行到主功能的感觉。V—I常被形容为有制动、下降感，最后到达主和弦，张力得到释放，产生音乐独有的美感。</li>
+</ul>
+<p>和声第一定律：和声的变化是起承转合的，即稳定-&gt;不稳定-&gt;稳定</p>
+<h2 id="2-4-和声进行格式"><a href="#2-4-和声进行格式" class="headerlink" title="2.4 和声进行格式"></a>2.4 和声进行格式</h2><img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8/geshi.png" class="" title="geshi">
+<h2 id="2-5-和弦编配"><a href="#2-5-和弦编配" class="headerlink" title="2.5 和弦编配"></a>2.5 和弦编配</h2>]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
