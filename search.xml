@@ -1967,6 +1967,12 @@
 </tbody>
 </table>
 </div>
+<h2 id="2-4-关系大小调"><a href="#2-4-关系大小调" class="headerlink" title="2.4 关系大小调"></a>2.4 关系大小调</h2><p>大调音阶的前三个音是大三度关系、小调音阶的前三个音是小三度关系</p>
+<p>以自然大小调为例</p>
+<p>C大调的关系小调为a小调</p>
+<p>D大调的关系小调为b小调</p>
+<p>F大调的关系小调为d小调</p>
+<p>G大调的关系小调为e小调</p>
 <h1 id="三、和弦"><a href="#三、和弦" class="headerlink" title="三、和弦"></a>三、和弦</h1><h2 id="3-1-和弦分类"><a href="#3-1-和弦分类" class="headerlink" title="3.1 和弦分类"></a>3.1 和弦分类</h2><h3 id="3-1-1-三度和弦"><a href="#3-1-1-三度和弦" class="headerlink" title="3.1.1 三度和弦"></a>3.1.1 三度和弦</h3><ul>
 <li>三和弦（三个音）</li>
 <li>五和弦（四个音）</li>
@@ -6938,6 +6944,22 @@
 <li>时间复杂度：O(n)</li>
 <li>空间复杂度：O(n)</li>
 </ul>
+<h1 id="十五、合并两个有序链表（21）"><a href="#十五、合并两个有序链表（21）" class="headerlink" title="十五、合并两个有序链表（21）"></a>十五、合并两个有序链表（21）</h1><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<h2 id="15-1-示例"><a href="#15-1-示例" class="headerlink" title="15.1 示例"></a>15.1 示例</h2><h3 id="15-1-1-示例1"><a href="#15-1-1-示例1" class="headerlink" title="15.1.1 示例1"></a>15.1.1 示例1</h3><img src="/2022/06/08/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%8C/merge_ex1.jpg" class="" title="merge_ex1">
+<figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：l1 = <span class="comment">[1,2,4]</span>, l2 = <span class="comment">[1,3,4]</span></span><br><span class="line">输出：<span class="comment">[1,1,2,3,4,4]</span></span><br></pre></td></tr></table></figure>
+<h3 id="15-1-2-示例2"><a href="#15-1-2-示例2" class="headerlink" title="15.1.2 示例2"></a>15.1.2 示例2</h3><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：l1 = <span class="comment">[]</span>, l2 = <span class="comment">[]</span></span><br><span class="line">输出：<span class="comment">[]</span></span><br></pre></td></tr></table></figure>
+<h3 id="15-1-3-示例3"><a href="#15-1-3-示例3" class="headerlink" title="15.1.3 示例3"></a>15.1.3 示例3</h3><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：l1 = <span class="comment">[]</span>, l2 = <span class="comment">[]</span></span><br><span class="line">输出：<span class="comment">[]</span></span><br></pre></td></tr></table></figure>
+<h3 id="15-1-4-提示"><a href="#15-1-4-提示" class="headerlink" title="15.1.4 提示"></a>15.1.4 提示</h3><ul>
+<li>两个链表的节点数目范围是 <code>[0, 50]</code></li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+<li><code>l1</code> 和 <code>l2</code> 均按 <strong>非递减顺序</strong> 排列</li>
+</ul>
+<h2 id="15-2-题解"><a href="#15-2-题解" class="headerlink" title="15.2 题解"></a>15.2 题解</h2><h3 id="15-2-1-方式一：迭代"><a href="#15-2-1-方式一：迭代" class="headerlink" title="15.2.1 方式一：迭代"></a>15.2.1 方式一：迭代</h3><p>我们可以用迭代的方法来实现。当 l1 和 l2 都不是空链表时，判断 l1 和 l2 哪一个链表的头节点的值更小，将较小值的节点添加到结果链表里，当一个节点被添加到结果链表里之后，将对应链表中的节点向后移一位。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode prehead = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        ListNode prev = prehead;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1.val &lt;= l2.val) &#123;</span><br><span class="line">                prev.next = l1;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                prev.next = l2;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = prev.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 合并后 l1 和 l2 最多只有一个还未被合并完，我们直接将链表末尾指向未合并完的链表即可</span></span><br><span class="line">        prev.next = l1 == <span class="keyword">null</span> ? l2 : l1;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> prehead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(m+n)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
 ]]></content>
       <categories>
         <category>后端</category>
@@ -6954,7 +6976,15 @@
     <content><![CDATA[<h1 id="一、指板音阶"><a href="#一、指板音阶" class="headerlink" title="一、指板音阶"></a>一、指板音阶</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/yinjie.png" class="" title="yinjie">
 <h1 id="二、吉他和弦汇总"><a href="#二、吉他和弦汇总" class="headerlink" title="二、吉他和弦汇总"></a>二、吉他和弦汇总</h1><h2 id="2-1-调式和弦"><a href="#2-1-调式和弦" class="headerlink" title="2.1 调式和弦"></a>2.1 调式和弦</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/hexian.png" class="" title="hexian">
 <h3 id="2-1-1-大七和弦"><a href="#2-1-1-大七和弦" class="headerlink" title="2.1.1 大七和弦"></a>2.1.1 大七和弦</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/Cmaj.png" class="" title="cmaj">
-<h3 id="2-1-2-属七和弦（大小七和弦）"><a href="#2-1-2-属七和弦（大小七和弦）" class="headerlink" title="2.1.2 属七和弦（大小七和弦）"></a>2.1.2 属七和弦（大小七和弦）</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/c7.png" class="" title="c7">]]></content>
+<h3 id="2-1-2-属七和弦（大小七和弦）"><a href="#2-1-2-属七和弦（大小七和弦）" class="headerlink" title="2.1.2 属七和弦（大小七和弦）"></a>2.1.2 属七和弦（大小七和弦）</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/c7.png" class="" title="c7">
+<h1 id="三、吉他指型"><a href="#三、吉他指型" class="headerlink" title="三、吉他指型"></a>三、吉他指型</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/zhixing.png" class="" title="zhixing">
+<h1 id="四、CAGED系统"><a href="#四、CAGED系统" class="headerlink" title="四、CAGED系统"></a>四、CAGED系统</h1><p><strong>CAGED</strong>是一套快速推测和弦指法的系统，即<strong>任何一个和弦都有五种按法</strong>，它能帮助我们快速记忆指板音阶</p>
+<p>以C和弦为例，<strong>和弦音为1-3-5（CEG）</strong>,它在Mi把位上的指法是<strong>典型的C和弦指法</strong>，但如果把C和弦升高一个把位，即<strong>Sol把位</strong>，应该怎么按呢？</p>
+<p>按照<strong>CAGED的排列顺序</strong>，C和弦到<strong>Sol把位</strong>应该按照A指型来按和弦，同理如果再升高到<strong>La把位</strong>，C和弦就应该按照<strong>G指型</strong>来按和弦，13品之后就进入下一个循环，即D指型后循环到C指型来按和弦</p>
+<img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/caged.png" class="" title="caged">
+<p>再以D和弦为例，如果再<strong>Mi把位</strong>上升高一个把位到<strong>Sol把位</strong>，那么D和弦就应该按照<strong>C指型</strong>来按和弦</p>
+<p>比较明显的是，在不同把位上的相同和弦弹奏的声音给人的感觉是不同的</p>
+]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
@@ -6991,6 +7021,7 @@
 <p>大调的V级和弦，称为<strong>属和弦D（Dominant chord）</strong>，代表属功能（Dominant chord），大调五级音又称<strong>属音</strong>，位于主音上方纯五度（下方纯四度），属和弦三个音都有朝向主音的倾向，地位仅次于主和弦。</p>
 <p>大调的IV级和弦，称为<strong>下属和弦S（Subdominant chord）</strong>，IV级音在主音下纯五度（上纯四度），所以叫下属音（Subdominant）。下属和弦具有下属功能。与属和弦相比，下属和弦的趋向性较弱，稳定性略高。</p>
 <p>主和弦T、属和弦D、下属和弦S合称为<strong>正三和弦</strong></p>
+<p>正三和弦以外的和弦称为副三和弦，即ii、iii、vi、vii四个和弦，在C大调中就是Dm、Em、Am、B</p>
 <img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8/shuyin.png" class="" title="shuyin">
 <h2 id="2-3-和声进行的基本规律"><a href="#2-3-和声进行的基本规律" class="headerlink" title="2.3 和声进行的基本规律"></a>2.3 和声进行的基本规律</h2><p>大调进行一般会从I级开始，经过下属和弦、属和弦之后再回归到主和弦</p>
 <img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8/jinxing.png" class="" title="jinxing">
@@ -7001,7 +7032,9 @@
 </ul>
 <p>和声第一定律：和声的变化是起承转合的，即稳定-&gt;不稳定-&gt;稳定</p>
 <h2 id="2-4-和声进行格式"><a href="#2-4-和声进行格式" class="headerlink" title="2.4 和声进行格式"></a>2.4 和声进行格式</h2><img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8/geshi.png" class="" title="geshi">
-<h2 id="2-5-和弦编配"><a href="#2-5-和弦编配" class="headerlink" title="2.5 和弦编配"></a>2.5 和弦编配</h2>]]></content>
+<h2 id="2-5-和弦编配"><a href="#2-5-和弦编配" class="headerlink" title="2.5 和弦编配"></a>2.5 和弦编配</h2><p> 和声第二定律：在为旋律编配和弦时，和弦要包含旋律中的一部分或全部的音，不能完全包含时，和声一般也要照顾到尽量多的旋律音，优先考虑强拍与长音</p>
+<p>和弦外音（外音）：不包含在和弦音中的旋律音</p>
+]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
@@ -7010,6 +7043,32 @@
         <tag>乐理</tag>
         <tag>和弦</tag>
         <tag>编曲</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java算法大全三</title>
+    <url>/2022/06/23/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%B8%89/</url>
+    <content><![CDATA[<h1 id="一、串联所有单词的子串（30）"><a href="#一、串联所有单词的子串（30）" class="headerlink" title="一、串联所有单词的子串（30）"></a>一、串联所有单词的子串（30）</h1><p>给定一个字符串 s 和一些 长度相同 的单词 words 。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。</p>
+<p>注意子串要与 words 中的单词完全匹配，<strong>中间不能有其他字符</strong> ，但不需要考虑 words 中单词串联的顺序。</p>
+<h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><h3 id="1-1-1-示例1"><a href="#1-1-1-示例1" class="headerlink" title="1.1.1 示例1"></a>1.1.1 示例1</h3><figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">输入：s = <span class="string">&quot;barfoothefoobarman&quot;</span>, words = [<span class="string">&quot;foo&quot;</span>,<span class="string">&quot;bar&quot;</span>]</span><br><span class="line">输出：[<span class="number">0</span>,<span class="number">9</span>]</span><br><span class="line">解释：</span><br><span class="line">从索引 <span class="number">0</span> 和 <span class="number">9</span> 开始的子串分别是 <span class="string">&quot;barfoo&quot;</span> 和 <span class="string">&quot;foobar&quot;</span> 。</span><br><span class="line">输出的顺序不重要, [<span class="number">9</span>,<span class="number">0</span>] 也是有效答案。</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-2-示例2"><a href="#1-1-2-示例2" class="headerlink" title="1.1.2 示例2"></a>1.1.2 示例2</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;wordgoodgoodgoodbestword&quot;</span>, <span class="attr">words</span> = [<span class="string">&quot;word&quot;</span>,<span class="string">&quot;good&quot;</span>,<span class="string">&quot;best&quot;</span>,<span class="string">&quot;word&quot;</span>]</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-3-示例3"><a href="#1-1-3-示例3" class="headerlink" title="1.1.3 示例3"></a>1.1.3 示例3</h3><figure class="highlight nix"><table><tr><td class="code"><pre><span class="line">输入：<span class="attr">s</span> = <span class="string">&quot;barfoofoobarthefoobarman&quot;</span>, <span class="attr">words</span> = [<span class="string">&quot;bar&quot;</span>,<span class="string">&quot;foo&quot;</span>,<span class="string">&quot;the&quot;</span>]</span><br><span class="line">输出：[<span class="number">6</span>,<span class="number">9</span>,<span class="number">12</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-4-提示"><a href="#1-1-4-提示" class="headerlink" title="1.1.4 提示"></a>1.1.4 提示</h3><ul>
+<li>$1 &lt;= s.length &lt;= 10^4$</li>
+<li>s 由小写英文字母组成</li>
+<li>1 &lt;= words.length &lt;= 5000</li>
+<li>1 &lt;= words[i].length &lt;= 30</li>
+<li>words[i] 由小写英文字母组成</li>
+</ul>
+<h2 id="1-2-题解"><a href="#1-2-题解" class="headerlink" title="1.2 题解"></a>1.2 题解</h2><h3 id="1-2-1-方式一：滑动窗口"><a href="#1-2-1-方式一：滑动窗口" class="headerlink" title="1.2.1 方式一：滑动窗口"></a>1.2.1 方式一：滑动窗口</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">findSubstring</span><span class="params">(String s, String[] words)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> m = words.length, n = words[<span class="number">0</span>].length(), ls = s.length();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i + m * n &gt; ls) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Map&lt;String, Integer&gt; differ = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                String word = s.substring(i + j * n, i + (j + <span class="number">1</span>) * n);</span><br><span class="line">                differ.put(word, differ.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">                differ.put(word, differ.getOrDefault(word, <span class="number">0</span>) - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (differ.get(word) == <span class="number">0</span>) &#123;</span><br><span class="line">                    differ.remove(word);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> start = i; start &lt; ls - m * n + <span class="number">1</span>; start += n) &#123;</span><br><span class="line">                <span class="keyword">if</span> (start != i) &#123;</span><br><span class="line">                    String word = s.substring(start + (m - <span class="number">1</span>) * n, start + m * n);</span><br><span class="line">                    differ.put(word, differ.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span> (differ.get(word) == <span class="number">0</span>) &#123;</span><br><span class="line">                        differ.remove(word);</span><br><span class="line">                    &#125;</span><br><span class="line">                    word = s.substring(start - n, start);</span><br><span class="line">                    differ.put(word, differ.getOrDefault(word, <span class="number">0</span>) - <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span> (differ.get(word) == <span class="number">0</span>) &#123;</span><br><span class="line">                        differ.remove(word);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (differ.isEmpty()) &#123;</span><br><span class="line">                    res.add(start);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>
