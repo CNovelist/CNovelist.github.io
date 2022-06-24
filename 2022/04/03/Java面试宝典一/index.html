@@ -35,8 +35,9 @@
 <meta property="og:image" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals.png">
 <meta property="og:image" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals1.png">
 <meta property="og:image" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/string1.png">
+<meta property="og:image" content="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/stringneicun.png">
 <meta property="article:published_time" content="2022-04-03T10:41:32.000Z">
-<meta property="article:modified_time" content="2022-06-22T12:45:41.749Z">
+<meta property="article:modified_time" content="2022-06-24T08:53:03.085Z">
 <meta property="article:author" content="故事开头">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="面试">
@@ -209,7 +210,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-22 20:45:41" itemprop="dateModified" datetime="2022-06-22T20:45:41+08:00">2022-06-22</time>
+                <time title="修改时间：2022-06-24 16:53:03" itemprop="dateModified" datetime="2022-06-24T16:53:03+08:00">2022-06-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,13 +261,13 @@
 <li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
 <li>赋值操作是在操作数栈计算完之后才执行的</li>
 </ul>
-<h1 id="、JDK-JRE-JVM的区别"><a href="#、JDK-JRE-JVM的区别" class="headerlink" title="、JDK/JRE/JVM的区别"></a>、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/KEM.png" class="" title="kem">
+<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/KEM.png" class="" title="kem">
 <ul>
 <li>JDK：Java标准开发包，提供编译、运行Java程序所需的各种工具和资源，包括Java编译器、Java运行时环境，以及常用的Java类库等</li>
 <li>JRE，Java运行环境，用于运行Java的字节码文件，JRE中包括了JVM工作所需要的类库，普通用户只需要按照JRE来运行Java程序，而程序开发者必须安装JDK来编译、调试程序</li>
 <li>JVM：Java虚拟机，是JRE的一部分，它是整个Java实现跨平台的最核心的部分，负责运行字节码文件</li>
 </ul>
-<h1 id="、Java数据类型"><a href="#、Java数据类型" class="headerlink" title="、Java数据类型"></a>、Java数据类型</h1><p>基础数据类型</p>
+<h1 id="三、Java数据类型"><a href="#三、Java数据类型" class="headerlink" title="三、Java数据类型"></a>三、Java数据类型</h1><p>基础数据类型</p>
 <ul>
 <li>整数类型（byte、short、int、long）</li>
 <li>浮点类型（float、double）</li>
@@ -281,7 +282,7 @@
 <li>数组（[]）</li>
 </ul>
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/jichutype.png" class="" title="jichutype">
-<h1 id="、hashCode-与equals-之间的关系"><a href="#、hashCode-与equals-之间的关系" class="headerlink" title="、hashCode()与equals()之间的关系"></a>、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
+<h1 id="四、hashCode-与equals-之间的关系"><a href="#四、hashCode-与equals-之间的关系" class="headerlink" title="四、hashCode()与equals()之间的关系"></a>四、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
 <p>但由于计算机的存储空间不是无限的，所以哈希地址的计算一般会出现重复的情况，这里可以采用<strong>链地址法</strong>，即如果两条数据计算到的哈希值相同，那么就在这个位置上创建一个<strong>链表</strong>来存放这两个相同哈希值的数据。</p>
 <p>有了哈希表的概念，那么这里Java对象中的hashCode就是经过某一哈希函数得到的哈希值，在应用时参考以下代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Key</span> </span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Key</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public int hashCode() &#123;</span></span><br><span class="line"><span class="comment">//        return id.hashCode();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public boolean equals(Object obj) &#123;</span></span><br><span class="line"><span class="comment">//        if(obj == null || !(obj instanceof Key))</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        else</span></span><br><span class="line"><span class="comment">//            return this.getId().equals(((Key) obj).getId());</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Key k1 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        Key k2 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        HashMap&lt;Key,String&gt; hm = <span class="keyword">new</span> HashMap&lt;Key, String&gt;();</span><br><span class="line"></span><br><span class="line">        hm.put(k1,<span class="string">&quot;Key with id is 1&quot;</span>);</span><br><span class="line">        System.out.println(hm.get(k2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -312,7 +313,7 @@
 <li>有没有重写过hashCode方法</li>
 <li>在使用HashMap时有没有重写hashCode和equals方法，怎么写的</li>
 </ul>
-<h1 id="、-与equals的区别"><a href="#、-与equals的区别" class="headerlink" title="、==与equals的区别"></a>、==与equals的区别</h1><p>参考第三题，equals()方法在不重写的情况下，<strong>默认</strong>比较的是两个<strong>对象的内存地址</strong>，但我们往往会在类中重写equals()来<strong>比较对象之间的内容是否相等</strong>，<strong>equals()只能被对象调用</strong>。</p>
+<h1 id="五、-与equals的区别"><a href="#五、-与equals的区别" class="headerlink" title="五、==与equals的区别"></a>五、==与equals的区别</h1><p>参考第三题，equals()方法在不重写的情况下，<strong>默认</strong>比较的是两个<strong>对象的内存地址</strong>，但我们往往会在类中重写equals()来<strong>比较对象之间的内容是否相等</strong>，<strong>equals()只能被对象调用</strong>。</p>
 <p>==是Java中的一种操作符，它有两种比较方式</p>
 <ul>
 <li>对于基础数据类型来说，==判断的是两边的值是否相等</li>
@@ -326,7 +327,7 @@
 <li><strong>一致性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，那么它们要始终相等</li>
 <li><strong>非空性</strong>：对于任何非空引用值x来说，x.equals(null)必须返回false</li>
 </ul>
-<h1 id="、String中的equals是如何重写的"><a href="#、String中的equals是如何重写的" class="headerlink" title="、String中的equals是如何重写的"></a>、String中的equals是如何重写的</h1><p>String是Java中的字符串类，它整个类都是被final修饰的，这意味着String类是不能被任何类继承，任何修改String字符串的方法都是创建了一个新的字符串</p>
+<h1 id="六、String中的equals是如何重写的"><a href="#六、String中的equals是如何重写的" class="headerlink" title="六、String中的equals是如何重写的"></a>六、String中的equals是如何重写的</h1><p>String是Java中的字符串类，它整个类都是被final修饰的，这意味着String类是不能被任何类继承，任何修改String字符串的方法都是创建了一个新的字符串</p>
 <p>equals方法是Object类定义的方法，Object是所有类的父类，当然也包括String，String重写的equals方法如下</p>
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals.png" class="" title="sequals">
 <ul>
@@ -337,9 +338,12 @@
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals1.png" class="" title="sequals1">
 <p>注意JDK1.8以后，new String(“abc”)操作和普通的字符串赋值操作作用是一样的，以下的intern()方法是获取常量池中的字符串</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"></span><br><span class="line">        String s2 = <span class="string">&quot;a&quot;</span> + <span class="keyword">new</span> String(<span class="string">&quot;bc&quot;</span>);</span><br><span class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1.intern());	<span class="comment">//abc</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下输出均为true</span></span><br><span class="line">        System.out.println(s2.equals(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        System.out.println(s3.equals(s1));</span><br><span class="line">        System.out.println(s1.intern().equals(s2));</span><br><span class="line">        System.out.println(s3.intern().equals(s1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>观察String类构造器源码可以发现，new String(“aaa”)给字符串赋值操作的同时，还要同步字符串的哈希值。这就造成了单纯的”aaa”常量赋值操作和new操作并没有什么区别。</p>
+<h1 id="七、String-s1-new-String-“abc”-在内存中创建了几个对象"><a href="#七、String-s1-new-String-“abc”-在内存中创建了几个对象" class="headerlink" title="七、String s1 = new String(“abc”)在内存中创建了几个对象"></a>七、String s1 = new String(“abc”)在内存中创建了几个对象</h1><p>一个或者两个，首先new操作一定会在堆中创建一个对象，如果常量池中不存在“abc”对象，那么就会在常量池中创建一个“abc”，否则就不进行创建</p>
+<p>观察下面String构造器的源码可以发现，String对象的hash值和常量池“abc”对象的hash值是一致的</p>
 <img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/string1.png" class="" title="string1">
-<h1 id="、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"><a href="#、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计" class="headerlink" title="、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"></a>、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</h1><p>不可变对象：不可变对象就是一经创建后，其对象的内部状态不能被修改，即：</p>
+<p>new操作的内存情况如下：</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/stringneicun.png" class="" title="stringneicun">
+<h1 id="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"><a href="#八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计" class="headerlink" title="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"></a>八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</h1><p>不可变对象：不可变对象就是一经创建后，其对象的内部状态不能被修改，即：</p>
 <ul>
 <li>不可变对象内部属性都是final的</li>
 <li>不可变对象的内部属性都是private的</li>
@@ -349,8 +353,37 @@
 <p>String类是一种对象，它独立于Java基本数据类型而存在的，可以理解为字符串的集合</p>
 <p>String被设计为final的，表示String对象一经创建后，它的值就不能再被修改了，任何对String值进行修改的方法就是重新创建一个字符串</p>
 <p>String对象创建后会存在于运行时常量池中，运行时常量池属于方法区的一部分，JDK1.7后把它移到了堆中</p>
-<h1 id="、String-StringBuffer-StringBuilder的区别"><a href="#、String-StringBuffer-StringBuilder的区别" class="headerlink" title="、String/StringBuffer/StringBuilder的区别"></a>、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
+<h1 id="九、String-StringBuffer-StringBuilder的区别"><a href="#九、String-StringBuffer-StringBuilder的区别" class="headerlink" title="九、String/StringBuffer/StringBuilder的区别"></a>九、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
 <p>StringBuffer和StringBuilder都是可修改的字符串对象，区别是StringBuffer是线程安全的，StringBuilder是线程不安全的</p>
+<h1 id="十、static关键字是干什么用的"><a href="#十、static关键字是干什么用的" class="headerlink" title="十、static关键字是干什么用的"></a>十、static关键字是干什么用的</h1><ul>
+<li>修饰变量，static修饰的变量称为<strong>静态变量</strong>、也称为<strong>类变量</strong>，类变量属于类所有，对于不同的类来说，static变量只有一份，static修饰的变量位于<strong>方法区</strong>；static修饰的变量能够直接通过<strong>类名.变量名</strong>来进行访问，不用通过实例化类再进行使用</li>
+<li>修饰方法，static修饰的方法称为<strong>静态方法</strong>，静态方法能够直接通过<strong>类名.方法名</strong>来使用，在静态方法内部不能使用非静态属性和方法</li>
+<li><p>static可以修饰代码块，主要分为两种，一种直接定义在类中，使用<strong>static{}</strong>，这种被称为静态代码块，一种是在类中定义<strong>静态内部类</strong>，使用<strong>static class xxx</strong>来进行定义</p>
+</li>
+<li><p>static可用用于静态导包，通过使用import static xxx来实现，这种方式一般不推荐使用</p>
+</li>
+<li>static可以和单例模式一起使用，通过双重检查锁来实现线程安全的单例模式</li>
+</ul>
+<h1 id="十一、final关键字是干什么用的"><a href="#十一、final关键字是干什么用的" class="headerlink" title="十一、final关键字是干什么用的"></a>十一、final关键字是干什么用的</h1><p>final 是 Java 中的关键字，它表示的意思是 <code>不可变的</code>，在 Java 中，final 主要用来</p>
+<ul>
+<li>修饰类，final 修饰的类不能被继承，不能被继承的意思就是不能使用 <code>extends</code> 来继承被 final 修饰的类。</li>
+<li>修饰变量，final 修饰的变量不能被改写，不能被改写的意思有两种，对于基本数据类型来说，final 修饰的<strong>变量</strong>，其<strong>值不能被改变</strong>，final 修饰的<strong>对象</strong>，<strong>对象的引用不能被改变</strong>，但是对象内部的<strong>属性可以被修改</strong>。final 修饰的变量在某种程度上起到了<code>不可变</code>的效果，所以，可以用来保护只读数据，尤其是在并发编程中，因为明确的不能再为 final 变量进行赋值，有利于减少额外的同步开销</li>
+<li>修饰方法，final 修饰的方法不能被重写</li>
+<li>final 修饰符和 Java 程序性能优化没有必然联系</li>
+</ul>
+<h1 id="十二、抽象类和接口的区别是什么"><a href="#十二、抽象类和接口的区别是什么" class="headerlink" title="十二、抽象类和接口的区别是什么"></a>十二、抽象类和接口的区别是什么</h1><p>抽象类abstract和接口interface都是Java中的关键字，</p>
+<p>抽象类和接口的相同点：</p>
+<ul>
+<li>都允许进行方法的定义，而不用具体的方法实现</li>
+<li>都允许被继承</li>
+<li>广泛的应用于 JDK 和框架的源码中，来实现多态和不同的设计模式。</li>
+</ul>
+<p>抽象类和接口的不同点：</p>
+<ul>
+<li>抽象级别不同：类、抽象类、接口其实是三种不同的抽象级别，抽象程度依次是 <strong>接口 &gt; 抽象类 &gt; 类</strong>。在接口中，只允许进行方法的定义，不允许有方法的实现，抽象类中可以进行方法的定义和实现；而类中只允许进行方法的实现</li>
+<li>使用的关键字不同：类使用 <code>class</code> 来表示；抽象类使用 <code>abstract class</code> 来表示；接口使用 <code>interface</code> 来表示</li>
+<li>变量：接口中定义的变量只能是公共的静态常量，抽象类中的变量是普通变量。</li>
+</ul>
 
     </div>
 
@@ -452,7 +485,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%98%E9%87%8F%E8%87%AA%E5%A2%9E"><span class="nav-text">一、变量自增</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E7%A4%BA%E4%BE%8B"><span class="nav-text">1.1 示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%88%86%E6%9E%90"><span class="nav-text">1.2 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E5%89%8D%E4%B8%A4%E6%AD%A5"><span class="nav-text">1.2.1 前两步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-text">1.2.2 第三步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="nav-text">1.2.3 第四步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%B0%8F%E7%BB%93"><span class="nav-text">1.3 小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%81JDK-JRE-JVM%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">、JDK&#x2F;JRE&#x2F;JVM的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%81Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">、Java数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%81hashCode-%E4%B8%8Eequals-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">、hashCode()与equals()之间的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%81-%E4%B8%8Eequals%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">、&#x3D;&#x3D;与equals的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%81String%E4%B8%AD%E7%9A%84equals%E6%98%AF%E5%A6%82%E4%BD%95%E9%87%8D%E5%86%99%E7%9A%84"><span class="nav-text">、String中的equals是如何重写的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%81String%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84%E3%80%81jdk%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84String%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E7%9A%84%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E8%AE%BE%E8%AE%A1"><span class="nav-text">、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%81String-StringBuffer-StringBuilder%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">、String&#x2F;StringBuffer&#x2F;StringBuilder的区别</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%98%E9%87%8F%E8%87%AA%E5%A2%9E"><span class="nav-text">一、变量自增</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E7%A4%BA%E4%BE%8B"><span class="nav-text">1.1 示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%88%86%E6%9E%90"><span class="nav-text">1.2 分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E5%89%8D%E4%B8%A4%E6%AD%A5"><span class="nav-text">1.2.1 前两步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-text">1.2.2 第三步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="nav-text">1.2.3 第四步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%B0%8F%E7%BB%93"><span class="nav-text">1.3 小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81JDK-JRE-JVM%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">二、JDK&#x2F;JRE&#x2F;JVM的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">三、Java数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81hashCode-%E4%B8%8Eequals-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">四、hashCode()与equals()之间的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81-%E4%B8%8Eequals%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">五、&#x3D;&#x3D;与equals的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81String%E4%B8%AD%E7%9A%84equals%E6%98%AF%E5%A6%82%E4%BD%95%E9%87%8D%E5%86%99%E7%9A%84"><span class="nav-text">六、String中的equals是如何重写的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81String-s1-new-String-%E2%80%9Cabc%E2%80%9D-%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%BA%86%E5%87%A0%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="nav-text">七、String s1 &#x3D; new String(“abc”)在内存中创建了几个对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E3%80%81String%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84%E3%80%81jdk%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84String%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E7%9A%84%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E8%AE%BE%E8%AE%A1"><span class="nav-text">八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%9D%E3%80%81String-StringBuffer-StringBuilder%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">九、String&#x2F;StringBuffer&#x2F;StringBuilder的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E3%80%81static%E5%85%B3%E9%94%AE%E5%AD%97%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84"><span class="nav-text">十、static关键字是干什么用的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81final%E5%85%B3%E9%94%AE%E5%AD%97%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84"><span class="nav-text">十一、final关键字是干什么用的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">十二、抽象类和接口的区别是什么</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
