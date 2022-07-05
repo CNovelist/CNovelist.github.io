@@ -1875,6 +1875,10 @@
 </tbody>
 </table>
 </div>
+<ul>
+<li>以C大调为例，各音阶度数关系如下：</li>
+</ul>
+<img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/dushu.png" class="" title="dushu">
 <h1 id="二、调式"><a href="#二、调式" class="headerlink" title="二、调式"></a>二、调式</h1><h2 id="2-1-大调式"><a href="#2-1-大调式" class="headerlink" title="2.1 大调式"></a>2.1 大调式</h2><h3 id="2-1-1-自然大调"><a href="#2-1-1-自然大调" class="headerlink" title="2.1.1 自然大调"></a>2.1.1 自然大调</h3><ul>
 <li>满足<strong>“全全半全全全半”</strong>的关系</li>
 <li>$1、2、3、4、5、6、7、\overline{1}$</li>
@@ -1921,7 +1925,7 @@
 <td style="text-align:center">C、D、E、F、G、A、B、C</td>
 </tr>
 <tr>
-<td style="text-align:center">bD</td>
+<td style="text-align:center">#C</td>
 <td style="text-align:center">#C、#D、#E、#F、#G、#A、#B、#C</td>
 </tr>
 <tr>
@@ -5943,7 +5947,17 @@
 <p>byte中，正数的最大值就是0111 1111</p>
 <p>因为存在符号位，所以存在两个0，即-0：1000 0000和+0：0000 0000，因此用1000 0000来表示负数的最小值，即-128</p>
 <p>1000 0000减1后为0111 1111，再取反1000 0000，原码的值128，在负数中就应该为-128</p>
-<h1 id="十五、HashMap和HashTable的区别"><a href="#十五、HashMap和HashTable的区别" class="headerlink" title="十五、HashMap和HashTable的区别"></a>十五、HashMap和HashTable的区别</h1>]]></content>
+<h1 id="十五、HashMap和HashTable的区别"><a href="#十五、HashMap和HashTable的区别" class="headerlink" title="十五、HashMap和HashTable的区别"></a>十五、HashMap和HashTable的区别</h1><p>不同点：</p>
+<ul>
+<li>父类不同：HashMap继承了AbstractMap类，而HashTable继承了Dictionary类</li>
+<li><p>空值不同：HashMap允许空的key和value值，HashTable不允许空的key和value值。HashMap会把Null key当做普通的key对待，且不允许null key重复。HashTable存null的key就会报空指针异常</p>
+</li>
+<li><p>线程安全性：HashMap是线程不安全的，如果多个外部操作同时修改HashMap的数据结构比如add或者是delete，必须进行同步操作，即仅仅对key或者value的修改不是改变数据结构的操作</p>
+</li>
+<li>性能方面：虽然HashMap和HashTable都是基于单链表的，但是HashMap进行put或者get操作，可以达到常数时间的性能；而HashTable的put和get操作都是加了synchronized，所以效率很差</li>
+<li>初始容量不同：HashTable的初始长度是11，之后每次扩充容量变为之前的2n+1（n为上一次的长度）而HashMap的初始长度为16，之后每次扩充变为原来的两倍。创建时，如果给定了容量初始值，那么HashTable会直接使用你给定的大小，而HashMap会将其扩充为2的幂次方大小</li>
+</ul>
+]]></content>
       <categories>
         <category>后端</category>
         <category>面试</category>
@@ -7051,7 +7065,11 @@
     <title>吉他和弦大全</title>
     <url>/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、指板音阶"><a href="#一、指板音阶" class="headerlink" title="一、指板音阶"></a>一、指板音阶</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/yinjie.png" class="" title="yinjie">
-<h1 id="二、吉他和弦汇总"><a href="#二、吉他和弦汇总" class="headerlink" title="二、吉他和弦汇总"></a>二、吉他和弦汇总</h1><h2 id="2-1-调式和弦"><a href="#2-1-调式和弦" class="headerlink" title="2.1 调式和弦"></a>2.1 调式和弦</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/hexian.png" class="" title="hexian">
+<h1 id="二、吉他和弦汇总"><a href="#二、吉他和弦汇总" class="headerlink" title="二、吉他和弦汇总"></a>二、吉他和弦汇总</h1><h2 id="2-1-常用和弦"><a href="#2-1-常用和弦" class="headerlink" title="2.1 常用和弦"></a>2.1 常用和弦</h2><ul>
+<li>大三和弦：C（1、3、5），D（2、#4、6），E（3、#5、7），F（4、6、1），G（5、7、2），A（6、#1、3），B（7、#2、#4）</li>
+<li>小三和弦：Cm（1、b3、5）、Dm（2、4、6）、Em（3、5、7）、Fm（4、b6、1）、Gm（5、b7、2）、Am（6、1、3）、Bm（7、2、#4）</li>
+</ul>
+<h2 id="2-1-调式和弦"><a href="#2-1-调式和弦" class="headerlink" title="2.1 调式和弦"></a>2.1 调式和弦</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/hexian.png" class="" title="hexian">
 <h3 id="2-1-1-大七和弦"><a href="#2-1-1-大七和弦" class="headerlink" title="2.1.1 大七和弦"></a>2.1.1 大七和弦</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/Cmaj.png" class="" title="cmaj">
 <h3 id="2-1-2-属七和弦（大小七和弦）"><a href="#2-1-2-属七和弦（大小七和弦）" class="headerlink" title="2.1.2 属七和弦（大小七和弦）"></a>2.1.2 属七和弦（大小七和弦）</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/c7.png" class="" title="c7">
 <h1 id="三、吉他指型"><a href="#三、吉他指型" class="headerlink" title="三、吉他指型"></a>三、吉他指型</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/zhixing.png" class="" title="zhixing">
@@ -7353,7 +7371,66 @@
   <entry>
     <title>Java算法大全四-排序算法</title>
     <url>/2022/07/02/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E5%9B%9B-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="一、直接插入排序"><a href="#一、直接插入排序" class="headerlink" title="一、直接插入排序"></a>一、直接插入排序</h1><ul>
+<li>插入排序基本思想是每次将一个待排序的记录按其关键字大小插入到前面已排好序的子序列中，直到全部记录插入完成</li>
+<li>比较次数和移动次数取决于待排序表的初始状态</li>
+<li>适用于顺序存储和链式存储的线性表</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(ElemType A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;          <span class="comment">// 依次将A[2]~A[n]插入到前面已排序序列</span></span><br><span class="line">        <span class="keyword">if</span>(A[i]&lt;A[i<span class="number">-1</span>])&#123;        <span class="comment">// 若A[i]关键码小于其前驱，将A[i]插入有序表中</span></span><br><span class="line">            A[<span class="number">0</span>]=A[i];          <span class="comment">// 复制为哨兵，A[0]不存放元素</span></span><br><span class="line">            <span class="keyword">for</span>(j=i<span class="number">-1</span>;A[<span class="number">0</span>]&lt;A[j];--j)    <span class="comment">// 从后往前查找待插入位置</span></span><br><span class="line">                A[j+<span class="number">1</span>]=A[j];    <span class="comment">// 向后挪位</span></span><br><span class="line">            A[j+<span class="number">1</span>]=A[<span class="number">0</span>];        <span class="comment">// 复制到插入位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二、折半插入排序"><a href="#二、折半插入排序" class="headerlink" title="二、折半插入排序"></a>二、折半插入排序</h1><ul>
+<li>设在待排序表中有一个记录序列V[1], …,v[n]。其中V[1], …, v[i-1]是已经排好序的记录。在插入v[i]时，利用折半搜索法寻找 v[i] 的插入位置，并插入，直到所有记录插入完成</li>
+<li>比较次数与待排序表的初始状态无关，仅取决于表中的元素个数n</li>
+<li>元素的移动次数未改变，依赖于待排序表的初始状态</li>
+<li>是一种稳定的排序算法</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(ElemType A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,low,high,mid;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;          <span class="comment">// 依次将A[2]~A[n]插入前面的已排序序列</span></span><br><span class="line">        A[<span class="number">0</span>]=A[i];              <span class="comment">// 将A[i]暂存到A[0]</span></span><br><span class="line">        low=<span class="number">1</span>;high=i<span class="number">-1</span>;         <span class="comment">// 设置折半查找的范围</span></span><br><span class="line">        <span class="keyword">while</span>(low&lt;=high)&#123;       <span class="comment">// 折半查找（，默认递增有序）</span></span><br><span class="line">            mid=(low+high)/<span class="number">2</span>;   <span class="comment">// 取中间点</span></span><br><span class="line">            <span class="keyword">if</span>(A[mid]&gt;A[<span class="number">0</span>])     <span class="comment">// 查找左半子表</span></span><br><span class="line">                high=mid<span class="number">-1</span>;     <span class="comment">// 查找右半子表</span></span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                low=mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(j=i<span class="number">-1</span>;j&gt;=high+<span class="number">1</span>;--j)</span><br><span class="line">            A[j+<span class="number">1</span>]=A[j];        <span class="comment">// 统一后移元素，空出插入位置</span></span><br><span class="line">        A[high+<span class="number">1</span>]=A[<span class="number">0</span>];         <span class="comment">// 插入操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、希尔排序"><a href="#三、希尔排序" class="headerlink" title="三、希尔排序"></a>三、希尔排序</h1><ul>
+<li>先将待排序表分割成若干形如L[i,i+d,i+2d,…,i+kd]的“特殊”子表，即把相隔某个“增量”的记录组成一个子表，对各个子表分别进行直接插入排序，当整个表中的元素已呈“基本有序”时，再对全体记录进行一次直接插入排序</li>
+<li>仅适用于线性表为顺序存储的情况</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(ElemType A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">// A[0]只是暂存单元，不是哨兵，当j&lt;=0时，插入位置已到</span></span><br><span class="line">    <span class="keyword">for</span>(dk=n/<span class="number">2</span>;dk&gt;=<span class="number">1</span>;dk=dk/<span class="number">2</span>)&#123;  <span class="comment">// 步长变化</span></span><br><span class="line">        <span class="keyword">for</span>(i=dk+<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]&lt;A[i-dk])&#123;       <span class="comment">// 需将A[i]插入有序增量子表</span></span><br><span class="line">                A[<span class="number">0</span>]=A[i];          <span class="comment">// 暂存在A[0]</span></span><br><span class="line">                <span class="keyword">for</span>(j=i-dk;j&gt;<span class="number">0</span>&amp;&amp;A[<span class="number">0</span>]&lt;A[j];i-=dk)</span><br><span class="line">                    A[j+dk]=A[j];       <span class="comment">// 记录后移，查找插入的位置</span></span><br><span class="line">                A[j+dk]=A[<span class="number">0</span>]            <span class="comment">// 插入</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="四、冒泡排序"><a href="#四、冒泡排序" class="headerlink" title="四、冒泡排序"></a>四、冒泡排序</h1><ul>
+<li>从后往前（或从前往后）两两比较相邻元素的值，若为逆序（即A[i-1]&gt;A[i]），则交换它们，直到序列比较完。重复这一步骤，直到序列全部有序</li>
+<li>每一趟排序都能使一个元素放置在其最终的位置上</li>
+<li>比较次数和移动次数取决于待排序表的初始状态</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(ELemType A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        flag=<span class="literal">false</span>;             <span class="comment">// 表示本趟冒泡是否发生交换的标志</span></span><br><span class="line">        <span class="keyword">for</span>(j=n<span class="number">-1</span>;j&gt;i;j--)&#123;     <span class="comment">// 一趟冒泡国产</span></span><br><span class="line">            <span class="keyword">if</span>(A[j<span class="number">-1</span>]&gt;A[j])&#123;    <span class="comment">// 若为逆序</span></span><br><span class="line">                swap(A[j<span class="number">-1</span>],A[j]);  <span class="comment">// 交换</span></span><br><span class="line">                flag=<span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="literal">false</span>)</span><br><span class="line">            <span class="keyword">return</span>;         <span class="comment">// 本趟遍历后没有发生交换，说明表已经有序</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="五、快速排序"><a href="#五、快速排序" class="headerlink" title="五、快速排序"></a>五、快速排序</h1><ul>
+<li>在待排序表L[1,2,…,n]中任取一个元素pivot作为基准，通过一趟排序将待排序表划分为独立的两个部分L[1,…,k-1]和L[k+1,…,n]，使得L[1,…,k-1]中的所有元素小于pivot，L[k+1,…,n]中的所有元素大于等于pivot，则pivot放在了其最终位置L(k)上。然后分别递归地对两个子表重复上述过程，直到每个部分只有一个元素或为空为止，即所有元素放在了其最终位置上。</li>
+<li>每一趟排序都能使一个元素放置在其最终的位置上</li>
+<li>快速排序是所有内部排序算法中平均性能最优的排序算法</li>
+<li>初始不够对称，会使得快速排序效率降低；元素基本有序，无法发挥长处</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(ElemType A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)&#123;               <span class="comment">// 递归跳出的条件</span></span><br><span class="line">        <span class="keyword">int</span> pivotpos=Partition(A,low,high);     <span class="comment">// 划分</span></span><br><span class="line">        QuickSort(A,low,pivotpos<span class="number">-1</span>);        <span class="comment">// 依次对两个子表进行递归排序</span></span><br><span class="line">        QuickSort(A,pivot+<span class="number">1</span>,high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partition</span><span class="params">(ElemType A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;   <span class="comment">// 一趟划分</span></span><br><span class="line">    ElemType pivot=A[low];      <span class="comment">// 将当前表中第一个元素设为枢轴，对表进行划分</span></span><br><span class="line">    <span class="keyword">while</span>(low&lt;high)&#123;        <span class="comment">// 循环跳出条件</span></span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;A[high]&gt;=pivot) --high;</span><br><span class="line">        A[low]=A[high];         <span class="comment">// 将比枢轴小的元素移动到左端</span></span><br><span class="line">        <span class="keyword">while</span>(low&lt;high&amp;&amp;A[low]&lt;pivot)   ++low;</span><br><span class="line">        A[high]=A[low];         <span class="comment">// 将比枢轴大的元素移动到右端</span></span><br><span class="line">    &#125;</span><br><span class="line">    A[low]=pivot;           <span class="comment">// 枢轴元素存放到最终位置</span></span><br><span class="line">    <span class="keyword">return</span> low;             <span class="comment">// 返回存放枢轴的最终位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="六、简单选择排序"><a href="#六、简单选择排序" class="headerlink" title="六、简单选择排序"></a>六、简单选择排序</h1><ul>
+<li>每一趟（如第i趟）在后面n-i+1（i=1,2…,n-1）个待排序元素中选取关键字最小的元素，作为有序子序列的第i个元素，直到第n-1趟做完，待排序元素只剩下一个，就不用再选了</li>
+<li>移动次数与序列的初始状态有关；比较次数与序列的初始状态无关</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(ElemType A[],<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;     <span class="comment">// 一共进行n-1趟</span></span><br><span class="line">        min=i;              <span class="comment">// 记录最小元素位置</span></span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;n;j++)      <span class="comment">// 在A[i,...,n-1]中选择最小的元素</span></span><br><span class="line">            <span class="keyword">if</span>(A[j]&lt;A[min]) min=j;      <span class="comment">// 更新最小元素位置</span></span><br><span class="line">        <span class="keyword">if</span>(min!=i)  swap(A[i],A[min]);      <span class="comment">// 封装的swap()函数共移动元素3次</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="七、堆排序"><a href="#七、堆排序" class="headerlink" title="七、堆排序"></a>七、堆排序</h1><h2 id="7-1-大根堆-小根堆的定义"><a href="#7-1-大根堆-小根堆的定义" class="headerlink" title="7.1 大根堆/小根堆的定义"></a>7.1 大根堆/小根堆的定义</h2><ul>
+<li>n个关键字序列L[1…n]成为堆，当且仅当该序列满足：<ul>
+<li>（1）L(i)&gt;=L(2i)且L(i)&gt;=L(2i+1)或</li>
+<li>（2）L(i)&lt;=L(2i)且L(i)&lt;=L(2i+1) (1&lt;=i&lt;=n/2取上界)</li>
+</ul>
+</li>
+<li>可以将一维数组视为一颗完全二叉树，满足条件（1）的称为大根堆，大根堆的最大元素放在根结点，且其任意非根结点值小于等于其双亲结点值</li>
+<li>满足条件（2）的堆称为小根堆，小根堆的定义刚好相反，根结点是最小元素</li>
+</ul>
+<h2 id="7-2-堆排序的思路"><a href="#7-2-堆排序的思路" class="headerlink" title="7.2 堆排序的思路"></a>7.2 堆排序的思路</h2><ul>
+<li>首先将存放L[1,…,n]中的n个元素建成初始堆，由于堆本身的特点（以大根堆为例），堆顶元素就是最大值。输出堆顶元素后，通常将堆底元素送入堆顶，此时根结点已不满足大根堆的形式，堆被破坏，将堆顶元素向下调整使其继续保持大根堆的性质，再输出堆顶元素。如此重复，知道堆中仅剩一个元素为止</li>
+</ul>
+<h1 id="八、归并排序"><a href="#八、归并排序" class="headerlink" title="八、归并排序"></a>八、归并排序</h1><h2 id="8-1-二路归并排序"><a href="#8-1-二路归并排序" class="headerlink" title="8.1 二路归并排序"></a>8.1 二路归并排序</h2><ul>
+<li>假定待排序表含有n个记录，则可将其视为n个有序的子表，每个子表的长度为1，然后两两归并，得到n/2(取上限)个长度为2或1的有序表；继续两个归并，如此重复，直到合并为一个长度为n的有序表为止<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">ElemType *B=(ElemType *)<span class="built_in">malloc</span>((n+<span class="number">1</span>)*<span class="keyword">sizeof</span>(ElemType));     <span class="comment">// 辅助数组</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort</span><span class="params">(ElemType A[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid=(low+high)/<span class="number">2</span>;   <span class="comment">// 从中间划分两个子序列</span></span><br><span class="line">        MergeSort(A,low,mid);   <span class="comment">// 从左侧子序列进行递归排序</span></span><br><span class="line">        MergeSort(A,mid+<span class="number">1</span>,high);    <span class="comment">// 对右侧子序列进行递归排序</span></span><br><span class="line">        Merge(A,low,mid,high);  <span class="comment">// 归并</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(ELemType A[],<span class="keyword">int</span> low,<span class="keyword">int</span> mid,<span class="keyword">int</span> high)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 表A的两段A[low...mid]和A[mid+1...high]各自有序，将它们合并成一个有序表</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=low;k&lt;=high;k++)</span><br><span class="line">        B[k]=A[k];          <span class="comment">// 将A中所有元素复制到B中</span></span><br><span class="line">    <span class="keyword">for</span>(i=low,j=mid+<span class="number">1</span>,k=i;i&lt;mid&amp;&amp;j&lt;high;k++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(B[i]&lt;=B[j])      <span class="comment">// 比较B的左右两段中的元素</span></span><br><span class="line">            A[k]=B[i++];        <span class="comment">// 将较小值复制到A中</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            A[k]=B[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid)</span><br><span class="line">        A[k++]=B[i++];  <span class="comment">// 若第一个表未检测完，复制</span></span><br><span class="line">    <span class="keyword">while</span>(j&lt;=high)</span><br><span class="line">        A[k++]=B[j++];  <span class="comment">// 若第二个表未检测完，复制</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="九、基数排序"><a href="#九、基数排序" class="headerlink" title="九、基数排序"></a>九、基数排序</h1>]]></content>
+      <categories>
+        <category>后端</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>排序算法</tag>
+      </tags>
   </entry>
   <entry>
     <title>知识图谱学习笔记8-智能制造研究方向</title>
@@ -7366,6 +7443,19 @@
       <tags>
         <tag>知识图谱</tag>
         <tag>研究方向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Maven基础大全</title>
+    <url>/2022/07/04/Maven%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="项目构建"><a href="#项目构建" class="headerlink" title="项目构建"></a>项目构建</h1><h2 id="SSM项目构建"><a href="#SSM项目构建" class="headerlink" title="SSM项目构建"></a>SSM项目构建</h2><h2 id="Springboot项目构建"><a href="#Springboot项目构建" class="headerlink" title="Springboot项目构建"></a>Springboot项目构建</h2>]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Springboot</category>
+      </categories>
+      <tags>
+        <tag>项目构建</tag>
+        <tag>Maven</tag>
       </tags>
   </entry>
 </search>
