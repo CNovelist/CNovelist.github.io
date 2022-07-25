@@ -165,6 +165,420 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/29/Unity3d%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/29/Unity3d%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Unity3d脚本大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-29 23:01:00 / 修改时间：23:12:07" itemprop="dateCreated datePublished" datetime="2022-04-29T23:01:00+08:00">2022-04-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">游戏开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/unity/" itemprop="url" rel="index"><span itemprop="name">unity</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、常用对象和方法"><a href="#一、常用对象和方法" class="headerlink" title="一、常用对象和方法"></a>一、常用对象和方法</h1><h1 id="判断键盘按键"><a href="#判断键盘按键" class="headerlink" title="判断键盘按键"></a>判断键盘按键</h1><ul>
+<li>为GameObject绑定一个脚本组件</li>
+<li>脚本代码如下：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class cubetest : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(&quot;测试键盘控制&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (Input.GetKeyDown(KeyCode.D))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.right * 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (Input.GetKeyDown(KeyCode.A))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.left * 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (Input.GetKeyDown(KeyCode.S))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.down * 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (Input.GetKeyDown(KeyCode.W))</span><br><span class="line">        &#123;</span><br><span class="line">            this.transform.Translate(Vector3.up * 1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/29/LOL%E5%A4%A9%E8%B5%8B%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/29/LOL%E5%A4%A9%E8%B5%8B%E4%BB%8B%E7%BB%8D/" class="post-title-link" itemprop="url">LOL天赋介绍</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-29 18:26:21" itemprop="dateCreated datePublished" datetime="2022-04-29T18:26:21+08:00">2022-04-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/18/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05-JenaApi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/18/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05-JenaApi/" class="post-title-link" itemprop="url">知识图谱学习笔记5-JenaApi</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-18 23:09:31" itemprop="dateCreated datePublished" datetime="2022-04-18T23:09:31+08:00">2022-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-19 21:02:46" itemprop="dateModified" datetime="2022-04-19T21:02:46+08:00">2022-04-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、基本使用"><a href="#一、基本使用" class="headerlink" title="一、基本使用"></a>一、基本使用</h1><h2 id="1-1-创建OWL模型"><a href="#1-1-创建OWL模型" class="headerlink" title="1.1 创建OWL模型"></a>1.1 创建OWL模型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">String personURI    = <span class="string">&quot;http://somewhere/JohnSmith&quot;</span>;</span><br><span class="line">String fullName     = <span class="string">&quot;John Smith&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// create an empty Model</span></span><br><span class="line">Model model = ModelFactory.createDefaultModel();</span><br><span class="line"></span><br><span class="line"><span class="comment">// create the resource，创建数据源</span></span><br><span class="line">Resource johnSmith = model.createResource(personURI);</span><br><span class="line"></span><br><span class="line"><span class="comment">// add the property,为数据源添加属性，第一个参数为属性名，第二个参数为属性值</span></span><br><span class="line">johnSmith.addProperty(VCARD.FN, fullName);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取数据源中的属性迭代器</span></span><br><span class="line">StmtIterator stmtIterator = johnSmith.listProperties();</span><br><span class="line"><span class="keyword">while</span> (stmtIterator.hasNext())&#123;</span><br><span class="line">    Statement statement = stmtIterator.next();</span><br><span class="line">    System.out.println(statement);	<span class="comment">// 打印三元组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">结果：</span></span><br><span class="line"><span class="comment">[http://somewhere/JohnSmith, http://www.w3.org/2001/vcard-rdf/3.0#FN, &quot;John Smith&quot;]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>OWL中所有的类都是自身的子类</li>
+</ul>
+<h2 id="1-2-Statement"><a href="#1-2-Statement" class="headerlink" title="1.2 Statement"></a>1.2 Statement</h2><ul>
+<li>从1.1我们可以看到我们已经使用到了Statements来输出我们的属性三元组</li>
+<li>具体的Statement有以下方法：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nextStatement():Statement</td>
+<td>从迭代器中获取一组三元组</td>
+</tr>
+<tr>
+<td>getSubject():Resource</td>
+<td>获取三元组的主语</td>
+</tr>
+<tr>
+<td>getPredicate():Property</td>
+<td>获取三元组的谓语</td>
+</tr>
+<tr>
+<td>getObject():RDFNode</td>
+<td>获取三元组的宾语</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从模型中获取到三元组迭代器（包含文档中所有的三元组信息）</span></span><br><span class="line">StmtIterator iter = model.listStatements();</span><br><span class="line"></span><br><span class="line"><span class="comment">// print out the predicate, subject and object of each statement</span></span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    Statement stmt      = iter.nextStatement();  <span class="comment">// get next statement</span></span><br><span class="line">    Resource  subject   = stmt.getSubject();     <span class="comment">// get the subject</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Property可以用作之后获取属性值用（重要）</span></span><br><span class="line">    Property  predicate = stmt.getPredicate();   <span class="comment">// get the predicate</span></span><br><span class="line">    RDFNode   object    = stmt.getObject();      <span class="comment">// get the object</span></span><br><span class="line"></span><br><span class="line">    System.out.print(subject.toString());</span><br><span class="line">    System.out.print(<span class="string">&quot; &quot;</span> + predicate.toString() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断object是不是一个Resource对象</span></span><br><span class="line">    <span class="keyword">if</span> (object <span class="keyword">instanceof</span> Resource) &#123;</span><br><span class="line">       System.out.print(object.toString());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// object is a Literal对象</span></span><br><span class="line">        System.out.print(<span class="string">&quot; \&quot;&quot;</span> + object.toString() + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot; .&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-写入RDF"><a href="#1-3-写入RDF" class="headerlink" title="1.3 写入RDF"></a>1.3 写入RDF</h2><ul>
+<li>生成的模型可以直接写入输出流中java.io.OutputStream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">model.write(System.out);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">写入结果：</span></span><br><span class="line"><span class="comment">subject: http://somewhere/JohnSmith</span></span><br><span class="line"><span class="comment">predicate: http://www.w3.org/2001/vcard-rdf/3.0#FN</span></span><br><span class="line"><span class="comment"> &quot;John Smith&quot; .</span></span><br><span class="line"><span class="comment">&lt;rdf:RDF</span></span><br><span class="line"><span class="comment">    xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span><br><span class="line"><span class="comment">    xmlns:vcard=&quot;http://www.w3.org/2001/vcard-rdf/3.0#&quot;&gt;</span></span><br><span class="line"><span class="comment">  &lt;rdf:Description rdf:about=&quot;http://somewhere/JohnSmith&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;vcard:FN&gt;John Smith&lt;/vcard:FN&gt;</span></span><br><span class="line"><span class="comment">  &lt;/rdf:Description&gt;</span></span><br><span class="line"><span class="comment">&lt;/rdf:RDF&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其他的写入方式如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// now write the model in a pretty form，以传统的XML方式写入输出流</span></span><br><span class="line">RDFDataMgr.write(System.out, model, Lang.RDFXML);</span><br><span class="line"></span><br><span class="line"><span class="comment">// now write the model in N-TRIPLES form，以N-TRIPLES三元组格式写入输出流</span></span><br><span class="line">RDFDataMgr.write(System.out, model, Lang.NTRIPLES);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Lang.NTRIPLES三元组输出形式如下：</span></span><br><span class="line"><span class="comment">&lt;http://somewhere/JohnSmith&gt; &lt;http://www.w3.org/2001/vcard-rdf/3.0#FN&gt; &quot;John Smith&quot; .</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-4-读取RDF文件"><a href="#1-4-读取RDF文件" class="headerlink" title="1.4 读取RDF文件"></a>1.4 读取RDF文件</h2><ul>
+<li>创建文件输入流进行读取，使用model.read(in, null)让模型解析文件输入流</li>
+<li>model.read(in, null)的第二个参数用于解析相对 URI</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// create an empty model</span></span><br><span class="line"> Model model = ModelFactory.createDefaultModel();</span><br><span class="line"></span><br><span class="line"> <span class="comment">// use the RDFDataMgr to find the input file</span></span><br><span class="line"> InputStream in = RDFDataMgr.open( inputFileName );</span><br><span class="line"><span class="keyword">if</span> (in == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                                 <span class="string">&quot;File: &quot;</span> + inputFileName + <span class="string">&quot; not found&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// read the RDF/XML file</span></span><br><span class="line">model.read(in, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// write it to standard out</span></span><br><span class="line">model.write(System.out);</span><br></pre></td></tr></table></figure>
+<h2 id="1-5-控制前缀"><a href="#1-5-控制前缀" class="headerlink" title="1.5 控制前缀"></a>1.5 控制前缀</h2><ul>
+<li>每个RDF都会有自己的命名空间，这个命名空间用前缀来区分开来</li>
+<li>我们可以显示的定义好前缀形式，这样就可以方便后面对<strong>数据对象和属性</strong>的前缀定义</li>
+<li>使用到的方法如下：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model.createResource(String)</td>
+<td>创建主体或客体对象</td>
+</tr>
+<tr>
+<td>model.createProperty(String)</td>
+<td>创建谓词属性</td>
+</tr>
+<tr>
+<td>model.setNsPrefix(String prefix, String namespace)</td>
+<td>为命名空间绑定前缀</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> Model m = ModelFactory.createDefaultModel();</span><br><span class="line"> String nsA = <span class="string">&quot;http://somewhere/else#&quot;</span>;</span><br><span class="line"> String nsB = <span class="string">&quot;http://nowhere/else#&quot;</span>;</span><br><span class="line"></span><br><span class="line"> Resource root = m.createResource( nsA + <span class="string">&quot;root&quot;</span> );</span><br><span class="line"> Property P = m.createProperty( nsA + <span class="string">&quot;P&quot;</span> );</span><br><span class="line"> Property Q = m.createProperty( nsB + <span class="string">&quot;Q&quot;</span> );</span><br><span class="line"> Resource x = m.createResource( nsA + <span class="string">&quot;x&quot;</span> );</span><br><span class="line"> Resource y = m.createResource( nsA + <span class="string">&quot;y&quot;</span> );</span><br><span class="line"> Resource z = m.createResource( nsA + <span class="string">&quot;z&quot;</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在model中添加三元组</span></span><br><span class="line"> m.add( root, P, x ).add( root, P, y ).add( y, Q, z );</span><br><span class="line"> System.out.println( <span class="string">&quot;# -- no special prefixes defined&quot;</span> );</span><br><span class="line"> m.write( System.out );</span><br><span class="line"> System.out.println( <span class="string">&quot;# -- nsA defined&quot;</span> );</span><br><span class="line"><span class="comment">// 为&quot;http://somewhere/else#&quot;定义前缀为nsA</span></span><br><span class="line"> m.setNsPrefix( <span class="string">&quot;nsA&quot;</span>, nsA );</span><br><span class="line"> m.write( System.out );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为&quot;http://nowhere/else#&quot;定义前缀为cat</span></span><br><span class="line"> System.out.println( <span class="string">&quot;# -- nsA and cat defined&quot;</span> );</span><br><span class="line"> m.setNsPrefix( <span class="string">&quot;cat&quot;</span>, nsB );</span><br><span class="line"> m.write( System.out );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上述运行结果如下：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--只要是xml文件就一定有命名空间和前缀，命名空间可以描述标签内的具体信息，而前缀可以简化属性标签的命名--&gt;</span></span><br><span class="line"># -- no special prefixes defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.0</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.1</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--j.0是命名空间&quot;http://somewhere/else#&quot;的简称，可以在标签中使用--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--j.1是命名空间&quot;http://nowhere/else#&quot;的简称，可以在标签中使用--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里j.0:P的前缀j.0使用的就是默认的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">j.0:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">j.1:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">j.0:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">j.0:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># -- nsA defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:nsA</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:j.0</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里nsA:P的前缀nsA，是我们自己定义的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">j.0:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br><span class="line"># -- nsA and cat defined</span><br><span class="line"><span class="tag">&lt;<span class="name">rdf:RDF</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:rdf</span>=<span class="string">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:nsA</span>=<span class="string">&quot;http://somewhere/else#&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:cat</span>=<span class="string">&quot;http://nowhere/else#&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#root&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这里nsA:P的前缀nsA，是我们自己定义的前缀--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">rdf:Description</span> <span class="attr">rdf:about</span>=<span class="string">&quot;http://somewhere/else#y&quot;</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!--这里cat:Q的前缀这里cat，是我们自己定义的前缀--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cat:Q</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#z&quot;</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nsA:P</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nsA:P</span> <span class="attr">rdf:resource</span>=<span class="string">&quot;http://somewhere/else#x&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">rdf:Description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rdf:RDF</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="二、操作RDF数据"><a href="#二、操作RDF数据" class="headerlink" title="二、操作RDF数据"></a>二、操作RDF数据</h1><h2 id="2-1-Resource方法"><a href="#2-1-Resource方法" class="headerlink" title="2.1 Resource方法"></a>2.1 Resource方法</h2><ul>
+<li>以下都是Resource对象下使用的获取和添加数据的方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model.getResource(String uri):Resource</td>
+<td>根据uri获取资源对象</td>
+</tr>
+<tr>
+<td>Resource.getProperty(Property property):Statement</td>
+<td>根据resource对象的property获取对应的三元组对象</td>
+</tr>
+<tr>
+<td>Resource.getProperty(Property property).getString()</td>
+<td>获取属性property对应的属性值</td>
+</tr>
+<tr>
+<td>Resource.addProperty(Property property，String s)</td>
+<td>为resource添加property属性以及对应的属性值s</td>
+</tr>
+<tr>
+<td>Resource.listProperties(Property property):StmtIterator</td>
+<td>如果同一的属性对应多个属性值，那么getProperty方法就不起作用了，必须使用此方法，返回包含所有对应Statement三元组的迭代器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>示例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 从模型中检索 John Smith vcard 资源</span></span><br><span class="line">Resource vcard = model.getResource(johnSmithURI);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 N 属性的值</span></span><br><span class="line">Resource name = (Resource) vcard.getProperty(VCARD.N) </span><br><span class="line">                                .getObject();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 N 属性的值</span></span><br><span class="line">Resource name = vcard.getProperty(VCARD.N) </span><br><span class="line">                     .getResource();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检索给定的名称属性</span></span><br><span class="line">String fullName = vcard.getProperty(VCARD.FN) </span><br><span class="line">                        .getString();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同一属性对应多个属性值</span></span><br><span class="line"><span class="comment">// 向 vcard 添加两个昵称属性</span></span><br><span class="line">vcard.addProperty(VCARD.NICKNAME, <span class="string">&quot;Smithy&quot;</span>) </span><br><span class="line">     .addProperty(VCARD.NICKNAME, <span class="string">&quot;Adman&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置输出</span></span><br><span class="line">System.out.println(<span class="string">&quot;\&quot;&quot;</span> </span><br><span class="line">                      + fullName + <span class="string">&quot;\&quot; 的昵称是：&quot;</span>); </span><br><span class="line"><span class="comment">// 列出昵称</span></span><br><span class="line">StmtIterator iter = vcard.listProperties(VCARD.NICKNAME); </span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot; &quot;</span> + iter.nextStatement() </span><br><span class="line">                                    .getObject() </span><br><span class="line">                                    .toString()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-Model查询方法"><a href="#2-2-Model查询方法" class="headerlink" title="2.2 Model查询方法"></a>2.2 Model查询方法</h2><ul>
+<li>以下是Model使用到的查询数据的方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model.listStatements():StmtIterator</td>
+<td>返回模型中所有三元组Statement的迭代器对象，不建议在大模型中使用它</td>
+</tr>
+<tr>
+<td>Model.listSubjectsWithProperty(Property p, RDFNode o):ResIterator</td>
+<td>返回一个包含所有属性为p且属性值为o的资源主语（Subjects）resource迭代器，该方法有多种重载方法，参数表可以只使用包含Property</td>
+</tr>
+<tr>
+<td>Model.listStatements(Selector s):StmtIterator</td>
+<td>查询语法糖，可以使用Selector选择器对象在模型的所有的三元组中进行自定义查询</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>创建选择器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择器可以选择给定的主语、谓词、宾语</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(subject, predicate, object);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三个参数为null，则匹配所有三元组</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 给定其中一个参数值，表示匹配给定的值，如下所示表示匹配谓词为VCARD.FN的所有三元组的选择器</span></span><br><span class="line">Selector selector = <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面两个选择器匹配功能相同</span></span><br><span class="line">model.listStatements( S, P, O );</span><br><span class="line">model.listStatements( <span class="keyword">new</span> SimpleSelector( S, P, O ) );</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重载selects方法，selects方法可以更自由的定义我们的匹配方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">    <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span></span></span><br><span class="line"><span class="function">            </span>&#123;<span class="keyword">return</span> s.getString().endsWith(<span class="string">&quot;Smith&quot;</span>);&#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下两种语句的作用相同，但第一种的语句方法在面对大模型时性能不高，因为需要对模型中的所有三元组都要测试匹配语句</span></span><br><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">  <span class="keyword">new</span></span><br><span class="line">      SimpleSelector(<span class="keyword">null</span>, <span class="keyword">null</span>, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span> </span>&#123;</span><br><span class="line">              <span class="keyword">return</span> (subject == <span class="keyword">null</span>   || s.getSubject().equals(subject))</span><br><span class="line">                  &amp;&amp; (predicate == <span class="keyword">null</span> || s.getPredicate().equals(predicate))</span><br><span class="line">                  &amp;&amp; (object == <span class="keyword">null</span>    || s.getObject().equals(object)) ;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">StmtIterator iter =</span><br><span class="line">  model.listStatements(<span class="keyword">new</span> SimpleSelector(subject, predicate, object));</span><br></pre></td></tr></table></figure>
+<h1 id="三、模型操作"><a href="#三、模型操作" class="headerlink" title="三、模型操作"></a>三、模型操作</h1><ul>
+<li>模型的操作包含了多个模型之间的交集、并集、差集</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model1.union(model2);</td>
+<td>将model1和model2模型进行合并，重复的三元组会被删除</td>
+</tr>
+<tr>
+<td>model1.intersection(model2)</td>
+<td>交集</td>
+</tr>
+<tr>
+<td>model1.difference(model2)</td>
+<td>差集</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="四、资源容器"><a href="#四、资源容器" class="headerlink" title="四、资源容器"></a>四、资源容器</h1><ul>
+<li><p>Jena有三种资源容器</p>
+<ul>
+<li>BAG：无序集合</li>
+<li>ALT：同上</li>
+<li>SEQ：有序集合</li>
+</ul>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create a bag</span></span><br><span class="line">Bag smiths = model.createBag();</span><br><span class="line"></span><br><span class="line"><span class="comment">// select all the resources with a VCARD.FN property</span></span><br><span class="line"><span class="comment">// whose value ends with &quot;Smith&quot;</span></span><br><span class="line">StmtIterator iter = model.listStatements(</span><br><span class="line">    <span class="keyword">new</span> SimpleSelector(<span class="keyword">null</span>, VCARD.FN, (RDFNode) <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">selects</span><span class="params">(Statement s)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> s.getString().endsWith(<span class="string">&quot;Smith&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"><span class="comment">// add the Smith&#x27;s to the bag</span></span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    smiths.add(iter.nextStatement().getSubject());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">结果：</span></span><br><span class="line"><span class="comment">&lt;rdf:RDF</span></span><br><span class="line"><span class="comment">  xmlns:rdf=&#x27;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#x27;</span></span><br><span class="line"><span class="comment">  xmlns:vcard=&#x27;http://www.w3.org/2001/vcard-rdf/3.0#&#x27;</span></span><br><span class="line"><span class="comment"> &gt;</span></span><br><span class="line"><span class="comment">...</span></span><br><span class="line"><span class="comment">  &lt;rdf:Description rdf:nodeID=&quot;A3&quot;&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:type rdf:resource=&#x27;http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag&#x27;/&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:_1 rdf:resource=&#x27;http://somewhere/JohnSmith/&#x27;/&gt;</span></span><br><span class="line"><span class="comment">    &lt;rdf:_2 rdf:resource=&#x27;http://somewhere/RebeccaSmith/&#x27;/&gt;</span></span><br><span class="line"><span class="comment">  &lt;/rdf:Description&gt;</span></span><br><span class="line"><span class="comment">&lt;/rdf:RDF&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>迭代容器内容</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打印BAG的成员</span></span><br><span class="line">NodeIterator iter2 = smiths.iterator(); </span><br><span class="line"><span class="keyword">if</span> (iter2.hasNext()) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;包里有：&quot;</span>); </span><br><span class="line">    <span class="keyword">while</span> (iter2.hasNext()) &#123; </span><br><span class="line">        System.out.println(<span class="string">&quot; &quot;</span> + </span><br><span class="line">            ((Resource) iter2.next()) </span><br><span class="line">                            .getProperty(VCARD.FN) </span><br><span class="line">                            .getString()); </span><br><span class="line">    &#125; </span><br><span class="line">&#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;包里是空的&quot;</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/17/Springboot%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2676,709 +3090,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/26/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-Jena%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/26/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-Jena%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">知识图谱学习笔记4-Jena使用教程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-26 22:29:25" itemprop="dateCreated datePublished" datetime="2022-03-26T22:29:25+08:00">2022-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-19 21:04:06" itemprop="dateModified" datetime="2022-04-19T21:04:06+08:00">2022-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、SPARQL读取RDF数据"><a href="#一、SPARQL读取RDF数据" class="headerlink" title="一、SPARQL读取RDF数据"></a>一、SPARQL读取RDF数据</h1><h2 id="1-1-导入包"><a href="#1-1-导入包" class="headerlink" title="1.1 导入包"></a>1.1 导入包</h2><ul>
-<li>先创建一个maven项目</li>
-<li>引入以下包</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--解析SPARQL语句的引擎--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.jena<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jena-arq<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.17.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/junit/junit --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.13.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 日志包，防止报些奇怪的错误，程序能运行，但还是处理下 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-simple<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.25<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-2-创建数据"><a href="#1-2-创建数据" class="headerlink" title="1.2 创建数据"></a>1.2 创建数据</h2><ul>
-<li>使用ttl存储三元组数据</li>
-<li>在本地任意位置创建文件data.ttl，保存以下内容</li>
-<li>也可以创建在项目里，以文本文件格式创建</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># filename: ex002.ttl</span><br><span class="line"></span><br><span class="line">@prefix <span class="keyword">a</span><span class="variable">b:</span> &lt;http://learningsparql.<span class="keyword">com</span>/ns/addressbook#&gt; .</span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(229) 276-5135&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:richard</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;richard49@hotmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(245) 646-5488&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:cindy</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;cindym@gmail.com&quot;</span> . </span><br><span class="line"></span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:homeTel</span> <span class="string">&quot;(194) 966-1505&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;craigellis@yahoo.com&quot;</span> . </span><br><span class="line"><span class="keyword">a</span><span class="variable">b:craig</span> <span class="keyword">a</span><span class="variable">b:email</span>   <span class="string">&quot;c.ellis@usairwaysgroup.com&quot;</span> .</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-查询测试"><a href="#1-3-查询测试" class="headerlink" title="1.3 查询测试"></a>1.3 查询测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Model model = ModelFactory.createDefaultModel();</span><br><span class="line">    <span class="comment">//ttl文件路径</span></span><br><span class="line">    model.read(<span class="string">&quot;E:/ttl/data.ttl&quot;</span>);</span><br><span class="line">    <span class="comment">//查询语句, 查询craig的电子邮件地址</span></span><br><span class="line">    String queryString = <span class="string">&quot;PREFIX ab: &lt;http://learningsparql.com/ns/addressbook#&gt; \n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;SELECT ?craig_email\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;WHERE\n&quot;</span> +</span><br><span class="line">        <span class="string">&quot;&#123; ab:craig ab:email ?craig_email . &#125;&quot;</span>;</span><br><span class="line">    Query query = QueryFactory.create(queryString);</span><br><span class="line">    QueryExecution qe = QueryExecutionFactory.create(query, model);</span><br><span class="line">    ResultSet results = qe.execSelect();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 查询到的results是一个迭代器对象，需要while遍历输出查询到的值</span></span><br><span class="line">    <span class="keyword">while</span> (results.hasNext())&#123;</span><br><span class="line">            QuerySolution next = results.next();</span><br><span class="line">            System.out.println(next.get(<span class="string">&quot;?craig_email&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 输出结果</span></span><br><span class="line">    ResultSetFormatter.out(System.out, results, query);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="1-4-结果"><a href="#1-4-结果" class="headerlink" title="1.4 结果"></a>1.4 结果</h2><img src="/2022/03/26/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-Jena%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/jena.png" class="" title="res">
-<h1 id="二、Jena读取OWL"><a href="#二、Jena读取OWL" class="headerlink" title="二、Jena读取OWL"></a>二、Jena读取OWL</h1><h2 id="2-1-读取owl文件"><a href="#2-1-读取owl文件" class="headerlink" title="2.1 读取owl文件"></a>2.1 读取owl文件</h2><ul>
-<li>从本地读取</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OntModel ontModel = ModelFactory.createOntologyModel();</span><br><span class="line">File myFile = <span class="keyword">new</span> File(<span class="string">&quot;E:/rdfData/owldemo1.owl&quot;</span>);</span><br><span class="line">ontModel.read(<span class="keyword">new</span> FileInputStream(myFile), <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-获取类信息"><a href="#2-2-获取类信息" class="headerlink" title="2.2 获取类信息"></a>2.2 获取类信息</h2><ul>
-<li>遍历owl中定义的类，并打印类名</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Iterator&lt;?&gt; i = ontModel.listClasses(); i.hasNext();) &#123;</span><br><span class="line">    OntClass c = (OntClass) i.next(); <span class="comment">// 返回类型强制转换</span></span><br><span class="line">    StmtIterator iterator = c.listProperties();	<span class="comment">// 获取该类的所有属性</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">        Statement statement = iterator.next();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取关系信息</span></span><br><span class="line">        String predict = statement.getPredicate().toString().substring(statement.getPredicate().toString().indexOf(<span class="string">&quot;#&quot;</span>)+<span class="number">1</span>);</span><br><span class="line">        System.out.println(predict);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    System.out.println(c.getLocalName());	<span class="comment">//打印类名</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-3-获取类的实例"><a href="#2-3-获取类的实例" class="headerlink" title="2.3 获取类的实例"></a>2.3 获取类的实例</h2><ul>
-<li>以下c表示所遍历的类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取该类下的所有实例迭代器</span></span><br><span class="line">ExtendedIterator&lt;? extends OntResource&gt; extendedIterator = c.listInstances();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代器遍历</span></span><br><span class="line"><span class="keyword">while</span> (extendedIterator.hasNext())&#123;</span><br><span class="line">    OntResource resource = extendedIterator.next();	<span class="comment">// 获取类的实例</span></span><br><span class="line">    StmtIterator stmtIterator = resource.listProperties();	<span class="comment">// 获取实例中的所有属性列表，包括对象属性和数据属性</span></span><br><span class="line">    <span class="keyword">while</span>(stmtIterator.hasNext())&#123;</span><br><span class="line">        Statement statement = stmtIterator.next();</span><br><span class="line">        String object = statement.getObject().toString();</span><br><span class="line">        System.out.println(object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="三、创建工具包"><a href="#三、创建工具包" class="headerlink" title="三、创建工具包"></a>三、创建工具包</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/26/redis%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Redis基础大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-03-26 18:40:56" itemprop="dateCreated datePublished" datetime="2022-03-26T18:40:56+08:00">2022-03-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-14 14:27:58" itemprop="dateModified" datetime="2022-05-14T14:27:58+08:00">2022-05-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、安装与配置"><a href="#一、安装与配置" class="headerlink" title="一、安装与配置"></a>一、安装与配置</h1><ol>
-<li>安装gcc：<strong>yum install gcc -y</strong></li>
-<li>下载redis-x.x.x.tar.gz，并解压：<strong>tar -zxvf redis-x.x.x.tar.gz</strong></li>
-<li>进入redis解压目录，执行命令<strong>make和make install</strong>，不报错就表示安装成功，默认安装位置在<strong>/usr/local/bin</strong>目录下</li>
-<li>开启redis后台启动，将<strong>redis解压目录</strong>下的<strong>redis.conf</strong>文件复制到其他位置，比如/etc目录下</li>
-<li>修改<strong>redis.conf</strong>文件，找到<strong>daemonize</strong>字段，将其后的值no改为<strong>yes</strong>后，保存退出</li>
-<li>执行命令<strong>redis-server /etc/redis.conf</strong>，即可后台开启redis</li>
-<li>使用redis客户端访问redis服务，执行命令<strong>redis-cli</strong>进入redis客户端</li>
-</ol>
-<h1 id="二、Redis语法"><a href="#二、Redis语法" class="headerlink" title="二、Redis语法"></a>二、Redis语法</h1><h2 id="2-1-数据类型"><a href="#2-1-数据类型" class="headerlink" title="2.1 数据类型"></a>2.1 数据类型</h2><ul>
-<li>字符串String</li>
-<li>列表List</li>
-<li>集合Set</li>
-<li>哈希Hash</li>
-<li>有序集合Zset</li>
-</ul>
-<h2 id="2-2-常用命令"><a href="#2-2-常用命令" class="headerlink" title="2.2 常用命令"></a>2.2 常用命令</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ping</td>
-<td>查看服务是否正常运行</td>
-</tr>
-<tr>
-<td>dbsize</td>
-<td>查看当前数据库中key的数目（返回值为integer）</td>
-</tr>
-<tr>
-<td>select 0</td>
-<td>切换数据库，默认使用的是db0<br/>Redis默认操作16个数据库，序号为0~15</td>
-</tr>
-<tr>
-<td>flushdb</td>
-<td>删除当前操作的数据库中的内容</td>
-</tr>
-<tr>
-<td>flushall</td>
-<td>删除所有的库中的数据</td>
-</tr>
-<tr>
-<td>keys pattern</td>
-<td>查找所有符合pattern的key，pattern可以使用统配符</td>
-</tr>
-<tr>
-<td>exists [key…]</td>
-<td>判断key是否存在，存在key返回1，不存在返回0；<br/>使用多个key，则执行后返回key的数量</td>
-</tr>
-<tr>
-<td>expire [key] [seconds]</td>
-<td>设置key的生存时间，超过时间key自动删除；单位是秒；<br/>设置成功返回1，其他情况是0</td>
-</tr>
-<tr>
-<td>ttl [key]</td>
-<td>以秒为单位，返回key的剩余生存时间；<br/>-1：表示没有设置 key 的生存时间， key 永不过期；<br/>-2 ：表示key 不存在；其他表示剩余时间</td>
-</tr>
-<tr>
-<td>type [key]</td>
-<td>查看key所存储的数据类型</td>
-</tr>
-<tr>
-<td>del [key…]</td>
-<td>删除指定的key，不存在的key进行忽略；<br/>返回值：数字，删除的key的数量</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-3-字符串String"><a href="#2-3-字符串String" class="headerlink" title="2.3 字符串String"></a>2.3 字符串String</h2><ul>
-<li>虽然给某个key设置的值是数字，但key的类型仍然是字符串，数字是以字符串的形式存储的，增加和减小操作也是基于字符串的操作</li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>set [key] [value]</td>
-<td>将字符串值设置到key中；设置成功返回OK</td>
-</tr>
-<tr>
-<td>get [key]</td>
-<td>获取数据库中key的值；<br/>返回值：key对应的value值</td>
-</tr>
-<tr>
-<td>incr [key]</td>
-<td>将 key 中储存的数字值加 1<br/>如果 key 不存在，则创建 key 并初始化其值为 0 再执行incr 操作（只能对数字类型的数据操作）</td>
-</tr>
-<tr>
-<td>decr [key]</td>
-<td>与incr作用相反，是减1操作</td>
-</tr>
-<tr>
-<td>append [key] [value]</td>
-<td>字符串追加；<br/>如果 key 存在， 则将 value 追加到 key 原来旧值的末尾<br/>如果 key 不存在， 则将 key 设置值为 value；<br/>返回值：追加后的字符串总长度</td>
-</tr>
-<tr>
-<td>strlen [key]</td>
-<td>返回 key 所储存的字符串值的长度</td>
-</tr>
-<tr>
-<td>getrange [key] [start] [end]</td>
-<td>获取 key 中字符串值从 start 开始 到 end 结束 的子字符串,包括 start 和 end<br/>负数表示从字符串的末尾开始， -1 表示最后一个字符</td>
-</tr>
-<tr>
-<td>setrange [key] [offset] [value]</td>
-<td>用 value 覆盖（替换）key 的从offset位置开始存储的值<br/>不存在的 key ，在offset前填充空白字符<br/>返回值：修改后的字符串的长度</td>
-</tr>
-<tr>
-<td>mset [key value…]</td>
-<td>同时设置一个或多个 key-value<br/>返回值： OK</td>
-</tr>
-<tr>
-<td>mget [key …]</td>
-<td>获取所有(一个或多个)给定 key 的值<br/>包含所有 key 的列表</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-4-列表List"><a href="#2-4-列表List" class="headerlink" title="2.4 列表List"></a>2.4 列表List</h2><h3 id="2-4-1-原理"><a href="#2-4-1-原理" class="headerlink" title="2.4.1 原理"></a>2.4.1 原理</h3><ul>
-<li>单键多值</li>
-<li>底层：双向链表</li>
-</ul>
-<h3 id="2-4-2-命令"><a href="#2-4-2-命令" class="headerlink" title="2.4.2 命令"></a>2.4.2 命令</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>lpush/rpush key [value…]</td>
-<td>从左/右侧将一个或多个值 value 插入到列表 key 的表头<br/>从左侧插入属于头插法，列表顺序为倒序<br/>返回值：数字，新列表的长度</td>
-</tr>
-<tr>
-<td>lpop/rpop</td>
-<td></td>
-</tr>
-<tr>
-<td>rpoplpush</td>
-<td></td>
-</tr>
-<tr>
-<td>lrange [key] [start] [stop]</td>
-<td>获取列表 key 中指定区间内的元素，0表示第一个元素，-1为最后一个元素<br/>返回值：指定区间的列表</td>
-</tr>
-<tr>
-<td>lindex [key] [index]</td>
-<td>获取列表 key 中下标为指定 index 的元素<br/>返回值：指定下标的元素；index 不在列表范围，返回 nil</td>
-</tr>
-<tr>
-<td>llen [key]</td>
-<td>获取列表 key 的长度<br/>返回值：数值，列表的长度； key 不存在返回 0</td>
-</tr>
-<tr>
-<td>lrem [key] [count] [value]</td>
-<td>移除列表中count个与value相等的元素<br/>count&gt;0从列表左侧开始移除；<br/>count<0从列表右侧开始移除；<br/>count=0移除表中所有与 value 相等的值</td>
-</tr>
-<tr>
-<td>lset [key] [index] [value]</td>
-<td>将列表 key 下标为 index 的元素的值设置为 value<br/>返回值：设置成功返回 ok ; key 不存在或者 index 超出范围返回错误信息</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-5-集合Set"><a href="#2-5-集合Set" class="headerlink" title="2.5 集合Set"></a>2.5 集合Set</h2><h3 id="2-5-1-原理"><a href="#2-5-1-原理" class="headerlink" title="2.5.1 原理"></a>2.5.1 原理</h3><ul>
-<li>底层：hash表</li>
-</ul>
-<h3 id="2-5-2-命令"><a href="#2-5-2-命令" class="headerlink" title="2.5.2 命令"></a>2.5.2 命令</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sadd [key] [member…]</td>
-<td>将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略，不会再加入。<br/>返回值：加入到集合的新元素的个数。不包括被忽略的元素</td>
-</tr>
-<tr>
-<td>smembers [key]</td>
-<td>获取集合 key 中的所有成员元素，不存在的 key 视为空集合</td>
-</tr>
-<tr>
-<td>sismember [key] [member]</td>
-<td>判断 member 元素是否是集合 key 的成员返回值：member 是集合成员返回 1，其他返回 0</td>
-</tr>
-<tr>
-<td>scard [key]</td>
-<td>获取集合里面的元素个数<br/>返回值：数字，key 的元素个数。 其他情况返回 0</td>
-</tr>
-<tr>
-<td>srem [key] [member…]</td>
-<td>删除集合 key 中的一个或多个 member 元素，不存在的元素被忽略<br/>返回值：数字，成功删除的元素个数，不包括被忽略的元素。</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-6-有序集合Zset"><a href="#2-6-有序集合Zset" class="headerlink" title="2.6 有序集合Zset"></a>2.6 有序集合Zset</h2><h3 id="2-6-1-原理"><a href="#2-6-1-原理" class="headerlink" title="2.6.1 原理"></a>2.6.1 原理</h3><h3 id="2-6-2-命令"><a href="#2-6-2-命令" class="headerlink" title="2.6.2 命令"></a>2.6.2 命令</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>zadd [key] [[score] member…]</td>
-<td>将一个或多个 member 元素及其 score 值加入到有序集合 key 中，如果 member存在集合中，则更新值；score 可以是整数或浮点数<br/>返回值：数字，新添加的元素个数</td>
-</tr>
-<tr>
-<td>zrange [key] [start] [stop] [WITHSCORES]</td>
-<td>查询有序集合，指定区间的内的元素。集合成员按 score 值从小到大来排序<br/>WITHSCORES 选项让 score 和 value 一同返回</td>
-</tr>
-<tr>
-<td>zrem [key] [member…]</td>
-<td>删除有序集合 key 中的一个或多个成员，不存在的成员被忽略<br/>返回值：被成功删除的成员数量，不包括被忽略的成员。</td>
-</tr>
-<tr>
-<td>zcard [key]</td>
-<td>获取有序集 key 的元素成员的个数<br/>返回值：key 存在返回集合元素的个数， key 不存在，返回 0</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="三、Redis配置文件"><a href="#三、Redis配置文件" class="headerlink" title="三、Redis配置文件"></a>三、Redis配置文件</h1><h1 id="四、Redis发布和订阅"><a href="#四、Redis发布和订阅" class="headerlink" title="四、Redis发布和订阅"></a>四、Redis发布和订阅</h1><h2 id="4-1-简介"><a href="#4-1-简介" class="headerlink" title="4.1 简介"></a>4.1 简介</h2><ul>
-<li>发布和订阅是一种信息通信模式：发送者（pub）发送消息，订阅者（sub）接收信息</li>
-<li>Redis客户端可以订阅任意数量的频道</li>
-</ul>
-<h2 id="4-2-示例"><a href="#4-2-示例" class="headerlink" title="4.2 示例"></a>4.2 示例</h2><ul>
-<li>打开两个redis客户端，分别为A、B，A为发送者，B为订阅者</li>
-<li>A执行命令<strong>public channel1 hello</strong>，表示向channel1频道发布信息hello<ul>
-<li>命令执行后的返回值表示<strong>订阅者的数量</strong></li>
-</ul>
-</li>
-<li>B执行命令<strong>SUBSCRIBE channel1</strong>，表示接收channel1的频道<ul>
-<li>返回的是频道的信息列表</li>
-</ul>
-</li>
-</ul>
-<h1 id="五、其他数据类型"><a href="#五、其他数据类型" class="headerlink" title="五、其他数据类型"></a>五、其他数据类型</h1><h2 id="5-1-Bitmaps"><a href="#5-1-Bitmaps" class="headerlink" title="5.1 Bitmaps"></a>5.1 Bitmaps</h2><h3 id="5-1-1-原理"><a href="#5-1-1-原理" class="headerlink" title="5.1.1 原理"></a>5.1.1 原理</h3><ul>
-<li><p>存储二进制的字符串，比如user=00001</p>
-<ul>
-<li>其中value为00001在Redis中依旧是以字符串的形式存储的</li>
-<li>偏移量offset从0开始算起，这里value中1的偏移量就是4</li>
-<li>想要得到以上的KV对，需要执行命令setbit user 4 1</li>
-</ul>
-</li>
-<li><p>Bitmaps可以用来保存用户活跃度，Set集合也可以做，但两者有区别</p>
-<ul>
-<li>当用户活跃量特别大时，使用Bitmaps可以极大的减少存储空间</li>
-<li>当用户活跃量比较小时，使用Set集合则比较合适</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-1-2-命令"><a href="#5-1-2-命令" class="headerlink" title="5.1.2 命令"></a>5.1.2 命令</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setbit [key] [offset] [value]</td>
-<td>将key的offset位置的值设置为value</td>
-</tr>
-<tr>
-<td>getbit [key] [offset]</td>
-<td>获取key中offset位置的值</td>
-</tr>
-<tr>
-<td>bitcount [key] [start,end]</td>
-<td>不指定[start,end]时，统计key中value所有被设置为1的bit个数<br/>指定[start,end]时，这里的start和end表示的是字节下标，[1,2]表示统计<strong>第一个字节（8位）</strong>到第二个字节中1的个数，[0,-2]则表示统计从0到倒数第二个字节中1个数</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="5-2-HyperLogLog"><a href="#5-2-HyperLogLog" class="headerlink" title="5.2 HyperLogLog"></a>5.2 HyperLogLog</h2><h3 id="5-2-1-原理"><a href="#5-2-1-原理" class="headerlink" title="5.2.1 原理"></a>5.2.1 原理</h3><ul>
-<li>计算<strong>基数（集合中不重复元素个数）</strong>的一种算法</li>
-<li>对比Set，所占内存更小，统计的范围更大，重复的元素不会被添加进去</li>
-</ul>
-<h3 id="5-2-2-命令"><a href="#5-2-2-命令" class="headerlink" title="5.2.2 命令"></a>5.2.2 命令</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pfadd [key] [element…]</td>
-<td>添加指定元素到HyperLogLog中<br/>返回值：添加<strong>重复元素</strong>返回0，添加<strong>不重复元素</strong>返回1</td>
-</tr>
-<tr>
-<td>pfcount [key…]</td>
-<td>统计某个key的基数个数</td>
-</tr>
-<tr>
-<td>pfmerge [destkey] [sourcekey…]</td>
-<td>合并多个sourcekey后，将结果存放到destkey中</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="5-3-Geospatial"><a href="#5-3-Geospatial" class="headerlink" title="5.3 Geospatial"></a>5.3 Geospatial</h2><h3 id="5-3-1-原理"><a href="#5-3-1-原理" class="headerlink" title="5.3.1 原理"></a>5.3.1 原理</h3><ul>
-<li>存放地理信息的数据结构，即表示经纬度的二维坐标</li>
-</ul>
-<h3 id="5-3-2-命令"><a href="#5-3-2-命令" class="headerlink" title="5.3.2 命令"></a>5.3.2 命令</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>geoadd [key] [[longitude] [latitude] [menber]…]</td>
-<td>添加地理位置信息，（经度，纬度，名称）<br/>示例：geoadd china 100 100 shanghai 120 120 beijin</td>
-</tr>
-<tr>
-<td>geopos [key] [member…]</td>
-<td>获取key中名称位member的经纬度坐标</td>
-</tr>
-<tr>
-<td>geodist [key] [member1] [member2] [m\</td>
-<td>km\</td>
-<td>ft\</td>
-<td>mi]</td>
-<td>获取key中member1和member2的直线距离，后面可以设置单位，m为默认单位</td>
-</tr>
-<tr>
-<td>georadius [key] [longitude] [latitude] radius m\</td>
-<td>km\</td>
-<td>ft\</td>
-<td>mi</td>
-<td>以给定的经纬度坐标为中心，找出key中包含在半径为radius的圆中的member名称列表</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="六、Jedis"><a href="#六、Jedis" class="headerlink" title="六、Jedis"></a>六、Jedis</h1><h1 id="七、Springboot整合Redis"><a href="#七、Springboot整合Redis" class="headerlink" title="七、Springboot整合Redis"></a>七、Springboot整合Redis</h1><h2 id="7-1-配置环境"><a href="#7-1-配置环境" class="headerlink" title="7.1 配置环境"></a>7.1 配置环境</h2><h3 id="7-1-1-引入依赖"><a href="#7-1-1-引入依赖" class="headerlink" title="7.1.1 引入依赖"></a>7.1.1 引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 提供池化操作 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.11.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="7-1-2-配置文件"><a href="#7-1-2-配置文件" class="headerlink" title="7.1.2 配置文件"></a>7.1.2 配置文件</h3><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Redis服务器地址</span></span><br><span class="line"><span class="meta">spring.redis.host</span>=<span class="string">192.168.47.33</span></span><br><span class="line"><span class="comment">#Redis服务器连接端口</span></span><br><span class="line"><span class="meta">spring.redis.port</span>=<span class="string">6379</span></span><br><span class="line"><span class="comment">#Redis数据库索引（默认位0）</span></span><br><span class="line"><span class="meta">spring.redis.database</span>=<span class="string">0</span></span><br><span class="line"><span class="comment">#连接超时时间（毫秒）</span></span><br><span class="line"><span class="meta">spring.redis.timeout</span>=<span class="string">1800000</span></span><br><span class="line"><span class="comment">#连接池最大连接数（使用负值表示没有限制）</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.max-active</span>=<span class="string">20</span></span><br><span class="line"><span class="comment">#最大阻塞等待时间（复数表示没有限制）</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.max-wait</span>=<span class="string">-1</span></span><br><span class="line"><span class="comment">#连接池中的最大空闲连接</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.max-idle</span>=<span class="string">5</span></span><br><span class="line"><span class="comment">#连接池中的最小空闲连接</span></span><br><span class="line"><span class="meta">spring.redis.lettuce.pool.min-idle</span>=<span class="string">0</span></span><br></pre></td></tr></table></figure>
-<h3 id="7-1-3-Redis配置类"><a href="#7-1-3-Redis配置类" class="headerlink" title="7.1.3 Redis配置类"></a>7.1.3 Redis配置类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableCaching</span> <span class="comment">// 开启缓存支持</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisConfig</span> <span class="keyword">extends</span> <span class="title">CachingConfigurerSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> LettuceConnectionFactory lettuceConnectionFactory;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@description</span> 自定义的缓存key的生成策略 若想使用这个key</span></span><br><span class="line"><span class="comment">	 *              只需要讲注解上keyGenerator的值设置为keyGenerator即可&lt;/br&gt;</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 自定义策略生成的key</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> KeyGenerator <span class="title">keyGenerator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> KeyGenerator() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Object <span class="title">generate</span><span class="params">(Object target, Method method, Object... params)</span> </span>&#123;</span><br><span class="line">				StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">				sb.append(target.getClass().getName());</span><br><span class="line">				sb.append(method.getDeclaringClass().getName());</span><br><span class="line">				Arrays.stream(params).map(Object::toString).forEach(sb::append);</span><br><span class="line">				<span class="keyword">return</span> sb.toString();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * RedisTemplate配置</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> RedisTemplate&lt;String, Object&gt; <span class="title">redisTemplate</span><span class="params">(LettuceConnectionFactory lettuceConnectionFactory)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 设置序列化</span></span><br><span class="line">		Jackson2JsonRedisSerializer&lt;Object&gt; jackson2JsonRedisSerializer = <span class="keyword">new</span> Jackson2JsonRedisSerializer&lt;Object&gt;(Object.class);</span><br><span class="line">		ObjectMapper om = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">		om.setVisibility(PropertyAccessor.ALL, Visibility.ANY);</span><br><span class="line">		om.enableDefaultTyping(DefaultTyping.NON_FINAL);</span><br><span class="line">		jackson2JsonRedisSerializer.setObjectMapper(om);</span><br><span class="line">		<span class="comment">// 配置redisTemplate</span></span><br><span class="line">		RedisTemplate&lt;String, Object&gt; redisTemplate = <span class="keyword">new</span> RedisTemplate&lt;String, Object&gt;();</span><br><span class="line">		redisTemplate.setConnectionFactory(lettuceConnectionFactory);</span><br><span class="line">		RedisSerializer&lt;?&gt; stringSerializer = <span class="keyword">new</span> StringRedisSerializer();</span><br><span class="line">		redisTemplate.setKeySerializer(stringSerializer);<span class="comment">// key序列化</span></span><br><span class="line">		redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);<span class="comment">// value序列化</span></span><br><span class="line">		redisTemplate.setHashKeySerializer(stringSerializer);<span class="comment">// Hash key序列化</span></span><br><span class="line">		redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);<span class="comment">// Hash value序列化</span></span><br><span class="line">		redisTemplate.afterPropertiesSet();</span><br><span class="line">		<span class="keyword">return</span> redisTemplate;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 缓存配置管理器</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> CacheManager <span class="title">cacheManager</span><span class="params">(LettuceConnectionFactory factory)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 配置序列化</span></span><br><span class="line">        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(<span class="number">1</span>));</span><br><span class="line">        RedisCacheConfiguration redisCacheConfiguration = config.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(<span class="keyword">new</span> StringRedisSerializer()))</span><br><span class="line">                												.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(<span class="keyword">new</span> GenericJackson2JsonRedisSerializer()));</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 以锁写入的方式创建RedisCacheWriter对象</span></span><br><span class="line">		<span class="comment">//RedisCacheWriter writer = RedisCacheWriter.lockingRedisCacheWriter(factory);</span></span><br><span class="line">		<span class="comment">// 创建默认缓存配置对象</span></span><br><span class="line">		<span class="comment">/* 默认配置，设置缓存有效期 1小时*/</span></span><br><span class="line">		<span class="comment">//RedisCacheConfiguration defaultCacheConfig = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(1));</span></span><br><span class="line">		<span class="comment">/* 配置test的超时时间为120s*/</span></span><br><span class="line">		RedisCacheManager cacheManager = RedisCacheManager.builder(RedisCacheWriter.lockingRedisCacheWriter(factory)).cacheDefaults(redisCacheConfiguration)</span><br><span class="line">				.withInitialCacheConfigurations(singletonMap(<span class="string">&quot;test&quot;</span>, RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(<span class="number">120</span>)).disableCachingNullValues()))</span><br><span class="line">				.transactionAware().build();</span><br><span class="line">		<span class="keyword">return</span> cacheManager;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="7-2-RedisTemplate"><a href="#7-2-RedisTemplate" class="headerlink" title="7.2 RedisTemplate"></a>7.2 RedisTemplate</h2><h1 id="八、事务"><a href="#八、事务" class="headerlink" title="八、事务"></a>八、事务</h1><h2 id="8-1-概念"><a href="#8-1-概念" class="headerlink" title="8.1 概念"></a>8.1 概念</h2><ul>
-<li>Redis事务作用是串联多个命令并顺序执行</li>
-<li>一个redis客户端可以通过multi命令进入事务状态，并且事务在执行时不会被其他redis客户端打断</li>
-</ul>
-<h2 id="8-2-命令"><a href="#8-2-命令" class="headerlink" title="8.2 命令"></a>8.2 命令</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>multi</td>
-<td>开启事务命令，之后的命令就进入队列，而不会马上被执行</td>
-<td>在事务生存期间，所有的 Redis 关于数据结构的命令都会入队</td>
-</tr>
-<tr>
-<td>watch [key…]</td>
-<td>监听某些键，当被监听的键在事务执行前被修改，则事务会被回滚</td>
-<td>使用乐观锁</td>
-</tr>
-<tr>
-<td>unwatch [key…]</td>
-<td>取消监听某些键</td>
-<td>–</td>
-</tr>
-<tr>
-<td>exec</td>
-<td>执行事务，如果被监听的键没有被修改，则采用执行命令，否则就回滚命令</td>
-<td>在执行事务队列存储的命令前， Redis 会检测被监听的键值对有没有发生变化，如果没有则执行命令 ，否则就回滚事务</td>
-</tr>
-<tr>
-<td>discard</td>
-<td>回滚事务</td>
-<td>回滚进入队列的事务命令，之后就不能再用 exec命令提交了</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="8-3-悲观锁-乐观锁"><a href="#8-3-悲观锁-乐观锁" class="headerlink" title="8.3 悲观锁/乐观锁"></a>8.3 悲观锁/乐观锁</h2><h3 id="8-3-1-区别"><a href="#8-3-1-区别" class="headerlink" title="8.3.1 区别"></a>8.3.1 区别</h3><ul>
-<li>乐观锁和悲观锁的出现都是解决共享数据的操作问题</li>
-<li>悲观锁：每次操作共享数据时，都会给数据上锁，防止其他事务对其进行操作<ul>
-<li>“悲观”意思是在每次操作数据前都悲观的认为别人也会操作这个数据，所以必须加上锁，保证数据为自己所用。但这样做的缺点是效率不高</li>
-</ul>
-</li>
-<li>乐观锁：不会像悲观锁一样每次操作前都加锁，而是让每个事务都能对共享数据进行操作，<strong>哪个事务操作的快，则更新当前版本</strong>，这样过去版本的事务操作就会因为版本不匹配而无法执行</li>
-</ul>
-<h3 id="8-3-2-示例"><a href="#8-3-2-示例" class="headerlink" title="8.3.2 示例"></a>8.3.2 示例</h3><ul>
-<li>watch </li>
-<li>unwatch</li>
-</ul>
-<h3 id="8-3-3-事务特性"><a href="#8-3-3-事务特性" class="headerlink" title="8.3.3 事务特性"></a>8.3.3 事务特性</h3><ul>
-<li>隔离性：客户端事务在执行时不能被其他客户端命令打断，没有隔离级别概念</li>
-<li>原子性：不保证原子性，因为一条命令执行失败，其他命令仍然会执行，不会执行回滚</li>
-</ul>
-<h1 id="九、秒杀案例"><a href="#九、秒杀案例" class="headerlink" title="九、秒杀案例"></a>九、秒杀案例</h1><h2 id="9-1-并发模拟"><a href="#9-1-并发模拟" class="headerlink" title="9.1 并发模拟"></a>9.1 并发模拟</h2><h3 id="9-1-1-http-tools"><a href="#9-1-1-http-tools" class="headerlink" title="9.1.1 http-tools"></a>9.1.1 http-tools</h3><ul>
-<li>安装httpd-tools：yum install httpd-tools</li>
-<li>httpd-tools中包含有ab命令</li>
-</ul>
-<h3 id="9-1-2-ab命令"><a href="#9-1-2-ab命令" class="headerlink" title="9.1.2 ab命令"></a>9.1.2 ab命令</h3><ul>
-<li><p>ab -n 1000 -c 100 -p ~/postfile -T ‘application/x-www-form-urlencoded’ 请求地址</p>
-<ul>
-<li>-n：表示请求次数</li>
-<li>-c：表示并发数</li>
-<li>-T content-type：POST/PUT 数据所使用的Content-type头信息</li>
-<li>-p postfile：包含要 POST 的数据的文件，记得还要设置 -T 参数</li>
-</ul>
-</li>
-<li><p>命令返回结果</p>
-<ul>
-<li>Concurrency Level: 并发量</li>
-<li>Time taken for tests: 整个测试的时间</li>
-<li>Complete requests: 完成的总请求数</li>
-<li>Failed requests: 失败的请求数</li>
-<li>Total transferred: 响应数据的总长度（包括http头信息和消息体数据）</li>
-<li>HTML transferred: 响应数据中消息体数据的总和</li>
-<li>Requests per second:吞吐率（计算方式为：Complete requests / Time taken for tests，也就是 完成的总请求数 / 整个测试的时间）</li>
-<li>Time per request: 用户平均请求等待时间</li>
-<li>Time per request: 服务器平均请求等待时间</li>
-<li>Transfer rate: 单位时间内从服务器获取的数据长度（计算方式为：Total transferred / Time taken for tests， 也就是 响应数据的总长度（包括http头信息和消息体数据）/ 整个测试的时间）</li>
-</ul>
-</li>
-</ul>
-<h2 id="9-1-案例源码"><a href="#9-1-案例源码" class="headerlink" title="9.1 案例源码"></a>9.1 案例源码</h2><h1 id="十、持久化操作"><a href="#十、持久化操作" class="headerlink" title="十、持久化操作"></a>十、持久化操作</h1><h2 id="10-1-RDB（默认方式）"><a href="#10-1-RDB（默认方式）" class="headerlink" title="10.1 RDB（默认方式）"></a>10.1 RDB（默认方式）</h2><ul>
-<li>读时共享，写时复制</li>
-</ul>
-<h2 id="10-2-AOF"><a href="#10-2-AOF" class="headerlink" title="10.2 AOF"></a>10.2 AOF</h2><h1 id="十一、主从复制"><a href="#十一、主从复制" class="headerlink" title="十一、主从复制"></a>十一、主从复制</h1><h1 id="十二、集群"><a href="#十二、集群" class="headerlink" title="十二、集群"></a>十二、集群</h1><h1 id="十三、换成"><a href="#十三、换成" class="headerlink" title="十三、换成"></a>十三、换成</h1><h1 id="十四、分布式锁"><a href="#十四、分布式锁" class="headerlink" title="十四、分布式锁"></a>十四、分布式锁</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/26/nginx%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/26/nginx%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">nginx基础大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-03-26 18:40:22 / 修改时间：18:47:01" itemprop="dateCreated datePublished" datetime="2022-03-26T18:40:22+08:00">2022-03-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">服务器</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、Nginx简介"><a href="#一、Nginx简介" class="headerlink" title="一、Nginx简介"></a>一、Nginx简介</h1>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -3446,20 +3161,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">77</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -3476,7 +3191,7 @@
 			<h3 class="widget-title">Tag Cloud</h3>
 			<div id="myCanvasContainer" class="widget tagcloud">
 				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KEPServer/" rel="tag">KEPServer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Milo/" rel="tag">Milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPC-UA/" rel="tag">OPC UA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpcUa-Client/" rel="tag">OpcUa Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milo/" rel="tag">milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E6%B3%A8/" rel="tag">文本标注</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" rel="tag">研究方向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eureka/" rel="tag">Eureka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KEPServer/" rel="tag">KEPServer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Milo/" rel="tag">Milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPC-UA/" rel="tag">OPC UA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpcUa-Client/" rel="tag">OpcUa Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milo/" rel="tag">milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E6%B3%A8/" rel="tag">文本标注</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" rel="tag">研究方向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
 				</canvas>
 			</div>
 		</div>
