@@ -6406,11 +6406,6 @@
       </tags>
   </entry>
   <entry>
-    <title>LOL天赋介绍</title>
-    <url>/2022/04/29/LOL%E5%A4%A9%E8%B5%8B%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Unity3d脚本大全</title>
     <url>/2022/04/29/Unity3d%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、常用对象和方法"><a href="#一、常用对象和方法" class="headerlink" title="一、常用对象和方法"></a>一、常用对象和方法</h1><h1 id="判断键盘按键"><a href="#判断键盘按键" class="headerlink" title="判断键盘按键"></a>判断键盘按键</h1><ul>
@@ -7736,7 +7731,28 @@
 </ul>
 </li>
 </ul>
-]]></content>
+<h2 id="1-4-actuator微服务信息"><a href="#1-4-actuator微服务信息" class="headerlink" title="1.4 actuator微服务信息"></a>1.4 actuator微服务信息</h2><p>打开eureka注册中心后，可以看到微服务的链接状态，可以通过修改yml来对链接信息进行修改</p>
+<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/actuator.png" class="" title="actuator">
+<p>修改微服务的yml配置，如8001的yml配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">instance:</span></span><br><span class="line">		<span class="attr">instance-id:</span> <span class="string">payment8001</span></span><br><span class="line">		<span class="attr">prefer-ip-address:</span> <span class="literal">true</span>	<span class="comment"># 访问路径可以显示IP地址</span></span><br></pre></td></tr></table></figure>
+<p>修改完成后，访问地址可以显示ip信息，显示效果如下：</p>
+<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/instance.png" class="" title="instance">
+<h2 id="1-5-服务发现Discovery"><a href="#1-5-服务发现Discovery" class="headerlink" title="1.5 服务发现Discovery"></a>1.5 服务发现Discovery</h2><p>服务发现可以通过Discovery对象来获取微服务的信息，如微服务名称、访问地址、端口等</p>
+<p>以8001为例，先修改其controller</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 注入DiscoveryClient用于获取微服务信息，注意DiscoveryClient导入的是Spring的包</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> DiscoveryClient discoveryClient;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ... </span></span><br><span class="line">	<span class="comment">// 微服务信息获取接口</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/payment/discovery&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">discovery</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 获取所有微服务名称，并打印到终端</span></span><br><span class="line">        List&lt;String&gt; services = discoveryClient.getServices();</span><br><span class="line">        <span class="keyword">for</span> (String service: services) &#123;</span><br><span class="line">            log.info(service);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取支付微服务的所有主机信息，并打印到终端</span></span><br><span class="line">        List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(<span class="string">&quot;CLOUD-PAYMENT-SERVICE&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (ServiceInstance instance:instances) &#123;</span><br><span class="line">            log.info(instance.getServiceId()+<span class="string">&quot;\t&quot;</span>+instance.getHost()+<span class="string">&quot;\t&quot;</span>+instance.getPort()+<span class="string">&quot;\t&quot;</span>+instance.getUri());</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*返回结果：</span></span><br><span class="line"><span class="comment">        &#123;&quot;services&quot;:[&quot;cloud-payment-service&quot;,&quot;cloud-order-service&quot;],&quot;order&quot;:0&#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.discoveryClient;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>再修改8001的启动类，添加注解@EnableDiscoveryClient，开启服务发现功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentMain8001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(PaymentMain8001.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-Eureka自我保护理论"><a href="#1-6-Eureka自我保护理论" class="headerlink" title="1.6 Eureka自我保护理论"></a>1.6 Eureka自我保护理论</h2><p>Eureka自我保护：一旦某个微服务不可用了，Eureka会启动保护机制，将该微服务信息保留一段时间，<strong>默认是开启的</strong>，注册中心会有以下提示信息：</p>
+<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/safe.png" class="" title="safe">
+<p>可以通过修改注册中心，比如<strong>7001的yml配置</strong>关闭Eureka自我保护</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">server:</span></span><br><span class="line">		<span class="comment"># 关闭Eureka自我保护机制</span></span><br><span class="line">		<span class="attr">enable-self-preservation:</span> <span class="literal">false</span></span><br><span class="line">		<span class="comment"># 让服务端每隔2秒扫描一次，是服务能尽快的剔除，单位为ms</span></span><br><span class="line">		<span class="attr">eviction-interval-timer-in-ms:</span> <span class="number">2000</span></span><br></pre></td></tr></table></figure>
+<p>除此之外，每个客户端微服务都会定时向服务端注册中心发送心跳，类似物业费的概念，即续费服务。服务发送心跳的时间间隔也可以通过服务的yml进行配置，以8001服务的yml配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">instance:</span></span><br><span class="line">		<span class="comment"># Eureka客户端向服务端发送心跳的时间间隔，单位为s（默认为30s）</span></span><br><span class="line">		<span class="attr">lease-renewal-interval-in-seconds:</span> <span class="number">1</span></span><br><span class="line">		<span class="comment"># Eureka服务端在收到最后一次心跳后等待时间上限，单位为s（默认为90s），超时将剔除服务</span></span><br><span class="line">		<span class="attr">lease-expiration-duration-in-seconds:</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-7-注意"><a href="#1-7-注意" class="headerlink" title="1.7 注意"></a>1.7 注意</h2><ul>
+<li>Eureka自发布2.x版本后就停止维护了</li>
+<li>后面会进入到其它服务注册架构的学习</li>
+</ul>
+<h1 id="二、Zookeeper"><a href="#二、Zookeeper" class="headerlink" title="二、Zookeeper"></a>二、Zookeeper</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>微服务</category>
@@ -7758,6 +7774,19 @@
   <entry>
     <title>日语基础大全</title>
     <url>/2022/07/26/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="一、五十音"><a href="#一、五十音" class="headerlink" title="一、五十音"></a>一、五十音</h1><h2 id="1-1-清音"><a href="#1-1-清音" class="headerlink" title="1.1 清音"></a>1.1 清音</h2><img src="/2022/07/26/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/wushi.png" class="" title="wushi">
+<h2 id="1-2-浊音、半浊音"><a href="#1-2-浊音、半浊音" class="headerlink" title="1.2 浊音、半浊音"></a>1.2 浊音、半浊音</h2><img src="/2022/07/26/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/zuoyin.png" class="" title="zuoyin">
+<h2 id="1-3-拗音"><a href="#1-3-拗音" class="headerlink" title="1.3 拗音"></a>1.3 拗音</h2><img src="/2022/07/26/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/aoyin.png" class="" title="aoyin">
+<h1 id="二、基础语法"><a href="#二、基础语法" class="headerlink" title="二、基础语法"></a>二、基础语法</h1><audio> <source src="日语基础大全/test.mp3"></audio>
+
+]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>语言</category>
+      </categories>
+      <tags>
+        <tag>五十音图</tag>
+        <tag>基础语法</tag>
+      </tags>
   </entry>
 </search>
