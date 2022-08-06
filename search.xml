@@ -2288,7 +2288,12 @@
 <li>平仄有规定</li>
 <li>五七言律诗中间两联原则上必须对仗</li>
 </ol>
-<h2 id="1-2-绝句和律诗"><a href="#1-2-绝句和律诗" class="headerlink" title="1.2 绝句和律诗"></a>1.2 绝句和律诗</h2><h1 id="二、声律"><a href="#二、声律" class="headerlink" title="二、声律"></a>二、声律</h1><h2 id="2-1-声调"><a href="#2-1-声调" class="headerlink" title="2.1 声调"></a>2.1 声调</h2><ul>
+<h2 id="1-2-绝句和律诗"><a href="#1-2-绝句和律诗" class="headerlink" title="1.2 绝句和律诗"></a>1.2 绝句和律诗</h2><ul>
+<li>绝句为四句；律诗为八句</li>
+<li>古绝讲究押韵，平仄与对仗较为自由；律诗即讲究押韵，又对平仄、对仗有严格规定</li>
+<li>绝句（截句、绝诗）包括古绝和律绝两种，短小精炼</li>
+</ul>
+<h1 id="二、声律"><a href="#二、声律" class="headerlink" title="二、声律"></a>二、声律</h1><h2 id="2-1-声调"><a href="#2-1-声调" class="headerlink" title="2.1 声调"></a>2.1 声调</h2><ul>
 <li>古汉语四声调：平、上、去、入</li>
 <li>相间律：平仄交替使用</li>
 </ul>
@@ -2326,13 +2331,18 @@
 <li>仄收：第一句的第五字为仄声</li>
 <li>平收：第一句的第五字为平声</li>
 </ul>
-<h3 id="2-2-2-平仄格式"><a href="#2-2-2-平仄格式" class="headerlink" title="2.2.2 平仄格式"></a>2.2.2 平仄格式</h3><h4 id="（1）仄起仄收"><a href="#（1）仄起仄收" class="headerlink" title="（1）仄起仄收"></a>（1）仄起仄收</h4><blockquote>
-<p>加下划线表示可平可仄</p>
-</blockquote>
+<h3 id="2-2-2-平仄格式"><a href="#2-2-2-平仄格式" class="headerlink" title="2.2.2 平仄格式"></a>2.2.2 平仄格式</h3><h4 id="（1）仄起仄收"><a href="#（1）仄起仄收" class="headerlink" title="（1）仄起仄收"></a>（1）仄起仄收</h4><p>加下划线表示<strong>可平可仄</strong></p>
 <p>$\underline{仄}仄平平仄，平平仄仄平$</p>
 <p>$\underline{平}平仄仄平，\underline{仄}仄仄平平$</p>
 <p>$\underline{仄}仄平平仄，平平仄仄平$</p>
 <p>$\underline{平}平仄仄平，\underline{仄}仄仄平平$</p>
+<img src="/2022/03/02/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90/%E7%A7%8B%E5%8F%B6%E7%8B%AC%E5%9D%90.png" class="" title="wanwei1">
+<ul>
+<li><p>堂：泛指房屋的正厅</p>
+</li>
+<li><p>无生：佛家语，谓世本虚幻，万物实体无生无灭</p>
+</li>
+</ul>
 <h4 id="（2）仄起平收"><a href="#（2）仄起平收" class="headerlink" title="（2）仄起平收"></a>（2）仄起平收</h4><p>$\underline{仄}仄仄平平，平平仄仄平$</p>
 <p>$\underline{平}平平仄仄，\underline{仄}仄仄平平$</p>
 <p>$\underline{仄}仄平平仄，平平仄仄平$</p>
@@ -2345,10 +2355,26 @@
 <p>$\underline{仄}仄平平仄，\underline{平}平仄仄平$</p>
 <p>$\underline{平}平平仄仄，\underline{仄}仄仄平平$</p>
 <p>$\underline{仄}仄平平仄，\underline{平}平仄仄平$</p>
-<h2 id="2-3-相对律、相粘律"><a href="#2-3-相对律、相粘律" class="headerlink" title="2.3 相对律、相粘律"></a>2.3 相对律、相粘律</h2><h3 id="2-3-1-相对律"><a href="#2-3-1-相对律" class="headerlink" title="2.3.1 相对律"></a>2.3.1 相对律</h3><ul>
+<h2 id="2-3-七言律诗的平仄"><a href="#2-3-七言律诗的平仄" class="headerlink" title="2.3 七言律诗的平仄"></a>2.3 七言律诗的平仄</h2><h3 id="2-3-1-平仄格式"><a href="#2-3-1-平仄格式" class="headerlink" title="2.3.1 平仄格式"></a>2.3.1 平仄格式</h3><h4 id="（1）平起平收"><a href="#（1）平起平收" class="headerlink" title="（1）平起平收"></a>（1）平起平收</h4><p>$\underline{平}平\underline{仄}仄仄平平，\underline{仄}仄平平仄仄平$</p>
+<p>$\underline{仄}仄\underline{平}平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
+<p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
+<p>$\underline{仄}仄\underline{平}平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
+<h4 id="（2）平起仄收"><a href="#（2）平起仄收" class="headerlink" title="（2）平起仄收"></a>（2）平起仄收</h4><p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
+<p>$\underline{仄}仄\underline{平}平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
+<p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
+<p>$\underline{仄}仄\underline{平}平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
+<h4 id="（3）仄起平收"><a href="#（3）仄起平收" class="headerlink" title="（3）仄起平收"></a>（3）仄起平收</h4><p>$\underline{仄}仄平平仄仄平，\underline{平}平\underline{仄}仄仄平平$</p>
+<p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
+<p>$\underline{仄}仄\underline{平}平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
+<p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
+<h4 id="（4）仄起仄收"><a href="#（4）仄起仄收" class="headerlink" title="（4）仄起仄收"></a>（4）仄起仄收</h4><p>$仄仄平平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
+<p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
+<p>$\underline{仄}仄\underline{平}平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
+<p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
+<h2 id="2-4-相对律、相粘律"><a href="#2-4-相对律、相粘律" class="headerlink" title="2.4 相对律、相粘律"></a>2.4 相对律、相粘律</h2><h3 id="2-4-1-相对律"><a href="#2-4-1-相对律" class="headerlink" title="2.4.1 相对律"></a>2.4.1 相对律</h3><ul>
 <li>一联中，出句和对句的平仄是相对的</li>
 </ul>
-<h3 id="2-3-2-相粘律"><a href="#2-3-2-相粘律" class="headerlink" title="2.3.2 相粘律"></a>2.3.2 相粘律</h3><ul>
+<h3 id="2-4-2-相粘律"><a href="#2-4-2-相粘律" class="headerlink" title="2.4.2 相粘律"></a>2.4.2 相粘律</h3><ul>
 <li>后一联出句第二字的平仄要跟前一联对句第二字的平仄一致</li>
 <li>即：第三句第二字的平仄与第二句第二字的平仄相同，第五局第二字的平仄和第四句第二字的平仄相同，第七句第二字的平仄与第六句第二字的平仄相同</li>
 </ul>
@@ -7864,7 +7890,18 @@
 <h2 id="2-2-应用"><a href="#2-2-应用" class="headerlink" title="2.2 应用"></a>2.2 应用</h2><ul>
 <li>Spring框架的的AOP（面向切面编程）概念</li>
 </ul>
-]]></content>
+<h1 id="三、桥接模式"><a href="#三、桥接模式" class="headerlink" title="三、桥接模式"></a>三、桥接模式</h1><p>桥接模式的角色：</p>
+<ul>
+<li>抽象化角色Abstraction：定义抽象类，并包含一个对<strong>实现化对象</strong>的引用</li>
+<li>扩展抽象化角色Refined Abstraction：<strong>抽象化角色</strong>的子类，实现父类中的业务方法</li>
+<li>实现化角色Implementor：<strong>实现化角色的接口</strong>，供扩展抽象化角色调用</li>
+<li>具体实现化角色Concrete Implementor：给出<strong>实现化角色接口</strong>的具体实现</li>
+</ul>
+<p>简单来说就是通过抽象化角色完成对实现化角色方法的调用</p>
+<p>桥接模式是将抽象与实现分离，这里的抽象是<strong>抽象化角色</strong>，实现是<strong>实现化角色</strong>，两者以<strong>组合关系</strong>完成<strong>抽象化角色</strong>对<strong>实现化角色</strong>方法的调用</p>
+<img src="/2022/08/03/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/bridge.png" class="" title="bridge">
+<h2 id="3-1-实现"><a href="#3-1-实现" class="headerlink" title="3.1 实现"></a>3.1 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> bridge;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BridgeTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Implementor imple = <span class="keyword">new</span> ConcreteImplementorA();</span><br><span class="line">        Abstraction abs = <span class="keyword">new</span> RefinedAbstraction(imple);</span><br><span class="line">        abs.Operation();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实现化角色</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Implementor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OperationImpl</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//具体实现化角色</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteImplementorA</span> <span class="keyword">implements</span> <span class="title">Implementor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OperationImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体实现化(Concrete Implementor)角色被访问&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//抽象化角色</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Abstraction</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Implementor imple;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Abstraction</span><span class="params">(Implementor imple)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.imple = imple;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Operation</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//扩展抽象化角色</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RefinedAbstraction</span> <span class="keyword">extends</span> <span class="title">Abstraction</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">RefinedAbstraction</span><span class="params">(Implementor imple)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(imple);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Operation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;扩展抽象化(Refined Abstraction)角色被访问&quot;</span>);</span><br><span class="line">        imple.OperationImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-应用"><a href="#3-2-应用" class="headerlink" title="3.2 应用"></a>3.2 应用</h2>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
