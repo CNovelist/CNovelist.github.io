@@ -165,6 +165,128 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/" class="post-title-link" itemprop="url">前端组件实现-基于vis.js的节点展开</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-12 22:41:46" itemprop="dateCreated datePublished" datetime="2022-03-12T22:41:46+08:00">2022-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-13 17:08:47" itemprop="dateModified" datetime="2022-03-13T17:08:47+08:00">2022-03-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、数据准备"><a href="#一、数据准备" class="headerlink" title="一、数据准备"></a>一、数据准备</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><ul>
+<li>id最好设置为数值型，方便后面的查找工作，需要通过id值查找其在staticNodes中的下标值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置点和边的数据</span></span><br><span class="line"><span class="keyword">var</span> staticNodes = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">label</span>:<span class="string">&quot;高玥&quot;</span>, <span class="attr">group</span>:<span class="number">1</span>, <span class="attr">pid</span>:<span class="number">0</span>, <span class="attr">subids</span>:[<span class="number">2</span>,<span class="number">3</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>, <span class="attr">label</span>:<span class="string">&quot;篮球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>, <span class="attr">subids</span>:[<span class="number">4</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>, <span class="attr">label</span>:<span class="string">&quot;羽毛球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">4</span>, <span class="attr">label</span>:<span class="string">&quot;技巧&quot;</span>, <span class="attr">group</span>:<span class="number">3</span>,<span class="attr">pid</span>:<span class="number">2</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> staticEdges = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">2</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>,<span class="attr">label</span>:<span class="string">&quot;有&quot;</span>, <span class="attr">from</span>: <span class="number">2</span>,<span class="attr">to</span>: <span class="number">4</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-数据格式"><a href="#1-2-数据格式" class="headerlink" title="1.2 数据格式"></a>1.2 数据格式</h2><h3 id="1-2-1-格式要求"><a href="#1-2-1-格式要求" class="headerlink" title="1.2.1 格式要求"></a>1.2.1 格式要求</h3><ul>
+<li>一般vis要显示network，需要以下格式<ul>
+<li>node：id、label、group</li>
+<li>edge：id、label、from、to</li>
+</ul>
+</li>
+<li>为了实现节点展开收缩就需要在nodes中再添加两个字段：<ul>
+<li>pid：父节点id</li>
+<li>subids：子节点id列表</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-2-后端实现方案（首页展示）："><a href="#1-2-2-后端实现方案（首页展示）：" class="headerlink" title="1.2.2 后端实现方案（首页展示）："></a>1.2.2 后端实现方案（首页展示）：</h3><ul>
+<li>需要先给数据分层，添加level标签，表示层级关系，只需要标注第一层即可，因为其他层会因点击事件而进行展开</li>
+<li>nodes节点中的pid和subids需要进行判断，再进行添加<ul>
+<li>设置pid：根据关系进行判断（根据to，查找from），对于单向关系，比如（我，有，篮球），那么篮球的pid就设置为“我”的id值，<strong>注意：目前只考虑节点的父节点只有一个的情况，如果pid有多个就需要设置列表</strong></li>
+<li>设置subids：根据关系进行判断（根据from，查找to），如存在一组关系（我，有，篮球）、（我，年龄，18），那么“我”的subids即表示为“篮球”和“18”对应id组成的列表</li>
+<li>设置group：group是为了对节点进行区分<ul>
+<li>前端实现：在进行节点展开时，会为nodes添加节点数据，这里就可以为节点添加上相同group，可以取一个随机整数</li>
+<li>后端实现：对于关系中from标签相同的一组关系，为其to标签对应的节点添加上相同group值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为vis注入数据时，先注入第一层的数据，即先显示第一层的节点关系</li>
+</ul>
+<h1 id="二、vis-js绘制network"><a href="#二、vis-js绘制network" class="headerlink" title="二、vis.js绘制network"></a>二、vis.js绘制network</h1><h2 id="2-1-将数据注入到vis中"><a href="#2-1-将数据注入到vis中" class="headerlink" title="2.1 将数据注入到vis中"></a>2.1 将数据注入到vis中</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nodes = <span class="keyword">new</span> vis.DataSet(staticNodes);</span><br><span class="line"><span class="keyword">var</span> edges = <span class="keyword">new</span> vis.DataSet(staticEdges);</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-配置network"><a href="#2-2-配置network" class="headerlink" title="2.2 配置network"></a>2.2 配置network</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个图的容器</span></span><br><span class="line"><span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;mynetwork&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">nodes</span>: nodes,</span><br><span class="line">    <span class="attr">edges</span>: edges</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    <span class="attr">nodes</span>:&#123;</span><br><span class="line">        <span class="attr">shape</span>: <span class="string">&quot;dot&quot;</span>,</span><br><span class="line">        <span class="comment">// scaling: &#123;</span></span><br><span class="line">        <span class="comment">//     customScalingFunction: function(min, max, total, value)&#123;</span></span><br><span class="line">        <span class="comment">//         return value / total;</span></span><br><span class="line">        <span class="comment">//     &#125;,</span></span><br><span class="line">        <span class="comment">//     min:5,</span></span><br><span class="line">        <span class="comment">//     max:150,</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">edges</span>: &#123;</span><br><span class="line">        <span class="attr">width</span>: <span class="number">0.15</span>,</span><br><span class="line">        <span class="comment">//physics: false,</span></span><br><span class="line">        <span class="attr">smooth</span>: &#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;continuous&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">interaction</span>: &#123;</span><br><span class="line">        <span class="attr">hover</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//hoverConnectedEdges: true</span></span><br><span class="line">        <span class="comment">//hideEdgesOnDrag: true,</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">physics</span>: &#123;</span><br><span class="line">        <span class="comment">//enabled: false,</span></span><br><span class="line">        <span class="attr">repulsion</span>:&#123;</span><br><span class="line">            <span class="attr">nodeDistance</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springLength</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springConstant</span>: <span class="number">0.5</span>,</span><br><span class="line">            <span class="attr">centralGravity</span>: <span class="number">0.9</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">layout</span>:&#123;</span><br><span class="line">        <span class="comment">//hierarchical: &#123;direction: &#x27;UD&#x27;, sortMethod: &#x27;hubsize&#x27;&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图可视化</span></span><br><span class="line"><span class="comment">// initialize your network!</span></span><br><span class="line"><span class="keyword">var</span> network = <span class="keyword">new</span> vis.Network(container, data, options);</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-为节点创建点击事件"><a href="#2-3-为节点创建点击事件" class="headerlink" title="2.3 为节点创建点击事件"></a>2.3 为节点创建点击事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击事件获取的是节点的列表，一般列表中只有一个节点id</span></span><br><span class="line">network.on(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">params</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 点击的是节点的情况（不考虑点击边的情况）</span></span><br><span class="line">    <span class="keyword">if</span> (params.nodes.length != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> clickNodeId = params.nodes[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//console.log(findArrayIndexById(staticNodes,clickNodeId));</span></span><br><span class="line">        <span class="comment">//removeSubNodes(clickNodeId);</span></span><br><span class="line">        <span class="comment">//removeByRecur(clickNodeId)</span></span><br><span class="line">        <span class="comment">//console.log(nodes.get(1));</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">//	逻辑分离，如果点击的节点存在子节点，则递归收缩节点</span></span><br><span class="line">        <span class="comment">//	否则进行节点展开</span></span><br><span class="line">        <span class="keyword">if</span>(getSubNodes(clickNodeId).length!=<span class="number">0</span>)</span><br><span class="line">            removeNodes(clickNodeId);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            addNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="三、展开收缩逻辑"><a href="#三、展开收缩逻辑" class="headerlink" title="三、展开收缩逻辑"></a>三、展开收缩逻辑</h1><ul>
+<li>具体的逻辑实现如下：<ul>
+<li>第一步：<strong>getSubNodes</strong>函数获取到点击节点的<strong>下级节点id列表</strong>subNodes</li>
+<li>第二步：判断<strong>subNodes</strong>是否为空，如果<strong>不为空</strong>执行<strong>第三步</strong>，否则执行第四步</li>
+<li>第三步：如果不为空：遍历subNodes中的id值，在<strong>staticNodes</strong>中找到其对应的节点并在nodes/edges中进行递归remove<strong>（收缩操作）</strong></li>
+<li>第四步：如果为空：判断点击的节点是否存在<strong>下级节点列表subids</strong>，如果存在，执行第五步<strong>（展开操作）</strong></li>
+<li>第五步：遍历<strong>subids下级id列表</strong>，在staticNodes中查找到对应的节点，添加到nodes和edges中，实现节点的展开操作</li>
+</ul>
+</li>
+<li>收缩时，如果点击节点的下一级节点中包含下下一级节点，则进行递归查找并收缩，实现方法为<strong>removeNodes</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据id值查找其对应的下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findArrayIndexById</span>(<span class="params">arr, id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res;</span><br><span class="line">    $.each(arr, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(item[<span class="string">&#x27;id&#x27;</span>] == id)&#123;</span><br><span class="line">            res = index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 节点收缩</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取到的是下级节点列表</span></span><br><span class="line">    <span class="keyword">var</span> subNodes = getSubNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果获取的下级节点列表长度 不为 0，表示节点没有收缩，则点击后进行收缩</span></span><br><span class="line">    <span class="keyword">if</span>(subNodes.length != <span class="number">0</span>)&#123;</span><br><span class="line">        $.each(subNodes,<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//消除的是注入到vis中的数据，而不是staticNodes/Edges</span></span><br><span class="line">            removeNodes(item);</span><br><span class="line">            nodes.remove(&#123;<span class="attr">id</span>:item&#125;);</span><br><span class="line">            edges.remove(&#123;<span class="attr">from</span>:clickNodeId,<span class="attr">to</span>:item&#125;);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//节点展开</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    $.each(staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;subids&#x27;</span>],<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        nodes.add(staticNodes[findArrayIndexById(staticNodes,item)]);</span><br><span class="line">        edges.add(&#123;<span class="attr">from</span>: clickNodeId,<span class="attr">to</span>: item&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取点击节点的下级节点列表，不包含与其相连的父节点id</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSubNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取与该节点所连接的所有节点的id（只要是相连的都会被算进来）</span></span><br><span class="line">    <span class="keyword">var</span> returnNodes = [];</span><br><span class="line">    <span class="keyword">var</span> connectedNodes = network.getConnectedNodes(clickNodeId);<span class="comment">//获取所有连接节点</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对节点id列表进行遍历，index表示列表下标，item表示对应的id值</span></span><br><span class="line">    $.each(connectedNodes, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//这里的clickNodeId和staticNodes数组中的下标只是简单的-1操作</span></span><br><span class="line">        <span class="comment">//因为staticNodes中id都是顺序的，如果不是顺序的就需要遍历才能找到其下标值</span></span><br><span class="line">        <span class="comment">//clickNodeId是点击的那个节点的id，item是连接节点的id</span></span><br><span class="line">        <span class="comment">//如果这个连接的节点是点击的节点父节点，则不考虑进去！！！</span></span><br><span class="line">        <span class="keyword">if</span>(item != staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;pid&#x27;</span>])&#123;</span><br><span class="line">            returnNodes.push(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> returnNodes;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="四、实现效果"><a href="#四、实现效果" class="headerlink" title="四、实现效果"></a>四、实现效果</h1><img src="/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/node.gif" class="" title="image1">
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/10/Mysql%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2954,122 +3076,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/25/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%AE%9E%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/25/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">individual项目开发1-前后端数据请求实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-25 16:17:03 / 修改时间：17:27:57" itemprop="dateCreated datePublished" datetime="2022-02-25T16:17:03+08:00">2022-02-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">项目开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">individual项目开发</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、前端工作"><a href="#一、前端工作" class="headerlink" title="一、前端工作"></a>一、前端工作</h1><h2 id="1-1-项目结构"><a href="#1-1-项目结构" class="headerlink" title="1.1 项目结构"></a>1.1 项目结构</h2><ul>
-<li>在初始的项目结构的src目录下新建以下目录<ul>
-<li>views：组合组件的页面</li>
-<li>store/modules：供view层使用，封装数据以供view层显示</li>
-<li>api：封装请求地址以及端口</li>
-<li>utils：js工具包，提供常用的操作，比如创建axios请求</li>
-</ul>
-</li>
-</ul>
-<h3 id="1-1-1-utils层"><a href="#1-1-1-utils层" class="headerlink" title="1.1.1 utils层"></a>1.1.1 utils层</h3><ul>
-<li>创建axios请求，命名为request.js</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span> <span class="comment">//引入 axios</span></span><br><span class="line"><span class="keyword">import</span> baseUrl <span class="keyword">from</span> <span class="string">&#x27;../api/baseUrl&#x27;</span> <span class="comment">//使用环境变量 + 模式的方式定义基础URL</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建 axios 实例</span></span><br><span class="line"><span class="keyword">const</span> service = axios.create(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: baseUrl, <span class="comment">// api 的 base_url</span></span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">15000</span>, <span class="comment">// 请求超时时间</span></span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> service</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-2-api层"><a href="#1-1-2-api层" class="headerlink" title="1.1.2 api层"></a>1.1.2 api层</h3><ul>
-<li>创建baseUrl.js，设置请求地址和端口</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> baseUrl = <span class="string">&quot;http://localhost:8080/&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> baseUrl;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建login.js，调用util层，设置请求方法和请求参数</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/utils/request&#x27;</span> <span class="comment">//引入封装好的 axios 请求</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params">userName, password</span>) </span>&#123; <span class="comment">//登录接口</span></span><br><span class="line">  <span class="keyword">return</span> request(&#123; <span class="comment">//使用封装好的 axios 进行网络请求</span></span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/user/login&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; <span class="comment">//提交的数据</span></span><br><span class="line">      userName,</span><br><span class="line">      password</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-3-store层"><a href="#1-1-3-store层" class="headerlink" title="1.1.3 store层"></a>1.1.3 store层</h3><ul>
-<li>在store/modules下创建user.js，调用api层请求方法，返回请求数据</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;login&#125; <span class="keyword">from</span> <span class="string">&#x27;@/api/login&#x27;</span><span class="comment">//引入登录 api 接口</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">actions</span>: &#123;</span><br><span class="line">    <span class="comment">// 登录</span></span><br><span class="line">    <span class="function"><span class="title">Login</span>(<span class="params">&#123; commit &#125;, userInfo</span>)</span> &#123; <span class="comment">//定义 Login 方法，在组件中使用 this.$store.dispatch(&quot;Login&quot;) 调用</span></span><br><span class="line">      <span class="keyword">const</span> userName = userInfo.userName.trim()</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123; <span class="comment">//封装一个 Promise</span></span><br><span class="line">        login(userName, userInfo.password).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123; <span class="comment">//使用 login 接口进行网络请求</span></span><br><span class="line">          commit(<span class="string">&#x27;increment&#x27;</span>) <span class="comment">//提交一个 mutation，通知状态改变</span></span><br><span class="line">          resolve(response) <span class="comment">//将结果封装进 Promise</span></span><br><span class="line">        &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">          reject(error)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> user</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在store下创建index.js，使用store封装modules模块下的数据</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span> <span class="comment">//引入 Vue</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span> <span class="comment">//引入 Vuex</span></span><br><span class="line"><span class="keyword">import</span> user <span class="keyword">from</span> <span class="string">&#x27;./modules/user&#x27;</span> <span class="comment">//引入 user module</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    user <span class="comment">//使用 user.js 中的 action</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123;</span><br><span class="line">    increment (state) &#123; </span><br><span class="line">      <span class="comment">// 变更状态</span></span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-4-views层"><a href="#1-1-4-views层" class="headerlink" title="1.1.4 views层"></a>1.1.4 views层</h3><ul>
-<li>创建登录页Login.vue，调用store验证登录用户</li>
-<li>可以创建Success.vue和Error.vue来进行页面跳转</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;login-container&quot;&gt;</span><br><span class="line">        &lt;el-form :model=&quot;ruleForm2&quot; :rules=&quot;rules2&quot;</span><br><span class="line">         status-icon</span><br><span class="line">         ref=&quot;ruleForm2&quot; </span><br><span class="line">         label-position=&quot;left&quot; </span><br><span class="line">         label-width=&quot;0px&quot; </span><br><span class="line">         class=&quot;demo-ruleForm login-page&quot;&gt;</span><br><span class="line">            &lt;h3 class=&quot;title&quot;&gt;系统登录&lt;/h3&gt;</span><br><span class="line">            &lt;el-form-item prop=&quot;userName&quot;&gt;</span><br><span class="line">                &lt;el-input type=&quot;text&quot; </span><br><span class="line">                    v-model=&quot;ruleForm2.userName&quot; </span><br><span class="line">                    auto-complete=&quot;off&quot; </span><br><span class="line">                    placeholder=&quot;用户名&quot;</span><br><span class="line">                &gt;&lt;/el-input&gt;</span><br><span class="line">            &lt;/el-form-item&gt;</span><br><span class="line">                &lt;el-form-item prop=&quot;password&quot;&gt;</span><br><span class="line">                    &lt;el-input type=&quot;password&quot; </span><br><span class="line">                        v-model=&quot;ruleForm2.password&quot; </span><br><span class="line">                        auto-complete=&quot;off&quot; </span><br><span class="line">                        placeholder=&quot;密码&quot;</span><br><span class="line">                    &gt;&lt;/el-input&gt;</span><br><span class="line">                &lt;/el-form-item&gt;</span><br><span class="line">            &lt;el-checkbox </span><br><span class="line">                v-model=&quot;checked&quot;</span><br><span class="line">                class=&quot;rememberme&quot;</span><br><span class="line">            &gt;记住密码&lt;/el-checkbox&gt;</span><br><span class="line">            &lt;el-form-item style=&quot;width:100%;&quot;&gt;</span><br><span class="line">                &lt;el-button type=&quot;primary&quot; style=&quot;width:100%;&quot; @click=&quot;handleSubmit&quot; :loading=&quot;logining&quot;&gt;登录&lt;/el-button&gt;</span><br><span class="line">            &lt;/el-form-item&gt;</span><br><span class="line">        &lt;/el-form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            logining: false,</span><br><span class="line">            ruleForm2: &#123;</span><br><span class="line">                userName: &#x27;&#x27;,</span><br><span class="line">                password: &#x27;&#x27;</span><br><span class="line">            &#125;,</span><br><span class="line">            rules2: &#123;</span><br><span class="line">                userName: [&#123;required: true, message: &#x27;please enter your account&#x27;, trigger: &#x27;blur&#x27;&#125;],</span><br><span class="line">                password: [&#123;required: true, message: &#x27;enter your password&#x27;, trigger: &#x27;blur&#x27;&#125;]</span><br><span class="line">            &#125;,</span><br><span class="line">            checked: false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        handleSubmit(event)&#123;</span><br><span class="line">            this.$refs.ruleForm2.validate((valid) =&gt; &#123;</span><br><span class="line">                if(valid)&#123;</span><br><span class="line">                    this.logining = true;</span><br><span class="line">                    this.$store</span><br><span class="line">                        .dispatch(&quot;Login&quot;, this.ruleForm2)</span><br><span class="line">                        .then(response =&gt; &#123;</span><br><span class="line">                            this.loading = false;</span><br><span class="line">                            let code = response.data.code;</span><br><span class="line">                            if (code == 200) &#123;</span><br><span class="line">                                this.$router.push(&#123;</span><br><span class="line">                                path: &quot;/success&quot;,</span><br><span class="line">                                query: &#123; data: response.data.data &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                            &#125; else &#123;</span><br><span class="line">                                this.$router.push(&#123;</span><br><span class="line">                                path: &quot;/error&quot;,</span><br><span class="line">                                query: &#123; message: response.data.msg &#125;</span><br><span class="line">                                &#125;);</span><br><span class="line">                            &#125;</span><br><span class="line"></span><br><span class="line">                        &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.login-container &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.login-page &#123;</span><br><span class="line">    -webkit-border-radius: 5px;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">    margin: 180px auto;</span><br><span class="line">    width: 350px;</span><br><span class="line">    padding: 35px 35px 15px;</span><br><span class="line">    background: #fff;</span><br><span class="line">    border: 1px solid #eaeaea;</span><br><span class="line">    box-shadow: 0 0 25px #cac6c6;</span><br><span class="line">&#125;</span><br><span class="line">label.el-checkbox.rememberme &#123;</span><br><span class="line">    margin: 0px 0px 15px;</span><br><span class="line">    text-align: left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="二、后端工作"><a href="#二、后端工作" class="headerlink" title="二、后端工作"></a>二、后端工作</h1><h2 id="2-1-跨域问题"><a href="#2-1-跨域问题" class="headerlink" title="2.1 跨域问题"></a>2.1 跨域问题</h2><ul>
-<li>浏览器的跨域问题</li>
-</ul>
-<h2 id="2-2-Springboot解决跨域问题"><a href="#2-2-Springboot解决跨域问题" class="headerlink" title="2.2 Springboot解决跨域问题"></a>2.2 Springboot解决跨域问题</h2><ul>
-<li>创建在config层下配置类CorsConfig，使用以下代码即可解决跨问问题</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorsConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//设置允许跨域的路径</span></span><br><span class="line">        registry.addMapping(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                <span class="comment">//设置允许跨域请求的域名</span></span><br><span class="line">                .allowedOriginPatterns(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">//这里：是否允许证书 不再默认开启</span></span><br><span class="line">                .allowCredentials(<span class="keyword">true</span>)</span><br><span class="line">                <span class="comment">//设置允许的方法</span></span><br><span class="line">                .allowedMethods(<span class="string">&quot;*&quot;</span>)</span><br><span class="line">                <span class="comment">//跨域允许时间</span></span><br><span class="line">                .maxAge(<span class="number">3600</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="三、项目启动"><a href="#三、项目启动" class="headerlink" title="三、项目启动"></a>三、项目启动</h1><ul>
-<li>先启动Springboot</li>
-<li>再启动Vue，在config/index.js中可以修改vue访问端口号，要避免和Springboot项目端口冲突的情况</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -3141,7 +3147,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
