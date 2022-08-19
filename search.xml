@@ -2387,11 +2387,22 @@
 <p>$\underline{仄}仄\underline{平}平平仄仄，\underline{平}平\underline{仄}仄仄平平$</p>
 <p>$\underline{平}平\underline{仄}仄平平仄，\underline{仄}仄平平仄仄平$</p>
 <h2 id="2-4-相对律、相粘律"><a href="#2-4-相对律、相粘律" class="headerlink" title="2.4 相对律、相粘律"></a>2.4 相对律、相粘律</h2><h3 id="2-4-1-相对律"><a href="#2-4-1-相对律" class="headerlink" title="2.4.1 相对律"></a>2.4.1 相对律</h3><ul>
-<li>一联中，出句和对句的平仄是相对的</li>
+<li>一联中，<strong>出句</strong>和<strong>对句</strong>的平仄是相对的</li>
 </ul>
 <h3 id="2-4-2-相粘律"><a href="#2-4-2-相粘律" class="headerlink" title="2.4.2 相粘律"></a>2.4.2 相粘律</h3><ul>
-<li>后一联出句第二字的平仄要跟前一联对句第二字的平仄一致</li>
+<li><strong>后一联出句第二字</strong>的平仄要跟<strong>前一联对句第二字</strong>的平仄一致</li>
 <li>即：第三句第二字的平仄与第二句第二字的平仄相同，第五局第二字的平仄和第四句第二字的平仄相同，第七句第二字的平仄与第六句第二字的平仄相同</li>
+</ul>
+<h2 id="2-5-一三五不论、二四六分明"><a href="#2-5-一三五不论、二四六分明" class="headerlink" title="2.5 一三五不论、二四六分明"></a>2.5 一三五不论、二四六分明</h2><p>这句话的意思是：</p>
+<ul>
+<li>近体七言诗每句的第一字、第三字和第五字的平仄可以不论</li>
+<li>第二字、第四字和第六字的平仄必须严格依照格式</li>
+</ul>
+<p>当然这句话不一定要完全遵循，有例外情况</p>
+<h3 id="2-5-1-反例"><a href="#2-5-1-反例" class="headerlink" title="2.5.1 反例"></a>2.5.1 反例</h3><p>以下反例都是“一三五不论、二四六分明”所导致的情况，不符合诗词的韵律</p>
+<ul>
+<li>犯孤平：诗的一句中，除了韵脚外只有一个平字，这是作诗的禁忌</li>
+<li>三平调：句末三字的平仄为连着的三平声</li>
 </ul>
 ]]></content>
       <categories>
@@ -7679,7 +7690,119 @@
 <p>拨音：用”ん”表示，鼻音，作用如拼音的”ng”</p>
 <p>促音：用”つ”表示，某一音节突然停顿后发音</p>
 <p>长音：用”あ、い、う、え、お”表示，延长音节</p>
-<h1 id="二、基础语法"><a href="#二、基础语法" class="headerlink" title="二、基础语法"></a>二、基础语法</h1>]]></content>
+<h1 id="二、基础语法"><a href="#二、基础语法" class="headerlink" title="二、基础语法"></a>二、基础语法</h1><h2 id="2-1-陈述与问答"><a href="#2-1-陈述与问答" class="headerlink" title="2.1 陈述与问答"></a>2.1 陈述与问答</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>【名】は　【名】です</td>
+<td>～是~</td>
+</tr>
+<tr>
+<td>【名】は　【名】では　ありません</td>
+<td>～不是~</td>
+</tr>
+<tr>
+<td>【名】は　【名】ですか</td>
+<td>~是~吗？</td>
+</tr>
+<tr>
+<td>はい，そえです</td>
+<td>是的，是这样</td>
+</tr>
+<tr>
+<td>いいえ，ちがいます</td>
+<td>不，不是的</td>
+</tr>
+<tr>
+<td>分【わ】かりません</td>
+<td>不知道</td>
+</tr>
+<tr>
+<td>【名】の【从属机构、国家、属性】</td>
+<td>~的~</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-2-人称"><a href="#2-2-人称" class="headerlink" title="2.2 人称"></a>2.2 人称</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>私「わたし」</td>
+<td>我</td>
+</tr>
+<tr>
+<td>あなた</td>
+<td>你</td>
+</tr>
+<tr>
+<td>あの人「ひと」</td>
+<td>那个人</td>
+</tr>
+<tr>
+<td>【姓】さん</td>
+<td>~女士/先生</td>
+</tr>
+<tr>
+<td>【姓】ちゃん</td>
+<td>小孩的称呼【~酱】</td>
+</tr>
+<tr>
+<td>【姓】君「くん」</td>
+<td>年龄相当的男性的称呼</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-3-指示代词"><a href="#2-3-指示代词" class="headerlink" title="2.3 指示代词"></a>2.3 指示代词</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>【これ/それ/あれ】は　【名】です</td>
+<td>【这个/那个/那里】是~</td>
+</tr>
+<tr>
+<td>【これ/それ/あれ】【名】は　【名】です</td>
+<td>【这个/那个/那里】的~是~</td>
+</tr>
+<tr>
+<td>誰【だれ】</td>
+<td>指人</td>
+</tr>
+<tr>
+<td>何【なん】</td>
+<td>指物</td>
+</tr>
+<tr>
+<td>【この/その/あの】【名】は　【名】です</td>
+<td>修饰名词时候使用，表示这/那个~是~</td>
+</tr>
+<tr>
+<td>どれ/どの【名】 ですが</td>
+<td>三个以上物品，不知道是谁的时候使用，どの后可修饰名词</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
       <categories>
         <category>文化艺术</category>
         <category>语言</category>
@@ -8000,5 +8123,35 @@
     <title>Java设计模式-行为型模式</title>
     <url>/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>论文复现-KGAT</title>
+    <url>/2022/08/13/%E8%AE%BA%E6%96%87%E5%A4%8D%E7%8E%B0-KGAT/</url>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-1-数据集解析"><a href="#1-1-数据集解析" class="headerlink" title="1.1 数据集解析"></a>1.1 数据集解析</h2><h3 id="1-1-1-amazon-book"><a href="#1-1-1-amazon-book" class="headerlink" title="1.1.1 amazon-book"></a>1.1.1 amazon-book</h3><p>amazon-book：amazon-book是Amazon review的一个子集，Amazon review是一个广泛使用的产品推荐数据集，其包含的文件如下：</p>
+<ul>
+<li>user_list：用户编号org_id，映射remap_id</li>
+<li>item_list：项目列表</li>
+<li>entity_list：实体编号org_id，映射remap_id</li>
+<li>relation_list：关系链接org_id，映射remap_id</li>
+<li>kg_final：三元组</li>
+<li>train：训练集</li>
+<li>test：测试集</li>
+</ul>
+<h2 id="二、代码解析"><a href="#二、代码解析" class="headerlink" title="二、代码解析"></a>二、代码解析</h2><p>代码解析数据集均以amazon-book数据集为例</p>
+<h2 id="2-1-数据预处理"><a href="#2-1-数据预处理" class="headerlink" title="2.1 数据预处理"></a>2.1 数据预处理</h2><h3 id="2-1-1-数据导入"><a href="#2-1-1-数据导入" class="headerlink" title="2.1.1 数据导入"></a>2.1.1 数据导入</h3><p>数据导入的主要文件为</p>
+<ul>
+<li>load_data.py</li>
+<li></li>
+</ul>
+<p>其中load_data</p>
+]]></content>
+      <categories>
+        <category>知识图谱</category>
+        <category>研究方向</category>
+      </categories>
+      <tags>
+        <tag>KGAT模型</tag>
+        <tag>推荐系统</tag>
+      </tags>
   </entry>
 </search>
