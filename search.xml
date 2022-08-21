@@ -2393,18 +2393,28 @@
 <li><strong>后一联出句第二字</strong>的平仄要跟<strong>前一联对句第二字</strong>的平仄一致</li>
 <li>即：第三句第二字的平仄与第二句第二字的平仄相同，第五局第二字的平仄和第四句第二字的平仄相同，第七句第二字的平仄与第六句第二字的平仄相同</li>
 </ul>
-<h2 id="2-5-一三五不论、二四六分明"><a href="#2-5-一三五不论、二四六分明" class="headerlink" title="2.5 一三五不论、二四六分明"></a>2.5 一三五不论、二四六分明</h2><p>这句话的意思是：</p>
+<h2 id="2-5-特殊平仄格式"><a href="#2-5-特殊平仄格式" class="headerlink" title="2.5 特殊平仄格式"></a>2.5 特殊平仄格式</h2><p>在唐人近体诗创作中存在对句型为【平平平仄仄】、【仄仄平平平仄仄】平仄格式进行修改的情况，如下：</p>
+<ul>
+<li>五言：平平【平仄仄】—-&gt;平平仄【平仄】</li>
+<li>七言：仄仄平平【平仄仄】—-&gt;平仄平平【仄平仄】</li>
+</ul>
+<p>句型修改为特殊平仄格式后，这种句型的第一个字必须为平声</p>
+<h2 id="2-6-一三五不论、二四六分明"><a href="#2-6-一三五不论、二四六分明" class="headerlink" title="2.6 一三五不论、二四六分明"></a>2.6 一三五不论、二四六分明</h2><p>这句话的意思是：</p>
 <ul>
 <li>近体七言诗每句的第一字、第三字和第五字的平仄可以不论</li>
 <li>第二字、第四字和第六字的平仄必须严格依照格式</li>
 </ul>
 <p>当然这句话不一定要完全遵循，有例外情况</p>
-<h3 id="2-5-1-反例"><a href="#2-5-1-反例" class="headerlink" title="2.5.1 反例"></a>2.5.1 反例</h3><p>以下反例都是“一三五不论、二四六分明”所导致的情况，不符合诗词的韵律</p>
+<h3 id="2-6-1-反例"><a href="#2-6-1-反例" class="headerlink" title="2.6.1 反例"></a>2.6.1 反例</h3><p>以下反例都是“一三五不论、二四六分明”所导致的情况，不符合诗词的韵律</p>
 <ul>
 <li>犯孤平：诗的一句中，除了韵脚外只有一个平字，这是作诗的禁忌</li>
 <li>三平调：句末三字的平仄为连着的三平声</li>
 </ul>
-]]></content>
+<h2 id="2-7-拗与救"><a href="#2-7-拗与救" class="headerlink" title="2.7 拗与救"></a>2.7 拗与救</h2><ul>
+<li>拗：不符合平仄格式的字，这种形式叫做拗</li>
+<li>救：如果前一个字用了“拗”，比如前一个字在本该用平声的地方用了仄声，那么在后面合适的地方补充一个平声</li>
+</ul>
+<h2 id="三、用韵"><a href="#三、用韵" class="headerlink" title="三、用韵"></a>三、用韵</h2>]]></content>
       <categories>
         <category>文化艺术</category>
         <category>中国诗词</category>
@@ -7780,6 +7790,10 @@
 <td>【这个/那个/那里】是~</td>
 </tr>
 <tr>
+<td>【ここ/そこ/あそこ】は 【名】です</td>
+<td>同【这个/那个/那里】是~</td>
+</tr>
+<tr>
 <td>【これ/それ/あれ】【名】は　【名】です</td>
 <td>【这个/那个/那里】的~是~</td>
 </tr>
@@ -7799,9 +7813,27 @@
 <td>どれ/どの【名】 ですが</td>
 <td>三个以上物品，不知道是谁的时候使用，どの后可修饰名词</td>
 </tr>
+<tr>
+<td>方【かた】／人【ひと】</td>
+<td>指代人，【方】更礼貌，对上司或初次见面的人</td>
+</tr>
 </tbody>
 </table>
 </div>
+<h2 id="2-4-其他"><a href="#2-4-其他" class="headerlink" title="2.4 其他"></a>2.4 其他</h2><p>询问年龄：何歳ですが？、おいくつですか？【多大了】</p>
+<ul>
+<li>针对小孩可以直接用：何歳、いくつ</li>
+</ul>
+<p>表示请，客气的用语：どうぞ</p>
+<p>表示吃惊：えつ（唉！）、わあ（啊！）</p>
+<p>表示应答（哎）：はい、ええ（哎~~~）</p>
+<p>表示感谢：どうも　ありがとう　ございます</p>
+<ul>
+<li>可以只是用【どうも】表示略感谢意</li>
+</ul>
+<p>询问场所在哪：【名】わ　どこですか（请问~在哪儿）</p>
+<p>表示“也”：【名】も　【名】です（~也是~）</p>
+<p>询问价钱：【名】は　いくらですか（いくら表示“多少”）</p>
 ]]></content>
       <categories>
         <category>文化艺术</category>
@@ -8122,7 +8154,31 @@
   <entry>
     <title>Java设计模式-行为型模式</title>
     <url>/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h1 id="二、模板方法模式"><a href="#二、模板方法模式" class="headerlink" title="二、模板方法模式"></a>二、模板方法模式</h1><p>模板方法角色：</p>
+<ul>
+<li>抽象类：负责给出一个算法的轮廓和骨架，它由一个模板方法的若干个基本方法构成</li>
+<li>具体子类：实现抽象类中所定义的抽象方法和钩子方法</li>
+</ul>
+<p>抽象类中的方法有以下几类：</p>
+<ul>
+<li>模板方法：定义算法的股价，按照某种顺序调用其包含的基本方法</li>
+<li>基本方法：整个算法中的一个步骤，由具体子类实现<ul>
+<li>抽象方法：在抽象类中声明，由具体子类实现</li>
+<li>具体方法：在抽象类中已经实现，在具体子类中可以继承或重写</li>
+<li>钩子方法：在抽象类中已经实现，包括用于判断的逻辑方法和需要子类重写的空方法两种</li>
+</ul>
+</li>
+</ul>
+<img src="/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/muban.png" class="" title="muban">
+<h2 id="2-1-实现"><a href="#2-1-实现" class="headerlink" title="2.1 实现"></a>2.1 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Clent</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        AbstractClass tm = <span class="keyword">new</span> ConcreteClass();</span><br><span class="line">        tm.templateMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">templateMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        specificMethod();</span><br><span class="line">        abstractMehtod1();</span><br><span class="line">        abstractMehtod2();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">specificMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;抽象类中的具体方法被调用...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteClass</span> <span class="keyword">extends</span> <span class="title">AbstractClass</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;抽象方法1的实现被调用...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;抽象方法2的实现被调用...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">抽象类中的具体方法被调用...</span></span><br><span class="line"><span class="comment">抽象方法1的实现被调用...</span></span><br><span class="line"><span class="comment">抽象方法1的实现被调用...</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>行为型模式</tag>
+      </tags>
   </entry>
   <entry>
     <title>论文复现-KGAT</title>
@@ -8153,5 +8209,10 @@
         <tag>KGAT模型</tag>
         <tag>推荐系统</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>诗词赏析（一）</title>
+    <url>/2022/08/21/%E8%AF%97%E8%AF%8D%E8%B5%8F%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
