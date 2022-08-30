@@ -2281,13 +2281,24 @@
   <entry>
     <title>诗词韵律解析</title>
     <url>/2022/03/02/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<h1 id="一、诗体简介"><a href="#一、诗体简介" class="headerlink" title="一、诗体简介"></a>一、诗体简介</h1><h2 id="1-1-近体诗格律"><a href="#1-1-近体诗格律" class="headerlink" title="1.1 近体诗格律"></a>1.1 近体诗格律</h2><ol>
+    <content><![CDATA[<h1 id="一、诗体简介"><a href="#一、诗体简介" class="headerlink" title="一、诗体简介"></a>一、诗体简介</h1><h2 id="1-1-近体诗格律"><a href="#1-1-近体诗格律" class="headerlink" title="1.1 近体诗格律"></a>1.1 近体诗格律</h2><p>古体诗与近体诗的区别：</p>
+<ul>
+<li><p>古体诗不讲究押韵；近体诗用韵严格，必须一韵到底，不能换韵，且压平声韵</p>
+</li>
+<li><p>古体诗字数不固定；近体诗字数固定</p>
+</li>
+<li><p>古体诗没有严格的平仄、对仗；近体诗讲究平仄、对仗工整</p>
+</li>
+</ul>
+<p>古体诗的代表有《诗经》《楚辞》《琵琶行》《归园田居》等</p>
+<p>近体诗格律要求：</p>
+<ul>
 <li>诗句数固定</li>
 <li>字数为五言或七言</li>
 <li>一般押平声韵，不允许换韵，韵脚位置固定</li>
 <li>平仄有规定</li>
 <li>五七言律诗中间两联原则上必须对仗</li>
-</ol>
+</ul>
 <h2 id="1-2-绝句和律诗"><a href="#1-2-绝句和律诗" class="headerlink" title="1.2 绝句和律诗"></a>1.2 绝句和律诗</h2><ul>
 <li>绝句为四句；律诗为八句</li>
 <li>古绝讲究押韵，平仄与对仗较为自由；律诗即讲究押韵，又对平仄、对仗有严格规定</li>
@@ -2325,11 +2336,27 @@
 </tbody>
 </table>
 </div>
+<p>由于现代汉语没有了入声的发音习惯，对古代入声字的判断规则如下：</p>
+<p>（一）凡b、d、g、j、zh、z六母的第二声字（阳平），都是古入声字</p>
+<p>（二）凡d、t、L、z、c、s等六母跟韵母e拼合时，不论国语读何声调，都是古入声字</p>
+<p>（三）凡k、zh、ch、sh、R五母与韵母uo拼合时，不论国语读何声调，都是古入声字</p>
+<p>（四）凡b、p、m、d、t、n、L七母跟韵母ie拼时，无论国语读何声调，都是古入声字</p>
+<p>（五）凡d、g、h、z、s五母与韵母ei拼合时，不论国语读何声调，都是古入声字</p>
+<p>（六）凡声母f，跟韵母a、o拼合时，都是古入声字</p>
+<p>（七）凡读ue韵母的字，都是古入声字。只有「嗟」jue，「瘸」queˊ，「靴」xue三字除外</p>
+<p>（八）一字有两读，读音为开尾韵，语音读i或u韵尾的，也是古入声字</p>
 <h2 id="2-2-五言律诗的平仄"><a href="#2-2-五言律诗的平仄" class="headerlink" title="2.2 五言律诗的平仄"></a>2.2 五言律诗的平仄</h2><h3 id="2-2-1-起声-收声"><a href="#2-2-1-起声-收声" class="headerlink" title="2.2.1 起声/收声"></a>2.2.1 起声/收声</h3><ul>
 <li>仄起：第一句的第二个字为仄声</li>
 <li>平起：第一句的第二个字为平声</li>
 <li>仄收：第一句的第五字为仄声</li>
 <li>平收：第一句的第五字为平声</li>
+</ul>
+<p>不同平仄格式的首句格式</p>
+<ul>
+<li>仄起仄收：仄仄平平仄、仄仄平平平仄仄</li>
+<li>仄起平收（首句入韵）：仄仄仄平平、仄仄平平仄仄平</li>
+<li>平起平收（首句入韵）：平平仄仄平、平平仄仄仄平平</li>
+<li>平起仄收：平平平仄仄、平平仄仄平平仄</li>
 </ul>
 <h3 id="2-2-2-平仄格式"><a href="#2-2-2-平仄格式" class="headerlink" title="2.2.2 平仄格式"></a>2.2.2 平仄格式</h3><h4 id="（1）仄起仄收"><a href="#（1）仄起仄收" class="headerlink" title="（1）仄起仄收"></a>（1）仄起仄收</h4><p>加下划线表示<strong>可平可仄</strong></p>
 <p>$\underline{仄}仄平平仄，平平仄仄平$</p>
@@ -2414,7 +2441,8 @@
 <li>拗：不符合平仄格式的字，这种形式叫做拗</li>
 <li>救：如果前一个字用了“拗”，比如前一个字在本该用平声的地方用了仄声，那么在后面合适的地方补充一个平声</li>
 </ul>
-<h2 id="三、用韵"><a href="#三、用韵" class="headerlink" title="三、用韵"></a>三、用韵</h2><h2 id="3-1-韵母解析"><a href="#3-1-韵母解析" class="headerlink" title="3.1 韵母解析"></a>3.1 韵母解析</h2><p>韵母由韵头、韵腹、韵尾三个部分组成</p>
+<h2 id="三、用韵"><a href="#三、用韵" class="headerlink" title="三、用韵"></a>三、用韵</h2><h2 id="3-1-韵母解析"><a href="#3-1-韵母解析" class="headerlink" title="3.1 韵母解析"></a>3.1 韵母解析</h2><p>押韵：押韵是把同韵母或韵母相近的字，放在诗篇某些句子的末尾，使诗歌读起来顺口，听起来悦耳，容易记得住、传得开</p>
+<p>韵母由韵头、韵腹、韵尾三个部分组成</p>
 <ul>
 <li>韵头：又称介音，是韵腹前面、起前导作用的部分，发音比较模糊，往往迅速带过；</li>
 <li>韵腹：又称主要元音，是一个韵母发音的关键，是韵母发音过程时，口腔肌肉最紧张，发音最响亮的部分；</li>
@@ -2423,11 +2451,16 @@
 <p>如“娘”niáng的韵母是iang，其中i是韵头，a是韵腹，ng是韵尾。</p>
 <p>每个韵母一定有韵腹，韵头和韵尾则可有可无。如“大”dà的韵母是a，a是韵腹，没有韵头、韵尾；<br>“瓜”guā的韵母是ua，其中u是韵头，a是韵腹，没有韵尾；<br>“刀”dāo的韵母是ao，其中a是韵腹，o是韵尾，没有韵头。</p>
 <h2 id="3-2-平声韵"><a href="#3-2-平声韵" class="headerlink" title="3.2 平声韵"></a>3.2 平声韵</h2><p>平声韵，是汉语中读音为平声的单字归类，其主要特点是发声比较平和。“平声”与“仄声”相对应。在诗词中，句尾押韵有压平声韵和仄声韵， 平声即阴平、阳平，仄声是上声、去声。压阴平、阳平韵的是平声韵，压上声、去声的是仄声韵。</p>
-<p>上平声：一东、二冬、三江、四支、五微、六鱼、七虞、八齐、九佳、十灰、十一真、十二文、十三元、十四寒、十五删</p>
-<p>下平声：一先、二萧、三肴、四豪、五歌、六麻、七阳、八庚、九青、十蒸、十一尤、十二侵、十三覃、十四盐、十五咸</p>
 <p>做诗所依据的韵书，一般指《平水韵》，平、上、去、入四声一共106韵</p>
 <p>平声30韵，上声29韵，去声30韵，入声17韵。律诗一般只用平声韵</p>
-]]></content>
+<ul>
+<li>上平声：一东、二冬、三江、四支、五微、六鱼、七虞、八齐、九佳、十灰、十一真、十二文、十三元、十四寒、十五删</li>
+<li>下平声：一先、二萧、三肴、四豪、五歌、六麻、七阳、八庚、九青、十蒸、十一尤、十二侵、十三覃、十四盐、十五咸</li>
+<li>上声韵：一董、二肿、三讲、四纸、五尾、六语、七雨、八荠(jì)、九蟹、十贿、十一轸(zhěn)、十二吻、十三阮、十四旱、十五潸(shān)、十六铣(xiǎn/xǐ)、十七小、十八巧、十九皓、二十哿、二十一马、二十二养、二十三梗、二十四迥(jiǒng)、二十五有、二十六寝、二十七感、二十八琰(yǎn)、二十九豏(xiàn)</li>
+<li>去声韵：一送、二宋、三绛(jiàng)、四寘(zhì)、五未、六御、七遇、八霁(jì)、九泰、十卦、十一队、十二震、十三问、十四愿、十五翰(hàn)、十六谏、十七霰(xiàn)、十八啸、十九效、二十号、二十一箇(gè)、二十二禡(mà)、二十三漾、二十四敬、二十五径(jìng)、二十六宥(yòu)、二十七沁、二十八勘(kān)、二十九艳、三十陷</li>
+<li>入声韵：一屋、二沃、三觉、四质、五物、六月、七曷(hé)、八黠(xiá)、九屑(xiè)、十药、十一陌、十二锡(xī)、十三职、十四缉(qī/jī)、十五合、十六叶、十七洽(qià)</li>
+</ul>
+<h2 id="3-3-邻韵"><a href="#3-3-邻韵" class="headerlink" title="3.3 邻韵"></a>3.3 邻韵</h2><h1 id="四、对仗"><a href="#四、对仗" class="headerlink" title="四、对仗"></a>四、对仗</h1>]]></content>
       <categories>
         <category>文化艺术</category>
         <category>中国诗词</category>
@@ -6698,6 +6731,25 @@
 <p>对应的方法的绑定机制为:<strong>早期绑定（Early Binding）</strong>和<strong>晚期绑定(Late Binding）</strong>。绑定是一个字段、方法或者类在符号引用被替换为直接引用的过程，这仅仅发生一次。</p>
 <p><strong>早期绑定：</strong>早期绑定就是指被调用的目标方法如果在编译期可知，且运行期保持不变时即可将这个方法与所属的类型进行绑定，这样一来，由于明确了被调用的目标方法究竟是哪一个，因此也就可以使用静态链接的方式将符号引用转换为直接引用。</p>
 <p><strong>晚期绑定：</strong>如果被调用的方法在编译期无法被确定下来，只能够在程序运行期根据实际的类型绑定相关的方法，这种绑定方式也就被称之为晚期绑定。这里就体现出了<strong>多态</strong>的特性</p>
+<h3 id="4-6-2-虚方法与非虚方法"><a href="#4-6-2-虚方法与非虚方法" class="headerlink" title="4.6.2 虚方法与非虚方法"></a>4.6.2 虚方法与非虚方法</h3><p>非虚方法：如果方法在编译期就确定了具体的调用版本，这个版本在运行时是不可变的。这样的方法称为非虚方法。如静态方法、私有方法、final方法、实例构造器、父类方法都是非虚方法。其他方法称为虚方法。</p>
+<p>子类多态性的前提：1、类的继承关系；2、方法的重写</p>
+<h3 id="4-6-3-方法调用指令"><a href="#4-6-3-方法调用指令" class="headerlink" title="4.6.3 方法调用指令"></a>4.6.3 方法调用指令</h3><p>虚拟机中提供了以下几条方法调用指令:·普通调用指令:</p>
+<ul>
+<li><p>invokestatic:调用静态方法，解析阶段确定唯一方法版本</p>
+</li>
+<li><p>invokespecial:调用<code>&lt;init&gt;</code>方法、私有及父类方法，解析阶段确定唯一方法版本</p>
+</li>
+<li><p>invokevirtual：调用所有虚方法</p>
+</li>
+<li><p>invokeinterface:调用接口方法</p>
+</li>
+</ul>
+<p>动态调用指令:</p>
+<ul>
+<li>invokedynamic:动态解析出需要调用的方法，然后执行前四条指令固化在虚拟机内部，方法的调用执行不可人为干预，而invokedynamic指令则支持由用户确定方法版本。其中invokestatic指令和invokespecial指令调用的方法称为非虚方法，其余的（final修饰的除外）称为虚方法。</li>
+</ul>
+<h3 id="4-6-4-invokedynamic指令"><a href="#4-6-4-invokedynamic指令" class="headerlink" title="4.6.4 invokedynamic指令"></a>4.6.4 invokedynamic指令</h3><p>动态类型语言和静态类型语言两者的区别就在于对类型的检查是在编译期还是在运行期，满足前者就是静态类型语言，反之是动态类型语言。</p>
+<p>说的再直白一点就是，静态类型语言是判断变量自身的类型信息;动态类型语言是判断变量值的类型信息，变量没有类型信息，变量值才有类型信息，这是动态语言的一个重要特征。</p>
 ]]></content>
       <categories>
         <category>后端</category>
@@ -8206,7 +8258,16 @@
 </ul>
 <img src="/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/mingling.png" class="" title="mingling">
 <h2 id="4-1-实现"><a href="#4-1-实现" class="headerlink" title="4.1 实现"></a>4.1 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommandPattern</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Command cmd = <span class="keyword">new</span> ConcreteCommand();</span><br><span class="line">        Invoker ir = <span class="keyword">new</span> Invoker(cmd);</span><br><span class="line">        System.out.println(<span class="string">&quot;客户访问调用者的call()方法...&quot;</span>);</span><br><span class="line">        ir.call();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Invoker</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Command command;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Invoker</span><span class="params">(Command command)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.command = command;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCommand</span><span class="params">(Command command)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.command = command;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;调用者执行命令command...&quot;</span>);</span><br><span class="line">        command.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Command</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteCommand</span> <span class="keyword">implements</span> <span class="title">Command</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Receiver receiver;</span><br><span class="line">    </span><br><span class="line">    ConcreteCommand()&#123;</span><br><span class="line">        receiver = <span class="keyword">new</span> Receiver();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>&#123;</span><br><span class="line">        receiver.action();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Receiver</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;接收者的action()方法被调用...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">客户访问调用者的call()方法...</span></span><br><span class="line"><span class="comment">调用者执行命令command...</span></span><br><span class="line"><span class="comment">接收者的action()方法被调用...</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h2 id="4-2-应用"><a href="#4-2-应用" class="headerlink" title="4.2 应用"></a>4.2 应用</h2>]]></content>
+<h2 id="4-2-应用"><a href="#4-2-应用" class="headerlink" title="4.2 应用"></a>4.2 应用</h2><h1 id="五、职责链模式"><a href="#五、职责链模式" class="headerlink" title="五、职责链模式"></a>五、职责链模式</h1><p>为了避免请求发送者与多个请求处理者糯合在 起，将所有请求的处理者通过前一对象记住其下个对象的引用而连成一条链当有求发生时，可将请求沿着这条链传递，直到有对象处理它为止</p>
+<p>职责链的主要角色：</p>
+<ul>
+<li>抽象处理者角色（Handler）：定义一个处理请求的接口，包含抽象处理方法和一个后继连接</li>
+<li>具体处理者角色（ConcreteHandler）：实现抽象处理者的处理方法，判断能否处理本次请求，如果可以处理请求则处理，否则将该请求转给它的后继者</li>
+<li>客户类角色：创建处理链，并向链头的具体处理者对象提交请求，它不关心处理细节和请求的传递过程</li>
+</ul>
+<img src="/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/chain.png" class="" title="chain">
+<h2 id="5-1-实现"><a href="#5-1-实现" class="headerlink" title="5.1 实现"></a>5.1 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChainOfResponsibilityPattern</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Handler handler1 = <span class="keyword">new</span> ConcreteHandler1();</span><br><span class="line">        Handler handler2 = <span class="keyword">new</span> ConcreteHandler2();</span><br><span class="line">        handler1.setNext(handler2);</span><br><span class="line">        handler1.handleRequest(<span class="string">&quot;two&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象处理者角色</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Handler next;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Handler <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(Handler next)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String request)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler1</span> <span class="keyword">extends</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (request.equals(<span class="string">&quot;one&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;具体处理1负责处理该请求！&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (getNext() != <span class="keyword">null</span>)&#123;</span><br><span class="line">                getNext().handleRequest(request);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;没有人处理该请求！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler2</span> <span class="keyword">extends</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (request.equals(<span class="string">&quot;two&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;具体处理2负责处理该请求！&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (getNext() != <span class="keyword">null</span>)&#123;</span><br><span class="line">                getNext().handleRequest(request);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;没有人处理该请求！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-2-应用"><a href="#5-2-应用" class="headerlink" title="5.2 应用"></a>5.2 应用</h2>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -8246,8 +8307,23 @@
       </tags>
   </entry>
   <entry>
-    <title>诗词赏析（一）</title>
-    <url>/2022/08/21/%E8%AF%97%E8%AF%8D%E8%B5%8F%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <title>企业常识</title>
+    <url>/2022/08/30/%E4%BC%81%E4%B8%9A%E5%B8%B8%E8%AF%86/</url>
+    <content><![CDATA[<h1 id="一、To-B和To-C的区别"><a href="#一、To-B和To-C的区别" class="headerlink" title="一、To B和To C的区别"></a>一、To B和To C的区别</h1><p>To B 英文为To Business，指面向企业或特定用户群体，通常为面向企业，为企业提供相关的服务、产品、平台，其建设成果不会向大众公开，为企业内部所用，包括企业的内外部运营管理、数据应用及决策分析等。</p>
+<p>To C为To Customer，即面向最终客户，它并不是面对企业那种组织，而是面向个体消费者。To C类的产品是市面上最多的产品，它们都遵循特定的规范流程，开发成果完全面向于大众，如：衣食住行各类APP等。<br>C端产品的本质都有一个核心的功能，例如：音乐类app有听音乐的功能，游戏类app的核心功能就是游戏。B端产品的本质是为满足用户的工作需求，而工作需求往往不是单一功能满足的，其必须是多种功能的复合和嵌套</p>
+<p>To B与To C概念不同、定位不同，所以对应的运营厂商及被运营的主体对象也不相同，To B的运营商一般都是软件厂商，运营的主体是泛化的企业；To C的运营商一般都是IT行业的巨头，运用的主体是普通用户。</p>
+]]></content>
+      <categories>
+        <category>其他常识</category>
+      </categories>
+      <tags>
+        <tag>企业</tag>
+        <tag>工作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>诗词韵律解析-填词篇</title>
+    <url>/2022/08/30/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90-%E5%A1%AB%E8%AF%8D%E7%AF%87/</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
