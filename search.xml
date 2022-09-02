@@ -1337,14 +1337,134 @@
 <h1 id="三、查询"><a href="#三、查询" class="headerlink" title="三、查询"></a>三、查询</h1><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"># 分组查询推荐尽可能使用分组前筛选，即在<span class="keyword">group</span> <span class="keyword">by</span>前使用<span class="keyword">where</span></span><br><span class="line"><span class="keyword">SELECT</span> [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> [表名,...]</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
 <h2 id="3-1-连接查询"><a href="#3-1-连接查询" class="headerlink" title="3.1 连接查询"></a>3.1 连接查询</h2><h3 id="3-1-1-内连接"><a href="#3-1-1-内连接" class="headerlink" title="3.1.1 内连接"></a>3.1.1 内连接</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    这属于sql99语法，作用等同于不加inner join时的查询</span></span><br><span class="line"><span class="comment">    不加inner join属于隐式连接，用inner join时，inner可以省略</span></span><br><span class="line"><span class="comment">    等值连接在WHERE子句中判断中写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">     <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-1-2-外连接"><a href="#3-1-2-外连接" class="headerlink" title="3.1.2 外连接"></a>3.1.2 外连接</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">left</span><span class="operator">/</span><span class="keyword">right</span><span class="operator">/</span><span class="keyword">full</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-1-3-交叉连接（笛卡尔积）"><a href="#3-1-3-交叉连接（笛卡尔积）" class="headerlink" title="3.1.3 交叉连接（笛卡尔积）"></a>3.1.3 交叉连接（笛卡尔积）</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-1-4-子查询"><a href="#3-1-4-子查询" class="headerlink" title="3.1.4 子查询"></a>3.1.4 子查询</h3><h3 id="3-1-5-分页查询"><a href="#3-1-5-分页查询" class="headerlink" title="3.1.5 分页查询"></a>3.1.5 分页查询</h3><ul>
+<h3 id="3-1-3-内连接与外连接的区别"><a href="#3-1-3-内连接与外连接的区别" class="headerlink" title="3.1.3 内连接与外连接的区别"></a>3.1.3 内连接与外连接的区别</h3><p>内连接：内连接匹配的是两个表符合连接条件的交集，不存在匹配的内容为NULL的情况</p>
+<p>外连接：外连接分为左外连接与右外连接，左连接表示左表中记录全部查询出来，右表只显示符合条件的数据，没有匹配到右表的数据，则右表数据显示为NULL；右连接则反之。以以下示例做下说明：</p>
+<ul>
+<li>以下是a表</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>a_id</th>
+<th>a_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>路飞</td>
+</tr>
+<tr>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>以下是b表</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>b_id</th>
+<th>b_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+<tr>
+<td>4</td>
+<td>乔巴</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>内连接语句：select * from a a inner join a a on a.a_id = b.b_id</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>a_id</th>
+<th>a_name</th>
+<th>b_id</th>
+<th>b_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>索隆</td>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>左外连接语句：select * from A A left outer join B B on a.a_id = b.b_id</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>a_id</th>
+<th>a_name</th>
+<th>b_id</th>
+<th>b_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>路飞</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>2</td>
+<td>索隆</td>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-1-4-交叉连接（笛卡尔积）"><a href="#3-1-4-交叉连接（笛卡尔积）" class="headerlink" title="3.1.4 交叉连接（笛卡尔积）"></a>3.1.4 交叉连接（笛卡尔积）</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-1-5-子查询"><a href="#3-1-5-子查询" class="headerlink" title="3.1.5 子查询"></a>3.1.5 子查询</h3><h3 id="3-1-6-分页查询"><a href="#3-1-6-分页查询" class="headerlink" title="3.1.6 分页查询"></a>3.1.6 分页查询</h3><ul>
 <li>offset要显示条目的起始索引（起始索引从0开始）</li>
 <li>size要显示的条目个数</li>
 <li>网页的分页显示数据需要对数据库进行分页查询</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="keyword">offset</span>,size;</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-6-联合查询"><a href="#3-1-6-联合查询" class="headerlink" title="3.1.6 联合查询"></a>3.1.6 联合查询</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    适用于要查询的结果来自多个表，且多个表没有直接的连接关系，但查询的信息一致时可以使用联合查询，类似于数学的并集</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">查询语句<span class="number">1</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line">查询语句<span class="number">2</span></span><br><span class="line"></span><br><span class="line"># 示例</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 加<span class="keyword">ALL</span>表示会包含重复的内容</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-7-联合查询"><a href="#3-1-7-联合查询" class="headerlink" title="3.1.7 联合查询"></a>3.1.7 联合查询</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    适用于要查询的结果来自多个表，且多个表没有直接的连接关系，但查询的信息一致时可以使用联合查询，类似于数学的并集</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">查询语句<span class="number">1</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line">查询语句<span class="number">2</span></span><br><span class="line"></span><br><span class="line"># 示例</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 加<span class="keyword">ALL</span>表示会包含重复的内容</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h2><h3 id="3-2-1-查询前五条员工信息"><a href="#3-2-1-查询前五条员工信息" class="headerlink" title="3.2.1 查询前五条员工信息"></a>3.2.1 查询前五条员工信息</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">0</span>,<span class="number">5</span>;  </span><br><span class="line">#或者</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="3-2-2-分页查询规律"><a href="#3-2-2-分页查询规律" class="headerlink" title="3.2.2 分页查询规律"></a>3.2.2 分页查询规律</h3><ul>
 <li>page表示第几页，(page-1)*size表示每一页的起始查询位置</li>
@@ -2268,6 +2388,19 @@
 </li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">PREFIX <span class="symbol">foaf:</span>   &lt;<span class="symbol">http:</span>/<span class="regexp">/xmlns.com/foaf</span><span class="regexp">/0.1/</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询语句要提取的是姓名和邮箱</span></span><br><span class="line"><span class="comment"># where匹配的意思是，相同的x对应的姓名和邮箱信息</span></span><br><span class="line"><span class="comment"># 这里就可以查到a/b所对应的姓名和邮箱信息</span></span><br><span class="line">SELECT <span class="string">?n</span>ame <span class="string">?m</span>box</span><br><span class="line">WHERE</span><br><span class="line">  &#123; <span class="string">?x</span> <span class="symbol">foaf:</span>name <span class="string">?n</span>ame .</span><br><span class="line">    <span class="string">?x</span> <span class="symbol">foaf:</span>mbox <span class="string">?m</span>box &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="四、Protege本体建模"><a href="#四、Protege本体建模" class="headerlink" title="四、Protege本体建模"></a>四、Protege本体建模</h1><h2 id="4-1-Classes"><a href="#4-1-Classes" class="headerlink" title="4.1 Classes"></a>4.1 Classes</h2><p>这里的类与面向对象中的类是一个含义，是对现实生活中一类具有共同特征的事物的抽象，在本体论中就表明是一个本体</p>
+<h2 id="4-2-Object-properties"><a href="#4-2-Object-properties" class="headerlink" title="4.2 Object properties"></a>4.2 Object properties</h2><p>object properties，即对象属性，它表示本体与本体间的关系，比如披萨与配料之间的关系：披萨有哪些配料（hasTopping），配料可以做哪些披萨（isToppingOf）</p>
+<p>对象属性有以下特性：</p>
+<ul>
+<li>Function（函数性）：一对一或多对一</li>
+<li>Inverse functional（反函数性）：多对一</li>
+<li>Transitive（传递性）：我的祖先的祖先也是我的祖先</li>
+<li>Symmetric（对称性）：我是你的朋友，你也是我的朋友</li>
+<li>Asymmetric（反对称性）：我不是我孩子的孩子，</li>
+<li>Reflexive（自反性）：自己和自己的关系</li>
+<li>Irreflexive（反自反性）：不能形容自己的关系，比如我是我的父亲，这是不对的</li>
+</ul>
+<h2 id="4-3-Data-properties"><a href="#4-3-Data-properties" class="headerlink" title="4.3 Data properties"></a>4.3 Data properties</h2><p>Data properties，即数据属性，用来描述本体的属性。如 People 这个本体可能有 age、sex、name 等属性</p>
 ]]></content>
       <categories>
         <category>知识图谱</category>
@@ -2460,7 +2593,22 @@
 <li>去声韵：一送、二宋、三绛(jiàng)、四寘(zhì)、五未、六御、七遇、八霁(jì)、九泰、十卦、十一队、十二震、十三问、十四愿、十五翰(hàn)、十六谏、十七霰(xiàn)、十八啸、十九效、二十号、二十一箇(gè)、二十二禡(mà)、二十三漾、二十四敬、二十五径(jìng)、二十六宥(yòu)、二十七沁、二十八勘(kān)、二十九艳、三十陷</li>
 <li>入声韵：一屋、二沃、三觉、四质、五物、六月、七曷(hé)、八黠(xiá)、九屑(xiè)、十药、十一陌、十二锡(xī)、十三职、十四缉(qī/jī)、十五合、十六叶、十七洽(qià)</li>
 </ul>
-<h2 id="3-3-邻韵"><a href="#3-3-邻韵" class="headerlink" title="3.3 邻韵"></a>3.3 邻韵</h2><h1 id="四、对仗"><a href="#四、对仗" class="headerlink" title="四、对仗"></a>四、对仗</h1>]]></content>
+<h2 id="3-3-宽韵与窄韵"><a href="#3-3-宽韵与窄韵" class="headerlink" title="3.3 宽韵与窄韵"></a>3.3 宽韵与窄韵</h2><p>宽韵：包括四支、一先、七阳、八庚、十一尤、一东、十一真、七虞.作诗用这些韵,有较多的韵脚可供选择</p>
+<p>中韵：包括十三元、十四寒、六鱼、二萧、十二侵、二冬、十灰、八齐、五歌、六麻、四豪.作诗用这些韵,有次多的韵脚可供选择</p>
+<p>窄韵：包括五微、十二文、十五删、九青、十蒸、十三覃、十四盐.作诗用这些韵,可供选择的较少</p>
+<p>险韵：包括包括三江、九佳、三肴、十五咸.作诗用这些韵,可供选择的很少</p>
+<h1 id="四、对仗"><a href="#四、对仗" class="headerlink" title="四、对仗"></a>四、对仗</h1><h2 id="4-1-对仗要求"><a href="#4-1-对仗要求" class="headerlink" title="4.1 对仗要求"></a>4.1 对仗要求</h2><ul>
+<li>字面相对：构成对仗的字词意义相对或相反</li>
+<li>词性一致：名词对名词，动词对动词，形容词对形容词等</li>
+<li>对仗时，对应位置上的字不能相同，如昔我往矣，杨柳依依；今我来思，雨雪霏霏</li>
+</ul>
+<h2 id="4-2-对仗的类型"><a href="#4-2-对仗的类型" class="headerlink" title="4.2 对仗的类型"></a>4.2 对仗的类型</h2><ul>
+<li>言对：</li>
+<li>事对：</li>
+<li>反对：</li>
+<li>正对：</li>
+</ul>
+]]></content>
       <categories>
         <category>文化艺术</category>
         <category>中国诗词</category>
@@ -6723,7 +6871,7 @@
 <h2 id="4-5-操作数栈"><a href="#4-5-操作数栈" class="headerlink" title="4.5 操作数栈"></a>4.5 操作数栈</h2><p>主要用于保存计算过程的中间结果，同时作为计算过程中变量临时的存储空间</p>
 <p>32位的类型占用一个栈单位深度</p>
 <p>64位类型占用两个栈单位深度</p>
-<h2 id="4-6-动态链接"><a href="#4-6-动态链接" class="headerlink" title="4.6 动态链接"></a>4.6 动态链接</h2><p>动态链接：栈帧内部指向<strong>运行时常量池</strong>中<strong>该栈帧所属方法的引用</strong>，包含这个引用的目的就是为了支持当前方法的代码能够实现动态链接，比如invokedynamic指令</p>
+<h2 id="4-6-动态链接（方法的调用）"><a href="#4-6-动态链接（方法的调用）" class="headerlink" title="4.6 动态链接（方法的调用）"></a>4.6 动态链接（方法的调用）</h2><p>动态链接：栈帧内部指向<strong>运行时常量池</strong>中<strong>该栈帧所属方法的引用</strong>，包含这个引用的目的就是为了支持当前方法的代码能够实现动态链接，比如invokedynamic指令</p>
 <p>动态链接的作用：在Java源文件被编译到字节码文件中时，所有的变量和方法引用都作为<strong>符号引用( symbolic Reference）</strong>保存在class文件的<strong>常量池</strong>里。比如:描述一个方法调用了另外的其他方法时，就是通过常量池中指向方法的符号引用来表示的，那么<strong>动态链接的作用</strong>就是为了将这些<strong>符号引用</strong>转换为调用方法的<strong>直接引用</strong>。</p>
 <h3 id="4-6-1-方法的绑定机制"><a href="#4-6-1-方法的绑定机制" class="headerlink" title="4.6.1 方法的绑定机制"></a>4.6.1 方法的绑定机制</h3><p>在JVM中，将符号引用转换为调用方法的直接引用与方法的绑定机制相关。</p>
 <p><strong>静态链接：</strong>当一个字节码文件被装载进JVM内部时，如果被调用的目标方法在编译期<strong>可知且运行期保持不变</strong>时。这种情况下将调用方法的符号引用转换为直接引用的过程称之为静态链接。</p>
@@ -6731,8 +6879,12 @@
 <p>对应的方法的绑定机制为:<strong>早期绑定（Early Binding）</strong>和<strong>晚期绑定(Late Binding）</strong>。绑定是一个字段、方法或者类在符号引用被替换为直接引用的过程，这仅仅发生一次。</p>
 <p><strong>早期绑定：</strong>早期绑定就是指被调用的目标方法如果在编译期可知，且运行期保持不变时即可将这个方法与所属的类型进行绑定，这样一来，由于明确了被调用的目标方法究竟是哪一个，因此也就可以使用静态链接的方式将符号引用转换为直接引用。</p>
 <p><strong>晚期绑定：</strong>如果被调用的方法在编译期无法被确定下来，只能够在程序运行期根据实际的类型绑定相关的方法，这种绑定方式也就被称之为晚期绑定。这里就体现出了<strong>多态</strong>的特性</p>
-<h3 id="4-6-2-虚方法与非虚方法"><a href="#4-6-2-虚方法与非虚方法" class="headerlink" title="4.6.2 虚方法与非虚方法"></a>4.6.2 虚方法与非虚方法</h3><p>非虚方法：如果方法在编译期就确定了具体的调用版本，这个版本在运行时是不可变的。这样的方法称为非虚方法。如静态方法、私有方法、final方法、实例构造器、父类方法都是非虚方法。其他方法称为虚方法。</p>
+<h3 id="4-6-2-虚方法、非虚方法和虚方法表"><a href="#4-6-2-虚方法、非虚方法和虚方法表" class="headerlink" title="4.6.2 虚方法、非虚方法和虚方法表"></a>4.6.2 虚方法、非虚方法和虚方法表</h3><p>非虚方法：如果方法在编译期就确定了具体的调用版本，这个版本在运行时是不可变的。这样的方法称为非虚方法。如静态方法、私有方法、final方法、实例构造器、父类方法都是非虚方法。其他方法称为虚方法。</p>
 <p>子类多态性的前提：1、类的继承关系；2、方法的重写</p>
+<p>虚方法表：由于Java中会经常使用到动态分派，如果在每次动态分派过程中都要重新在类的方法元数据中搜索合适的目标就容易影响效率，所以JVM在每个类的方法区中都建立一个虚方法表，使用索引表来查找虚方法</p>
+<p>虚方法表会在类加载的链接阶段被创建并开始初始化，类的变量初始值准备完成之后，JVM会把该类的方法表也初始化完毕</p>
+<img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/virtual.png" class="" title="virtual">
+<p>如果Animal中重写了toString()方法，则toString()的就会指向Animal，否则就会指向Object</p>
 <h3 id="4-6-3-方法调用指令"><a href="#4-6-3-方法调用指令" class="headerlink" title="4.6.3 方法调用指令"></a>4.6.3 方法调用指令</h3><p>虚拟机中提供了以下几条方法调用指令:·普通调用指令:</p>
 <ul>
 <li><p>invokestatic:调用静态方法，解析阶段确定唯一方法版本</p>
@@ -6749,8 +6901,30 @@
 <li>invokedynamic:动态解析出需要调用的方法，然后执行前四条指令固化在虚拟机内部，方法的调用执行不可人为干预，而invokedynamic指令则支持由用户确定方法版本。其中invokestatic指令和invokespecial指令调用的方法称为非虚方法，其余的（final修饰的除外）称为虚方法。</li>
 </ul>
 <h3 id="4-6-4-invokedynamic指令"><a href="#4-6-4-invokedynamic指令" class="headerlink" title="4.6.4 invokedynamic指令"></a>4.6.4 invokedynamic指令</h3><p>动态类型语言和静态类型语言两者的区别就在于对类型的检查是在编译期还是在运行期，满足前者就是静态类型语言，反之是动态类型语言。</p>
-<p>说的再直白一点就是，静态类型语言是判断变量自身的类型信息;动态类型语言是判断变量值的类型信息，变量没有类型信息，变量值才有类型信息，这是动态语言的一个重要特征。</p>
-]]></content>
+<p>说的再直白一点就是，静态类型语言是判断变量自身的类型信息；动态类型语言是判断变量值的类型信息，变量没有类型信息，变量值才有类型信息，这是动态语言的一个重要特征，比如js、python。</p>
+<p>Java仍然属于静态语言，但拥有动态特性，动态性体现在lambda表达式上</p>
+<h3 id="4-6-5-方法重写的本质"><a href="#4-6-5-方法重写的本质" class="headerlink" title="4.6.5 方法重写的本质"></a>4.6.5 方法重写的本质</h3><ol>
+<li><p>找到操作数栈顶的第一个元素所执行的对象的实际类型，记作C</p>
+</li>
+<li><p>先从C开始查找，如果从类型c中找到<strong>与常量池中的描述与名称都相符的方法</strong>则进行访问权限校验（即public/protected/private访问权限的设置或者不同包之间的访问权限），如果通过则返回这个方法的直接引用，如果不通过，则返回java.lang.IllegalAccessError异常。</p>
+</li>
+<li><p>否则，按照继承关系从下往上依次对C的各个父类进行第2步的搜索和验证过程。</p>
+</li>
+<li><p>如果始终没有找到合适的方法，则抛出java.lang.AbstractMethodError异常。</p>
+</li>
+</ol>
+<h2 id="4-7-方法返回地址return-address"><a href="#4-7-方法返回地址return-address" class="headerlink" title="4.7 方法返回地址return address"></a>4.7 方法返回地址return address</h2><p>方法返回地址存放该方法的PC寄存器的值，即调用该方法的指令的下一条指令的地址</p>
+<p>一个方法的结束，有两种方式：</p>
+<ul>
+<li>正常执行完成，方法退出后返回到该方法被调用的位置</li>
+<li>出现未处理的异常，非正常退出，返回地址要通过异常表来确定，栈帧不会保存这部分信息</li>
+</ul>
+<p>方法正常调用后使用哪一条返回指令需要根据方法返回值的实际数据类型确定，方法返回指令：ireturn（byte、char、short、int、boolearn）、lreturn、freturn、dreturn、areturn（引用类型），最后return指令供void、实例初始化方法、类和接口的初始化方法使用</p>
+<p>方法的退出就是当前栈帧出栈的过程，此时，需要恢复上层方法的局部变量表、操作数栈、将返回值压入调用者栈帧的操作数栈、设置PC寄存器等，让调用者方法继续执行下去</p>
+<h1 id="五、本地方法接口"><a href="#五、本地方法接口" class="headerlink" title="五、本地方法接口"></a>五、本地方法接口</h1><p>Native Method就是一个Java调用非Java代码的接口，比如C/C++</p>
+<p>Java在定义一个native method时，并不提供实现体（有些像定义一个Java接口），因为其实现体是由非java语言在外面实现的</p>
+<p>Java中的本地方法用native进行修饰，native可以与所有其它的java标识符连用，但是abstract除外</p>
+<h2 id="5-1-使用本地方法的原因"><a href="#5-1-使用本地方法的原因" class="headerlink" title="5.1 使用本地方法的原因"></a>5.1 使用本地方法的原因</h2><h2 id="5-2-本地方法栈"><a href="#5-2-本地方法栈" class="headerlink" title="5.2 本地方法栈"></a>5.2 本地方法栈</h2>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -7147,8 +7321,6 @@
 <li>小三和弦：Cm（1、b3、5）、Dm（2、4、6）、Em（3、5、7）、Fm（4、b6、1）、Gm（5、b7、2）、Am（6、1、3）、Bm（7、2、#4）</li>
 </ul>
 <h2 id="2-1-调式和弦"><a href="#2-1-调式和弦" class="headerlink" title="2.1 调式和弦"></a>2.1 调式和弦</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/hexian1.png" class="" title="hexian1">
-<h3 id="2-1-1-大七和弦"><a href="#2-1-1-大七和弦" class="headerlink" title="2.1.1 大七和弦"></a>2.1.1 大七和弦</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/Cmaj.png" class="" title="cmaj">
-<h3 id="2-1-2-属七和弦（大小七和弦）"><a href="#2-1-2-属七和弦（大小七和弦）" class="headerlink" title="2.1.2 属七和弦（大小七和弦）"></a>2.1.2 属七和弦（大小七和弦）</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/c7.png" class="" title="c7">
 <h1 id="三、吉他指型"><a href="#三、吉他指型" class="headerlink" title="三、吉他指型"></a>三、吉他指型</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/zhixing.png" class="" title="zhixing">
 <h1 id="四、CAGED系统"><a href="#四、CAGED系统" class="headerlink" title="四、CAGED系统"></a>四、CAGED系统</h1><p><strong>CAGED</strong>是一套快速推测和弦指法的系统，即<strong>任何一个和弦都有五种按法</strong>，它能帮助我们快速记忆指板音阶</p>
 <p>以C和弦为例，<strong>和弦音为1-3-5（CEG）</strong>,它在Mi把位上的指法是<strong>典型的C和弦指法</strong>，但如果把C和弦升高一个把位，即<strong>Sol把位</strong>，应该怎么按呢？</p>
@@ -7768,7 +7940,79 @@
 <p>拨音：用”ん”表示，鼻音，作用如拼音的”ng”</p>
 <p>促音：用”つ”表示，某一音节突然停顿后发音</p>
 <p>长音：用”あ、い、う、え、お”表示，延长音节</p>
-<h1 id="二、基础语法"><a href="#二、基础语法" class="headerlink" title="二、基础语法"></a>二、基础语法</h1><h2 id="2-1-陈述与问答"><a href="#2-1-陈述与问答" class="headerlink" title="2.1 陈述与问答"></a>2.1 陈述与问答</h2><div class="table-container">
+<h1 id="二、基础语法"><a href="#二、基础语法" class="headerlink" title="二、基础语法"></a>二、基础语法</h1><h2 id="2-1-判断句"><a href="#2-1-判断句" class="headerlink" title="2.1 判断句"></a>2.1 判断句</h2><p>【名】は　【名】です，表示~是~，类似于古汉语中的~乃~是也，です表示判断、断定的含义，可以翻译成“是…”</p>
+<p>【名】は　【名】では　ありません，表示~不是~，ではありません表示否定，或者使用じゃありません也是表示否定，值得注意的是ではありません是一个整体，不能拆开使用</p>
+<h2 id="2-2-疑问句"><a href="#2-2-疑问句" class="headerlink" title="2.2 疑问句"></a>2.2 疑问句</h2><p><strong>一般疑问句：</strong>【名】は　【名】ですか，其中“か”为疑问助词，置于句末，表示疑问，对应的回答方式如下：</p>
+<ul>
+<li>はい，<strong>そえ</strong>です：是的</li>
+<li>いいえ，ちがいます或者いいえ，<strong>そう</strong>ではありません：两个都表示否定</li>
+<li>分（わ）かりません：不知道</li>
+</ul>
+<p><strong>特殊疑问句：</strong>对于特殊疑问句，不能用是或者不是来进行回答，特殊疑问词有以下几种：</p>
+<ul>
+<li>何（なん）：什么</li>
+<li>どなた：哪位、谁</li>
+<li>だれ：谁</li>
+<li>いつ：什么时候</li>
+<li>どこ：哪里</li>
+<li>どれ：哪个</li>
+<li>どう：如何</li>
+</ul>
+<p>特殊疑问词一般跟在“は”之后，以以下句子为例：</p>
+<ul>
+<li>日本語の先生は<strong>どなた</strong>ですか（日语老师是哪位）<ul>
+<li>日本語の先生は李先生です（日语老师是李先生）</li>
+</ul>
+</li>
+<li>先生のかばんは<strong>どれ</strong>ですか（老师的包是哪个）<ul>
+<li>先生のかばんは黒いかばんです（老师的包是黑色的那个）</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3-の"><a href="#2-3-の" class="headerlink" title="2.3 の"></a>2.3 の</h2><p>の用来衔接事物的所属关系，表示“~的~”，参考以下例句：</p>
+<ul>
+<li>私のカメラは<strong>日本のカメラ</strong>です（我的电脑是日本产的）</li>
+<li>この本（ほん）は<strong>日本語の本</strong>です（这本书是日语书）</li>
+<li>この本は<strong>何の本</strong>ですか（这本书是什么样的书呢？）</li>
+</ul>
+<h2 id="2-4-も"><a href="#2-4-も" class="headerlink" title="2.4 も"></a>2.4 も</h2><p>も：提示助词，表示类推，表示主题内容与之前主题内容相同，相当于汉语中的“也”，一般格式如下：</p>
+<ul>
+<li>Aも　Bです（A也是B）</li>
+<li>Aも　Bでは　ありません（A也不是B）</li>
+</ul>
+<p>用例如下：</p>
+<ul>
+<li>私は中国人です（我是中国人）<ul>
+<li>あの人も　中国人です（那个人也是中国人）</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-5-存在句"><a href="#2-5-存在句" class="headerlink" title="2.5 存在句"></a>2.5 存在句</h2><h3 id="2-5-1-A在B处"><a href="#2-5-1-A在B处" class="headerlink" title="2.5.1 A在B处"></a>2.5.1 A在B处</h3><ul>
+<li>Aは　Bに　あります（A在B处）<ul>
+<li>A为人和动物之外的事物，B为表示地点的名词或代词，“あります”表示“在”</li>
+<li>如果表示不在，则“あります”应改为“ありません”</li>
+</ul>
+</li>
+</ul>
+<p>用例如下：</p>
+<ul>
+<li>日本語（ご）科（か）の教室（きょうしつ）<strong>は</strong> 五階（ごかい）<strong>に あります</strong>（日语专业教室在第五层）</li>
+<li>先生の本は <strong>どこ</strong>に ありますか（老师的书在哪里呢）</li>
+</ul>
+<h3 id="2-5-2-在A处-有B"><a href="#2-5-2-在A处-有B" class="headerlink" title="2.5.2 在A处 有B"></a>2.5.2 在A处 有B</h3><ul>
+<li>Aに　Ｂがあります<ul>
+<li>“が”用于提示主语</li>
+<li>如果表示没有，则“あります”应改为“ありません”</li>
+</ul>
+</li>
+</ul>
+<p>用例如下：</p>
+<ul>
+<li>机（つくえ）の上（うえ）<strong>に</strong>　日本語の本<strong>があります</strong>（在桌子上有日语书）</li>
+<li>机（つくえ）の上<strong>に</strong>　日本語の本<strong>がありません</strong>（在桌子上没有日语书）</li>
+<li>机（つくえ）の上<strong>に</strong>　何（なに）<strong>がありますか</strong>（在桌子上有什么？）</li>
+</ul>
+<h2 id="2-６-人称"><a href="#2-６-人称" class="headerlink" title="2.６ 人称"></a>2.６ 人称</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -7778,47 +8022,7 @@
 </thead>
 <tbody>
 <tr>
-<td>【名】は　【名】です</td>
-<td>～是~</td>
-</tr>
-<tr>
-<td>【名】は　【名】では　ありません</td>
-<td>～不是~</td>
-</tr>
-<tr>
-<td>【名】は　【名】ですか</td>
-<td>~是~吗？</td>
-</tr>
-<tr>
-<td>はい，そえです</td>
-<td>是的，是这样</td>
-</tr>
-<tr>
-<td>いいえ，ちがいます</td>
-<td>不，不是的</td>
-</tr>
-<tr>
-<td>分【わ】かりません</td>
-<td>不知道</td>
-</tr>
-<tr>
-<td>【名】の【从属机构、国家、属性】</td>
-<td>~的~</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-2-人称"><a href="#2-2-人称" class="headerlink" title="2.2 人称"></a>2.2 人称</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>语法</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>私「わたし」</td>
+<td>私（わたし）</td>
 <td>我</td>
 </tr>
 <tr>
@@ -7826,7 +8030,7 @@
 <td>你</td>
 </tr>
 <tr>
-<td>あの人「ひと」</td>
+<td>あの人（ひと）</td>
 <td>那个人</td>
 </tr>
 <tr>
@@ -7838,13 +8042,13 @@
 <td>小孩的称呼【~酱】</td>
 </tr>
 <tr>
-<td>【姓】君「くん」</td>
+<td>【姓】君（くん）</td>
 <td>年龄相当的男性的称呼</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h2 id="2-3-指示代词"><a href="#2-3-指示代词" class="headerlink" title="2.3 指示代词"></a>2.3 指示代词</h2><div class="table-container">
+<h2 id="2-７-指示代词"><a href="#2-７-指示代词" class="headerlink" title="2.７ 指示代词"></a>2.７ 指示代词</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -7888,7 +8092,10 @@
 </tbody>
 </table>
 </div>
-<h2 id="2-4-其他"><a href="#2-4-其他" class="headerlink" title="2.4 其他"></a>2.4 其他</h2><p>询问年龄：何歳ですが？、おいくつですか？【多大了】</p>
+<h2 id="2-８-指代"><a href="#2-８-指代" class="headerlink" title="2.８ 指代"></a>2.８ 指代</h2><p>【场所】に 【物/人】が　あります/います：~有~</p>
+<p>【物/人】は 【场所】に　あります　います：~在~</p>
+<p>【名】と【名】：~和~</p>
+<h2 id="2-９-其他"><a href="#2-９-其他" class="headerlink" title="2.９ 其他"></a>2.９ 其他</h2><p>询问年龄：何歳ですが？、おいくつですか？【多大了】</p>
 <ul>
 <li>针对小孩可以直接用：何歳、いくつ</li>
 </ul>
@@ -7903,6 +8110,8 @@
 <p>表示“也”：【名】も　【名】です（~也是~）</p>
 <p>询问价钱：【名】は　いくらですか（いくら表示“多少”）</p>
 <p>表示希望引起对方注意：あのえ</p>
+<p>进一步确认对方所说的信息：~ですか$\uparrow$？</p>
+<p>重复对方内容表示理解：~ですか$\downarrow$</p>
 ]]></content>
       <categories>
         <category>文化艺术</category>
@@ -8267,7 +8476,26 @@
 </ul>
 <img src="/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/chain.png" class="" title="chain">
 <h2 id="5-1-实现"><a href="#5-1-实现" class="headerlink" title="5.1 实现"></a>5.1 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ChainOfResponsibilityPattern</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Handler handler1 = <span class="keyword">new</span> ConcreteHandler1();</span><br><span class="line">        Handler handler2 = <span class="keyword">new</span> ConcreteHandler2();</span><br><span class="line">        handler1.setNext(handler2);</span><br><span class="line">        handler1.handleRequest(<span class="string">&quot;two&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象处理者角色</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Handler next;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Handler <span class="title">getNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNext</span><span class="params">(Handler next)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String request)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler1</span> <span class="keyword">extends</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (request.equals(<span class="string">&quot;one&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;具体处理1负责处理该请求！&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (getNext() != <span class="keyword">null</span>)&#123;</span><br><span class="line">                getNext().handleRequest(request);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;没有人处理该请求！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler2</span> <span class="keyword">extends</span> <span class="title">Handler</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleRequest</span><span class="params">(String request)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (request.equals(<span class="string">&quot;two&quot;</span>))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;具体处理2负责处理该请求！&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (getNext() != <span class="keyword">null</span>)&#123;</span><br><span class="line">                getNext().handleRequest(request);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;没有人处理该请求！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-2-应用"><a href="#5-2-应用" class="headerlink" title="5.2 应用"></a>5.2 应用</h2>]]></content>
+<h2 id="5-2-应用"><a href="#5-2-应用" class="headerlink" title="5.2 应用"></a>5.2 应用</h2><h1 id="六、状态模式"><a href="#六、状态模式" class="headerlink" title="六、状态模式"></a>六、状态模式</h1><p>状态模式：对有状态的对象，把复杂的“判断逻辑”提取到不同的状态对象中， 允许状态对象在其内部状态发生改变时改变其行为。</p>
+<p>状态模式的主要角色：</p>
+<ul>
+<li>环境角色（Context）：也称为上下文，它定义了客户感兴趣的接口，维护一个当前状态，并将与状态相关的操作委托给当前状态对象来处理</li>
+<li>抽象状态角色（State）：定义一个接口，用以封装环境对象中的特定状态所对应的行为</li>
+<li>具体状态角色（Concrete State）：实现抽象状态所对应的行为</li>
+</ul>
+<img src="/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/state.png" class="" title="state">
+<h2 id="6-1-实现"><a href="#6-1-实现" class="headerlink" title="6.1 实现"></a>6.1 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatePatternClient</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context();	<span class="comment">// 创建环境</span></span><br><span class="line">        context.Handle();	<span class="comment">// 处理请求</span></span><br><span class="line">        context.Handle();</span><br><span class="line">        context.Handle();</span><br><span class="line">        context.Handle();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 环境类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> State state;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = ConcreteStateA();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Handler <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(State state)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Handle</span><span class="params">()</span></span>&#123;</span><br><span class="line">        state.Handle(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 抽象状态类</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">State</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Handle</span><span class="params">(Context context)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体状态类A</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteStateA</span> <span class="keyword">extends</span> <span class="title">State</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Handle</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;当前状态是A.&quot;</span>)</span><br><span class="line">            context.setState(<span class="keyword">new</span> ConcreteStateB());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体状态类B</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteStateA</span> <span class="keyword">extends</span> <span class="title">State</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Handle</span><span class="params">(Context context)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;当前状态是B.&quot;</span>)</span><br><span class="line">            context.setState(<span class="keyword">new</span> ConcreteStateA());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">当前状态是A.</span></span><br><span class="line"><span class="comment">当前状态是B.</span></span><br><span class="line"><span class="comment">当前状态是A.</span></span><br><span class="line"><span class="comment">当前状态是B.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-2-应用"><a href="#6-2-应用" class="headerlink" title="6.2 应用"></a>6.2 应用</h2><h1 id="七、观察者模式"><a href="#七、观察者模式" class="headerlink" title="七、观察者模式"></a>七、观察者模式</h1><p>观察者模式：指多个对象存在一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。这种模式有时又称作发布-订阅模式、模型-视图模式 它是对象行为型模式。</p>
+<p>观察者模式的主要角色：</p>
+<ul>
+<li>抽象主题Subject：也叫抽象目标类，它提供了一个用于保存观察者对象的聚集类和增加、删除观察者对象的方法，以及通知所有观察者的抽象方法</li>
+<li>具体主题Concrete Subject：也叫具体目标类，它实现抽象目标中的通知方法，当具体主题的内部状态发生改变时，通知所有注册过的观察者对象</li>
+<li>抽象观察者Observer：它是一个抽象类或接口，它包含了一个更新自己的抽象方法，当接到具体主题的更改通知时被调用</li>
+<li>具体观察者Concrete Observer：实现抽象观察者中定义的抽象方法，以便在得到目标的更改通知时更新自身的状态</li>
+</ul>
+<img src="/2022/08/13/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/observer.png" class="" title="observer">
+<h2 id="7-1-实现"><a href="#7-1-实现" class="headerlink" title="7.1 实现"></a>7.1 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObserverPattern</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Subject subject = <span class="keyword">new</span> ConcreteSubject();</span><br><span class="line">        Observer obs1 = <span class="keyword">new</span> ConcreteObserver1();</span><br><span class="line">        Observer obs2 = <span class="keyword">new</span> ConcreteObserver2();</span><br><span class="line">        subject.add(obs1);</span><br><span class="line">        subject.add(obs2);</span><br><span class="line">        subject.notifyObserver();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> List&lt;Object&gt; observers = <span class="keyword">new</span> ArrayList&lt;Observer&gt;();</span><br><span class="line">    <span class="comment">// 添加观察者</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Observer observer)</span></span>&#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 删除观察者</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(Observer observer)</span></span>&#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">notifyObserver</span><span class="params">()</span></span>;	<span class="comment">// 通知观察者方法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObserver</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体目标发生改变...&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(Object obs:observers)&#123;</span><br><span class="line">            ((Observer)obs).response();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">response</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver1</span> <span class="title">implement</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">response</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体观察者1做出反应...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver2</span> <span class="title">implement</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">response</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体观察者2做出反应...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">具体目标发生改变...</span></span><br><span class="line"><span class="comment">----------------</span></span><br><span class="line"><span class="comment">具体观察者1做出反应...</span></span><br><span class="line"><span class="comment">具体观察者2做出反应...</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="7-2-应用"><a href="#7-2-应用" class="headerlink" title="7.2 应用"></a>7.2 应用</h2>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -8324,6 +8552,77 @@
   <entry>
     <title>诗词韵律解析-填词篇</title>
     <url>/2022/08/30/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90-%E5%A1%AB%E8%AF%8D%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>词的定格的一些符号解释：</p>
+<ul>
+<li>“+”：表示可平可仄</li>
+<li>“-”：表示平声</li>
+<li>“|”：表示仄声</li>
+</ul>
+<h1 id="二、平韵格"><a href="#二、平韵格" class="headerlink" title="二、平韵格"></a>二、平韵格</h1><h3 id="2-1-十六字令"><a href="#2-1-十六字令" class="headerlink" title="2.1 十六字令"></a>2.1 十六字令</h3><p>十六字令《苍梧谣》、《归字谣》，十六字，三平韵，定格如下：</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">-(韵)</span><br><span class="line">+ |<span class="string"> - - </span>|<span class="string"> </span>|<span class="string"> -(韵)</span></span><br><span class="line"><span class="string">- - </span>|<span class="string">(句) + </span>|<span class="string"> </span>|<span class="string"> - -(韵)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">示例1：</span></span><br><span class="line"><span class="string">天！休使圆蟾照客眠。</span></span><br><span class="line"><span class="string">人何在？桂影自婵娟。	---蔡伸</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">示例2：</span></span><br><span class="line"><span class="string">归！猎猎西风卷绣旗。</span></span><br><span class="line"><span class="string">拦教住，重举送行杯。	---张孝祥</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-南歌子"><a href="#2-2-南歌子" class="headerlink" title="2.2 南歌子"></a>2.2 南歌子</h3><p>南歌子又名又名“南柯子”、“怕春归”“、”春宵曲”、“碧窗梦”、“风蝶令”等。南歌子有单调和双调之分，区别如下：</p>
+<p>单调：正体单调二十三字，五句三平韵；另有单调二十六字，五句三平韵</p>
+<p>双调：双调五十二字，前后段各四句三平韵；双调五十四字，前后段各四句三平韵等变体</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">正体单调（二十三字）：</span><br><span class="line">|<span class="string"> </span>|<span class="string"> - - </span>|<span class="string">（句）</span></span><br><span class="line"><span class="string">- - </span>|<span class="string"> </span>|<span class="string"> -（韵）</span></span><br><span class="line"><span class="string">- </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string"></span>|<span class="string"> - - </span>|<span class="string"> </span>|</span><br><span class="line">|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">变体单调（二十六字）：</span></span><br><span class="line"><span class="string"></span>|<span class="string"> </span>|<span class="string"> - - </span>|<span class="string">（句）</span></span><br><span class="line"><span class="string">- - </span>|<span class="string"> </span>|<span class="string"> -（韵）</span></span><br><span class="line"><span class="string">+ - + </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string">+ </span>|<span class="string"> + - + </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>中国诗词</category>
+      </categories>
+      <tags>
+        <tag>宋词</tag>
+        <tag>宋词格式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深入理解人际交往</title>
+    <url>/2022/08/31/%E4%BA%BA%E9%99%85%E4%BA%A4%E5%BE%80%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>心理学常识</title>
+    <url>/2022/08/31/%E6%95%85%E4%BA%8B%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>其他</category>
+        <category>人际关系</category>
+      </categories>
+      <tags>
+        <tag>心理</tag>
+        <tag>人际关系</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>经济学常识</title>
+    <url>/2022/09/01/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B8%B8%E8%AF%86/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>诗词韵律解析-用例篇</title>
+    <url>/2022/09/02/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90-%E7%94%A8%E4%BE%8B%E7%AF%87/</url>
+    <content><![CDATA[<h1 id="诗词百篇"><a href="#诗词百篇" class="headerlink" title="诗词百篇"></a>诗词百篇</h1><h2 id="一、唐诗"><a href="#一、唐诗" class="headerlink" title="一、唐诗"></a>一、唐诗</h2><h3 id="1-1-送杜少府之任蜀州（王勃）"><a href="#1-1-送杜少府之任蜀州（王勃）" class="headerlink" title="1.1 送杜少府之任蜀州（王勃）"></a>1.1 送杜少府之任蜀州（王勃）</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">城阙（què）辅三秦，风烟望五津。        平仄仄平平，平平仄仄平</span><br><span class="line">与（yǔ）君离别意，同是宦游人。         仄平平平仄，平仄仄平平</span><br><span class="line">海内存知己，天涯若比邻。              仄仄平平仄，平平仄仄平</span><br><span class="line">无为（wé<span class="selector-tag">i</span>）在歧（<span class="selector-tag">q</span>í）路，儿女共沾巾。  平平仄仄仄，平仄仄平平</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之：到、往</li>
+<li>蜀州：今四川崇州</li>
+<li>城阙，即城楼，指唐代京师长安城</li>
+<li>辅，护卫</li>
+<li>城阙辅三秦：此句为倒装句，应是三秦辅城阙</li>
+<li>君：对人的尊称，相当于“您”</li>
+<li>宦（huàn）游：出外做官</li>
+<li>海内：四海之内，即全国各地。古代人认为我国疆土四周环海，所以称天下为四海之内</li>
+<li>天涯：天边，这里比喻极远的地方</li>
+<li>无为：无须、不必</li>
+<li>歧（qí）路：岔路。古人送行常在大路分岔处告别</li>
+<li>儿女：指代男女之情</li>
+<li>沾巾：泪沾手巾，形容落泪之多</li>
+</ul>
+<h2 id="二、宋词"><a href="#二、宋词" class="headerlink" title="二、宋词"></a>二、宋词</h2>]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>中国诗词</category>
+      </categories>
+      <tags>
+        <tag>唐诗宋词</tag>
+      </tags>
   </entry>
 </search>
