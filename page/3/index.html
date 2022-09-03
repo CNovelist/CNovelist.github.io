@@ -1513,7 +1513,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-01 21:32:06" itemprop="dateModified" datetime="2022-09-01T21:32:06+08:00">2022-09-01</time>
+                <time title="修改时间：2022-09-03 16:50:50" itemprop="dateModified" datetime="2022-09-03T16:50:50+08:00">2022-09-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1704,10 +1704,24 @@
 </ul>
 <p>方法正常调用后使用哪一条返回指令需要根据方法返回值的实际数据类型确定，方法返回指令：ireturn（byte、char、short、int、boolearn）、lreturn、freturn、dreturn、areturn（引用类型），最后return指令供void、实例初始化方法、类和接口的初始化方法使用</p>
 <p>方法的退出就是当前栈帧出栈的过程，此时，需要恢复上层方法的局部变量表、操作数栈、将返回值压入调用者栈帧的操作数栈、设置PC寄存器等，让调用者方法继续执行下去</p>
-<h1 id="五、本地方法接口"><a href="#五、本地方法接口" class="headerlink" title="五、本地方法接口"></a>五、本地方法接口</h1><p>Native Method就是一个Java调用非Java代码的接口，比如C/C++</p>
+<h2 id="4-8、本地方法接口"><a href="#4-8、本地方法接口" class="headerlink" title="4.8、本地方法接口"></a>4.8、本地方法接口</h2><p>Native Method就是一个Java调用非Java代码的接口，比如C/C++</p>
 <p>Java在定义一个native method时，并不提供实现体（有些像定义一个Java接口），因为其实现体是由非java语言在外面实现的</p>
 <p>Java中的本地方法用native进行修饰，native可以与所有其它的java标识符连用，但是abstract除外</p>
-<h2 id="5-1-使用本地方法的原因"><a href="#5-1-使用本地方法的原因" class="headerlink" title="5.1 使用本地方法的原因"></a>5.1 使用本地方法的原因</h2><h2 id="5-2-本地方法栈"><a href="#5-2-本地方法栈" class="headerlink" title="5.2 本地方法栈"></a>5.2 本地方法栈</h2>
+<h3 id="4-8-1-使用本地方法的原因"><a href="#4-8-1-使用本地方法的原因" class="headerlink" title="4.8.1 使用本地方法的原因"></a>4.8.1 使用本地方法的原因</h3><h3 id="4-8-2-本地方法栈"><a href="#4-8-2-本地方法栈" class="headerlink" title="4.8.2 本地方法栈"></a>4.8.2 本地方法栈</h3><h1 id="五、堆"><a href="#五、堆" class="headerlink" title="五、堆"></a>五、堆</h1><h2 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h2><ul>
+<li><p>一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域，Java堆区在JVM启动时候即被创建，其空间大小也就确定了。堆是JVM管理的最大一块内存空间，堆的大小是可以调节的</p>
+</li>
+<li><p>堆，是GC（Garbage Collection，垃圾收集器）执行垃圾回收的重点区域</p>
+</li>
+<li><p>《Java虚拟机规范》规定，堆可以处于物理上不连续的内存空间中，但在逻辑上它应该被视为连续的</p>
+</li>
+<li>《Java虚拟机规范》中对Java堆的描述是：<strong>所有的对象实例以及数组都应当在运行时分配在堆上</strong>。<ul>
+<li>从实际使用角度看：“几乎”所有的对象实例都在堆分配内存，但并非全部。因为还有一些对象是在栈上分配的（逃逸分析，标量替换）</li>
+</ul>
+</li>
+<li>在方法结束后，堆中的对象不会马上被移除，仅仅在垃圾收集的时候才会被移除</li>
+</ul>
+<h2 id="5-2-堆空间结构"><a href="#5-2-堆空间结构" class="headerlink" title="5.2 堆空间结构"></a>5.2 堆空间结构</h2><img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/heap.png" class="" title="head">
+<h2 id="5-3-对象分配过程"><a href="#5-3-对象分配过程" class="headerlink" title="5.3 对象分配过程"></a>5.3 对象分配过程</h2>
       
     </div>
 
@@ -1942,7 +1956,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
