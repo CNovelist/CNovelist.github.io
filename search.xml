@@ -2574,7 +2574,7 @@
 <li>拗：不符合平仄格式的字，这种形式叫做拗</li>
 <li>救：如果前一个字用了“拗”，比如前一个字在本该用平声的地方用了仄声，那么在后面合适的地方补充一个平声</li>
 </ul>
-<h2 id="三、用韵"><a href="#三、用韵" class="headerlink" title="三、用韵"></a>三、用韵</h2><h2 id="3-1-韵母解析"><a href="#3-1-韵母解析" class="headerlink" title="3.1 韵母解析"></a>3.1 韵母解析</h2><p>押韵：押韵是把同韵母或韵母相近的字，放在诗篇某些句子的末尾，使诗歌读起来顺口，听起来悦耳，容易记得住、传得开</p>
+<h1 id="三、用韵"><a href="#三、用韵" class="headerlink" title="三、用韵"></a>三、用韵</h1><h2 id="3-1-韵母解析"><a href="#3-1-韵母解析" class="headerlink" title="3.1 韵母解析"></a>3.1 韵母解析</h2><p>押韵：押韵是把同韵母或韵母相近的字，放在诗篇某些句子的末尾，使诗歌读起来顺口，听起来悦耳，容易记得住、传得开</p>
 <p>韵母由韵头、韵腹、韵尾三个部分组成</p>
 <ul>
 <li>韵头：又称介音，是韵腹前面、起前导作用的部分，发音比较模糊，往往迅速带过；</li>
@@ -8012,106 +8012,41 @@
 <li>机（つくえ）の上<strong>に</strong>　日本語の本<strong>がありません</strong>（在桌子上没有日语书）</li>
 <li>机（つくえ）の上<strong>に</strong>　何（なに）<strong>がありますか</strong>（在桌子上有什么？）</li>
 </ul>
-<h2 id="2-６-人称"><a href="#2-６-人称" class="headerlink" title="2.６ 人称"></a>2.６ 人称</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>语法</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>私（わたし）</td>
-<td>我</td>
-</tr>
-<tr>
-<td>あなた</td>
-<td>你</td>
-</tr>
-<tr>
-<td>あの人（ひと）</td>
-<td>那个人</td>
-</tr>
-<tr>
-<td>【姓】さん</td>
-<td>~女士/先生</td>
-</tr>
-<tr>
-<td>【姓】ちゃん</td>
-<td>小孩的称呼【~酱】</td>
-</tr>
-<tr>
-<td>【姓】君（くん）</td>
-<td>年龄相当的男性的称呼</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-７-指示代词"><a href="#2-７-指示代词" class="headerlink" title="2.７ 指示代词"></a>2.７ 指示代词</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>语法</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>【これ/それ/あれ】は　【名】です</td>
-<td>【这个/那个/那里】是~</td>
-</tr>
-<tr>
-<td>【ここ/そこ/あそこ】は 【名】です</td>
-<td>同【这个/那个/那里】是~</td>
-</tr>
-<tr>
-<td>【これ/それ/あれ】【名】は　【名】です</td>
-<td>【这个/那个/那里】的~是~</td>
-</tr>
-<tr>
-<td>誰【だれ】</td>
-<td>指人</td>
-</tr>
-<tr>
-<td>何【なん】</td>
-<td>指物</td>
-</tr>
-<tr>
-<td>【この/その/あの】【名】は　【名】です</td>
-<td>修饰名词时候使用，表示这/那个~是~</td>
-</tr>
-<tr>
-<td>どれ/どの【名】 ですが</td>
-<td>三个以上物品，不知道是谁的时候使用，どの后可修饰名词</td>
-</tr>
-<tr>
-<td>方【かた】／人【ひと】</td>
-<td>指代人，【方】更礼貌，对上司或初次见面的人</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="2-８-指代"><a href="#2-８-指代" class="headerlink" title="2.８ 指代"></a>2.８ 指代</h2><p>【场所】に 【物/人】が　あります/います：~有~</p>
-<p>【物/人】は 【场所】に　あります　います：~在~</p>
-<p>【名】と【名】：~和~</p>
-<h2 id="2-９-其他"><a href="#2-９-其他" class="headerlink" title="2.９ 其他"></a>2.９ 其他</h2><p>询问年龄：何歳ですが？、おいくつですか？【多大了】</p>
-<ul>
-<li>针对小孩可以直接用：何歳、いくつ</li>
+<h3 id="2-5-3-在A处-有B和C之类的东西"><a href="#2-5-3-在A处-有B和C之类的东西" class="headerlink" title="2.5.3 在A处 有B和C之类的东西"></a>2.5.3 在A处 有B和C之类的东西</h3><ul>
+<li>Aに　ＢやC　などが　あります</li>
 </ul>
-<p>表示请，客气的用语：どうぞ</p>
-<p>表示吃惊：えつ（唉！）、わあ（啊！）</p>
-<p>表示应答（哎）：はい、ええ（哎~~~）</p>
-<p>表示感谢：どうも　ありがとう　ございます</p>
+<p>や：并列助词，前后连接两个有代表性的事物，暗示还有其他。</p>
+<p>など：副词，可以解释为等等，之类的</p>
+<p>用例如下：</p>
 <ul>
-<li>可以只是用【どうも】表示略感谢意</li>
+<li>机の上<strong>に</strong>　本<strong>や</strong>ノート　<strong>など</strong>が　<strong>あります</strong>（桌子上有书和本子等一些东西）</li>
 </ul>
-<p>询问场所在哪：【名】わ　どこですか（请问~在哪儿）</p>
-<p>表示“也”：【名】も　【名】です（~也是~）</p>
-<p>询问价钱：【名】は　いくらですか（いくら表示“多少”）</p>
-<p>表示希望引起对方注意：あのえ</p>
-<p>进一步确认对方所说的信息：~ですか$\uparrow$？</p>
-<p>重复对方内容表示理解：~ですか$\downarrow$</p>
+<h3 id="2-5-4-在A处-有（几个）B"><a href="#2-5-4-在A处-有（几个）B" class="headerlink" title="2.5.4 在A处 有（几个）B"></a>2.5.4 在A处 有（几个）B</h3><ul>
+<li>Aに　Ｂが　（数量）　あります<ul>
+<li>在日语中，句子的补语（数量、状态、方向等）往往出现在谓语动词之前</li>
+<li>补语的位置可以使用特殊疑问词来对B的数量进行题问</li>
+</ul>
+</li>
+</ul>
+<p>用例如下：</p>
+<ul>
+<li>机の上に　鍵（かぎ）が　六つ（むっつ）　あります（桌子上有六把钥匙）</li>
+<li>机の上に　鍵（かぎ）が　いくつ　あります（桌子上有多少把钥匙？）</li>
+</ul>
+<p>针对具体量词的疑问词有：何個（なんこ，多少个）、何台（なんだい，多少台）、何本（なんほん，多少本）、何～（なん～）</p>
+<h3 id="2-5-5-存在句的强调形式"><a href="#2-5-5-存在句的强调形式" class="headerlink" title="2.5.5 存在句的强调形式"></a>2.5.5 存在句的强调形式</h3><ul>
+<li>Aには　Ｂ<strong>が</strong>　あります</li>
+<li>Aには　Ｂ<strong>は</strong>　ありません（否定形式）<ul>
+<li>は表示对比，或加强否定语气</li>
+<li>には为助词に、は的重叠，加强了对前项地点的突出</li>
+</ul>
+</li>
+</ul>
+<p>用例如下：</p>
+<ul>
+<li>寮（りょう）<strong>には</strong>　クーラー<strong>が</strong>　<strong>あります</strong>（宿舍里啊【强调】，有空调的）</li>
+<li>いいえ、教室（きょうしつ）には　クーラーは　ありません（不，教室里啊【强调】，没有空调的【否定强调】）</li>
+</ul>
 ]]></content>
       <categories>
         <category>文化艺术</category>
@@ -8559,11 +8494,23 @@
 <li>“|”：表示仄声</li>
 </ul>
 <h1 id="二、平韵格"><a href="#二、平韵格" class="headerlink" title="二、平韵格"></a>二、平韵格</h1><h3 id="2-1-十六字令"><a href="#2-1-十六字令" class="headerlink" title="2.1 十六字令"></a>2.1 十六字令</h3><p>十六字令《苍梧谣》、《归字谣》，十六字，三平韵，定格如下：</p>
-<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">-(韵)</span><br><span class="line">+ |<span class="string"> - - </span>|<span class="string"> </span>|<span class="string"> -(韵)</span></span><br><span class="line"><span class="string">- - </span>|<span class="string">(句) + </span>|<span class="string"> </span>|<span class="string"> - -(韵)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">示例1：</span></span><br><span class="line"><span class="string">天！休使圆蟾照客眠。</span></span><br><span class="line"><span class="string">人何在？桂影自婵娟。	---蔡伸</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">示例2：</span></span><br><span class="line"><span class="string">归！猎猎西风卷绣旗。</span></span><br><span class="line"><span class="string">拦教住，重举送行杯。	---张孝祥</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">-(韵)</span><br><span class="line">+ |<span class="string"> - - </span>|<span class="string"> </span>|<span class="string"> -(韵)</span></span><br><span class="line"><span class="string">- - </span>|<span class="string">(句) + </span>|<span class="string"> </span>|<span class="string"> - -(韵)</span></span><br></pre></td></tr></table></figure>
+<p>示例1：<br>天！休使圆蟾照客眠。<br>人何在？桂影自婵娟。    —-蔡伸</p>
+<p>示例2：<br>归！猎猎西风卷绣旗。<br>拦教住，重举送行杯。    —-张孝祥</p>
 <h3 id="2-2-南歌子"><a href="#2-2-南歌子" class="headerlink" title="2.2 南歌子"></a>2.2 南歌子</h3><p>南歌子又名又名“南柯子”、“怕春归”“、”春宵曲”、“碧窗梦”、“风蝶令”等。南歌子有单调和双调之分，区别如下：</p>
 <p>单调：正体单调二十三字，五句三平韵；另有单调二十六字，五句三平韵</p>
 <p>双调：双调五十二字，前后段各四句三平韵；双调五十四字，前后段各四句三平韵等变体</p>
 <figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">正体单调（二十三字）：</span><br><span class="line">|<span class="string"> </span>|<span class="string"> - - </span>|<span class="string">（句）</span></span><br><span class="line"><span class="string">- - </span>|<span class="string"> </span>|<span class="string"> -（韵）</span></span><br><span class="line"><span class="string">- </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string"></span>|<span class="string"> - - </span>|<span class="string"> </span>|</span><br><span class="line">|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">变体单调（二十六字）：</span></span><br><span class="line"><span class="string"></span>|<span class="string"> </span>|<span class="string"> - - </span>|<span class="string">（句）</span></span><br><span class="line"><span class="string">- - </span>|<span class="string"> </span>|<span class="string"> -（韵）</span></span><br><span class="line"><span class="string">+ - + </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string">+ </span>|<span class="string"> + - + </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-渔歌子"><a href="#2-3-渔歌子" class="headerlink" title="2.3 渔歌子"></a>2.3 渔歌子</h3><p>渔歌子，词牌名，又名“渔父”“渔父乐”“渔父词”“秋日田父辞”等</p>
+<p>二十七字，五句四平韵</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">+ |<span class="string"> - - </span>|<span class="string"> </span>|<span class="string"> -（韵）</span></span><br><span class="line"><span class="string">+ - - </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string">- </span>|<span class="string"> </span>|<span class="string">（句）</span></span><br><span class="line"><span class="string"></span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string">- - </span>|<span class="string"> </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<p>示例：<br>西塞山前白鹭飞，桃花流水鳜（guì）鱼肥。<br>青箬（ruò）笠（lì），绿蓑衣，<br>斜风细雨不须归。        —-张志和《渔歌子·西塞山前白鹭飞》</p>
+<p>西塞山：在今浙江省湖州市西面或湖北省黄石市<br>箬笠：用竹篾、箬叶编的斗笠<br>蓑衣：用草或棕麻编织的雨衣</p>
+<h3 id="2-4-忆江南"><a href="#2-4-忆江南" class="headerlink" title="2.4 忆江南"></a>2.4 忆江南</h3><p>忆江南，本为唐教坊曲名，后用作词牌名。又名“望江南”、“梦江南”、“江南好”、“望江梅”、“春去也”、“梦游仙”、“安阳好”、“步虚声”、“壶山好”、“望蓬莱”、“江南柳”等。</p>
+<p>忆江南，二十七字，五句三平韵</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">- + |<span class="string">（句）</span></span><br><span class="line"><span class="string">+ </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string">+ </span>|<span class="string"> + - - </span>|<span class="string"> </span>|<span class="string">（句）</span></span><br><span class="line"><span class="string">+ - + </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br><span class="line"><span class="string">+ </span>|<span class="string"> </span>|<span class="string"> - -（韵）</span></span><br></pre></td></tr></table></figure>
+<p>春去也，多谢洛城人。弱柳从风疑举袂，丛兰裛（yì）露似沾巾。独坐亦含嚬（pín）。<br>春去也。共惜艳阳年。犹有桃花流水上，无辞竹叶醉尊前。惟待见青天。    —-刘禹锡《忆江南·春去也》</p>
+<p>春未老，风细柳斜斜。试上超然台上看(看 一作：望)，半壕（háo）春水一城花。烟雨暗千家。<br>寒食后，酒醒却咨（zī）嗟（jiē）。休对故人思故国，且将新火试新茶。诗酒趁年华。        —-苏轼《望江南 超然台作》</p>
 ]]></content>
       <categories>
         <category>文化艺术</category>
@@ -8624,5 +8571,10 @@
       <tags>
         <tag>唐诗宋词</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>C++语法基础大全</title>
+    <url>/2022/09/02/C-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
