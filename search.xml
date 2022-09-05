@@ -6937,7 +6937,33 @@
 </li>
 <li>在方法结束后，堆中的对象不会马上被移除，仅仅在垃圾收集的时候才会被移除</li>
 </ul>
-<h2 id="5-2-堆空间结构"><a href="#5-2-堆空间结构" class="headerlink" title="5.2 堆空间结构"></a>5.2 堆空间结构</h2><img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/heap.png" class="" title="head">
+<h2 id="5-2-堆空间结构"><a href="#5-2-堆空间结构" class="headerlink" title="5.2 堆空间结构"></a>5.2 堆空间结构</h2><ul>
+<li>JDK7把堆空间分为新生代+老年代+永久代</li>
+<li>JDK8把堆空间分为新生代+老年代+元空间</li>
+<li>年轻代中的S0和S1分别表示幸存者一区和幸存者二区，程序运行时只会选择其中一个存放数据</li>
+</ul>
+<img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/heap.png" class="" title="head">
+<h3 id="5-2-1-堆空间大小设置"><a href="#5-2-1-堆空间大小设置" class="headerlink" title="5.2.1 堆空间大小设置"></a>5.2.1 堆空间大小设置</h3><ul>
+<li><strong>“-Xms”</strong>用于表示堆区（年轻代/老年代）的<strong>起始内存</strong>，等价于-XX:InitialHeapSize，默认单位是字节，也可以使用单位k、m、g<ul>
+<li>-X：是jvm运行参数</li>
+<li>-ms：是memory start</li>
+</ul>
+</li>
+<li><strong>“-Xmx”</strong>用于表示堆区（年轻代/老年代）的<strong>最大内存</strong>，等价于-XX:MaxHeapSize</li>
+<li>例如：-Xms600m -Xmx600m</li>
+<li>一旦堆区中的内存大小超过“-Xmx”指定的最大内存时，就会抛出<strong>OOM异常</strong></li>
+<li>通常会将“-Xms”和“-Xmx”两个参数<strong>配置相同的值</strong>，其目的是为了能够在Java垃圾回收机制清理完堆区后不需要重新分隔计算堆区的大小，从而提高性能</li>
+<li><strong>默认情况</strong>下，<ul>
+<li>初始内存大小：物理电脑内存大小/64</li>
+<li>最带内存大小：物理电脑内存大小/4</li>
+</ul>
+</li>
+<li>查看设置的参数命令：<ul>
+<li>方式一（cmd）：jps（查看java进程信息）或者jstat -gc 进程id（查看堆区分配信息）</li>
+<li>方式二（java执行参数）：-XX:PrintGCDetails</li>
+</ul>
+</li>
+</ul>
 <h2 id="5-3-对象分配过程"><a href="#5-3-对象分配过程" class="headerlink" title="5.3 对象分配过程"></a>5.3 对象分配过程</h2>]]></content>
       <categories>
         <category>后端</category>
@@ -7024,8 +7050,7 @@
     <url>/2022/06/04/Pr%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>副业</category>
-        <category>视频剪辑</category>
+        <category>其他</category>
       </categories>
       <tags>
         <tag>谋生</tag>
@@ -7662,7 +7687,7 @@
 <li>比较次数和移动次数取决于待排序表的初始状态</li>
 <li>适用于顺序存储和链式存储的线性表</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;          <span class="comment">// 依次将A[2]~A[n]插入到前面已排序序列</span></span><br><span class="line">        <span class="keyword">if</span>(A[i]&lt;A[i-<span class="number">1</span>])&#123;        <span class="comment">// 若A[i]关键码小于其前驱，将A[i]插入有序表中</span></span><br><span class="line">            A[<span class="number">0</span>]=A[i];          <span class="comment">// 复制为哨兵，A[0]不存放元素</span></span><br><span class="line">            <span class="keyword">for</span>(j=i-<span class="number">1</span>;A[<span class="number">0</span>]&lt;A[j];--j)    <span class="comment">// 从后往前查找待插入位置</span></span><br><span class="line">                A[j+<span class="number">1</span>]=A[j];    <span class="comment">// 向后挪位</span></span><br><span class="line">            A[j+<span class="number">1</span>]=A[<span class="number">0</span>];        <span class="comment">// 复制到插入位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;          <span class="comment">// 依次将A[2]~A[n]插入到前面已排序序列</span></span><br><span class="line">        <span class="keyword">if</span>(A[i]&lt;A[i-<span class="number">1</span>])&#123;        <span class="comment">// 若A[i]关键码小于其前驱，将A[i]插入有序表中</span></span><br><span class="line">            A[<span class="number">0</span>]=A[i];          <span class="comment">// 复制为哨兵，A[0]不存放元素</span></span><br><span class="line">            <span class="keyword">for</span>(j=i-<span class="number">1</span>;A[<span class="number">0</span>]&lt;A[j];--j)    <span class="comment">// 从后往前查找待插入位置</span></span><br><span class="line">                A[j+<span class="number">1</span>]=A[j];    <span class="comment">// 向后挪位</span></span><br><span class="line">            A[j+<span class="number">1</span>]=A[<span class="number">0</span>];        <span class="comment">// 复制到插入位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="二、折半插入排序"><a href="#二、折半插入排序" class="headerlink" title="二、折半插入排序"></a>二、折半插入排序</h1><ul>
 <li>设在待排序表中有一个记录序列V[1], …,v[n]。其中V[1], …, v[i-1]是已经排好序的记录。在插入v[i]时，利用折半搜索法寻找 v[i] 的插入位置，并插入，直到所有记录插入完成</li>
 <li>比较次数与待排序表的初始状态无关，仅取决于表中的元素个数n</li>
@@ -8060,6 +8085,38 @@
 <ul>
 <li>寮（りょう）<strong>には</strong>　クーラー<strong>が</strong>　<strong>あります</strong>（宿舍里啊【强调】，有空调的）</li>
 <li>いいえ、教室（きょうしつ）には　クーラーは　ありません（不，教室里啊【强调】，没有空调的【否定强调】）</li>
+</ul>
+<h2 id="2-6-形容词与形容动词"><a href="#2-6-形容词与形容动词" class="headerlink" title="2.6 形容词与形容动词"></a>2.6 形容词与形容动词</h2><h3 id="2-6-1-形容词的构成"><a href="#2-6-1-形容词的构成" class="headerlink" title="2.6.1 形容词的构成"></a>2.6.1 形容词的构成</h3><p>形容词 = 词干 + 词尾（い），比如：寒（さむ，冷）い、暑（あつ，热）い、広（ひろ，宽）い、古（ふる，旧）い</p>
+<h3 id="2-6-2-形容词的使用方法"><a href="#2-6-2-形容词的使用方法" class="headerlink" title="2.6.2 形容词的使用方法"></a>2.6.2 形容词的使用方法</h3><ul>
+<li>判断句：Aは　【形容词】です（A是~的）<ul>
+<li>用于对事物的状态和性质进行肯定描述</li>
+</ul>
+</li>
+<li>定语用法：形容词 + 名词/代词（~的~）<ul>
+<li>形容词对后项事物进行修饰</li>
+</ul>
+</li>
+</ul>
+<p>用例如下：</p>
+<ul>
+<li>先生の本は　<strong>古い（ふるい）</strong>です（老师的书是旧的）</li>
+<li>毎日は　<strong>忙（いそが）しい</strong>　です（每天都很忙）</li>
+<li>これは　<strong>広（ひろ）い</strong>　教室（きょうしつ）です（这是个宽敞的教室）</li>
+<li>先生の本は　あの<strong>古い（ふるい）</strong>です（老师的书是旧的那本）</li>
+<li>それは　<strong>美味（おい）しい</strong>日本料理（りょうり）です</li>
+</ul>
+<h3 id="2-6-3-形容动词的构成"><a href="#2-6-3-形容动词的构成" class="headerlink" title="2.6.3 形容动词的构成"></a>2.6.3 形容动词的构成</h3><ul>
+<li>形容动词 = 词干 + 词尾（），在课本或辞典中其词尾多省略</li>
+<li>比如：便利だ、静か(しずか，安静) だ、立派（りっぱ，漂亮，华丽，优秀，丰盛）だ</li>
+</ul>
+<h3 id="2-6-4-形容动词的使用方法"><a href="#2-6-4-形容动词的使用方法" class="headerlink" title="2.6.4 形容动词的使用方法"></a>2.6.4 形容动词的使用方法</h3><ul>
+<li>作谓语：Aは　（形容动词词干）です</li>
+<li>作定语：形容动词词干 +  な + 名词/代词</li>
+</ul>
+<p>用例如下：</p>
+<ul>
+<li>あの教室は　<strong>静（しず ）か</strong>です（那个教室是安静的）</li>
+<li>日本語の教室は　あの<strong>綺麗（きれい，干净）</strong>な　教室です（日语教室是那间干净的教室）</li>
 </ul>
 ]]></content>
       <categories>
@@ -8565,7 +8622,23 @@
   <entry>
     <title>经济学常识</title>
     <url>/2022/09/01/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B8%B8%E8%AF%86/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>货币作为社会文明逐渐发展的产物，为人们的交易带来了遍历，如原始社会的贝类，古代的铜币等等。</p>
+<p>而货币之所以会存在，是因为原始时期的物物交换本身就有很大的弊端，比如一头羊换五条鱼，这一交换条件虽然可以在少数个体之间进行交换，但若是扩展到整个社会体系，我们不可能为了获得500条鱼而去带上100头羊，这并不便于双方之间的交易。</p>
+<p>所以货币就作为商品交易的一般等价物而存在，但货币本身并不存在价值，它更多的可以理解为一种政府强权下的信用体系。有了货币，人们就可以方便的进行交易，而交易又是经济机器的最基本零件，同时交易的行为产生了不同的市场，市场是由买卖同一种商品的所有买房和买方组成，例如小麦市场、汽车市场、股票市场等等。市场中的商品价格的计算公式如下：</p>
+<p>价格 = 支出总额 / 产销总量</p>
+<p>经济动力 = 生产率提高 + 短期债务周期 + 长期债务周期</p>
+<h1 id="二、交易"><a href="#二、交易" class="headerlink" title="二、交易"></a>二、交易</h1><p>交易无时无刻不在发生，交易也是经济发展的本质，它代表了无数交易的总和。当一个人开始消费来获取相应的服务或金融资产时，必将给另外一个人带来收入。现在来假定一个理想模型，我们对个体经济过程进行简单建模：</p>
+<p>个体经济  = （收入，支出，生产率）</p>
+<p>对于个体来说增加支出的方式是提高收入，而提高收入的方式则是要提高生产率，在这种情况下我们可以预料到支出的增加必然导致另一个人收入的增加，以此循环往复，经济实现了增长。</p>
+<h1 id="三、市场"><a href="#三、市场" class="headerlink" title="三、市场"></a>三、市场</h1>]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>经济</tag>
+        <tag>股票</tag>
+        <tag>货币</tag>
+      </tags>
   </entry>
   <entry>
     <title>诗词韵律解析-用例篇</title>
@@ -8599,5 +8672,30 @@
     <title>C++语法基础大全</title>
     <url>/2022/09/02/C-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Java算法大全五-树</title>
+    <url>/2022/09/05/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%94-%E6%A0%91/</url>
+    <content><![CDATA[<h1 id="一、二叉树的中序遍历"><a href="#一、二叉树的中序遍历" class="headerlink" title="一、二叉树的中序遍历"></a>一、二叉树的中序遍历</h1><p>给定一个二叉树的根节点 root ，返回 它的 <strong>中序</strong> 遍历</p>
+<h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><img src="/2022/09/05/Java%E7%AE%97%E6%B3%95%E5%A4%A7%E5%85%A8%E4%BA%94-%E6%A0%91/mid.jpg" class="" title="mid">
+<figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">输入：root = <span class="comment">[1,null,2,3]</span></span><br><span class="line">输出：<span class="comment">[1,3,2]</span></span><br><span class="line"></span><br><span class="line">输入：root = <span class="comment">[]</span></span><br><span class="line">输出：<span class="comment">[]</span></span><br><span class="line"></span><br><span class="line">输入：root = <span class="comment">[1]</span></span><br><span class="line">输出：<span class="comment">[1]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>树中节点数目在范围 <code>[0, 100]</code> 内</li>
+<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+</ul>
+<h2 id="1-2-实现"><a href="#1-2-实现" class="headerlink" title="1.2 实现"></a>1.2 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        inorder(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        inorder(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(N)</li>
+<li>空间复杂度：O(N)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+        <tag>二叉树</tag>
+      </tags>
   </entry>
 </search>
