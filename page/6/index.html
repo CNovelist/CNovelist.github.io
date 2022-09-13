@@ -165,6 +165,880 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/" class="post-title-link" itemprop="url">前端组件实现-基于vis.js的节点展开</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-12 22:41:46" itemprop="dateCreated datePublished" datetime="2022-03-12T22:41:46+08:00">2022-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-13 17:08:47" itemprop="dateModified" datetime="2022-03-13T17:08:47+08:00">2022-03-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、数据准备"><a href="#一、数据准备" class="headerlink" title="一、数据准备"></a>一、数据准备</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><ul>
+<li>id最好设置为数值型，方便后面的查找工作，需要通过id值查找其在staticNodes中的下标值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置点和边的数据</span></span><br><span class="line"><span class="keyword">var</span> staticNodes = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">label</span>:<span class="string">&quot;高玥&quot;</span>, <span class="attr">group</span>:<span class="number">1</span>, <span class="attr">pid</span>:<span class="number">0</span>, <span class="attr">subids</span>:[<span class="number">2</span>,<span class="number">3</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>, <span class="attr">label</span>:<span class="string">&quot;篮球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>, <span class="attr">subids</span>:[<span class="number">4</span>]&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>, <span class="attr">label</span>:<span class="string">&quot;羽毛球&quot;</span>, <span class="attr">group</span>:<span class="number">2</span>, <span class="attr">pid</span>:<span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">4</span>, <span class="attr">label</span>:<span class="string">&quot;技巧&quot;</span>, <span class="attr">group</span>:<span class="number">3</span>,<span class="attr">pid</span>:<span class="number">2</span>&#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> staticEdges = [</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">1</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">2</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">2</span>,<span class="attr">label</span>:<span class="string">&quot;兴趣&quot;</span>, <span class="attr">from</span>: <span class="number">1</span>,<span class="attr">to</span>: <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">id</span>:<span class="number">3</span>,<span class="attr">label</span>:<span class="string">&quot;有&quot;</span>, <span class="attr">from</span>: <span class="number">2</span>,<span class="attr">to</span>: <span class="number">4</span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-数据格式"><a href="#1-2-数据格式" class="headerlink" title="1.2 数据格式"></a>1.2 数据格式</h2><h3 id="1-2-1-格式要求"><a href="#1-2-1-格式要求" class="headerlink" title="1.2.1 格式要求"></a>1.2.1 格式要求</h3><ul>
+<li>一般vis要显示network，需要以下格式<ul>
+<li>node：id、label、group</li>
+<li>edge：id、label、from、to</li>
+</ul>
+</li>
+<li>为了实现节点展开收缩就需要在nodes中再添加两个字段：<ul>
+<li>pid：父节点id</li>
+<li>subids：子节点id列表</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-2-后端实现方案（首页展示）："><a href="#1-2-2-后端实现方案（首页展示）：" class="headerlink" title="1.2.2 后端实现方案（首页展示）："></a>1.2.2 后端实现方案（首页展示）：</h3><ul>
+<li>需要先给数据分层，添加level标签，表示层级关系，只需要标注第一层即可，因为其他层会因点击事件而进行展开</li>
+<li>nodes节点中的pid和subids需要进行判断，再进行添加<ul>
+<li>设置pid：根据关系进行判断（根据to，查找from），对于单向关系，比如（我，有，篮球），那么篮球的pid就设置为“我”的id值，<strong>注意：目前只考虑节点的父节点只有一个的情况，如果pid有多个就需要设置列表</strong></li>
+<li>设置subids：根据关系进行判断（根据from，查找to），如存在一组关系（我，有，篮球）、（我，年龄，18），那么“我”的subids即表示为“篮球”和“18”对应id组成的列表</li>
+<li>设置group：group是为了对节点进行区分<ul>
+<li>前端实现：在进行节点展开时，会为nodes添加节点数据，这里就可以为节点添加上相同group，可以取一个随机整数</li>
+<li>后端实现：对于关系中from标签相同的一组关系，为其to标签对应的节点添加上相同group值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为vis注入数据时，先注入第一层的数据，即先显示第一层的节点关系</li>
+</ul>
+<h1 id="二、vis-js绘制network"><a href="#二、vis-js绘制network" class="headerlink" title="二、vis.js绘制network"></a>二、vis.js绘制network</h1><h2 id="2-1-将数据注入到vis中"><a href="#2-1-将数据注入到vis中" class="headerlink" title="2.1 将数据注入到vis中"></a>2.1 将数据注入到vis中</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nodes = <span class="keyword">new</span> vis.DataSet(staticNodes);</span><br><span class="line"><span class="keyword">var</span> edges = <span class="keyword">new</span> vis.DataSet(staticEdges);</span><br></pre></td></tr></table></figure>
+<h2 id="2-2-配置network"><a href="#2-2-配置network" class="headerlink" title="2.2 配置network"></a>2.2 配置network</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个图的容器</span></span><br><span class="line"><span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;mynetwork&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">nodes</span>: nodes,</span><br><span class="line">    <span class="attr">edges</span>: edges</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    <span class="attr">nodes</span>:&#123;</span><br><span class="line">        <span class="attr">shape</span>: <span class="string">&quot;dot&quot;</span>,</span><br><span class="line">        <span class="comment">// scaling: &#123;</span></span><br><span class="line">        <span class="comment">//     customScalingFunction: function(min, max, total, value)&#123;</span></span><br><span class="line">        <span class="comment">//         return value / total;</span></span><br><span class="line">        <span class="comment">//     &#125;,</span></span><br><span class="line">        <span class="comment">//     min:5,</span></span><br><span class="line">        <span class="comment">//     max:150,</span></span><br><span class="line">        <span class="comment">// &#125;,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">edges</span>: &#123;</span><br><span class="line">        <span class="attr">width</span>: <span class="number">0.15</span>,</span><br><span class="line">        <span class="comment">//physics: false,</span></span><br><span class="line">        <span class="attr">smooth</span>: &#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;continuous&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">interaction</span>: &#123;</span><br><span class="line">        <span class="attr">hover</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">//hoverConnectedEdges: true</span></span><br><span class="line">        <span class="comment">//hideEdgesOnDrag: true,</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">physics</span>: &#123;</span><br><span class="line">        <span class="comment">//enabled: false,</span></span><br><span class="line">        <span class="attr">repulsion</span>:&#123;</span><br><span class="line">            <span class="attr">nodeDistance</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springLength</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">springConstant</span>: <span class="number">0.5</span>,</span><br><span class="line">            <span class="attr">centralGravity</span>: <span class="number">0.9</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">layout</span>:&#123;</span><br><span class="line">        <span class="comment">//hierarchical: &#123;direction: &#x27;UD&#x27;, sortMethod: &#x27;hubsize&#x27;&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图可视化</span></span><br><span class="line"><span class="comment">// initialize your network!</span></span><br><span class="line"><span class="keyword">var</span> network = <span class="keyword">new</span> vis.Network(container, data, options);</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-为节点创建点击事件"><a href="#2-3-为节点创建点击事件" class="headerlink" title="2.3 为节点创建点击事件"></a>2.3 为节点创建点击事件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击事件获取的是节点的列表，一般列表中只有一个节点id</span></span><br><span class="line">network.on(<span class="string">&#x27;click&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params">params</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 点击的是节点的情况（不考虑点击边的情况）</span></span><br><span class="line">    <span class="keyword">if</span> (params.nodes.length != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> clickNodeId = params.nodes[<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//console.log(findArrayIndexById(staticNodes,clickNodeId));</span></span><br><span class="line">        <span class="comment">//removeSubNodes(clickNodeId);</span></span><br><span class="line">        <span class="comment">//removeByRecur(clickNodeId)</span></span><br><span class="line">        <span class="comment">//console.log(nodes.get(1));</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">//	逻辑分离，如果点击的节点存在子节点，则递归收缩节点</span></span><br><span class="line">        <span class="comment">//	否则进行节点展开</span></span><br><span class="line">        <span class="keyword">if</span>(getSubNodes(clickNodeId).length!=<span class="number">0</span>)</span><br><span class="line">            removeNodes(clickNodeId);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            addNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="三、展开收缩逻辑"><a href="#三、展开收缩逻辑" class="headerlink" title="三、展开收缩逻辑"></a>三、展开收缩逻辑</h1><ul>
+<li>具体的逻辑实现如下：<ul>
+<li>第一步：<strong>getSubNodes</strong>函数获取到点击节点的<strong>下级节点id列表</strong>subNodes</li>
+<li>第二步：判断<strong>subNodes</strong>是否为空，如果<strong>不为空</strong>执行<strong>第三步</strong>，否则执行第四步</li>
+<li>第三步：如果不为空：遍历subNodes中的id值，在<strong>staticNodes</strong>中找到其对应的节点并在nodes/edges中进行递归remove<strong>（收缩操作）</strong></li>
+<li>第四步：如果为空：判断点击的节点是否存在<strong>下级节点列表subids</strong>，如果存在，执行第五步<strong>（展开操作）</strong></li>
+<li>第五步：遍历<strong>subids下级id列表</strong>，在staticNodes中查找到对应的节点，添加到nodes和edges中，实现节点的展开操作</li>
+</ul>
+</li>
+<li>收缩时，如果点击节点的下一级节点中包含下下一级节点，则进行递归查找并收缩，实现方法为<strong>removeNodes</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据id值查找其对应的下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findArrayIndexById</span>(<span class="params">arr, id</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res;</span><br><span class="line">    $.each(arr, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(item[<span class="string">&#x27;id&#x27;</span>] == id)&#123;</span><br><span class="line">            res = index;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 节点收缩</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取到的是下级节点列表</span></span><br><span class="line">    <span class="keyword">var</span> subNodes = getSubNodes(clickNodeId);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果获取的下级节点列表长度 不为 0，表示节点没有收缩，则点击后进行收缩</span></span><br><span class="line">    <span class="keyword">if</span>(subNodes.length != <span class="number">0</span>)&#123;</span><br><span class="line">        $.each(subNodes,<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//消除的是注入到vis中的数据，而不是staticNodes/Edges</span></span><br><span class="line">            removeNodes(item);</span><br><span class="line">            nodes.remove(&#123;<span class="attr">id</span>:item&#125;);</span><br><span class="line">            edges.remove(&#123;<span class="attr">from</span>:clickNodeId,<span class="attr">to</span>:item&#125;);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//节点展开</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    $.each(staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;subids&#x27;</span>],<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        nodes.add(staticNodes[findArrayIndexById(staticNodes,item)]);</span><br><span class="line">        edges.add(&#123;<span class="attr">from</span>: clickNodeId,<span class="attr">to</span>: item&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取点击节点的下级节点列表，不包含与其相连的父节点id</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSubNodes</span>(<span class="params">clickNodeId</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取与该节点所连接的所有节点的id（只要是相连的都会被算进来）</span></span><br><span class="line">    <span class="keyword">var</span> returnNodes = [];</span><br><span class="line">    <span class="keyword">var</span> connectedNodes = network.getConnectedNodes(clickNodeId);<span class="comment">//获取所有连接节点</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对节点id列表进行遍历，index表示列表下标，item表示对应的id值</span></span><br><span class="line">    $.each(connectedNodes, <span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="comment">//这里的clickNodeId和staticNodes数组中的下标只是简单的-1操作</span></span><br><span class="line">        <span class="comment">//因为staticNodes中id都是顺序的，如果不是顺序的就需要遍历才能找到其下标值</span></span><br><span class="line">        <span class="comment">//clickNodeId是点击的那个节点的id，item是连接节点的id</span></span><br><span class="line">        <span class="comment">//如果这个连接的节点是点击的节点父节点，则不考虑进去！！！</span></span><br><span class="line">        <span class="keyword">if</span>(item != staticNodes[findArrayIndexById(staticNodes,clickNodeId)][<span class="string">&#x27;pid&#x27;</span>])&#123;</span><br><span class="line">            returnNodes.push(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> returnNodes;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="四、实现效果"><a href="#四、实现效果" class="headerlink" title="四、实现效果"></a>四、实现效果</h1><img src="/2022/03/12/%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0-%E5%9F%BA%E4%BA%8Evis-js%E7%9A%84%E8%8A%82%E7%82%B9%E5%B1%95%E5%BC%80/node.gif" class="" title="image1">
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/10/Mysql%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/Mysql%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Mysql基础大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-10 12:28:22" itemprop="dateCreated datePublished" datetime="2022-03-10T12:28:22+08:00">2022-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-01 16:34:12" itemprop="dateModified" datetime="2022-09-01T16:34:12+08:00">2022-09-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、MySql的语法规范"><a href="#一、MySql的语法规范" class="headerlink" title="一、MySql的语法规范"></a>一、MySql的语法规范</h1><ul>
+<li>不区分大小写，但建议关键字大写，表名、列名小写</li>
+<li>每条命令最好用分号结尾</li>
+</ul>
+<h1 id="二、注释"><a href="#二、注释" class="headerlink" title="二、注释"></a>二、注释</h1><ul>
+<li>#注释文字（单行注释）</li>
+<li>— 注释文字（单行注释）</li>
+<li>/* 注释文字 */（多行注释）</li>
+</ul>
+<h1 id="三、查询"><a href="#三、查询" class="headerlink" title="三、查询"></a>三、查询</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 分组查询推荐尽可能使用分组前筛选，即在<span class="keyword">group</span> <span class="keyword">by</span>前使用<span class="keyword">where</span></span><br><span class="line"><span class="keyword">SELECT</span> [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> [表名,...]</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-1-连接查询"><a href="#3-1-连接查询" class="headerlink" title="3.1 连接查询"></a>3.1 连接查询</h2><h3 id="3-1-1-内连接"><a href="#3-1-1-内连接" class="headerlink" title="3.1.1 内连接"></a>3.1.1 内连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    这属于sql99语法，作用等同于不加inner join时的查询</span></span><br><span class="line"><span class="comment">    不加inner join属于隐式连接，用inner join时，inner可以省略</span></span><br><span class="line"><span class="comment">    等值连接在WHERE子句中判断中写</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">     <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-1-2-外连接"><a href="#3-1-2-外连接" class="headerlink" title="3.1.2 外连接"></a>3.1.2 外连接</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">left</span><span class="operator">/</span><span class="keyword">right</span><span class="operator">/</span><span class="keyword">full</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span> <span class="keyword">on</span> 连接条件</span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-1-3-内连接与外连接的区别"><a href="#3-1-3-内连接与外连接的区别" class="headerlink" title="3.1.3 内连接与外连接的区别"></a>3.1.3 内连接与外连接的区别</h3><p>内连接：内连接匹配的是两个表符合连接条件的交集，不存在匹配的内容为NULL的情况</p>
+<p>外连接：外连接分为左外连接与右外连接，左连接表示左表中记录全部查询出来，右表只显示符合条件的数据，没有匹配到右表的数据，则右表数据显示为NULL；右连接则反之。以以下示例做下说明：</p>
+<ul>
+<li>以下是a表</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>a_id</th>
+<th>a_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>路飞</td>
+</tr>
+<tr>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>以下是b表</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>b_id</th>
+<th>b_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+<tr>
+<td>4</td>
+<td>乔巴</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>内连接语句：select * from a a inner join a a on a.a_id = b.b_id</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>a_id</th>
+<th>a_name</th>
+<th>b_id</th>
+<th>b_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>索隆</td>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>左外连接语句：select * from A A left outer join B B on a.a_id = b.b_id</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>a_id</th>
+<th>a_name</th>
+<th>b_id</th>
+<th>b_name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>路飞</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>2</td>
+<td>索隆</td>
+<td>2</td>
+<td>索隆</td>
+</tr>
+<tr>
+<td>3</td>
+<td>香吉士</td>
+<td>3</td>
+<td>香吉士</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-1-4-交叉连接（笛卡尔积）"><a href="#3-1-4-交叉连接（笛卡尔积）" class="headerlink" title="3.1.4 交叉连接（笛卡尔积）"></a>3.1.4 交叉连接（笛卡尔积）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-1-5-子查询"><a href="#3-1-5-子查询" class="headerlink" title="3.1.5 子查询"></a>3.1.5 子查询</h3><h3 id="3-1-6-分页查询"><a href="#3-1-6-分页查询" class="headerlink" title="3.1.6 分页查询"></a>3.1.6 分页查询</h3><ul>
+<li>offset要显示条目的起始索引（起始索引从0开始）</li>
+<li>size要显示的条目个数</li>
+<li>网页的分页显示数据需要对数据库进行分页查询</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  [字段名,...]</span><br><span class="line"><span class="keyword">FROM</span> 表<span class="number">1</span> 别名<span class="number">1</span></span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名<span class="number">2</span></span><br><span class="line"><span class="keyword">WHERE</span> [条件]</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> [字段名]</span><br><span class="line">    <span class="keyword">HAVING</span> [条件]</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ASC</span><span class="operator">/</span><span class="keyword">DESC</span></span><br><span class="line">LIMIT <span class="keyword">offset</span>,size;</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-7-联合查询"><a href="#3-1-7-联合查询" class="headerlink" title="3.1.7 联合查询"></a>3.1.7 联合查询</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    适用于要查询的结果来自多个表，且多个表没有直接的连接关系，但查询的信息一致时可以使用联合查询，类似于数学的并集</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">查询语句<span class="number">1</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line">查询语句<span class="number">2</span></span><br><span class="line"></span><br><span class="line"># 示例</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br><span class="line"></span><br><span class="line"># 加<span class="keyword">ALL</span>表示会包含重复的内容</span><br><span class="line"><span class="keyword">SELECT</span> id,cname,csex <span class="keyword">FROM</span> t_ca</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> t_id,tName,tGender <span class="keyword">FROM</span> <span class="keyword">WHERE</span> tGender<span class="operator">=</span><span class="string">&#x27;male&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h2><h3 id="3-2-1-查询前五条员工信息"><a href="#3-2-1-查询前五条员工信息" class="headerlink" title="3.2.1 查询前五条员工信息"></a>3.2.1 查询前五条员工信息</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">0</span>,<span class="number">5</span>;  </span><br><span class="line">#或者</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-2-分页查询规律"><a href="#3-2-2-分页查询规律" class="headerlink" title="3.2.2 分页查询规律"></a>3.2.2 分页查询规律</h3><ul>
+<li>page表示第几页，(page-1)*size表示每一页的起始查询位置</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 查询列表</span><br><span class="line"><span class="keyword">FROM</span> 表</span><br><span class="line">LIMIT (page<span class="number">-1</span>)<span class="operator">*</span>size,size;</span><br></pre></td></tr></table></figure>
+<h1 id="四、增删改"><a href="#四、增删改" class="headerlink" title="四、增删改"></a>四、增删改</h1><h2 id="4-1-插入数据"><a href="#4-1-插入数据" class="headerlink" title="4.1 插入数据"></a>4.1 插入数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">VALUES</span>(元组值);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">VALUES</span>(元组值);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">VALUES</span>(元组值),(元组值),...;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">SET</span> 列名<span class="operator">=</span>值,列名<span class="operator">=</span>值,...    #用的少</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">SELECT</span> 查询语句;</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名序列) <span class="keyword">TABLE</span> 表名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-删除数据"><a href="#4-2-删除数据" class="headerlink" title="4.2 删除数据"></a>4.2 删除数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件表达式</span><br></pre></td></tr></table></figure>
+<h2 id="4-3-修改数据"><a href="#4-3-修改数据" class="headerlink" title="4.3 修改数据"></a>4.3 修改数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UPDATE 表名 <span class="keyword">SET</span> 列名<span class="operator">=</span>值表达式,列名<span class="operator">=</span>值表达式,... <span class="keyword">WHERE</span> 条件表达式</span><br><span class="line">UPDATE 表名 <span class="keyword">SET</span> <span class="type">ROW</span><span class="operator">=</span>元组 <span class="keyword">WHERE</span> 条件表达式</span><br></pre></td></tr></table></figure>
+<h1 id="五、视图"><a href="#五、视图" class="headerlink" title="五、视图"></a>五、视图</h1><h2 id="5-1-视图的创建"><a href="#5-1-视图的创建" class="headerlink" title="5.1 视图的创建"></a>5.1 视图的创建</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> 视图名(列名序列) <span class="keyword">AS</span> <span class="keyword">SELECT</span>查询语句</span><br></pre></td></tr></table></figure>
+<h2 id="5-2-视图的撤销"><a href="#5-2-视图的撤销" class="headerlink" title="5.2 视图的撤销"></a>5.2 视图的撤销</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> 视图名</span><br></pre></td></tr></table></figure>
+<h1 id="六、Mysql数据类型"><a href="#六、Mysql数据类型" class="headerlink" title="六、Mysql数据类型"></a>六、Mysql数据类型</h1><h2 id="6-1-数值型"><a href="#6-1-数值型" class="headerlink" title="6.1 数值型"></a>6.1 数值型</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>范围（有符号）</th>
+<th>范围（无符号）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1 byte</td>
+<td>(-128，127)</td>
+<td>(0，255)</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2 bytes</td>
+<td>(-32 768，32 767)</td>
+<td>(0，65 535)</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3 bytes</td>
+<td>(-8 388 608，8 388 607)</td>
+<td>(0，16 777 215)</td>
+</tr>
+<tr>
+<td>INT或INTEGER</td>
+<td>4 bytes</td>
+<td>(-2 147 483 648，2 147 483 647)</td>
+<td>(0，4 294 967 295)</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8 bytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>4 bytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>8 bytes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td>对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="6-2-日期型"><a href="#6-2-日期型" class="headerlink" title="6.2 日期型"></a>6.2 日期型</h2><h2 id="6-3-字符型"><a href="#6-3-字符型" class="headerlink" title="6.3 字符型"></a>6.3 字符型</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">乐理基础大全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-09 12:50:22" itemprop="dateCreated datePublished" datetime="2022-03-09T12:50:22+08:00">2022-03-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-05 16:27:48" itemprop="dateModified" datetime="2022-07-05T16:27:48+08:00">2022-07-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E5%8C%96%E8%89%BA%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">文化艺术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E5%8C%96%E8%89%BA%E6%9C%AF/%E4%B9%90%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">乐理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、音的概念"><a href="#一、音的概念" class="headerlink" title="一、音的概念"></a>一、音的概念</h1><h2 id="1-1-音名-唱名"><a href="#1-1-音名-唱名" class="headerlink" title="1.1 音名/唱名"></a>1.1 音名/唱名</h2><ul>
+<li>音名是对音的一种标记，而唱名则是我们平时哼出来的do/re/mi/fa/sol/la/ti</li>
+<li>音名像是对音的一种抽象，而唱名则是具体的对音的表现，也就是说任何一个音名都可以表示为1，然后一次推导出其他音名，当然我这里说的是自然大调的情况，后面在做详细解释</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>音名</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唱名</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="1-2-十二平均律"><a href="#1-2-十二平均律" class="headerlink" title="1.2 十二平均律"></a>1.2 十二平均律</h2><ul>
+<li>按照乐理从古至今的发展，人们发现了<strong>十二平均律</strong>这样一套声音的规律</li>
+<li>在物理学中，声音是由振动产生的，而物体不同震动的频率会给人不同的听觉效果，国际上规定440HZ作为<strong>标准音</strong>，即钢琴上的第49号键（A键）的震动频率</li>
+<li>根据振动给人听感上的不同，人们以<strong>每隔半音</strong>（规定的频率大小）的形式来规定音与音的距离关系（音程），因此就有了十二平均律的概念</li>
+<li>比如对于1、2、3、4、5、6、7、1来说，它们就满足<strong>“全全半全全全半”</strong>的音程关系</li>
+</ul>
+<h2 id="1-3-音程-音数"><a href="#1-3-音程-音数" class="headerlink" title="1.3 音程/音数"></a>1.3 音程/音数</h2><ul>
+<li>音程：表示音与音之间的距离，主要说的还是<strong>振动频率</strong>的关系</li>
+<li>音数：衡量音程的一种<strong>单位</strong>，记录音与音之间的半音数</li>
+<li>具体的音程与音数关系有以下几种：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">音程</th>
+<th style="text-align:center">音数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">纯一度</td>
+<td style="text-align:center">$0$</td>
+</tr>
+<tr>
+<td style="text-align:center">小二度</td>
+<td style="text-align:center">$\tfrac{1}{2}$</td>
+</tr>
+<tr>
+<td style="text-align:center">大二度</td>
+<td style="text-align:center">$1$</td>
+</tr>
+<tr>
+<td style="text-align:center">小三度</td>
+<td style="text-align:center">$1\tfrac{1}{2}$</td>
+</tr>
+<tr>
+<td style="text-align:center">大三度</td>
+<td style="text-align:center">$2$</td>
+</tr>
+<tr>
+<td style="text-align:center">纯四度</td>
+<td style="text-align:center">$2\tfrac{1}{2}$</td>
+</tr>
+<tr>
+<td style="text-align:center">增四度</td>
+<td style="text-align:center">$3$</td>
+</tr>
+<tr>
+<td style="text-align:center">纯五度</td>
+<td style="text-align:center">$3\tfrac{1}{2}$</td>
+</tr>
+<tr>
+<td style="text-align:center">减五度</td>
+<td style="text-align:center">$3$</td>
+</tr>
+<tr>
+<td style="text-align:center">小六度</td>
+<td style="text-align:center">$4$</td>
+</tr>
+<tr>
+<td style="text-align:center">大六度</td>
+<td style="text-align:center">$4 \tfrac{1}{2}$</td>
+</tr>
+<tr>
+<td style="text-align:center">小七度</td>
+<td style="text-align:center">$5$</td>
+</tr>
+<tr>
+<td style="text-align:center">大七度</td>
+<td style="text-align:center">$5\tfrac{1}{2}$</td>
+</tr>
+<tr>
+<td style="text-align:center">纯八度</td>
+<td style="text-align:center">$6$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>以C大调为例，各音阶度数关系如下：</li>
+</ul>
+<img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/dushu.png" class="" title="dushu">
+<h1 id="二、调式"><a href="#二、调式" class="headerlink" title="二、调式"></a>二、调式</h1><h2 id="2-1-大调式"><a href="#2-1-大调式" class="headerlink" title="2.1 大调式"></a>2.1 大调式</h2><h3 id="2-1-1-自然大调"><a href="#2-1-1-自然大调" class="headerlink" title="2.1.1 自然大调"></a>2.1.1 自然大调</h3><ul>
+<li>满足<strong>“全全半全全全半”</strong>的关系</li>
+<li>$1、2、3、4、5、6、7、\overline{1}$</li>
+</ul>
+<h3 id="2-1-2-和声大调"><a href="#2-1-2-和声大调" class="headerlink" title="2.1.2 和声大调"></a>2.1.2 和声大调</h3><ul>
+<li>$1、2、3、4、5、{}^b6、7、\overline{1}$</li>
+</ul>
+<h3 id="2-1-3-旋律大调"><a href="#2-1-3-旋律大调" class="headerlink" title="2.1.3 旋律大调"></a>2.1.3 旋律大调</h3><ul>
+<li>$1、2、3、4、5、{}^b6、{}^b7、1$</li>
+</ul>
+<h2 id="2-2-小调式"><a href="#2-2-小调式" class="headerlink" title="2.2 小调式"></a>2.2 小调式</h2><h3 id="2-2-1-自然小调"><a href="#2-2-1-自然小调" class="headerlink" title="2.2.1 自然小调"></a>2.2.1 自然小调</h3><ul>
+<li>$6、7、\overline{1}、\overline{2}、\overline{3}、\overline{4}、\overline{5}、\overline{6}$</li>
+</ul>
+<h3 id="2-2-2-和声小调"><a href="#2-2-2-和声小调" class="headerlink" title="2.2.2 和声小调"></a>2.2.2 和声小调</h3><ul>
+<li>$6、7、\overline{1}、\overline{2}、\overline{3}、\overline{4}、{}^井\overline{5}、\overline{6}$</li>
+</ul>
+<h3 id="2-2-3-旋律小调"><a href="#2-2-3-旋律小调" class="headerlink" title="2.2.3 旋律小调"></a>2.2.3 旋律小调</h3><ul>
+<li>$6、7、\overline{1}、\overline{2}、\overline{3}、{}^井\overline{4}、{}^井\overline{5}、\overline{6}$</li>
+</ul>
+<h2 id="2-3-自然大调"><a href="#2-3-自然大调" class="headerlink" title="2.3 自然大调"></a>2.3 自然大调</h2><ul>
+<li>以下对自然大调进行着重讲解，因为自然大调在流行音乐中较为常见</li>
+<li>在吉他谱中，会在琴谱左上角标注C=1，这就规定了这首歌的<strong>调式为C调</strong><ul>
+<li>同理，如果标注G=1，则这首歌的<strong>调式为G调</strong></li>
+<li>根据半音的规律，我们就可以在自然大调中推导出<strong>十二种调式</strong>（十二平均律）</li>
+<li>不同调式的给人的感觉是不同的，音名的构成也是不同的，下表就列出了不同调式的音的构成</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">调</th>
+<th style="text-align:center">音名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">唱名</td>
+<td style="text-align:center">1、2、3、4、5、6、7、1</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">C、D、E、F、G、A、B、C</td>
+</tr>
+<tr>
+<td style="text-align:center">#C</td>
+<td style="text-align:center">#C、#D、#E、#F、#G、#A、#B、#C</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">D、E、#F、G、A、B、#C、D</td>
+</tr>
+<tr>
+<td style="text-align:center">bE</td>
+<td style="text-align:center">bE、F、G、bA、bB、C、D、bE</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">E、#F、#G、A、B、#C、#D、E</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">F、G、A、bB、C、D、E、F</td>
+</tr>
+<tr>
+<td style="text-align:center">bG</td>
+<td style="text-align:center">bG、bA、bB、bC、bD、bE、F、bG</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">G、A、B、C、D、E、#F、G</td>
+</tr>
+<tr>
+<td style="text-align:center">bA</td>
+<td style="text-align:center">bA、bB、C、bD、bE、F、G、bA</td>
+</tr>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">A、B、#C、D、E、#F、#G、A</td>
+</tr>
+<tr>
+<td style="text-align:center">bB</td>
+<td style="text-align:center">bB、C、D、bE、F、G、A、bB</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">B、#C、#D、E、#F、#G、#A、B</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="2-4-关系大小调"><a href="#2-4-关系大小调" class="headerlink" title="2.4 关系大小调"></a>2.4 关系大小调</h2><p>大调音阶的前三个音是大三度关系、小调音阶的前三个音是小三度关系</p>
+<p>以自然大小调为例</p>
+<p>C大调的关系小调为a小调</p>
+<p>D大调的关系小调为b小调</p>
+<p>F大调的关系小调为d小调</p>
+<p>G大调的关系小调为e小调</p>
+<h1 id="三、和弦"><a href="#三、和弦" class="headerlink" title="三、和弦"></a>三、和弦</h1><h2 id="3-1-和弦分类"><a href="#3-1-和弦分类" class="headerlink" title="3.1 和弦分类"></a>3.1 和弦分类</h2><h3 id="3-1-1-三度和弦"><a href="#3-1-1-三度和弦" class="headerlink" title="3.1.1 三度和弦"></a>3.1.1 三度和弦</h3><ul>
+<li>三和弦（三个音）</li>
+<li>五和弦（四个音）</li>
+<li>九和弦（五个音）</li>
+<li>十一和弦（六个音）</li>
+<li>十三和弦（七个音）</li>
+</ul>
+<h3 id="3-1-2-非三度和弦"><a href="#3-1-2-非三度和弦" class="headerlink" title="3.1.2 非三度和弦"></a>3.1.2 非三度和弦</h3><ul>
+<li>挂留和弦</li>
+<li>强力和弦</li>
+</ul>
+<h2 id="3-2-三和弦"><a href="#3-2-三和弦" class="headerlink" title="3.2 三和弦"></a>3.2 三和弦</h2><h3 id="3-2-1-大三和弦"><a href="#3-2-1-大三和弦" class="headerlink" title="3.2.1 大三和弦"></a>3.2.1 大三和弦</h3><ul>
+<li>大三度+小三度</li>
+<li>如C调的C：1-3-5、F：4-6-1、G：5-7-2</li>
+</ul>
+<h3 id="3-2-2-小三和弦"><a href="#3-2-2-小三和弦" class="headerlink" title="3.2.2 小三和弦"></a>3.2.2 小三和弦</h3><ul>
+<li>小三度+大三度</li>
+<li>如C调的Dm：2-4-6、Em：3-5-7、Am：6-1-3</li>
+</ul>
+<h3 id="3-2-3-增三和弦"><a href="#3-2-3-增三和弦" class="headerlink" title="3.2.3 增三和弦"></a>3.2.3 增三和弦</h3><ul>
+<li>大三度+大三度</li>
+<li>Caug：1-3-#5</li>
+</ul>
+<h3 id="3-2-4-减三和弦"><a href="#3-2-4-减三和弦" class="headerlink" title="3.2.4 减三和弦"></a>3.2.4 减三和弦</h3><ul>
+<li>小三度+小三度</li>
+<li>Cdim：1-b3-b5</li>
+</ul>
+<h2 id="3-3-七和弦"><a href="#3-3-七和弦" class="headerlink" title="3.3 七和弦"></a>3.3 七和弦</h2><h3 id="3-3-1-大七和弦"><a href="#3-3-1-大七和弦" class="headerlink" title="3.3.1 大七和弦"></a>3.3.1 大七和弦</h3><ul>
+<li>大三和弦+根音的大7度音</li>
+<li>Cmaj7：1-3-5-7</li>
+<li>Fmaj7：4-6-1-3</li>
+</ul>
+<h3 id="3-3-2-大小七和弦（属七和弦）"><a href="#3-3-2-大小七和弦（属七和弦）" class="headerlink" title="3.3.2 大小七和弦（属七和弦）"></a>3.3.2 大小七和弦（属七和弦）</h3><ul>
+<li>大三和弦+根音的小7度音</li>
+<li>C7：1-3-5-b7</li>
+<li>G7：5-7-2-4</li>
+</ul>
+<h3 id="3-3-3-小小七和弦"><a href="#3-3-3-小小七和弦" class="headerlink" title="3.3.3 小小七和弦"></a>3.3.3 小小七和弦</h3><ul>
+<li>小三和弦+根音的小7度音</li>
+<li>Dm7：2-4-6-1</li>
+<li>Em7：3-5-7-2</li>
+<li>Am7：6-1-3-5</li>
+</ul>
+<h3 id="3-3-4-减小七和弦"><a href="#3-3-4-减小七和弦" class="headerlink" title="3.3.4 减小七和弦"></a>3.3.4 减小七和弦</h3><ul>
+<li>减三+根音7度音</li>
+<li>Bdim7：7-2-4-6</li>
+</ul>
+<h3 id="3-3-5-减减七和弦"><a href="#3-3-5-减减七和弦" class="headerlink" title="3.3.5 减减七和弦"></a>3.3.5 减减七和弦</h3><ul>
+<li>减三+根音减7度音</li>
+<li>Bm-5：7-2-4-b6</li>
+</ul>
+<h2 id="3-4-九和弦"><a href="#3-4-九和弦" class="headerlink" title="3.4 九和弦"></a>3.4 九和弦</h2><h3 id="3-4-1-属九和弦"><a href="#3-4-1-属九和弦" class="headerlink" title="3.4.1 属九和弦"></a>3.4.1 属九和弦</h3><ul>
+<li>在属七和弦上加上根音的九度音</li>
+<li>C9：1-3-5-b7-2</li>
+</ul>
+<h3 id="3-4-2-Add和弦"><a href="#3-4-2-Add和弦" class="headerlink" title="3.4.2 Add和弦"></a>3.4.2 Add和弦</h3><ul>
+<li><p>三和弦基础上再添加的音符，后面的数字代表距离根音的度数</p>
+</li>
+<li><p>Cadd9：1-3-5-2（根音的9度音）</p>
+</li>
+</ul>
+<h2 id="3-5-挂留和弦"><a href="#3-5-挂留和弦" class="headerlink" title="3.5 挂留和弦"></a>3.5 挂留和弦</h2><ul>
+<li>Csus2：1-2-5（三度音转为二度音）</li>
+<li>Csus4：1-4-5（三度音转为四度音）</li>
+</ul>
+<h2 id="3-6-和弦转位"><a href="#3-6-和弦转位" class="headerlink" title="3.6 和弦转位"></a>3.6 和弦转位</h2><p>以C和弦为例，$1-3-5$它的两个转位和弦分别为$3-5-\dot{1}$和$5-\dot{1}-\dot{3}$</p>
+<p>其中C和弦的do始终为根音，对于不同的转为其最低音是不同的，比如$3-5-\dot{1}$的最低音是mi，$5-\dot{1}-\dot{3}$最低音是sol</p>
+<p>$3-5-\dot{1}$转位和弦表示为：$C_6$或者$C/E$，其中由于<strong>最低音到最高音</strong>和<strong>最低音到根音</strong>的度数都是6，所以表示为$C_6$</p>
+<p>$5-\dot{1}-\dot{3}$转位和弦表示为：$C_6^4$或者$C/G$，其中$C_6^4$中的上标4表示<strong>最低音到根音的度数</strong>，下标6表示<strong>最低音到最高音的度数</strong></p>
+<p>对于<strong>七和弦</strong>，应该用<strong>最低音到7音</strong>的度数和<strong>最低音到根音</strong>的度数来表示转位和弦</p>
+<h1 id="四、节奏"><a href="#四、节奏" class="headerlink" title="四、节奏"></a>四、节奏</h1><h2 id="4-1-音符"><a href="#4-1-音符" class="headerlink" title="4.1 音符"></a>4.1 音符</h2><h3 id="4-1-1-音符分类"><a href="#4-1-1-音符分类" class="headerlink" title="4.1.1 音符分类"></a>4.1.1 音符分类</h3><ul>
+<li>全音符</li>
+<li>二分音符</li>
+<li>四分音符</li>
+<li>八分音符</li>
+<li>十六分音符</li>
+<li>三十二分音符</li>
+<li>休止符</li>
+<li>浮点音符：延长当前音符时值的一半</li>
+</ul>
+<img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/yinfu.jpeg" class="" title="yinfu">
+<h3 id="4-1-2-音符关系"><a href="#4-1-2-音符关系" class="headerlink" title="4.1.2 音符关系"></a>4.1.2 音符关系</h3><ul>
+<li>$全音符=2<em>二分音符=4</em>四分音符=8<em>八分音符=16</em>十六分音符$</li>
+</ul>
+<h2 id="4-2-节拍"><a href="#4-2-节拍" class="headerlink" title="4.2 节拍"></a>4.2 节拍</h2><ul>
+<li><strong>bpm</strong>：每分钟节拍数</li>
+<li>常见的节拍（从后往前读）：<ul>
+<li>4/4：表示以四分音符为一拍，每小节四拍；强弱规律：<strong>强、弱、次强、弱</strong></li>
+<li>3/8：表示以八分音符为一拍，每小节三拍；强弱规律：<strong>强、弱、弱</strong></li>
+<li>6/8：强弱规律：<strong>强、弱、弱、次强、弱、弱</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="4-3-常见节奏"><a href="#4-3-常见节奏" class="headerlink" title="4.3 常见节奏"></a>4.3 常见节奏</h2><h3 id="4-3-1-弹奏节奏型"><a href="#4-3-1-弹奏节奏型" class="headerlink" title="4.3.1 弹奏节奏型"></a>4.3.1 弹奏节奏型</h3><h3 id="4-3-2-扫弦节奏型"><a href="#4-3-2-扫弦节奏型" class="headerlink" title="4.3.2 扫弦节奏型"></a>4.3.2 扫弦节奏型</h3><h2 id="五、吉他谱"><a href="#五、吉他谱" class="headerlink" title="五、吉他谱"></a>五、吉他谱</h2><h3 id="5-1-常见符号"><a href="#5-1-常见符号" class="headerlink" title="5.1 常见符号"></a>5.1 常见符号</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/07/H5C3%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%BA%8C%EF%BC%88%E5%AE%9E%E6%88%98%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/07/H5C3%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%BA%8C%EF%BC%88%E5%AE%9E%E6%88%98%EF%BC%89/" class="post-title-link" itemprop="url">H5C3基础大全二（实战）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-07 11:10:59 / 修改时间：20:42:09" itemprop="dateCreated datePublished" datetime="2022-03-07T11:10:59+08:00">2022-03-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/H5C3/" itemprop="url" rel="index"><span itemprop="name">H5C3</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、双栏信息"><a href="#一、双栏信息" class="headerlink" title="一、双栏信息"></a>一、双栏信息</h1><h1 id="二、元素阴影效果"><a href="#二、元素阴影效果" class="headerlink" title="二、元素阴影效果"></a>二、元素阴影效果</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-shadow</span>: offset-x offset-y blur spread color inset;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>offset-x：必需，取值正负都可。offset-x水平阴影的位置。</li>
+<li>offset-y：必需，取值正负都可。offset-y垂直阴影的位置。</li>
+<li>blur:可选，只能取正值。blur-radius阴影模糊半径，0即无模糊效果，值越大阴影边缘越模糊。</li>
+<li>spread：可选，取值正负都可。spread代表阴影的周长向四周扩展的尺寸，正值，阴影扩大，负值阴影缩小。</li>
+<li>color:可选。阴影的颜色。如果不设置，浏览器会取默认颜色，通常是黑色，但各浏览器默认颜色有差异，建议不要省略。可以是rgb(250,0,0)，也可以是有透明值的rgba(250,0,0,0.5)。</li>
+<li>inset:可选。关键字，将外部投影(默认outset)改为内部投影。inset 阴影在背景之上，内容之下。</li>
+</ul>
+<h1 id="三、元素访问效果"><a href="#三、元素访问效果" class="headerlink" title="三、元素访问效果"></a>三、元素访问效果</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	ele.hover：鼠标在元素上方时，要显示的效果</span></span><br><span class="line"><span class="comment">	ele.link：未被访问的元素，要显示的效果</span></span><br><span class="line"><span class="comment">	ele.active：鼠标按住不动时，要显示的效果</span></span><br><span class="line"><span class="comment">	ele.visited：元素访问过后，要显示的效果</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/03/02/Java%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2144,528 +3018,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-axios%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-axios%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">individual项目开发1-axios请求数据</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-24 21:54:17" itemprop="dateCreated datePublished" datetime="2022-02-24T21:54:17+08:00">2022-02-24</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/24/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%911-%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">individual项目开发1-访问权限管理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-24 21:48:33" itemprop="dateCreated datePublished" datetime="2022-02-24T21:48:33+08:00">2022-02-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-25 22:30:50" itemprop="dateModified" datetime="2022-02-25T22:30:50+08:00">2022-02-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">项目开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/individual%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">individual项目开发</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、拦截器"><a href="#一、拦截器" class="headerlink" title="一、拦截器"></a>一、拦截器</h1><h2 id="1-1-定义拦截器"><a href="#1-1-定义拦截器" class="headerlink" title="1.1 定义拦截器"></a>1.1 定义拦截器</h2><ul>
-<li>编写拦截器实现类，实现接口<strong>HandlerIntercepter</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginInterceptor</span> <span class="keyword">implements</span>  <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在请求处理之前进行调用（Controller方法调用之前）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.out.println(&quot;执行了TestInterceptor的preHandle方法&quot;);</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//统一拦截（查询当前session是否存在user）(这里user会在每次登陆成功后，写入session)</span></span><br><span class="line">            User user=(User)request.getSession().getAttribute(<span class="string">&quot;USER&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(user!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            response.sendRedirect(request.getContextPath()+<span class="string">&quot;你的登陆页地址&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;<span class="comment">//如果设置为false时，被请求时，拦截器执行到此处将不会继续操作</span></span><br><span class="line">                      <span class="comment">//如果设置为true时，请求将会继续执行后面的操作</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> </span>&#123;</span><br><span class="line"><span class="comment">//         System.out.println(&quot;执行了TestInterceptor的postHandle方法&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在整个请求结束之后被调用，也就是在DispatcherServlet 渲染了对应的视图之后执行（主要是用于进行资源清理工作）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.out.println(&quot;执行了TestInterceptor的afterCompletion方法&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="1-2-拦截器配置"><a href="#1-2-拦截器配置" class="headerlink" title="1.2 拦截器配置"></a>1.2 拦截器配置</h2><ul>
-<li>创建配置类，继承<strong>WebMvcConfigurer</strong>接口，必须添加<strong>@Configuration</strong>注解</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//注册TestInterceptor拦截器</span></span><br><span class="line">        InterceptorRegistration registration = registry.addInterceptor(<span class="keyword">new</span> AdminInterceptor());</span><br><span class="line">        registration.addPathPatterns(<span class="string">&quot;/**&quot;</span>);                      <span class="comment">//所有路径都被拦截</span></span><br><span class="line">        registration.excludePathPatterns(                         <span class="comment">//添加不拦截路径</span></span><br><span class="line">                                         <span class="string">&quot;你的登陆路径&quot;</span>,            <span class="comment">//登录</span></span><br><span class="line">                                         <span class="string">&quot;/**/*.html&quot;</span>,            <span class="comment">//html静态资源</span></span><br><span class="line">                                         <span class="string">&quot;/**/*.js&quot;</span>,              <span class="comment">//js静态资源</span></span><br><span class="line">                                         <span class="string">&quot;/**/*.css&quot;</span>,             <span class="comment">//css静态资源</span></span><br><span class="line">                                         <span class="string">&quot;/**/*.woff&quot;</span>,</span><br><span class="line">                                         <span class="string">&quot;/**/*.ttf&quot;</span></span><br><span class="line">                                         );    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/" class="post-title-link" itemprop="url">Vue2基础大全一</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-23 23:33:33" itemprop="dateCreated datePublished" datetime="2022-02-23T23:33:33+08:00">2022-02-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-06-06 15:26:10" itemprop="dateModified" datetime="2022-06-06T15:26:10+08:00">2022-06-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h1><h2 id="1-1-Hello案例"><a href="#1-1-Hello案例" class="headerlink" title="1.1 Hello案例"></a>1.1 Hello案例</h2><h2 id="1-2-数据绑定"><a href="#1-2-数据绑定" class="headerlink" title="1.2 数据绑定"></a>1.2 数据绑定</h2><ul>
-<li>v-bind：单向绑定，数据只能从data流向页面</li>
-<li>v-model：双向绑定，数据不仅能从data流向页面，还可以从页面流向data</li>
-<li>单向绑定和双向绑定的区别：<ul>
-<li>v-model一般应用再表单类元素上</li>
-<li>v-model:value可以简写为v-model，因为v-model默认收集的就是value值</li>
-</ul>
-</li>
-</ul>
-<img src="/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/data.png" class="" title="data">
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 花括号里为表达式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    单向绑定：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-bind:value</span>=<span class="string">&quot;message&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    双向绑定：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model:value</span>=<span class="string">&quot;message&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    Vue.config.productionTip = <span class="literal">false</span>;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>, <span class="comment">//根据标签id进行绑定</span></span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">message</span>: <span class="string">&#x27;Hello Vue!&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-3-MVVM模型"><a href="#1-3-MVVM模型" class="headerlink" title="1.3 MVVM模型"></a>1.3 MVVM模型</h2><ul>
-<li>M：模型，对应data中的数据</li>
-<li>V：视图，页面模板</li>
-<li>VM：视图模型，Vue实例，以后一般使用”vm“作为变量名接收Vue实例</li>
-</ul>
-<img src="/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/mvvm.png" class="" title="mvvm">
-<h2 id="1-4-数据代理"><a href="#1-4-数据代理" class="headerlink" title="1.4 数据代理"></a>1.4 数据代理</h2><h3 id="1-4-1-object-defineProperty"><a href="#1-4-1-object-defineProperty" class="headerlink" title="1.4.1 object.defineProperty"></a>1.4.1 object.defineProperty</h3><ul>
-<li>动态为对象绑定属性</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = <span class="number">18</span></span><br><span class="line"><span class="keyword">let</span> person = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态为person对象绑定属性</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person,<span class="string">&#x27;age&#x27;</span>,&#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">18</span>	<span class="comment">// 设置属性值</span></span><br><span class="line">    <span class="attr">enumerable</span>:<span class="literal">true</span>, <span class="comment">// 控制属性是否可以枚举，默认为false</span></span><br><span class="line">    <span class="attr">writeable</span>:<span class="literal">true</span>,	<span class="comment">// 控制属性是否可以被修改，默认为false</span></span><br><span class="line">    <span class="attr">configurable</span>:<span class="literal">true</span>,	<span class="comment">// 控制属性是否可以被删除，默认为false</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 当动态修改number值时，age便会发生改变</span></span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> number;</span><br><span class="line">    &#125;,</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 当动态修改age属性值时，number就发生改变</span></span><br><span class="line">    <span class="function"><span class="title">set</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">        number = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="1-4-2-vue数据代理"><a href="#1-4-2-vue数据代理" class="headerlink" title="1.4.2 vue数据代理"></a>1.4.2 vue数据代理</h3><ul>
-<li>Vue实例中的data对象中的属性就是使用到了object.defineProperty的getter和setter的操作</li>
-<li>在控制台打印vue实例对象时，就可以看到代理的data数据</li>
-</ul>
-<img src="/2022/02/23/Vue2%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/vuedata.png" class="" title="vuedata">
-<h2 id="1-5-事件处理"><a href="#1-5-事件处理" class="headerlink" title="1.5 事件处理"></a>1.5 事件处理</h2><h3 id="1-5-1-事件基本使用"><a href="#1-5-1-事件基本使用" class="headerlink" title="1.5.1 事件基本使用"></a>1.5.1 事件基本使用</h3><ul>
-<li>使用v-on:xxx或@xxx绑定事件，其中xxx是事件名</li>
-<li>事件的回调需要配置在methods对象中，最终会显示在vm上</li>
-<li>methods中配置的函数，不需要箭头函数！否则this就不是vm了</li>
-<li>methods中配置的函数，都是被Vue所管理的函数，this的指向是vm或组件实例对象</li>
-<li>@click=”demo”和@click=”demo($event)”效果一样，但后者可以自定义传参</li>
-</ul>
-<h3 id="1-5-2-事件修饰符"><a href="#1-5-2-事件修饰符" class="headerlink" title="1.5.2 事件修饰符"></a>1.5.2 事件修饰符</h3><p>Vue事件修饰符包括：</p>
-<ol>
-<li>prevent：阻止默认事件（常用）</li>
-<li>stop：阻止事件冒泡</li>
-<li>once：事件只触发一次，即下一次触发就没有效果了</li>
-<li>capture：使用事件的捕获模式</li>
-<li>self：只有event.target是当前操作的元素时才触发事件</li>
-<li>passive：事件的默认行为立即执行，无需等待事件回调执行完毕</li>
-</ol>
-<p>Vue的事件修饰符使用方式为：<code>@click.prevent=&quot;&quot;</code></p>
-<p>示例如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.atguigu.com&quot;</span> @<span class="attr">click.prevent</span>=<span class="string">&quot;showInfo&quot;</span>&gt;</span>点我提示信息<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">name</span>:<span class="string">&#x27;尚硅谷&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">method</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="title">showInfo</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                alert(<span class="string">&#x27;同学你好！&#x27;</span>)</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-5-3-键盘事件"><a href="#1-5-3-键盘事件" class="headerlink" title="1.5.3 键盘事件"></a>1.5.3 键盘事件</h3><p>Vue中常用的键盘别名</p>
-<ul>
-<li>回车：enter</li>
-<li>删除：delete（捕获“删除”和“退格”键）</li>
-<li>空格：space</li>
-<li>上：up</li>
-<li>下：down</li>
-<li>左：left</li>
-<li>右：right</li>
-</ul>
-<p>键盘事件的捕获方式如下：</p>
-<ul>
-<li><p><code>@keyup.xxx</code>：键盘按下后弹起</p>
-</li>
-<li><p><code>@keydown.xxx</code>：键盘按下</p>
-</li>
-</ul>
-<p>注意事项如下：</p>
-<ul>
-<li>Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要将双驼峰命名转为xxx-xxx（短横线命名）</li>
-<li>系统修饰键（用法特殊）：ctrl、alt、shift、meta<ul>
-<li>配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发，如<code>@keyup.ctrl.y</code></li>
-<li>配合keydown使用，正常触发事件</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-6-计算属性"><a href="#1-6-计算属性" class="headerlink" title="1.6 计算属性"></a>1.6 计算属性</h2><p>计算属性是对vue属性进行计算操作后设定的属性，它有以下特点：</p>
-<ul>
-<li>计算属性和data中的属性不是一个概念，使用vm._data无法访问到计算属性</li>
-<li>计算属性是对data属性计算后得到的属性</li>
-</ul>
-<p>原始的计算属性写法如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">    姓：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;firstName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;lastName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    全名：<span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">firstName</span>:<span class="string">&#x27;zhang&#x27;</span>,</span></span><br><span class="line"><span class="javascript">            <span class="attr">lastName</span>:<span class="string">&#x27;san&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">computed</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">fullName</span>:&#123;</span></span><br><span class="line"><span class="javascript">                <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.lastName</span></span><br><span class="line"><span class="javascript">                &#125;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>简化后的写法如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span></span><br><span class="line">    姓：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;firstName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;lastName&quot;</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    全名：<span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123;fullName&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        <span class="attr">el</span>:<span class="string">&#x27;#root&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        <span class="attr">data</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="attr">firstName</span>:<span class="string">&#x27;zhang&#x27;</span>,</span></span><br><span class="line"><span class="javascript">            <span class="attr">lastName</span>:<span class="string">&#x27;san&#x27;</span></span></span><br><span class="line"><span class="javascript">        &#125;,</span></span><br><span class="line"><span class="javascript">        <span class="attr">computed</span>:&#123;</span></span><br><span class="line"><span class="javascript">            <span class="function"><span class="title">fullName</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&#x27;-&#x27;</span> + <span class="built_in">this</span>.lastName</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">    &#125;)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-7-监视"><a href="#1-7-监视" class="headerlink" title="1.7 监视"></a>1.7 监视</h2><h2 id="1-8-绑定样式"><a href="#1-8-绑定样式" class="headerlink" title="1.8 绑定样式"></a>1.8 绑定样式</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">JS基础大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-22 22:46:36" itemprop="dateCreated datePublished" datetime="2022-02-22T22:46:36+08:00">2022-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-12 20:16:13" itemprop="dateModified" datetime="2022-03-12T20:16:13+08:00">2022-03-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、JS基本操作"><a href="#一、JS基本操作" class="headerlink" title="一、JS基本操作"></a>一、JS基本操作</h1><h2 id="1-1-JS引入方式"><a href="#1-1-JS引入方式" class="headerlink" title="1.1 JS引入方式"></a>1.1 JS引入方式</h2><ul>
-<li>第一种：内部标签<code>&lt;script&gt;&lt;/script&gt;</code></li>
-<li>第二种：外部引入<code>&lt;script type=&quot;text/javascript&quot; src=&quot;./xxx.js&quot;&gt;&lt;/script&gt;</code></li>
-</ul>
-<h2 id="1-2-JS的6种数据类型"><a href="#1-2-JS的6种数据类型" class="headerlink" title="1.2 JS的6种数据类型"></a>1.2 JS的6种数据类型</h2><ul>
-<li>number</li>
-<li>string</li>
-<li>boolean</li>
-<li>object</li>
-<li>function  函数</li>
-</ul>
-<h2 id="1-3-JS特殊值"><a href="#1-3-JS特殊值" class="headerlink" title="1.3 JS特殊值"></a>1.3 JS特殊值</h2><ul>
-<li>Null      空值</li>
-<li>Undefine  未定义</li>
-<li>NAN       非数值</li>
-</ul>
-<h2 id="1-4-JS数组"><a href="#1-4-JS数组" class="headerlink" title="1.4 JS数组"></a>1.4 JS数组</h2><ul>
-<li>var 数组名 = [1,’abc’]</li>
-</ul>
-<h2 id="1-5-JS循环"><a href="#1-5-JS循环" class="headerlink" title="1.5 JS循环"></a>1.5 JS循环</h2><h3 id="1-5-1-for"><a href="#1-5-1-for" class="headerlink" title="1.5.1 for"></a>1.5.1 for</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(语句<span class="number">1</span>;语句<span class="number">2</span>;语句<span class="number">3</span>)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">for</span>(变量 <span class="keyword">in</span> 对象名/数组名)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-5-2-while"><a href="#1-5-2-while" class="headerlink" title="1.5.2 while"></a>1.5.2 while</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件)&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    代码块</span><br><span class="line">&#125;<span class="keyword">while</span>(条件);</span><br></pre></td></tr></table></figure>
-<h2 id="1-6-JS函数定义方式"><a href="#1-6-JS函数定义方式" class="headerlink" title="1.6 JS函数定义方式"></a>1.6 JS函数定义方式</h2><ul>
-<li>第一种：function 函数名(形参列表){函数体}</li>
-<li>第二种：var 函数名 = function(形参列表){函数体}</li>
-<li>函数不允许重载</li>
-<li>arguments：存放形参的数组，可以在函数体中直接调用，形参列表可以不写</li>
-</ul>
-<h2 id="1-7-JS对象的定义"><a href="#1-7-JS对象的定义" class="headerlink" title="1.7 JS对象的定义"></a>1.7 JS对象的定义</h2><h3 id="1-7-1-第一种"><a href="#1-7-1-第一种" class="headerlink" title="1.7.1 第一种"></a>1.7.1 第一种</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">变量名.属性名 = 值</span><br><span class="line">变量名.函数名 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">this</span>关键字可以在函数体中使用</span><br></pre></td></tr></table></figure>
-<h3 id="1-7-2-第二种"><a href="#1-7-2-第二种" class="headerlink" title="1.7.2 第二种"></a>1.7.2 第二种</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 对象名 = &#123;</span><br><span class="line">    属性名:值,</span><br><span class="line">    属性名:值,</span><br><span class="line">    函数名:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="1-7-3-对象的访问"><a href="#1-7-3-对象的访问" class="headerlink" title="1.7.3 对象的访问"></a>1.7.3 对象的访问</h3><ul>
-<li>对象名.属性名/函数名()</li>
-</ul>
-<h2 id="1-8-JS入口函数"><a href="#1-8-JS入口函数" class="headerlink" title="1.8 JS入口函数"></a>1.8 JS入口函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 开始编写JS代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="1-9-JS数组"><a href="#1-9-JS数组" class="headerlink" title="1.9 JS数组"></a>1.9 JS数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数组对象</span></span><br><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//读取不存在的索引，不会报错而会返回undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(arr[<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印数组长度，length表示最大的索引</span></span><br><span class="line"><span class="comment">//length可以修改，长了填充空值，短了截断</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.length)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="二、JS函数"><a href="#二、JS函数" class="headerlink" title="二、JS函数"></a>二、JS函数</h1><h2 id="2-1-函数的声明"><a href="#2-1-函数的声明" class="headerlink" title="2.1 函数的声明"></a>2.1 函数的声明</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params">形参列表</span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-函数对象"><a href="#2-2-函数对象" class="headerlink" title="2.2 函数对象"></a>2.2 函数对象</h2><ul>
-<li>在JS中，函数名就代表了函数对象</li>
-</ul>
-<h2 id="2-3-匿名函数"><a href="#2-3-匿名函数" class="headerlink" title="2.3 匿名函数"></a>2.3 匿名函数</h2><h3 id="2-3-1-语法"><a href="#2-3-1-语法" class="headerlink" title="2.3.1 语法"></a>2.3.1 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-4-立即执行函数"><a href="#2-4-立即执行函数" class="headerlink" title="2.4 立即执行函数"></a>2.4 立即执行函数</h2><h3 id="2-4-1-语法"><a href="#2-4-1-语法" class="headerlink" title="2.4.1 语法"></a>2.4.1 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">形参列表</span>)</span>&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;)(实参列表)</span><br></pre></td></tr></table></figure>
-<h3 id="2-4-2-特性"><a href="#2-4-2-特性" class="headerlink" title="2.4.2 特性"></a>2.4.2 特性</h3><ul>
-<li>立即执行函数只执行一次</li>
-</ul>
-<h2 id="2-5-回调函数"><a href="#2-5-回调函数" class="headerlink" title="2.5 回调函数"></a>2.5 回调函数</h2><h3 id="2-5-1-概念"><a href="#2-5-1-概念" class="headerlink" title="2.5.1 概念"></a>2.5.1 概念</h3><ul>
-<li>并非自己调用，而是由浏览器自动调用的函数</li>
-<li>一般是作为函数的参数进行使用，可以通过匿名函数的写法进行传递，也可以直接传递函数名</li>
-</ul>
-<h3 id="2-5-2-语法"><a href="#2-5-2-语法" class="headerlink" title="2.5.2 语法"></a>2.5.2 语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">注意到click方法中是一个函数而不是一个变量</span><br><span class="line"><span class="comment">//它就是回调函数</span></span><br><span class="line">$(<span class="string">&quot;#btn_1&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">&quot;Btn 1 Clicked&quot;</span>);</span><br><span class="line">&#125;);  </span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">click</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 它就是回调函数</span></span><br><span class="line">    alert(<span class="string">&quot;Btn 1 Clicked&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="string">&quot;#btn_1&quot;</span>).click(click);  </span><br></pre></td></tr></table></figure>
-<h1 id="三、JS对象"><a href="#三、JS对象" class="headerlink" title="三、JS对象"></a>三、JS对象</h1><h2 id="3-1-对象的分类"><a href="#3-1-对象的分类" class="headerlink" title="3.1 对象的分类"></a>3.1 对象的分类</h2><ul>
-<li>内建对象</li>
-<li>宿主对象</li>
-<li>自定义对象</li>
-</ul>
-<h2 id="3-2-对象的定义"><a href="#3-2-对象的定义" class="headerlink" title="3.2 对象的定义"></a>3.2 对象的定义</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">变量名.属性名 = 值</span><br><span class="line">变量名.函数名 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">this</span>关键字可以在函数体中使用</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">var</span> 对象名 = &#123;</span><br><span class="line">        属性名:值,</span><br><span class="line">        属性名:值,</span><br><span class="line">        函数名:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="3-3-this关键字"><a href="#3-3-this关键字" class="headerlink" title="3.3 this关键字"></a>3.3 this关键字</h2><ol>
-<li>当以函数的形式调用时，this是window</li>
-<li>当以方法的形式调用时，谁调用方法，this就是谁</li>
-<li>当以构造函数的形式调用时，this就是新创建的那个对象</li>
-</ol>
-<h2 id="3-4-构造函数"><a href="#3-4-构造函数" class="headerlink" title="3.4 构造函数"></a>3.4 构造函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,gender</span>)</span>&#123;</span><br><span class="line">    alert(<span class="built_in">this</span>);</span><br><span class="line">    <span class="built_in">this</span>.name = name;    <span class="comment">//添加属性name</span></span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">    <span class="built_in">this</span>.gender = gender;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> per = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
-<h3 id="3-4-1-执行流程"><a href="#3-4-1-执行流程" class="headerlink" title="3.4.1 执行流程"></a>3.4.1 执行流程</h3><ol>
-<li>立刻创建一个新的对象</li>
-<li>将新建的对象设置为函数中的this，在构造函数中可以使用this来引用新建的对象</li>
-<li>执行函数中的代码</li>
-<li>将新建的对象作为返回值返回</li>
-</ol>
-<h2 id="3-5-原型对象"><a href="#3-5-原型对象" class="headerlink" title="3.5 原型对象"></a>3.5 原型对象</h2><img src="/2022/02/22/js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/prototype.png" class="" title="image">
-<ul>
-<li>JS中万物皆对象</li>
-<li>每个对象都具有<strong>proto</strong>，用于指向其构造函数的原型，这也保证了实例能够访问在构造函数原型中定义的属性和方法</li>
-<li>方法是一个特殊的对象（可以把方法的声明当作构造函数），它同时具有<strong>proto</strong>指针，以及属性prototype</li>
-</ul>
-<h1 id="四、Dom操作"><a href="#四、Dom操作" class="headerlink" title="四、Dom操作"></a>四、Dom操作</h1><h2 id="4-1-操作元素节点"><a href="#4-1-操作元素节点" class="headerlink" title="4.1 操作元素节点"></a>4.1 操作元素节点</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">函数</th>
-<th style="text-align:center">解释</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">getElementById()</td>
-<td style="text-align:center">通过id属性获取一个元素节点对象</td>
-</tr>
-<tr>
-<td style="text-align:center">getElementsByTagName()</td>
-<td style="text-align:center">通过标签名获取一组元素节点对象</td>
-</tr>
-<tr>
-<td style="text-align:center">getElementsByName()</td>
-<td style="text-align:center">通过name属性获取一组元素节点对象</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>获取到元素对象/对象数组后，这些对象包含以下属性<ul>
-<li>对象名.innerHtml</li>
-<li>对象名.id</li>
-<li>对象名.name</li>
-<li>对象名.value</li>
-<li>对象名.className</li>
-<li>对象名.时间名=function(){}</li>
-</ul>
-</li>
-</ul>
-<h1 id="五、JS事件"><a href="#五、JS事件" class="headerlink" title="五、JS事件"></a>五、JS事件</h1><h2 id="5-1-事件的概念"><a href="#5-1-事件的概念" class="headerlink" title="5.1 事件的概念"></a>5.1 事件的概念</h2><ul>
-<li>电脑输入设备与页面进行交互的响应</li>
-</ul>
-<h2 id="5-2-常用的事件"><a href="#5-2-常用的事件" class="headerlink" title="5.2 常用的事件"></a>5.2 常用的事件</h2><ul>
-<li>onload：加载完成事件，页面加载完成之后，常用于做页面js代码初始化操作</li>
-<li>onclick：单击事件，常用于按钮点击的响应操作</li>
-<li>onblur：失去焦点事件，常用于输入框失去焦点后验证其输入内容是否合法</li>
-<li>onchange：内容发生改变事件，常用于下拉列表和输入框内容发生改变后操作</li>
-<li>onsubmit：表单提交事件，常用于表单提交前，验证所有表单是否合法</li>
-</ul>
-<h2 id="5-3-事件的注册"><a href="#5-3-事件的注册" class="headerlink" title="5.3 事件的注册"></a>5.3 事件的注册</h2><h3 id="5-3-1-静态注册"><a href="#5-3-1-静态注册" class="headerlink" title="5.3.1 静态注册"></a>5.3.1 静态注册</h3><ul>
-<li>通过html标签的事件属性直接赋予事件响应后的代码</li>
-</ul>
-<h3 id="5-3-2-动态注册"><a href="#5-3-2-动态注册" class="headerlink" title="5.3.2 动态注册"></a>5.3.2 动态注册</h3><ul>
-<li>是指先通过js代码得到标签的dom对象，然后再通过：dom对象.事件名=function(){}这种形式赋予事件响应后的代码</li>
-</ul>
-<h3 id="5-3-3-步骤"><a href="#5-3-3-步骤" class="headerlink" title="5.3.3 步骤"></a>5.3.3 步骤</h3><ol>
-<li>获取标签对象</li>
-<li>标签对象.事件名=function(){}</li>
-</ol>
-<h2 id="5-4-事件对象event"><a href="#5-4-事件对象event" class="headerlink" title="5.4 事件对象event"></a>5.4 事件对象event</h2><ul>
-<li>在给元素绑定事件时，写上函数参数event</li>
-<li>使用此event可以在触发事件时达到某些效果</li>
-<li>为兼容IE8，函数体中可以写上此语句：event = event||window.event;</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">box1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;     <span class="comment">//参数名一般写做event或e</span></span><br><span class="line">    <span class="keyword">if</span>(event.target.className == <span class="string">&quot;link&quot;</span>)&#123;   <span class="comment">//判断子元素中是否有a链接元素</span></span><br><span class="line">        alert(<span class="string">&quot;我是box1的单击事件&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-5-事件的冒泡"><a href="#5-5-事件的冒泡" class="headerlink" title="5.5 事件的冒泡"></a>5.5 事件的冒泡</h2><ul>
-<li>给覆盖在父元素上的子元素都绑定上事件，点击子元素时，会先触发子元素的事件，然后再触发父元素的事件</li>
-<li>event.cancelBubble = true;可以用来取消父元素的冒泡</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box1 = <span class="built_in">document</span>.getElementById(<span class="string">&quot;box1&quot;</span>);</span><br><span class="line">box1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">//回调函数，无需自己调用</span></span><br><span class="line">    alert(<span class="string">&quot;我是div的单击响应函数&quot;</span>);</span><br><span class="line">    event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="5-6-事件的委派"><a href="#5-6-事件的委派" class="headerlink" title="5.6 事件的委派"></a>5.6 事件的委派</h2><ul>
-<li>给各子元素共同的祖先元素绑定事件，这样后代元素上的事件触发时，则会统一触发祖先绑定的事件</li>
-<li>这样做无需一个个给子元素单独绑定事件，比较方便</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsById(<span class="string">&quot;ul&quot;</span>);</span></span><br><span class="line"><span class="javascript">    ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        alert(<span class="string">&quot;我是ul的单击事件&quot;</span>)</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">    </span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;ul&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2733,7 +3089,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2746,7 +3102,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">98</span>
+        <span class="site-state-item-count">99</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2763,7 +3119,7 @@
 			<h3 class="widget-title">Tag Cloud</h3>
 			<div id="myCanvasContainer" class="widget tagcloud">
 				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eureka/" rel="tag">Eureka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KEPServer/" rel="tag">KEPServer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KGAT%E6%A8%A1%E5%9E%8B/" rel="tag">KGAT模型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Milo/" rel="tag">Milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPC-UA/" rel="tag">OPC UA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpcUa-Client/" rel="tag">OpcUa Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milo/" rel="tag">milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%94%E5%8D%81%E9%9F%B3%E5%9B%BE/" rel="tag">五十音图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">人际关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag">企业</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%9A%E4%BA%8B/" rel="tag">做事</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%94%90%E8%AF%97%E5%AE%8B%E8%AF%8D/" rel="tag">唐诗宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D/" rel="tag">宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D%E6%A0%BC%E5%BC%8F/" rel="tag">宋词格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E7%90%86/" rel="tag">心理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E6%B3%A8/" rel="tag">文本标注</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/" rel="tag">曲式结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" rel="tag">研究方向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E/" rel="tag">经济</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%BD%E5%8A%9B%E9%94%BB%E7%82%BC/" rel="tag">能力锻炼</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A7%E5%B8%81/" rel="tag">货币</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%E4%BD%9C%E5%93%81/" rel="tag">音乐作品</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eureka/" rel="tag">Eureka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM%E8%B0%83%E4%BC%98/" rel="tag">JVM调优</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KEPServer/" rel="tag">KEPServer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KGAT%E6%A8%A1%E5%9E%8B/" rel="tag">KGAT模型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Milo/" rel="tag">Milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPC-UA/" rel="tag">OPC UA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpcUa-Client/" rel="tag">OpcUa Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milo/" rel="tag">milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%94%E5%8D%81%E9%9F%B3%E5%9B%BE/" rel="tag">五十音图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">人际关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag">企业</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%9A%E4%BA%8B/" rel="tag">做事</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%94%90%E8%AF%97%E5%AE%8B%E8%AF%8D/" rel="tag">唐诗宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D/" rel="tag">宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D%E6%A0%BC%E5%BC%8F/" rel="tag">宋词格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E7%90%86/" rel="tag">心理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E6%B3%A8/" rel="tag">文本标注</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/" rel="tag">曲式结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" rel="tag">研究方向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E/" rel="tag">经济</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%BD%E5%8A%9B%E9%94%BB%E7%82%BC/" rel="tag">能力锻炼</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A7%E5%B8%81/" rel="tag">货币</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%E4%BD%9C%E5%93%81/" rel="tag">音乐作品</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
 				</canvas>
 			</div>
 		</div>
