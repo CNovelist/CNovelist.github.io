@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-07 14:41:14" itemprop="dateModified" datetime="2022-09-07T14:41:14+08:00">2022-09-07</time>
+                <time title="修改时间：2022-09-13 18:14:26" itemprop="dateModified" datetime="2022-09-13T18:14:26+08:00">2022-09-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -409,46 +409,19 @@
 <li>年轻代中的S0和S1分别表示幸存者一区和幸存者二区，程序运行时只会选择其中一个存放数据</li>
 </ul>
 <img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/heap.png" class="" title="head">
-<h3 id="5-2-1-堆空间大小设置"><a href="#5-2-1-堆空间大小设置" class="headerlink" title="5.2.1 堆空间大小设置"></a>5.2.1 堆空间大小设置</h3><ul>
-<li><strong>“-Xms”</strong>用于表示堆区（年轻代/老年代）的<strong>起始内存</strong>，等价于-XX:InitialHeapSize，默认为物理内存的1/64(&lt;1GB)，默认单位是字节，也可以使用单位k、m、g<ul>
-<li>-X：是jvm运行参数</li>
-<li>-ms：是memory start</li>
-</ul>
-</li>
-<li><strong>“-Xmx”</strong>用于表示堆区（年轻代/老年代）的<strong>最大内存</strong>，等价于-XX:MaxHeapSize</li>
-<li>例如：-Xms600m -Xmx600m</li>
-<li>一旦堆区中的内存大小超过“-Xmx”指定的最大内存时，就会抛出<strong>OOM异常</strong></li>
-<li>通常会将“-Xms”和“-Xmx”两个参数<strong>配置相同的值</strong>，其目的是为了能够在Java垃圾回收机制清理完堆区后不需要重新分隔计算堆区的大小，从而提高性能</li>
-<li><strong>默认情况</strong>下，<ul>
-<li>初始内存大小：物理电脑内存大小/64</li>
-<li>最带内存大小：物理电脑内存大小/4</li>
-</ul>
-</li>
-<li><p>查看设置的参数命令：</p>
-<ul>
-<li>方式一（cmd）：jps（查看java进程信息）或者jstat -gc 进程id（查看堆区分配信息）</li>
-<li>方式二（java执行参数）：-XX:PrintGCDetails</li>
-</ul>
-</li>
-<li><p>“-Xmn”：新生代的内存空间大小，注意：此处的大小是（eden+ 2 survivor space)。与jmap -heap中显示的New gen是不同的。整个堆大小=新生代大小 + 老生代大小 + 永久代大小。在保证堆大小不变的情况下，增大新生代后,将会减小老生代大小。此值对系统性能影响较大，Sun官方推荐配置为整个堆的3/8。</p>
-</li>
-<li>“-XX:SurvivorRatio”：新生代中Eden区域与Survivor区域的容量比值，默认值为8。两个Survivor区与一个Eden区的比值为2:8,一个Survivor区占整个年轻代的1/10。</li>
-<li>“-Xss”：每个线程的堆栈大小。JDK5.0以后每个线程堆栈大小为1M,以前每个线程堆栈大小为256K。应根据应用的线程所需内存大小进行适当调整。在相同物理内存下,减小这个值能生成更多的线程。但是操作系统对一个进程内的线程数还是有限制的，不能无限生成，经验值在3000~5000左右。一般小的应用， 如果栈不是很深， 应该是128k够用的，大的应用建议使用256k。这个选项对性能影响比较大，需要严格的测试。和threadstacksize选项解释很类似,官方文档似乎没有解释,在论坛中有这样一句话:”-Xss is translated in a VM flag named ThreadStackSize”一般设置这个值就可以了。</li>
-<li>”-XX:PermSize“：设置永久代(perm gen)初始值。默认值为物理内存的1/64。</li>
-<li>“-XX:MaxPermSize”：设置持久代最大值。物理内存的1/4。</li>
-</ul>
-<h3 id="5-2-2-新生代"><a href="#5-2-2-新生代" class="headerlink" title="5.2.2 新生代"></a>5.2.2 新生代</h3><p>新生成的对象优先存放在新生区中，新生区对象朝生夕死，存活率很低，在新生代中，常规应用进行一次垃圾收集一般可以回收70% ~ 95% 的空间，回收效率很高</p>
-<p>HotSpot将新生区划分为三块，一块较大的Eden（伊甸）空间和两块较小的Survivor（幸存者）空间，默认比例为8：1：1</p>
+<h3 id="5-2-1-新生代"><a href="#5-2-1-新生代" class="headerlink" title="5.2.1 新生代"></a>5.2.1 新生代</h3><p>新生成的对象优先存放在新生区中，新生区对象朝生夕死，存活率很低，在新生代中，常规应用进行一次垃圾收集一般可以回收70% ~ 95% 的空间，回收效率很高，<strong>默认的新生代与老年代的比例为1：2</strong></p>
+<p>HotSpot将新生区划分为三块，一块较大的Eden（伊甸）空间和两块较小的Survivor（幸存者）空间，<strong>默认比例为8：1：1</strong></p>
 <p>划分的目的是因为HotSpot采用复制算法来回收新生代，设置这个比例是为了充分利用内存空间，减少浪费。新生成的对象在Eden区分配（大对象除外，大对象直接进入老年代），当Eden区没有足够的空间进行分配时，虚拟机将发起一次Minor GC</p>
-<h3 id="5-2-3-老年代"><a href="#5-2-3-老年代" class="headerlink" title="5.2.3 老年代"></a>5.2.3 老年代</h3><p>在新生代中经历了多次（具体看虚拟机配置的阀值）GC后仍然存活下来的对象会进入老年代中。老年代中的对象生命周期较长，存活率比较高，在老年代中进行GC的频率相对而言较低，而且回收的速度也比较慢。</p>
-<h3 id="5-2-4-永久代-元空间"><a href="#5-2-4-永久代-元空间" class="headerlink" title="5.2.4 永久代/元空间"></a>5.2.4 永久代/元空间</h3><p>永久区存储类信息、常量、静态变量、即时编译器编译后的代码等数据，对这一区域而言，Java虚拟机规范指出可以不进行垃圾收集，一般而言不会进行垃圾回收。</p>
+<h3 id="5-2-2-老年代"><a href="#5-2-2-老年代" class="headerlink" title="5.2.2 老年代"></a>5.2.2 老年代</h3><p>在新生代中经历了多次（具体看虚拟机配置的阀值）GC后仍然存活下来的对象会进入老年代中。老年代中的对象生命周期较长，存活率比较高，在老年代中进行GC的频率相对而言较低，而且回收的速度也比较慢。</p>
+<h3 id="5-2-3-永久代-元空间"><a href="#5-2-3-永久代-元空间" class="headerlink" title="5.2.3 永久代/元空间"></a>5.2.3 永久代/元空间</h3><p>永久区存储类信息、常量、静态变量、即时编译器编译后的代码等数据，对这一区域而言，Java虚拟机规范指出可以不进行垃圾收集，一般而言不会进行垃圾回收。</p>
 <ul>
 <li>JDK1.6之前，永久代，常量池在方法区</li>
 <li>JDK1.7,永久代，但是慢慢退化了，去永久代，常量池在堆中</li>
 <li>JDK1.8之后，无永久代，常量池在元空间</li>
 </ul>
 <p>这个区域常驻内存的，用来存放JDK自身携带的Class对象，Interface元数据，存储的是Java运行的一些环境或者类信息，这个区域不存在垃圾回收。关闭VM虚拟机就会释放这个区域的内存。</p>
-<h2 id="5-3-对象分配过程"><a href="#5-3-对象分配过程" class="headerlink" title="5.3 对象分配过程"></a>5.3 对象分配过程</h2><h2 id="5-4-GC垃圾回收"><a href="#5-4-GC垃圾回收" class="headerlink" title="5.4 GC垃圾回收"></a>5.4 GC垃圾回收</h2><p>JVM在进行Gc时，并非每次都对新生代、老年代、方法区一起回收的,大部分时候回收的都是指新生代。</p>
+<h2 id="5-3-对象分配过程"><a href="#5-3-对象分配过程" class="headerlink" title="5.3 对象分配过程"></a>5.3 对象分配过程</h2><img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/memory.png" class="" title="memory">
+<h2 id="5-4-GC垃圾回收"><a href="#5-4-GC垃圾回收" class="headerlink" title="5.4 GC垃圾回收"></a>5.4 GC垃圾回收</h2><p>JVM在进行Gc时，并非每次都对新生代、老年代、方法区一起回收的,大部分时候回收的都是指新生代。</p>
 <p>针对HotSpot VM的实现，它里面的GC按照回收区域又分为两大种类型:一种是部分收集(Partial GC）,一种是整堆收集（Full GC)</p>
 <ul>
 <li>部分收集：不是完整收集整个Java堆的垃圾收集。其中又分为:<ul>
