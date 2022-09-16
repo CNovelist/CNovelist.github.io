@@ -6643,6 +6643,16 @@
 </ul>
 <p>这个区域常驻内存的，用来存放JDK自身携带的Class对象，Interface元数据，存储的是Java运行的一些环境或者类信息，这个区域不存在垃圾回收。关闭VM虚拟机就会释放这个区域的内存。</p>
 <h2 id="5-3-对象分配过程"><a href="#5-3-对象分配过程" class="headerlink" title="5.3 对象分配过程"></a>5.3 对象分配过程</h2><img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/memory.png" class="" title="memory">
+<h3 id="5-3-1-TLAB"><a href="#5-3-1-TLAB" class="headerlink" title="5.3.1 TLAB"></a>5.3.1 TLAB</h3><p>TLAB全称为Thread Local Allocation Buffer，由于以下原因，从而导致TLAB的产生</p>
+<ul>
+<li>堆区是<strong>线程共享区域</strong>，任何线程都可以访问到堆区中的共享数据</li>
+<li>由于对象实例的创建在JVM中非常频繁，因此在并发环境下从堆区中划分内<br>存空间是线程不安全的</li>
+<li>为避免多个线程操作同一地址，需要使用加锁等机制，进而影响分配速度。</li>
+</ul>
+<p>从内存模型而不是垃圾收集的角度，对Eden区域继续进行划分，<strong>JVM为每个线程分配了一个私有缓存区域</strong>，它包含在Eden空间内。</p>
+<p>多线程同时分配内存时，使用TLAB可以避免一系列的非线程安全问题，同时还能够提升内存分配的吞吐量，因此我们可以将这种内存分配方式称之为<strong>快速分配策略</strong>。</p>
+<img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/tlab.png" class="" title="tlab">
+<p>现在new一个对象，然后TLAB分配，如果TLAB空间够用，那么就对象实例化，如果不够用就只能用Eden公共的部分，如果还不够用，那么就触发GC</p>
 <h2 id="5-4-GC垃圾回收"><a href="#5-4-GC垃圾回收" class="headerlink" title="5.4 GC垃圾回收"></a>5.4 GC垃圾回收</h2><p>JVM在进行Gc时，并非每次都对新生代、老年代、方法区一起回收的,大部分时候回收的都是指新生代。</p>
 <p>针对HotSpot VM的实现，它里面的GC按照回收区域又分为两大种类型:一种是部分收集(Partial GC）,一种是整堆收集（Full GC)</p>
 <ul>
@@ -7512,7 +7522,7 @@
     <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><h2 id="1-1-基本术语"><a href="#1-1-基本术语" class="headerlink" title="1.1 基本术语"></a>1.1 基本术语</h2><p>莫扎特《A大调奏鸣曲》的每小节就是一个乐汇，两个乐汇组成一个乐节，两个乐节构成一个句，两个乐句构成一个乐段</p>
 <ul>
 <li>音乐材料：不同的乐器音响效果</li>
-<li>乐汇：是音乐语言的基本结构单位，至少需要一个逻辑强拍和一个逻辑弱拍，因此最少需要两个音</li>
+<li>乐汇：是音乐语言的基本结构单位，至少需要一个逻辑强拍和一个逻辑弱拍，因此最少需要两个音，可以理解为语言中的词汇</li>
 <li>乐节：是音乐语言的基本组织单位。一般由两个乐汇构成，是乐段内部介于乐句与乐汇之间的结构段落。</li>
 <li>乐句：是音乐语言的基本表达单位，是构成一首乐曲的一个具有特性的基本结构单位，</li>
 <li>乐段：是音乐形象的具体表现单位</li>
@@ -7521,7 +7531,29 @@
 <li>动机：是音乐主题最具代表性的小单位，是主题或乐曲发展的胚芽，具有一定的独立表现意义，可能是一个节奏型，一个旋律走向，肯定很短，可以衔接不同的乐段作为同一个曲子</li>
 <li>发展：音乐律动的进行过程</li>
 </ul>
-<h2 id="1-2-音乐材料与发展手法"><a href="#1-2-音乐材料与发展手法" class="headerlink" title="1.2 音乐材料与发展手法"></a>1.2 音乐材料与发展手法</h2><h3 id="1-2-1-重复"><a href="#1-2-1-重复" class="headerlink" title="1.2.1 重复"></a>1.2.1 重复</h3><h3 id="1-2-2-变奏"><a href="#1-2-2-变奏" class="headerlink" title="1.2.2 变奏"></a>1.2.2 变奏</h3><h3 id="1-2-3-展开"><a href="#1-2-3-展开" class="headerlink" title="1.2.3 展开"></a>1.2.3 展开</h3><h3 id="1-2-4-派生对比"><a href="#1-2-4-派生对比" class="headerlink" title="1.2.4 派生对比"></a>1.2.4 派生对比</h3><h3 id="1-2-5-并置对比"><a href="#1-2-5-并置对比" class="headerlink" title="1.2.5 并置对比"></a>1.2.5 并置对比</h3><h3 id="1-2-6-模仿"><a href="#1-2-6-模仿" class="headerlink" title="1.2.6 模仿"></a>1.2.6 模仿</h3><h3 id="1-2-7-摸进"><a href="#1-2-7-摸进" class="headerlink" title="1.2.7 摸进"></a>1.2.7 摸进</h3><h3 id="1-2-8-分裂"><a href="#1-2-8-分裂" class="headerlink" title="1.2.8 分裂"></a>1.2.8 分裂</h3><h3 id="1-2-9-时值的压缩与扩大"><a href="#1-2-9-时值的压缩与扩大" class="headerlink" title="1.2.9 时值的压缩与扩大"></a>1.2.9 时值的压缩与扩大</h3><h1 id="二、一部曲式"><a href="#二、一部曲式" class="headerlink" title="二、一部曲式"></a>二、一部曲式</h1><h1 id="三、单二部曲式"><a href="#三、单二部曲式" class="headerlink" title="三、单二部曲式"></a>三、单二部曲式</h1><h1 id="四、单三部曲式"><a href="#四、单三部曲式" class="headerlink" title="四、单三部曲式"></a>四、单三部曲式</h1><h1 id="五、复散步曲式"><a href="#五、复散步曲式" class="headerlink" title="五、复散步曲式"></a>五、复散步曲式</h1><h1 id="六、变奏曲式"><a href="#六、变奏曲式" class="headerlink" title="六、变奏曲式"></a>六、变奏曲式</h1><h1 id="七、回旋曲式"><a href="#七、回旋曲式" class="headerlink" title="七、回旋曲式"></a>七、回旋曲式</h1><h1 id="八、奏鸣曲式"><a href="#八、奏鸣曲式" class="headerlink" title="八、奏鸣曲式"></a>八、奏鸣曲式</h1><h1 id="九、回旋奏鸣曲式"><a href="#九、回旋奏鸣曲式" class="headerlink" title="九、回旋奏鸣曲式"></a>九、回旋奏鸣曲式</h1>]]></content>
+<h2 id="1-2-音乐材料与发展手法"><a href="#1-2-音乐材料与发展手法" class="headerlink" title="1.2 音乐材料与发展手法"></a>1.2 音乐材料与发展手法</h2><ul>
+<li><p>重复</p>
+</li>
+<li><p>变奏</p>
+</li>
+<li><p>展开</p>
+</li>
+<li><p>派生对比</p>
+</li>
+<li><p>并置对比</p>
+</li>
+<li><p>模仿</p>
+</li>
+<li><p>摸进</p>
+</li>
+<li><p>分裂</p>
+</li>
+<li><p>时值的压缩与扩大</p>
+</li>
+</ul>
+<h1 id="二、一部曲式"><a href="#二、一部曲式" class="headerlink" title="二、一部曲式"></a>二、一部曲式</h1><p>一部曲式就是乐段</p>
+<p>一部曲式：一部曲式是完整的曲式中规模最小的结构。可以由一个乐句、两个乐句、三个及三个以上的乐句组成。一般有比较明显的终止式，能够表达一个完整或相对完整的乐思</p>
+<h1 id="三、单二部曲式"><a href="#三、单二部曲式" class="headerlink" title="三、单二部曲式"></a>三、单二部曲式</h1><h1 id="四、单三部曲式"><a href="#四、单三部曲式" class="headerlink" title="四、单三部曲式"></a>四、单三部曲式</h1><h1 id="五、复散步曲式"><a href="#五、复散步曲式" class="headerlink" title="五、复散步曲式"></a>五、复散步曲式</h1><h1 id="六、变奏曲式"><a href="#六、变奏曲式" class="headerlink" title="六、变奏曲式"></a>六、变奏曲式</h1><h1 id="七、回旋曲式"><a href="#七、回旋曲式" class="headerlink" title="七、回旋曲式"></a>七、回旋曲式</h1><h1 id="八、奏鸣曲式"><a href="#八、奏鸣曲式" class="headerlink" title="八、奏鸣曲式"></a>八、奏鸣曲式</h1><h1 id="九、回旋奏鸣曲式"><a href="#九、回旋奏鸣曲式" class="headerlink" title="九、回旋奏鸣曲式"></a>九、回旋奏鸣曲式</h1>]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
