@@ -6713,7 +6713,70 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-5-栈上分配"><a href="#5-5-栈上分配" class="headerlink" title="5.5 栈上分配"></a>5.5 栈上分配</h2><h2 id="5-6-代码优化"><a href="#5-6-代码优化" class="headerlink" title="5.6 代码优化"></a>5.6 代码优化</h2>]]></content>
+<h2 id="5-5-栈上分配"><a href="#5-5-栈上分配" class="headerlink" title="5.5 栈上分配"></a>5.5 栈上分配</h2><h2 id="5-6-代码优化"><a href="#5-6-代码优化" class="headerlink" title="5.6 代码优化"></a>5.6 代码优化</h2><h1 id="六、方法区"><a href="#六、方法区" class="headerlink" title="六、方法区"></a>六、方法区</h1><h2 id="6-1-概述"><a href="#6-1-概述" class="headerlink" title="6.1 概述"></a>6.1 概述</h2><p>《Java虚拟机规范》中明确说明:”尽管所有的方法区在逻辑上是属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。”但对于HotSpotJVM而言，方法区还有一个别名叫做Non-Heap(非堆)，目的就是要和堆分开。</p>
+<p>方法区具有以下特点：</p>
+<ul>
+<li>方法区（(Method Area）与Java堆一样，是各个<strong>线程共享</strong>的内存区域。</li>
+<li>方法区在JVM启动的时候被创建,并且它的实际的物理内存空间中和Java堆区一样都可以是不连续的。</li>
+<li>方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。</li>
+<li>方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误: java.lang.outOfMemoryError</li>
+<li>java.lang. outOfMemoryError: PermGen space或者java.lang. outOfMemoryError: Metaspace<ul>
+<li>加载大量的第三方的Jar包</li>
+<li>Tomcat部署的工程太多</li>
+<li>大量动态的生成反射类</li>
+</ul>
+</li>
+<li>关闭JVM就会释放这个区域的内存。</li>
+</ul>
+<p>本质上，<strong>永久代、元空间都是对方法区的实现</strong>，不能直接对其画等号，因为还有其他的方法区实现方式，永久代和永久代存在本质区别：</p>
+<ul>
+<li>元空间不在虚拟机设置的内存中，而是使用本地内存</li>
+</ul>
+<img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/method.png" class="" title="method">
+<h2 id="6-2-方法区大小设置"><a href="#6-2-方法区大小设置" class="headerlink" title="6.2 方法区大小设置"></a>6.2 方法区大小设置</h2><ul>
+<li>jdk7及以前：<ul>
+<li>通过-XX:PermSize来设置永久代初始分配空间。默认值是20.75M</li>
+<li>-XX:MaxPermSize来设定永久代最大可分配空间。32位机器默认是64M，64位机器模式是82M</li>
+<li>当JV8M加载的类信息容量超过了这个值，会报异常outOfMemoryError:PermGen space。</li>
+</ul>
+</li>
+<li>jdk8及以后：<ul>
+<li>元数据区大小可以使用参数-XX:Metaspacesize和-XX:MaxMetaspaceSize指定，替代上述原有的两个参数。</li>
+<li>默认值依赖于平台。windows下，-XX:MetaspaceSize是21M，-XX:MaxMetaspacesize 的值是-1，即没有限制。</li>
+<li>与永久代不同，如果不指定大小，默认情况下，虚拟机会耗尽所有的可用系统内存。如果元数据区发生溢出，虚拟机一样会抛出异常outOfMemoryError: Metaspace</li>
+<li>-XX:MetaspaceSize:设置初始的元空间大小。对于一个64位的服务器端JVM来说，其默认的-XX:Metaspacesize值为21MB。这就是初始的<strong>高水位线</strong>，一旦触及这个水位线，Full GC将会被触发并卸载没用的类（即这些类对应的类加载器不再存活）,然后这个高水位线将会重置。新的高水位线的值取决于Gc后释放了多少元空间。如果释放的空间不足，那么在不超过MaxMetaspacesize时，适当提高该值。如果释放空间过多，则适当降低该值。</li>
+<li>如果初始化的高水位线设置过低，上述高水位线调整情况会发生很多次。通过垃圾回收器的日志可以观察到Full GC多次调用。为了避免频繁地GC ，建议将-XX:Metaspacesize设置为一个相对较高的值。</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-3-内部结构"><a href="#6-3-内部结构" class="headerlink" title="6.3 内部结构"></a>6.3 内部结构</h2><img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/methodinner.png" class="" title="methodinner">
+<h3 id="6-3-1-存放内容"><a href="#6-3-1-存放内容" class="headerlink" title="6.3.1 存放内容"></a>6.3.1 存放内容</h3><ul>
+<li>类型信息<ul>
+<li>这个类型的完整有效名称（全名=包名.类名)</li>
+<li>这个类型直接父类的完整有效名(对于interface或是java.lang.0bject，都没有父类)</li>
+<li>这个类型的修饰符(public, abstract,final的某个子集)</li>
+<li>这个类型直接接口的一个有序列表</li>
+</ul>
+</li>
+<li>域信息（成员变量）<ul>
+<li>JVM必须在方法区中保存类型的所有域的相关信息以及域的声明顺序。</li>
+<li>域的相关信息包括:域名称、域类型、域修饰符(public, private,protected,static,final, volatile, transient的某个子集)</li>
+</ul>
+</li>
+<li>方法信息<ul>
+<li>方法名称</li>
+<li>方法的返回类型(或void)·方法参数的数量和类型(按顺序)</li>
+<li>方法的修饰符(public, private,protected,static, final,synchronized,native,abstract的一个子集)</li>
+<li>方法的字节码(bytecodes)、操作数栈、局部变量表及大小(abstract和native方法除外)</li>
+<li>异常表(abstract和native方法除外)<ul>
+<li>每个异常处理的开始位置、结束位置、代码处理在程序计数器中的偏移地址、被捕获的异常类的常量池索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>静态变量、常量、即时编译器编译后的代码缓存</li>
+</ul>
+]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -6975,176 +7038,6 @@
       </categories>
       <tags>
         <tag>文本标注</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringCloud服务注册（一）</title>
-    <url>/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="一、Eureka"><a href="#一、Eureka" class="headerlink" title="一、Eureka"></a>一、Eureka</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>服务提供者越多就需要用到C/S架构来对服务消费者和服务提供者进行统一管理</p>
-<p><strong>服务消费者</strong>：可以通过eureka注册中心获取到服务提供者的信息，经过负载均衡选择后即可进行远程调用</p>
-<p><strong>服务注册中心</strong>：存放服务消费者和服务提供者的信息，并进行管理，注册中心也可以有多个</p>
-<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/eureka.png" class="" title="eureka">
-<h2 id="1-2-环境搭建"><a href="#1-2-环境搭建" class="headerlink" title="1.2 环境搭建"></a>1.2 环境搭建</h2><h3 id="1-2-1-服务端"><a href="#1-2-1-服务端" class="headerlink" title="1.2.1 服务端"></a>1.2.1 服务端</h3><p>创建Maven项目作为Eureka服务注册中心（服务端），命名为cloud-eureka-server7001</p>
-<p>pom文件依赖配置如下：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cloud-api-commons<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>yml配置如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7001</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">localhost</span> <span class="comment">#eureka服务端的实例名称</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment">#设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/</span></span><br></pre></td></tr></table></figure>
-<p>主启动类中需要添加EnableEurekaServer注解如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.springcloud;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EurekaMain7001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(EurekaMain7001.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-2-客户端"><a href="#1-2-2-客户端" class="headerlink" title="1.2.2 客户端"></a>1.2.2 客户端</h3><p>客户端要做的就是将微服务注册进eureka中</p>
-<p>以cloud-provider-payment8001工程为例，eureka依赖包导入如下：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>yml配置文件如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">true</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">true</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment">#设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:7001/eureka/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloud-order-service</span>	<span class="comment">#注册进eureka的服务名称</span></span><br></pre></td></tr></table></figure>
-<p>主启动类添加注解@EnableEurekaClient</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentMain8001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(OrderMain8080.class,args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这些配置完成之后即可运行，并访问<a href="http://localhost:7001/，访问成功后就可以在页面中看到服务的注册信息">http://localhost:7001/，访问成功后就可以在页面中看到服务的注册信息</a></p>
-<p>同理，其他服务的注册步骤也是一样的，导包-&gt;yml配置-&gt;主启动类注解</p>
-<h2 id="1-3-Eureka集群构建"><a href="#1-3-Eureka集群构建" class="headerlink" title="1.3 Eureka集群构建"></a>1.3 Eureka集群构建</h2><p>如果Eureka注册中心只有一个，并且发生故障的话，会导致整个服务环境不可用，所以要构建Eureka集群</p>
-<p>多个注册中心要满足规定：<strong>互相注册，相互守望</strong>。但对外是一个整体</p>
-<p>注：负载均衡是<strong>对某一个微服务中的不同端口进行一种选择调用</strong>的机制，默认的是<strong>轮询</strong>，即在通过消费者端8080访问支付服务时会先访问某一端口，如8001，那么下次再进行访问时就会访问8002端口，依次循环下去</p>
-<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/jiqun.png" class="" title="jiqun">
-<h3 id="1-3-1-注册中心集群构建"><a href="#1-3-1-注册中心集群构建" class="headerlink" title="1.3.1 注册中心集群构建"></a>1.3.1 注册中心集群构建</h3><ul>
-<li>构建多个注册中心maven项目，取不同端口号，如7001、7002、7003</li>
-<li>修改yml配置，满足<strong>互相注册，相互守望</strong>的规则</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7001</span>	<span class="comment"># 端口号为7001的注册中心</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">eureka7001.com</span> <span class="comment">#eureka服务端的实例名称，集群要保证每个注册中心名字不同</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment"># 互相注册，注意下面的地址端口</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7002.com:7002/eureka/</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>同时微服务的yml配置也需要修改</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8001</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">context-path:</span> <span class="string">/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">true</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">true</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment"># 多个注册中心地址都要写上</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-3-2-微服务集群构建"><a href="#1-3-2-微服务集群构建" class="headerlink" title="1.3.2 微服务集群构建"></a>1.3.2 微服务集群构建</h3><ul>
-<li>构建多个相同模块的微服务项目，取不同的端口号，如8001、8002、8003</li>
-<li>消费者端的RestTemplate服务调用地址修改为微服务的名称<ul>
-<li>“<a href="http://CLOUD-PAYMENT-SERVICE">http://CLOUD-PAYMENT-SERVICE</a>“</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// private static final String PAYMENT_URL = &quot;http://localhost:8001&quot;;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PAYMENT_URL = <span class="string">&quot;http://CLOUD-PAYMENT-SERVICE&quot;</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>在消费者端的配置类中，为RestTemplate添加负载均衡注解@LoadBalanced</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@LoadBalanced</span> <span class="comment">// 为服务调用提供负载均衡的能力</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">getRestTemplate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>测试访问地址：<a href="http://localhost:8080/consumer/payment/get/1">http://localhost:8080/consumer/payment/get/1</a><ul>
-<li>默认的负载均衡是轮询，即8001端口访问完一次后就访问8002端口，之后依次循环</li>
-</ul>
-</li>
-</ul>
-<h2 id="1-4-actuator微服务信息"><a href="#1-4-actuator微服务信息" class="headerlink" title="1.4 actuator微服务信息"></a>1.4 actuator微服务信息</h2><p>打开eureka注册中心后，可以看到微服务的链接状态，可以通过修改yml来对链接信息进行修改</p>
-<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/actuator.png" class="" title="actuator">
-<p>修改微服务的yml配置，如8001的yml配置如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">instance:</span></span><br><span class="line">		<span class="attr">instance-id:</span> <span class="string">payment8001</span></span><br><span class="line">		<span class="attr">prefer-ip-address:</span> <span class="literal">true</span>	<span class="comment"># 访问路径可以显示IP地址</span></span><br></pre></td></tr></table></figure>
-<p>修改完成后，访问地址可以显示ip信息，显示效果如下：</p>
-<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/instance.png" class="" title="instance">
-<h2 id="1-5-服务发现Discovery"><a href="#1-5-服务发现Discovery" class="headerlink" title="1.5 服务发现Discovery"></a>1.5 服务发现Discovery</h2><p>服务发现可以通过Discovery对象来获取微服务的信息，如微服务名称、访问地址、端口等</p>
-<p>以8001为例，先修改其controller</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 注入DiscoveryClient用于获取微服务信息，注意DiscoveryClient导入的是Spring的包</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> DiscoveryClient discoveryClient;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ... </span></span><br><span class="line">	<span class="comment">// 微服务信息获取接口</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/payment/discovery&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">discovery</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 获取所有微服务名称，并打印到终端</span></span><br><span class="line">        List&lt;String&gt; services = discoveryClient.getServices();</span><br><span class="line">        <span class="keyword">for</span> (String service: services) &#123;</span><br><span class="line">            log.info(service);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取支付微服务的所有主机信息，并打印到终端</span></span><br><span class="line">        List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(<span class="string">&quot;CLOUD-PAYMENT-SERVICE&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (ServiceInstance instance:instances) &#123;</span><br><span class="line">            log.info(instance.getServiceId()+<span class="string">&quot;\t&quot;</span>+instance.getHost()+<span class="string">&quot;\t&quot;</span>+instance.getPort()+<span class="string">&quot;\t&quot;</span>+instance.getUri());</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*返回结果：</span></span><br><span class="line"><span class="comment">        &#123;&quot;services&quot;:[&quot;cloud-payment-service&quot;,&quot;cloud-order-service&quot;],&quot;order&quot;:0&#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.discoveryClient;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>再修改8001的启动类，添加注解@EnableDiscoveryClient，开启服务发现功能</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentMain8001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(PaymentMain8001.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="1-6-Eureka自我保护理论"><a href="#1-6-Eureka自我保护理论" class="headerlink" title="1.6 Eureka自我保护理论"></a>1.6 Eureka自我保护理论</h2><p>Eureka自我保护：一旦某个微服务不可用了，Eureka会启动保护机制，将该微服务信息保留一段时间，<strong>默认是开启的</strong>，注册中心会有以下提示信息：</p>
-<img src="/2022/07/25/SpringCloud%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%EF%BC%88%E4%B8%80%EF%BC%89/safe.png" class="" title="safe">
-<p>可以通过修改注册中心，比如<strong>7001的yml配置</strong>关闭Eureka自我保护</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">server:</span></span><br><span class="line">		<span class="comment"># 关闭Eureka自我保护机制</span></span><br><span class="line">		<span class="attr">enable-self-preservation:</span> <span class="literal">false</span></span><br><span class="line">		<span class="comment"># 让服务端每隔2秒扫描一次，是服务能尽快的剔除，单位为ms</span></span><br><span class="line">		<span class="attr">eviction-interval-timer-in-ms:</span> <span class="number">2000</span></span><br></pre></td></tr></table></figure>
-<p>除此之外，每个客户端微服务都会定时向服务端注册中心发送心跳，类似物业费的概念，即续费服务。服务发送心跳的时间间隔也可以通过服务的yml进行配置，以8001服务的yml配置如下：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">instance:</span></span><br><span class="line">		<span class="comment"># Eureka客户端向服务端发送心跳的时间间隔，单位为s（默认为30s）</span></span><br><span class="line">		<span class="attr">lease-renewal-interval-in-seconds:</span> <span class="number">1</span></span><br><span class="line">		<span class="comment"># Eureka服务端在收到最后一次心跳后等待时间上限，单位为s（默认为90s），超时将剔除服务</span></span><br><span class="line">		<span class="attr">lease-expiration-duration-in-seconds:</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-7-注意"><a href="#1-7-注意" class="headerlink" title="1.7 注意"></a>1.7 注意</h2><ul>
-<li>Eureka自发布2.x版本后就停止维护了</li>
-<li>后面会进入到其它服务注册架构的学习</li>
-</ul>
-<h1 id="二、Zookeeper"><a href="#二、Zookeeper" class="headerlink" title="二、Zookeeper"></a>二、Zookeeper</h1><p>zookeeper需要先在Linux下进行安装，再在微服务中进行配置才能使用</p>
-<h2 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h2><h3 id="2-1-1-单机版"><a href="#2-1-1-单机版" class="headerlink" title="2.1.1 单机版"></a>2.1.1 单机版</h3><ul>
-<li><a href="https://downloads.apache.org/zookeeper/zookeeper-3.8.0/">zookeeper下载地址</a></li>
-<li>通过tar命令解压后，需要做两件事情<ul>
-<li>重命名文件夹为zk，进入conf文件夹，复制其中的zoo_sample.cfg为zoo_cfg</li>
-<li>修改zoo.cfg中的数据文件夹地址，最后就可以进入zk/bin中启动zookeeper了</li>
-</ul>
-</li>
-<li>zookeeper启动命令：./zkServer.sh start</li>
-<li>zookeeper客户端启动命令：./zkCli.sh</li>
-</ul>
-<h3 id="2-1-2-集群版"><a href="#2-1-2-集群版" class="headerlink" title="2.1.2 集群版"></a>2.1.2 集群版</h3><h2 id="2-2-微服务构建"><a href="#2-2-微服务构建" class="headerlink" title="2.2 微服务构建"></a>2.2 微服务构建</h2><h3 id="2-2-1-服务提供者"><a href="#2-2-1-服务提供者" class="headerlink" title="2.2.1 服务提供者"></a>2.2.1 服务提供者</h3><ul>
-<li>首先肯定需要创建maven工程，命名为cloud-provider-payment8004</li>
-<li>接着就是配置yml，如下所示</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8004</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">context-path:</span> <span class="string">/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloud-payment-service</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">zookeeper:</span></span><br><span class="line">      <span class="attr">connect-string:</span> <span class="number">192.168</span><span class="number">.41</span><span class="number">.199</span><span class="string">:2181</span> <span class="comment">#配置单机版的zookeeper服务器地址</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>然后就是pom文件的配置</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- zookeeper依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-zookeeper-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>启动类注意添加@EnableDiscoveryClient注解</strong></li>
-<li>最后就是创建类，一个启动类和一个controller分别用于启动和测试</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;server.port&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String serverPort;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/payment/zk&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentzk</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;springcloud with zookeeper：&quot;</span>+serverPort+<span class="string">&quot;\t&quot;</span>+ UUID.randomUUID().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>最后直接运行启动类，如果配置zookeeper的信息没有问题，就可以打开zookeeper客户端，输入<strong>ls /</strong>命令查看到对应的服务节点</li>
-</ul>
-<h3 id="2-2-2-临时与持久节点"><a href="#2-2-2-临时与持久节点" class="headerlink" title="2.2.2 临时与持久节点"></a>2.2.2 临时与持久节点</h3><h1 id="三、Consul"><a href="#三、Consul" class="headerlink" title="三、Consul"></a>三、Consul</h1><h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h2><ul>
-<li>Consul下载地址：<a href="https://www.consul.io/downloads">Consul官网下载</a></li>
-<li>解压安装包后，直接可以通过cmd运行</li>
-<li>开发模式启动：consul agent -dev</li>
-<li>服务管理地址：localhost:8500</li>
-</ul>
-<h2 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2 配置"></a>3.2 配置</h2><ul>
-<li><p>和之前几个服务注册中心一样，新建一个maven模块cloud-providerconsul-payment</p>
-</li>
-<li><p>pom引入依赖</p>
-</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-consul-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>yml配置</li>
-</ul>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8006</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cloud:</span></span><br><span class="line">	<span class="attr">consul:</span></span><br><span class="line">		<span class="attr">host:</span> <span class="string">localhost</span></span><br><span class="line">		<span class="attr">port:</span> <span class="number">8500</span></span><br><span class="line">		<span class="attr">discovery:</span></span><br><span class="line">			<span class="attr">service-name:</span> <span class="string">$&#123;spring.application.name&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-3-三个服务注册中心的区别"><a href="#3-3-三个服务注册中心的区别" class="headerlink" title="3.3 三个服务注册中心的区别"></a>3.3 三个服务注册中心的区别</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>组件名</th>
-<th>语言</th>
-<th>CAP</th>
-<th>服务健康检查</th>
-<th>对外暴露接口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Eureka</td>
-<td>Java</td>
-<td>AP</td>
-<td>可配支持</td>
-<td>Http</td>
-</tr>
-<tr>
-<td>Consul</td>
-<td>Go</td>
-<td>CP</td>
-<td>支持</td>
-<td>Http/DNS</td>
-</tr>
-<tr>
-<td>Zookeeper</td>
-<td>Java</td>
-<td>CP</td>
-<td>支持</td>
-<td>客户端</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>C：Consistency强一致性</li>
-<li>A：Availability可用性</li>
-<li>P：Partition tolerance分区容错性</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后端</category>
-        <category>微服务</category>
-      </categories>
-      <tags>
-        <tag>Eureka</tag>
       </tags>
   </entry>
   <entry>
@@ -8231,6 +8124,188 @@
       <tags>
         <tag>树</tag>
         <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JVM基础大全-垃圾回收篇</title>
+    <url>/2022/09/19/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AF%87/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>GC算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringCloud基础大全-服务注册中心</title>
+    <url>/2022/07/25/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/</url>
+    <content><![CDATA[<h1 id="一、Eureka"><a href="#一、Eureka" class="headerlink" title="一、Eureka"></a>一、Eureka</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>服务提供者越多就需要用到C/S架构来对服务消费者和服务提供者进行统一管理</p>
+<p><strong>服务消费者</strong>：可以通过eureka注册中心获取到服务提供者的信息，经过负载均衡选择后即可进行远程调用</p>
+<p><strong>服务注册中心</strong>：存放服务消费者和服务提供者的信息，并进行管理，注册中心也可以有多个</p>
+<img src="/2022/07/25/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/eureka.png" class="" title="eureka">
+<h2 id="1-2-环境搭建"><a href="#1-2-环境搭建" class="headerlink" title="1.2 环境搭建"></a>1.2 环境搭建</h2><h3 id="1-2-1-服务端"><a href="#1-2-1-服务端" class="headerlink" title="1.2.1 服务端"></a>1.2.1 服务端</h3><p>创建Maven项目作为Eureka服务注册中心（服务端），命名为cloud-eureka-server7001</p>
+<p>pom文件依赖配置如下：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cloud-api-commons<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>yml配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7001</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">localhost</span> <span class="comment">#eureka服务端的实例名称</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment">#设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/</span></span><br></pre></td></tr></table></figure>
+<p>主启动类中需要添加EnableEurekaServer注解如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.springcloud;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EurekaMain7001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(EurekaMain7001.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-客户端"><a href="#1-2-2-客户端" class="headerlink" title="1.2.2 客户端"></a>1.2.2 客户端</h3><p>客户端要做的就是将微服务注册进eureka中</p>
+<p>以cloud-provider-payment8001工程为例，eureka依赖包导入如下：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>yml配置文件如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">true</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">true</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment">#设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:7001/eureka/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloud-order-service</span>	<span class="comment">#注册进eureka的服务名称</span></span><br></pre></td></tr></table></figure>
+<p>主启动类添加注解@EnableEurekaClient</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentMain8001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(OrderMain8080.class,args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这些配置完成之后即可运行，并访问<a href="http://localhost:7001/，访问成功后就可以在页面中看到服务的注册信息">http://localhost:7001/，访问成功后就可以在页面中看到服务的注册信息</a></p>
+<p>同理，其他服务的注册步骤也是一样的，导包-&gt;yml配置-&gt;主启动类注解</p>
+<h2 id="1-3-Eureka集群构建"><a href="#1-3-Eureka集群构建" class="headerlink" title="1.3 Eureka集群构建"></a>1.3 Eureka集群构建</h2><p>如果Eureka注册中心只有一个，并且发生故障的话，会导致整个服务环境不可用，所以要构建Eureka集群</p>
+<p>多个注册中心要满足规定：<strong>互相注册，相互守望</strong>。但对外是一个整体</p>
+<p>注：负载均衡是<strong>对某一个微服务中的不同端口进行一种选择调用</strong>的机制，默认的是<strong>轮询</strong>，即在通过消费者端8080访问支付服务时会先访问某一端口，如8001，那么下次再进行访问时就会访问8002端口，依次循环下去</p>
+<img src="/2022/07/25/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/jiqun.png" class="" title="jiqun">
+<h3 id="1-3-1-注册中心集群构建"><a href="#1-3-1-注册中心集群构建" class="headerlink" title="1.3.1 注册中心集群构建"></a>1.3.1 注册中心集群构建</h3><ul>
+<li>构建多个注册中心maven项目，取不同端口号，如7001、7002、7003</li>
+<li>修改yml配置，满足<strong>互相注册，相互守望</strong>的规则</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7001</span>	<span class="comment"># 端口号为7001的注册中心</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">eureka7001.com</span> <span class="comment">#eureka服务端的实例名称，集群要保证每个注册中心名字不同</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment"># 互相注册，注意下面的地址端口</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7002.com:7002/eureka/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>同时微服务的yml配置也需要修改</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8001</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">context-path:</span> <span class="string">/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">true</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">true</span> <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment"># 多个注册中心地址都要写上</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-3-2-微服务集群构建"><a href="#1-3-2-微服务集群构建" class="headerlink" title="1.3.2 微服务集群构建"></a>1.3.2 微服务集群构建</h3><ul>
+<li>构建多个相同模块的微服务项目，取不同的端口号，如8001、8002、8003</li>
+<li>消费者端的RestTemplate服务调用地址修改为微服务的名称<ul>
+<li>“<a href="http://CLOUD-PAYMENT-SERVICE">http://CLOUD-PAYMENT-SERVICE</a>“</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// private static final String PAYMENT_URL = &quot;http://localhost:8001&quot;;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PAYMENT_URL = <span class="string">&quot;http://CLOUD-PAYMENT-SERVICE&quot;</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在消费者端的配置类中，为RestTemplate添加负载均衡注解@LoadBalanced</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@LoadBalanced</span> <span class="comment">// 为服务调用提供负载均衡的能力</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">getRestTemplate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试访问地址：<a href="http://localhost:8080/consumer/payment/get/1">http://localhost:8080/consumer/payment/get/1</a><ul>
+<li>默认的负载均衡是轮询，即8001端口访问完一次后就访问8002端口，之后依次循环</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-4-actuator微服务信息"><a href="#1-4-actuator微服务信息" class="headerlink" title="1.4 actuator微服务信息"></a>1.4 actuator微服务信息</h2><p>打开eureka注册中心后，可以看到微服务的链接状态，可以通过修改yml来对链接信息进行修改</p>
+<img src="/2022/07/25/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/actuator.png" class="" title="actuator">
+<p>修改微服务的yml配置，如8001的yml配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">instance:</span></span><br><span class="line">		<span class="attr">instance-id:</span> <span class="string">payment8001</span></span><br><span class="line">		<span class="attr">prefer-ip-address:</span> <span class="literal">true</span>	<span class="comment"># 访问路径可以显示IP地址</span></span><br></pre></td></tr></table></figure>
+<p>修改完成后，访问地址可以显示ip信息，显示效果如下：</p>
+<img src="/2022/07/25/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/instance.png" class="" title="instance">
+<h2 id="1-5-服务发现Discovery"><a href="#1-5-服务发现Discovery" class="headerlink" title="1.5 服务发现Discovery"></a>1.5 服务发现Discovery</h2><p>服务发现可以通过Discovery对象来获取微服务的信息，如微服务名称、访问地址、端口等</p>
+<p>以8001为例，先修改其controller</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 注入DiscoveryClient用于获取微服务信息，注意DiscoveryClient导入的是Spring的包</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> DiscoveryClient discoveryClient;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ... </span></span><br><span class="line">	<span class="comment">// 微服务信息获取接口</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/payment/discovery&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">discovery</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 获取所有微服务名称，并打印到终端</span></span><br><span class="line">        List&lt;String&gt; services = discoveryClient.getServices();</span><br><span class="line">        <span class="keyword">for</span> (String service: services) &#123;</span><br><span class="line">            log.info(service);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取支付微服务的所有主机信息，并打印到终端</span></span><br><span class="line">        List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(<span class="string">&quot;CLOUD-PAYMENT-SERVICE&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (ServiceInstance instance:instances) &#123;</span><br><span class="line">            log.info(instance.getServiceId()+<span class="string">&quot;\t&quot;</span>+instance.getHost()+<span class="string">&quot;\t&quot;</span>+instance.getPort()+<span class="string">&quot;\t&quot;</span>+instance.getUri());</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">/*返回结果：</span></span><br><span class="line"><span class="comment">        &#123;&quot;services&quot;:[&quot;cloud-payment-service&quot;,&quot;cloud-order-service&quot;],&quot;order&quot;:0&#125;</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.discoveryClient;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>再修改8001的启动类，添加注解@EnableDiscoveryClient，开启服务发现功能</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentMain8001</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(PaymentMain8001.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-Eureka自我保护理论"><a href="#1-6-Eureka自我保护理论" class="headerlink" title="1.6 Eureka自我保护理论"></a>1.6 Eureka自我保护理论</h2><p>Eureka自我保护：一旦某个微服务不可用了，Eureka会启动保护机制，将该微服务信息保留一段时间，<strong>默认是开启的</strong>，注册中心会有以下提示信息：</p>
+<img src="/2022/07/25/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/safe.png" class="" title="safe">
+<p>可以通过修改注册中心，比如<strong>7001的yml配置</strong>关闭Eureka自我保护</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">server:</span></span><br><span class="line">		<span class="comment"># 关闭Eureka自我保护机制</span></span><br><span class="line">		<span class="attr">enable-self-preservation:</span> <span class="literal">false</span></span><br><span class="line">		<span class="comment"># 让服务端每隔2秒扫描一次，是服务能尽快的剔除，单位为ms</span></span><br><span class="line">		<span class="attr">eviction-interval-timer-in-ms:</span> <span class="number">2000</span></span><br></pre></td></tr></table></figure>
+<p>除此之外，每个客户端微服务都会定时向服务端注册中心发送心跳，类似物业费的概念，即续费服务。服务发送心跳的时间间隔也可以通过服务的yml进行配置，以8001服务的yml配置如下：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">instance:</span></span><br><span class="line">		<span class="comment"># Eureka客户端向服务端发送心跳的时间间隔，单位为s（默认为30s）</span></span><br><span class="line">		<span class="attr">lease-renewal-interval-in-seconds:</span> <span class="number">1</span></span><br><span class="line">		<span class="comment"># Eureka服务端在收到最后一次心跳后等待时间上限，单位为s（默认为90s），超时将剔除服务</span></span><br><span class="line">		<span class="attr">lease-expiration-duration-in-seconds:</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-7-注意"><a href="#1-7-注意" class="headerlink" title="1.7 注意"></a>1.7 注意</h2><ul>
+<li>Eureka自发布2.x版本后就停止维护了</li>
+<li>后面会进入到其它服务注册架构的学习</li>
+</ul>
+<h1 id="二、Zookeeper"><a href="#二、Zookeeper" class="headerlink" title="二、Zookeeper"></a>二、Zookeeper</h1><p>zookeeper需要先在Linux下进行安装，再在微服务中进行配置才能使用</p>
+<h2 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h2><h3 id="2-1-1-单机版"><a href="#2-1-1-单机版" class="headerlink" title="2.1.1 单机版"></a>2.1.1 单机版</h3><ul>
+<li><a href="https://downloads.apache.org/zookeeper/zookeeper-3.8.0/">zookeeper下载地址</a></li>
+<li>通过tar命令解压后，需要做两件事情<ul>
+<li>重命名文件夹为zk，进入conf文件夹，复制其中的zoo_sample.cfg为zoo_cfg</li>
+<li>修改zoo.cfg中的数据文件夹地址，最后就可以进入zk/bin中启动zookeeper了</li>
+</ul>
+</li>
+<li>zookeeper启动命令：./zkServer.sh start</li>
+<li>zookeeper客户端启动命令：./zkCli.sh</li>
+</ul>
+<h3 id="2-1-2-集群版"><a href="#2-1-2-集群版" class="headerlink" title="2.1.2 集群版"></a>2.1.2 集群版</h3><h2 id="2-2-微服务构建"><a href="#2-2-微服务构建" class="headerlink" title="2.2 微服务构建"></a>2.2 微服务构建</h2><h3 id="2-2-1-服务提供者"><a href="#2-2-1-服务提供者" class="headerlink" title="2.2.1 服务提供者"></a>2.2.1 服务提供者</h3><ul>
+<li>首先肯定需要创建maven工程，命名为cloud-provider-payment8004</li>
+<li>接着就是配置yml，如下所示</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8004</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">context-path:</span> <span class="string">/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloud-payment-service</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">zookeeper:</span></span><br><span class="line">      <span class="attr">connect-string:</span> <span class="number">192.168</span><span class="number">.41</span><span class="number">.199</span><span class="string">:2181</span> <span class="comment">#配置单机版的zookeeper服务器地址</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后就是pom文件的配置</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- zookeeper依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-zookeeper-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>启动类注意添加@EnableDiscoveryClient注解</strong></li>
+<li>最后就是创建类，一个启动类和一个controller分别用于启动和测试</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;server.port&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String serverPort;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/payment/zk&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentzk</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;springcloud with zookeeper：&quot;</span>+serverPort+<span class="string">&quot;\t&quot;</span>+ UUID.randomUUID().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后直接运行启动类，如果配置zookeeper的信息没有问题，就可以打开zookeeper客户端，输入<strong>ls /</strong>命令查看到对应的服务节点</li>
+</ul>
+<h3 id="2-2-2-临时与持久节点"><a href="#2-2-2-临时与持久节点" class="headerlink" title="2.2.2 临时与持久节点"></a>2.2.2 临时与持久节点</h3><h1 id="三、Consul"><a href="#三、Consul" class="headerlink" title="三、Consul"></a>三、Consul</h1><h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1 安装"></a>3.1 安装</h2><ul>
+<li>Consul下载地址：<a href="https://www.consul.io/downloads">Consul官网下载</a></li>
+<li>解压安装包后，直接可以通过cmd运行</li>
+<li>开发模式启动：consul agent -dev</li>
+<li>服务管理地址：localhost:8500</li>
+</ul>
+<h2 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2 配置"></a>3.2 配置</h2><ul>
+<li><p>和之前几个服务注册中心一样，新建一个maven模块cloud-providerconsul-payment</p>
+</li>
+<li><p>pom引入依赖</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-consul-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>yml配置</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8006</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cloud:</span></span><br><span class="line">	<span class="attr">consul:</span></span><br><span class="line">		<span class="attr">host:</span> <span class="string">localhost</span></span><br><span class="line">		<span class="attr">port:</span> <span class="number">8500</span></span><br><span class="line">		<span class="attr">discovery:</span></span><br><span class="line">			<span class="attr">service-name:</span> <span class="string">$&#123;spring.application.name&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-3-三个服务注册中心的区别"><a href="#3-3-三个服务注册中心的区别" class="headerlink" title="3.3 三个服务注册中心的区别"></a>3.3 三个服务注册中心的区别</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>语言</th>
+<th>CAP</th>
+<th>服务健康检查</th>
+<th>对外暴露接口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eureka</td>
+<td>Java</td>
+<td>AP</td>
+<td>可配支持</td>
+<td>Http</td>
+</tr>
+<tr>
+<td>Consul</td>
+<td>Go</td>
+<td>CP</td>
+<td>支持</td>
+<td>Http/DNS</td>
+</tr>
+<tr>
+<td>Zookeeper</td>
+<td>Java</td>
+<td>CP</td>
+<td>支持</td>
+<td>客户端</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>C：Consistency强一致性</li>
+<li>A：Availability可用性</li>
+<li>P：Partition tolerance分区容错性</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>微服务</category>
+      </categories>
+      <tags>
+        <tag>Eureka</tag>
       </tags>
   </entry>
 </search>

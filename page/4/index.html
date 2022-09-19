@@ -165,6 +165,136 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/05/28/UML%E7%B1%BB%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/" class="post-title-link" itemprop="url">UML类图</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-28 15:50:42 / 修改时间：16:30:08" itemprop="dateCreated datePublished" datetime="2022-05-28T15:50:42+08:00">2022-05-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、类的表示"><a href="#一、类的表示" class="headerlink" title="一、类的表示"></a>一、类的表示</h1><ol>
+<li>类名(上)、属性(中)、方法(下)<ul>
+<li>接口(上)需要在接口名上标注<code>&quot;&lt;&lt;interface&gt;&gt;&quot;</code></li>
+</ul>
+</li>
+<li>属性的表示语法：<code>[可见性]属性名[:类型][=初始值]</code></li>
+<li>类方法的表示语法：<code>[可见性]操作名[(参数表)][:返回类型]</code><ul>
+<li>参数表表示：”名称:类型”，多个参数用逗号隔开，可以有默认值</li>
+<li>可见性：”-“表示private；”+”表示public；”#”表示protected</li>
+</ul>
+</li>
+</ol>
+<h1 id="二、类间关系"><a href="#二、类间关系" class="headerlink" title="二、类间关系"></a>二、类间关系</h1><h2 id="2-1-泛化关系"><a href="#2-1-泛化关系" class="headerlink" title="2.1 泛化关系"></a>2.1 泛化关系</h2><ul>
+<li>表示“一般-具体”关系</li>
+<li>高层次的类被称为基类或者超类，具有一般的公共信息</li>
+<li>低层次的类被称为派生类或子类，公共信息继承自基类，具体信息可以自定义</li>
+<li><p>如：</p>
+<ul>
+<li>交通工具为基类，定义基本功能</li>
+<li>汽车等具体交通工具为派生类，自定义其特性</li>
+</ul>
+</li>
+<li><p>泛化关系的表示：带三角形的实线箭头，箭头指向父类</p>
+</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/jc.png" class="" title="jc">
+<h2 id="2-2-关联关系"><a href="#2-2-关联关系" class="headerlink" title="2.2 关联关系"></a>2.2 关联关系</h2><h3 id="2-2-1-组合关系"><a href="#2-2-1-组合关系" class="headerlink" title="2.2.1 组合关系"></a>2.2.1 组合关系</h3><ul>
+<li>表示“整体-部分”关系</li>
+<li>部分==不能==离开整体而单独存在</li>
+<li>如：教材 包含 封面、前言、目录等，他们之间是整体与部分的关系</li>
+<li>组合关系的表示：实心菱形的实线表示，菱形指向整体</li>
+</ul>
+<h3 id="2-2-2-聚合关系"><a href="#2-2-2-聚合关系" class="headerlink" title="2.2.2 聚合关系"></a>2.2.2 聚合关系</h3><ul>
+<li>表示“整体-部分”关系</li>
+<li>部分==可以==离开整体而存在</li>
+<li>如：车 包含 轮胎、引擎等<ul>
+<li>车胎、引擎等可以不依赖车子而单独存在</li>
+</ul>
+</li>
+<li>聚合关系的表示：空心菱形的实线表示，菱形指向整体</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/zhjh.png" class="" title="ZHJH">
+<h3 id="2-2-3-一般关联关系"><a href="#2-2-3-一般关联关系" class="headerlink" title="2.2.3 一般关联关系"></a>2.2.3 一般关联关系</h3><ul>
+<li>表示两个类的对象之间可以相互通讯，或者一个对象能够感知另一方</li>
+<li>如：朋友关系</li>
+<li>一般关联关系的表示：单向或双向，双向关联的箭头可加或不加，线段上的数字表示关联的数量和范围</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/yb.png" class="" title="yb">
+<h2 id="2-3-依赖关系"><a href="#2-3-依赖关系" class="headerlink" title="2.3 依赖关系"></a>2.3 依赖关系</h2><ul>
+<li>表示元素A的变化会影响到元素B，或一个类的实现需要另一个类的协助</li>
+<li>如：打电话需要手机</li>
+<li>代码上表现为一个类的使用需要另一个类的对象作为参数</li>
+<li>依赖关系的表示：带箭头的虚线，箭头指向被依赖方</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/yl.png" class="" title="yl">
+<h2 id="2-4-实现关系"><a href="#2-4-实现关系" class="headerlink" title="2.4 实现关系"></a>2.4 实现关系</h2><ul>
+<li>表示类实现接口的功能</li>
+<li>实现关系的表示：带空心箭头的虚线，箭头指向接口</li>
+</ul>
+<img src="/2022/05/28/UML%E7%B1%BB%E5%9B%BE/shixian.png" class="" title="shixian">
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -196,7 +326,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-17 15:34:06" itemprop="dateModified" datetime="2022-09-17T15:34:06+08:00">2022-09-17</time>
+                <time title="修改时间：2022-09-19 12:48:12" itemprop="dateModified" datetime="2022-09-19T12:48:12+08:00">2022-09-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -474,7 +604,70 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-5-栈上分配"><a href="#5-5-栈上分配" class="headerlink" title="5.5 栈上分配"></a>5.5 栈上分配</h2><h2 id="5-6-代码优化"><a href="#5-6-代码优化" class="headerlink" title="5.6 代码优化"></a>5.6 代码优化</h2>
+<h2 id="5-5-栈上分配"><a href="#5-5-栈上分配" class="headerlink" title="5.5 栈上分配"></a>5.5 栈上分配</h2><h2 id="5-6-代码优化"><a href="#5-6-代码优化" class="headerlink" title="5.6 代码优化"></a>5.6 代码优化</h2><h1 id="六、方法区"><a href="#六、方法区" class="headerlink" title="六、方法区"></a>六、方法区</h1><h2 id="6-1-概述"><a href="#6-1-概述" class="headerlink" title="6.1 概述"></a>6.1 概述</h2><p>《Java虚拟机规范》中明确说明:”尽管所有的方法区在逻辑上是属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。”但对于HotSpotJVM而言，方法区还有一个别名叫做Non-Heap(非堆)，目的就是要和堆分开。</p>
+<p>方法区具有以下特点：</p>
+<ul>
+<li>方法区（(Method Area）与Java堆一样，是各个<strong>线程共享</strong>的内存区域。</li>
+<li>方法区在JVM启动的时候被创建,并且它的实际的物理内存空间中和Java堆区一样都可以是不连续的。</li>
+<li>方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。</li>
+<li>方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误: java.lang.outOfMemoryError</li>
+<li>java.lang. outOfMemoryError: PermGen space或者java.lang. outOfMemoryError: Metaspace<ul>
+<li>加载大量的第三方的Jar包</li>
+<li>Tomcat部署的工程太多</li>
+<li>大量动态的生成反射类</li>
+</ul>
+</li>
+<li>关闭JVM就会释放这个区域的内存。</li>
+</ul>
+<p>本质上，<strong>永久代、元空间都是对方法区的实现</strong>，不能直接对其画等号，因为还有其他的方法区实现方式，永久代和永久代存在本质区别：</p>
+<ul>
+<li>元空间不在虚拟机设置的内存中，而是使用本地内存</li>
+</ul>
+<img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/method.png" class="" title="method">
+<h2 id="6-2-方法区大小设置"><a href="#6-2-方法区大小设置" class="headerlink" title="6.2 方法区大小设置"></a>6.2 方法区大小设置</h2><ul>
+<li>jdk7及以前：<ul>
+<li>通过-XX:PermSize来设置永久代初始分配空间。默认值是20.75M</li>
+<li>-XX:MaxPermSize来设定永久代最大可分配空间。32位机器默认是64M，64位机器模式是82M</li>
+<li>当JV8M加载的类信息容量超过了这个值，会报异常outOfMemoryError:PermGen space。</li>
+</ul>
+</li>
+<li>jdk8及以后：<ul>
+<li>元数据区大小可以使用参数-XX:Metaspacesize和-XX:MaxMetaspaceSize指定，替代上述原有的两个参数。</li>
+<li>默认值依赖于平台。windows下，-XX:MetaspaceSize是21M，-XX:MaxMetaspacesize 的值是-1，即没有限制。</li>
+<li>与永久代不同，如果不指定大小，默认情况下，虚拟机会耗尽所有的可用系统内存。如果元数据区发生溢出，虚拟机一样会抛出异常outOfMemoryError: Metaspace</li>
+<li>-XX:MetaspaceSize:设置初始的元空间大小。对于一个64位的服务器端JVM来说，其默认的-XX:Metaspacesize值为21MB。这就是初始的<strong>高水位线</strong>，一旦触及这个水位线，Full GC将会被触发并卸载没用的类（即这些类对应的类加载器不再存活）,然后这个高水位线将会重置。新的高水位线的值取决于Gc后释放了多少元空间。如果释放的空间不足，那么在不超过MaxMetaspacesize时，适当提高该值。如果释放空间过多，则适当降低该值。</li>
+<li>如果初始化的高水位线设置过低，上述高水位线调整情况会发生很多次。通过垃圾回收器的日志可以观察到Full GC多次调用。为了避免频繁地GC ，建议将-XX:Metaspacesize设置为一个相对较高的值。</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-3-内部结构"><a href="#6-3-内部结构" class="headerlink" title="6.3 内部结构"></a>6.3 内部结构</h2><img src="/2022/05/16/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/methodinner.png" class="" title="methodinner">
+<h3 id="6-3-1-存放内容"><a href="#6-3-1-存放内容" class="headerlink" title="6.3.1 存放内容"></a>6.3.1 存放内容</h3><ul>
+<li>类型信息<ul>
+<li>这个类型的完整有效名称（全名=包名.类名)</li>
+<li>这个类型直接父类的完整有效名(对于interface或是java.lang.0bject，都没有父类)</li>
+<li>这个类型的修饰符(public, abstract,final的某个子集)</li>
+<li>这个类型直接接口的一个有序列表</li>
+</ul>
+</li>
+<li>域信息（成员变量）<ul>
+<li>JVM必须在方法区中保存类型的所有域的相关信息以及域的声明顺序。</li>
+<li>域的相关信息包括:域名称、域类型、域修饰符(public, private,protected,static,final, volatile, transient的某个子集)</li>
+</ul>
+</li>
+<li>方法信息<ul>
+<li>方法名称</li>
+<li>方法的返回类型(或void)·方法参数的数量和类型(按顺序)</li>
+<li>方法的修饰符(public, private,protected,static, final,synchronized,native,abstract的一个子集)</li>
+<li>方法的字节码(bytecodes)、操作数栈、局部变量表及大小(abstract和native方法除外)</li>
+<li>异常表(abstract和native方法除外)<ul>
+<li>每个异常处理的开始位置、结束位置、代码处理在程序计数器中的偏移地址、被捕获的异常类的常量池索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>静态变量、常量、即时编译器编译后的代码缓存</li>
+</ul>
+
       
     </div>
 
@@ -1506,254 +1699,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/" class="post-title-link" itemprop="url">Java面试宝典一</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-03 18:41:32" itemprop="dateCreated datePublished" datetime="2022-04-03T18:41:32+08:00">2022-04-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-03 19:46:15" itemprop="dateModified" datetime="2022-07-03T19:46:15+08:00">2022-07-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、变量自增"><a href="#一、变量自增" class="headerlink" title="一、变量自增"></a>一、变量自增</h1><h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><ul>
-<li>这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果</li>
-<li>Java也需要维护一个操作数栈，来计算我们的最终结果</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">i = i++;</span><br><span class="line"><span class="keyword">int</span> j = i++;</span><br><span class="line"><span class="keyword">int</span> k = i + ++i * i++;</span><br><span class="line">System.out.println(<span class="string">&quot;i=&quot;</span>+i);<span class="number">5</span></span><br><span class="line">System.out.println(<span class="string">&quot;j=&quot;</span>+j);<span class="number">2</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+k);<span class="number">12</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-2-分析"><a href="#1-2-分析" class="headerlink" title="1.2 分析"></a>1.2 分析</h2><h3 id="1-2-1-前两步"><a href="#1-2-1-前两步" class="headerlink" title="1.2.1 前两步"></a>1.2.1 前两步</h3><ol>
-<li>赋值操作更新局部变量表，变量操作会先将变量值压入操作数栈</li>
-<li>自增操作会更新变量的局部变量表，但不会影响操作数栈的值，存在操作数就会把变量的值压入操作数栈中</li>
-<li>赋值操作是把操作数栈的最终结果赋值给变量，也就是说i经过前两步后值为1</li>
-</ol>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij.png" class="" title="ij">
-<h3 id="1-2-2-第三步"><a href="#1-2-2-第三步" class="headerlink" title="1.2.2 第三步"></a>1.2.2 第三步</h3><ul>
-<li>后增操作：先赋值j，再自增i</li>
-</ul>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij2.png" class="" title="ij2">
-<h3 id="1-2-3-第四步"><a href="#1-2-3-第四步" class="headerlink" title="1.2.3 第四步"></a>1.2.3 第四步</h3><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij3.png" class="" title="ij3">
-<h2 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h2><ul>
-<li><p>总的来说在运算的时候维护一个<strong>局部变量表</strong>和一个<strong>操作数栈</strong>，来<strong>保存</strong>和<strong>更新</strong>我们的数据</p>
-</li>
-<li><p>++i会<strong>先修改i保存到局部变量表中的值</strong>，再将<strong>自增后</strong>的值放入到操作数栈中</p>
-</li>
-<li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
-<li>赋值操作是在操作数栈计算完之后才执行的</li>
-</ul>
-<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/KEM.png" class="" title="kem">
-<ul>
-<li>JDK：Java标准开发包，提供编译、运行Java程序所需的各种工具和资源，包括Java编译器、Java运行时环境，以及常用的Java类库等</li>
-<li>JRE，Java运行环境，用于运行Java的字节码文件，JRE中包括了JVM工作所需要的类库，普通用户只需要按照JRE来运行Java程序，而程序开发者必须安装JDK来编译、调试程序</li>
-<li>JVM：Java虚拟机，是JRE的一部分，它是整个Java实现跨平台的最核心的部分，负责运行字节码文件</li>
-</ul>
-<h1 id="三、Java数据类型"><a href="#三、Java数据类型" class="headerlink" title="三、Java数据类型"></a>三、Java数据类型</h1><p>基础数据类型</p>
-<ul>
-<li>整数类型（byte、short、int、long）</li>
-<li>浮点类型（float、double）</li>
-<li>数值型</li>
-<li>字符型（char）</li>
-<li>布尔型（boolean）</li>
-</ul>
-<p>引用数据类型</p>
-<ul>
-<li>类（class）</li>
-<li>接口（interface）</li>
-<li>数组（[]）</li>
-</ul>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/jichutype.png" class="" title="jichutype">
-<h1 id="四、hashCode-与equals-之间的关系"><a href="#四、hashCode-与equals-之间的关系" class="headerlink" title="四、hashCode()与equals()之间的关系"></a>四、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
-<p>但由于计算机的存储空间不是无限的，所以哈希地址的计算一般会出现重复的情况，这里可以采用<strong>链地址法</strong>，即如果两条数据计算到的哈希值相同，那么就在这个位置上创建一个<strong>链表</strong>来存放这两个相同哈希值的数据。</p>
-<p>有了哈希表的概念，那么这里Java对象中的hashCode就是经过某一哈希函数得到的哈希值，在应用时参考以下代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Key</span> </span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Key</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public int hashCode() &#123;</span></span><br><span class="line"><span class="comment">//        return id.hashCode();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public boolean equals(Object obj) &#123;</span></span><br><span class="line"><span class="comment">//        if(obj == null || !(obj instanceof Key))</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        else</span></span><br><span class="line"><span class="comment">//            return this.getId().equals(((Key) obj).getId());</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Key k1 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        Key k2 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        HashMap&lt;Key,String&gt; hm = <span class="keyword">new</span> HashMap&lt;Key, String&gt;();</span><br><span class="line"></span><br><span class="line">        hm.put(k1,<span class="string">&quot;Key with id is 1&quot;</span>);</span><br><span class="line">        System.out.println(hm.get(k2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码测试了使用<strong>相同id值的对象</strong>在HashMap中进行查找（工作会经常使用到的操作），测试结果如下：</p>
-<ul>
-<li>不重写hashCode()和equals()方法，结果输出”null“</li>
-<li>重写hashCode()但不重写equals()，结果仍输出“null”</li>
-<li>同时重写hashCode()和equals()方法，输出结果”Key with id is 1“，内容可以正常查询到</li>
-</ul>
-<p>对以上三种测试情况有以下说明：</p>
-<ul>
-<li>集合类HashMap在进行对象查找（get()方法）时，会先根据对象的hashCode进行查找，<ul>
-<li>如果两个对象的hashCode不同，则说明两个对象绝对是不同的；</li>
-<li>如果两个对象的hashCode相同，则调用对象的equals()方法继续进行比较，比较内容相同则两个对象一定是相同的</li>
-</ul>
-</li>
-<li>如果不重写hashCode()和equals()方法，那么对象会采用<strong>Object父类</strong>实现的默认的hashCode()和equals()方法，默认的hashCode是<strong>对象的内存地址</strong>，默认equals()的比较方式也是比较<strong>两个对象的内存地址</strong>是否相同</li>
-</ul>
-<p>在使用时一般会遵循以下原则：</p>
-<ul>
-<li>重写equals()方法必须重写hashCode()方法</li>
-<li>两对象equals()相等，则这两个对象的hashCode()应该相等</li>
-<li>hashCode()和equals()的返回值应该是稳定的，不应具有随机性</li>
-<li>如果要在HashMap的”键“部分存放自定义的对象，一定要在这个对象里重写equals和hashCode方法</li>
-</ul>
-<p>在面试时会经常问到比如：</p>
-<ul>
-<li>有没有重写过hashCode方法</li>
-<li>在使用HashMap时有没有重写hashCode和equals方法，怎么写的</li>
-</ul>
-<h1 id="五、-与equals的区别"><a href="#五、-与equals的区别" class="headerlink" title="五、==与equals的区别"></a>五、==与equals的区别</h1><p>参考第三题，equals()方法在不重写的情况下，<strong>默认</strong>比较的是两个<strong>对象的内存地址</strong>，但我们往往会在类中重写equals()来<strong>比较对象之间的内容是否相等</strong>，<strong>equals()只能被对象调用</strong>。</p>
-<p>==是Java中的一种操作符，它有两种比较方式</p>
-<ul>
-<li>对于基础数据类型来说，==判断的是两边的值是否相等</li>
-<li>对于引用类型来说，==判断的是两边的引用是否相等，也就是判断两个对象是否指向了同一块内存区域</li>
-</ul>
-<p>equals()方法的特性</p>
-<ul>
-<li><strong>自反性</strong>：对于任何非空引用值x来说，x.equals(x)返回true</li>
-<li><strong>对称性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，则y.equals(x)为true</li>
-<li><strong>传递性</strong>：对于任何非空引用值x、y、z来说，如果x.equals(y)为true，y.equals(z)为true，那么x.equals(z)也为true</li>
-<li><strong>一致性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，那么它们要始终相等</li>
-<li><strong>非空性</strong>：对于任何非空引用值x来说，x.equals(null)必须返回false</li>
-</ul>
-<h1 id="六、String中的equals是如何重写的"><a href="#六、String中的equals是如何重写的" class="headerlink" title="六、String中的equals是如何重写的"></a>六、String中的equals是如何重写的</h1><p>String是Java中的字符串类，它整个类都是被final修饰的，这意味着String类是不能被任何类继承，任何修改String字符串的方法都是创建了一个新的字符串</p>
-<p>equals方法是Object类定义的方法，Object是所有类的父类，当然也包括String，String重写的equals方法如下</p>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals.png" class="" title="sequals">
-<ul>
-<li>首先是引用的判断，引用相等则直接返回true</li>
-<li>接着判断对象是否是String实例，不是则直接返回false，否则将对象强转后，比较字符串的长度，长度不等肯定返回false</li>
-<li>长度相等的情况下，再逐个字符进行比较，存在不同的字符则返回false</li>
-</ul>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals1.png" class="" title="sequals1">
-<p>注意JDK1.8以后，new String(“abc”)操作和普通的字符串赋值操作作用是一样的，以下的intern()方法是获取常量池中的字符串</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"></span><br><span class="line">        String s2 = <span class="string">&quot;a&quot;</span> + <span class="keyword">new</span> String(<span class="string">&quot;bc&quot;</span>);</span><br><span class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1.intern());	<span class="comment">//abc</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下输出均为true</span></span><br><span class="line">        System.out.println(s2.equals(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        System.out.println(s3.equals(s1));</span><br><span class="line">        System.out.println(s1.intern().equals(s2));</span><br><span class="line">        System.out.println(s3.intern().equals(s1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="七、String-s1-new-String-“abc”-在内存中创建了几个对象"><a href="#七、String-s1-new-String-“abc”-在内存中创建了几个对象" class="headerlink" title="七、String s1 = new String(“abc”)在内存中创建了几个对象"></a>七、String s1 = new String(“abc”)在内存中创建了几个对象</h1><p>一个或者两个，首先new操作一定会在堆中创建一个对象，如果常量池中不存在“abc”对象，那么就会在常量池中创建一个“abc”，否则就不进行创建</p>
-<p>观察下面String构造器的源码可以发现，String对象的hash值和常量池“abc”对象的hash值是一致的</p>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/string1.png" class="" title="string1">
-<p>new操作的内存情况如下：</p>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/stringneicun.png" class="" title="stringneicun">
-<h1 id="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"><a href="#八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计" class="headerlink" title="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"></a>八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</h1><p>不可变对象：不可变对象就是一经创建后，其对象的内部状态不能被修改，即：</p>
-<ul>
-<li>不可变对象内部属性都是final的</li>
-<li>不可变对象的内部属性都是private的</li>
-<li>不可变对象不能提供任何可以修改内部状态的方法，setter方法也不行</li>
-<li>不可变对象不能被继承和扩展</li>
-</ul>
-<p>String类是一种对象，它独立于Java基本数据类型而存在的，可以理解为字符串的集合</p>
-<p>String被设计为final的，表示String对象一经创建后，它的值就不能再被修改了，任何对String值进行修改的方法就是重新创建一个字符串</p>
-<p>String对象创建后会存在于运行时常量池中，运行时常量池属于方法区的一部分，JDK1.7后把它移到了堆中</p>
-<h1 id="九、String-StringBuffer-StringBuilder的区别"><a href="#九、String-StringBuffer-StringBuilder的区别" class="headerlink" title="九、String/StringBuffer/StringBuilder的区别"></a>九、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
-<p>StringBuffer和StringBuilder都是可修改的字符串对象，区别是StringBuffer是线程安全的，StringBuilder是线程不安全的</p>
-<h1 id="十、static关键字是干什么用的"><a href="#十、static关键字是干什么用的" class="headerlink" title="十、static关键字是干什么用的"></a>十、static关键字是干什么用的</h1><ul>
-<li>修饰变量，static修饰的变量称为<strong>静态变量</strong>、也称为<strong>类变量</strong>，类变量属于类所有，对于不同的类来说，static变量只有一份，static修饰的变量位于<strong>方法区</strong>；static修饰的变量能够直接通过<strong>类名.变量名</strong>来进行访问，不用通过实例化类再进行使用</li>
-<li>修饰方法，static修饰的方法称为<strong>静态方法</strong>，静态方法能够直接通过<strong>类名.方法名</strong>来使用，在静态方法内部不能使用非静态属性和方法</li>
-<li><p>static可以修饰代码块，主要分为两种，一种直接定义在类中，使用<strong>static{}</strong>，这种被称为静态代码块，一种是在类中定义<strong>静态内部类</strong>，使用<strong>static class xxx</strong>来进行定义</p>
-</li>
-<li><p>static可用用于静态导包，通过使用import static xxx来实现，这种方式一般不推荐使用</p>
-</li>
-<li>static可以和单例模式一起使用，通过双重检查锁来实现线程安全的单例模式</li>
-</ul>
-<h1 id="十一、final关键字是干什么用的"><a href="#十一、final关键字是干什么用的" class="headerlink" title="十一、final关键字是干什么用的"></a>十一、final关键字是干什么用的</h1><p>final 是 Java 中的关键字，它表示的意思是 <code>不可变的</code>，在 Java 中，final 主要用来</p>
-<ul>
-<li>修饰类，final 修饰的类不能被继承，不能被继承的意思就是不能使用 <code>extends</code> 来继承被 final 修饰的类。</li>
-<li>修饰变量，final 修饰的变量不能被改写，不能被改写的意思有两种，对于基本数据类型来说，final 修饰的<strong>变量</strong>，其<strong>值不能被改变</strong>，final 修饰的<strong>对象</strong>，<strong>对象的引用不能被改变</strong>，但是对象内部的<strong>属性可以被修改</strong>。final 修饰的变量在某种程度上起到了<code>不可变</code>的效果，所以，可以用来保护只读数据，尤其是在并发编程中，因为明确的不能再为 final 变量进行赋值，有利于减少额外的同步开销</li>
-<li>修饰方法，final 修饰的方法不能被重写</li>
-<li>final 修饰符和 Java 程序性能优化没有必然联系</li>
-</ul>
-<h1 id="十二、抽象类和接口的区别是什么"><a href="#十二、抽象类和接口的区别是什么" class="headerlink" title="十二、抽象类和接口的区别是什么"></a>十二、抽象类和接口的区别是什么</h1><p>抽象类abstract和接口interface都是Java中的关键字，</p>
-<p>抽象类和接口的相同点：</p>
-<ul>
-<li>都允许进行方法的定义，而不用具体的方法实现</li>
-<li>都允许被继承</li>
-<li>广泛的应用于 JDK 和框架的源码中，来实现多态和不同的设计模式。</li>
-</ul>
-<p>抽象类和接口的不同点：</p>
-<ul>
-<li>抽象级别不同：类、抽象类、接口其实是三种不同的抽象级别，抽象程度依次是 <strong>接口 &gt; 抽象类 &gt; 类</strong>。在接口中，只允许进行方法的定义，不允许有方法的实现，抽象类中可以进行方法的定义和实现；而类中只允许进行方法的实现</li>
-<li>使用的关键字不同：类使用 <code>class</code> 来表示；抽象类使用 <code>abstract class</code> 来表示；接口使用 <code>interface</code> 来表示</li>
-<li>变量：接口中定义的变量只能是公共的静态常量，抽象类中的变量是普通变量。</li>
-</ul>
-<h1 id="十三、重写和重载的区别"><a href="#十三、重写和重载的区别" class="headerlink" title="十三、重写和重载的区别"></a>十三、重写和重载的区别</h1><ul>
-<li>重写是针对子类和父类的表现形式，而重载是在同一类中的不同表现形式</li>
-<li>子类重写父类的方法一般使用@override来表示，重写后的方法其方法的声明和参数类型、顺序必须要和父类完全一致</li>
-<li>重载是针对同一类中概念，它要求重载的方法必须满足下面任何一个要求：方法参数的顺序、参数的个数、参数的类型任意一个保持不同即可</li>
-</ul>
-<h1 id="十四、byte的取值范围"><a href="#十四、byte的取值范围" class="headerlink" title="十四、byte的取值范围"></a>十四、byte的取值范围</h1><p>Java的Byte的取值范围为（-128，127），占用一个字节，即8bit</p>
-<p>Java中使用补码来表示二进制数，因此最高位为符号位，最高位为0表示正数，最高为为1表示负数</p>
-<p>先来复习下源码、反码、补码</p>
-<p>原码：正常的二进制计算，存在符号位，0表示正数，最高为为1表示负数</p>
-<p>反码：正数的反码与其原码相同；负数在原码基础上，按位取反，符号位除外</p>
-<p>补码：正数的补码与其原码相同；负数的补码是在其反码的末位+1</p>
-<p>byte中，正数的最大值就是0111 1111</p>
-<p>因为存在符号位，所以存在两个0，即-0：1000 0000和+0：0000 0000，因此用1000 0000来表示负数的最小值，即-128</p>
-<p>1000 0000减1后为0111 1111，再取反1000 0000，原码的值128，在负数中就应该为-128</p>
-<h1 id="十五、HashMap和HashTable的区别"><a href="#十五、HashMap和HashTable的区别" class="headerlink" title="十五、HashMap和HashTable的区别"></a>十五、HashMap和HashTable的区别</h1><p>不同点：</p>
-<ul>
-<li>父类不同：HashMap继承了AbstractMap类，而HashTable继承了Dictionary类</li>
-<li><p>空值不同：HashMap允许空的key和value值，HashTable不允许空的key和value值。HashMap会把Null key当做普通的key对待，且不允许null key重复。HashTable存null的key就会报空指针异常</p>
-</li>
-<li><p>线程安全性：HashMap是线程不安全的，如果多个外部操作同时修改HashMap的数据结构比如add或者是delete，必须进行同步操作，即仅仅对key或者value的修改不是改变数据结构的操作</p>
-</li>
-<li>性能方面：虽然HashMap和HashTable都是基于单链表的，但是HashMap进行put或者get操作，可以达到常数时间的性能；而HashTable的put和get操作都是加了synchronized，所以效率很差</li>
-<li>初始容量不同：HashTable的初始长度是11，之后每次扩充容量变为之前的2n+1（n为上一次的长度）而HashMap的初始长度为16，之后每次扩充变为原来的两倍。创建时，如果给定了容量初始值，那么HashTable会直接使用你给定的大小，而HashMap会将其扩充为2的幂次方大小</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1825,7 +1770,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1838,7 +1783,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">99</span>
+        <span class="site-state-item-count">100</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1855,7 +1800,7 @@
 			<h3 class="widget-title">Tag Cloud</h3>
 			<div id="myCanvasContainer" class="widget tagcloud">
 				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eureka/" rel="tag">Eureka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM%E8%B0%83%E4%BC%98/" rel="tag">JVM调优</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KEPServer/" rel="tag">KEPServer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KGAT%E6%A8%A1%E5%9E%8B/" rel="tag">KGAT模型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Milo/" rel="tag">Milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPC-UA/" rel="tag">OPC UA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpcUa-Client/" rel="tag">OpcUa Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milo/" rel="tag">milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%94%E5%8D%81%E9%9F%B3%E5%9B%BE/" rel="tag">五十音图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">人际关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag">企业</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%9A%E4%BA%8B/" rel="tag">做事</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%94%90%E8%AF%97%E5%AE%8B%E8%AF%8D/" rel="tag">唐诗宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D/" rel="tag">宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D%E6%A0%BC%E5%BC%8F/" rel="tag">宋词格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E7%90%86/" rel="tag">心理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E6%B3%A8/" rel="tag">文本标注</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/" rel="tag">曲式结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" rel="tag">研究方向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E/" rel="tag">经济</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%BD%E5%8A%9B%E9%94%BB%E7%82%BC/" rel="tag">能力锻炼</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A7%E5%B8%81/" rel="tag">货币</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%E4%BD%9C%E5%93%81/" rel="tag">音乐作品</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ARQ/" rel="tag">ARQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eureka/" rel="tag">Eureka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GC%E7%AE%97%E6%B3%95/" rel="tag">GC算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM%E8%B0%83%E4%BC%98/" rel="tag">JVM调优</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jena/" rel="tag">Jena</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KEPServer/" rel="tag">KEPServer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KGAT%E6%A8%A1%E5%9E%8B/" rel="tag">KGAT模型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Milo/" rel="tag">Milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OPC-UA/" rel="tag">OPC UA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OWL/" rel="tag">OWL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpcUa-Client/" rel="tag">OpcUa Client</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SPARQL/" rel="tag">SPARQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/milo/" rel="tag">milo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/" rel="tag">个人项目</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%94%E5%8D%81%E9%9F%B3%E5%9B%BE/" rel="tag">五十音图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">人际关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag">企业</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%9A%E4%BA%8B/" rel="tag">做事</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%94%90%E8%AF%97%E5%AE%8B%E8%AF%8D/" rel="tag">唐诗宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D/" rel="tag">宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D%E6%A0%BC%E5%BC%8F/" rel="tag">宋词格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E7%90%86/" rel="tag">心理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" rel="tag">推荐系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BB%BA%E6%A8%A1/" rel="tag">数据建模</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%9C%AC%E6%A0%87%E6%B3%A8/" rel="tag">文本标注</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/" rel="tag">曲式结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E5%88%8A/" rel="tag">期刊</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" rel="tag">知识图谱</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E5%BA%94%E7%94%A8/" rel="tag">知识图谱应用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/" rel="tag">知识图谱构建</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91/" rel="tag">研究方向</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E/" rel="tag">经济</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%BD%E5%8A%9B%E9%94%BB%E7%82%BC/" rel="tag">能力锻炼</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%8A%95%E7%A8%BF/" rel="tag">论文投稿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E6%A0%BC%E5%BC%8F/" rel="tag">论文格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A7%E5%B8%81/" rel="tag">货币</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%E4%BD%9C%E5%93%81/" rel="tag">音乐作品</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
 				</canvas>
 			</div>
 		</div>
@@ -1947,59 +1892,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
