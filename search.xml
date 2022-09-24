@@ -6776,6 +6776,11 @@
 </li>
 <li>静态变量、常量、即时编译器编译后的代码缓存</li>
 </ul>
+<h2 id="6-4-运行时常量池"><a href="#6-4-运行时常量池" class="headerlink" title="6.4 运行时常量池"></a>6.4 运行时常量池</h2><p>一个有效的字节码文件中除了包含类的版本信息、字段、方法以及接口等描述信息外，还包含一项信息那就是常量池表(constant pool Table)，包括各种字面量和对类型、域和方法的符号引用。</p>
+<p>常量池，可以看做是一张表，虚拟机指令根据这张常量表找到要执行的类名、方法名、参数类型、字面量等类型。简单来说就是存放字面量和符号引用</p>
+<p>常量池是 <code>*.class</code> 文件中的。当类的字节码被加载到内存中后，他的常量池信息就会集中放入到一块内存，这块内存就称为运行时常量池，并且把里面的<code>符号地址</code>变<code>为真实地址</code>。</p>
+<p>以下为java代码编译后的<code>*.class</code>文件的常量池内容</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ===========================================常量池===============================================</span></span><br><span class="line">Constant pool:</span><br><span class="line">   #<span class="number">1</span> = Methodref          #<span class="number">6.</span>#<span class="number">20</span>         <span class="comment">// java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span></span><br><span class="line">   #<span class="number">2</span> = Fieldref           #<span class="number">21.</span>#<span class="number">22</span>        <span class="comment">// java/lang/System.out:Ljava/io/PrintStream;</span></span><br><span class="line">   #<span class="number">3</span> = String             #<span class="number">23</span>            <span class="comment">// hello world</span></span><br><span class="line">   #<span class="number">4</span> = Methodref          #<span class="number">24.</span>#<span class="number">25</span>        <span class="comment">// java/io/PrintStream.println:(Ljava/lang/String;)V</span></span><br><span class="line">   #<span class="number">5</span> = Class              #<span class="number">26</span>            <span class="comment">// org/memory/jvm/t5/HelloWorld</span></span><br><span class="line">   #<span class="number">6</span> = Class              #<span class="number">27</span>            <span class="comment">// java/lang/Object</span></span><br><span class="line">   #<span class="number">7</span> = Utf8               &lt;init&gt;</span><br><span class="line">   #<span class="number">8</span> = Utf8               ()V</span><br><span class="line">   #<span class="number">9</span> = Utf8               Code</span><br><span class="line">  #<span class="number">10</span> = Utf8               LineNumberTable</span><br><span class="line">  #<span class="number">11</span> = Utf8               LocalVariableTable</span><br><span class="line">  #<span class="number">12</span> = Utf8               <span class="keyword">this</span></span><br><span class="line">  #<span class="number">13</span> = Utf8               Lorg/memory/jvm/t5/HelloWorld;</span><br><span class="line">  #<span class="number">14</span> = Utf8               main</span><br><span class="line">  #<span class="number">15</span> = Utf8               ([Ljava/lang/String;)V</span><br><span class="line">  #<span class="number">16</span> = Utf8               args</span><br><span class="line">  #<span class="number">17</span> = Utf8               [Ljava/lang/String;</span><br><span class="line">  #<span class="number">18</span> = Utf8               SourceFile</span><br><span class="line">  #<span class="number">19</span> = Utf8               HelloWorld.java</span><br><span class="line">  #<span class="number">20</span> = NameAndType        #<span class="number">7</span>:#<span class="number">8</span>          <span class="comment">// &quot;&lt;init&gt;&quot;:()V</span></span><br><span class="line">  #<span class="number">21</span> = Class              #<span class="number">28</span>            <span class="comment">// java/lang/System</span></span><br><span class="line">  #<span class="number">22</span> = NameAndType        #<span class="number">29</span>:#<span class="number">30</span>        <span class="comment">// out:Ljava/io/PrintStream;</span></span><br><span class="line">  #<span class="number">23</span> = Utf8               hello world</span><br><span class="line">  #<span class="number">24</span> = Class              #<span class="number">31</span>            <span class="comment">// java/io/PrintStream</span></span><br><span class="line">  #<span class="number">25</span> = NameAndType        #<span class="number">32</span>:#<span class="number">33</span>        <span class="comment">// println:(Ljava/lang/String;)V</span></span><br><span class="line">  #<span class="number">26</span> = Utf8               org/memory/jvm/t5/HelloWorld</span><br><span class="line">  #<span class="number">27</span> = Utf8               java/lang/Object</span><br><span class="line">  #<span class="number">28</span> = Utf8               java/lang/System</span><br><span class="line">  #<span class="number">29</span> = Utf8               out</span><br><span class="line">  #<span class="number">30</span> = Utf8               Ljava/io/PrintStream;</span><br><span class="line">  #<span class="number">31</span> = Utf8               java/io/PrintStream</span><br><span class="line">  #<span class="number">32</span> = Utf8               println</span><br><span class="line">  #<span class="number">33</span> = Utf8               (Ljava/lang/String;)V</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>后端</category>
@@ -7531,9 +7536,39 @@
 <li><p>时值的压缩与扩大</p>
 </li>
 </ul>
-<h1 id="二、一部曲式"><a href="#二、一部曲式" class="headerlink" title="二、一部曲式"></a>二、一部曲式</h1><p>一部曲式就是乐段</p>
-<p>一部曲式：一部曲式是完整的曲式中规模最小的结构。可以由一个乐句、两个乐句、三个及三个以上的乐句组成。一般有比较明显的终止式，能够表达一个完整或相对完整的乐思</p>
-<h1 id="三、单二部曲式"><a href="#三、单二部曲式" class="headerlink" title="三、单二部曲式"></a>三、单二部曲式</h1><h1 id="四、单三部曲式"><a href="#四、单三部曲式" class="headerlink" title="四、单三部曲式"></a>四、单三部曲式</h1><h1 id="五、复散步曲式"><a href="#五、复散步曲式" class="headerlink" title="五、复散步曲式"></a>五、复散步曲式</h1><h1 id="六、变奏曲式"><a href="#六、变奏曲式" class="headerlink" title="六、变奏曲式"></a>六、变奏曲式</h1><h1 id="七、回旋曲式"><a href="#七、回旋曲式" class="headerlink" title="七、回旋曲式"></a>七、回旋曲式</h1><h1 id="八、奏鸣曲式"><a href="#八、奏鸣曲式" class="headerlink" title="八、奏鸣曲式"></a>八、奏鸣曲式</h1><h1 id="九、回旋奏鸣曲式"><a href="#九、回旋奏鸣曲式" class="headerlink" title="九、回旋奏鸣曲式"></a>九、回旋奏鸣曲式</h1>]]></content>
+<h1 id="二、曲式"><a href="#二、曲式" class="headerlink" title="二、曲式"></a>二、曲式</h1><img src="/2022/08/10/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/jiegou.png" class="" title="jiegou">
+<h2 id="2-1-一部曲式"><a href="#2-1-一部曲式" class="headerlink" title="2.1 一部曲式"></a>2.1 一部曲式</h2><p>一部曲式：一部曲式是完整的曲式中规模最小的结构，结构为A。可以由一个乐句、两个乐句、三个及三个以上的乐句组成。一般有比较明显的终止式，能够表达一个完整或相对完整的乐思。</p>
+<ul>
+<li>这种曲式结构最简单，没有明显的重复段落，没有第二主题，也没有副歌。</li>
+<li>用这种结构写出来的乐曲通常较短</li>
+</ul>
+<h2 id="2-2-单二部曲式"><a href="#2-2-单二部曲式" class="headerlink" title="2.2 单二部曲式"></a>2.2 单二部曲式</h2><p>单二部曲式：由两个乐段构成的曲式，叫做单二部曲式，结构为A+B，通常情况下A段和B段会形成鲜明对比</p>
+<p>再继续细分的话又分为两种情况：</p>
+<ul>
+<li>带再现的单二部曲式，这种曲式里通常B段的前一半为对比部分，后一半为再现部分</li>
+<li>不带再现的单二部曲式，这种曲式A段和B段由完全不同的材料构成，形成鲜明对比</li>
+</ul>
+<h2 id="2-3-单三部曲式"><a href="#2-3-单三部曲式" class="headerlink" title="2.3 单三部曲式"></a>2.3 单三部曲式</h2><p>由三个乐段构成，其中第一段和第三段是一样的材料，结构为A+B+A。这种曲式的中段B会与前后两段A形成鲜明对比，通常在速度、力度、感情变化方面都完全不一样。有些作品的B段主题也可能由A段的主题变化而来。</p>
+<p>第三段为第一段的再现，有些作品完全一样，有些作品可能会产生一些微小的变化。</p>
+<h2 id="2-4-复三部曲式"><a href="#2-4-复三部曲式" class="headerlink" title="2.4 复三部曲式"></a>2.4 复三部曲式</h2><p>这种曲式的大结构与单三部曲式完全一样，只是这里的三个段落中，每个段落还包含一个独立的曲式结构，可能为单二部曲式。可能为单三部曲式</p>
+<p>在古典作品中，中间的段落叫做“三声中部”</p>
+<h2 id="2-5-变奏曲式"><a href="#2-5-变奏曲式" class="headerlink" title="2.5 变奏曲式"></a>2.5 变奏曲式</h2><p>变奏曲一开始会有一个完整的主题段落，在后面的段落中，都是这个主题的发展变化。这个发展变化会改变其中的音型、节奏、调性、速度、音区等等，但是主题中的某些材料会保留下来，例如和声、旋律走向、句子逻辑关系等等。变奏曲式的变奏部分数量可以有很多，例如拉赫玛尼诺夫的《帕格尼尼主题狂想曲》有24个变奏，巴赫的《哥德堡变奏曲》有30个变奏。</p>
+<h2 id="2-6-回旋曲式"><a href="#2-6-回旋曲式" class="headerlink" title="2.6 回旋曲式"></a>2.6 回旋曲式</h2><p>这种曲式由两种部分构成，为主部与副部。在段落中，第1、3、5…奇数段落为主部，第2、4、6…偶数段落为副部。主部的段落主题是一致的，而副部的主题一直在不断变化。回旋曲式主部和副部的数量可以很多</p>
+<p>这样的曲式听起来会感觉到不断有新主题出现，然后回到原来的主题</p>
+<p>回旋曲式的产生源于声乐性的轮舞曲，在轮舞曲中有分节歌与副歌，分节歌通常是独唱，副歌是合唱，每次独唱完成后都会回到合唱，每次合唱部分都是相同的。</p>
+<h2 id="2-7-奏鸣曲式"><a href="#2-7-奏鸣曲式" class="headerlink" title="2.7 奏鸣曲式"></a>2.7 奏鸣曲式</h2><p>奏鸣曲式在大结构上和三部曲式一样，但是其内部结构更为复杂。第一段的呈示部和第三段的再现部用相同的主题，而中间的展开部会把这个主题发展变化。</p>
+<p>呈示部中往往还包含第一主题、第二主题、第一结尾、第二结尾，这些片段之间还有一些连接段，在调性安排上，第一主题为主调，第二主题转到属调。</p>
+<p>呈示部中往往还包含第一主题、第二主题、第一结尾、第二结尾，这些片段之间还有一些连接段，在调性安排上，第一主题为主调，第二主题转到属调。</p>
+<p>再现部包含了呈示部中的所有部分，区别在于这里第一主题和第二主题都为主调。</p>
+<p>有很多的奏鸣曲、协奏曲、交响乐、室内乐的乐章都用到了奏鸣曲式，尤其是第一乐章用得最多，但不是所有的作品都是用奏鸣曲式来写的，也可以用其他的结构来写</p>
+<h2 id="2-8-流行音乐曲式"><a href="#2-8-流行音乐曲式" class="headerlink" title="2.8 流行音乐曲式"></a>2.8 流行音乐曲式</h2><ul>
+<li>主歌（Verse）（A）</li>
+<li>副歌（Chorus）（B）</li>
+<li>过渡句（插句，中段）（C）</li>
+<li>流行句（记忆点）（D）</li>
+<li>桥段（Instrumental and Ending）（序唱，过门，间奏，尾奏）（E）</li>
+</ul>
+]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
@@ -8306,6 +8341,19 @@
       </categories>
       <tags>
         <tag>Eureka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringCloud基础大全-服务调用</title>
+    <url>/2022/09/24/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="一、Bibbon"><a href="#一、Bibbon" class="headerlink" title="一、Bibbon"></a>一、Bibbon</h1><h1 id="二、OpenFeign"><a href="#二、OpenFeign" class="headerlink" title="二、OpenFeign"></a>二、OpenFeign</h1>]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Ribbon</tag>
+        <tag>OpenFeign</tag>
       </tags>
   </entry>
 </search>
