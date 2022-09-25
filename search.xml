@@ -1895,6 +1895,14 @@
 <h2 id="4-3-十二大小调五线谱"><a href="#4-3-十二大小调五线谱" class="headerlink" title="4.3 十二大小调五线谱"></a>4.3 十二大小调五线谱</h2><img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/12-1.png" class="" title="12-1">
 <img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/12-2.png" class="" title="12-2">
 <img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/12-3.png" class="" title="12-3">
+<h1 id="五、乐器"><a href="#五、乐器" class="headerlink" title="五、乐器"></a>五、乐器</h1><h2 id="5-1-打击乐器"><a href="#5-1-打击乐器" class="headerlink" title="5.1 打击乐器"></a>5.1 打击乐器</h2><h3 id="5-1-1-架子鼓Drum"><a href="#5-1-1-架子鼓Drum" class="headerlink" title="5.1.1 架子鼓Drum"></a>5.1.1 架子鼓Drum</h3><img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/jiazigu.png" class="" title="jiazigu">
+<ul>
+<li>嗵（<strong>tōng</strong>）鼓（tom drum）：顾名思义，发咚咚声</li>
+<li>踩镲（<strong>chǎ</strong>）（hi-hat）：擦擦声，声音没那么响亮</li>
+<li>军鼓（snare drum）：哒哒声，较其他鼓要响亮些</li>
+<li>脚鼓（bass drum/kick）：低音大鼓，又叫底鼓，从正面看的一个大鼓，脚踩发声</li>
+<li>节奏镲（ride cymbal）：啪啪声，最响亮的声</li>
+</ul>
 ]]></content>
       <categories>
         <category>文化艺术</category>
@@ -4081,280 +4089,6 @@
       </tags>
   </entry>
   <entry>
-    <title>设计模式基础大全</title>
-    <url>/2022/03/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<h1 id="一、设计模式基础"><a href="#一、设计模式基础" class="headerlink" title="一、设计模式基础"></a>一、设计模式基础</h1><h2 id="1-1-GoF的23种设计模式及其功能"><a href="#1-1-GoF的23种设计模式及其功能" class="headerlink" title="1.1 GoF的23种设计模式及其功能"></a>1.1 GoF的23种设计模式及其功能</h2><ol>
-<li>单例（ Singleton ）模式 某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。</li>
-<li>原型（Prototype）模式：将一个对象作为原型，通过对其进行复制而克隆出多个和原型类似的新实例</li>
-<li>工厂方法（Factory Method）模式：定义一个用于创建产品的接口，由子类决定生存什么产品</li>
-<li>抽象工厂（Abstract Factory）模式：提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品</li>
-<li>建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们</li>
-<li>代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性</li>
-<li>适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能在一起工作的那些类能一起工作</li>
-<li>桥接（Bridge）模式：将抽象与实现分离，使它们可以独立变化，它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
-<li>装饰（Decorator）模式：：动态的给对象增加一些职责，即增加其额外的功能</li>
-<li>外观（ Facade ）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问</li>
-<li>享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用</li>
-<li>组合（ Composite ）模式：将对象组合成树状层次结构，使用户对单个对象和组合对象具有一致的访问性</li>
-<li>模板方法（ Templat Method ）模式：定义一个操作中的算法骨架 ，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤</li>
-<li>策略（ Strategy ）模式：定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的改变不会影响使用算法的客户</li>
-<li>命令（ Command ）模式：将一个请求封装为一个对象 ，使发出请求的责任和执行请求的责任分割开</li>
-<li>职责链 （Chain of Responsibility ）模式：把请求从链中的一个对象传到下一个对象 ，直到请求被响应为止。通过这种方式去除对象之间的耦合</li>
-<li>状态（ State ）模式：允许一个对象在其内部状态发生改变时改变其行为能力</li>
-<li>观察者（ Observer 模式：多个对象间存在－对多关系，当一个对象发生改变时，把这种改变通知给其他多个对象，从而影响其他对象的行为</li>
-<li>中介者（ Mediator ）模式：定义一个中介对象来简化原有对象之间的交互关系，降低系统中对象间的耦合度，使原有对象之间不必相互了解</li>
-<li>迭代器 Iterator ）模式 提供一种方法来顺序访问聚合对象中的一系列数据 ，而不暴露聚合对象的内部表示</li>
-<li>访问者（Visitor）模式：在不改变集合元素的前提下，为一个集合种的每个元素提供多种访问方式，即每个元素有多个访问者对象访问</li>
-<li>备忘录（Memento）模式：在不破坏封装性的前提下，获取并保存一个对象的内部状态以便以后恢复它</li>
-<li>解释器（Interpreter）模式：提供如何定义语言的文法，以及对语言句子的解释方法，即解释器</li>
-</ol>
-<h1 id="二、面向对象的设计原则"><a href="#二、面向对象的设计原则" class="headerlink" title="二、面向对象的设计原则"></a>二、面向对象的设计原则</h1><h2 id="2-1-开闭原则OCP"><a href="#2-1-开闭原则OCP" class="headerlink" title="2.1 开闭原则OCP"></a>2.1 开闭原则OCP</h2><ul>
-<li>对扩展开放、对修改关闭</li>
-<li>通过“抽象约束、封装变化”来实现开闭原则</li>
-<li>抽象层设计的合理，可以基本保持软件架构的稳定</li>
-<li>当软件需求发生变化时，只需要根据需求派生一个实现类来扩展就可以了</li>
-</ul>
-<h2 id="2-2-里氏替换原则LSP"><a href="#2-2-里氏替换原则LSP" class="headerlink" title="2.2 里氏替换原则LSP"></a>2.2 里氏替换原则LSP</h2><ul>
-<li>子类可以扩展父类的功能，但不能改变父类原有的功能</li>
-<li>简单来说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法</li>
-<li>作用：实现开闭原则的重要方式之一、提高父类可复用性、降低类的扩展出错的可能性</li>
-<li>如果出现因重写父类方法而导致出错的情况，应该设计个更一般的类，重新组织类的继承关系</li>
-</ul>
-<h2 id="2-3-依赖倒置原则DIP"><a href="#2-3-依赖倒置原则DIP" class="headerlink" title="2.3 依赖倒置原则DIP"></a>2.3 依赖倒置原则DIP</h2><ul>
-<li>要面向接口编程，不要面向实现编程</li>
-<li>抽象层相对稳定，实现类较为多变</li>
-<li>接口/抽象类的目的是制定好规范和契约，不去涉及任何具体的操作</li>
-<li>具体细节的任务交给实现类完成</li>
-<li>作用：降低了类间的耦合性、提高系统的稳定性、提高代码可读性和可维护性</li>
-</ul>
-<h3 id="2-3-1-实现方法"><a href="#2-3-1-实现方法" class="headerlink" title="2.3.1 实现方法"></a>2.3.1 实现方法</h3><ol>
-<li>每个类尽量提供接口或抽象类，或者两者都具备</li>
-<li>变量的声明类型尽量是接口或者是抽象类</li>
-<li>任何类都不应该从具体类派生</li>
-<li>使用继承时尽量遵循里氏替换原则</li>
-</ol>
-<h2 id="2-4-单一职责原则SRP"><a href="#2-4-单一职责原则SRP" class="headerlink" title="2.4 单一职责原则SRP"></a>2.4 单一职责原则SRP</h2><ul>
-<li>一个类应该有且仅有一个引起它变化的原因，否则应该被拆分</li>
-<li>承担太多职责的缺点：削弱类实现其他职责的能力、冗余代码</li>
-<li>作用：降低类的复杂度、提高类的可读性、提高系统可维护性、变更引起的风险降低</li>
-<li>实现方法：分析、设计、重构</li>
-<li>同样适用于方法，方法应尽可能做好一件事情</li>
-</ul>
-<h2 id="2-5-接口隔离原则ISP"><a href="#2-5-接口隔离原则ISP" class="headerlink" title="2.5 接口隔离原则ISP"></a>2.5 接口隔离原则ISP</h2><ul>
-<li>程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法</li>
-<li>要为类建立它们需要的专用接口，而不要视图去建立一个很庞大的接口供所有依赖它的类去调用</li>
-<li>作用：提高系统灵活性和可维护性、降低系统耦合性、提高系统内聚性、接口粒度大小要定义合理（太大太小都不好）、减少代码冗余、能够体现对象的层次<br>实现方法：一个接口只服务于一个子模块或业务逻辑、为依赖接口的类定制服务、深入了解环境/业务逻辑、使接口用最少的方法实现最多的事情</li>
-</ul>
-<h2 id="2-6-迪米特法则LKP"><a href="#2-6-迪米特法则LKP" class="headerlink" title="2.6 迪米特法则LKP"></a>2.6 迪米特法则LKP</h2><ul>
-<li>如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用</li>
-<li>作用：降低类间耦合度、提高模块相对独立性、提高类的可复用性和系统的扩展性</li>
-<li>过渡使用LKP会使系统产生大量的中介类，从而增加系统的复杂性，所以使用时要权衡好</li>
-<li>实现方法：依赖者应该依赖应该依赖的对象、被依赖者只暴露应该暴露的方法</li>
-<li>注意：应创建弱耦合的类、降低类成员的访问权限、优先考虑设计不变类、降低引用次数、不暴露属性成员（提供get和set）、进行使用序列化</li>
-</ul>
-<h2 id="2-7-合成复用原则CRP"><a href="#2-7-合成复用原则CRP" class="headerlink" title="2.7 合成复用原则CRP"></a>2.7 合成复用原则CRP</h2><ul>
-<li>又称组合/聚合复用原则（CARP）</li>
-<li>它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现</li>
-<li>如果要使用继承关系，则必须严格遵循里氏代换原则</li>
-<li>合成复用原则和里氏代换原则都是开闭原则的具体实现规范</li>
-<li>类的复用包括：继承复用、合成复用</li>
-</ul>
-<h3 id="2-7-1-继承复用"><a href="#2-7-1-继承复用" class="headerlink" title="2.7.1 继承复用"></a>2.7.1 继承复用</h3><ul>
-<li>破坏了类的封装性，父类暴露给子类</li>
-<li>子类与父类耦合度高</li>
-<li>限制了复用的灵活性，父类继承而来的实现是静态的，在编译时已经定义、所以在运行时不可能发生变化</li>
-</ul>
-<h3 id="2-7-2-合成复用"><a href="#2-7-2-合成复用" class="headerlink" title="2.7.2 合成复用"></a>2.7.2 合成复用</h3><ul>
-<li>维持了类的封装性</li>
-<li>新旧类之间的耦合度低</li>
-<li>复用的灵活性高，可以在运行时动态进行，新对象可以动态地引用与成分对象类型相同的对象</li>
-</ul>
-<h1 id="三、创建型模式"><a href="#三、创建型模式" class="headerlink" title="三、创建型模式"></a>三、创建型模式</h1><h2 id="3-1-特点"><a href="#3-1-特点" class="headerlink" title="3.1 特点"></a>3.1 特点</h2><ul>
-<li>创建型模式的主要关注点是“怎样创建对象”</li>
-<li>将对象的创建与使用分离，这样可以降低系统耦合度，使用者不需要关注对象的创建细节</li>
-<li>对象的创建由工厂来完成</li>
-</ul>
-<h2 id="3-2-模式"><a href="#3-2-模式" class="headerlink" title="3.2 模式"></a>3.2 模式</h2><ul>
-<li>单例模式Singleton</li>
-<li>原型模式Prototype</li>
-<li>工厂模式Factory Method</li>
-<li>抽象工厂模式Abstract Factory</li>
-<li>建造者模式Builder</li>
-</ul>
-<h1 id="四、单例模式"><a href="#四、单例模式" class="headerlink" title="四、单例模式"></a>四、单例模式</h1><h2 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1 定义"></a>4.1 定义</h2><ul>
-<li>一个类只有一个实例，且该类能自行创建这个实例的一种模式</li>
-<li>比如windows的任务管理器、回收站、应用程序的日志对象、网站的计数器等等，一般都设计为单例</li>
-</ul>
-<h2 id="4-2-特点"><a href="#4-2-特点" class="headerlink" title="4.2 特点"></a>4.2 特点</h2><ul>
-<li>单例类只有一个实例对象</li>
-<li>该单例对象必须由单例类自行创建</li>
-<li>单例类对外提供一个访问该单例的全局访问点</li>
-</ul>
-<h2 id="4-3-结构"><a href="#4-3-结构" class="headerlink" title="4.3 结构"></a>4.3 结构</h2><ul>
-<li>单例类：包含一个实例且能自行创建这个实例的类</li>
-<li>访问类：使用单例的类</li>
-</ul>
-<h2 id="4-4-实现"><a href="#4-4-实现" class="headerlink" title="4.4 实现"></a>4.4 实现</h2><h3 id="4-4-1-懒汉式"><a href="#4-4-1-懒汉式" class="headerlink" title="4.4.1 懒汉式"></a>4.4.1 懒汉式</h3><ul>
-<li>特点：类加载时没有生成实例，只有第一次调用getInstance方法时才去创建这个单例</li>
-<li>编写多线程程序时，关键字volatile和synchronized不能删除，否则存在线程不安全的问题，但缺点是影响性能，会消耗更多的资源</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> LazySingleton instance=<span class="keyword">null</span>;  <span class="comment">//保证instance在所有线程中同步</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;   <span class="comment">// private避免类在外部被实例化</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;  <span class="comment">//getInstance方法前加同步</span></span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)</span><br><span class="line">            instance=<span class="keyword">new</span> LazySingleton();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-4-2-饿汉式"><a href="#4-4-2-饿汉式" class="headerlink" title="4.4.2 饿汉式"></a>4.4.2 饿汉式</h3><ul>
-<li>特点：类一旦加载就创建一个单例，保证在调用getInstance方法之前单例就已经存在了</li>
-<li>饿汉式由于其特点，所以是线程安全的，可以直接用于多线程而不会出现问题</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingleton instance=<span class="keyword">new</span> HungrySingleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-5-应用场景"><a href="#4-5-应用场景" class="headerlink" title="4.5 应用场景"></a>4.5 应用场景</h2><ul>
-<li>某类只要求生成一个对象的时候</li>
-<li>当对象需要被共享的场合</li>
-<li>当某类需要频繁实例化，而创建的对象又频繁被消耗的时候</li>
-</ul>
-<h1 id="五、原型模式"><a href="#五、原型模式" class="headerlink" title="五、原型模式"></a>五、原型模式</h1><h2 id="5-1-定义"><a href="#5-1-定义" class="headerlink" title="5.1 定义"></a>5.1 定义</h2><ul>
-<li>通过传统的构造函数来创建对象，会比较复杂且耗时耗资源</li>
-<li>用一个已经创建的实例作为原型，通过复制该原型对象来创建一个和原型相同或相似的新对象</li>
-<li>如：系统的复制</li>
-</ul>
-<h2 id="5-2-结构"><a href="#5-2-结构" class="headerlink" title="5.2 结构"></a>5.2 结构</h2><ul>
-<li>抽象原型类：规定了具体原型对象必须实现的接口</li>
-<li>具体原型类：实现抽象原型类的clone()方法，它是可被复制的对象</li>
-<li>访问类：使用具体原型类中的clone()方法来复制新的对象</li>
-</ul>
-<h2 id="5-3-实现"><a href="#5-3-实现" class="headerlink" title="5.3 实现"></a>5.3 实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//具体原型类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Realizetype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    Realizetype()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型创建成功&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体原型复制成功&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> (Realizetype) <span class="keyword">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//原型模式的测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrototypeTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CloneNotSupportedException</span>&#123;</span><br><span class="line">        Realizetype obj1=<span class="keyword">new</span> Realizetype();</span><br><span class="line">        Realizetype obj2=(Realizetype) obj1.clone();</span><br><span class="line">        System.out.println(<span class="string">&quot;obj1==obj2?&quot;</span>+(obj1==obj2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    运行结果：</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    具体原型复制成功</span></span><br><span class="line"><span class="comment">    obj1==obj2?false</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h2 id="5-4-应用场景"><a href="#5-4-应用场景" class="headerlink" title="5.4 应用场景"></a>5.4 应用场景</h2><ul>
-<li>对象之间相同或相似，即只是个别的几个属性不同的时候</li>
-<li>对象的创建过程比较麻烦，但复制比较简单的时候</li>
-</ul>
-<h1 id="六、工厂方法模式"><a href="#六、工厂方法模式" class="headerlink" title="六、工厂方法模式"></a>六、工厂方法模式</h1><h2 id="6-1-定义"><a href="#6-1-定义" class="headerlink" title="6.1 定义"></a>6.1 定义</h2><ul>
-<li>定义：定义一个创建产品对象 工厂接口，将产品对象的实际创建工作推迟到具体子工厂类当中</li>
-<li>简单工厂模式：如果要创建的产品不多，只要一个工厂类就可以完成，这种模式叫“简单工厂模式”， 它不属于 GoF 23 经典设计模式，它的缺点是增加新产品时会违背“开闭原则”</li>
-</ul>
-<h2 id="6-2-特点"><a href="#6-2-特点" class="headerlink" title="6.2 特点"></a>6.2 特点</h2><ul>
-<li>满足创建型模式中所要求的“创建与使用相分离”的特点。我们把被创建的对象称为“产品”，把创建产品的对象称为“工厂”</li>
-<li>用户只需要知道具体工厂的名称就可得到所要的产品，无须知道产品的具体创建过程</li>
-<li>在系统增加新的产品时只需要添加具体产品类和对应的具体工厂类，无须对原工厂进行任何修改 ，满足开闭原则。</li>
-<li>缺点 每增加一个产品就要增加一个具体产品类和一个对应的具体工厂类 ，这增加了系统的复杂度</li>
-</ul>
-<h2 id="6-3-结构"><a href="#6-3-结构" class="headerlink" title="6.3 结构"></a>6.3 结构</h2><ul>
-<li>抽象工厂（Abstract Factory）：提供了创建产品的接口 ，调用者通过它访问具体工厂的工厂方法 newProduct（）来创建产品。</li>
-<li>具体工厂（Concrete Factory）：主要是实现抽象工厂中的抽象方法 完成具体产品的创建。</li>
-<li>抽象产品（Product）：定义了产品的规范 描述了产品的主要特性和功能。</li>
-<li>具体产品（Concrete Product）：：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间一一对应。</li>
-</ul>
-<h2 id="6-4-实现"><a href="#6-4-实现" class="headerlink" title="6.4 实现"></a>6.4 实现</h2><h3 id="6-4-1-xml配置"><a href="#6-4-1-xml配置" class="headerlink" title="6.4.1 xml配置"></a>6.4.1 xml配置</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">className</span>&gt;</span>ConcreteFactory1<span class="tag">&lt;/<span class="name">className</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="6-4-2-对象生成器"><a href="#6-4-2-对象生成器" class="headerlink" title="6.4.2 对象生成器"></a>6.4.2 对象生成器</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> FactoryMethod;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(string args[])</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            Product a;</span><br><span class="line">            AbstractFactory af;</span><br><span class="line">            af=(AbstractFactory) ReadXML1.getObject();</span><br><span class="line">            a=af.newProduct();</span><br><span class="line">            a.show();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象产品，提供了产品的接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品1：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct1</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品1显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体产品2：实现抽象产品中的抽象方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteProduct2</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体产品2显示...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象工厂1：提供了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂1：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品1&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//具体工厂2：实现了产品的生成方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory2</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">newProduct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂2生成-&gt;具体产品2&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteFactory2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="6-5-应用场景"><a href="#6-5-应用场景" class="headerlink" title="6.5 应用场景"></a>6.5 应用场景</h2><ol>
-<li>客户只知道创建产品的工厂名，而不知道具体的产品名。如TCL电视工厂、海信电视工厂等。</li>
-<li>创建对象的任务由多个具体子工厂中的某一个完成，而抽象工厂只提供创建产品的接口</li>
-<li>客户不关心创建产品的细节，只关心产品的品牌</li>
-</ol>
-<h1 id="七、抽象工厂模式"><a href="#七、抽象工厂模式" class="headerlink" title="七、抽象工厂模式"></a>七、抽象工厂模式</h1><h2 id="7-1-定义"><a href="#7-1-定义" class="headerlink" title="7.1 定义"></a>7.1 定义</h2><ul>
-<li>抽象工厂模式将考虑多等级产品的生产 将同一个具体工厂所生产的位于不同等级的一组产品称为一个产品族</li>
-<li>同等级：同种类称为同等级，也就是说 工厂方法模式只考虑生产同等级的产品</li>
-<li>抽象工厂（Abstract Factory）模式：是一种为访问类提供一个创建一组相关或相互依赖对<br>象的接口，且访问类无须指定所要产品的具体类就能得到同族的不同等级的产品的模式结构</li>
-</ul>
-<h2 id="7-2-特点"><a href="#7-2-特点" class="headerlink" title="7.2 特点"></a>7.2 特点</h2><ul>
-<li>前面介绍的工厂方法模式中考虑的是一类产品的生产，如畜牧场只养动物、电视机厂只生产电视机、计算机软件学院只培养计算机软件专业的学生等</li>
-<li>在现实生活中许多工厂是综合型的工厂能生产多等级（种类）的产品，如农场里既养动物又种植物，电器厂既生产电视机又生产洗衣机或空调，大学既有软件专业又有生物专业等</li>
-<li>工厂方法模式只生产一个等级的产品，而抽象工厂模式可生<br>产多个等级的产品。</li>
-</ul>
-<h2 id="7-3-条件"><a href="#7-3-条件" class="headerlink" title="7.3 条件"></a>7.3 条件</h2><ol>
-<li>系统中有多个产品族，每个具体工厂 建同一族但属于不同等级结构的产品。</li>
-<li>系统一次只可能消费其中某一族产品，即同族的产品一起使用。</li>
-</ol>
-<h2 id="7-4-优缺点"><a href="#7-4-优缺点" class="headerlink" title="7.4 优缺点"></a>7.4 优缺点</h2><ul>
-<li>优点：<ul>
-<li>可以在类的内部对产品族中相关联的多等级产品共同管理，而不必专门引入多个新的类来进<br>行管理。</li>
-<li>当增加一个新的产品族时不需要修改原代码， 满足开闭原则。</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>当产品族 需要增加一个新的产品时，所有的工厂类都需要进行修改。</li>
-</ul>
-</li>
-</ul>
-<h2 id="7-5-结构"><a href="#7-5-结构" class="headerlink" title="7.5 结构"></a>7.5 结构</h2><ul>
-<li>抽象工厂Abstract Factory：提供了创建产品的接口，它包含多个创建产品的方法<br>new Product（）， 以创建多个不同等级 产品。</li>
-<li>具体工厂Concrete Factory：主要是实现抽象工厂中的多个抽象方法，完成具体产品的创建</li>
-<li>抽象产品Product：：定义了产品的规范，描述了产品的主要特性和功能，抽象工厂模式有多个抽象产品。</li>
-<li>具体产品Concrete Product：）：实现了抽象产品角色所定义的接口，由具体工厂来创建，它同具体工厂之间是多对一的关系。</li>
-</ul>
-<h2 id="7-6-实现"><a href="#7-6-实现" class="headerlink" title="7.6 实现"></a>7.6 实现</h2><h3 id="7-6-1-抽象工厂"><a href="#7-6-1-抽象工厂" class="headerlink" title="7.6.1 抽象工厂"></a>7.6.1 抽象工厂</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product1 <span class="title">newProduct1</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product2 <span class="title">newProduct2</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="7-6-2-具体工厂"><a href="#7-6-2-具体工厂" class="headerlink" title="7.6.2 具体工厂"></a>7.6.2 具体工厂</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteFactory1</span> <span class="keyword">implements</span> <span class="title">AbstractFactory</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product1 <span class="title">newProduct1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品11...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteProduct11();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product2 <span class="title">newProduct2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;具体工厂1生成-&gt;具体产品21...&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteProduct21();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="7-7-应用场景"><a href="#7-7-应用场景" class="headerlink" title="7.7 应用场景"></a>7.7 应用场景</h2><ol>
-<li>当需要创建的对象是一系列相互关联或相互依赖的产品族时，如电器 厂中的电视机衣机、空调等。</li>
-<li>系统中有多个产品族 但每次只使用其中的某一族产品。如有人只喜欢穿某一个品牌的衣<br>服和鞋</li>
-<li>系统中提供了产品的类库，且所有产品的接口相同，客户端不依赖产品实例的创建细节和内部结构</li>
-</ol>
-<h2 id="7-8-小结"><a href="#7-8-小结" class="headerlink" title="7.8 小结"></a>7.8 小结</h2><ol>
-<li>当增加一 新的产品族 只需增 一个<br>新的具体工厂，不需要修改原代码，满足开闭原则</li>
-<li>当产品族中需要增加一 新种类的产品时，则所有的工厂类都需要进行修改，不满足开闭原则</li>
-<li>当系统中只存在 个等级结构的产品时，抽象工厂模式将退化到工厂方法模式。</li>
-</ol>
-<h1 id="八、建造者模式"><a href="#八、建造者模式" class="headerlink" title="八、建造者模式"></a>八、建造者模式</h1><h2 id="8-1-定义"><a href="#8-1-定义" class="headerlink" title="8.1 定义"></a>8.1 定义</h2><ul>
-<li>指将一个复杂对象的构造与它的表示分离，使同样的构建过程可以创建不同的表示，这样的设计模式被称为建造者模式</li>
-</ul>
-<h2 id="8-2-特点"><a href="#8-2-特点" class="headerlink" title="8.2 特点"></a>8.2 特点</h2><ul>
-<li>它是将一个复杂的对象分解为多个简单的对 ，然后一步一步建而成。它将变与不变相分，即产品的组成部分是不变的，但每一部分是可以灵活选择的</li>
-<li>计算机是由CPU、主板、内存、硬盘、显卡、机箱、显示器、键盘、鼠标等部件组装而成的，采购员不可能自己去组装计算机，而是将计算机的配置要求告诉计算书销售公司，计算机销售公司安排技术人员去组装计算机， 然后再交给要买计算机的采购员</li>
-</ul>
-<h2 id="8-3-优缺点"><a href="#8-3-优缺点" class="headerlink" title="8.3 优缺点"></a>8.3 优缺点</h2><ul>
-<li>优点：<ul>
-<li>具体的建造者相互独立，有利于系统的扩展。</li>
-<li>客户端不必知道产品内部组成的细节，便于控制细节风险。</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>产品的组成部分必须相同，这限制了其使用范围。</li>
-<li>如果产品的内部变化复杂，该模式会增加很多的建造者类。</li>
-</ul>
-</li>
-</ul>
-<h2 id="8-4-工厂模式的区别"><a href="#8-4-工厂模式的区别" class="headerlink" title="8.4 工厂模式的区别"></a>8.4 工厂模式的区别</h2><ul>
-<li>建造者模式和工厂模式的关注点不同，建造者模式注重零部件的组装过程，而工厂方法模式更注重零部件的创建过程，但两者可以结合使用。</li>
-</ul>
-<h2 id="8-5-结构"><a href="#8-5-结构" class="headerlink" title="8.5 结构"></a>8.5 结构</h2><ul>
-<li>产品角色Product：它是包含多个组成部件的复杂对象，由具体建造者来创建其各个组成部件。</li>
-<li>抽象建造者Builder：：它是 包含创建产品各个子部件的抽象方法的接口，通常还包个返回复杂产品的方法 getResult（）</li>
-<li>具体建造者Concrete Builder：实现Builder接口，完成复杂产品的各个部件的具体创建方法</li>
-<li>指挥者Director：它调用建造者对象中的部件构造与装配方法完成复杂对象的创建，在指挥者中不涉及具体产品的信息。</li>
-</ul>
-<h2 id="8-6-实现"><a href="#8-6-实现" class="headerlink" title="8.6 实现"></a>8.6 实现</h2><h3 id="8-6-1-产品角色"><a href="#8-6-1-产品角色" class="headerlink" title="8.6.1 产品角色"></a>8.6.1 产品角色</h3><ul>
-<li>包含多个组成部件的复杂对象</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String partA;</span><br><span class="line">    <span class="keyword">private</span> String partB;</span><br><span class="line">    <span class="keyword">private</span> String partC;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartA</span><span class="params">(String partA)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partA = partA;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartB</span><span class="params">(String partB)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partB = partB;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPartC</span><span class="params">(String partC)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.partC = partC;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//显示产品的特性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="8-6-2-抽象建造者"><a href="#8-6-2-抽象建造者" class="headerlink" title="8.6.2 抽象建造者"></a>8.6.2 抽象建造者</h3><ul>
-<li>包含创建产品各个子部件的抽象方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span></span>&#123;</span><br><span class="line">    <span class="comment">// 创建产品对象</span></span><br><span class="line">    <span class="keyword">protected</span> Product product = <span class="keyword">new</span> Product();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartA</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartB</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">buildPartC</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//返回产品对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">getResult</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="8-6-3-具体建造者"><a href="#8-6-3-具体建造者" class="headerlink" title="8.6.3 具体建造者"></a>8.6.3 具体建造者</h3><ul>
-<li>实现了抽象建造者接口</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteBuilder</span> <span class="keyword">extends</span> <span class="title">Builder</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartA(<span class="string">&quot;建造PartA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartB(<span class="string">&quot;建造PartB&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildPartC</span><span class="params">()</span></span>&#123;</span><br><span class="line">        product.setPartC(<span class="string">&quot;建造PartC&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="8-6-4-指挥者"><a href="#8-6-4-指挥者" class="headerlink" title="8.6.4 指挥者"></a>8.6.4 指挥者</h3><ul>
-<li>调用建造者中的方法完成复杂对象的创建</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Director</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Builder builder;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Director</span><span class="params">(Builder builder)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.builder=builder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//产品构建与组装方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Product <span class="title">construct</span><span class="params">()</span></span>&#123;</span><br><span class="line">        builder.buildPartA();</span><br><span class="line">        builder.buildPartB();</span><br><span class="line">        builder.buildPartC();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> builder.getResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="8-6-5-客户"><a href="#8-6-5-客户" class="headerlink" title="8.6.5 客户"></a>8.6.5 客户</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Builder builder = <span class="keyword">new</span> ConcreteBuilder();</span><br><span class="line">        Director director = <span class="keyword">new</span> Director(builder);</span><br><span class="line">        Product product = director.construct();</span><br><span class="line">        product.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="8-7-应用场景"><a href="#8-7-应用场景" class="headerlink" title="8.7 应用场景"></a>8.7 应用场景</h2><ol>
-<li>创建的对象较复杂，由多个部件构成，各部件面临着复杂的变化，但构件间的建造顺序是<br>稳定的。</li>
-<li>创建复杂对象的算法独立于该对象的组成部分以及它们的装配方式，即产品的构建过程和<br>最终的表示是独立</li>
-</ol>
-<h2 id="8-8-小结"><a href="#8-8-小结" class="headerlink" title="8.8 小结"></a>8.8 小结</h2><ul>
-<li>建造者模式在应用过程中可以根据需要改变，如果创建的产品种类只有一种，只需要一个具体</li>
-<li>建造者时，可省略略掉抽象建造者，甚至可以省略掉指挥者角色。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后端</category>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>后端</tag>
-        <tag>设计模式</tag>
-        <tag>编程艺术</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux基础大全</title>
     <url>/2022/04/03/Linux%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、系统分区"><a href="#一、系统分区" class="headerlink" title="一、系统分区"></a>一、系统分区</h1><h2 id="1-1-分区类型"><a href="#1-1-分区类型" class="headerlink" title="1.1 分区类型"></a>1.1 分区类型</h2><h3 id="1-1-1-主分区"><a href="#1-1-1-主分区" class="headerlink" title="1.1.1 主分区"></a>1.1.1 主分区</h3><ul>
@@ -5746,190 +5480,6 @@
       <tags>
         <tag>SSM</tag>
         <tag>SpringMVC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java面试宝典一</title>
-    <url>/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/</url>
-    <content><![CDATA[<h1 id="一、变量自增"><a href="#一、变量自增" class="headerlink" title="一、变量自增"></a>一、变量自增</h1><h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><ul>
-<li>这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果</li>
-<li>Java也需要维护一个操作数栈，来计算我们的最终结果</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">i = i++;</span><br><span class="line"><span class="keyword">int</span> j = i++;</span><br><span class="line"><span class="keyword">int</span> k = i + ++i * i++;</span><br><span class="line">System.out.println(<span class="string">&quot;i=&quot;</span>+i);<span class="number">5</span></span><br><span class="line">System.out.println(<span class="string">&quot;j=&quot;</span>+j);<span class="number">2</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+k);<span class="number">12</span></span><br></pre></td></tr></table></figure>
-<h2 id="1-2-分析"><a href="#1-2-分析" class="headerlink" title="1.2 分析"></a>1.2 分析</h2><h3 id="1-2-1-前两步"><a href="#1-2-1-前两步" class="headerlink" title="1.2.1 前两步"></a>1.2.1 前两步</h3><ol>
-<li>赋值操作更新局部变量表，变量操作会先将变量值压入操作数栈</li>
-<li>自增操作会更新变量的局部变量表，但不会影响操作数栈的值，存在操作数就会把变量的值压入操作数栈中</li>
-<li>赋值操作是把操作数栈的最终结果赋值给变量，也就是说i经过前两步后值为1</li>
-</ol>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij.png" class="" title="ij">
-<h3 id="1-2-2-第三步"><a href="#1-2-2-第三步" class="headerlink" title="1.2.2 第三步"></a>1.2.2 第三步</h3><ul>
-<li>后增操作：先赋值j，再自增i</li>
-</ul>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij2.png" class="" title="ij2">
-<h3 id="1-2-3-第四步"><a href="#1-2-3-第四步" class="headerlink" title="1.2.3 第四步"></a>1.2.3 第四步</h3><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/ij3.png" class="" title="ij3">
-<h2 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h2><ul>
-<li><p>总的来说在运算的时候维护一个<strong>局部变量表</strong>和一个<strong>操作数栈</strong>，来<strong>保存</strong>和<strong>更新</strong>我们的数据</p>
-</li>
-<li><p>++i会<strong>先修改i保存到局部变量表中的值</strong>，再将<strong>自增后</strong>的值放入到操作数栈中</p>
-</li>
-<li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
-<li>赋值操作是在操作数栈计算完之后才执行的</li>
-</ul>
-<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/KEM.png" class="" title="kem">
-<ul>
-<li>JDK：Java标准开发包，提供编译、运行Java程序所需的各种工具和资源，包括Java编译器、Java运行时环境，以及常用的Java类库等</li>
-<li>JRE，Java运行环境，用于运行Java的字节码文件，JRE中包括了JVM工作所需要的类库，普通用户只需要按照JRE来运行Java程序，而程序开发者必须安装JDK来编译、调试程序</li>
-<li>JVM：Java虚拟机，是JRE的一部分，它是整个Java实现跨平台的最核心的部分，负责运行字节码文件</li>
-</ul>
-<h1 id="三、Java数据类型"><a href="#三、Java数据类型" class="headerlink" title="三、Java数据类型"></a>三、Java数据类型</h1><p>基础数据类型</p>
-<ul>
-<li>整数类型（byte、short、int、long）</li>
-<li>浮点类型（float、double）</li>
-<li>数值型</li>
-<li>字符型（char）</li>
-<li>布尔型（boolean）</li>
-</ul>
-<p>引用数据类型</p>
-<ul>
-<li>类（class）</li>
-<li>接口（interface）</li>
-<li>数组（[]）</li>
-</ul>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/jichutype.png" class="" title="jichutype">
-<h1 id="四、hashCode-与equals-之间的关系"><a href="#四、hashCode-与equals-之间的关系" class="headerlink" title="四、hashCode()与equals()之间的关系"></a>四、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
-<p>但由于计算机的存储空间不是无限的，所以哈希地址的计算一般会出现重复的情况，这里可以采用<strong>链地址法</strong>，即如果两条数据计算到的哈希值相同，那么就在这个位置上创建一个<strong>链表</strong>来存放这两个相同哈希值的数据。</p>
-<p>有了哈希表的概念，那么这里Java对象中的hashCode就是经过某一哈希函数得到的哈希值，在应用时参考以下代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Key</span> </span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Key</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public int hashCode() &#123;</span></span><br><span class="line"><span class="comment">//        return id.hashCode();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public boolean equals(Object obj) &#123;</span></span><br><span class="line"><span class="comment">//        if(obj == null || !(obj instanceof Key))</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        else</span></span><br><span class="line"><span class="comment">//            return this.getId().equals(((Key) obj).getId());</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Key k1 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        Key k2 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        HashMap&lt;Key,String&gt; hm = <span class="keyword">new</span> HashMap&lt;Key, String&gt;();</span><br><span class="line"></span><br><span class="line">        hm.put(k1,<span class="string">&quot;Key with id is 1&quot;</span>);</span><br><span class="line">        System.out.println(hm.get(k2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码测试了使用<strong>相同id值的对象</strong>在HashMap中进行查找（工作会经常使用到的操作），测试结果如下：</p>
-<ul>
-<li>不重写hashCode()和equals()方法，结果输出”null“</li>
-<li>重写hashCode()但不重写equals()，结果仍输出“null”</li>
-<li>同时重写hashCode()和equals()方法，输出结果”Key with id is 1“，内容可以正常查询到</li>
-</ul>
-<p>对以上三种测试情况有以下说明：</p>
-<ul>
-<li>集合类HashMap在进行对象查找（get()方法）时，会先根据对象的hashCode进行查找，<ul>
-<li>如果两个对象的hashCode不同，则说明两个对象绝对是不同的；</li>
-<li>如果两个对象的hashCode相同，则调用对象的equals()方法继续进行比较，比较内容相同则两个对象一定是相同的</li>
-</ul>
-</li>
-<li>如果不重写hashCode()和equals()方法，那么对象会采用<strong>Object父类</strong>实现的默认的hashCode()和equals()方法，默认的hashCode是<strong>对象的内存地址</strong>，默认equals()的比较方式也是比较<strong>两个对象的内存地址</strong>是否相同</li>
-</ul>
-<p>在使用时一般会遵循以下原则：</p>
-<ul>
-<li>重写equals()方法必须重写hashCode()方法</li>
-<li>两对象equals()相等，则这两个对象的hashCode()应该相等</li>
-<li>hashCode()和equals()的返回值应该是稳定的，不应具有随机性</li>
-<li>如果要在HashMap的”键“部分存放自定义的对象，一定要在这个对象里重写equals和hashCode方法</li>
-</ul>
-<p>在面试时会经常问到比如：</p>
-<ul>
-<li>有没有重写过hashCode方法</li>
-<li>在使用HashMap时有没有重写hashCode和equals方法，怎么写的</li>
-</ul>
-<h1 id="五、-与equals的区别"><a href="#五、-与equals的区别" class="headerlink" title="五、==与equals的区别"></a>五、==与equals的区别</h1><p>参考第三题，equals()方法在不重写的情况下，<strong>默认</strong>比较的是两个<strong>对象的内存地址</strong>，但我们往往会在类中重写equals()来<strong>比较对象之间的内容是否相等</strong>，<strong>equals()只能被对象调用</strong>。</p>
-<p>==是Java中的一种操作符，它有两种比较方式</p>
-<ul>
-<li>对于基础数据类型来说，==判断的是两边的值是否相等</li>
-<li>对于引用类型来说，==判断的是两边的引用是否相等，也就是判断两个对象是否指向了同一块内存区域</li>
-</ul>
-<p>equals()方法的特性</p>
-<ul>
-<li><strong>自反性</strong>：对于任何非空引用值x来说，x.equals(x)返回true</li>
-<li><strong>对称性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，则y.equals(x)为true</li>
-<li><strong>传递性</strong>：对于任何非空引用值x、y、z来说，如果x.equals(y)为true，y.equals(z)为true，那么x.equals(z)也为true</li>
-<li><strong>一致性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，那么它们要始终相等</li>
-<li><strong>非空性</strong>：对于任何非空引用值x来说，x.equals(null)必须返回false</li>
-</ul>
-<h1 id="六、String中的equals是如何重写的"><a href="#六、String中的equals是如何重写的" class="headerlink" title="六、String中的equals是如何重写的"></a>六、String中的equals是如何重写的</h1><p>String是Java中的字符串类，它整个类都是被final修饰的，这意味着String类是不能被任何类继承，任何修改String字符串的方法都是创建了一个新的字符串</p>
-<p>equals方法是Object类定义的方法，Object是所有类的父类，当然也包括String，String重写的equals方法如下</p>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals.png" class="" title="sequals">
-<ul>
-<li>首先是引用的判断，引用相等则直接返回true</li>
-<li>接着判断对象是否是String实例，不是则直接返回false，否则将对象强转后，比较字符串的长度，长度不等肯定返回false</li>
-<li>长度相等的情况下，再逐个字符进行比较，存在不同的字符则返回false</li>
-</ul>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/sequals1.png" class="" title="sequals1">
-<p>注意JDK1.8以后，new String(“abc”)操作和普通的字符串赋值操作作用是一样的，以下的intern()方法是获取常量池中的字符串</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"></span><br><span class="line">        String s2 = <span class="string">&quot;a&quot;</span> + <span class="keyword">new</span> String(<span class="string">&quot;bc&quot;</span>);</span><br><span class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1.intern());	<span class="comment">//abc</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下输出均为true</span></span><br><span class="line">        System.out.println(s2.equals(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        System.out.println(s3.equals(s1));</span><br><span class="line">        System.out.println(s1.intern().equals(s2));</span><br><span class="line">        System.out.println(s3.intern().equals(s1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="七、String-s1-new-String-“abc”-在内存中创建了几个对象"><a href="#七、String-s1-new-String-“abc”-在内存中创建了几个对象" class="headerlink" title="七、String s1 = new String(“abc”)在内存中创建了几个对象"></a>七、String s1 = new String(“abc”)在内存中创建了几个对象</h1><p>一个或者两个，首先new操作一定会在堆中创建一个对象，如果常量池中不存在“abc”对象，那么就会在常量池中创建一个“abc”，否则就不进行创建</p>
-<p>观察下面String构造器的源码可以发现，String对象的hash值和常量池“abc”对象的hash值是一致的</p>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/string1.png" class="" title="string1">
-<p>new操作的内存情况如下：</p>
-<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%AE%9D%E5%85%B8%E4%B8%80/stringneicun.png" class="" title="stringneicun">
-<h1 id="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"><a href="#八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计" class="headerlink" title="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"></a>八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</h1><p>不可变对象：不可变对象就是一经创建后，其对象的内部状态不能被修改，即：</p>
-<ul>
-<li>不可变对象内部属性都是final的</li>
-<li>不可变对象的内部属性都是private的</li>
-<li>不可变对象不能提供任何可以修改内部状态的方法，setter方法也不行</li>
-<li>不可变对象不能被继承和扩展</li>
-</ul>
-<p>String类是一种对象，它独立于Java基本数据类型而存在的，可以理解为字符串的集合</p>
-<p>String被设计为final的，表示String对象一经创建后，它的值就不能再被修改了，任何对String值进行修改的方法就是重新创建一个字符串</p>
-<p>String对象创建后会存在于运行时常量池中，运行时常量池属于方法区的一部分，JDK1.7后把它移到了堆中</p>
-<h1 id="九、String-StringBuffer-StringBuilder的区别"><a href="#九、String-StringBuffer-StringBuilder的区别" class="headerlink" title="九、String/StringBuffer/StringBuilder的区别"></a>九、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
-<p>StringBuffer和StringBuilder都是可修改的字符串对象，区别是StringBuffer是线程安全的，StringBuilder是线程不安全的</p>
-<h1 id="十、static关键字是干什么用的"><a href="#十、static关键字是干什么用的" class="headerlink" title="十、static关键字是干什么用的"></a>十、static关键字是干什么用的</h1><ul>
-<li>修饰变量，static修饰的变量称为<strong>静态变量</strong>、也称为<strong>类变量</strong>，类变量属于类所有，对于不同的类来说，static变量只有一份，static修饰的变量位于<strong>方法区</strong>；static修饰的变量能够直接通过<strong>类名.变量名</strong>来进行访问，不用通过实例化类再进行使用</li>
-<li>修饰方法，static修饰的方法称为<strong>静态方法</strong>，静态方法能够直接通过<strong>类名.方法名</strong>来使用，在静态方法内部不能使用非静态属性和方法</li>
-<li><p>static可以修饰代码块，主要分为两种，一种直接定义在类中，使用<strong>static{}</strong>，这种被称为静态代码块，一种是在类中定义<strong>静态内部类</strong>，使用<strong>static class xxx</strong>来进行定义</p>
-</li>
-<li><p>static可用用于静态导包，通过使用import static xxx来实现，这种方式一般不推荐使用</p>
-</li>
-<li>static可以和单例模式一起使用，通过双重检查锁来实现线程安全的单例模式</li>
-</ul>
-<h1 id="十一、final关键字是干什么用的"><a href="#十一、final关键字是干什么用的" class="headerlink" title="十一、final关键字是干什么用的"></a>十一、final关键字是干什么用的</h1><p>final 是 Java 中的关键字，它表示的意思是 <code>不可变的</code>，在 Java 中，final 主要用来</p>
-<ul>
-<li>修饰类，final 修饰的类不能被继承，不能被继承的意思就是不能使用 <code>extends</code> 来继承被 final 修饰的类。</li>
-<li>修饰变量，final 修饰的变量不能被改写，不能被改写的意思有两种，对于基本数据类型来说，final 修饰的<strong>变量</strong>，其<strong>值不能被改变</strong>，final 修饰的<strong>对象</strong>，<strong>对象的引用不能被改变</strong>，但是对象内部的<strong>属性可以被修改</strong>。final 修饰的变量在某种程度上起到了<code>不可变</code>的效果，所以，可以用来保护只读数据，尤其是在并发编程中，因为明确的不能再为 final 变量进行赋值，有利于减少额外的同步开销</li>
-<li>修饰方法，final 修饰的方法不能被重写</li>
-<li>final 修饰符和 Java 程序性能优化没有必然联系</li>
-</ul>
-<h1 id="十二、抽象类和接口的区别是什么"><a href="#十二、抽象类和接口的区别是什么" class="headerlink" title="十二、抽象类和接口的区别是什么"></a>十二、抽象类和接口的区别是什么</h1><p>抽象类abstract和接口interface都是Java中的关键字，</p>
-<p>抽象类和接口的相同点：</p>
-<ul>
-<li>都允许进行方法的定义，而不用具体的方法实现</li>
-<li>都允许被继承</li>
-<li>广泛的应用于 JDK 和框架的源码中，来实现多态和不同的设计模式。</li>
-</ul>
-<p>抽象类和接口的不同点：</p>
-<ul>
-<li>抽象级别不同：类、抽象类、接口其实是三种不同的抽象级别，抽象程度依次是 <strong>接口 &gt; 抽象类 &gt; 类</strong>。在接口中，只允许进行方法的定义，不允许有方法的实现，抽象类中可以进行方法的定义和实现；而类中只允许进行方法的实现</li>
-<li>使用的关键字不同：类使用 <code>class</code> 来表示；抽象类使用 <code>abstract class</code> 来表示；接口使用 <code>interface</code> 来表示</li>
-<li>变量：接口中定义的变量只能是公共的静态常量，抽象类中的变量是普通变量。</li>
-</ul>
-<h1 id="十三、重写和重载的区别"><a href="#十三、重写和重载的区别" class="headerlink" title="十三、重写和重载的区别"></a>十三、重写和重载的区别</h1><ul>
-<li>重写是针对子类和父类的表现形式，而重载是在同一类中的不同表现形式</li>
-<li>子类重写父类的方法一般使用@override来表示，重写后的方法其方法的声明和参数类型、顺序必须要和父类完全一致</li>
-<li>重载是针对同一类中概念，它要求重载的方法必须满足下面任何一个要求：方法参数的顺序、参数的个数、参数的类型任意一个保持不同即可</li>
-</ul>
-<h1 id="十四、byte的取值范围"><a href="#十四、byte的取值范围" class="headerlink" title="十四、byte的取值范围"></a>十四、byte的取值范围</h1><p>Java的Byte的取值范围为（-128，127），占用一个字节，即8bit</p>
-<p>Java中使用补码来表示二进制数，因此最高位为符号位，最高位为0表示正数，最高为为1表示负数</p>
-<p>先来复习下源码、反码、补码</p>
-<p>原码：正常的二进制计算，存在符号位，0表示正数，最高为为1表示负数</p>
-<p>反码：正数的反码与其原码相同；负数在原码基础上，按位取反，符号位除外</p>
-<p>补码：正数的补码与其原码相同；负数的补码是在其反码的末位+1</p>
-<p>byte中，正数的最大值就是0111 1111</p>
-<p>因为存在符号位，所以存在两个0，即-0：1000 0000和+0：0000 0000，因此用1000 0000来表示负数的最小值，即-128</p>
-<p>1000 0000减1后为0111 1111，再取反1000 0000，原码的值128，在负数中就应该为-128</p>
-<h1 id="十五、HashMap和HashTable的区别"><a href="#十五、HashMap和HashTable的区别" class="headerlink" title="十五、HashMap和HashTable的区别"></a>十五、HashMap和HashTable的区别</h1><p>不同点：</p>
-<ul>
-<li>父类不同：HashMap继承了AbstractMap类，而HashTable继承了Dictionary类</li>
-<li><p>空值不同：HashMap允许空的key和value值，HashTable不允许空的key和value值。HashMap会把Null key当做普通的key对待，且不允许null key重复。HashTable存null的key就会报空指针异常</p>
-</li>
-<li><p>线程安全性：HashMap是线程不安全的，如果多个外部操作同时修改HashMap的数据结构比如add或者是delete，必须进行同步操作，即仅仅对key或者value的修改不是改变数据结构的操作</p>
-</li>
-<li>性能方面：虽然HashMap和HashTable都是基于单链表的，但是HashMap进行put或者get操作，可以达到常数时间的性能；而HashTable的put和get操作都是加了synchronized，所以效率很差</li>
-<li>初始容量不同：HashTable的初始长度是11，之后每次扩充容量变为之前的2n+1（n为上一次的长度）而HashMap的初始长度为16，之后每次扩充变为原来的两倍。创建时，如果给定了容量初始值，那么HashTable会直接使用你给定的大小，而HashMap会将其扩充为2的幂次方大小</li>
-</ul>
-]]></content>
-      <categories>
-        <category>后端</category>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
@@ -7490,7 +7040,8 @@
 <li>半终止：不稳定音级收束，如$V-IV$，音响效果上给人一种戛然而止、意犹未尽的感觉，经常用在上半句或开放性乐段的末尾</li>
 <li>阻碍终止/伪终止：以不稳定和弦代替主和弦，典型的有$V-VI$，它是把预期的“终止”打断，然音乐延续下去。作用是推迟终止、扩展乐段</li>
 </ul>
-<h2 id="2-8-大调七和弦"><a href="#2-8-大调七和弦" class="headerlink" title="2.8 大调七和弦"></a>2.8 大调七和弦</h2>]]></content>
+<h2 id="2-8-大调七和弦"><a href="#2-8-大调七和弦" class="headerlink" title="2.8 大调七和弦"></a>2.8 大调七和弦</h2><h1 id="三、离调与转调"><a href="#三、离调与转调" class="headerlink" title="三、离调与转调"></a>三、离调与转调</h1><h2 id="3-1-转调"><a href="#3-1-转调" class="headerlink" title="3.1 转调"></a>3.1 转调</h2><h2 id="3-2-离调"><a href="#3-2-离调" class="headerlink" title="3.2 离调"></a>3.2 离调</h2><p>离调可以理解为<strong>转调</strong>的一种特殊形式，但要注意区分它和转调的关系。离调具体是指音乐作品中出现了某一临时变化音或临时带变音的和弦而引起了调性色彩的改变，而且这种改变只作了短暂停留之后又回到了原来的调性上，这样的调性变化就称作离调。</p>
+]]></content>
       <categories>
         <category>文化艺术</category>
         <category>乐理</category>
@@ -7561,12 +7112,15 @@
 <p>呈示部中往往还包含第一主题、第二主题、第一结尾、第二结尾，这些片段之间还有一些连接段，在调性安排上，第一主题为主调，第二主题转到属调。</p>
 <p>再现部包含了呈示部中的所有部分，区别在于这里第一主题和第二主题都为主调。</p>
 <p>有很多的奏鸣曲、协奏曲、交响乐、室内乐的乐章都用到了奏鸣曲式，尤其是第一乐章用得最多，但不是所有的作品都是用奏鸣曲式来写的，也可以用其他的结构来写</p>
-<h2 id="2-8-流行音乐曲式"><a href="#2-8-流行音乐曲式" class="headerlink" title="2.8 流行音乐曲式"></a>2.8 流行音乐曲式</h2><ul>
-<li>主歌（Verse）（A）</li>
-<li>副歌（Chorus）（B）</li>
-<li>过渡句（插句，中段）（C）</li>
-<li>流行句（记忆点）（D）</li>
-<li>桥段（Instrumental and Ending）（序唱，过门，间奏，尾奏）（E）</li>
+<h1 id="三、流行音乐曲式"><a href="#三、流行音乐曲式" class="headerlink" title="三、流行音乐曲式"></a>三、流行音乐曲式</h1><h2 id="3-1-结构"><a href="#3-1-结构" class="headerlink" title="3.1 结构"></a>3.1 结构</h2><p>一般来说副歌的和声要比正歌、前奏要丰富许多，是整首歌感情最饱满的部分，如果正歌后直接接副歌，就会感觉很突兀，所以流行歌曲的正歌和副歌之间会有一个预副歌的部分，这一部分的乐器会比正歌丰富一些</p>
+<img src="/2022/08/10/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/liuxin.png" class="" title="liuxin">
+<ul>
+<li>Intro：前奏、间奏</li>
+<li>Verse：正歌</li>
+<li>Pre-Chorus：预副歌</li>
+<li>Chorus：副歌</li>
+<li>Bridge：桥段</li>
+<li>Outro：尾奏</li>
 </ul>
 ]]></content>
       <categories>
@@ -8164,7 +7718,74 @@
   <entry>
     <title>JVM基础大全-垃圾回收篇</title>
     <url>/2022/09/19/JVM%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AF%87/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="一、垃圾回收算法"><a href="#一、垃圾回收算法" class="headerlink" title="一、垃圾回收算法"></a>一、垃圾回收算法</h1><h2 id="1-1-标记清楚算法"><a href="#1-1-标记清楚算法" class="headerlink" title="1.1 标记清楚算法"></a>1.1 标记清楚算法</h2><ul>
+<li>标记：遍历内存区域，对需要回收的对象打上标记</li>
+<li><p>清除：再次遍历内存，对已经标记过的内存进行回收</p>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>效率问题；遍历了两次内存空间（第一次标记，第二次清除）</li>
+<li>空间问题：容易产生大量内存碎片，当再需要一块比较大的内存时，无法找到一块满足要求的，因而不得不再次出发GC</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2-标记复制算法"><a href="#1-2-标记复制算法" class="headerlink" title="1.2 标记复制算法"></a>1.2 标记复制算法</h2><p>将内存划分为等大的两块，每次只使用其中的一块。当一块用完了，触发GC时，将该块中存活的对象复制到另一块区域，然后一次性清理掉这块没有用的内存。下次触发GC时将那块中存活的的又复制到这块，然后抹掉那块，循环往复。</p>
+<ul>
+<li>优点：<ul>
+<li>相对于标记–清理算法解决了内存的碎片化问题</li>
+<li>效率更高（清理内存时，记住首尾地址，一次性抹掉）</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>内存利用率不高</li>
+</ul>
+</li>
+</ul>
+<p>改进：研究表明，新生代中的对象大都是“朝生夕死”的，即生命周期非常短而且对象活得越久则越难被回收。在发生GC时，需要回收的对象特别多，存活的特别少，因此需要搬移到另一块内存的对象非常少，所以不需要1：1划分内存空间。而是将整个新生代按照8 ： 1 ： 1的比例划分为三块，最大的称为Eden（伊甸园）区，较小的两块分别称为To Survivor和From Survivor。</p>
+<p>首次GC时，只需要将Eden存活的对象复制到To。然后将Eden区整体回收。再次GC时，将Eden和To存活的复制到From，循环往复这个过程。这样每次新生代中可用的内存就占整个新生代的90%，大大提高了内存利用率。</p>
+<p>但不能保证每次存活的对象就永远少于新生代整体的10%，此时复制过去是存不下的，因此这里会用到另一块内存，称为老年代，进行分配担保，将对象存储到老年代。若还不够，就会抛出OOM。</p>
+<p>老年代：存放新生代中经过多次回收仍然存活的对象（默认15次）。</p>
+<h2 id="1-3-标记整理（压缩）算法"><a href="#1-3-标记整理（压缩）算法" class="headerlink" title="1.3 标记整理（压缩）算法"></a>1.3 标记整理（压缩）算法</h2><p>因为前面的复制算法当对象的存活率比较高时，这样一直复制过来，复制过去，没啥意义，且浪费时间。所以针对老年代提出了“标记整理”算法。</p>
+<ul>
+<li>标记：对需要回收的进行标记</li>
+<li>整理：让存活的对象，向内存的一端移动，然后直接清理掉没有用的内存。</li>
+</ul>
+<h2 id="1-4-分代收集算法"><a href="#1-4-分代收集算法" class="headerlink" title="1.4 分代收集算法"></a>1.4 分代收集算法</h2><p>当前大多商用虚拟机都采用这种分代收集算法，这个算法并没有新的内容，只是根据对象的存活的时间的长短，将内存分为了新生代和老年代，这样就可以针对不同的区域，采取对应的算法。如：</p>
+<ul>
+<li>新生代，每次都有大量对象死亡，有老年代作为内存担保，采取复制算法。</li>
+<li>老年代，对象存活时间长，采用标记整理，或者标记清理算法都可。</li>
+</ul>
+<h1 id="二、垃圾收集器"><a href="#二、垃圾收集器" class="headerlink" title="二、垃圾收集器"></a>二、垃圾收集器</h1><h2 id="2-1-Serial和SerialOld"><a href="#2-1-Serial和SerialOld" class="headerlink" title="2.1 Serial和SerialOld"></a>2.1 Serial和SerialOld</h2><p>Serial是新生代，SerialOld是老年代的回收期，串行化执行，最简单的单线程的收集器，会STW。<br>CMS收集器如果空间不够无法进行FULL-GC，就会用SerialOld进行回收。<br>Serial使用标记复制，SerialOld使用标记整理算法</p>
+<h2 id="2-2-Parallel-Scavenge收集器-Parallel-Old"><a href="#2-2-Parallel-Scavenge收集器-Parallel-Old" class="headerlink" title="2.2 Parallel Scavenge收集器 Parallel Old"></a>2.2 Parallel Scavenge收集器 Parallel Old</h2><p>使用多线程，其他的和Serial相同，关心吞吐量，会自动调整参数设置吞吐量的大小，停顿的时间，提供最优的吞吐量。JDK8默认的收集器<br>新生代采用复制算法，老年代使用标记整理算法。</p>
+<h2 id="2-3-parNew收集器"><a href="#2-3-parNew收集器" class="headerlink" title="2.3 parNew收集器"></a>2.3 parNew收集器</h2><p>使用多线程，其他的和Serial相同。使用复制算法<br>新生代的收集器，可以搭配CMS收集器使用，</p>
+<h2 id="2-4-CMS收集器"><a href="#2-4-CMS收集器" class="headerlink" title="2.4 CMS收集器"></a>2.4 CMS收集器</h2><p>为了提高用户的体验，提供最短的STW，并发收集，可以让垃圾回收线程和用户线程同时使用，标记清除算法，默认情况下是老年代内存达到92%会执行FullGC。<br>分为以下阶段：</p>
+<ul>
+<li>初始标记：会STW,但是速度非常快，标记GCROOT能引用的对象，可以用-XX:+CMSParallellnitialMarkEnabled参数开启多线程执行。</li>
+<li>并发标记：根据GCROOT遍历所有对象，过程比较慢，不会STW，会和用户线程一起执行。</li>
+<li>重新标记：因为并发标记中垃圾回收线程会和用户线程一同执行，可能会出现，被标记为垃圾对象的现在不是垃圾对象了会对产生变动的重新进行标记。会STW，比初始标记时间长，并发标记时间短。可以用 -XX:+CMSParallelRemarkEnabled 参数开启多线程重新标记。（存活的对象现在是垃圾对象，可达变不可达，是不会被重新标记的，这个是浮动垃圾）</li>
+<li>并发清理：和用户线程一同执行，对未标记的对象清理，这个阶段如果有新添加的对象，会被标记为黑色。</li>
+<li>并发重置：重置本次标记的对象，与用户线程一同运行。</li>
+</ul>
+<p>优点：并发执行，低停顿，用户体验较好</p>
+<p>缺点：</p>
+<ul>
+<li>会产生浮动垃圾只能等待下一次回收</li>
+<li>占用CPU资源</li>
+<li>标记清除会产生空间碎片，可以通过开启参数，做完发FullGC自动整理碎片（ -XX:+UseCMSCompactAtFullCollection），可以通过参数设置多少次FullGC整理一次内存碎片（ -XX:CMSFullGCsBeforeCompaction）</li>
+</ul>
+<h2 id="2-5-G1收集器"><a href="#2-5-G1收集器" class="headerlink" title="2.5 G1收集器"></a>2.5 G1收集器</h2><p>G1收集器(Garbage-First Garbage Collector) 整堆收集。<br>G1收集器是一款在server端运行的垃圾收集器，专门针对于拥有多核处理器和大内存的机器，在JDK 7u4版本发行时被正式推出，在JDK9中更被指定为默认GC收集器。它满足高吞吐量的同时满足GC停顿的时间尽可能短。</p>
+<ul>
+<li>因为G1是一个并行/并发回收器，它把堆内存分割为很多不相关的区域（Region） （物理上 不连续的）。使用不同的Region来表示Eden、幸存者0（S0）区，幸存者（S1）1区，老年代等。</li>
+<li>由于这种方式的侧重点在于回收垃圾最大量的区间（Region），所以我们给G1一个名字：垃圾优先（Garbage First） 。</li>
+<li>G1 GC有计划地避免在整个Java 堆中进行全区域的垃圾收集。G1跟踪各个Region 里面的垃圾堆积的价值大小（回收所获得的空间大小以及回收所需时间的经验值），在后台维护一个优先列表，每次根据允许的收集时间，优先回收价值最大的Region。</li>
+<li>G1收集器使用的是 整体上使用标记整理 两个Region 之间 标记复制算法。</li>
+</ul>
+<h3 id="2-5-1-G1收集器分区划分"><a href="#2-5-1-G1收集器分区划分" class="headerlink" title="2.5.1 G1收集器分区划分"></a>2.5.1 G1收集器分区划分</h3><ol>
+<li>使用G1收集器时，它将整个Java堆划分成约2048个大小相同的独立Region块，每个Region块大小根据堆空间的实际大小而定，整体被控制在1MB到32MB之间，且为2的N次幂，即1MB， 2MB， 4MB， 8MB， 1 6MB， 32MB。2048MB 每个独立区间1</li>
+<li>可以通过-XXG1HeapRegionSize设定。所有的Region大小相同，且在JVM生命周期内不会被改变。</li>
+<li>虽然还保留着新生代和老年代的概念，但新生代和老年代不再是物理隔离的了，它们都是一部分Region （不需要连续）的集合。通过Region的动态分配方式实现逻辑_上的连续。</li>
+</ol>
+]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -8354,6 +7975,318 @@
       <tags>
         <tag>Ribbon</tag>
         <tag>OpenFeign</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java面试大全</title>
+    <url>/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="一、变量自增"><a href="#一、变量自增" class="headerlink" title="一、变量自增"></a>一、变量自增</h1><h2 id="1-1-示例"><a href="#1-1-示例" class="headerlink" title="1.1 示例"></a>1.1 示例</h2><ul>
+<li>这种计算跟之前数据结构和算法学过的计算器一致，都是要维护一个栈，保存操作数，判断加减乘除运算符，最后栈中经过计算后只剩下一个数，就是我们需要的运算结果</li>
+<li>Java也需要维护一个操作数栈，来计算我们的最终结果</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">i = i++;</span><br><span class="line"><span class="keyword">int</span> j = i++;</span><br><span class="line"><span class="keyword">int</span> k = i + ++i * i++;</span><br><span class="line">System.out.println(<span class="string">&quot;i=&quot;</span>+i);<span class="number">5</span></span><br><span class="line">System.out.println(<span class="string">&quot;j=&quot;</span>+j);<span class="number">2</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+k);<span class="number">12</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-2-分析"><a href="#1-2-分析" class="headerlink" title="1.2 分析"></a>1.2 分析</h2><h3 id="1-2-1-前两步"><a href="#1-2-1-前两步" class="headerlink" title="1.2.1 前两步"></a>1.2.1 前两步</h3><ol>
+<li>赋值操作更新局部变量表，变量操作会先将变量值压入操作数栈</li>
+<li>自增操作会更新变量的局部变量表，但不会影响操作数栈的值，存在操作数就会把变量的值压入操作数栈中</li>
+<li>赋值操作是把操作数栈的最终结果赋值给变量，也就是说i经过前两步后值为1</li>
+</ol>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/ij.png" class="" title="ij">
+<h3 id="1-2-2-第三步"><a href="#1-2-2-第三步" class="headerlink" title="1.2.2 第三步"></a>1.2.2 第三步</h3><ul>
+<li>后增操作：先赋值j，再自增i</li>
+</ul>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/ij2.png" class="" title="ij2">
+<h3 id="1-2-3-第四步"><a href="#1-2-3-第四步" class="headerlink" title="1.2.3 第四步"></a>1.2.3 第四步</h3><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/ij3.png" class="" title="ij3">
+<h2 id="1-3-小结"><a href="#1-3-小结" class="headerlink" title="1.3 小结"></a>1.3 小结</h2><ul>
+<li><p>总的来说在运算的时候维护一个<strong>局部变量表</strong>和一个<strong>操作数栈</strong>，来<strong>保存</strong>和<strong>更新</strong>我们的数据</p>
+</li>
+<li><p>++i会<strong>先修改i保存到局部变量表中的值</strong>，再将<strong>自增后</strong>的值放入到操作数栈中</p>
+</li>
+<li>i++与++i相反，会<strong>先将i的值放入到操作数栈中</strong>，而后再更新i的局部变量表</li>
+<li>赋值操作是在操作数栈计算完之后才执行的</li>
+</ul>
+<h1 id="二、JDK-JRE-JVM的区别"><a href="#二、JDK-JRE-JVM的区别" class="headerlink" title="二、JDK/JRE/JVM的区别"></a>二、JDK/JRE/JVM的区别</h1><img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/KEM.png" class="" title="kem">
+<ul>
+<li>JDK：Java标准开发包，提供编译、运行Java程序所需的各种工具和资源，包括Java编译器、Java运行时环境，以及常用的Java类库等</li>
+<li>JRE，Java运行环境，用于运行Java的字节码文件，JRE中包括了JVM工作所需要的类库，普通用户只需要按照JRE来运行Java程序，而程序开发者必须安装JDK来编译、调试程序</li>
+<li>JVM：Java虚拟机，是JRE的一部分，它是整个Java实现跨平台的最核心的部分，负责运行字节码文件</li>
+</ul>
+<h1 id="三、Java数据类型"><a href="#三、Java数据类型" class="headerlink" title="三、Java数据类型"></a>三、Java数据类型</h1><p>基础数据类型</p>
+<ul>
+<li>整数类型（byte、short、int、long）</li>
+<li>浮点类型（float、double）</li>
+<li>数值型</li>
+<li>字符型（char）</li>
+<li>布尔型（boolean）</li>
+</ul>
+<p>引用数据类型</p>
+<ul>
+<li>类（class）</li>
+<li>接口（interface）</li>
+<li>数组（[]）</li>
+</ul>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/jichutype.png" class="" title="jichutype">
+<h1 id="四、hashCode-与equals-之间的关系"><a href="#四、hashCode-与equals-之间的关系" class="headerlink" title="四、hashCode()与equals()之间的关系"></a>四、hashCode()与equals()之间的关系</h1><p>在了解hashCode()之前，首先要了解<strong>哈希表</strong>这种数据结构，这里假设存在一个哈希函数f(x)，那么它的映射关系是<strong>数据-&gt;存储地址</strong>，即对于一个数据x，它存放的地址为经过函数f(x)得到的地址。</p>
+<p>但由于计算机的存储空间不是无限的，所以哈希地址的计算一般会出现重复的情况，这里可以采用<strong>链地址法</strong>，即如果两条数据计算到的哈希值相同，那么就在这个位置上创建一个<strong>链表</strong>来存放这两个相同哈希值的数据。</p>
+<p>有了哈希表的概念，那么这里Java对象中的hashCode就是经过某一哈希函数得到的哈希值，在应用时参考以下代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Key</span> </span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Key</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public int hashCode() &#123;</span></span><br><span class="line"><span class="comment">//        return id.hashCode();</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public boolean equals(Object obj) &#123;</span></span><br><span class="line"><span class="comment">//        if(obj == null || !(obj instanceof Key))</span></span><br><span class="line"><span class="comment">//            return false;</span></span><br><span class="line"><span class="comment">//        else</span></span><br><span class="line"><span class="comment">//            return this.getId().equals(((Key) obj).getId());</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Key k1 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        Key k2 = <span class="keyword">new</span> Key(<span class="number">1</span>);</span><br><span class="line">        HashMap&lt;Key,String&gt; hm = <span class="keyword">new</span> HashMap&lt;Key, String&gt;();</span><br><span class="line"></span><br><span class="line">        hm.put(k1,<span class="string">&quot;Key with id is 1&quot;</span>);</span><br><span class="line">        System.out.println(hm.get(k2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码测试了使用<strong>相同id值的对象</strong>在HashMap中进行查找（工作会经常使用到的操作），测试结果如下：</p>
+<ul>
+<li>不重写hashCode()和equals()方法，结果输出”null“</li>
+<li>重写hashCode()但不重写equals()，结果仍输出“null”</li>
+<li>同时重写hashCode()和equals()方法，输出结果”Key with id is 1“，内容可以正常查询到</li>
+</ul>
+<p>对以上三种测试情况有以下说明：</p>
+<ul>
+<li>集合类HashMap在进行对象查找（get()方法）时，会先根据对象的hashCode进行查找，<ul>
+<li>如果两个对象的hashCode不同，则说明两个对象绝对是不同的；</li>
+<li>如果两个对象的hashCode相同，则调用对象的equals()方法继续进行比较，比较内容相同则两个对象一定是相同的</li>
+</ul>
+</li>
+<li>如果不重写hashCode()和equals()方法，那么对象会采用<strong>Object父类</strong>实现的默认的hashCode()和equals()方法，默认的hashCode是<strong>对象的内存地址</strong>，默认equals()的比较方式也是比较<strong>两个对象的内存地址</strong>是否相同</li>
+</ul>
+<p>在使用时一般会遵循以下原则：</p>
+<ul>
+<li>重写equals()方法必须重写hashCode()方法</li>
+<li>两对象equals()相等，则这两个对象的hashCode()应该相等</li>
+<li>hashCode()和equals()的返回值应该是稳定的，不应具有随机性</li>
+<li>如果要在HashMap的”键“部分存放自定义的对象，一定要在这个对象里重写equals和hashCode方法</li>
+</ul>
+<p>在面试时会经常问到比如：</p>
+<ul>
+<li>有没有重写过hashCode方法</li>
+<li>在使用HashMap时有没有重写hashCode和equals方法，怎么写的</li>
+</ul>
+<h1 id="五、-与equals的区别"><a href="#五、-与equals的区别" class="headerlink" title="五、==与equals的区别"></a>五、==与equals的区别</h1><p>参考第三题，equals()方法在不重写的情况下，<strong>默认</strong>比较的是两个<strong>对象的内存地址</strong>，但我们往往会在类中重写equals()来<strong>比较对象之间的内容是否相等</strong>，<strong>equals()只能被对象调用</strong>。</p>
+<p>==是Java中的一种操作符，它有两种比较方式</p>
+<ul>
+<li>对于基础数据类型来说，==判断的是两边的值是否相等</li>
+<li>对于引用类型来说，==判断的是两边的引用是否相等，也就是判断两个对象是否指向了同一块内存区域</li>
+</ul>
+<p>equals()方法的特性</p>
+<ul>
+<li><strong>自反性</strong>：对于任何非空引用值x来说，x.equals(x)返回true</li>
+<li><strong>对称性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，则y.equals(x)为true</li>
+<li><strong>传递性</strong>：对于任何非空引用值x、y、z来说，如果x.equals(y)为true，y.equals(z)为true，那么x.equals(z)也为true</li>
+<li><strong>一致性</strong>：对于任何非空引用值x、y来说，如果x.equals(y)为true，那么它们要始终相等</li>
+<li><strong>非空性</strong>：对于任何非空引用值x来说，x.equals(null)必须返回false</li>
+</ul>
+<h1 id="六、String中的equals是如何重写的"><a href="#六、String中的equals是如何重写的" class="headerlink" title="六、String中的equals是如何重写的"></a>六、String中的equals是如何重写的</h1><p>String是Java中的字符串类，它整个类都是被final修饰的，这意味着String类是不能被任何类继承，任何修改String字符串的方法都是创建了一个新的字符串</p>
+<p>equals方法是Object类定义的方法，Object是所有类的父类，当然也包括String，String重写的equals方法如下</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/sequals.png" class="" title="sequals">
+<ul>
+<li>首先是引用的判断，引用相等则直接返回true</li>
+<li>接着判断对象是否是String实例，不是则直接返回false，否则将对象强转后，比较字符串的长度，长度不等肯定返回false</li>
+<li>长度相等的情况下，再逐个字符进行比较，存在不同的字符则返回false</li>
+</ul>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/sequals1.png" class="" title="sequals1">
+<p>注意JDK1.8以后，new String(“abc”)操作和普通的字符串赋值操作作用是一样的，以下的intern()方法是获取常量池中的字符串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"></span><br><span class="line">        String s2 = <span class="string">&quot;a&quot;</span> + <span class="keyword">new</span> String(<span class="string">&quot;bc&quot;</span>);</span><br><span class="line">        String s3 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(s1.intern());	<span class="comment">//abc</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下输出均为true</span></span><br><span class="line">        System.out.println(s2.equals(<span class="string">&quot;abc&quot;</span>));</span><br><span class="line">        System.out.println(s3.equals(s1));</span><br><span class="line">        System.out.println(s1.intern().equals(s2));</span><br><span class="line">        System.out.println(s3.intern().equals(s1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="七、String-s1-new-String-“abc”-在内存中创建了几个对象"><a href="#七、String-s1-new-String-“abc”-在内存中创建了几个对象" class="headerlink" title="七、String s1 = new String(“abc”)在内存中创建了几个对象"></a>七、String s1 = new String(“abc”)在内存中创建了几个对象</h1><p>一个或者两个，首先new操作一定会在堆中创建一个对象，如果常量池中不存在“abc”对象，那么就会在常量池中创建一个“abc”，否则就不进行创建</p>
+<p>观察下面String构造器的源码可以发现，String对象的hash值和常量池“abc”对象的hash值是一致的</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/string1.png" class="" title="string1">
+<p>new操作的内存情况如下：</p>
+<img src="/2022/04/03/Java%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/stringneicun.png" class="" title="stringneicun">
+<h1 id="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"><a href="#八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计" class="headerlink" title="八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计"></a>八、String为什么是不可变的、jdk源码中的String如何定义的、为什么这么设计</h1><p>不可变对象：不可变对象就是一经创建后，其对象的内部状态不能被修改，即：</p>
+<ul>
+<li>不可变对象内部属性都是final的</li>
+<li>不可变对象的内部属性都是private的</li>
+<li>不可变对象不能提供任何可以修改内部状态的方法，setter方法也不行</li>
+<li>不可变对象不能被继承和扩展</li>
+</ul>
+<p>String类是一种对象，它独立于Java基本数据类型而存在的，可以理解为字符串的集合</p>
+<p>String被设计为final的，表示String对象一经创建后，它的值就不能再被修改了，任何对String值进行修改的方法就是重新创建一个字符串</p>
+<p>String对象创建后会存在于运行时常量池中，运行时常量池属于方法区的一部分，JDK1.7后把它移到了堆中</p>
+<h1 id="九、String-StringBuffer-StringBuilder的区别"><a href="#九、String-StringBuffer-StringBuilder的区别" class="headerlink" title="九、String/StringBuffer/StringBuilder的区别"></a>九、String/StringBuffer/StringBuilder的区别</h1><p>String类型是不可变的，属于字符串常量</p>
+<p>StringBuffer和StringBuilder都是可修改的字符串对象，区别是StringBuffer是线程安全的，StringBuilder是线程不安全的</p>
+<h1 id="十、static关键字是干什么用的"><a href="#十、static关键字是干什么用的" class="headerlink" title="十、static关键字是干什么用的"></a>十、static关键字是干什么用的</h1><ul>
+<li>修饰变量，static修饰的变量称为<strong>静态变量</strong>、也称为<strong>类变量</strong>，类变量属于类所有，对于不同的类来说，static变量只有一份，static修饰的变量位于<strong>方法区</strong>；static修饰的变量能够直接通过<strong>类名.变量名</strong>来进行访问，不用通过实例化类再进行使用</li>
+<li>修饰方法，static修饰的方法称为<strong>静态方法</strong>，静态方法能够直接通过<strong>类名.方法名</strong>来使用，在静态方法内部不能使用非静态属性和方法</li>
+<li><p>static可以修饰代码块，主要分为两种，一种直接定义在类中，使用<strong>static{}</strong>，这种被称为静态代码块，一种是在类中定义<strong>静态内部类</strong>，使用<strong>static class xxx</strong>来进行定义</p>
+</li>
+<li><p>static可用用于静态导包，通过使用import static xxx来实现，这种方式一般不推荐使用</p>
+</li>
+<li>static可以和单例模式一起使用，通过双重检查锁来实现线程安全的单例模式</li>
+</ul>
+<h1 id="十一、final关键字是干什么用的"><a href="#十一、final关键字是干什么用的" class="headerlink" title="十一、final关键字是干什么用的"></a>十一、final关键字是干什么用的</h1><p>final 是 Java 中的关键字，它表示的意思是 <code>不可变的</code>，在 Java 中，final 主要用来</p>
+<ul>
+<li>修饰类，final 修饰的类不能被继承，不能被继承的意思就是不能使用 <code>extends</code> 来继承被 final 修饰的类。</li>
+<li>修饰变量，final 修饰的变量不能被改写，不能被改写的意思有两种，对于基本数据类型来说，final 修饰的<strong>变量</strong>，其<strong>值不能被改变</strong>，final 修饰的<strong>对象</strong>，<strong>对象的引用不能被改变</strong>，但是对象内部的<strong>属性可以被修改</strong>。final 修饰的变量在某种程度上起到了<code>不可变</code>的效果，所以，可以用来保护只读数据，尤其是在并发编程中，因为明确的不能再为 final 变量进行赋值，有利于减少额外的同步开销</li>
+<li>修饰方法，final 修饰的方法不能被重写</li>
+<li>final 修饰符和 Java 程序性能优化没有必然联系</li>
+</ul>
+<h1 id="十二、抽象类和接口的区别是什么"><a href="#十二、抽象类和接口的区别是什么" class="headerlink" title="十二、抽象类和接口的区别是什么"></a>十二、抽象类和接口的区别是什么</h1><p>抽象类abstract和接口interface都是Java中的关键字，</p>
+<p>抽象类和接口的相同点：</p>
+<ul>
+<li>都允许进行方法的定义，而不用具体的方法实现</li>
+<li>都允许被继承</li>
+<li>广泛的应用于 JDK 和框架的源码中，来实现多态和不同的设计模式。</li>
+</ul>
+<p>抽象类和接口的不同点：</p>
+<ul>
+<li>抽象级别不同：类、抽象类、接口其实是三种不同的抽象级别，抽象程度依次是 <strong>接口 &gt; 抽象类 &gt; 类</strong>。在接口中，只允许进行方法的定义，不允许有方法的实现，抽象类中可以进行方法的定义和实现；而类中只允许进行方法的实现</li>
+<li>使用的关键字不同：类使用 <code>class</code> 来表示；抽象类使用 <code>abstract class</code> 来表示；接口使用 <code>interface</code> 来表示</li>
+<li>变量：接口中定义的变量只能是公共的静态常量，抽象类中的变量是普通变量。</li>
+</ul>
+<h1 id="十三、重写和重载的区别"><a href="#十三、重写和重载的区别" class="headerlink" title="十三、重写和重载的区别"></a>十三、重写和重载的区别</h1><ul>
+<li>重写是针对子类和父类的表现形式，而重载是在同一类中的不同表现形式</li>
+<li>子类重写父类的方法一般使用@override来表示，重写后的方法其方法的声明和参数类型、顺序必须要和父类完全一致</li>
+<li>重载是针对同一类中概念，它要求重载的方法必须满足下面任何一个要求：方法参数的顺序、参数的个数、参数的类型任意一个保持不同即可</li>
+</ul>
+<h1 id="十四、byte的取值范围"><a href="#十四、byte的取值范围" class="headerlink" title="十四、byte的取值范围"></a>十四、byte的取值范围</h1><p>Java的Byte的取值范围为（-128，127），占用一个字节，即8bit</p>
+<p>Java中使用补码来表示二进制数，因此最高位为符号位，最高位为0表示正数，最高为为1表示负数</p>
+<p>先来复习下源码、反码、补码</p>
+<p>原码：正常的二进制计算，存在符号位，0表示正数，最高为为1表示负数</p>
+<p>反码：正数的反码与其原码相同；负数在原码基础上，按位取反，符号位除外</p>
+<p>补码：正数的补码与其原码相同；负数的补码是在其反码的末位+1</p>
+<p>byte中，正数的最大值就是0111 1111</p>
+<p>因为存在符号位，所以存在两个0，即-0：1000 0000和+0：0000 0000，因此用1000 0000来表示负数的最小值，即-128</p>
+<p>1000 0000减1后为0111 1111，再取反1000 0000，原码的值128，在负数中就应该为-128</p>
+<h1 id="十五、HashMap和HashTable的区别"><a href="#十五、HashMap和HashTable的区别" class="headerlink" title="十五、HashMap和HashTable的区别"></a>十五、HashMap和HashTable的区别</h1><p>不同点：</p>
+<ul>
+<li>父类不同：HashMap继承了AbstractMap类，而HashTable继承了Dictionary类</li>
+<li><p>空值不同：HashMap允许空的key和value值，HashTable不允许空的key和value值。HashMap会把Null key当做普通的key对待，且不允许null key重复。HashTable存null的key就会报空指针异常</p>
+</li>
+<li><p>线程安全性：HashMap是线程不安全的，如果多个外部操作同时修改HashMap的数据结构比如add或者是delete，必须进行同步操作，即仅仅对key或者value的修改不是改变数据结构的操作</p>
+</li>
+<li>性能方面：虽然HashMap和HashTable都是基于单链表的，但是HashMap进行put或者get操作，可以达到常数时间的性能；而HashTable的put和get操作都是加了synchronized，所以效率很差</li>
+<li>初始容量不同：HashTable的初始长度是11，之后每次扩充容量变为之前的2n+1（n为上一次的长度）而HashMap的初始长度为16，之后每次扩充变为原来的两倍。创建时，如果给定了容量初始值，那么HashTable会直接使用你给定的大小，而HashMap会将其扩充为2的幂次方大小</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java设计模式-设计原则</title>
+    <url>/2022/03/27/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</url>
+    <content><![CDATA[<h1 id="一、设计模式基础"><a href="#一、设计模式基础" class="headerlink" title="一、设计模式基础"></a>一、设计模式基础</h1><h2 id="1-1-GoF的23种设计模式及其功能"><a href="#1-1-GoF的23种设计模式及其功能" class="headerlink" title="1.1 GoF的23种设计模式及其功能"></a>1.1 GoF的23种设计模式及其功能</h2><ol>
+<li>单例（ Singleton ）模式 某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。</li>
+<li>原型（Prototype）模式：将一个对象作为原型，通过对其进行复制而克隆出多个和原型类似的新实例</li>
+<li>工厂方法（Factory Method）模式：定义一个用于创建产品的接口，由子类决定生存什么产品</li>
+<li>抽象工厂（Abstract Factory）模式：提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品</li>
+<li>建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们</li>
+<li>代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性</li>
+<li>适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能在一起工作的那些类能一起工作</li>
+<li>桥接（Bridge）模式：将抽象与实现分离，使它们可以独立变化，它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
+<li>装饰（Decorator）模式：：动态的给对象增加一些职责，即增加其额外的功能</li>
+<li>外观（ Facade ）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问</li>
+<li>享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用</li>
+<li>组合（ Composite ）模式：将对象组合成树状层次结构，使用户对单个对象和组合对象具有一致的访问性</li>
+<li>模板方法（ Templat Method ）模式：定义一个操作中的算法骨架 ，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤</li>
+<li>策略（ Strategy ）模式：定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的改变不会影响使用算法的客户</li>
+<li>命令（ Command ）模式：将一个请求封装为一个对象 ，使发出请求的责任和执行请求的责任分割开</li>
+<li>职责链 （Chain of Responsibility ）模式：把请求从链中的一个对象传到下一个对象 ，直到请求被响应为止。通过这种方式去除对象之间的耦合</li>
+<li>状态（ State ）模式：允许一个对象在其内部状态发生改变时改变其行为能力</li>
+<li>观察者（ Observer 模式：多个对象间存在－对多关系，当一个对象发生改变时，把这种改变通知给其他多个对象，从而影响其他对象的行为</li>
+<li>中介者（ Mediator ）模式：定义一个中介对象来简化原有对象之间的交互关系，降低系统中对象间的耦合度，使原有对象之间不必相互了解</li>
+<li>迭代器 Iterator ）模式 提供一种方法来顺序访问聚合对象中的一系列数据 ，而不暴露聚合对象的内部表示</li>
+<li>访问者（Visitor）模式：在不改变集合元素的前提下，为一个集合种的每个元素提供多种访问方式，即每个元素有多个访问者对象访问</li>
+<li>备忘录（Memento）模式：在不破坏封装性的前提下，获取并保存一个对象的内部状态以便以后恢复它</li>
+<li>解释器（Interpreter）模式：提供如何定义语言的文法，以及对语言句子的解释方法，即解释器</li>
+</ol>
+<h1 id="二、面向对象的设计原则"><a href="#二、面向对象的设计原则" class="headerlink" title="二、面向对象的设计原则"></a>二、面向对象的设计原则</h1><h2 id="2-1-开闭原则OCP"><a href="#2-1-开闭原则OCP" class="headerlink" title="2.1 开闭原则OCP"></a>2.1 开闭原则OCP</h2><ul>
+<li>对扩展开放、对修改关闭</li>
+<li>通过“抽象约束、封装变化”来实现开闭原则</li>
+<li>抽象层设计的合理，可以基本保持软件架构的稳定</li>
+<li>当软件需求发生变化时，只需要根据需求派生一个实现类来扩展就可以了</li>
+</ul>
+<h2 id="2-2-里氏替换原则LSP"><a href="#2-2-里氏替换原则LSP" class="headerlink" title="2.2 里氏替换原则LSP"></a>2.2 里氏替换原则LSP</h2><ul>
+<li>子类可以扩展父类的功能，但不能改变父类原有的功能</li>
+<li>简单来说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法</li>
+<li>作用：实现开闭原则的重要方式之一、提高父类可复用性、降低类的扩展出错的可能性</li>
+<li>如果出现因重写父类方法而导致出错的情况，应该设计个更一般的类，重新组织类的继承关系</li>
+</ul>
+<h2 id="2-3-依赖倒置原则DIP"><a href="#2-3-依赖倒置原则DIP" class="headerlink" title="2.3 依赖倒置原则DIP"></a>2.3 依赖倒置原则DIP</h2><ul>
+<li>要面向接口编程，不要面向实现编程</li>
+<li>抽象层相对稳定，实现类较为多变</li>
+<li>接口/抽象类的目的是制定好规范和契约，不去涉及任何具体的操作</li>
+<li>具体细节的任务交给实现类完成</li>
+<li>作用：降低了类间的耦合性、提高系统的稳定性、提高代码可读性和可维护性</li>
+</ul>
+<h3 id="2-3-1-实现方法"><a href="#2-3-1-实现方法" class="headerlink" title="2.3.1 实现方法"></a>2.3.1 实现方法</h3><ol>
+<li>每个类尽量提供接口或抽象类，或者两者都具备</li>
+<li>变量的声明类型尽量是接口或者是抽象类</li>
+<li>任何类都不应该从具体类派生</li>
+<li>使用继承时尽量遵循里氏替换原则</li>
+</ol>
+<h2 id="2-4-单一职责原则SRP"><a href="#2-4-单一职责原则SRP" class="headerlink" title="2.4 单一职责原则SRP"></a>2.4 单一职责原则SRP</h2><ul>
+<li>一个类应该有且仅有一个引起它变化的原因，否则应该被拆分</li>
+<li>承担太多职责的缺点：削弱类实现其他职责的能力、冗余代码</li>
+<li>作用：降低类的复杂度、提高类的可读性、提高系统可维护性、变更引起的风险降低</li>
+<li>实现方法：分析、设计、重构</li>
+<li>同样适用于方法，方法应尽可能做好一件事情</li>
+</ul>
+<h2 id="2-5-接口隔离原则ISP"><a href="#2-5-接口隔离原则ISP" class="headerlink" title="2.5 接口隔离原则ISP"></a>2.5 接口隔离原则ISP</h2><ul>
+<li>程序员尽量将臃肿庞大的接口拆分成更小的和更具体的接口，让接口中只包含客户感兴趣的方法</li>
+<li>要为类建立它们需要的专用接口，而不要视图去建立一个很庞大的接口供所有依赖它的类去调用</li>
+<li>作用：提高系统灵活性和可维护性、降低系统耦合性、提高系统内聚性、接口粒度大小要定义合理（太大太小都不好）、减少代码冗余、能够体现对象的层次<br>实现方法：一个接口只服务于一个子模块或业务逻辑、为依赖接口的类定制服务、深入了解环境/业务逻辑、使接口用最少的方法实现最多的事情</li>
+</ul>
+<h2 id="2-6-迪米特法则LKP"><a href="#2-6-迪米特法则LKP" class="headerlink" title="2.6 迪米特法则LKP"></a>2.6 迪米特法则LKP</h2><ul>
+<li>如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用</li>
+<li>作用：降低类间耦合度、提高模块相对独立性、提高类的可复用性和系统的扩展性</li>
+<li>过渡使用LKP会使系统产生大量的中介类，从而增加系统的复杂性，所以使用时要权衡好</li>
+<li>实现方法：依赖者应该依赖应该依赖的对象、被依赖者只暴露应该暴露的方法</li>
+<li>注意：应创建弱耦合的类、降低类成员的访问权限、优先考虑设计不变类、降低引用次数、不暴露属性成员（提供get和set）、进行使用序列化</li>
+</ul>
+<h2 id="2-7-合成复用原则CRP"><a href="#2-7-合成复用原则CRP" class="headerlink" title="2.7 合成复用原则CRP"></a>2.7 合成复用原则CRP</h2><ul>
+<li>又称组合/聚合复用原则（CARP）</li>
+<li>它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现</li>
+<li>如果要使用继承关系，则必须严格遵循里氏代换原则</li>
+<li>合成复用原则和里氏代换原则都是开闭原则的具体实现规范</li>
+<li>类的复用包括：继承复用、合成复用</li>
+</ul>
+<h3 id="2-7-1-继承复用"><a href="#2-7-1-继承复用" class="headerlink" title="2.7.1 继承复用"></a>2.7.1 继承复用</h3><ul>
+<li>破坏了类的封装性，父类暴露给子类</li>
+<li>子类与父类耦合度高</li>
+<li>限制了复用的灵活性，父类继承而来的实现是静态的，在编译时已经定义、所以在运行时不可能发生变化</li>
+</ul>
+<h3 id="2-7-2-合成复用"><a href="#2-7-2-合成复用" class="headerlink" title="2.7.2 合成复用"></a>2.7.2 合成复用</h3><ul>
+<li>维持了类的封装性</li>
+<li>新旧类之间的耦合度低</li>
+<li>复用的灵活性高，可以在运行时动态进行，新对象可以动态地引用与成分对象类型相同的对象</li>
+</ul>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>后端</tag>
+        <tag>设计模式</tag>
+        <tag>编程艺术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring面试大全</title>
+    <url>/2022/09/25/Spring%E9%9D%A2%E8%AF%95%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="一、简单工厂模式"><a href="#一、简单工厂模式" class="headerlink" title="一、简单工厂模式"></a>一、简单工厂模式</h1><p>Spring中的BeanFactory就是简单工厂模式的体现，根据传入一个唯一的标识来获得Bean对象，但是否是在传入参数后创建还是传入参数前创建这个要根据具体情况来定。</p>
+<h1 id="二、工厂模式"><a href="#二、工厂模式" class="headerlink" title="二、工厂模式"></a>二、工厂模式</h1><p> 实质： 实现了FactoryBean接口的bean是一类叫做factory的bean 。</p>
+<p> 实现方式： FactoryBean</p>
+<p> 实现原理：因为实现了FactoryBean接口，所以返回的不是SqlSessionFactoryBean的实例，而是它的 SqlSessionFactoryBean.getObject()的返回值。</p>
+<h1 id="三、单例模式"><a href="#三、单例模式" class="headerlink" title="三、单例模式"></a>三、单例模式</h1><p> 实质：保证一个类仅有一个实例，并提供一个访问它的全局访问点 (多线程访问，加锁 syncronized)</p>
+<p>Spring的依赖注入（包括lazy-init方式）都是发生在AbstractBeanFactory的getBean里。getBean的doGetBean方法调用getSingleton进行bean的创建。</p>
+<h1 id="四、适配器模式"><a href="#四、适配器模式" class="headerlink" title="四、适配器模式"></a>四、适配器模式</h1><p> 实现场景：SpringMVC中的适配器HandlerAdatper</p>
+<p> 实现原理：HandlerAdatper根据Handler规则执行不同的Handler</p>
+<h1 id="五、装饰器模式"><a href="#五、装饰器模式" class="headerlink" title="五、装饰器模式"></a>五、装饰器模式</h1><p>实现方式：Spring中用到的包装器模式在类名上有两种表现：一种是类名中含有Wrapper，另一种是类名中含有Decorator。</p>
+<h1 id="六、代理模式"><a href="#六、代理模式" class="headerlink" title="六、代理模式"></a>六、代理模式</h1><p>实现方式：AOP底层，就是动态代理模式的实现。</p>
+<p>Spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。</p>
+<h1 id="七、观察者模式"><a href="#七、观察者模式" class="headerlink" title="七、观察者模式"></a>七、观察者模式</h1><p>Spring中Observer模式常用的地方是listener的实现。如ApplicationListener。</p>
+<h1 id="八、策略模式"><a href="#八、策略模式" class="headerlink" title="八、策略模式"></a>八、策略模式</h1><p>在SimpleInstantiationStrategy中有如下代码说明了策略模式的使用情况：</p>
+<h1 id="九、模板模式"><a href="#九、模板模式" class="headerlink" title="九、模板模式"></a>九、模板模式</h1><p> 实质：是模板方法模式和回调模式的结合，是Template Method不需要继承的另一种实现方式。Spring几乎所有的外接扩展都采用这种模式。</p>
+<p>Template Method模式一般是需要继承的。这里想要探讨另一种对Template Method的理解。Spring中的JdbcTemplate，在用这个类时并不想去继承这个类，因为这个类的方法太多，但是我们还是想用到JdbcTemplate已有的稳定的、公用的数据库连接，那么我们怎么办呢？我们可以把变化的东西抽出来作为一个参数传入JdbcTemplate的方法中。但是变化的东西是一段代码，而且这段代码会用到JdbcTemplate中的变量。怎么办？那我们就用回调对象吧。在这个回调对象中定义一个操纵JdbcTemplate中变量的方法，我们去实现这个方法，就把变化的东西集中到这里了。然后我们再传入这个回调对象到JdbcTemplate，从而完成了调用。这可能是Template Method不需要继承的另一种实现方式吧。</p>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+        <tag>Spring源码</tag>
       </tags>
   </entry>
 </search>
