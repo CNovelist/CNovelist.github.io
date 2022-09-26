@@ -165,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/yue.jpeg">
@@ -179,7 +179,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/" class="post-title-link" itemprop="url">Spring基础大全一</a>
+            <a href="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Spring基础大全</a>
         </h2>
 
         <div class="post-meta">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-17 20:44:16" itemprop="dateModified" datetime="2022-03-17T20:44:16+08:00">2022-03-17</time>
+                <time title="修改时间：2022-09-26 21:47:04" itemprop="dateModified" datetime="2022-09-26T21:47:04+08:00">2022-09-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -370,7 +370,7 @@
 <ul>
 <li>结果</li>
 </ul>
-<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/result.png" class="" title="image1">
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/result.png" class="" title="image1">
 <h4 id="（4）后置处理器"><a href="#（4）后置处理器" class="headerlink" title="（4）后置处理器"></a>（4）后置处理器</h4><ul>
 <li>bean实例初始化前后的操作，具体操作如下</li>
 <li>创建类，实现接口<strong>BeanPostProcessor</strong>，创建后置处理器</li>
@@ -435,7 +435,7 @@
 <h1 id="三、AOP"><a href="#三、AOP" class="headerlink" title="三、AOP"></a>三、AOP</h1><h2 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h2><ul>
 <li>面向切面编程：在不修改源代码的情况下在主干功能里添加新的功能模块</li>
 </ul>
-<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/aop.png" class="" title="image3">
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/aop.png" class="" title="image3">
 <h2 id="3-2-AOP底层原理"><a href="#3-2-AOP底层原理" class="headerlink" title="3.2 AOP底层原理"></a>3.2 AOP底层原理</h2><h3 id="3-2-1-动态代理"><a href="#3-2-1-动态代理" class="headerlink" title="3.2.1 动态代理"></a>3.2.1 动态代理</h3><ul>
 <li><p>Spring5已经对动态代理做了封装，可以直接调用，需要的知识点：反射</p>
 </li>
@@ -445,11 +445,11 @@
 </ul>
 </li>
 </ul>
-<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/interaop.png" class="" title="image4">
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/interaop.png" class="" title="image4">
 <ul>
 <li>第二种：没有接口情况，使用CGLIB动态代理</li>
 </ul>
-<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/CGLIB.png" class="" title="image5">
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/CGLIB.png" class="" title="image5">
 <h3 id="3-2-2-AOP（JDK动态代理）"><a href="#3-2-2-AOP（JDK动态代理）" class="headerlink" title="3.2.2 AOP（JDK动态代理）"></a>3.2.2 AOP（JDK动态代理）</h3><ul>
 <li>JDK动态代理，使用Proxy类里面的方法创建代理对象<ul>
 <li>调用newProxyInstance方法</li>
@@ -597,7 +597,7 @@
 <li>多事务方法直接进行调用，这个过程中事务是如何进行管理的，必须是对数据库中的数据产生变化的操作</li>
 <li>简单来说就是，就是添加了@Transaction事务管理的方法去调用未添加事务管理的方法，事务的操作过程是怎样的</li>
 </ul>
-<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8%E4%B8%80/transactional.png" class="" title="image54">
+<img src="/2022/02/23/Spring%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/transactional.png" class="" title="image54">
 <ul>
 <li>下表均已上图为例，在事务管理方法中调用非事务管理方法，非事务管理方法运行的情况</li>
 <li>配置方法：@Transactional(propagation = Propagation.REQUIRED)</li>
@@ -840,10 +840,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-09-25 22:14:22 / 修改时间：22:29:16" itemprop="dateCreated datePublished" datetime="2022-09-25T22:14:22+08:00">2022-09-25</time>
+              <time title="创建时间：2022-09-25 22:14:22" itemprop="dateCreated datePublished" datetime="2022-09-25T22:14:22+08:00">2022-09-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-26 21:44:43" itemprop="dateModified" datetime="2022-09-26T21:44:43+08:00">2022-09-26</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -869,20 +875,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="一、简单工厂模式"><a href="#一、简单工厂模式" class="headerlink" title="一、简单工厂模式"></a>一、简单工厂模式</h1><p>Spring中的BeanFactory就是简单工厂模式的体现，根据传入一个唯一的标识来获得Bean对象，但是否是在传入参数后创建还是传入参数前创建这个要根据具体情况来定。</p>
-<h1 id="二、工厂模式"><a href="#二、工厂模式" class="headerlink" title="二、工厂模式"></a>二、工厂模式</h1><p> 实质： 实现了FactoryBean接口的bean是一类叫做factory的bean 。</p>
+          <h1 id="一、Spring设计模式"><a href="#一、Spring设计模式" class="headerlink" title="一、Spring设计模式"></a>一、Spring设计模式</h1><h2 id="1-1-简单工厂模式"><a href="#1-1-简单工厂模式" class="headerlink" title="1.1 简单工厂模式"></a>1.1 简单工厂模式</h2><p>Spring中的BeanFactory就是简单工厂模式的体现，根据传入一个唯一的标识来获得Bean对象，但是否是在传入参数后创建还是传入参数前创建这个要根据具体情况来定。</p>
+<h2 id="1-2-工厂模式"><a href="#1-2-工厂模式" class="headerlink" title="1.2 工厂模式"></a>1.2 工厂模式</h2><p> 实质： 实现了FactoryBean接口的bean是一类叫做factory的bean 。</p>
 <p> 实现方式： FactoryBean</p>
 <p> 实现原理：因为实现了FactoryBean接口，所以返回的不是SqlSessionFactoryBean的实例，而是它的 SqlSessionFactoryBean.getObject()的返回值。</p>
-<h1 id="三、单例模式"><a href="#三、单例模式" class="headerlink" title="三、单例模式"></a>三、单例模式</h1><p> 实质：保证一个类仅有一个实例，并提供一个访问它的全局访问点 (多线程访问，加锁 syncronized)</p>
+<h2 id="1-3-单例模式"><a href="#1-3-单例模式" class="headerlink" title="1.3 单例模式"></a>1.3 单例模式</h2><p> 实质：保证一个类仅有一个实例，并提供一个访问它的全局访问点 (多线程访问，加锁 syncronized)</p>
 <p>Spring的依赖注入（包括lazy-init方式）都是发生在AbstractBeanFactory的getBean里。getBean的doGetBean方法调用getSingleton进行bean的创建。</p>
-<h1 id="四、适配器模式"><a href="#四、适配器模式" class="headerlink" title="四、适配器模式"></a>四、适配器模式</h1><p> 实现场景：SpringMVC中的适配器HandlerAdatper</p>
+<h2 id="1-4-适配器模式"><a href="#1-4-适配器模式" class="headerlink" title="1.4 适配器模式"></a>1.4 适配器模式</h2><p> 实现场景：SpringMVC中的适配器HandlerAdatper</p>
 <p> 实现原理：HandlerAdatper根据Handler规则执行不同的Handler</p>
-<h1 id="五、装饰器模式"><a href="#五、装饰器模式" class="headerlink" title="五、装饰器模式"></a>五、装饰器模式</h1><p>实现方式：Spring中用到的包装器模式在类名上有两种表现：一种是类名中含有Wrapper，另一种是类名中含有Decorator。</p>
-<h1 id="六、代理模式"><a href="#六、代理模式" class="headerlink" title="六、代理模式"></a>六、代理模式</h1><p>实现方式：AOP底层，就是动态代理模式的实现。</p>
+<h2 id="1-5-装饰器模式"><a href="#1-5-装饰器模式" class="headerlink" title="1.5 装饰器模式"></a>1.5 装饰器模式</h2><p>实现方式：Spring中用到的包装器模式在类名上有两种表现：一种是类名中含有Wrapper，另一种是类名中含有Decorator。</p>
+<h2 id="1-6-代理模式"><a href="#1-6-代理模式" class="headerlink" title="1.6 代理模式"></a>1.6 代理模式</h2><p>实现方式：AOP底层，就是动态代理模式的实现。</p>
 <p>Spring的Proxy模式在aop中有体现，比如JdkDynamicAopProxy和Cglib2AopProxy。</p>
-<h1 id="七、观察者模式"><a href="#七、观察者模式" class="headerlink" title="七、观察者模式"></a>七、观察者模式</h1><p>Spring中Observer模式常用的地方是listener的实现。如ApplicationListener。</p>
-<h1 id="八、策略模式"><a href="#八、策略模式" class="headerlink" title="八、策略模式"></a>八、策略模式</h1><p>在SimpleInstantiationStrategy中有如下代码说明了策略模式的使用情况：</p>
-<h1 id="九、模板模式"><a href="#九、模板模式" class="headerlink" title="九、模板模式"></a>九、模板模式</h1><p> 实质：是模板方法模式和回调模式的结合，是Template Method不需要继承的另一种实现方式。Spring几乎所有的外接扩展都采用这种模式。</p>
+<h2 id="1-7-观察者模式"><a href="#1-7-观察者模式" class="headerlink" title="1.7 观察者模式"></a>1.7 观察者模式</h2><p>Spring中Observer模式常用的地方是listener的实现。如ApplicationListener。</p>
+<h2 id="1-8-策略模式"><a href="#1-8-策略模式" class="headerlink" title="1.8 策略模式"></a>1.8 策略模式</h2><p>在SimpleInstantiationStrategy中有如下代码说明了策略模式的使用情况：</p>
+<h2 id="1-9-模板模式"><a href="#1-9-模板模式" class="headerlink" title="1.9 模板模式"></a>1.9 模板模式</h2><p> 实质：是模板方法模式和回调模式的结合，是Template Method不需要继承的另一种实现方式。Spring几乎所有的外接扩展都采用这种模式。</p>
 <p>Template Method模式一般是需要继承的。这里想要探讨另一种对Template Method的理解。Spring中的JdbcTemplate，在用这个类时并不想去继承这个类，因为这个类的方法太多，但是我们还是想用到JdbcTemplate已有的稳定的、公用的数据库连接，那么我们怎么办呢？我们可以把变化的东西抽出来作为一个参数传入JdbcTemplate的方法中。但是变化的东西是一段代码，而且这段代码会用到JdbcTemplate中的变量。怎么办？那我们就用回调对象吧。在这个回调对象中定义一个操纵JdbcTemplate中变量的方法，我们去实现这个方法，就把变化的东西集中到这里了。然后我们再传入这个回调对象到JdbcTemplate，从而完成了调用。这可能是Template Method不需要继承的另一种实现方式吧。</p>
 
       
@@ -934,7 +940,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-26 16:22:01" itemprop="dateModified" datetime="2022-09-26T16:22:01+08:00">2022-09-26</time>
+                <time title="修改时间：2022-09-26 21:50:25" itemprop="dateModified" datetime="2022-09-26T21:50:25+08:00">2022-09-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -946,7 +952,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%90%8E%E7%AB%AF/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                  <a href="/categories/%E5%90%8E%E7%AB%AF/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a>
                 </span>
             </span>
 
