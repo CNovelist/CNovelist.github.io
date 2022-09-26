@@ -7040,7 +7040,7 @@
 <li>半终止：不稳定音级收束，如$V-IV$，音响效果上给人一种戛然而止、意犹未尽的感觉，经常用在上半句或开放性乐段的末尾</li>
 <li>阻碍终止/伪终止：以不稳定和弦代替主和弦，典型的有$V-VI$，它是把预期的“终止”打断，然音乐延续下去。作用是推迟终止、扩展乐段</li>
 </ul>
-<h2 id="2-8-大调七和弦"><a href="#2-8-大调七和弦" class="headerlink" title="2.8 大调七和弦"></a>2.8 大调七和弦</h2><h1 id="三、离调与转调"><a href="#三、离调与转调" class="headerlink" title="三、离调与转调"></a>三、离调与转调</h1><h2 id="3-1-转调"><a href="#3-1-转调" class="headerlink" title="3.1 转调"></a>3.1 转调</h2><h2 id="3-2-离调"><a href="#3-2-离调" class="headerlink" title="3.2 离调"></a>3.2 离调</h2><p>离调可以理解为<strong>转调</strong>的一种特殊形式，但要注意区分它和转调的关系。离调具体是指音乐作品中出现了某一临时变化音或临时带变音的和弦而引起了调性色彩的改变，而且这种改变只作了短暂停留之后又回到了原来的调性上，这样的调性变化就称作离调。</p>
+<h2 id="2-8-大调七和弦"><a href="#2-8-大调七和弦" class="headerlink" title="2.8 大调七和弦"></a>2.8 大调七和弦</h2><h3 id="2-8-1-大七和弦"><a href="#2-8-1-大七和弦" class="headerlink" title="2.8.1 大七和弦"></a>2.8.1 大七和弦</h3><h3 id="2-8-2-属七和弦（大小七和弦）"><a href="#2-8-2-属七和弦（大小七和弦）" class="headerlink" title="2.8.2 属七和弦（大小七和弦）"></a>2.8.2 属七和弦（大小七和弦）</h3><h1 id="三、离调与转调"><a href="#三、离调与转调" class="headerlink" title="三、离调与转调"></a>三、离调与转调</h1><h2 id="3-1-转调"><a href="#3-1-转调" class="headerlink" title="3.1 转调"></a>3.1 转调</h2><h2 id="3-2-离调"><a href="#3-2-离调" class="headerlink" title="3.2 离调"></a>3.2 离调</h2><p>离调可以理解为<strong>转调</strong>的一种特殊形式，但要注意区分它和转调的关系。离调具体是指音乐作品中出现了某一临时变化音或临时带变音的和弦而引起了调性色彩的改变，而且这种改变只作了短暂停留之后又回到了原来的调性上，这样的调性变化就称作离调。</p>
 ]]></content>
       <categories>
         <category>文化艺术</category>
@@ -7430,11 +7430,6 @@
       <tags>
         <tag>唐诗宋词</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>C++语法基础大全</title>
-    <url>/2022/09/02/C-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>JVM基础大全-调优篇</title>
@@ -7967,7 +7962,45 @@
   <entry>
     <title>SpringCloud基础大全-服务调用</title>
     <url>/2022/09/24/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="一、Bibbon"><a href="#一、Bibbon" class="headerlink" title="一、Bibbon"></a>一、Bibbon</h1><h1 id="二、OpenFeign"><a href="#二、OpenFeign" class="headerlink" title="二、OpenFeign"></a>二、OpenFeign</h1>]]></content>
+    <content><![CDATA[<h1 id="一、Ribbon"><a href="#一、Ribbon" class="headerlink" title="一、Ribbon"></a>一、Ribbon</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>Spring Cloud Ribbon是基于Netflix Ribbon实现的一套<strong>客户端负载均衡工具</strong></p>
+<p>简单的说，Ribbon是Netflix发布的开源项目，主要功能是提供<strong>客户端的软件负载均衡算法和服务调用</strong>。Ribbon客户端组件提供一系列完善的配置项如连接超时，重试等。简单的说，就是在配置文件中列出Load Balancer(简称LB)后面所有的机器，Ribbon会自动的帮助你基于某种规则(如简单轮询，随机连接等）去连接这些机器。我们很容易使用Ribbon实现自定义的负载均衡算法。Ribbon目前进入维护模式</p>
+<p>LB负载均衡（Load Balance）：将用户的请求平摊的分配到多个服务上，从而达到系统的<strong>高可用（HA）</strong></p>
+<p>常见的负载均衡的软件有Nginx、LVS</p>
+<p>Ribbon与Nginx的区别：</p>
+<ul>
+<li>Ribbon是<strong>本地负载均衡客户端</strong>，在调用服务接口时候，会在注册中心上获取注册信息服务列表之后缓存到JVM本地，从而在本地实现RPC远程服务调用技术</li>
+<li>Nginx是<strong>服务器负载均衡</strong>，客户端所有请求都会交给Nginx，然后由Nginx实现转发请求。即负载均衡是由服务端实现的</li>
+</ul>
+<p><strong>进程内LB</strong>：将LB逻辑集成到<strong>消费方</strong>，消费方从服务注册中心获知有哪些地址可用，然后自己再从这些地址中选择出一个合适的服务器。Ribbon就属于<strong>进程内LB</strong>，它只是一个类库，集成于消费方进程，消费方通过它来获取到服务提供方的地址。</p>
+<p><strong>Ribbon服务调用=负载均衡+RestTemplate调用</strong></p>
+<h2 id="1-2-接口实现"><a href="#1-2-接口实现" class="headerlink" title="1.2 接口实现"></a>1.2 接口实现</h2><ul>
+<li>eureka-client的依赖中已经包含了Ribbon </li>
+<li>消费侧的Controller接口如下（使用RestTemplate的getForEntity方法）：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/consumer/payment/getForEntity/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CommonResult&lt;Payment&gt; <span class="title">getPayment2</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">    ResponseEntity&lt;CommonResult&gt; entity = restTemplate.getForEntity(PAYMENT_URL+<span class="string">&quot;/payment/get/&quot;</span>+id,CommonResult.class);</span><br><span class="line">    <span class="keyword">if</span>(entity.getStatusCode().is2xxSuccessful())&#123;</span><br><span class="line">        <span class="keyword">return</span> entity.getBody();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CommonResult(<span class="number">444</span>,<span class="string">&quot;操作失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-Ribbon负载规则"><a href="#1-3-Ribbon负载规则" class="headerlink" title="1.3 Ribbon负载规则"></a>1.3 Ribbon负载规则</h2><img src="/2022/09/24/SpringCloud%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/lb.png" class="" title="lb">
+<ul>
+<li>RoundRobinRule：轮询</li>
+<li>RandomRule：随机</li>
+<li>RetryRule：先按照RoundRobinRule的策略获取服务，若获取失败则在指定时间内进行重试，获取可用的服务</li>
+<li>WeigbtedBesponseTimeBule：RoundBobinRule扩展，响应速度越快的实例选择权更越大，越容易被选择.</li>
+<li>BestAvailableRule：会先过婆填臾于多次访问故赜呃处天断路嚣跳灵球态的服务、然反选择一个并发曩悬少鲍服务</li>
+<li>AvailabilityFileteringRule：先过滤掉故障实例，在选择并发较小的实例</li>
+<li>ZoneAvoidanceRule：默认规则，复合判断server所在区域的性能和server的可用性选择服务器</li>
+</ul>
+<h2 id="1-4-负载规则替换"><a href="#1-4-负载规则替换" class="headerlink" title="1.4 负载规则替换"></a>1.4 负载规则替换</h2><ul>
+<li>原先的消费者端，其主启动类在com.atguigu.springcloud包下，而Ribbon修改负载规则要求不能放在同一个包下，所以需要在当前工程下创建一个新包com.atguigu.myrule，然后在创建自己的规则配置类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySelfRule</span></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IRule <span class="title">myRule</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RandomRule();	<span class="comment">// 定义为随机</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置类创建完成后，还需要在项目的主启动类上添加注解进行配置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplilcation</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@RibbonClient(name=&quot;CLOUD-PAYMNET-SERVICE&quot;,configuration=MySelfRule.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderMain80</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        SpringApplication.run(OrderMain80.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>替换完成以后，服务调用的效果就可以通过接口调用观察出来</li>
+</ul>
+<h2 id="1-5-算法原理"><a href="#1-5-算法原理" class="headerlink" title="1.5 算法原理"></a>1.5 算法原理</h2><p>轮询算法: rest接口第几次请求数%服务器集群总数量=实际调用服务器位置下标，每次服务重启动后rest接口计数从1开始。每次服务重启后会重新从1开始计算请求次数</p>
+<h2 id="1-6-手写算法"><a href="#1-6-手写算法" class="headerlink" title="1.6 手写算法"></a>1.6 手写算法</h2><h1 id="二、OpenFeign"><a href="#二、OpenFeign" class="headerlink" title="二、OpenFeign"></a>二、OpenFeign</h1>]]></content>
       <categories>
         <category>后端</category>
         <category>Java</category>
@@ -8287,6 +8320,41 @@
       <tags>
         <tag>设计模式</tag>
         <tag>Spring源码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++语法基础大全</title>
+    <url>/2022/09/02/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>日语进阶大全-动词</title>
+    <url>/2022/09/26/%E6%97%A5%E8%AF%AD%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E5%8A%A8%E8%AF%8D/</url>
+    <content><![CDATA[<h1 id="一、动词"><a href="#一、动词" class="headerlink" title="一、动词"></a>一、动词</h1><ul>
+<li>动词构成：动词=词干+词尾<ul>
+<li>洗（あら）う　書（か）く　泳（およ）ぐ　話（はな）す　立（た）つ　死（し）ぬ　叫（さけ）ぶ　読（よ）む　終（お）わる　始（はじ）まる</li>
+</ul>
+</li>
+<li>动词的分类：五段动词、一段动词、サ变动词、カ变动词</li>
+<li><p>动词活用：<strong>用言词尾</strong>的变化，以便连接后项补助成分。动词、形容词、形容动词都可发生相应的应用。因为在日语中动词本身是无法表达“正在”、“不在”这种对动作状态的描述，因此需要在动词上添加补助的成分来表示否定或者其他的状态</p>
+<ul>
+<li>書<strong>く</strong>　＋　ない　===&gt;　書<strong>か</strong>ない（不写）</li>
+<li>書<strong>く</strong>　＋　ている　===&gt;　書<strong>い</strong>ている（正在写）</li>
+</ul>
+</li>
+<li><p>活用形：用言词尾变化之后的形式，活用形没有实际含义，需配合后项补助成分使用，比如：書<strong>く</strong>==&gt;書<strong>か</strong></p>
+</li>
+<li>活用形的类型：未然形、连体形、连用形、假定形、终止形等</li>
+<li>动词具体含义：活用形+补助成分</li>
+</ul>
+]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>语言</category>
+      </categories>
+      <tags>
+        <tag>动词</tag>
+        <tag>日语时态</tag>
       </tags>
   </entry>
 </search>
