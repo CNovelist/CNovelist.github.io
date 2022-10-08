@@ -4745,44 +4745,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Brat文本标注安装教程</title>
-    <url>/2022/07/20/Brat%E6%96%87%E6%9C%AC%E6%A0%87%E6%B3%A8%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="一、安装Brat"><a href="#一、安装Brat" class="headerlink" title="一、安装Brat"></a>一、安装Brat</h1><ul>
-<li>参考教程：<a href="https://blog.csdn.net/u011440696/article/details/109364035">Brat安装教程</a></li>
-<li>环境：CentOS7</li>
-<li>访问地址：IP/brat</li>
-</ul>
-<h1 id="二、访问错误解决"><a href="#二、访问错误解决" class="headerlink" title="二、访问错误解决"></a>二、访问错误解决</h1><h2 id="2-1-错误1"><a href="#2-1-错误1" class="headerlink" title="2.1 错误1"></a>2.1 错误1</h2><ul>
-<li>访问brat地址后，出现以下错误<ul>
-<li>Error: ActiongetCollectionInformation failed on error Internal Server Error</li>
-<li>Error: Actionwhoami failed on error Internal Server Error</li>
-<li>Error: ActionloadConf failed on error Internal Server Error</li>
-</ul>
-</li>
-<li>解决办法：</li>
-</ul>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入brat文件夹</span></span><br><span class="line">cd <span class="regexp">/var/</span>www<span class="regexp">/html/</span>brat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对文件和目录进行授权</span></span><br><span class="line">chcon -t httpd_sys_content_t .</span><br><span class="line">chcon -t httpd_sys_script_exec_t *.cgi</span><br><span class="line">sudo chcon -R -t httpd_sys_script_rw_t work data</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-错误2"><a href="#2-2-错误2" class="headerlink" title="2.2 错误2"></a>2.2 错误2</h2><ul>
-<li>在终端使用vim命令修改了projectconfig.py的162处代码后（使brat支持中文），访问brat出错，如下：<ul>
-<li>The server encountered a serious error, please contact the administrators at xxx and give the id#xxx</li>
-</ul>
-</li>
-<li>解决办法：<ul>
-<li>使用vim对代码进行修改会出现<strong>缩进错误</strong>，但在vim中看不出来</li>
-<li>建议先将projectconfig.py用Notepad查看下，修改162行代码的缩进，再重新复制到<strong>/var/www/html/server/src</strong>下</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>知识图谱</category>
-        <category>研究方向</category>
-      </categories>
-      <tags>
-        <tag>文本标注</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>日语基础大全</title>
     <url>/2022/07/26/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/</url>
     <content><![CDATA[<h1 id="一、五十音"><a href="#一、五十音" class="headerlink" title="一、五十音"></a>一、五十音</h1><h2 id="1-1-清音"><a href="#1-1-清音" class="headerlink" title="1.1 清音"></a>1.1 清音</h2><img src="/2022/07/26/%E6%97%A5%E8%AF%AD%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/wushi.png" class="" title="wushi">
