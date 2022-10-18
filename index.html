@@ -729,6 +729,350 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">C语法基础大全-面向对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-10 14:38:19" itemprop="dateCreated datePublished" datetime="2022-10-10T14:38:19+08:00">2022-10-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-18 19:46:23" itemprop="dateModified" datetime="2022-10-18T19:46:23+08:00">2022-10-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">游戏开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/unreal/" itemprop="url" rel="index"><span itemprop="name">unreal</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、结构体"><a href="#一、结构体" class="headerlink" title="一、结构体"></a>一、结构体</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>C++中的结构体可以定义函数，C语言中的结构体只能定义变量</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span>&#123;</span></span><br><span class="line">    <span class="built_in">Sales_data</span>() = <span class="keyword">default</span>;	<span class="comment">// = default表示默认的构造函数</span></span><br><span class="line">    <span class="built_in">Sales_data</span>(<span class="keyword">const</span> std::string &amp;s):<span class="built_in">bookNo</span>(s)&#123;&#125;</span><br><span class="line">    <span class="built_in">Sales_data</span>(<span class="keyword">const</span> std::string &amp;s, <span class="keyword">unsigned</span> n, <span class="keyword">double</span> p):<span class="built_in">bookNo</span>(s),<span class="built_in">units_sold</span>(n),<span class="built_in">revenue</span>(p*n)&#123;&#125;</span><br><span class="line">    <span class="built_in">Sales_data</span>(std::istream &amp;);	<span class="comment">// 没有加形参名表示只是声明类型，但没有实现，实现时需要加上形参名</span></span><br><span class="line">    </span><br><span class="line">    <span class="function">std::string <span class="title">isbn</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> bookNo;&#125;</span><br><span class="line">    <span class="function">Sales_data&amp; <span class="title">combine</span><span class="params">(<span class="keyword">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">avg_price</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    std::string bookNo;</span><br><span class="line">    <span class="keyword">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类外实现</span></span><br><span class="line">Sales_data::<span class="built_in">Sales_data</span>(std::istream &amp;is)&#123;</span><br><span class="line">    <span class="built_in">read</span>(is, *<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="1-2-动态内存分配"><a href="#1-2-动态内存分配" class="headerlink" title="1.2 动态内存分配"></a>1.2 动态内存分配</h2><ul>
+<li>new/delete分配堆空间可以调用类的构造函数/析构函数</li>
+<li>malloc/free只是一个函数调用，不会调用构造函数/析构函数，malloc接受的参数是一个unsigned long类型</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Time *t2 = <span class="keyword">new</span> <span class="built_in">Time</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">delete</span> t2;</span><br><span class="line"></span><br><span class="line">Time *t1 = (Time*)<span class="built_in">malloc</span>(<span class="built_in"><span class="keyword">sizeof</span></span>(Time));</span><br><span class="line"><span class="built_in">free</span>(t1);</span><br></pre></td></tr></table></figure>
+<h1 id="二、类"><a href="#二、类" class="headerlink" title="二、类"></a>二、类</h1><h2 id="2-1-类的定义"><a href="#2-1-类的定义" class="headerlink" title="2.1 类的定义"></a>2.1 类的定义</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//公共的行为或属性</span></span><br><span class="line">    <span class="built_in">ClassName</span>();	<span class="comment">// 构造函数</span></span><br><span class="line">    <span class="built_in">ClassName</span>(string x);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(string x)</span></span>;</span><br><span class="line">    <span class="function">string <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line">    ~<span class="built_in">ClassName</span>();	<span class="comment">// 析构函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">//私有成员</span></span><br><span class="line">    string x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类外实现</span></span><br><span class="line">ClassName::<span class="built_in">ClassName</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;x = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;开始创建对象：&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;x &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ClassName::<span class="built_in">ClassName</span>(string x) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;x = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClassName::setName</span><span class="params">(string x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;x = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">ClassName::getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>-&gt;x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ClassName::~<span class="built_in">ClassName</span>() &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;销毁对象：&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;x &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ClassName *cn = <span class="keyword">new</span> <span class="built_in">ClassName</span>();</span><br><span class="line"></span><br><span class="line">    cn-&gt;<span class="built_in">setName</span>(<span class="string">&quot;hello gaoyue&quot;</span>);</span><br><span class="line">    cout&lt;&lt;cn-&gt;<span class="built_in">getName</span>()&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> cn;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">开始创建对象：hello world</span></span><br><span class="line"><span class="comment">hello gaoyue</span></span><br><span class="line"><span class="comment">销毁对象：hello gaoyue</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-1-1-对象的创建"><a href="#2-1-1-对象的创建" class="headerlink" title="2.1.1 对象的创建"></a>2.1.1 对象的创建</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认无参构造</span></span><br><span class="line"><span class="comment">// 显示使用</span></span><br><span class="line">ClassName cn = <span class="built_in">ClassName</span>();	<span class="comment">// 无法delete，会调用构造函数，程序结束后会调用析构函数</span></span><br><span class="line"><span class="comment">// 隐式使用</span></span><br><span class="line">ClassName cn;</span><br><span class="line"><span class="comment">// new创建</span></span><br><span class="line">ClassName *cn = <span class="keyword">new</span> ClassName;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 有参构造</span></span><br><span class="line"><span class="comment">// 显示使用</span></span><br><span class="line">ClassName cn = <span class="built_in">ClassName</span>(<span class="string">&quot;hello gaoyue&quot;</span>);</span><br><span class="line"><span class="comment">// 隐式使用</span></span><br><span class="line"><span class="function">ClassName <span class="title">cn</span><span class="params">(<span class="string">&quot;hello gaoyue&quot;</span>)</span></span>;</span><br><span class="line"><span class="comment">// new创建</span></span><br><span class="line">ClassName *cn = <span class="keyword">new</span> <span class="built_in">ClassName</span>(<span class="string">&quot;hello gaoyue&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-const成员函数"><a href="#2-1-2-const成员函数" class="headerlink" title="2.1.2 const成员函数"></a>2.1.2 const成员函数</h3><p>有时候，我们创建了一个对象，但是事实上，我们只希望这个对象初始化之后不被改变，它可以是一个真理或者是什么，就是不能被改变</p>
+<p>然后我们就十分自然的想到<strong>const创建一个对象</strong>。以下面的代码为例,但是后面发现就算是调用对象中不会改变值的<code>showInfo()</code>函数的时候，也会报错。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ClassName *cn = <span class="keyword">new</span> <span class="built_in">ClassName</span>();</span><br></pre></td></tr></table></figure>
+<p>如果这个常量对象想要调用不改变值的方法，那么这个方法上也必须加上const关键字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getName</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">ClassName::getName</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>-&gt;x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-3-友元函数"><a href="#2-1-3-友元函数" class="headerlink" title="2.1.3 友元函数"></a>2.1.3 友元函数</h3><h2 id="2-2-构造函数与析构函数"><a href="#2-2-构造函数与析构函数" class="headerlink" title="2.2 构造函数与析构函数"></a>2.2 构造函数与析构函数</h2><h2 id="2-3-继承与多态"><a href="#2-3-继承与多态" class="headerlink" title="2.3 继承与多态"></a>2.3 继承与多态</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%AE%B9%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/yue.jpeg">
+      <meta itemprop="name" content="故事开头">
+      <meta itemprop="description" content="一个穷鬼">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="江小月不上頭">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%AE%B9%E5%99%A8/" class="post-title-link" itemprop="url">C语法基础大全-容器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-10 14:18:29 / 修改时间：14:37:38" itemprop="dateCreated datePublished" datetime="2022-10-10T14:18:29+08:00">2022-10-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">游戏开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/unreal/" itemprop="url" rel="index"><span itemprop="name">unreal</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、序列式容器"><a href="#一、序列式容器" class="headerlink" title="一、序列式容器"></a>一、序列式容器</h1><h2 id="1-1-Vector"><a href="#1-1-Vector" class="headerlink" title="1.1 Vector"></a>1.1 Vector</h2><h3 id="1-1-1-引入"><a href="#1-1-1-引入" class="headerlink" title="1.1.1 引入"></a>1.1.1 引入</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt; vector&gt;</span> </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-2-常用方法"><a href="#1-1-2-常用方法" class="headerlink" title="1.1.2 常用方法"></a>1.1.2 常用方法</h3><h4 id="（1）构造函数"><a href="#（1）构造函数" class="headerlink" title="（1）构造函数"></a>（1）构造函数</h4><ul>
+<li>vector():创建一个空vector</li>
+<li>vector(int nSize):创建一个vector,元素个数为nSize</li>
+<li>vector(int nSize,const t&amp; t):创建一个vector，元素个数为nSize,且值均为t</li>
+<li>vector(const vector&amp;):复制构造函数</li>
+<li>vector(begin,end):复制[begin,end)区间内另一个数组的元素到vector中</li>
+</ul>
+<h4 id="（2）增加函数"><a href="#（2）增加函数" class="headerlink" title="（2）增加函数"></a>（2）增加函数</h4><ul>
+<li>void push_back(const T&amp; x):向量尾部增加一个元素X</li>
+<li>iterator insert(iterator it,const T&amp; x):向量中迭代器指向元素前增加一个元素x</li>
+<li>iterator insert(iterator it,int n,const T&amp; x):向量中迭代器指向元素前增加n个相同的元素x</li>
+<li>iterator insert(iterator it,const_iterator first,const_iterator last):向量中迭代器指向元素前插入另一个相同类型向量的[first,last)间的数据</li>
+</ul>
+<h4 id="（3）删除函数"><a href="#（3）删除函数" class="headerlink" title="（3）删除函数"></a>（3）删除函数</h4><ul>
+<li>iterator erase(iterator it):删除向量中迭代器指向元素</li>
+<li>iterator erase(iterator first,iterator last):删除向量中[first,last)中元素</li>
+<li>void pop_back():删除向量中最后一个元素</li>
+<li>void clear():清空向量中所有元素</li>
+</ul>
+<h4 id="（4）遍历函数"><a href="#（4）遍历函数" class="headerlink" title="（4）遍历函数"></a>（4）遍历函数</h4><ul>
+<li>reference at(int pos):返回pos位置元素的引用</li>
+<li>reference front():返回首元素的引用</li>
+<li>reference back():返回尾元素的引用</li>
+<li>iterator begin():返回向量头指针，指向第一个元素</li>
+<li>iterator end():返回向量尾指针，指向向量最后一个元素的下一个位置</li>
+<li>reverse_iterator rbegin():反向迭代器，指向最后一个元素</li>
+<li>reverse_iterator rend():反向迭代器，指向第一个元素之前的位置</li>
+</ul>
+<h4 id="（5）判断函数"><a href="#（5）判断函数" class="headerlink" title="（5）判断函数"></a>（5）判断函数</h4><ul>
+<li>bool empty() const:判断向量是否为空，若为空，则向量中无元素</li>
+</ul>
+<h4 id="（6）大小函数"><a href="#（6）大小函数" class="headerlink" title="（6）大小函数"></a>（6）大小函数</h4><ul>
+<li>int size() const:返回向量中元素的个数</li>
+<li>int capacity() const:返回当前向量张红所能容纳的最大元素值</li>
+<li>int max_size() const:返回最大可允许的vector元素数量值</li>
+</ul>
+<h4 id="（7）其他函数"><a href="#（7）其他函数" class="headerlink" title="（7）其他函数"></a>（7）其他函数</h4><ul>
+<li>void swap(vector&amp;):交换两个同类型向量的数据</li>
+<li>void assign(int n,const T&amp; x):设置向量中第n个元素的值为x</li>
+<li>void assign(const_iterator first,const_iterator last):向量中[first,last)中元素设置成当前向量元素</li>
+</ul>
+<h2 id="1-2-deque"><a href="#1-2-deque" class="headerlink" title="1.2 deque"></a>1.2 deque</h2><h3 id="1-2-1-引入与使用"><a href="#1-2-1-引入与使用" class="headerlink" title="1.2.1 引入与使用"></a>1.2.1 引入与使用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;deque&gt;</span>  <span class="comment">// 头文件</span></span></span><br><span class="line">deque&lt;type&gt; deq;  <span class="comment">// 声明一个元素类型为type的双端队列que</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(size)</span></span>;  <span class="comment">// 声明一个类型为type、含有size个默认值初始化元素的的双端队列que</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(size, value)</span></span>;  <span class="comment">// 声明一个元素类型为type、含有size个value元素的双端队列que</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(mydeque)</span></span>;  <span class="comment">// deq是mydeque的一个副本</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(first, last)</span></span>;  <span class="comment">// 使用迭代器first、last范围内的元素初始化deq</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-常用方法"><a href="#1-2-2-常用方法" class="headerlink" title="1.2.2 常用方法"></a>1.2.2 常用方法</h3><ul>
+<li>deq[]：用来访问双向队列中单个的元素。</li>
+<li>deq.front()：返回第一个元素的引用。</li>
+<li>deq.back()：返回最后一个元素的引用。</li>
+<li>deq.push_front(x)：把元素x插入到双向队列的头部。</li>
+<li>deq.pop_front()：弹出双向队列的第一个元素。</li>
+<li>deq.push_back(x)：把元素x插入到双向队列的尾部。</li>
+<li>deq.pop_back()：弹出双向队列的最后一个元素。</li>
+</ul>
+<h3 id="1-2-3-与Vector的区别"><a href="#1-2-3-与Vector的区别" class="headerlink" title="1.2.3 与Vector的区别"></a>1.2.3 与Vector的区别</h3><ul>
+<li>Vector是单向开口的连续线性空间，deque则是一种双向开口的连续线性空间。</li>
+<li>deque对象在队列的两端放置元素和删除元素是高效的，而向量vector只是在插入序列的末尾时操作才是高效的。</li>
+<li>deque和vector的最大差异，一在于deque允许于常数时间内对头端进行元素的插入或移除操作，二在于deque没有所谓的capacity观念，因为它是动态地以分段连续空间组合而成，随时可以增加一段新的空间并链接起来。换句话说，像vector那样“因旧空间不足而重新配置一块更大空间，然后复制元素，再释放旧空间”这样的事情在deque中是不会发生的。也因此，deque没有必要提供所谓的空间预留（reserved）功能</li>
+</ul>
+<h2 id="1-3-queue"><a href="#1-3-queue" class="headerlink" title="1.3 queue"></a>1.3 queue</h2><ul>
+<li>队列容器，只能在容器的末尾添加新元素，只能从头部移除元素</li>
+</ul>
+<img src="/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%AE%B9%E5%99%A8/queue.png" class="" title="queue">
+<ul>
+<li>front()：返回 queue 中第一个元素的引用。如果 queue 是常量，就返回一个常引用；如果 queue 为空，返回值是未定义的。</li>
+<li>back()：返回 queue 中最后一个元素的引用。如果 queue 是常量，就返回一个常引用；如果 queue 为空，返回值是未定义的。</li>
+<li>push(const T&amp; obj)：在 queue 的尾部添加一个元素的副本。这是通过调用底层容器的成员函数 push_back() 来完成的。</li>
+<li>push(T&amp;&amp; obj)：以移动的方式在 queue 的尾部添加元素。这是通过调用底层容器的具有右值引用参数的成员函数 push_back() 来完成的。</li>
+<li>pop()：删除 queue 中的第一个元素。</li>
+<li>size()：返回 queue 中元素的个数。</li>
+<li>empty()：如果 queue 中没有元素的话，返回 true。</li>
+<li>emplace()：用传给 emplace() 的参数调用 T 的构造函数，在 queue 的尾部生成对象。</li>
+<li>swap(queue\<T\> &amp;other_q)：将当前 queue 中的元素和参数 queue 中的元素交换。它们需要包含相同类型的元素。也可以调用全局函数模板 swap() 来完成同样的操作。</li>
+</ul>
+<h2 id="1-4-stack"><a href="#1-4-stack" class="headerlink" title="1.4 stack"></a>1.4 stack</h2><img src="/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%AE%B9%E5%99%A8/stack.png" class="" title="stack">
+<ul>
+<li>top()：返回一个栈顶元素的引用，类型为 T&amp;。如果栈为空，返回值未定义。</li>
+<li>push(const T&amp; obj)：可以将对象副本压入栈顶。这是通过调用底层容器的 push_back() 函数完成的。</li>
+<li>push(T&amp;&amp; obj)：以移动对象的方式将对象压入栈顶。这是通过调用底层容器的有右值引用参数的 push_back() 函数完成的。</li>
+<li>pop()：弹出栈顶元素。</li>
+<li>size()：返回栈中元素的个数。</li>
+<li>empty()：在栈中没有元素的情况下返回 true。</li>
+<li>emplace()：用传入的参数调用构造函数，在栈顶生成对象。</li>
+<li>swap(stack\<T\> &amp; other_stack)：将当前栈中的元素和参数中的元素交换。参数所包含元素的类型必须和当前栈的相同。对于 stack 对象有一个特例化的全局函数 swap() 可以使用。</li>
+</ul>
+<h2 id="1-5-priority-queue"><a href="#1-5-priority-queue" class="headerlink" title="1.5 priority_queue"></a>1.5 priority_queue</h2><ul>
+<li>维护一个堆的数据结构，可以是最大堆，也可以是最小堆</li>
+<li><p>top() 访问队头元素</p>
+</li>
+<li><p>empty() 队列是否为空</p>
+</li>
+<li>size() 返回队列内元素个数</li>
+<li>push() 插入元素到队尾 (并排序)</li>
+<li>emplace() 原地构造一个元素并插入队列</li>
+<li>pop() 弹出队头元素</li>
+<li>swap() 交换内容</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//升序队列，小顶堆</span></span><br><span class="line">priority_queue &lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt; &gt; q;</span><br><span class="line"><span class="comment">//降序队列，大顶堆</span></span><br><span class="line">priority_queue &lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,less&lt;<span class="keyword">int</span>&gt; &gt;q;</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-List"><a href="#1-6-List" class="headerlink" title="1.6 List"></a>1.6 List</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>assign() 给list赋值</li>
+<li>back() 返回最后一个元素</li>
+<li>begin() 返回指向第一个元素的迭代器</li>
+<li>clear() 删除所有元素</li>
+<li>empty() 如果list是空的则返回true</li>
+<li>end() 返回末尾的迭代器</li>
+<li>erase() 删除一个元素</li>
+<li>front() 返回第一个元素</li>
+<li>get_allocator() 返回list的配置器</li>
+<li>insert() 插入一个元素到list中</li>
+<li>max_size() 返回list能容纳的最大元素数量</li>
+<li>merge() 合并两个list</li>
+<li>pop_back() 删除最后一个元素</li>
+<li>pop_front() 删除第一个元素</li>
+<li>push_back() 在list的末尾添加一个元素</li>
+<li>push_front() 在list的头部添加一个元素</li>
+<li>rbegin() 返回指向第一个元素的逆向迭代器</li>
+<li>remove() 从list删除元素</li>
+<li>remove_if() 按指定条件删除元素</li>
+<li>rend() 指向list末尾的逆向迭代器</li>
+<li>resize() 改变list的大小</li>
+<li>reverse() 把list的元素倒转</li>
+<li>size() 返回list中的元素个数</li>
+<li>sort() 给list排序</li>
+<li>splice() 合并两个list</li>
+<li>swap() 交换两个list</li>
+<li>unique() 删除list中相邻重复的元素</li>
+</ul>
+<h1 id="二、关联式容器"><a href="#二、关联式容器" class="headerlink" title="二、关联式容器"></a>二、关联式容器</h1><h2 id="2-1-map"><a href="#2-1-map" class="headerlink" title="2.1 map"></a>2.1 map</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// map和multimap都需要#include&lt;map&gt;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>begin()：返回指向map头部的迭代器</li>
+<li>clear()：删除所有元素</li>
+<li>count()：返回指定元素出现的次数</li>
+<li>empty()：如果map为空则返回true</li>
+<li>end()：返回指向map末尾的迭代器</li>
+<li>equal_range()：返回特殊条目的迭代器对</li>
+<li>erase()：删除一个元素</li>
+<li>find()：查找一个元素</li>
+<li>get_allocator()：返回map的配置器</li>
+<li>insert()：插入元素</li>
+<li>key_comp()：返回比较元素key的函数</li>
+<li>lower_bound()：返回键值&gt;=给定元素的第一个位置</li>
+<li>max_size()：返回可以容纳的最大元素个数</li>
+<li>rbegin()：返回一个指向map尾部的逆向迭代器</li>
+<li>rend()：返回一个指向map头部的逆向迭代器</li>
+<li>size()：返回map中元素的个数</li>
+<li>swap()：交换两个map</li>
+<li>upper_bound()：返回键值&gt;给定元素的第一个位置</li>
+<li>value_comp()：返回比较元素value的函数</li>
+</ul>
+<h2 id="2-2-unordered-map"><a href="#2-2-unordered-map" class="headerlink" title="2.2 unordered_map"></a>2.2 unordered_map</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line">unordered_map&lt;string,<span class="keyword">int</span>&gt; mp;</span><br><span class="line"><span class="comment">//迭代器遍历</span></span><br><span class="line">unordered_map&lt;string,<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line"><span class="keyword">for</span>(iter=mp.<span class="built_in">begin</span>();iter!=mp.<span class="built_in">end</span>();iter++)&#123;</span><br><span class="line">    cout&lt;&lt;iter-&gt;first&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;iter-&gt;second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//:遍历</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> &amp;[name,value]:mp)&#123;</span><br><span class="line">    cout&lt;&lt;name&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;value&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-set"><a href="#2-3-set" class="headerlink" title="2.3 set"></a>2.3 set</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// constructing sets</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">fncomp</span> <span class="params">(<span class="keyword">int</span> lhs, <span class="keyword">int</span> rhs)</span> </span>&#123;<span class="keyword">return</span> lhs&lt;rhs;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">classcomp</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; lhs, <span class="keyword">const</span> <span class="keyword">int</span>&amp; rhs)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">  </span>&#123;<span class="keyword">return</span> lhs&lt;rhs;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  std::set&lt;<span class="keyword">int</span>&gt; first;                           <span class="comment">// empty set of ints</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> myints[]= &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>&#125;;</span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>&gt; <span class="title">second</span> <span class="params">(myints,myints+<span class="number">5</span>)</span></span>;        <span class="comment">// range</span></span><br><span class="line"></span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>&gt; <span class="title">third</span> <span class="params">(second)</span></span>;                  <span class="comment">// a copy of second</span></span><br><span class="line"></span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>&gt; <span class="title">fourth</span> <span class="params">(second.begin(), second.end())</span></span>;  <span class="comment">// iterator ctor.</span></span><br><span class="line"></span><br><span class="line">  std::set&lt;<span class="keyword">int</span>,classcomp&gt; fifth;                 <span class="comment">// class as Compare</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in"><span class="keyword">bool</span></span>(*fn_pt)(<span class="keyword">int</span>,<span class="keyword">int</span>) = fncomp;</span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>,<span class="title">bool</span><span class="params">(*)</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span>&gt; <span class="title">sixth</span> <span class="params">(fn_pt)</span></span>;  <span class="comment">// function pointer as Compare</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>begin()：返回指向第一个元素的迭代器</li>
+<li>clear()：清除所有元素</li>
+<li>count()：返回某个值元素的个数</li>
+<li>empty()：如果集合为空，返回true</li>
+<li>end()：返回指向最后一个元素的迭代器</li>
+<li>equal_range()：返回集合中与给定值相等的上下限的两个迭代器</li>
+<li>erase()：删除集合中的元素</li>
+<li>find()：返回一个指向被查找到元素的迭代器</li>
+<li>get_allocator()：返回集合的分配器</li>
+<li>insert()：在集合中插入元素</li>
+<li>lower_bound()：返回指向大于（或等于）某值的第一个元素的迭代器</li>
+<li>key_comp()：返回一个用于元素间值比较的函数</li>
+<li>max_size()：返回集合能容纳的元素的最大限值</li>
+<li>rbegin()：返回指向集合中最后一个元素的反向迭代器</li>
+<li>rend()：返回指向集合中第一个元素的反向迭代器</li>
+<li>size()：集合中元素的数目</li>
+<li>swap()：交换两个集合变量</li>
+<li>upper_bound()：返回大于某个值元素的迭代器</li>
+<li>value_comp()：返回一个用于比较元素间的值的函数</li>
+</ol>
+<h2 id="2-4-unordered-set"><a href="#2-4-unordered-set" class="headerlink" title="2.4 unordered_set"></a>2.4 unordered_set</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// constructing unordered_sets</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt;</span></span><br><span class="line"><span class="function">T <span class="title">cmerge</span> <span class="params">(T a, T b)</span> </span>&#123; <span class="function">T <span class="title">t</span><span class="params">(a)</span></span>; t.<span class="built_in">insert</span>(b.<span class="built_in">begin</span>(),b.<span class="built_in">end</span>()); <span class="keyword">return</span> t; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  std::unordered_set&lt;std::string&gt; first;                                <span class="comment">// empty</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">second</span> <span class="params">( &#123;<span class="string">&quot;red&quot;</span>,<span class="string">&quot;green&quot;</span>,<span class="string">&quot;blue&quot;</span>&#125; )</span></span>;    <span class="comment">// init list</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">third</span> <span class="params">( &#123;<span class="string">&quot;orange&quot;</span>,<span class="string">&quot;pink&quot;</span>,<span class="string">&quot;yellow&quot;</span>&#125; )</span></span>; <span class="comment">// init list</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">fourth</span> <span class="params">( second )</span></span>;                    <span class="comment">// copy</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">fifth</span> <span class="params">( cmerge(third,fourth) )</span></span>;       <span class="comment">// move</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">sixth</span> <span class="params">( fifth.begin(), fifth.end() )</span></span>; <span class="comment">// range</span></span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;sixth contains:&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> std::string&amp; x: sixth) std::cout &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>主要方法与set类似</li>
+<li>emplace(key)：插入元素</li>
+</ul>
+<h2 id="2-5-pair"><a href="#2-5-pair" class="headerlink" title="2.5 pair"></a>2.5 pair</h2><h3 id="2-5-1-概述"><a href="#2-5-1-概述" class="headerlink" title="2.5.1 概述"></a>2.5.1 概述</h3><ul>
+<li>pair是c++的一种数据类型，在头文件utility中</li>
+</ul>
+<h3 id="2-5-2-使用"><a href="#2-5-2-使用" class="headerlink" title="2.5.2 使用"></a>2.5.2 使用</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">pair&lt;string, string&gt; <span class="title">a</span><span class="params">(<span class="string">&quot;James&quot;</span>, <span class="string">&quot;Joy&quot;</span>)</span></span>;</span><br><span class="line">string name,last;</span><br><span class="line">name = pair.first;</span><br><span class="line">lase = pair.second;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 给属性赋值</span></span><br><span class="line">newone = <span class="built_in">make_pair</span>(name, last);</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-3-priority-queue中的pair"><a href="#2-5-3-priority-queue中的pair" class="headerlink" title="2.5.3 priority_queue中的pair"></a>2.5.3 priority_queue中的pair</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; a;</span><br><span class="line">	<span class="function">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">1</span>,<span class="number">5</span>)</span></span>;</span><br><span class="line">	<span class="function">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="title">d</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">	<span class="function">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="title">c</span><span class="params">(<span class="number">6</span>,<span class="number">1</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line">	a.<span class="built_in">push</span>(d);</span><br><span class="line">	a.<span class="built_in">push</span>(c);</span><br><span class="line">	a.<span class="built_in">push</span>(b);</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">while</span> (!a.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">		cout&lt;&lt;a.<span class="built_in">top</span>().first&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;a.<span class="built_in">top</span>().second&lt;&lt;endl;</span><br><span class="line">		a.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">比较第一个，若相同，则比较第2个</span></span><br><span class="line"><span class="comment">6 1</span></span><br><span class="line"><span class="comment">1 5</span></span><br><span class="line"><span class="comment">1 2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-5-4-sort"><a href="#2-5-4-sort" class="headerlink" title="2.5.4 sort()"></a>2.5.4 sort()</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// lambda表达式自定义排序，以下为降序排列</span></span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>(),[](<span class="keyword">const</span> <span class="keyword">int</span> a,<span class="keyword">const</span> <span class="keyword">int</span> b)&#123;<span class="keyword">return</span> a&gt;b;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将自定义排序方式放在sort()外</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;<span class="comment">//从大到小排序</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>(),cmp);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/10/07/%E8%AF%B4%E6%96%87%E8%A7%A3%E5%AD%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1677,338 +2021,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/09/02/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/02/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">C语法基础大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-02 20:35:18" itemprop="dateCreated datePublished" datetime="2022-09-02T20:35:18+08:00">2022-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-08 15:57:40" itemprop="dateModified" datetime="2022-10-08T15:57:40+08:00">2022-10-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">游戏开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/unreal/" itemprop="url" rel="index"><span itemprop="name">unreal</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h1><h2 id="1-1-简单示例"><a href="#1-1-简单示例" class="headerlink" title="1.1 简单示例"></a>1.1 简单示例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestCommonPrefix</span><span class="params">(vector&lt;string&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!strs.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> length = strs[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> count = strs.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = strs[<span class="number">0</span>][i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; count; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i == strs[j].<span class="built_in">size</span>() || strs[j][i] != c) &#123;</span><br><span class="line">                    <span class="keyword">return</span> strs[<span class="number">0</span>].<span class="built_in">substr</span>(<span class="number">0</span>, i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="1-2-指针"><a href="#1-2-指针" class="headerlink" title="1.2 指针"></a>1.2 指针</h2><h3 id="1-2-1-原理"><a href="#1-2-1-原理" class="headerlink" title="1.2.1 原理"></a>1.2.1 原理</h3><p>指针地址的原理如下：</p>
-<img src="/2022/09/02/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/pointer.png" class="" title="pointer">
-<h3 id="1-2-2-指针与数组的关系"><a href="#1-2-2-指针与数组的关系" class="headerlink" title="1.2.2 指针与数组的关系"></a>1.2.2 指针与数组的关系</h3><p><strong>指针与一维数组的关系：</strong></p>
-<img src="/2022/09/02/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/arr.png" class="" title="arr">
-<p><strong>指针与二维数组的关系：</strong></p>
-<img src="/2022/09/02/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/2arr.png" class="" title="arr">
-<h3 id="1-2-3-注意事项"><a href="#1-2-3-注意事项" class="headerlink" title="1.2.3 注意事项"></a>1.2.3 注意事项</h3><ul>
-<li>a与&amp;a[0]等价</li>
-<li>a[0]与*a、&amp;a[0][0]等价</li>
-<li>pa指向地址array[0][0]</li>
-<li>(pa+i)地址指向array[i][0]</li>
-<li>(*(pa+i)+j)地址指向array[i][j]</li>
-<li>二维数组的一维访问形式a[i][j]=*(a[0]+n*i+j)=*(*a+n*i+j)</li>
-</ul>
-<h2 id="1-3-字符串"><a href="#1-3-字符串" class="headerlink" title="1.3 字符串"></a>1.3 字符串</h2><p>在C/C++中的字符串均以char[]类型进行存储，char是一个字符类型 C++的内置类型，C/C++中的string实为一个类</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// char数组初始化、修改与输出</span></span><br><span class="line"><span class="keyword">char</span> a[<span class="number">10</span>] = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">a[<span class="number">0</span>] = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">*(a+<span class="number">1</span>) = <span class="string">&#x27;b&#x27;</span>;	<span class="comment">// 由于指针和数组等价，所有可以通过指针修改数组内容</span></span><br><span class="line">cout &lt;&lt; *(a+<span class="number">1</span>);	<span class="comment">// 输出数组的第1个字符2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串常量</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *str1 = <span class="string">&quot;abcde&quot;</span>;	<span class="comment">// 只读常量</span></span><br><span class="line">str1 = <span class="string">&quot;efghi&quot;</span>;	<span class="comment">// 目前来开是可以修改的，应该是修改了指针的指向，跟这个&quot;abcde&quot;常量无关</span></span><br><span class="line">cout &lt;&lt; str1;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印输出string字符容器</span></span><br><span class="line"><span class="function">string <span class="title">a</span><span class="params">(<span class="string">&quot;abc&quot;</span>)</span></span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, a.<span class="built_in">c_str</span>());</span><br></pre></td></tr></table></figure>
-<h2 id="1-4-容器"><a href="#1-4-容器" class="headerlink" title="1.4 容器"></a>1.4 容器</h2><h3 id="1-4-1-容器分类"><a href="#1-4-1-容器分类" class="headerlink" title="1.4.1 容器分类"></a>1.4.1 容器分类</h3><p>序列式容器：</p>
-<ul>
-<li>序列式容器：每个元素都有固定位置－－取决于插入时机和地点，和元素值无关</li>
-<li>Vector：将元素置于一个动态数组中加以管理，可以随机存取元素（用索引直接存取），数组尾部添加或移除元素非常快速。但是在中部或头部安插元素比较费时</li>
-<li>Deque：是“double-ended queue”的缩写，可以随机存取元素（用索引直接存取），数组头部和尾部添加或移除元素都非常快速。但是在中部或头部安插元素比较费时</li>
-<li>List：双向链表，不提供随机存取（按顺序走到需存取的元素，O(n)），在任何位置上执行插入或删除动作都非常迅速，内部只需调整一下指针</li>
-</ul>
-<p>关联式容器：</p>
-<ul>
-<li>关联式容器：元素位置取决于特定的排序准则，和插入顺序无关</li>
-<li>Set/Multiset：内部的元素依据其值自动排序，Set内的相同数值的元素只能出现一次，Multisets内可包含多个数值相同的元素，内部由二叉树实现，便于查找；<ul>
-<li>unordered_map</li>
-</ul>
-</li>
-<li>Map/Multimap：Map的元素是成对的键值/实值，内部的元素依据其值自动排序，Map内的相同数值的元素只能出现一次，Multimaps内可包含多个数值相同的元素，内部由二叉树实现，便于查找<ul>
-<li>unordered_map</li>
-</ul>
-</li>
-</ul>
-<p>其他结构容器：</p>
-<ul>
-<li>priority_queue：维护一个堆结构</li>
-<li>stack：维护一个栈</li>
-</ul>
-<h2 id="1-5-函数"><a href="#1-5-函数" class="headerlink" title="1.5 函数"></a>1.5 函数</h2><h1 id="二、面向对象"><a href="#二、面向对象" class="headerlink" title="二、面向对象"></a>二、面向对象</h1><h2 id="2-1、面向对象的特性"><a href="#2-1、面向对象的特性" class="headerlink" title="2.1、面向对象的特性"></a>2.1、面向对象的特性</h2><h3 id="2-1-1-封装"><a href="#2-1-1-封装" class="headerlink" title="2.1.1 封装"></a>2.1.1 封装</h3><ul>
-<li>封装就是将抽象得到的数据和行为（或功能）相结合，形成一个有机的整体，也就是将数据与操作数据的函数代码进行有机的结合，形成“类”，其中的数据和函数都是类的成员</li>
-</ul>
-<h3 id="2-1-2-继承"><a href="#2-1-2-继承" class="headerlink" title="2.1.2 继承"></a>2.1.2 继承</h3><ul>
-<li>根据现实中的事物之间的关系，抽象出了继承的概念</li>
-<li>C++语言中提供了类的继承机制，允许程序员在保持原有类特性的基础上，进行更具体、更详细的说明</li>
-</ul>
-<h3 id="2-1-3-多态"><a href="#2-1-3-多态" class="headerlink" title="2.1.3 多态"></a>2.1.3 多态</h3><ul>
-<li>多态性是指程序能够处理多种类型对象的能力</li>
-</ul>
-<h2 id="2-2、类"><a href="#2-2、类" class="headerlink" title="2.2、类"></a>2.2、类</h2><h3 id="2-2-1-类的定义"><a href="#2-2-1-类的定义" class="headerlink" title="2.2.1 类的定义"></a>2.2.1 类的定义</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">setTime</span><span class="params">(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">showTime</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> hour,minute,second;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-2-类的成员函数"><a href="#2-2-2-类的成员函数" class="headerlink" title="2.2.2 类的成员函数"></a>2.2.2 类的成员函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">类外实现</span><br><span class="line">返回值类型  类名::函数成员名(参数表)</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-3-类的访问控制权限"><a href="#2-2-3-类的访问控制权限" class="headerlink" title="2.2.3 类的访问控制权限"></a>2.2.3 类的访问控制权限</h3><h4 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>访问权限</th>
-<th>类内成员函数</th>
-<th>类对象</th>
-<th>友元函数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>public</td>
-<td>YES</td>
-<td>YES</td>
-<td>YES</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>YES</td>
-<td>NO</td>
-<td>YES</td>
-</tr>
-<tr>
-<td>private</td>
-<td>YES</td>
-<td>NO</td>
-<td>YES</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="继承的权限变化"><a href="#继承的权限变化" class="headerlink" title="继承的权限变化"></a>继承的权限变化</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>基类权限</th>
-<th>public继承</th>
-<th>protected继承</th>
-<th>private继承</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>public</td>
-<td>public</td>
-<td>protected</td>
-<td>private</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>protected</td>
-<td>protected</td>
-<td>private</td>
-</tr>
-<tr>
-<td>private</td>
-<td>不可访问</td>
-<td>不可访问</td>
-<td>不可访问</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="2-2-4-构造函数"><a href="#2-2-4-构造函数" class="headerlink" title="2.2.4 构造函数"></a>2.2.4 构造函数</h3><ul>
-<li>构造函数的作用是在对象被创建时利用特定的值构造对象，将对象初始化为一个特定的状态</li>
-<li>构造函数在对象被创建的时候被自动调用</li>
-<li>构造函数的调用顺序：基类构造函数-&gt;对象成员构造函数-&gt;派生类本身的构造函数  </li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Clock</span>()&#123;&#125;   <span class="comment">//无参构造</span></span><br><span class="line">        <span class="built_in">Clock</span>(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS);  <span class="comment">//带参数的构造函数</span></span><br><span class="line">        <span class="comment">//或者</span></span><br><span class="line">        <span class="comment">//Clock(int newH,int newM,int newS):hour(newH),minute(newM),second(newS)&#123;&#125;</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">setTime</span><span class="params">(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">showTime</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> hour,minute,second;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Clock::<span class="built_in">Clock</span>(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS)&#123;</span><br><span class="line">    hour = newH;</span><br><span class="line">    minute = newM;</span><br><span class="line">    second = newS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-5-拷贝构造函数"><a href="#2-2-5-拷贝构造函数" class="headerlink" title="2.2.5 拷贝构造函数"></a>2.2.5 拷贝构造函数</h3><ul>
-<li>拷贝构造函数是一种特殊的构造函数，它在创建对象时，使用同一类中之前创建的对象来初始化新创建的对象，拷贝构造函数通常的步骤：</li>
-<li>通过使用另一个同类型的对象来初始化新创建的对象。</li>
-<li>复制对象把它作为参数传递给函数</li>
-<li>复制对象，并从函数返回这个对象</li>
-</ul>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ul>
-<li>如果在类中没有定义拷贝构造函数，编译器会自行定义一个。如果类带有指针变量，并有动态内存分配，则它必须有一个拷贝构造函数。拷贝构造函数的最常见形式如下</li>
-<li>在这里，obj 是一个对象引用，该对象是用于初始化另一个对象的<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">classname</span> (<span class="keyword">const</span> classname &amp;obj) &#123;</span><br><span class="line">   <span class="comment">// 构造函数的主体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="2-2-6-析构函数"><a href="#2-2-6-析构函数" class="headerlink" title="2.2.6 析构函数"></a>2.2.6 析构函数</h3><ul>
-<li>析构函数用来完成对象被删除前的一些清理工作</li>
-<li>析构函数是在对象的生产期即将结束的时刻被自动调用的</li>
-<li>析构函数的调用顺序：派生类本身的析构函数-&gt;对象成员析构函数-&gt;基类析构函数（与构造顺序正好相反） </li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Clock</span>();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">setTime</span><span class="params">(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">showTime</span><span class="params">()</span></span>;</span><br><span class="line">        ~<span class="built_in">Clock</span>()&#123;&#125;          <span class="comment">// 析构函数</span></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> hour,minute,second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-7-类的继承"><a href="#2-2-7-类的继承" class="headerlink" title="2.2.7 类的继承"></a>2.2.7 类的继承</h3><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 基类1&#123;</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 基类2&#123;</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> 派生类:</span>继承方式 基类<span class="number">1</span>,继承方式 基类<span class="number">2</span>&#123;</span><br><span class="line">    构造函数(参数列表)&#123;</span><br><span class="line">        基类<span class="number">1</span>构造函数(参数);</span><br><span class="line">        基类<span class="number">2</span>构造函数(参数);</span><br><span class="line">        派生类</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 基类 Shape</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">setWidth</span><span class="params">(<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         width = w;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="function"><span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(<span class="keyword">int</span> h)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         height = h;</span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">protected</span>:</span><br><span class="line">      <span class="keyword">int</span> width;</span><br><span class="line">      <span class="keyword">int</span> height;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 基类 PaintCost</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PaintCost</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">      <span class="function"><span class="keyword">int</span> <span class="title">getCost</span><span class="params">(<span class="keyword">int</span> area)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> area * <span class="number">70</span>;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 派生类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span>:</span> <span class="keyword">public</span> Shape, <span class="keyword">public</span> PaintCost</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">      <span class="function"><span class="keyword">int</span> <span class="title">getArea</span><span class="params">()</span></span></span><br><span class="line"><span class="function">      </span>&#123; </span><br><span class="line">         <span class="keyword">return</span> (width * height); </span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   Rectangle Rect;</span><br><span class="line">   <span class="keyword">int</span> area;</span><br><span class="line"> </span><br><span class="line">   Rect.<span class="built_in">setWidth</span>(<span class="number">5</span>);</span><br><span class="line">   Rect.<span class="built_in">setHeight</span>(<span class="number">7</span>);</span><br><span class="line"> </span><br><span class="line">   area = Rect.<span class="built_in">getArea</span>();</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 输出对象的面积</span></span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Total area: &quot;</span> &lt;&lt; Rect.<span class="built_in">getArea</span>() &lt;&lt; endl;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 输出总花费</span></span><br><span class="line">   cout &lt;&lt; <span class="string">&quot;Total paint cost: $&quot;</span> &lt;&lt; Rect.<span class="built_in">getCost</span>(area) &lt;&lt; endl;</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Total area: 35</span></span><br><span class="line"><span class="comment">//Total paint cost: $2450</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://cnovelist.github.io/2022/09/02/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90-%E7%94%A8%E4%BE%8B%E7%AF%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/yue.jpeg">
-      <meta itemprop="name" content="故事开头">
-      <meta itemprop="description" content="一个穷鬼">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="江小月不上頭">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/02/%E8%AF%97%E8%AF%8D%E9%9F%B5%E5%BE%8B%E8%A7%A3%E6%9E%90-%E7%94%A8%E4%BE%8B%E7%AF%87/" class="post-title-link" itemprop="url">诗词韵律解析-用例篇</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-09-02 14:54:40" itemprop="dateCreated datePublished" datetime="2022-09-02T14:54:40+08:00">2022-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-26 22:47:28" itemprop="dateModified" datetime="2022-09-26T22:47:28+08:00">2022-09-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%8C%96%E8%89%BA%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">文化艺术</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E5%8C%96%E8%89%BA%E6%9C%AF/%E4%B8%AD%E5%9B%BD%E8%AF%97%E8%AF%8D/" itemprop="url" rel="index"><span itemprop="name">中国诗词</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="诗词百篇"><a href="#诗词百篇" class="headerlink" title="诗词百篇"></a>诗词百篇</h1><h2 id="一、唐诗"><a href="#一、唐诗" class="headerlink" title="一、唐诗"></a>一、唐诗</h2><h3 id="1-1-送杜少府之任蜀州（王勃）"><a href="#1-1-送杜少府之任蜀州（王勃）" class="headerlink" title="1.1 送杜少府之任蜀州（王勃）"></a>1.1 送杜少府之任蜀州（王勃）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">城阙（què）辅三秦，风烟望五津。        平仄仄平平，平平仄仄平</span><br><span class="line">与（yǔ）君离别意，同是宦游人。         仄平平平仄，平仄仄平平</span><br><span class="line">海内存知己，天涯若比邻。              仄仄平平仄，平平仄仄平</span><br><span class="line">无为（wé<span class="selector-tag">i</span>）在歧（<span class="selector-tag">q</span>í）路，儿女共沾巾。  平平仄仄仄，平仄仄平平</span><br></pre></td></tr></table></figure>
-<ul>
-<li>之：到、往</li>
-<li>蜀州：今四川崇州</li>
-<li>城阙，即城楼，指唐代京师长安城</li>
-<li>辅，护卫</li>
-<li>城阙辅三秦：此句为倒装句，应是三秦辅城阙</li>
-<li>君：对人的尊称，相当于“您”</li>
-<li>宦（huàn）游：出外做官</li>
-<li>海内：四海之内，即全国各地。古代人认为我国疆土四周环海，所以称天下为四海之内</li>
-<li>天涯：天边，这里比喻极远的地方</li>
-<li>无为：无须、不必</li>
-<li>歧（qí）路：岔路。古人送行常在大路分岔处告别</li>
-<li>儿女：指代男女之情</li>
-<li>沾巾：泪沾手巾，形容落泪之多</li>
-</ul>
-<h2 id="二、宋词"><a href="#二、宋词" class="headerlink" title="二、宋词"></a>二、宋词</h2><h2 id="2-1-毛泽东"><a href="#2-1-毛泽东" class="headerlink" title="2.1 毛泽东"></a>2.1 毛泽东</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">《忆秦娥·娄山关》</span><br><span class="line">西风烈，长空雁叫霜晨月。</span><br><span class="line">霜晨月，马蹄声碎，喇叭声咽。</span><br><span class="line"></span><br><span class="line">雄关漫道真如铁，而今迈步从头越。</span><br><span class="line">从头越，苍山如海，残阳如血。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>娄山关：遵义市之北，从四川入贵州的要道。</li>
-</ul>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">《沁园春 雪》</span><br><span class="line">北国风光，千里冰封，万里雪飘。</span><br><span class="line">望长城内外，惟余莽莽；大河上下，顿失滔滔。<span class="comment">(余 通：馀)</span></span><br><span class="line">山舞银蛇，原驰蜡象，欲与天公试比高。<span class="comment">(原驰 原作：原驱)</span></span><br><span class="line">须晴日，看红装素裹，分外妖娆。<span class="comment">(红装 一作：银装)</span></span><br><span class="line"></span><br><span class="line">江山如此多娇，引无数英雄竞折腰。</span><br><span class="line">惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。</span><br><span class="line">一代天骄，成吉思汗，只识弯弓射大雕。</span><br><span class="line">俱往矣，数风流人物，还看今朝。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>北国：该词源于中国古代的分裂时期，如宋称辽、金为北国，东晋称十六国等为北国，南北朝时代南方的各朝代称在北方与之对抗的各朝代为北国等。毛泽东诗中的“北国”使人在不觉中产生出一种我国疆土广大的民族自豪感。</li>
-<li>雪：这首词作于红一方面军一九三六年二月由陕北准备东渡黄河进入山西省西部的时候。作者在一九四五年十月七日给柳亚子信中说，这首词作于“初到陕北看见大雪时”。</li>
-<li>惟：只。</li>
-<li>莽莽：无边无际。</li>
-<li>俱往矣：都已经过去了。 俱，都。</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">《沁园春 长沙》</span><br><span class="line">独立寒秋，湘江北去，橘子洲头。</span><br><span class="line">看万山红遍，层林尽染；漫江碧透，百舸争流。</span><br><span class="line">鹰击长空，鱼翔浅底，万类霜天竞自由。</span><br><span class="line">怅寥廓，问苍茫大地，谁主沉浮？</span><br><span class="line"></span><br><span class="line">携来百侣曾游。忆往昔峥嵘岁月稠。</span><br><span class="line">恰同学少年，风华正茂；书生意气，挥斥方遒。</span><br><span class="line">指点江山，激扬文字，粪土当年万户侯。</span><br><span class="line">曾记否，到中流击水，浪遏飞舟？</span><br></pre></td></tr></table></figure>
-<ul>
-<li>湘（xiāng）江：一名湘水，湖南省最大的河流，源出广西壮族自治区灵川县南的海洋山，长1752里，向东北流贯湖南省东部，经过长沙，北入洞庭湖。　所以说是湘江北去。</li>
-<li>橘子洲：地名，又名水陆洲，是长沙城西湘江中一个狭长小岛，西面靠近岳麓山。南北长约11里，东西最宽处约一里。毛泽东七律《答友人》中所谓长岛，指此。自唐代以来，就是游览胜地。</li>
-<li>漫江：满江。漫：满，遍。</li>
-<li>舸（gě）：大船。这里泛指船只。</li>
-<li>遏（è）：阻止</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2080,7 +2092,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2093,7 +2105,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">81</span>
+        <span class="site-state-item-count">84</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2110,7 +2122,7 @@
 			<h3 class="widget-title">Tag Cloud</h3>
 			<div id="myCanvasContainer" class="widget tagcloud">
 				<canvas width="250" height="250" id="resCanvas" style="width=100%">
-					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eureka/" rel="tag">Eureka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GC%E7%AE%97%E6%B3%95/" rel="tag">GC算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM%E8%B0%83%E4%BC%98/" rel="tag">JVM调优</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenFeign/" rel="tag">OpenFeign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ribbon/" rel="tag">Ribbon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring%E6%BA%90%E7%A0%81/" rel="tag">Spring源码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%8D%8E%E6%96%87%E5%8C%96/" rel="tag">中华文化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%94%E5%8D%81%E9%9F%B3%E5%9B%BE/" rel="tag">五十音图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">人际关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag">企业</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%9A%E4%BA%8B/" rel="tag">做事</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E8%AF%8D/" rel="tag">动词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%94%90%E8%AF%97%E5%AE%8B%E8%AF%8D/" rel="tag">唐诗宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D/" rel="tag">宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D%E6%A0%BC%E5%BC%8F/" rel="tag">宋词格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E7%90%86/" rel="tag">心理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E8%A8%80%E6%96%87/" rel="tag">文言文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AF%AD%E6%97%B6%E6%80%81/" rel="tag">日语时态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/" rel="tag">曲式结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E/" rel="tag">经济</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%BD%E5%8A%9B%E9%94%BB%E7%82%BC/" rel="tag">能力锻炼</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A7%E5%B8%81/" rel="tag">货币</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%E4%BD%9C%E5%93%81/" rel="tag">音乐作品</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
+					<ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-%E8%84%9A%E6%9C%AC/" rel="tag">C#脚本</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eureka/" rel="tag">Eureka</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GC%E7%AE%97%E6%B3%95/" rel="tag">GC算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM%E8%B0%83%E4%BC%98/" rel="tag">JVM调优</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E5%AE%B9%E5%99%A8/" rel="tag">Java容器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%9B%E5%9E%8B/" rel="tag">Java泛型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java%E6%B3%A8%E8%A7%A3/" rel="tag">Java注解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag">Linux命令</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenFeign/" rel="tag">OpenFeign</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pr/" rel="tag">Pr</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ribbon/" rel="tag">Ribbon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSM/" rel="tag">SSM</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringMVC/" rel="tag">SpringMVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Springboot/" rel="tag">Springboot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring%E6%BA%90%E7%A0%81/" rel="tag">Spring源码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UML/" rel="tag">UML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue2/" rel="tag">Vue2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/" rel="tag">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity3d/" rel="tag">unity3d</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vis-js/" rel="tag">vis.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%8D%8E%E6%96%87%E5%8C%96/" rel="tag">中华文化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E7%BB%9F/" rel="tag">中国传统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%90%E7%90%86/" rel="tag">乐理</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%94%E5%8D%81%E9%9F%B3%E5%9B%BE/" rel="tag">五十音图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB/" rel="tag">人际关系</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag">企业</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%81%9A%E4%BA%8B/" rel="tag">做事</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">创建型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="tag">前后端分离</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E8%AF%8D/" rel="tag">动词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96/" rel="tag">吉他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%89%E4%BB%96%E9%9F%B3%E9%98%B6%E5%88%86%E5%B8%83/" rel="tag">吉他音阶分布</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6/" rel="tag">后端框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6/" rel="tag">和弦</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%92%8C%E5%BC%A6%E8%BF%9B%E8%A1%8C/" rel="tag">和弦进行</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%94%90%E8%AF%97%E5%AE%8B%E8%AF%8D/" rel="tag">唐诗宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="tag">基础语法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D/" rel="tag">宋词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8B%E8%AF%8D%E6%A0%BC%E5%BC%8F/" rel="tag">宋词格式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%83%E7%90%86/" rel="tag">心理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF/" rel="tag">成神之路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E8%A8%80%E6%96%87/" rel="tag">文言文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AF%AD%E6%97%B6%E6%80%81/" rel="tag">日语时态</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/" rel="tag">曲式结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E/" rel="tag">经济</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/" rel="tag">结构体</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E6%9B%B2/" rel="tag">编曲</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%89%BA%E6%9C%AF/" rel="tag">编程艺术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5%E6%95%88%E6%9E%9C/" rel="tag">网页效果</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag">股票</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%83%BD%E5%8A%9B%E9%94%BB%E7%82%BC/" rel="tag">能力锻炼</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="tag">行为型模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/" rel="tag">视频剪辑</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E8%AF%8D/" rel="tag">诗词</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E5%BC%8F/" rel="tag">调式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%8B%E7%94%9F/" rel="tag">谋生</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%A7%E5%B8%81/" rel="tag">货币</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9F%B3%E4%B9%90%E4%BD%9C%E5%93%81/" rel="tag">音乐作品</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag">项目构建</a><span class="tag-list-count">1</span></li></ul>
 				</canvas>
 			</div>
 		</div>

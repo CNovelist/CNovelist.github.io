@@ -6487,10 +6487,12 @@
 </ul>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clock</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">Clock</span>()&#123;&#125;   <span class="comment">//无参构造</span></span><br><span class="line">        <span class="built_in">Clock</span>(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS);  <span class="comment">//带参数的构造函数</span></span><br><span class="line">        <span class="comment">//或者</span></span><br><span class="line">        <span class="comment">//Clock(int newH,int newM,int newS):hour(newH),minute(newM),second(newS)&#123;&#125;</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">setTime</span><span class="params">(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">showTime</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> hour,minute,second;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Clock::<span class="built_in">Clock</span>(<span class="keyword">int</span> newH,<span class="keyword">int</span> newM,<span class="keyword">int</span> newS)&#123;</span><br><span class="line">    hour = newH;</span><br><span class="line">    minute = newM;</span><br><span class="line">    second = newS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2-2-5-拷贝构造函数"><a href="#2-2-5-拷贝构造函数" class="headerlink" title="2.2.5 拷贝构造函数"></a>2.2.5 拷贝构造函数</h3><ul>
-<li>拷贝构造函数是一种特殊的构造函数，它在创建对象时，使用同一类中之前创建的对象来初始化新创建的对象，拷贝构造函数通常的步骤：</li>
+<li>拷贝构造函数是一种特殊的构造函数，它在创建对象时，使用同一类中之前创建的对象来初始化新创建的对象，拷贝构造函数通常的步骤：<ul>
 <li>通过使用另一个同类型的对象来初始化新创建的对象。</li>
 <li>复制对象把它作为参数传递给函数</li>
 <li>复制对象，并从函数返回这个对象</li>
+</ul>
+</li>
 </ul>
 <h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><ul>
 <li>如果在类中没有定义拷贝构造函数，编译器会自行定义一个。如果类带有指针变量，并有动态内存分配，则它必须有一个拷贝构造函数。拷贝构造函数的最常见形式如下</li>
@@ -8016,6 +8018,228 @@
       <tags>
         <tag>文言文</tag>
         <tag>中华文化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语法基础大全-容器</title>
+    <url>/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="一、序列式容器"><a href="#一、序列式容器" class="headerlink" title="一、序列式容器"></a>一、序列式容器</h1><h2 id="1-1-Vector"><a href="#1-1-Vector" class="headerlink" title="1.1 Vector"></a>1.1 Vector</h2><h3 id="1-1-1-引入"><a href="#1-1-1-引入" class="headerlink" title="1.1.1 引入"></a>1.1.1 引入</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt; vector&gt;</span> </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-2-常用方法"><a href="#1-1-2-常用方法" class="headerlink" title="1.1.2 常用方法"></a>1.1.2 常用方法</h3><h4 id="（1）构造函数"><a href="#（1）构造函数" class="headerlink" title="（1）构造函数"></a>（1）构造函数</h4><ul>
+<li>vector():创建一个空vector</li>
+<li>vector(int nSize):创建一个vector,元素个数为nSize</li>
+<li>vector(int nSize,const t&amp; t):创建一个vector，元素个数为nSize,且值均为t</li>
+<li>vector(const vector&amp;):复制构造函数</li>
+<li>vector(begin,end):复制[begin,end)区间内另一个数组的元素到vector中</li>
+</ul>
+<h4 id="（2）增加函数"><a href="#（2）增加函数" class="headerlink" title="（2）增加函数"></a>（2）增加函数</h4><ul>
+<li>void push_back(const T&amp; x):向量尾部增加一个元素X</li>
+<li>iterator insert(iterator it,const T&amp; x):向量中迭代器指向元素前增加一个元素x</li>
+<li>iterator insert(iterator it,int n,const T&amp; x):向量中迭代器指向元素前增加n个相同的元素x</li>
+<li>iterator insert(iterator it,const_iterator first,const_iterator last):向量中迭代器指向元素前插入另一个相同类型向量的[first,last)间的数据</li>
+</ul>
+<h4 id="（3）删除函数"><a href="#（3）删除函数" class="headerlink" title="（3）删除函数"></a>（3）删除函数</h4><ul>
+<li>iterator erase(iterator it):删除向量中迭代器指向元素</li>
+<li>iterator erase(iterator first,iterator last):删除向量中[first,last)中元素</li>
+<li>void pop_back():删除向量中最后一个元素</li>
+<li>void clear():清空向量中所有元素</li>
+</ul>
+<h4 id="（4）遍历函数"><a href="#（4）遍历函数" class="headerlink" title="（4）遍历函数"></a>（4）遍历函数</h4><ul>
+<li>reference at(int pos):返回pos位置元素的引用</li>
+<li>reference front():返回首元素的引用</li>
+<li>reference back():返回尾元素的引用</li>
+<li>iterator begin():返回向量头指针，指向第一个元素</li>
+<li>iterator end():返回向量尾指针，指向向量最后一个元素的下一个位置</li>
+<li>reverse_iterator rbegin():反向迭代器，指向最后一个元素</li>
+<li>reverse_iterator rend():反向迭代器，指向第一个元素之前的位置</li>
+</ul>
+<h4 id="（5）判断函数"><a href="#（5）判断函数" class="headerlink" title="（5）判断函数"></a>（5）判断函数</h4><ul>
+<li>bool empty() const:判断向量是否为空，若为空，则向量中无元素</li>
+</ul>
+<h4 id="（6）大小函数"><a href="#（6）大小函数" class="headerlink" title="（6）大小函数"></a>（6）大小函数</h4><ul>
+<li>int size() const:返回向量中元素的个数</li>
+<li>int capacity() const:返回当前向量张红所能容纳的最大元素值</li>
+<li>int max_size() const:返回最大可允许的vector元素数量值</li>
+</ul>
+<h4 id="（7）其他函数"><a href="#（7）其他函数" class="headerlink" title="（7）其他函数"></a>（7）其他函数</h4><ul>
+<li>void swap(vector&amp;):交换两个同类型向量的数据</li>
+<li>void assign(int n,const T&amp; x):设置向量中第n个元素的值为x</li>
+<li>void assign(const_iterator first,const_iterator last):向量中[first,last)中元素设置成当前向量元素</li>
+</ul>
+<h2 id="1-2-deque"><a href="#1-2-deque" class="headerlink" title="1.2 deque"></a>1.2 deque</h2><h3 id="1-2-1-引入与使用"><a href="#1-2-1-引入与使用" class="headerlink" title="1.2.1 引入与使用"></a>1.2.1 引入与使用</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;deque&gt;</span>  <span class="comment">// 头文件</span></span></span><br><span class="line">deque&lt;type&gt; deq;  <span class="comment">// 声明一个元素类型为type的双端队列que</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(size)</span></span>;  <span class="comment">// 声明一个类型为type、含有size个默认值初始化元素的的双端队列que</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(size, value)</span></span>;  <span class="comment">// 声明一个元素类型为type、含有size个value元素的双端队列que</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(mydeque)</span></span>;  <span class="comment">// deq是mydeque的一个副本</span></span><br><span class="line"><span class="function">deque&lt;type&gt; <span class="title">deq</span><span class="params">(first, last)</span></span>;  <span class="comment">// 使用迭代器first、last范围内的元素初始化deq</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-2-常用方法"><a href="#1-2-2-常用方法" class="headerlink" title="1.2.2 常用方法"></a>1.2.2 常用方法</h3><ul>
+<li>deq[]：用来访问双向队列中单个的元素。</li>
+<li>deq.front()：返回第一个元素的引用。</li>
+<li>deq.back()：返回最后一个元素的引用。</li>
+<li>deq.push_front(x)：把元素x插入到双向队列的头部。</li>
+<li>deq.pop_front()：弹出双向队列的第一个元素。</li>
+<li>deq.push_back(x)：把元素x插入到双向队列的尾部。</li>
+<li>deq.pop_back()：弹出双向队列的最后一个元素。</li>
+</ul>
+<h3 id="1-2-3-与Vector的区别"><a href="#1-2-3-与Vector的区别" class="headerlink" title="1.2.3 与Vector的区别"></a>1.2.3 与Vector的区别</h3><ul>
+<li>Vector是单向开口的连续线性空间，deque则是一种双向开口的连续线性空间。</li>
+<li>deque对象在队列的两端放置元素和删除元素是高效的，而向量vector只是在插入序列的末尾时操作才是高效的。</li>
+<li>deque和vector的最大差异，一在于deque允许于常数时间内对头端进行元素的插入或移除操作，二在于deque没有所谓的capacity观念，因为它是动态地以分段连续空间组合而成，随时可以增加一段新的空间并链接起来。换句话说，像vector那样“因旧空间不足而重新配置一块更大空间，然后复制元素，再释放旧空间”这样的事情在deque中是不会发生的。也因此，deque没有必要提供所谓的空间预留（reserved）功能</li>
+</ul>
+<h2 id="1-3-queue"><a href="#1-3-queue" class="headerlink" title="1.3 queue"></a>1.3 queue</h2><ul>
+<li>队列容器，只能在容器的末尾添加新元素，只能从头部移除元素</li>
+</ul>
+<img src="/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%AE%B9%E5%99%A8/queue.png" class="" title="queue">
+<ul>
+<li>front()：返回 queue 中第一个元素的引用。如果 queue 是常量，就返回一个常引用；如果 queue 为空，返回值是未定义的。</li>
+<li>back()：返回 queue 中最后一个元素的引用。如果 queue 是常量，就返回一个常引用；如果 queue 为空，返回值是未定义的。</li>
+<li>push(const T&amp; obj)：在 queue 的尾部添加一个元素的副本。这是通过调用底层容器的成员函数 push_back() 来完成的。</li>
+<li>push(T&amp;&amp; obj)：以移动的方式在 queue 的尾部添加元素。这是通过调用底层容器的具有右值引用参数的成员函数 push_back() 来完成的。</li>
+<li>pop()：删除 queue 中的第一个元素。</li>
+<li>size()：返回 queue 中元素的个数。</li>
+<li>empty()：如果 queue 中没有元素的话，返回 true。</li>
+<li>emplace()：用传给 emplace() 的参数调用 T 的构造函数，在 queue 的尾部生成对象。</li>
+<li>swap(queue\<T\> &amp;other_q)：将当前 queue 中的元素和参数 queue 中的元素交换。它们需要包含相同类型的元素。也可以调用全局函数模板 swap() 来完成同样的操作。</li>
+</ul>
+<h2 id="1-4-stack"><a href="#1-4-stack" class="headerlink" title="1.4 stack"></a>1.4 stack</h2><img src="/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E5%AE%B9%E5%99%A8/stack.png" class="" title="stack">
+<ul>
+<li>top()：返回一个栈顶元素的引用，类型为 T&amp;。如果栈为空，返回值未定义。</li>
+<li>push(const T&amp; obj)：可以将对象副本压入栈顶。这是通过调用底层容器的 push_back() 函数完成的。</li>
+<li>push(T&amp;&amp; obj)：以移动对象的方式将对象压入栈顶。这是通过调用底层容器的有右值引用参数的 push_back() 函数完成的。</li>
+<li>pop()：弹出栈顶元素。</li>
+<li>size()：返回栈中元素的个数。</li>
+<li>empty()：在栈中没有元素的情况下返回 true。</li>
+<li>emplace()：用传入的参数调用构造函数，在栈顶生成对象。</li>
+<li>swap(stack\<T\> &amp; other_stack)：将当前栈中的元素和参数中的元素交换。参数所包含元素的类型必须和当前栈的相同。对于 stack 对象有一个特例化的全局函数 swap() 可以使用。</li>
+</ul>
+<h2 id="1-5-priority-queue"><a href="#1-5-priority-queue" class="headerlink" title="1.5 priority_queue"></a>1.5 priority_queue</h2><ul>
+<li>维护一个堆的数据结构，可以是最大堆，也可以是最小堆</li>
+<li><p>top() 访问队头元素</p>
+</li>
+<li><p>empty() 队列是否为空</p>
+</li>
+<li>size() 返回队列内元素个数</li>
+<li>push() 插入元素到队尾 (并排序)</li>
+<li>emplace() 原地构造一个元素并插入队列</li>
+<li>pop() 弹出队头元素</li>
+<li>swap() 交换内容</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//升序队列，小顶堆</span></span><br><span class="line">priority_queue &lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt; &gt; q;</span><br><span class="line"><span class="comment">//降序队列，大顶堆</span></span><br><span class="line">priority_queue &lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,less&lt;<span class="keyword">int</span>&gt; &gt;q;</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-List"><a href="#1-6-List" class="headerlink" title="1.6 List"></a>1.6 List</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>assign() 给list赋值</li>
+<li>back() 返回最后一个元素</li>
+<li>begin() 返回指向第一个元素的迭代器</li>
+<li>clear() 删除所有元素</li>
+<li>empty() 如果list是空的则返回true</li>
+<li>end() 返回末尾的迭代器</li>
+<li>erase() 删除一个元素</li>
+<li>front() 返回第一个元素</li>
+<li>get_allocator() 返回list的配置器</li>
+<li>insert() 插入一个元素到list中</li>
+<li>max_size() 返回list能容纳的最大元素数量</li>
+<li>merge() 合并两个list</li>
+<li>pop_back() 删除最后一个元素</li>
+<li>pop_front() 删除第一个元素</li>
+<li>push_back() 在list的末尾添加一个元素</li>
+<li>push_front() 在list的头部添加一个元素</li>
+<li>rbegin() 返回指向第一个元素的逆向迭代器</li>
+<li>remove() 从list删除元素</li>
+<li>remove_if() 按指定条件删除元素</li>
+<li>rend() 指向list末尾的逆向迭代器</li>
+<li>resize() 改变list的大小</li>
+<li>reverse() 把list的元素倒转</li>
+<li>size() 返回list中的元素个数</li>
+<li>sort() 给list排序</li>
+<li>splice() 合并两个list</li>
+<li>swap() 交换两个list</li>
+<li>unique() 删除list中相邻重复的元素</li>
+</ul>
+<h1 id="二、关联式容器"><a href="#二、关联式容器" class="headerlink" title="二、关联式容器"></a>二、关联式容器</h1><h2 id="2-1-map"><a href="#2-1-map" class="headerlink" title="2.1 map"></a>2.1 map</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// map和multimap都需要#include&lt;map&gt;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>begin()：返回指向map头部的迭代器</li>
+<li>clear()：删除所有元素</li>
+<li>count()：返回指定元素出现的次数</li>
+<li>empty()：如果map为空则返回true</li>
+<li>end()：返回指向map末尾的迭代器</li>
+<li>equal_range()：返回特殊条目的迭代器对</li>
+<li>erase()：删除一个元素</li>
+<li>find()：查找一个元素</li>
+<li>get_allocator()：返回map的配置器</li>
+<li>insert()：插入元素</li>
+<li>key_comp()：返回比较元素key的函数</li>
+<li>lower_bound()：返回键值&gt;=给定元素的第一个位置</li>
+<li>max_size()：返回可以容纳的最大元素个数</li>
+<li>rbegin()：返回一个指向map尾部的逆向迭代器</li>
+<li>rend()：返回一个指向map头部的逆向迭代器</li>
+<li>size()：返回map中元素的个数</li>
+<li>swap()：交换两个map</li>
+<li>upper_bound()：返回键值&gt;给定元素的第一个位置</li>
+<li>value_comp()：返回比较元素value的函数</li>
+</ul>
+<h2 id="2-2-unordered-map"><a href="#2-2-unordered-map" class="headerlink" title="2.2 unordered_map"></a>2.2 unordered_map</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line">unordered_map&lt;string,<span class="keyword">int</span>&gt; mp;</span><br><span class="line"><span class="comment">//迭代器遍历</span></span><br><span class="line">unordered_map&lt;string,<span class="keyword">int</span>&gt;::iterator iter;</span><br><span class="line"><span class="keyword">for</span>(iter=mp.<span class="built_in">begin</span>();iter!=mp.<span class="built_in">end</span>();iter++)&#123;</span><br><span class="line">    cout&lt;&lt;iter-&gt;first&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;iter-&gt;second&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//:遍历</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> &amp;[name,value]:mp)&#123;</span><br><span class="line">    cout&lt;&lt;name&lt;&lt;<span class="string">&quot;: &quot;</span>&lt;&lt;value&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-set"><a href="#2-3-set" class="headerlink" title="2.3 set"></a>2.3 set</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// constructing sets</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">fncomp</span> <span class="params">(<span class="keyword">int</span> lhs, <span class="keyword">int</span> rhs)</span> </span>&#123;<span class="keyword">return</span> lhs&lt;rhs;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">classcomp</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; lhs, <span class="keyword">const</span> <span class="keyword">int</span>&amp; rhs)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">  </span>&#123;<span class="keyword">return</span> lhs&lt;rhs;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  std::set&lt;<span class="keyword">int</span>&gt; first;                           <span class="comment">// empty set of ints</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> myints[]= &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>&#125;;</span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>&gt; <span class="title">second</span> <span class="params">(myints,myints+<span class="number">5</span>)</span></span>;        <span class="comment">// range</span></span><br><span class="line"></span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>&gt; <span class="title">third</span> <span class="params">(second)</span></span>;                  <span class="comment">// a copy of second</span></span><br><span class="line"></span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>&gt; <span class="title">fourth</span> <span class="params">(second.begin(), second.end())</span></span>;  <span class="comment">// iterator ctor.</span></span><br><span class="line"></span><br><span class="line">  std::set&lt;<span class="keyword">int</span>,classcomp&gt; fifth;                 <span class="comment">// class as Compare</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in"><span class="keyword">bool</span></span>(*fn_pt)(<span class="keyword">int</span>,<span class="keyword">int</span>) = fncomp;</span><br><span class="line">  <span class="function">std::set&lt;<span class="keyword">int</span>,<span class="title">bool</span><span class="params">(*)</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span>&gt; <span class="title">sixth</span> <span class="params">(fn_pt)</span></span>;  <span class="comment">// function pointer as Compare</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>begin()：返回指向第一个元素的迭代器</li>
+<li>clear()：清除所有元素</li>
+<li>count()：返回某个值元素的个数</li>
+<li>empty()：如果集合为空，返回true</li>
+<li>end()：返回指向最后一个元素的迭代器</li>
+<li>equal_range()：返回集合中与给定值相等的上下限的两个迭代器</li>
+<li>erase()：删除集合中的元素</li>
+<li>find()：返回一个指向被查找到元素的迭代器</li>
+<li>get_allocator()：返回集合的分配器</li>
+<li>insert()：在集合中插入元素</li>
+<li>lower_bound()：返回指向大于（或等于）某值的第一个元素的迭代器</li>
+<li>key_comp()：返回一个用于元素间值比较的函数</li>
+<li>max_size()：返回集合能容纳的元素的最大限值</li>
+<li>rbegin()：返回指向集合中最后一个元素的反向迭代器</li>
+<li>rend()：返回指向集合中第一个元素的反向迭代器</li>
+<li>size()：集合中元素的数目</li>
+<li>swap()：交换两个集合变量</li>
+<li>upper_bound()：返回大于某个值元素的迭代器</li>
+<li>value_comp()：返回一个用于比较元素间的值的函数</li>
+</ol>
+<h2 id="2-4-unordered-set"><a href="#2-4-unordered-set" class="headerlink" title="2.4 unordered_set"></a>2.4 unordered_set</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// constructing unordered_sets</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;class T&gt;</span></span><br><span class="line"><span class="function">T <span class="title">cmerge</span> <span class="params">(T a, T b)</span> </span>&#123; <span class="function">T <span class="title">t</span><span class="params">(a)</span></span>; t.<span class="built_in">insert</span>(b.<span class="built_in">begin</span>(),b.<span class="built_in">end</span>()); <span class="keyword">return</span> t; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  std::unordered_set&lt;std::string&gt; first;                                <span class="comment">// empty</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">second</span> <span class="params">( &#123;<span class="string">&quot;red&quot;</span>,<span class="string">&quot;green&quot;</span>,<span class="string">&quot;blue&quot;</span>&#125; )</span></span>;    <span class="comment">// init list</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">third</span> <span class="params">( &#123;<span class="string">&quot;orange&quot;</span>,<span class="string">&quot;pink&quot;</span>,<span class="string">&quot;yellow&quot;</span>&#125; )</span></span>; <span class="comment">// init list</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">fourth</span> <span class="params">( second )</span></span>;                    <span class="comment">// copy</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">fifth</span> <span class="params">( cmerge(third,fourth) )</span></span>;       <span class="comment">// move</span></span><br><span class="line">  <span class="function">std::unordered_set&lt;std::string&gt; <span class="title">sixth</span> <span class="params">( fifth.begin(), fifth.end() )</span></span>; <span class="comment">// range</span></span><br><span class="line"></span><br><span class="line">  std::cout &lt;&lt; <span class="string">&quot;sixth contains:&quot;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> std::string&amp; x: sixth) std::cout &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; x;</span><br><span class="line">  std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>主要方法与set类似</li>
+<li>emplace(key)：插入元素</li>
+</ul>
+<h2 id="2-5-pair"><a href="#2-5-pair" class="headerlink" title="2.5 pair"></a>2.5 pair</h2><h3 id="2-5-1-概述"><a href="#2-5-1-概述" class="headerlink" title="2.5.1 概述"></a>2.5.1 概述</h3><ul>
+<li>pair是c++的一种数据类型，在头文件utility中</li>
+</ul>
+<h3 id="2-5-2-使用"><a href="#2-5-2-使用" class="headerlink" title="2.5.2 使用"></a>2.5.2 使用</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">pair&lt;string, string&gt; <span class="title">a</span><span class="params">(<span class="string">&quot;James&quot;</span>, <span class="string">&quot;Joy&quot;</span>)</span></span>;</span><br><span class="line">string name,last;</span><br><span class="line">name = pair.first;</span><br><span class="line">lase = pair.second;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 给属性赋值</span></span><br><span class="line">newone = <span class="built_in">make_pair</span>(name, last);</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-3-priority-queue中的pair"><a href="#2-5-3-priority-queue中的pair" class="headerlink" title="2.5.3 priority_queue中的pair"></a>2.5.3 priority_queue中的pair</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; a;</span><br><span class="line">	<span class="function">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">1</span>,<span class="number">5</span>)</span></span>;</span><br><span class="line">	<span class="function">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="title">d</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span></span>;</span><br><span class="line">	<span class="function">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; <span class="title">c</span><span class="params">(<span class="number">6</span>,<span class="number">1</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line">	a.<span class="built_in">push</span>(d);</span><br><span class="line">	a.<span class="built_in">push</span>(c);</span><br><span class="line">	a.<span class="built_in">push</span>(b);</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">while</span> (!a.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">		cout&lt;&lt;a.<span class="built_in">top</span>().first&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;a.<span class="built_in">top</span>().second&lt;&lt;endl;</span><br><span class="line">		a.<span class="built_in">pop</span>();</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">比较第一个，若相同，则比较第2个</span></span><br><span class="line"><span class="comment">6 1</span></span><br><span class="line"><span class="comment">1 5</span></span><br><span class="line"><span class="comment">1 2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-5-4-sort"><a href="#2-5-4-sort" class="headerlink" title="2.5.4 sort()"></a>2.5.4 sort()</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// lambda表达式自定义排序，以下为降序排列</span></span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>(),[](<span class="keyword">const</span> <span class="keyword">int</span> a,<span class="keyword">const</span> <span class="keyword">int</span> b)&#123;<span class="keyword">return</span> a&gt;b;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将自定义排序方式放在sort()外</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;<span class="comment">//从大到小排序</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>(),cmp);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>游戏开发</category>
+        <category>unreal</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语法基础大全-面向对象</title>
+    <url>/2022/10/10/C%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<h1 id="一、结构体"><a href="#一、结构体" class="headerlink" title="一、结构体"></a>一、结构体</h1><h2 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h2><p>C++中的结构体可以定义函数，C语言中的结构体只能定义变量</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span>&#123;</span></span><br><span class="line">    <span class="built_in">Sales_data</span>() = <span class="keyword">default</span>;	<span class="comment">// = default表示默认的构造函数</span></span><br><span class="line">    <span class="built_in">Sales_data</span>(<span class="keyword">const</span> std::string &amp;s):<span class="built_in">bookNo</span>(s)&#123;&#125;</span><br><span class="line">    <span class="built_in">Sales_data</span>(<span class="keyword">const</span> std::string &amp;s, <span class="keyword">unsigned</span> n, <span class="keyword">double</span> p):<span class="built_in">bookNo</span>(s),<span class="built_in">units_sold</span>(n),<span class="built_in">revenue</span>(p*n)&#123;&#125;</span><br><span class="line">    <span class="built_in">Sales_data</span>(std::istream &amp;);	<span class="comment">// 没有加形参名表示只是声明类型，但没有实现，实现时需要加上形参名</span></span><br><span class="line">    </span><br><span class="line">    <span class="function">std::string <span class="title">isbn</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;<span class="keyword">return</span> bookNo;&#125;</span><br><span class="line">    <span class="function">Sales_data&amp; <span class="title">combine</span><span class="params">(<span class="keyword">const</span> Sales_data&amp;)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">avg_price</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    std::string bookNo;</span><br><span class="line">    <span class="keyword">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类外实现</span></span><br><span class="line">Sales_data::<span class="built_in">Sales_data</span>(std::istream &amp;is)&#123;</span><br><span class="line">    <span class="built_in">read</span>(is, *<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="1-2-动态内存分配"><a href="#1-2-动态内存分配" class="headerlink" title="1.2 动态内存分配"></a>1.2 动态内存分配</h2><ul>
+<li>new/delete分配堆空间可以调用类的构造函数/析构函数</li>
+<li>malloc/free只是一个函数调用，不会调用构造函数/析构函数，malloc接受的参数是一个unsigned long类型</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Time *t2 = <span class="keyword">new</span> <span class="built_in">Time</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">delete</span> t2;</span><br><span class="line"></span><br><span class="line">Time *t1 = (Time*)<span class="built_in">malloc</span>(<span class="built_in"><span class="keyword">sizeof</span></span>(Time));</span><br><span class="line"><span class="built_in">free</span>(t1);</span><br></pre></td></tr></table></figure>
+<h1 id="二、类"><a href="#二、类" class="headerlink" title="二、类"></a>二、类</h1><h2 id="2-1-类的定义"><a href="#2-1-类的定义" class="headerlink" title="2.1 类的定义"></a>2.1 类的定义</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//公共的行为或属性</span></span><br><span class="line">    <span class="built_in">ClassName</span>();	<span class="comment">// 构造函数</span></span><br><span class="line">    <span class="built_in">ClassName</span>(string x);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(string x)</span></span>;</span><br><span class="line">    <span class="function">string <span class="title">getName</span><span class="params">()</span></span>;</span><br><span class="line">    ~<span class="built_in">ClassName</span>();	<span class="comment">// 析构函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">//私有成员</span></span><br><span class="line">    string x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类外实现</span></span><br><span class="line">ClassName::<span class="built_in">ClassName</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;x = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;开始创建对象：&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;x &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ClassName::<span class="built_in">ClassName</span>(string x) &#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;x = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClassName::setName</span><span class="params">(string x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;x = x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">ClassName::getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>-&gt;x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ClassName::~<span class="built_in">ClassName</span>() &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;销毁对象：&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;x &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ClassName *cn = <span class="keyword">new</span> <span class="built_in">ClassName</span>();</span><br><span class="line"></span><br><span class="line">    cn-&gt;<span class="built_in">setName</span>(<span class="string">&quot;hello gaoyue&quot;</span>);</span><br><span class="line">    cout&lt;&lt;cn-&gt;<span class="built_in">getName</span>()&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> cn;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">开始创建对象：hello world</span></span><br><span class="line"><span class="comment">hello gaoyue</span></span><br><span class="line"><span class="comment">销毁对象：hello gaoyue</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-1-1-对象的创建"><a href="#2-1-1-对象的创建" class="headerlink" title="2.1.1 对象的创建"></a>2.1.1 对象的创建</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 默认无参构造</span></span><br><span class="line"><span class="comment">// 显示使用</span></span><br><span class="line">ClassName cn = <span class="built_in">ClassName</span>();	<span class="comment">// 无法delete，会调用构造函数，程序结束后会调用析构函数</span></span><br><span class="line"><span class="comment">// 隐式使用</span></span><br><span class="line">ClassName cn;</span><br><span class="line"><span class="comment">// new创建</span></span><br><span class="line">ClassName *cn = <span class="keyword">new</span> ClassName;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 有参构造</span></span><br><span class="line"><span class="comment">// 显示使用</span></span><br><span class="line">ClassName cn = <span class="built_in">ClassName</span>(<span class="string">&quot;hello gaoyue&quot;</span>);</span><br><span class="line"><span class="comment">// 隐式使用</span></span><br><span class="line"><span class="function">ClassName <span class="title">cn</span><span class="params">(<span class="string">&quot;hello gaoyue&quot;</span>)</span></span>;</span><br><span class="line"><span class="comment">// new创建</span></span><br><span class="line">ClassName *cn = <span class="keyword">new</span> <span class="built_in">ClassName</span>(<span class="string">&quot;hello gaoyue&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-const成员函数"><a href="#2-1-2-const成员函数" class="headerlink" title="2.1.2 const成员函数"></a>2.1.2 const成员函数</h3><p>有时候，我们创建了一个对象，但是事实上，我们只希望这个对象初始化之后不被改变，它可以是一个真理或者是什么，就是不能被改变</p>
+<p>然后我们就十分自然的想到<strong>const创建一个对象</strong>。以下面的代码为例,但是后面发现就算是调用对象中不会改变值的<code>showInfo()</code>函数的时候，也会报错。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ClassName *cn = <span class="keyword">new</span> <span class="built_in">ClassName</span>();</span><br></pre></td></tr></table></figure>
+<p>如果这个常量对象想要调用不改变值的方法，那么这个方法上也必须加上const关键字</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">getName</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">string <span class="title">ClassName::getName</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>-&gt;x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-3-友元函数"><a href="#2-1-3-友元函数" class="headerlink" title="2.1.3 友元函数"></a>2.1.3 友元函数</h3><h2 id="2-2-构造函数与析构函数"><a href="#2-2-构造函数与析构函数" class="headerlink" title="2.2 构造函数与析构函数"></a>2.2 构造函数与析构函数</h2><h2 id="2-3-继承与多态"><a href="#2-3-继承与多态" class="headerlink" title="2.3 继承与多态"></a>2.3 继承与多态</h2>]]></content>
+      <categories>
+        <category>游戏开发</category>
+        <category>unreal</category>
+      </categories>
+      <tags>
+        <tag>结构体</tag>
+        <tag>面向对象</tag>
       </tags>
   </entry>
 </search>
