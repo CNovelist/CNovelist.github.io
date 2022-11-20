@@ -1170,22 +1170,22 @@
 <img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/dushu.png" class="" title="dushu">
 <h1 id="二、调式"><a href="#二、调式" class="headerlink" title="二、调式"></a>二、调式</h1><h2 id="2-1-大调式"><a href="#2-1-大调式" class="headerlink" title="2.1 大调式"></a>2.1 大调式</h2><h3 id="2-1-1-自然大调"><a href="#2-1-1-自然大调" class="headerlink" title="2.1.1 自然大调"></a>2.1.1 自然大调</h3><ul>
 <li>满足<strong>“全全半全全全半”</strong>的关系</li>
-<li>$1、2、3、4、5、6、7、\overline{1}$</li>
+<li>$1、2、3、4、5、6、7、\dot{1}$</li>
 </ul>
 <h3 id="2-1-2-和声大调"><a href="#2-1-2-和声大调" class="headerlink" title="2.1.2 和声大调"></a>2.1.2 和声大调</h3><ul>
-<li>$1、2、3、4、5、{}^b6、7、\overline{1}$</li>
+<li>$1、2、3、4、5、{}^b6、7、\dot{1}$</li>
 </ul>
 <h3 id="2-1-3-旋律大调"><a href="#2-1-3-旋律大调" class="headerlink" title="2.1.3 旋律大调"></a>2.1.3 旋律大调</h3><ul>
 <li>$1、2、3、4、5、{}^b6、{}^b7、1$</li>
 </ul>
 <h2 id="2-2-小调式"><a href="#2-2-小调式" class="headerlink" title="2.2 小调式"></a>2.2 小调式</h2><h3 id="2-2-1-自然小调"><a href="#2-2-1-自然小调" class="headerlink" title="2.2.1 自然小调"></a>2.2.1 自然小调</h3><ul>
-<li>$6、7、\overline{1}、\overline{2}、\overline{3}、\overline{4}、\overline{5}、\overline{6}$</li>
+<li>$6、7、\dot{1}、\dot{2}、\dot{3}、\dot{4}、\dot{5}、\dot{6}$</li>
 </ul>
 <h3 id="2-2-2-和声小调"><a href="#2-2-2-和声小调" class="headerlink" title="2.2.2 和声小调"></a>2.2.2 和声小调</h3><ul>
-<li>$6、7、\overline{1}、\overline{2}、\overline{3}、\overline{4}、{}^井\overline{5}、\overline{6}$</li>
+<li>$6、7、\dot{1}、\dot{2}、\dot{3}、\dot{4}、{}^井\dot{5}、\dot{6}$</li>
 </ul>
 <h3 id="2-2-3-旋律小调"><a href="#2-2-3-旋律小调" class="headerlink" title="2.2.3 旋律小调"></a>2.2.3 旋律小调</h3><ul>
-<li>$6、7、\overline{1}、\overline{2}、\overline{3}、{}^井\overline{4}、{}^井\overline{5}、\overline{6}$</li>
+<li>$6、7、\dot{1}、\dot{2}、\dot{3}、{}^井\dot{4}、{}^井\dot{5}、\dot{6}$</li>
 </ul>
 <h2 id="2-3-自然大调"><a href="#2-3-自然大调" class="headerlink" title="2.3 自然大调"></a>2.3 自然大调</h2><ul>
 <li>以下对自然大调进行着重讲解，因为自然大调在流行音乐中较为常见</li>
@@ -1262,10 +1262,23 @@
 </div>
 <h2 id="2-4-关系大小调"><a href="#2-4-关系大小调" class="headerlink" title="2.4 关系大小调"></a>2.4 关系大小调</h2><p>大调音阶的前三个音是大三度关系、小调音阶的前三个音是小三度关系</p>
 <p>以自然大小调为例</p>
-<p>C大调的关系小调为a小调</p>
-<p>D大调的关系小调为b小调</p>
-<p>F大调的关系小调为d小调</p>
-<p>G大调的关系小调为e小调</p>
+<ul>
+<li>C大调的关系小调为a小调</li>
+<li>D大调的关系小调为b小调</li>
+<li>F大调的关系小调为d小调</li>
+<li>G大调的关系小调为e小调</li>
+</ul>
+<p>推导也比较简单，比如C大调往前推一个小三度就是A，那么关系小调就是a小调</p>
+<h2 id="2-5-其他"><a href="#2-5-其他" class="headerlink" title="2.5 其他"></a>2.5 其他</h2><ul>
+<li>五声音阶：C G D A E，这五个音都相距纯五度，由此构成了五声音阶，顺序来看应该是1 2 3 5 6，这也是中国古代常用的音高顺序：宫 商 角 徵（zhǐ） 羽</li>
+<li>布鲁斯音阶：<em>1、b3、4、b5、5、b7</em>或者<em>6、1、2、b3、3、5</em>，音程间隔为：小三、大二、小二、小二、小三</li>
+<li>Dorian Mode（多利亚调式——自然大调2级音阶）：1、2、b3、4、5、6、b7</li>
+<li>Phrygian Mode（弗利几亚调式——自然大调3级音阶）：1、b2、b3、4、5、b6、b7</li>
+<li>Lydian Mode（利底亚调式——自然大调4级音阶）：1、2、3、#4、5、6、7。</li>
+<li>Mixolydian Mode（米索利第亚调式——自然大调5级音阶）：1、2、3、4、5、6、b7</li>
+<li>Aeolian Mode（爱奥里亚调式———自然小调式）：1、2、b3、4、5、b6、b7 </li>
+<li>Locrian Mode（洛克利亚调式——自然大调7级音阶）：1、b2、b3、4、b5、b6、b7</li>
+</ul>
 <h1 id="三、和弦"><a href="#三、和弦" class="headerlink" title="三、和弦"></a>三、和弦</h1><h2 id="3-1-和弦分类"><a href="#3-1-和弦分类" class="headerlink" title="3.1 和弦分类"></a>3.1 和弦分类</h2><h3 id="3-1-1-三度和弦"><a href="#3-1-1-三度和弦" class="headerlink" title="3.1.1 三度和弦"></a>3.1.1 三度和弦</h3><ul>
 <li>三和弦（三个音）</li>
 <li>五和弦（四个音）</li>
@@ -1317,14 +1330,16 @@
 <li>减三+根音减7度音</li>
 <li>Bm-5：7-2-4-b6</li>
 </ul>
+<h3 id="3-3-6-调内七和弦"><a href="#3-3-6-调内七和弦" class="headerlink" title="3.3.6 调内七和弦"></a>3.3.6 调内七和弦</h3><p>以C大调为例，七和弦包括Cmaj7、Dm7、Em7、Fmaj7、G7、Am7</p>
+<p>很明显，在某一大调调式中，只存在一个属七和弦，即五级属七和弦G7，这也是用来判断歌曲调式的一种方式</p>
 <h2 id="3-4-九和弦"><a href="#3-4-九和弦" class="headerlink" title="3.4 九和弦"></a>3.4 九和弦</h2><h3 id="3-4-1-属九和弦"><a href="#3-4-1-属九和弦" class="headerlink" title="3.4.1 属九和弦"></a>3.4.1 属九和弦</h3><ul>
-<li>在属七和弦上加上根音的九度音</li>
+<li>在属七和弦上加上根音的大九度音</li>
 <li>C9：1-3-5-b7-2</li>
 </ul>
 <h3 id="3-4-2-Add和弦"><a href="#3-4-2-Add和弦" class="headerlink" title="3.4.2 Add和弦"></a>3.4.2 Add和弦</h3><ul>
 <li><p>三和弦基础上再添加的音符，后面的数字代表距离根音的度数</p>
 </li>
-<li><p>Cadd9：1-3-5-2（根音的9度音）</p>
+<li><p>Cadd9：1-3-5-2（根音的大9度音）</p>
 </li>
 </ul>
 <h2 id="3-5-挂留和弦"><a href="#3-5-挂留和弦" class="headerlink" title="3.5 挂留和弦"></a>3.5 挂留和弦</h2><ul>
@@ -1349,7 +1364,7 @@
 </ul>
 <img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/yinfu.jpeg" class="" title="yinfu">
 <h3 id="4-2-2-音符关系"><a href="#4-2-2-音符关系" class="headerlink" title="4.2.2 音符关系"></a>4.2.2 音符关系</h3><p>$全音符=2<em>二分音符=4</em>四分音符=8<em>八分音符=16</em>十六分音符$</p>
-<h2 id="4-3-节拍"><a href="#4-3-节拍" class="headerlink" title="4.3 节拍"></a>4.3 节拍</h2><ul>
+<h2 id="4-3-节拍"><a href="#4-3-节拍" class="headerlink" title="4.3 节拍"></a>4.3 节拍</h2><h3 id="4-3-1-概念"><a href="#4-3-1-概念" class="headerlink" title="4.3.1 概念"></a>4.3.1 概念</h3><ul>
 <li><strong>bpm</strong>：每分钟节拍数</li>
 <li>常见的节拍（从后往前读）：<ul>
 <li>4/4：表示以四分音符为一拍，每小节四拍；强弱规律：<strong>强、弱、次强、弱</strong></li>
@@ -1358,9 +1373,21 @@
 </ul>
 </li>
 </ul>
+<h3 id="4-3-2-常见节奏"><a href="#4-3-2-常见节奏" class="headerlink" title="4.3.2 常见节奏"></a>4.3.2 常见节奏</h3><ul>
+<li>常见音符：全音符、二分音符、四分音符、八分音符、十六分音符、三十二分音符</li>
+<li>常见节奏组组合：</li>
+</ul>
 <h2 id="4-4-十二大小调五线谱"><a href="#4-4-十二大小调五线谱" class="headerlink" title="4.4 十二大小调五线谱"></a>4.4 十二大小调五线谱</h2><img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/12-1.png" class="" title="12-1">
 <img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/12-2.png" class="" title="12-2">
 <img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/12-3.png" class="" title="12-3">
+<h2 id="4-5-首调记谱法"><a href="#4-5-首调记谱法" class="headerlink" title="4.5 首调记谱法"></a>4.5 首调记谱法</h2><ul>
+<li>C调：$1,2,3,4,5,6,7,\dot{1}$</li>
+<li>D调：$2,3,#4,5,6,7,#\dot{1},\dot{2}$</li>
+<li>E调：$3,#4,#5,6,7,#\dot{1},#\dot{2},\dot{3}$</li>
+<li>F调：$4,5,6,b7,\dot{1},\dot{2},\dot{3},\dot{4}$</li>
+<li>G调：$5,6,7,\dot{1},\dot{2},\dot{3},#\dot{4},\dot{5}$</li>
+<li>A调：$6,7,#\dot1,\dot2,\dot3,#\dot4,#\dot5,\dot6$</li>
+</ul>
 <h1 id="五、乐器"><a href="#五、乐器" class="headerlink" title="五、乐器"></a>五、乐器</h1><h2 id="5-1-打击乐器"><a href="#5-1-打击乐器" class="headerlink" title="5.1 打击乐器"></a>5.1 打击乐器</h2><h3 id="5-1-1-架子鼓Drum"><a href="#5-1-1-架子鼓Drum" class="headerlink" title="5.1.1 架子鼓Drum"></a>5.1.1 架子鼓Drum</h3><img src="/2022/03/09/%E4%B9%90%E7%90%86%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/jiazigu.png" class="" title="jiazigu">
 <ul>
 <li>嗵（<strong>tōng</strong>）鼓（tom drum）：顾名思义，发咚咚声</li>
@@ -4633,7 +4660,8 @@
 <li>大三和弦：C（1、3、5），D（2、#4、6），E（3、#5、7），F（4、6、1），G（5、7、2），A（6、#1、3），B（7、#2、#4）</li>
 <li>小三和弦：Cm（1、b3、5）、Dm（2、4、6）、Em（3、5、7）、Fm（4、b6、1）、Gm（5、b7、2）、Am（6、1、3）、Bm（7、2、#4）</li>
 </ul>
-<h2 id="2-1-调式和弦"><a href="#2-1-调式和弦" class="headerlink" title="2.1 调式和弦"></a>2.1 调式和弦</h2><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/hexian1.png" class="" title="hexian1">
+<h2 id="2-1-调式和弦"><a href="#2-1-调式和弦" class="headerlink" title="2.1 调式和弦"></a>2.1 调式和弦</h2><h3 id="2-1-1-三和弦"><a href="#2-1-1-三和弦" class="headerlink" title="2.1.1 三和弦"></a>2.1.1 三和弦</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/hexian1.png" class="" title="hexian1">
+<h3 id="2-1-2-七和弦"><a href="#2-1-2-七和弦" class="headerlink" title="2.1.2 七和弦"></a>2.1.2 七和弦</h3><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/7hexian.png" class="" title="7hexian">
 <h1 id="三、吉他指型"><a href="#三、吉他指型" class="headerlink" title="三、吉他指型"></a>三、吉他指型</h1><img src="/2022/06/17/%E5%90%89%E4%BB%96%E5%92%8C%E5%BC%A6%E5%A4%A7%E5%85%A8/zhixing.png" class="" title="zhixing">
 <h1 id="四、CAGED系统"><a href="#四、CAGED系统" class="headerlink" title="四、CAGED系统"></a>四、CAGED系统</h1><p><strong>CAGED</strong>是一套快速推测和弦指法的系统，即<strong>任何一个和弦都有五种按法</strong>，它能帮助我们快速记忆指板音阶</p>
 <p>以C和弦为例，<strong>和弦音为1-3-5（CEG）</strong>,它在Mi把位上的指法是<strong>典型的C和弦指法</strong>，但如果把C和弦升高一个把位，即<strong>Sol把位</strong>，应该怎么按呢？</p>
@@ -5146,6 +5174,9 @@
 <p>大调的IV级和弦，称为<strong>下属和弦S（Subdominant chord）</strong>，IV级音在主音下纯五度（上纯四度），所以叫下属音（Subdominant）。下属和弦具有下属功能。与属和弦相比，下属和弦的趋向性较弱，稳定性略高。</p>
 <p>主和弦T、属和弦D、下属和弦S合称为<strong>正三和弦</strong></p>
 <p>正三和弦以外的和弦称为<strong>副三和弦</strong>，即ii、iii、vi、vii四个和弦，在C大调中就是Dm、Em、Am、B</p>
+<ul>
+<li>注：和弦是如何分功能组的？考虑主功能组的一级和弦135，其中三级和弦357包含了<strong>两个一级和弦的构成音35</strong>，六级和弦包含了<strong>两个一级和弦的构成音61</strong>，所以在和弦色彩上是比较接近的，因此可以分为相同的功能组中</li>
+</ul>
 <img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E5%92%8C%E5%A3%B0/shuyin.png" class="" title="shuyin">
 <h2 id="2-3-和声进行的基本规律"><a href="#2-3-和声进行的基本规律" class="headerlink" title="2.3 和声进行的基本规律"></a>2.3 和声进行的基本规律</h2><p>大调进行一般会从I级开始，经过下属和弦、属和弦之后再回归到主和弦</p>
 <img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E5%92%8C%E5%A3%B0/jinxing.png" class="" title="jinxing">
@@ -5156,16 +5187,30 @@
 </ul>
 <p><strong>和声第一定律</strong>：和声的变化是起承转合的，即稳定-&gt;不稳定-&gt;稳定</p>
 <h2 id="2-4-和声进行格式"><a href="#2-4-和声进行格式" class="headerlink" title="2.4 和声进行格式"></a>2.4 和声进行格式</h2><img src="/2022/06/19/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E5%92%8C%E5%A3%B0/geshi.png" class="" title="geshi">
-<h2 id="2-5-和弦编配"><a href="#2-5-和弦编配" class="headerlink" title="2.5 和弦编配"></a>2.5 和弦编配</h2><p> 和声第二定律：在为旋律编配和弦时，和弦要包含旋律中的一部分或全部的音，不能完全包含时，和声一般也要照顾到尽量多的旋律音，优先考虑强拍与长音</p>
-<p>和弦外音（外音）：不包含在和弦音中的旋律音</p>
-<h3 id="2-5-1-判断节奏、调式调性"><a href="#2-5-1-判断节奏、调式调性" class="headerlink" title="2.5.1 判断节奏、调式调性"></a>2.5.1 判断节奏、调式调性</h3><h3 id="2-5-2-确定开头、解位和断句"><a href="#2-5-2-确定开头、解位和断句" class="headerlink" title="2.5.2 确定开头、解位和断句"></a>2.5.2 确定开头、解位和断句</h3><ul>
+<h2 id="2-5-和弦编配"><a href="#2-5-和弦编配" class="headerlink" title="2.5 和弦编配"></a>2.5 和弦编配</h2><p> <strong>和声第二定律</strong>：在为旋律编配和弦时，和弦要包含旋律中的一部分或全部的音，不能完全包含时，和声一般也要照顾到尽量多的旋律音，优先考虑强拍与长音</p>
+<p><strong>和弦外音（外音）</strong>：不包含在和弦音中的旋律音</p>
+<h3 id="2-5-1-和弦转换时机"><a href="#2-5-1-和弦转换时机" class="headerlink" title="2.5.1 和弦转换时机"></a>2.5.1 和弦转换时机</h3><p>在流行歌曲中，和弦发生转换的时机一般有以下几种情况</p>
+<ul>
+<li>重音</li>
+<li>乐句的结尾</li>
+<li>前后音程对比强烈的地方</li>
+<li>一个乐句到另一个乐句之间</li>
+</ul>
+<p>一般的流行歌曲，一个乐句中最多会进行一次和弦转换，换言之就是一个乐句一般包含一到两个和弦</p>
+<h3 id="2-5-2-判断节奏、调式调性"><a href="#2-5-2-判断节奏、调式调性" class="headerlink" title="2.5.2 判断节奏、调式调性"></a>2.5.2 判断节奏、调式调性</h3><h3 id="2-5-3-确定开头、解位和断句"><a href="#2-5-3-确定开头、解位和断句" class="headerlink" title="2.5.3 确定开头、解位和断句"></a>2.5.3 确定开头、解位和断句</h3><ul>
 <li>半终止</li>
 <li>终止式</li>
 </ul>
-<h3 id="2-5-3-填充乐句"><a href="#2-5-3-填充乐句" class="headerlink" title="2.5.3 填充乐句"></a>2.5.3 填充乐句</h3><h2 id="2-6-大调和声套路"><a href="#2-6-大调和声套路" class="headerlink" title="2.6 大调和声套路"></a>2.6 大调和声套路</h2><ul>
-<li>4536251</li>
+<h3 id="2-5-4-填充乐句"><a href="#2-5-4-填充乐句" class="headerlink" title="2.5.4 填充乐句"></a>2.5.4 填充乐句</h3><h2 id="2-6-常用和声套路"><a href="#2-6-常用和声套路" class="headerlink" title="2.6 常用和声套路"></a>2.6 常用和声套路</h2><ul>
+<li><p>15634125：忽然之间</p>
+</li>
+<li><p>4536251：可惜不是你</p>
+</li>
 <li>4536</li>
 <li>1625</li>
+<li>162536251：突然的自我</li>
+<li>1645：花</li>
+<li>1564</li>
 </ul>
 <h2 id="2-7-终止式的种类"><a href="#2-7-终止式的种类" class="headerlink" title="2.7 终止式的种类"></a>2.7 终止式的种类</h2><h3 id="2-7-1-收拢性终止"><a href="#2-7-1-收拢性终止" class="headerlink" title="2.7.1 收拢性终止"></a>2.7.1 收拢性终止</h3><p>收拢性终止：<strong>落在主和弦</strong>的终止式</p>
 <ul>
@@ -5184,7 +5229,13 @@
 <li>半终止：不稳定音级收束，如$V-IV$，音响效果上给人一种戛然而止、意犹未尽的感觉，经常用在上半句或开放性乐段的末尾</li>
 <li>阻碍终止/伪终止：以不稳定和弦代替主和弦，典型的有$V-VI$，它是把预期的“终止”打断，然音乐延续下去。作用是推迟终止、扩展乐段</li>
 </ul>
-<h2 id="2-8-大调七和弦"><a href="#2-8-大调七和弦" class="headerlink" title="2.8 大调七和弦"></a>2.8 大调七和弦</h2><h3 id="2-8-1-大七和弦"><a href="#2-8-1-大七和弦" class="headerlink" title="2.8.1 大七和弦"></a>2.8.1 大七和弦</h3><h3 id="2-8-2-属七和弦（大小七和弦）"><a href="#2-8-2-属七和弦（大小七和弦）" class="headerlink" title="2.8.2 属七和弦（大小七和弦）"></a>2.8.2 属七和弦（大小七和弦）</h3><h1 id="三、离调与转调"><a href="#三、离调与转调" class="headerlink" title="三、离调与转调"></a>三、离调与转调</h1><h2 id="3-1-转调"><a href="#3-1-转调" class="headerlink" title="3.1 转调"></a>3.1 转调</h2><h2 id="3-2-离调"><a href="#3-2-离调" class="headerlink" title="3.2 离调"></a>3.2 离调</h2><p>离调可以理解为<strong>转调</strong>的一种特殊形式，但要注意区分它和转调的关系。离调具体是指音乐作品中出现了某一临时变化音或临时带变音的和弦而引起了调性色彩的改变，而且这种改变只作了短暂停留之后又回到了原来的调性上，这样的调性变化就称作离调。</p>
+<h3 id="2-7-3-其他"><a href="#2-7-3-其他" class="headerlink" title="2.7.3 其他"></a>2.7.3 其他</h3><ul>
+<li>PAC：完全正格终止，V-&gt;I，和弦都是原位和弦，且旋律结束在主音上</li>
+<li>IAC：不完满正格终止，可以是VII-&gt;I，或者使用转位和弦、或者旋律音没有结束在主音上，通过这些可以降低终止感</li>
+<li>HC：半终止，停止在V级和弦上音乐不再发展</li>
+<li>终止感：PAC&gt;IAC&gt;HC</li>
+</ul>
+<h2 id="2-8-大调七和弦"><a href="#2-8-大调七和弦" class="headerlink" title="2.8 大调七和弦"></a>2.8 大调七和弦</h2><h3 id="2-8-1-大七和弦"><a href="#2-8-1-大七和弦" class="headerlink" title="2.8.1 大七和弦"></a>2.8.1 大七和弦</h3><h3 id="2-8-2-属七和弦（大小七和弦）"><a href="#2-8-2-属七和弦（大小七和弦）" class="headerlink" title="2.8.2 属七和弦（大小七和弦）"></a>2.8.2 属七和弦（大小七和弦）</h3><h3 id="2-8-3-四度圈"><a href="#2-8-3-四度圈" class="headerlink" title="2.8.3 四度圈"></a>2.8.3 四度圈</h3><h1 id="三、离调与转调"><a href="#三、离调与转调" class="headerlink" title="三、离调与转调"></a>三、离调与转调</h1><h2 id="3-1-转调"><a href="#3-1-转调" class="headerlink" title="3.1 转调"></a>3.1 转调</h2><h2 id="3-2-离调"><a href="#3-2-离调" class="headerlink" title="3.2 离调"></a>3.2 离调</h2><p>离调可以理解为<strong>转调</strong>的一种特殊形式，但要注意区分它和转调的关系。离调具体是指音乐作品中出现了某一临时变化音或临时带变音的和弦而引起了调性色彩的改变，而且这种改变只作了短暂停留之后又回到了原来的调性上，这样的调性变化就称作离调。</p>
 ]]></content>
       <categories>
         <category>文化艺术</category>
@@ -5204,32 +5255,26 @@
 <li>音乐材料：不同的乐器音响效果</li>
 <li>乐汇：是音乐语言的基本结构单位，至少需要一个逻辑强拍和一个逻辑弱拍，因此最少需要两个音，可以理解为语言中的词汇</li>
 <li>乐节：是音乐语言的基本组织单位。一般由两个乐汇构成，是乐段内部介于乐句与乐汇之间的结构段落。</li>
-<li>乐句：是音乐语言的基本表达单位，是构成一首乐曲的一个具有特性的基本结构单位，</li>
+<li>乐句：是音乐语言的基本表达单位，是构成一首乐曲的一个具有特性的基本结构单位</li>
 <li>乐段：是音乐形象的具体表现单位</li>
 <li>乐思：乐思就是在音乐曲式分析中整体表达内容的最小单位</li>
 <li>主题：音乐主题是一首（部）音乐作品（段落）中的最主要的乐思，即音乐的核心部分。它是音乐思维的“种子”</li>
 <li>动机：是音乐主题最具代表性的小单位，是主题或乐曲发展的胚芽，具有一定的独立表现意义，可能是一个节奏型，一个旋律走向，肯定很短，可以衔接不同的乐段作为同一个曲子</li>
 <li>发展：音乐律动的进行过程</li>
 </ul>
+<p>现在着重讲下乐句和乐段，乐段是由乐句构成，一般为8小节，前4节为先行部，后4节为后续部</p>
+<p>先行部和后续部的前半段都是相同的，只是后半段的发展是不同的，先行部的后半段为一个终止，但终止感相对与后续部的后半段的终止感要弱</p>
 <h2 id="1-2-音乐材料与发展手法"><a href="#1-2-音乐材料与发展手法" class="headerlink" title="1.2 音乐材料与发展手法"></a>1.2 音乐材料与发展手法</h2><ul>
-<li><p>重复</p>
-</li>
-<li><p>变奏</p>
-</li>
-<li><p>展开</p>
-</li>
-<li><p>派生对比</p>
-</li>
-<li><p>并置对比</p>
-</li>
-<li><p>模仿</p>
-</li>
-<li><p>摸进</p>
-</li>
-<li><p>分裂</p>
-</li>
-<li><p>时值的压缩与扩大</p>
-</li>
+<li>重复：对前一小节的重复演奏</li>
+<li>变奏</li>
+<li>展开</li>
+<li>派生对比</li>
+<li>并置对比</li>
+<li>模仿</li>
+<li>摸进：模仿进行，将前一小节的音符移高或者移低</li>
+<li>分裂</li>
+<li>平行乐句：两个乐句开始部分是相同的，只有结尾不同，形成一种呼应，比如《欢乐颂》</li>
+<li>时值的压缩与扩大</li>
 </ul>
 <h1 id="二、曲式"><a href="#二、曲式" class="headerlink" title="二、曲式"></a>二、曲式</h1><img src="/2022/08/10/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/jiegou.png" class="" title="jiegou">
 <h2 id="2-1-一部曲式"><a href="#2-1-一部曲式" class="headerlink" title="2.1 一部曲式"></a>2.1 一部曲式</h2><p>一部曲式：一部曲式是完整的曲式中规模最小的结构，结构为A。可以由一个乐句、两个乐句、三个及三个以上的乐句组成。一般有比较明显的终止式，能够表达一个完整或相对完整的乐思。</p>
@@ -5256,7 +5301,45 @@
 <p>呈示部中往往还包含第一主题、第二主题、第一结尾、第二结尾，这些片段之间还有一些连接段，在调性安排上，第一主题为主调，第二主题转到属调。</p>
 <p>再现部包含了呈示部中的所有部分，区别在于这里第一主题和第二主题都为主调。</p>
 <p>有很多的奏鸣曲、协奏曲、交响乐、室内乐的乐章都用到了奏鸣曲式，尤其是第一乐章用得最多，但不是所有的作品都是用奏鸣曲式来写的，也可以用其他的结构来写</p>
-<h1 id="三、流行音乐曲式"><a href="#三、流行音乐曲式" class="headerlink" title="三、流行音乐曲式"></a>三、流行音乐曲式</h1><h2 id="3-1-结构"><a href="#3-1-结构" class="headerlink" title="3.1 结构"></a>3.1 结构</h2><p>一般来说副歌的和声要比正歌、前奏要丰富许多，是整首歌感情最饱满的部分，如果正歌后直接接副歌，就会感觉很突兀，所以流行歌曲的正歌和副歌之间会有一个预副歌的部分，这一部分的乐器会比正歌丰富一些</p>
+<h1 id="三、旋律"><a href="#三、旋律" class="headerlink" title="三、旋律"></a>三、旋律</h1><h2 id="3-1-音程旋律"><a href="#3-1-音程旋律" class="headerlink" title="3.1 音程旋律"></a>3.1 音程旋律</h2><p>音高进行方式：</p>
+<ul>
+<li>同音重复：相同音重复进行</li>
+<li>极进进行：两个音的进行相差二度关系</li>
+<li>小跳跳进：两个音的进行相差三度关系</li>
+<li>大跳进行：两个音的进行相差三度以上关系</li>
+</ul>
+<p>对于大跳进行，四度以上的进行不能太频繁，六度及以上的跳进必须在之后要反向进行</p>
+<p>规范：</p>
+<ul>
+<li>音域在12度以内：音域太广就容易不好演奏、演唱困难、音乐缺少连贯性</li>
+<li>极进跳进交错：连续的级进音乐容易单调，连续的跳进音乐容易不稳定，所以交错进行可以保持音乐的活力和稳定</li>
+</ul>
+<p>音程旋律的优缺点：</p>
+<ul>
+<li>无需灵感、无需创意</li>
+<li>旋律随机，重复概率小</li>
+<li>旋律要进行多次调整，否则可能很难听</li>
+</ul>
+<h2 id="3-2-旋律发展"><a href="#3-2-旋律发展" class="headerlink" title="3.2 旋律发展"></a>3.2 旋律发展</h2><p>音乐的张力可以推动音乐的发展</p>
+<ul>
+<li>上升进行：音高向上的进行</li>
+<li>下降进行：音高向下的进行</li>
+<li>交错进行：上升和下降交错</li>
+<li>静止进行：音高不发生变化</li>
+</ul>
+<p>通过音高控制张力：</p>
+<ul>
+<li>音高上升：积累张力</li>
+<li>音高下降：释放张力</li>
+</ul>
+<p>通过音长控制张力：</p>
+<ul>
+<li><p>短促音符：积累张力</p>
+</li>
+<li><p>悠长音符：释放张力</p>
+</li>
+</ul>
+<h1 id="四、流行音乐曲式"><a href="#四、流行音乐曲式" class="headerlink" title="四、流行音乐曲式"></a>四、流行音乐曲式</h1><h2 id="4-1-结构"><a href="#4-1-结构" class="headerlink" title="4.1 结构"></a>4.1 结构</h2><p>一般来说副歌的和声要比正歌、前奏要丰富许多，是整首歌感情最饱满的部分，如果正歌后直接接副歌，就会感觉很突兀，所以流行歌曲的正歌和副歌之间会有一个预副歌的部分，这一部分的乐器会比正歌丰富一些</p>
 <img src="/2022/08/10/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E6%9B%B2%E5%BC%8F%E7%BB%93%E6%9E%84/liuxin.png" class="" title="liuxin">
 <ul>
 <li>Intro：前奏、间奏</li>
@@ -6686,6 +6769,25 @@
 </ul>
 </li>
 <li>カ变动词：来（く）る＝＝＞来（き）</li>
+</ul>
+<h1 id="三、叙述句"><a href="#三、叙述句" class="headerlink" title="三、叙述句"></a>三、叙述句</h1><p>叙述句（动词谓语句）一般用来表示经常性、将来性、真理性的动作</p>
+<ul>
+<li>Aは　～ます：A 要做什么</li>
+<li>Aは　～ません：A 不要做什么</li>
+</ul>
+<h1 id="四、自动词-他动词"><a href="#四、自动词-他动词" class="headerlink" title="四、自动词/他动词"></a>四、自动词/他动词</h1><ul>
+<li><p>自动词：不需要宾语便可以完整表达含义，多用来表示事物的状态或变化</p>
+<ul>
+<li>动作性自动词</li>
+<li>状态性自动词</li>
+</ul>
+</li>
+<li><p>他动词：需要宾语帮助完成含义的具体表达</p>
+<ul>
+<li>を：格助词，对他动词的宾语进行提示</li>
+<li>动宾关系：宾语+を+他动词</li>
+</ul>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -8315,6 +8417,15 @@
     <content><![CDATA[<h1 id="一、Hystrix"><a href="#一、Hystrix" class="headerlink" title="一、Hystrix"></a>一、Hystrix</h1><h2 id="1-1-服务雪崩"><a href="#1-1-服务雪崩" class="headerlink" title="1.1 服务雪崩"></a>1.1 服务雪崩</h2><p>多个微服务之间调用的时候，假设微服务A调用微服务B和微服务C，微服务B和微服务C又调用其它的微服务，这就是所谓的“扇出”。如果扇出的链路上某个微服务的调用响应时间过长或者不可用，对微服务A的调用就会占用越来越多的系统资源，进而引起系统崩溃，所谓的“雪崩效应”。</p>
 <p>对于高流量的应用来说，单一的后端依赖可能会导致所有服务器上的所有资源都在几秒钟内饱和。比失败更糟糕的是，这些应用程序还可能导致服务之间的延迟增加，备份队列，线程和其他系统资源紧张，导致整个系统发生更多的级联故障。这些都表示需要对故障和延迟进行隔离和管理，以便单个依赖关系的失败，不能取消整个应用程序或系统。</p>
 <p>通常当你发现一个模块下的某个实例失败后，这时候这个模块依然还会接收流量，然后这个有问题的模块还调用了其他的模块，这样就会发生级联故障，或者叫雪崩。</p>
+<ul>
+<li>服务降级：<ul>
+<li>超时导致服务器变慢—-&gt;超时不再等待—-&gt;服务降级</li>
+<li>出错（宕机或程序运行出错）—-&gt;出错有兜底—-&gt;服务降级</li>
+</ul>
+</li>
+<li>服务熔断：</li>
+<li>服务限流：</li>
+</ul>
 <h2 id="1-2-Hystrix概念"><a href="#1-2-Hystrix概念" class="headerlink" title="1.2 Hystrix概念"></a>1.2 Hystrix概念</h2><p>Hystrix是一个用于处理分布式系统的延迟和容错的开源库，在分布式系统里，许多依赖不可避免的会调用失败，比如超时、异常等，Hystrix能够保证在一个依赖出问题的情况下，不会导致整体服务失败，避免级联故障，以提高分布式系统的弹性</p>
 <p>“断路器”本身是一种开关装置，当某个服务单元发生故障之后，通过断路器的故障监控（类似熔断保险丝)，向调用方返回一个符合预期的、可处理的备选响应（FallBack)，而不是长时间的等待或者抛出调用方无法处理的异常，这样就保证了服务调用方的线程不会被长时间、不必要地占用，从而避免了故障在分布式系统中的蔓延，乃至雪崩。</p>
 <p>Hystrix的作用：</p>
@@ -8323,7 +8434,7 @@
 <li>服务熔断</li>
 <li>接近实时监控</li>
 </ul>
-<h2 id="1-3-实现"><a href="#1-3-实现" class="headerlink" title="1.3 实现"></a>1.3 实现</h2><h3 id="1-3-1-依赖配置"><a href="#1-3-1-依赖配置" class="headerlink" title="1.3.1 依赖配置"></a>1.3.1 依赖配置</h3><ul>
+<h2 id="1-3-服务端实现"><a href="#1-3-服务端实现" class="headerlink" title="1.3 服务端实现"></a>1.3 服务端实现</h2><h3 id="1-3-1-依赖配置"><a href="#1-3-1-依赖配置" class="headerlink" title="1.3.1 依赖配置"></a>1.3.1 依赖配置</h3><ul>
 <li>创建项目cloud-provider-hystrix-payment8001</li>
 <li>引入Hystrix依赖</li>
 </ul>
@@ -8350,10 +8461,126 @@
 <li>启动cloud-provider-hystrix-payment8001</li>
 <li>访问接口</li>
 </ul>
-<h2 id="1-4-高并发测试"><a href="#1-4-高并发测试" class="headerlink" title="1.4 高并发测试"></a>1.4 高并发测试</h2><h2 id="1-5-消费端实现"><a href="#1-5-消费端实现" class="headerlink" title="1.5 消费端实现"></a>1.5 消费端实现</h2>]]></content>
+<h2 id="1-4-高并发测试"><a href="#1-4-高并发测试" class="headerlink" title="1.4 高并发测试"></a>1.4 高并发测试</h2><h2 id="1-5-客户端实现"><a href="#1-5-客户端实现" class="headerlink" title="1.5 客户端实现"></a>1.5 客户端实现</h2><ul>
+<li>客户端和服务端的创建都是类似的</li>
+<li>创建工程cloud-consumer-feign-hystrix-order8080</li>
+<li>配置yml</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span> <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment">#设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动类OrderHystrixMain8080</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderHystrixMain8080</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(OrderHystrixMain8080.class,args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>业务接口PaymentHystrixService</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@FeignClient(value = &quot;CLOUD-PAYMENT-HYSTRIX-SERVICE&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PaymentHystrixService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/payment/hystrix/ok/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_OK</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/payment/hystrix/timeout/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求类OrderHystrixController</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderHystrixController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> PaymentHystrixService paymentHystrixService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/consumer/payment/hystrix/ok/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_OK</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;</span><br><span class="line">        String result = paymentHystrixService.paymentInfo_OK(id);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/consumer/payment/hystrix/timeout/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;</span><br><span class="line">        String result = paymentHystrixService.paymentInfo_TimeOut(id);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-服务降级"><a href="#1-6-服务降级" class="headerlink" title="1.6 服务降级"></a>1.6 服务降级</h2><ul>
+<li><p>服务降级可以配置在服务端，也可以配置客户端，一般会配置在客户端</p>
+</li>
+<li><p>主启动类使用@EnableCircuitBreaker开启降级，并添加@EnableHystrix开启Hystrix</p>
+</li>
+<li>方法上使用@HystrixCommand注解</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderHystrixController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/consumer/payment/hystrix/timeout/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@HystrixCommand(fallbackMethod = &quot;paymentInfo_TimeOutHandler&quot;,commandProperties=&#123;</span></span><br><span class="line"><span class="meta">        @HystrixProperty(name=&quot;execution.isolation.thread.timeoutInMilliseconds&quot;,value=&quot;3000&quot;)</span></span><br><span class="line"><span class="meta">    &#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> timeNumber=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(timeNumber);	<span class="comment">// 等待3秒</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;线程池： &quot;</span>+Thread.currentThread().getName()+<span class="string">&quot;  paymentInfo_OK,id:  &quot;</span>+id+<span class="string">&quot;\t&quot;</span>+<span class="string">&quot;O(∩_∩)O哈哈~&quot;</span>+<span class="string">&quot;   耗时&quot;</span>+timeNumber+<span class="string">&quot;秒钟&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOutHandler</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;接口调用异常：\t&quot;</span>+<span class="string">&quot;当前线程名称\t&quot;</span>+Thread.currentThread().getName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>yml配置</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">feign:</span></span><br><span class="line">	<span class="attr">hystrix:</span></span><br><span class="line">		<span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在接口类上添加注解@DefaultProperties启动默认服务降级方法配置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@DefaultProperties(defaultFallback = &quot;paymentInfo_TimeOutHandler&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderHystrixController</span></span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/consumer/payment/hystrix/timeout/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@HystrixCommand</span>	<span class="comment">// HystrixCommand还是要在需要降级的请求方法上加上</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> timeNumber=<span class="number">5</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            TimeUnit.SECONDS.sleep(timeNumber);	<span class="comment">// 等待3秒</span></span><br><span class="line">        &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;线程池： &quot;</span>+Thread.currentThread().getName()+<span class="string">&quot;  paymentInfo_OK,id:  &quot;</span>+id+<span class="string">&quot;\t&quot;</span>+<span class="string">&quot;O(∩_∩)O哈哈~&quot;</span>+<span class="string">&quot;   耗时&quot;</span>+timeNumber+<span class="string">&quot;秒钟&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOutHandler</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;接口调用异常：\t&quot;</span>+<span class="string">&quot;当前线程名称\t&quot;</span>+Thread.currentThread().getName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-7-服务降级解耦"><a href="#1-7-服务降级解耦" class="headerlink" title="1.7 服务降级解耦"></a>1.7 服务降级解耦</h2><ul>
+<li>因为目前兜底方法和接口方法写在了同一个接口类中，这样如果为每一个接口方法添加一个兜底方法就会导致代码冗余</li>
+<li>那么我们就可以考虑新建一个类用来实现业务接口，将兜底方法都写在这个类中，这样就解决了代码的冗余</li>
+<li>接下来的服务降级都配置在客户端，创建PaymentFallbackService实现业务接口</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentFallbackService</span> <span class="keyword">implements</span> <span class="title">PaymentHystrixService</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_OK</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;------PaymentHystrixService fall back-paymentInfo_OK&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;------PaymentHystrixService fall back-paymentInfo_TimeOut&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在业务类上的@FeignClient上添加fallback属性，将上面的实现类注册进Feign中</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@FeignClient(value = &quot;CLOUD-PAYMENT-HYSTRIX-SERVICE&quot; fallback = PaymentFallbackService.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PaymentHystrixService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/payment/hystrix/ok/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_OK</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/payment/hystrix/timeout/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>后端</category>
         <category>微服务</category>
       </categories>
+  </entry>
+  <entry>
+    <title>乐理进阶大全-吉他练习</title>
+    <url>/2022/11/13/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E5%90%89%E4%BB%96%E7%BB%83%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="一、基础练习"><a href="#一、基础练习" class="headerlink" title="一、基础练习"></a>一、基础练习</h1><h2 id="1-1-音阶练习"><a href="#1-1-音阶练习" class="headerlink" title="1.1 音阶练习"></a>1.1 音阶练习</h2><ul>
+<li>指板音阶分布</li>
+</ul>
+<h2 id="1-2-节奏练习"><a href="#1-2-节奏练习" class="headerlink" title="1.2 节奏练习"></a>1.2 节奏练习</h2><ul>
+<li>四分音符、八分音符、十六分音符、三十二分音符、休止符</li>
+<li>切分音符、附点八分音符、延音、三连音</li>
+<li>前八后十六、前十六后八</li>
+<li>扫弦节奏型</li>
+</ul>
+<h2 id="1-3-和声练习"><a href="#1-3-和声练习" class="headerlink" title="1.3 和声练习"></a>1.3 和声练习</h2><ul>
+<li>和弦转换、和弦转位、三和弦、七和弦</li>
+<li>大小调音阶</li>
+<li>分解和弦</li>
+</ul>
+<h2 id="1-3-技巧练习"><a href="#1-3-技巧练习" class="headerlink" title="1.3 技巧练习"></a>1.3 技巧练习</h2><ul>
+<li>击弦、勾弦、滑弦、无尾滑音、闷弦、揉弦</li>
+<li>打板</li>
+</ul>
+<h1 id="二、进阶练习"><a href="#二、进阶练习" class="headerlink" title="二、进阶练习"></a>二、进阶练习</h1>]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>乐理</category>
+      </categories>
+      <tags>
+        <tag>吉他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乐理进阶大全-流行音乐</title>
+    <url>/2022/11/06/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E6%B5%81%E8%A1%8C%E9%9F%B3%E4%B9%90/</url>
+    <content><![CDATA[<h1 id="一、常见和声套路"><a href="#一、常见和声套路" class="headerlink" title="一、常见和声套路"></a>一、常见和声套路</h1><h2 id="1-1-卡农和弦"><a href="#1-1-卡农和弦" class="headerlink" title="1.1 卡农和弦"></a>1.1 卡农和弦</h2><figure class="highlight tap"><table><tr><td class="code"><pre><span class="line">1<span class="number"> 5 </span>6<span class="number"> 3 </span>4<span class="number"> 1 </span>2(4) 5</span><br><span class="line"></span><br><span class="line">C    G    Am Em     F   C         F    G</span><br><span class="line">忽然 之间 天昏 地暗 世界可 以忽然什么 都没有</span><br><span class="line"></span><br><span class="line">1<span class="number"> 7 </span>6<span class="number"> 5 </span>4<span class="number"> 3 </span>2 1(5)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>乐理</category>
+      </categories>
+      <tags>
+        <tag>和弦进行</tag>
+        <tag>流行音乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乐理进阶大全-音乐史</title>
+    <url>/2022/11/12/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E9%9F%B3%E4%B9%90%E5%8F%B2/</url>
+    <content><![CDATA[<h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p>音乐风格经历了许多艺术家的发展，到如今合成器的泛滥，让音乐制作的门槛降低了许多，音乐风格发展的脉络主要有以下几种：</p>
+<ul>
+<li>古典音乐</li>
+<li>布鲁斯</li>
+<li>爵士，爵士布鲁斯的结合</li>
+<li>摇滚乐</li>
+<li>重金属</li>
+</ul>
+<p>不同的音乐风格有着不同的特点，比如布鲁斯就用到了许多切分节奏，爵士乐则大量使用到了7和弦、9和弦等复杂和弦，听感上色彩比较丰富</p>
+<h1 id="二、布鲁斯"><a href="#二、布鲁斯" class="headerlink" title="二、布鲁斯"></a>二、布鲁斯</h1><p>布鲁斯音阶：<em>1、b3、4、b5、5、b7</em>或者<em>6、1、2、b3、3、5</em></p>
+<p>标准的12小节E调布鲁斯进行如下：</p>
+<img src="/2022/11/12/%E4%B9%90%E7%90%86%E8%BF%9B%E9%98%B6%E5%A4%A7%E5%85%A8-%E9%9F%B3%E4%B9%90%E5%8F%B2/norm12.png" class="" title="norm12">
+<p>Shuffle、Swing、Riff节奏</p>
+<p>Shuffle/Swing：一种摇摆的节奏型，具体来说就是将三连音中间的音符换成延音或者休止符</p>
+<p>Riff：对某一特定片段的重复演奏，可以用来丰富Swing的节奏感</p>
+<p>强力和弦，在很多人的理解中是由两个音组成的，一个是根音，一个是向上的五音。其实，重力和弦应该有一个更准确的叫法，以这里的E重力和弦为例，我们可以称它为E5和弦，因为它没有3音</p>
+]]></content>
+      <categories>
+        <category>文化艺术</category>
+        <category>乐理</category>
+      </categories>
+      <tags>
+        <tag>文化艺术</tag>
+      </tags>
   </entry>
 </search>
